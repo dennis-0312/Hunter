@@ -30,7 +30,7 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/format'], (log, search, r
         let idOS = 'vacio';
         let placa = 'vacio';
         log.debug('Context', scriptContext);
-        
+
         try {
             let objSearch = search.create({
                 type: "customrecord_ht_record_ordentrabajo",
@@ -103,18 +103,22 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/format'], (log, search, r
             //     params: [placa]
             // });
             // let id = results.results[0].values[0];
-
-            let turno = record.create({ type: record.Type.TASK });
-            turno.setValue({ fieldId: 'title', value: scriptContext.codigoTurno });
-            turno.setValue({ fieldId: 'assigned', value: 4 });
-            turno.setValue({ fieldId: 'startdate', value: new Date(scriptContext.fecha) });
-            turno.setValue({ fieldId: 'custevent_ht_tr_hora', value: scriptContext.hora });
-            turno.setValue({ fieldId: 'custevent_ht_turno_taller', value: scriptContext.taller });
-            turno.setValue({ fieldId: 'company', value: scriptContext.customer });
-            turno.setValue({ fieldId: 'transaction', value: scriptContext.ordenServicio });
-            turno.setValue({ fieldId: 'relateditem', value: scriptContext.item });
-            let recordTurno = turno.save();
-            return { 'codigoTurno': recordTurno }
+            let turnoUnico = getTurnoId(scriptContext.ordenServicio);
+            if (turnoUnico != '') {
+                return { 'codigoTurno': '' }
+            } else {
+                let turno = record.create({ type: record.Type.TASK });
+                turno.setValue({ fieldId: 'title', value: scriptContext.codigoTurno });
+                turno.setValue({ fieldId: 'assigned', value: 4 });
+                turno.setValue({ fieldId: 'startdate', value: new Date(scriptContext.fecha) });
+                turno.setValue({ fieldId: 'custevent_ht_tr_hora', value: scriptContext.hora });
+                turno.setValue({ fieldId: 'custevent_ht_turno_taller', value: scriptContext.taller });
+                turno.setValue({ fieldId: 'company', value: scriptContext.customer });
+                turno.setValue({ fieldId: 'transaction', value: scriptContext.ordenServicio });
+                turno.setValue({ fieldId: 'relateditem', value: scriptContext.item });
+                let recordTurno = turno.save();
+                return { 'codigoTurno': recordTurno }
+            }
         } catch (error) {
             log.error('Error-POST', error);
         }
@@ -164,7 +168,36 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/format'], (log, search, r
         }
     }
 
-
+    const getTurnoId = (id) => {
+        try {
+            var busqueda = search.create({
+                type: "task",
+                filters:
+                    [
+                        ["transaction.internalid", "anyof", id]
+                    ],
+                columns:
+                    [
+                        search.createColumn({
+                            name: "transaction",
+                            summary: "GROUP",
+                            label: "Transaction"
+                        })
+                    ]
+            });
+            var savedsearch = busqueda.run().getRange(0, 1);
+            var internalid = '';
+            if (savedsearch.length > 0) {
+                busqueda.run().each(function (result) {
+                    internalid = result.getValue(busqueda.columns[0]);
+                    return true;
+                });
+            }
+            return internalid;
+        } catch (e) {
+            log.error('Error en getCustomer', e);
+        }
+    }
     const generateDetalleOS = (id, body) => {
         let ordenServicio = body.ordenServicio;
         let objRecord = record.create({ type: HT_REGISTRO_BIENES_RECORD, isDynamic: true });
@@ -187,4 +220,11 @@ Version: 1.0
 Date: 6/12/2022
 Author: Dennis Fernández
 Description: Creación del script en SB.
+==============================================================================================================================================*/
+/*********************************************************************************************************************************************
+Commit:01
+Version: 1.0
+Date: 19/03/2023
+Author: Jeferson Mejia
+Description: Validacion Turno unico por transacción.
 ==============================================================================================================================================*/

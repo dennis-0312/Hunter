@@ -21,7 +21,7 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/format'], (log, search, r
     const HT_CONSULTA_ORDEN_TRABAJO_SEARCH = 'customsearch_ht_consulta_orden_trabajo'; //HT Consulta Orden de trabajo - PRODUCCION
     const ESTADO_VENTAS = 7;
     const PRIMER_TURNO = 1;
-    const SEGUNDO_TURNO = 2;
+    const SEGUNDO_TURNO = 2; //aver
 
     const _get = (scriptContext) => {
         // let nrodocumento = context.nrodocumento;
@@ -30,7 +30,7 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/format'], (log, search, r
         let idOS = 'vacio';
         let placa = 'vacio';
         log.debug('Context', scriptContext);
-
+        
         try {
             let objSearch = search.create({
                 type: "customrecord_ht_record_ordentrabajo",

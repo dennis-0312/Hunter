@@ -23,48 +23,51 @@ define([
             switch (scriptContext.accion) {
                 case 'ordendeservicio':
                     if (scriptContext.bien.length > 0) {
-
-                        const serviceOrder = new ServiceOrder(
-                            scriptContext.customerid,
-                            scriptContext.bien,
-                            scriptContext.date,
-                            scriptContext.department,
-                            scriptContext.class,
-                            scriptContext.location,
-                            scriptContext.op,
-                            scriptContext.nota,
-                            scriptContext.salesrep,
-                            scriptContext.terms
-                        );
-
-                        let items = scriptContext.items;
-                        for (let i in items) {
-                            let taxes = _controller.getTaxes(items[i].taxcode);
-                            let detail = new Detail(
-                                items[i].item,
-                                items[i].price,
-                                taxes.taxcode,
-                                taxes.taxrate,
-                                items[i].quantity,
-                                items[i].department,
-                                items[i].class,
-                                items[i].location,
-                                items[i].units,
-                                items[i].description,
-                                items[i].rate,
-                                items[i].grossamt,
-                                items[i].amount,
-                                items[i].tax1amt
+                        let existsGood = _controller.getGood(scriptContext.bien, scriptContext.cliente);
+                        if (existsGood > 0) {
+                            const serviceOrder = new ServiceOrder(
+                                scriptContext.cliente,
+                                scriptContext.bien,
+                                scriptContext.fecha,
+                                scriptContext.centroCosto,
+                                scriptContext.clase,
+                                scriptContext.ubicacion,
+                                scriptContext.numeroOperacion,
+                                scriptContext.nota,
+                                scriptContext.representanteVenta,
+                                scriptContext.terminoPago
                             );
-                            jsonDetail.push(detail.detail());
-                        }
-                        // log.debug('objHeader', servicio.header());
-                        // log.debug('objDetail', jsonDetail);
-                        //response = _controller.createServiceOrder(serviceOrder.header(), jsonDetail);
-                        response = 'Ok!';
-                    } else {
-                        response = _error.ErrorMessages.SERVICE_ORDER_VALIDATION.GOODS_HAS_NOT_BEEN_SHIPPED;
 
+                            let items = scriptContext.items;
+                            for (let i in items) {
+                                let taxes = _controller.getTaxes(items[i].codigoImpuesto);
+                                let detail = new Detail(
+                                    items[i].item,
+                                    items[i].nivelPrecio,
+                                    taxes.taxcode,
+                                    taxes.taxrate,
+                                    items[i].cantidad,
+                                    items[i].centroCosto,
+                                    items[i].clase,
+                                    items[i].ubicacion,
+                                    items[i].unidad,
+                                    items[i].descripcion,
+                                    items[i].importe,
+                                    items[i].importeBruto,
+                                    items[i].monto,
+                                    items[i].importeImpuesto
+                                );
+                                jsonDetail.push(detail.detail());
+                            }
+                            // log.debug('objHeader', servicio.header());
+                            // log.debug('objDetail', jsonDetail);
+                            response = _controller.createServiceOrder(serviceOrder.header(), jsonDetail);
+                            //response = 'Ok!';
+                        } else {
+                            response = _error.ErrorMessages.SERVICE_ORDER_VALIDATION.GOOD_DOES_NOT_EXISTE_OR_DOES_NOT_BELONG_TO_THE_CUSTOMER;
+                        }
+                    } else {
+                        response = _error.ErrorMessages.SERVICE_ORDER_VALIDATION.GOOD_HAS_NOT_BEEN_SHIPPED;
                     }
                     break;
                 // case 'factura':

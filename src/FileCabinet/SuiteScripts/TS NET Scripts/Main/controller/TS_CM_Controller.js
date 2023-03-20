@@ -10,13 +10,18 @@ Governance points: N/A
 /**
  * @NApiVersion 2.1
  */
-define(['N/log', 'N/record', 'N/search'],
+define([
+    'N/log',
+    'N/record',
+    'N/search',
+    '../constant/TS_CM_Constant',
+],
     /**
  * @param{log} log
  * @param{record} record
  * @param{search} search
  */
-    (log, record, search) => {
+    (log, record, search, _constant) => {
 
         //TODO FUNCTIONS ====================================================================================================================================================
         const createServiceOrder = (requestHeader, requestDetail) => {
@@ -56,12 +61,23 @@ define(['N/log', 'N/record', 'N/search'],
             return { 'taxcode': taxcode, 'taxrate': taxrate }
         }
 
+        const getGood = (good, customer) => {
+            let objSearch = search.load({ id: _constant.Constants.SEARCHS.SEARCH_FOR_GOOD });
+            let filters = objSearch.filters;
+            const goodFilter = search.createFilter({ name: 'internalid', operator: search.Operator.ANYOF, values: good });
+            const customerFilter = search.createFilter({ name: 'custrecord_ht_bien_propietario', operator: search.Operator.ANYOF, values: customer });
+            filters.push(goodFilter);
+            filters.push(customerFilter);
+            let resultCount = objSearch.runPaged().count;
+            return resultCount;
+        }
 
 
         return {
             createServiceOrder,
             createInvoice,
-            getTaxes
+            getTaxes,
+            getGood
         }
 
     });

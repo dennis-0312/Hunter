@@ -1,7 +1,7 @@
 /*=======================================================================================================================================================
-This script for resources (Script contenedor de mesages de errores)
+This script for resources (Script contenedor de constantes)
 =========================================================================================================================================================
-File Name: TS_CM_ErrorMessages.js                                                                        
+File Name: TS_CM_Constant.js                                                                        
 Commit: 01                                                                                                                          
 Date: 19/03/2023
 Governance points: N/A
@@ -11,15 +11,15 @@ Governance points: N/A
  */
 define([], () => {
 
-    let ErrorMessages = {
-        API_ERROR: {
-            DOES_NOT_EXIST_ACTION: 'Acción no definida o no existe.'
+    let Constants = {
+        RECORDS: {
+            DOES_NOT_EXIST_ACTION: 0
         },
-        SERVICE_ORDER_VALIDATION: {
-            GOOD_HAS_NOT_BEEN_SHIPPED: 'No se ha ingresado un bien.',
-            GOOD_DOES_NOT_EXISTE_OR_DOES_NOT_BELONG_TO_THE_CUSTOMER: 'El bien no existe o no pertenece al cliente.'
-        }
+        SEARCHS: {
+            SEARCH_FOR_GOOD: 'customsearch_ht_bienes' //HT Bienes - PRODUCCION
+        },
     };
 
-    return { ErrorMessages }
+    return { Constants }
+
 });

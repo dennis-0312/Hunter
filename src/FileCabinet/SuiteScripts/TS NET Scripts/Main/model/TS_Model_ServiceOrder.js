@@ -14,11 +14,16 @@ class ServiceOrder {
         this.memo = { 'field': 'memo', 'value': memo }
         this.salesrep = { 'field': 'salesrep', 'value': salesrep }
         this.terms = { 'field': 'terms', 'value': terms }
+        this.billto = { 'field': 'custbody_ht_facturar_a', 'value': customer }
+        this.fromsatellite = { 'field': 'custbodycustbody_ht_os_created_from_sa', 'value': true }
     }
 
     header() {
         let array = new Array();
-        if (this.customer.value != null && this.customer.value.length > 0) { array.push(this.customer) }
+        if (this.customer.value != null && this.customer.value.length > 0) {
+            array.push(this.customer)
+            array.push(this.billto)
+        }
         if (this.bien.value != null && this.bien.value.length > 0) { array.push(this.bien) }
         if (this.date.value != null && JSON.stringify(this.date.value).length > 0) { array.push(this.date) }
         if (this.department.value != null && this.department.value.length > 0) { array.push(this.department) }
@@ -28,6 +33,7 @@ class ServiceOrder {
         if (this.memo.value != null && this.memo.value.length > 0) { array.push(this.memo) }
         if (this.salesrep.value != null && this.salesrep.value.length > 0) { array.push(this.salesrep) }
         if (this.terms.value != null && this.terms.value.length > 0) { array.push(this.terms) }
+        array.push(this.fromsatellite);
         return array;
     }
 }

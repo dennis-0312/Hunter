@@ -19,53 +19,6 @@ define([
             let editServiceOrder = form.getButton('edit');
             if (objRecord.getValue('custbodycustbody_ht_os_created_from_sa') == true) editServiceOrder.isDisabled = true;
         }
-
-
-        // if (scriptContext.type === scriptContext.UserEventType.CREATE) {
-        //     const form = scriptContext.form;
-        //     const objRecord = scriptContext.newRecord;
-
-        // try {
-        //     //form.clientScriptFileId = 15727;
-        //     let customer = objRecord.getValue('entity');
-        //     //log.debug('Customer', customer.length);
-        //     let fieldgroup = form.addFieldGroup({ id: 'fieldgroupid', label: 'Asignar Bien' });
-        //     let fieldTipo = form.addField({ id: 'custpage_field_tipo', type: serverWidget.FieldType.SELECT, source: 'customlist_ht_bien_tipobien', label: 'Tipo de Bien', container: 'fieldgroupid' });
-        //     //fieldTipo.addSelectOption({ value: -1, text: 'Seleccione' });
-
-        //     //fieldBien.updateDisplaySize({ height: 60, width: 2000 });
-
-        //     // form.addField({
-        //     //     id: 'custpage_fieldcomodin',
-        //     //     type: serverWidget.FieldType.INLINEHTML,
-        //     //     label: ' ',
-        //     //     container: 'fieldgroupid'
-        //     // }).defaultValue = "<div style='font-size:14px;'></div>";
-        //     let fieldFiltro = form.addField({ id: 'custpage_field_filtro_text', type: serverWidget.FieldType.TEXT, label: 'Filtro', container: 'fieldgroupid' });
-        //     let fieldBien = form.addField({ id: 'custpage_field_bien', type: serverWidget.FieldType.SELECT, source: 'customrecord_ht_record_bienes', label: 'Bien', container: 'fieldgroupid' });
-        //     //fieldBien.updateBreakType({ breakType: serverWidget.FieldBreakType.STARTCOL });
-        //     //fieldBien.addSelectOption({ value: -1, text: '' });
-
-        //     // let searchBien = search.create({
-        //     //     type: "customrecord_ht_record_bienes",
-        //     //     filters: [["custrecord_ht_bien_propietario", "anyof", "502612"]], //terrestte, marítimo, inmueble, producción, tanque
-        //     //     columns: ['internalid', 'name']
-        //     // });
-        //     // // let myResults = searchBien.run().getRange({ start: 0, end: 100 });
-        //     // //log.debug('Results', myResults);
-        //     // // form.insertField({ field: fieldTipo, nextfield: 'orderstatus' });
-        //     // // form.insertField({ field: fieldBien, nextfield: 'duedate' });
-
-        //     // searchBien.run().each((result) => {
-        //     //     var subId = result.getValue({ name: 'internalId' });
-        //     //     var subName = result.getValue({ name: 'name' });
-        //     //     fieldBien.addSelectOption({ value: subId, text: subName });
-        //     //     return true;
-        //     // });
-        // } catch (error) {
-        //     log.debug('Error-BF', error);
-        // }
-        // }
     }
 
 

@@ -35,7 +35,8 @@ define([
                                 scriptContext.numeroOperacion,
                                 scriptContext.nota,
                                 scriptContext.representanteVenta,
-                                scriptContext.terminoPago
+                                scriptContext.terminoPago,
+                                scriptContext.emitirFactura
                             );
 
                             let items = scriptContext.items;
@@ -70,8 +71,10 @@ define([
                         response = _error.ErrorMessages.SERVICE_ORDER_VALIDATION.GOOD_HAS_NOT_BEEN_SHIPPED;
                     }
                     break;
-                // case 'factura':
-                //     break;
+                case 'factura':
+                    log.debug('Enter Invoice', 'Ingresé a factura');
+                    response = _controller.createInvoice(scriptContext.ordenServicio);
+                    break;
                 default:
                     response = _error.ErrorMessages.API_ERROR.DOES_NOT_EXIST_ACTION;
                     break;
@@ -81,6 +84,7 @@ define([
             let time = end - start;
 
             return {
+                'transaction':scriptContext.accion, 
                 'response': response,
                 'time': time
             };

@@ -3,7 +3,7 @@
  */
 
 class ServiceOrder {
-    constructor(customer, bien, date, department, clase, location, otherrefnum, memo, salesrep, terms) {
+    constructor(customer, bien, date, department, clase, location, otherrefnum, memo, salesrep, terms, issueinvoice) {
         this.customer = { 'field': 'entity', 'value': customer }
         this.bien = { 'field': 'custbody_ht_so_bien', 'value': bien }
         this.date = { 'field': 'trandate', 'value': new Date(date) }
@@ -16,10 +16,13 @@ class ServiceOrder {
         this.terms = { 'field': 'terms', 'value': terms }
         this.billto = { 'field': 'custbody_ht_facturar_a', 'value': customer }
         this.fromsatellite = { 'field': 'custbodycustbody_ht_os_created_from_sa', 'value': true }
+        this.issueinvoice = issueinvoice
+        this.issueinvoicetrue = { 'field': 'custbody_ht_os_issue_invoice', 'value': true }
     }
 
     header() {
         let array = new Array();
+        array.push(this.fromsatellite);
         if (this.customer.value != null && this.customer.value.length > 0) {
             array.push(this.customer)
             array.push(this.billto)
@@ -33,7 +36,7 @@ class ServiceOrder {
         if (this.memo.value != null && this.memo.value.length > 0) { array.push(this.memo) }
         if (this.salesrep.value != null && this.salesrep.value.length > 0) { array.push(this.salesrep) }
         if (this.terms.value != null && this.terms.value.length > 0) { array.push(this.terms) }
-        array.push(this.fromsatellite);
+        if (this.issueinvoice == true) { array.push(this.issueinvoicetrue) }
         return array;
     }
 }

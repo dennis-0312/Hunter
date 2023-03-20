@@ -42,13 +42,17 @@ define([
         }
 
 
-        const createInvoice = () => {
-            let objRecord = record.transform({
-                fromType: record.Type.CUSTOMER,
-                fromId: 107,
-                toType: record.Type.SALES_ORDER,
+        const createInvoice = (serviceOrder) => {
+            let recTransform = record.transform({
+                fromType: record.Type.SALES_ORDER,
+                fromId: serviceOrder,
+                toType: record.Type.INVOICE,
                 isDynamic: true,
             });
+
+            recTransform.setValue('custbodyts_ec_tipo_documento_fiscal', _constant.Constants.DOCUMENT_TYPE.INVOICE);
+            // recTransform.setValue('custbodyts_ec_tipo_documento_fiscal', _constant.Constants.DOCUMENT_TYPE.INVOICE);
+            return recTransform.save({ enableSourcing: true, ignoreMandatoryFields: true });
         }
 
 

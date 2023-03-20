@@ -7,8 +7,9 @@ define([
     'N/record',
     'N/search',
     'N/ui/serverWidget',
-    'N/plugin'
-], (log, record, search, serverWidget, plugin) => {
+    'N/plugin',
+    '../controller/TS_CM_Controller',
+], (log, record, search, serverWidget, plugin, _controller) => {
     const HT_DETALLE_ORDEN_SERVICIO_SEARCH = 'customsearch_ht_detalle_orden_servicio_2'; //HT Detalle Orden de Servicio - PRODUCCION
 
     const beforeLoad = (scriptContext) => {
@@ -94,13 +95,13 @@ define([
                         type: "customrecord_ht_pp_main_param_prod",
                         filters:
                             [
-                                ["custrecord12", "anyof", items],
+                                ["custrecord_ht_pp_parametrizacionid", "anyof", items],
                                 "AND",
                                 ["custrecord_ht_pp_parametrizacion_valor", "anyof", "9"]
                             ],
                         columns:
                             [
-                                search.createColumn({ name: "custrecord12", label: "Param. Prod." })
+                                search.createColumn({ name: "custrecord_ht_pp_parametrizacionid", label: "Param. Prod." })
                             ]
                     });
                     var savedsearch = busqueda.run().getRange(0, 1);
@@ -133,6 +134,12 @@ define([
                     let workOrder = plFunctions.plGenerateOT(json);
                     log.debug('OT ', workOrder);
                 }
+
+                if (objRecord.getValue('custbody_ht_os_issue_invoice') == true) {
+                    let invoice = _controller.createInvoice(objRecord.id);
+                    log.debug('Invoice', invoice);
+                }
+
             } catch (error) {
                 log.error('Error-afterSubmit', error);
             }

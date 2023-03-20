@@ -18,6 +18,9 @@ define([], () => {
         SEARCHS: {
             SEARCH_FOR_GOOD: 'customsearch_ht_bienes' //HT Bienes - PRODUCCION
         },
+        DOCUMENT_TYPE:{
+            INVOICE: 4
+        }
     };
 
     return { Constants }

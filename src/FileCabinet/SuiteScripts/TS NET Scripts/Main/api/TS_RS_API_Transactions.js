@@ -72,7 +72,7 @@ define([
                     }
                     break;
                 case 'factura':
-                    log.debug('Enter Invoice', 'Ingresé a factura');
+                    // log.debug('Enter Invoice', 'Ingresé a factura');
                     response = _controller.createInvoice(scriptContext.ordenServicio);
                     break;
                 default:

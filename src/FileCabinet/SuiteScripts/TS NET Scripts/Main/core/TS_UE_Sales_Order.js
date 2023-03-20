@@ -21,7 +21,7 @@ define([
         }
     }
 
-    
+
     const afterSubmit = (scriptContext) => {
         if (scriptContext.type === scriptContext.UserEventType.CREATE) {
             const objRecord = scriptContext.newRecord;
@@ -111,4 +111,10 @@ Version: 1.0
 Date: 20/12/2022
 Author: Dennis Fernández
 Description: Creación del script en SB.
+/*********************************************************************************************************************************************
+Commit:02
+Version: 1.0
+Date: 20/03/2023
+Author: Dennis Fernández
+Description: Lógica para emitir factura automática.
 ==============================================================================================================================================*/

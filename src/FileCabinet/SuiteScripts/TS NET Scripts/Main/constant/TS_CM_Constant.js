@@ -16,10 +16,15 @@ define([], () => {
             DOES_NOT_EXIST_ACTION: 0
         },
         SEARCHS: {
-            SEARCH_FOR_GOOD: 'customsearch_ht_bienes' //HT Bienes - PRODUCCION
+            SEARCH_FOR_GOOD: 'customsearch_ht_bienes', //HT Bienes - PRODUCCION
+            TRANSACTION_SEARCH: 'customsearch_ht_transaction_search' //HT Transaction Search -  PRODUCCION
         },
         DOCUMENT_TYPE:{
-            INVOICE: 4
+            INVOICE: 4,
+        },
+        TRANSACTION_TYPE: {
+            SERVICE_ORDER_TYPE: 'SalesOrd',
+            
         }
     };
 

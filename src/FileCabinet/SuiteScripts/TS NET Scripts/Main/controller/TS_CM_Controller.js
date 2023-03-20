@@ -76,12 +76,30 @@ define([
             return resultCount;
         }
 
+        const getServiceOrder = (transaction) => {
+            let objSearch = search.load({ id: _constant.Constants.SEARCHS.TRANSACTION_SEARCH });
+            let filters = objSearch.filters;
+            const typeFilter = search.createFilter({ name: 'type', operator: search.Operator.ANYOF, values: 'SalesOrd' });
+            const transactionFilter = search.createFilter({ name: 'internalid', operator: search.Operator.ANYOF, values: transaction });
+            const statusFilter = search.createFilter({ name: 'status', operator: search.Operator.NONEOF, values: ["SalesOrd:C", "SalesOrd:H", "SalesOrd:D", "SalesOrd:G"] });
+            const mainlineFilter = search.createFilter({ name: 'mainline', operator: search.Operator.IS, values: 'T' });
+            filters.push(typeFilter);
+            filters.push(transactionFilter);
+            filters.push(statusFilter);
+            filters.push(mainlineFilter);
+            let resultCount = objSearch.runPaged().count;
+            let result = objSearch.run().getRange({ start: 0, end: 100 });
+            log.debug('Result', result);
+            return resultCount;
+        }
+
 
         return {
             createServiceOrder,
             createInvoice,
             getTaxes,
-            getGood
+            getGood,
+            getServiceOrder
         }
 
     });

@@ -73,7 +73,15 @@ define([
                     break;
                 case 'factura':
                     // log.debug('Enter Invoice', 'Ingresé a factura');
-                    response = _controller.createInvoice(scriptContext.ordenServicio);
+                    if (scriptContext.ordenServicio.length > 0) {
+                        if (_controller.getServiceOrder(scriptContext.ordenServicio) > 0) {
+                            response = _controller.createInvoice(scriptContext.ordenServicio);
+                        } else {
+                            response = _error.ErrorMessages.INVOICE.DOES_NOT_EXIST_SERVICE_ORDER;
+                        }
+                    } else {
+                        response = _error.ErrorMessages.INVOICE.SERVICE_ORDER_HAS_NOT_BEEN_SHIPPED;
+                    }
                     break;
                 default:
                     response = _error.ErrorMessages.API_ERROR.DOES_NOT_EXIST_ACTION;
@@ -84,7 +92,7 @@ define([
             let time = end - start;
 
             return {
-                'transaction':scriptContext.accion, 
+                'transaction': scriptContext.accion,
                 'response': response,
                 'time': time
             };

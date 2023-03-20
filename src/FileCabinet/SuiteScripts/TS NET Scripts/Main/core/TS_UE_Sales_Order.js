@@ -21,10 +21,7 @@ define([
         }
     }
 
-
-    const beforeSubmit = (scriptContext) => { }
-
-
+    
     const afterSubmit = (scriptContext) => {
         if (scriptContext.type === scriptContext.UserEventType.CREATE) {
             const objRecord = scriptContext.newRecord;

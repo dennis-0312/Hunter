@@ -2,7 +2,7 @@
  * @NApiVersion 2.1
  */
 
-class Servicio {
+class ServiceOrder {
     constructor(customer, bien, date, department, clase, location, otherrefnum, memo, salesrep, terms) {
         this.customer = { 'field': 'entity', 'value': customer }
         this.bien = { 'field': 'custbody_ht_so_bien', 'value': bien }

@@ -18,6 +18,7 @@ define(['N/log', 'N/record', 'N/search'],
  */
     (log, record, search) => {
 
+        //TODO FUNCTIONS =======================================================================================================================================================================================
         const createServiceOrder = (requestHeader, requestDetail) => {
             let objRecord = record.create({ type: record.Type.SALES_ORDER, isDynamic: true });
             for (let j in requestHeader) {
@@ -46,6 +47,7 @@ define(['N/log', 'N/record', 'N/search'],
         }
 
 
+        //TODO QUERIES ======================================================================================================================================================================================
         const getTaxes = (tax) => {
             let lookUpTaxCode = search.lookupFields({ type: search.Type.SALES_TAX_ITEM, id: tax, columns: ['internalid', 'rate'] });
             let taxcode = lookUpTaxCode.internalid[0].value;
@@ -53,6 +55,8 @@ define(['N/log', 'N/record', 'N/search'],
             taxrate = taxrate.replace('%', '');
             return { 'taxcode': taxcode, 'taxrate': taxrate }
         }
+
+        
 
         return {
             createServiceOrder,

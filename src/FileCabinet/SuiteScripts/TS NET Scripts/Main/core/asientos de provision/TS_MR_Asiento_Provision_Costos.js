@@ -75,11 +75,11 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/runtime', 'N/query'], (log
                     }
                     //log.debug('Count', searchResult);
                     for (let j in searchResult) {
-                        const interlaid = searchResult[j].getValue({ name: "internalid", summary: "GROUP" });
+                        const internalid = searchResult[j].getValue({ name: "internalid", summary: "GROUP" });
                         const item = searchResult[j].getValue({ name: "item", summary: "GROUP" });
                         const provision = searchResult[j].getValue({ name: "formulanumeric", summary: "SUM", formula: "({quantity} - {quantityshiprecv}) * {item.averagecost}" });
                         //total += parseFloat(provision);
-                        json.push([interlaid, item, provision, journal]);
+                        json.push([internalid, item, provision, journal]);
                     }
                     start = start + size;
                     end = end + size;

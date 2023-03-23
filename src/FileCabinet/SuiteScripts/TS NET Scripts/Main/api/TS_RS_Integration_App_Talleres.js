@@ -204,6 +204,9 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                                 guardar = 1;
                                 action = 'Ingresa comentario';
                             }
+                            openRecord.setValue({ fieldId: "custrecord_ht_ot_fechatrabajoasignacion", value: new Date(scriptContext.fechatrabajoasignacion) });
+                            openRecord.setValue({ fieldId: "custrecord_ht_ot_horatrabajoasignacion", value: new Date(scriptContext.horatrabajoasignacion) });
+                            openRecord.setValue({ fieldId: "custrecord_ht_ot_ubicacion", value: scriptContext.ubicacion });
 
                             if (guardar == 1) {
                                 openRecord.save();

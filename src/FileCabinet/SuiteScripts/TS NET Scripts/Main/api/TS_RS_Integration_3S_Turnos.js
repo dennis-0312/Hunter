@@ -111,12 +111,23 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/format'], (log, search, r
                 turno.setValue({ fieldId: 'title', value: scriptContext.codigoTurno });
                 turno.setValue({ fieldId: 'assigned', value: 4 });
                 turno.setValue({ fieldId: 'startdate', value: new Date(scriptContext.fecha) });
-                turno.setValue({ fieldId: 'custevent_ht_tr_hora', value: scriptContext.hora });
+                turno.setValue({ fieldId: 'custevent_ht_tr_hora', value: new Date(scriptContext.hora) });
                 turno.setValue({ fieldId: 'custevent_ht_turno_taller', value: scriptContext.taller });
                 turno.setValue({ fieldId: 'company', value: scriptContext.customer });
                 turno.setValue({ fieldId: 'transaction', value: scriptContext.ordenServicio });
                 turno.setValue({ fieldId: 'relateditem', value: scriptContext.item });
                 let recordTurno = turno.save();
+
+                let objSearch = search.load({ id: 'customsearch_ht_consulta_orden_trabajo_2' });
+                let filters = objSearch.filters;
+                const transactionFilter = search.createFilter({ name: 'internalid', join: 'custrecord_ht_ot_orden_servicio', operator: search.Operator.ANYOF, values: scriptContext.ordenServicio });
+                filters.push(transactionFilter);
+                //let resultCount = objSearch.runPaged().count;
+                let result = objSearch.run().getRange({ start: 0, end: 100 });
+                for (let i in result) {
+                    let internalidOT = result[i].getValue({ name: "internalid", summary: "GROUP", label: "Internal ID" });
+                    record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: internalidOT, values: { 'custrecord_ht_ot_taller': scriptContext.taller } });
+                }
                 return { 'codigoTurno': recordTurno }
             }
         } catch (error) {

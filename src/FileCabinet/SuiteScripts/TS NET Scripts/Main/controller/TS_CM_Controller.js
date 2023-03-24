@@ -51,7 +51,7 @@ define([
             });
 
             recTransform.setValue('custbodyts_ec_tipo_documento_fiscal', _constant.Constants.DOCUMENT_TYPE.INVOICE);
-            // recTransform.setValue('custbodyts_ec_tipo_documento_fiscal', _constant.Constants.DOCUMENT_TYPE.INVOICE); test2
+            // recTransform.setValue('custbodyts_ec_tipo_documento_fiscal', _constant.Constants.DOCUMENT_TYPE.INVOICE); test23
             return recTransform.save({ enableSourcing: true, ignoreMandatoryFields: true });
         }
 

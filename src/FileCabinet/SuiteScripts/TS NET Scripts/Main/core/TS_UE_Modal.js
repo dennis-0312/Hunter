@@ -59,14 +59,16 @@ define([
                     if (savedsearch.length > 0) {
                         busqueda.run().each(function (result) {
                             id = result.getValue(busqueda.columns[0]);
-                            idItem = search.lookupFields({
-                                type: 'serializedinventoryitem',
-                                id: id,
-                                columns: ['custitem_ht_at_articulocomercialrela']
-                            });
-                            itemventalq = items,
-                                items = (idItem.custitem_ht_at_articulocomercialrela)[0].value;
-                            itemsText = (idItem.custitem_ht_at_articulocomercialrela)[0].text;
+                            log.debug('ID', id);
+                            // idItem = search.lookupFields({
+                            //     type: 'serializedinventoryitem',
+                            //     id: id,
+                            //     columns: ['custitem_ht_at_articulocomercialrela']
+                            // });
+                            // log.debug('Debug', idItem);
+                            // itemventalq = items,
+                            //     items = (idItem.custitem_ht_at_articulocomercialrela)[0].value;
+                            // itemsText = (idItem.custitem_ht_at_articulocomercialrela)[0].text;
                         });
                     }
 
@@ -75,10 +77,12 @@ define([
                         customer: customer.toString(),
                         vehiculo: vehiculo,
                         item: items,
-                        itemventalq: itemventalq,
-                        displayname: itemsText,
+                        // itemventalq: itemventalq,
+                        // displayname: itemsText,
                         ordenServicio: ordenServicio
                     }
+
+                    log.debug('JSON', json);
 
                     const plFunctions = plugin.loadImplementation({ type: 'customscript_ts_pl_functions' });
                     let workOrder = plFunctions.plGenerateOT(json);

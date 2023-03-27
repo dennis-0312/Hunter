@@ -4,7 +4,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
     var id = transactionRecord.getId();
 
     if (recordType == 'itemfulfillment') {
-        nlapiLogExecution("DEBUG", "Consignación", 'INICIO Item Fulfillment: ' + id + ' ------------------------------------------------------------------------------------------------'); 
+        nlapiLogExecution("DEBUG", "Provisión", 'INICIO Item Fulfillment: ' + id + ' ------------------------------------------------------------------------------------------------'); 
         try {
             var countStandard = parseInt(standardLines.getCount());
             //nlapiLogExecution("DEBUG", "LINES", countStandard);

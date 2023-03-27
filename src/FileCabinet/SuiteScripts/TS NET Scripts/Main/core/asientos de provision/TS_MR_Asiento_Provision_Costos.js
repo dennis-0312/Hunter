@@ -15,8 +15,8 @@ Governance points: N/A
  */
 define(['N/log', 'N/search', 'N/record', 'N/task', 'N/runtime', 'N/query'], (log, search, record, task, runtime, query) => {
     //const scriptObj = runtime.getCurrentScript();
-    const HT_ASIENTO_PROVISION_COSTOS_SEARCH = 'customsearch_ht_asiento_prov_costos'; //HT Asiento Provisión Costos - PRODUCCION
-    const HT_ASIENTO_PROVISION_COSTOS_TOTAL_SEARCH = 'customsearch_ht_asiento_prov_costos_suma'; //HT Asiento Provisión Costos TOTAL - PRODUCCION
+    const HT_ASIENTO_PROVISION_COSTOS_SEARCH = 'customsearch_ht_asiento_prov_costos'; //HT Asiento Provisión Costos DETALLE - PRODUCCION
+    const HT_ASIENTO_PROVISION_COSTOS_TOTAL_SEARCH = 'customsearch_ht_asiento_prov_costos_suma'; //HT Asiento Provisión Costos CONSOLIDADO - PRODUCCION
     let recordId = '';
 
     const getInputData = () => {
@@ -32,17 +32,6 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/runtime', 'N/query'], (log
         let size = 1000;
         //let total = 0;
         try {
-            // let myLoadedQuery = query.runSuiteQL({
-            //     query: 'SELECT id, status FROM transaction WHERE type = \'SalesOrd\'' +
-            //     'AND trandate '
-            //     // params: [paramCustomer, paramItem]
-            // });
-            // // //log.debug('Query3', query3);
-            // let results = myLoadedQuery.results;
-
-            // const myLoadedQuery = query.load({ id: 'custdataset_netsuite_dataset_salesorder' });
-            // var results = myLoadedQuery.run();
-
             const objTotal = search.load({ id: HT_ASIENTO_PROVISION_COSTOS_TOTAL_SEARCH });
             const searchResultCount = objTotal.runPaged().count;
             //const date = new Date('2023-2-1'); //!Elegir fecha
@@ -152,16 +141,16 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/runtime', 'N/query'], (log
         objRecord.selectNewLine({ sublistId: 'line' });
         objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: 1237, ignoreFieldChange: false });
         objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'debit', value: provision, ignoreFieldChange: false });
-        objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'department', value: 310, ignoreFieldChange: false });
-        objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'class', value: 2, ignoreFieldChange: false });
+        // objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'department', value: 310, ignoreFieldChange: false });
+        // objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'class', value: 3, ignoreFieldChange: false });
         objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: 2, ignoreFieldChange: false });
         objRecord.commitLine({ sublistId: 'line' });
 
         objRecord.selectNewLine({ sublistId: 'line' });
         objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: 798, ignoreFieldChange: false });
         objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'credit', value: provision, ignoreFieldChange: false });
-        objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'department', value: 310, ignoreFieldChange: false });
-        objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'class', value: 2, ignoreFieldChange: false });
+        // objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'department', value: 310, ignoreFieldChange: false });
+        // objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'class', value: 3, ignoreFieldChange: false });
         objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: 2, ignoreFieldChange: false });
         objRecord.commitLine({ sublistId: 'line' });
 

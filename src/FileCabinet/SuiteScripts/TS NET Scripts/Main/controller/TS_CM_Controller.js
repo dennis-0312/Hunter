@@ -84,6 +84,14 @@ define([
             return resultCount;
         }
 
+        const costProvision = () => {
+            try {
+                
+            } catch (error) {
+                
+            }
+        }
+
 
         return {
             createServiceOrder,

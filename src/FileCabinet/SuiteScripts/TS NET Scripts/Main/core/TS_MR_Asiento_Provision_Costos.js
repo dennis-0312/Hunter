@@ -13,7 +13,13 @@ Governance points: N/A
  *@NApiVersion 2.1
  *@NScriptType MapReduceScript
  */
-define(['N/log', 'N/search', 'N/record', 'N/task', 'N/runtime', 'N/query'], (log, search, record, task, runtime, query) => {
+define(['N/log',
+    'N/search',
+    'N/record',
+    'N/task',
+    'N/runtime',
+    'N/query'
+], (log, search, record, task, runtime, query) => {
     //const scriptObj = runtime.getCurrentScript();
     const HT_ASIENTO_PROVISION_COSTOS_SEARCH = 'customsearch_ht_asiento_prov_costos'; //HT Asiento Provisión Costos DETALLE - PRODUCCION
     const HT_ASIENTO_PROVISION_COSTOS_TOTAL_SEARCH = 'customsearch_ht_asiento_prov_costos_suma'; //HT Asiento Provisión Costos CONSOLIDADO - PRODUCCION

@@ -14,7 +14,7 @@ define([
  */
     (log, record, search, _constant) => {
 
-        //TODO FUNCTIONS ====================================================================================================================================================
+        //! FUNCTIONS ====================================================================================================================================================
         const createServiceOrder = (requestHeader, requestDetail) => {
             let objRecord = record.create({ type: record.Type.SALES_ORDER, isDynamic: true });
             for (let j in requestHeader) {
@@ -46,8 +46,37 @@ define([
             return recTransform.save({ enableSourcing: true, ignoreMandatoryFields: true });
         }
 
+        const createJournal = (fecha, provision, nota) => {
+            const objRecord = record.create({ type: record.Type.JOURNAL_ENTRY, isDynamic: true });
 
-        //TODO QUERIES =======================================================================================================================================================
+            objRecord.setValue({ fieldId: 'trandate', value: new Date(fecha) });
+            //objRecord.setValue({ fieldId: 'currency', value: context.currency });
+            objRecord.setValue({ fieldId: 'memo', value: nota });
+            objRecord.setValue({ fieldId: 'subsidiary', value: 2 });
+
+            objRecord.selectNewLine({ sublistId: 'line' });
+            objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: 1237, ignoreFieldChange: false });
+            objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'debit', value: provision, ignoreFieldChange: false });
+            // objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'department', value: 310, ignoreFieldChange: false });
+            // objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'class', value: 3, ignoreFieldChange: false });
+            objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: 2, ignoreFieldChange: false });
+            objRecord.commitLine({ sublistId: 'line' });
+
+            objRecord.selectNewLine({ sublistId: 'line' });
+            objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: 798, ignoreFieldChange: false });
+            objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'credit', value: provision, ignoreFieldChange: false });
+            // objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'department', value: 310, ignoreFieldChange: false });
+            // objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'class', value: 3, ignoreFieldChange: false });
+            objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: 2, ignoreFieldChange: false });
+            objRecord.commitLine({ sublistId: 'line' });
+
+            const newJournal = objRecord.save({ ignoreMandatoryFields: false });
+
+            return newJournal
+        }
+
+
+        //! QUERIES =======================================================================================================================================================
         const getTaxes = (tax) => {
             let lookUpTaxCode = search.lookupFields({ type: search.Type.SALES_TAX_ITEM, id: tax, columns: ['internalid', 'rate'] });
             let taxcode = lookUpTaxCode.internalid[0].value;
@@ -84,11 +113,56 @@ define([
             return resultCount;
         }
 
-        const costProvision = () => {
-            try {
-                
-            } catch (error) {
-                
+        const getCostProvision = () => {
+            let json = new Array();
+            let searchResult;
+            let start = 0;
+            let end = 1000;
+            let size = 1000;
+
+            const objTotal = search.load({ id: _constant.Constants.SEARCHS.COST_PROVISION_SEARCH });
+            const searchResultCount = objTotal.runPaged().count;
+            //const date = new Date('2023-2-1'); //!Elegir fecha
+            const date = new Date();
+            const ultimoDia = new Date(date.getFullYear(), date.getMonth(), 0);
+            log.debug('ultimoDiaTimeZona', ultimoDia);
+            if (searchResultCount > 0) {
+                let objResults = objTotal.run().getRange({ start: 0, end: 1 });
+                const total = objResults[0].getValue({ name: "formulanumeric", summary: "SUM", formula: "({quantity} - {quantityshiprecv}) * {item.averagecost}" });
+                const nota = 'Provisión Abril'
+                let journal = createJournal(ultimoDia, total, nota);
+                //let journal = 125255896;
+                log.debug('journal', journal);
+
+                const objSearch = search.load({ id: _constant.Constants.SEARCHS.COST_PROVISION_DETAIL_SEARCH });
+                const searchResultCount = objSearch.runPaged().count;
+                log.debug('Count', searchResultCount);
+                let division = searchResultCount / size;
+                let laps = Math.round(division);
+                if (division > laps) {
+                    laps = laps + 1
+                }
+
+                for (let i = 1; i <= laps; i++) {
+                    if (i != laps) {
+                        searchResult = objSearch.run().getRange({ start: start, end: end });
+                    } else {
+                        searchResult = objSearch.run().getRange({ start: start, end: searchResultCount });
+                    }
+                    //log.debug('Count', searchResult);
+                    for (let j in searchResult) {
+                        const internalid = searchResult[j].getValue({ name: "internalid", summary: "GROUP" });
+                        const item = searchResult[j].getValue({ name: "item", summary: "GROUP" });
+                        const provision = searchResult[j].getValue({ name: "formulanumeric", summary: "SUM", formula: "({quantity} - {quantityshiprecv}) * {item.averagecost}" });
+                        //total += parseFloat(provision);
+                        json.push([internalid, item, provision, journal]);
+                    }
+                    start = start + size;
+                    end = end + size;
+                }
+                return json;
+            } else {
+                return 0;
             }
         }
 
@@ -98,7 +172,8 @@ define([
             createInvoice,
             getTaxes,
             getGood,
-            getServiceOrder
+            getServiceOrder,
+            getCostProvision,
         }
 
     });

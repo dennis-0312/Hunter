@@ -260,7 +260,7 @@
                             // log.debug('Res', results);
                             let tipoOrdenServicio = results[0].getValue({ name: "custbody_ht_os_tipoordenservicio", join: "CUSTRECORD_HT_ID_ORDEN_SERVICIO" });
                             //log.debug('tipoOrdenServicio', tipoOrdenServicio);
-                            //TODO =====================================================================================================================================================
+                            //! =====================================================================================================================================================
                             const tipoOS = parseInt(tipoOrdenServicio);      
                            
                            

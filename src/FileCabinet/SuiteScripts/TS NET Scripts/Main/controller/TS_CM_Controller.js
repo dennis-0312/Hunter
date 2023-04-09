@@ -42,7 +42,6 @@ define([
             });
 
             recTransform.setValue('custbodyts_ec_tipo_documento_fiscal', _constant.Constants.DOCUMENT_TYPE.INVOICE);
-            // recTransform.setValue('custbodyts_ec_tipo_documento_fiscal', _constant.Constants.DOCUMENT_TYPE.INVOICE);
             return recTransform.save({ enableSourcing: true, ignoreMandatoryFields: true });
         }
 
@@ -75,6 +74,14 @@ define([
             return newJournal
         }
 
+        const createProvisionDetail = (journal, serviceOrder, itemm, amountProvided) => {
+            const objRecord = record.create({ type: _constant.Constants.CUSTOM_RECORD.PROVISION_DETAIL, isDynamic: true });
+            objRecord.setValue({ fieldId: 'custrecord_ht_dp_asiento_provision', value: journal });
+            objRecord.setValue({ fieldId: 'custrecord_ht_dp_transaccion_prov', value: serviceOrder });
+            objRecord.setValue({ fieldId: 'custrecord_ht_dp_item', value: itemm });
+            objRecord.setValue({ fieldId: 'custrecord_ht_dp_provision', value: amountProvided });
+            return objRecord.save({ enableSourcing: true, ignoreMandatoryFields: true });
+        }
 
         //! QUERIES =======================================================================================================================================================
         const getTaxes = (tax) => {
@@ -114,24 +121,31 @@ define([
         }
 
         const getCostProvision = () => {
+            let objResults = 0;
+            const objTotal = search.load({ id: _constant.Constants.SEARCHS.COST_PROVISION_SEARCH });
+            const searchResultCount = objTotal.runPaged().count;
+            if (searchResultCount > 0) {
+                objResults = objTotal.run().getRange({ start: 0, end: 1 })
+            }
+            return objResults;
+        }
+
+        const getProvisionDetail = () => {
             let json = new Array();
             let searchResult;
             let start = 0;
             let end = 1000;
             let size = 1000;
 
-            const objTotal = search.load({ id: _constant.Constants.SEARCHS.COST_PROVISION_SEARCH });
-            const searchResultCount = objTotal.runPaged().count;
+            const objResults = getCostProvision();
             //const date = new Date('2023-2-1'); //!Elegir fecha
             const date = new Date();
             const ultimoDia = new Date(date.getFullYear(), date.getMonth(), 0);
             log.debug('ultimoDiaTimeZona', ultimoDia);
-            if (searchResultCount > 0) {
-                let objResults = objTotal.run().getRange({ start: 0, end: 1 });
+            if (objResults != 0) {
                 const total = objResults[0].getValue({ name: "formulanumeric", summary: "SUM", formula: "({quantity} - {quantityshiprecv}) * {item.averagecost}" });
                 const nota = 'Provisión Abril'
                 let journal = createJournal(ultimoDia, total, nota);
-                //let journal = 125255896;
                 log.debug('journal', journal);
 
                 const objSearch = search.load({ id: _constant.Constants.SEARCHS.COST_PROVISION_DETAIL_SEARCH });
@@ -149,13 +163,12 @@ define([
                     } else {
                         searchResult = objSearch.run().getRange({ start: start, end: searchResultCount });
                     }
-                    //log.debug('Count', searchResult);
+
                     for (let j in searchResult) {
                         const internalid = searchResult[j].getValue({ name: "internalid", summary: "GROUP" });
                         const item = searchResult[j].getValue({ name: "item", summary: "GROUP" });
                         const provision = searchResult[j].getValue({ name: "formulanumeric", summary: "SUM", formula: "({quantity} - {quantityshiprecv}) * {item.averagecost}" });
-                        //total += parseFloat(provision);
-                        json.push([internalid, item, provision, journal]);
+                        json.push([journal, internalid, item, provision]);
                     }
                     start = start + size;
                     end = end + size;
@@ -170,10 +183,11 @@ define([
         return {
             createServiceOrder,
             createInvoice,
+            createProvisionDetail,
             getTaxes,
             getGood,
             getServiceOrder,
-            getCostProvision,
+            getProvisionDetail,
         }
 
     });

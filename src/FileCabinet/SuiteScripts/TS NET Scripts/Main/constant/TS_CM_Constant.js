@@ -19,6 +19,9 @@ define([], () => {
         TRANSACTION_TYPE: {
             SERVICE_ORDER_TYPE: 'SalesOrd',
 
+        },
+        CUSTOM_RECORD: {
+            PROVISION_DETAIL: 'customrecord_ht_dp_detalle_provision', //HT Detalle de Provisión
         }
     };
 

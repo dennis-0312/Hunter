@@ -32,7 +32,6 @@ define([
             return response;
         }
 
-
         const createInvoice = (serviceOrder) => {
             let recTransform = record.transform({
                 fromType: record.Type.SALES_ORDER,
@@ -120,12 +119,33 @@ define([
             return resultCount;
         }
 
-        const getCostProvision = () => {
+        const getCostProvision = (fecha, nota) => {
             let objResults = 0;
             const objTotal = search.load({ id: _constant.Constants.SEARCHS.COST_PROVISION_SEARCH });
             const searchResultCount = objTotal.runPaged().count;
             if (searchResultCount > 0) {
-                objResults = objTotal.run().getRange({ start: 0, end: 1 })
+                objResults = objTotal.run().getRange({ start: 0, end: 500 });
+                log.debug('objResults', objResults);
+                const objRecord = record.create({ type: record.Type.JOURNAL_ENTRY, isDynamic: true });
+                objRecord.setValue({ fieldId: 'trandate', value: new Date(fecha) });
+                objRecord.setValue({ fieldId: 'memo', value: nota });
+                objRecord.setValue({ fieldId: 'subsidiary', value: 2 });
+                for (let i in objResults) {
+                    const location = objResults[i].getValue({ name: "location", summary: "GROUP" });
+                    const provision = objResults[i].getValue({ name: "formulanumeric", summary: "SUM", formula: "({quantity} - {quantityshiprecv}) * {item.averagecost}" });
+                    objRecord.selectNewLine({ sublistId: 'line' });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: 1237, ignoreFieldChange: false });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'debit', value: provision, ignoreFieldChange: false });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: location, ignoreFieldChange: false });
+                    objRecord.commitLine({ sublistId: 'line' });
+
+                    objRecord.selectNewLine({ sublistId: 'line' });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: 798, ignoreFieldChange: false });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'credit', value: provision, ignoreFieldChange: false });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: location, ignoreFieldChange: false });
+                    objRecord.commitLine({ sublistId: 'line' });
+                }
+                objResults = objRecord.save({ ignoreMandatoryFields: false });
             }
             return objResults;
         }
@@ -136,18 +156,13 @@ define([
             let start = 0;
             let end = 1000;
             let size = 1000;
-
-            const objResults = getCostProvision();
             //const date = new Date('2023-2-1'); //!Elegir fecha
             const date = new Date();
             const ultimoDia = new Date(date.getFullYear(), date.getMonth(), 0);
+            const nota = 'Provisión Abril'
             log.debug('ultimoDiaTimeZona', ultimoDia);
-            if (objResults != 0) {
-                const total = objResults[0].getValue({ name: "formulanumeric", summary: "SUM", formula: "({quantity} - {quantityshiprecv}) * {item.averagecost}" });
-                const nota = 'Provisión Abril'
-                let journal = createJournal(ultimoDia, total, nota);
-                log.debug('journal', journal);
-
+            let journal = getCostProvision(ultimoDia, nota);
+            if (journal != 0) {
                 const objSearch = search.load({ id: _constant.Constants.SEARCHS.COST_PROVISION_DETAIL_SEARCH });
                 const searchResultCount = objSearch.runPaged().count;
                 log.debug('Count', searchResultCount);
@@ -156,7 +171,6 @@ define([
                 if (division > laps) {
                     laps = laps + 1
                 }
-
                 for (let i = 1; i <= laps; i++) {
                     if (i != laps) {
                         searchResult = objSearch.run().getRange({ start: start, end: end });

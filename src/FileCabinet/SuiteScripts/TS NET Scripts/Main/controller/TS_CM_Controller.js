@@ -73,11 +73,15 @@ define([
             return newJournal
         }
 
-        const createProvisionDetail = (journal, serviceOrder, itemm, amountProvided) => {
+        const createProvisionDetail = (journal, serviceOrder, itemm, cost, inventory, income, amountProvided) => {
             const objRecord = record.create({ type: _constant.Constants.CUSTOM_RECORD.PROVISION_DETAIL, isDynamic: true });
             objRecord.setValue({ fieldId: 'custrecord_ht_dp_asiento_provision', value: journal });
             objRecord.setValue({ fieldId: 'custrecord_ht_dp_transaccion_prov', value: serviceOrder });
             objRecord.setValue({ fieldId: 'custrecord_ht_dp_item', value: itemm });
+            objRecord.setValue({ fieldId: 'custrecord_ht_dp_cost_account', value: cost });
+            objRecord.setValue({ fieldId: 'custrecord_ht_dp_inventory_account', value: inventory });
+            if (income != 0)
+                objRecord.setValue({ fieldId: 'custrecord_ht_dp_income_account', value: income });
             objRecord.setValue({ fieldId: 'custrecord_ht_dp_provision', value: amountProvided });
             return objRecord.save({ enableSourcing: true, ignoreMandatoryFields: true });
         }
@@ -132,15 +136,17 @@ define([
                 objRecord.setValue({ fieldId: 'subsidiary', value: 2 });
                 for (let i in objResults) {
                     const location = objResults[i].getValue({ name: "location", summary: "GROUP" });
+                    const costAccount = objResults[i].getValue({ name: "custcol_ht_so_cost_account", summary: "GROUP" });
+                    const inventoryAccount = objResults[i].getValue({ name: "custcol_ht_so_inventory_account", summary: "GROUP" });
                     const provision = objResults[i].getValue({ name: "formulanumeric", summary: "SUM", formula: "({quantity} - {quantityshiprecv}) * {item.averagecost}" });
                     objRecord.selectNewLine({ sublistId: 'line' });
-                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: 1237, ignoreFieldChange: false });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: costAccount, ignoreFieldChange: false });
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'debit', value: provision, ignoreFieldChange: false });
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: location, ignoreFieldChange: false });
                     objRecord.commitLine({ sublistId: 'line' });
 
                     objRecord.selectNewLine({ sublistId: 'line' });
-                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: 798, ignoreFieldChange: false });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'account', value: inventoryAccount, ignoreFieldChange: false });
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'credit', value: provision, ignoreFieldChange: false });
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: location, ignoreFieldChange: false });
                     objRecord.commitLine({ sublistId: 'line' });
@@ -181,8 +187,10 @@ define([
                     for (let j in searchResult) {
                         const internalid = searchResult[j].getValue({ name: "internalid", summary: "GROUP" });
                         const item = searchResult[j].getValue({ name: "item", summary: "GROUP" });
+                        const costAccount = objResults[i].getValue({ name: "custcol_ht_so_cost_account", summary: "GROUP" });
+                        const inventoryAccount = objResults[i].getValue({ name: "custcol_ht_so_inventory_account", summary: "GROUP" });
                         const provision = searchResult[j].getValue({ name: "formulanumeric", summary: "SUM", formula: "({quantity} - {quantityshiprecv}) * {item.averagecost}" });
-                        json.push([journal, internalid, item, provision]);
+                        json.push([journal, internalid, item, costAccount, inventoryAccount, 0, provision]);
                     }
                     start = start + size;
                     end = end + size;

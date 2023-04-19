@@ -132,6 +132,7 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/format'], (log, search, r
             }
         } catch (error) {
             log.error('Error-POST', error);
+            return error.message;
         }
     }
 

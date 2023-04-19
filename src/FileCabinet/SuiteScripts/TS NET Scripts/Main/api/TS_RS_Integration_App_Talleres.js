@@ -161,9 +161,10 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                                 if (guardarBien == 1) {
                                     openRecordBien.save();
                                 }
-
+                                let Dennis = 4;
+                                let Bruno = 34;
                                 email.send({
-                                    author: 34,
+                                    author: Dennis,
                                     recipients: scriptContext.customer,
                                     subject: 'Recepción de Vehículo',
                                     body: '<p>Vehículo recepcionado</p><p>' + scriptContext.comentario + '</p>',

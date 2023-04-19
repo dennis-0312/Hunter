@@ -118,6 +118,7 @@ define([
             filters.push(statusFilter);
             filters.push(mainlineFilter);
             let resultCount = objSearch.runPaged().count;
+            
             let result = objSearch.run().getRange({ start: 0, end: 100 });
             log.debug('Result', result);
             return resultCount;

@@ -21,7 +21,8 @@ define(['N/search', 'N/currentRecord', 'N/ui/message'], (search, currentRecord, 
     const fieldChanged = (scriptContext) => {
         const objRecord = scriptContext.currentRecord;
         try {
-            if (typeMode == 'create' || typeMode == 'copy') {
+            // if (typeMode == 'create' || typeMode == 'copy') {
+            if (typeMode == 'create') {
                 if (objRecord.getValue({ fieldId: 'custbody_ht_so_bien' }) != objRecord.getValue({ fieldId: 'custbody_ht_os_bien_flag' })) {
                     let linecount = parseInt(objRecord.getLineCount({ sublistId: 'item' }));
                     if (linecount > 0) {

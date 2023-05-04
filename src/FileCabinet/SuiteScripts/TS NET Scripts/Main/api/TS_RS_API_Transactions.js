@@ -74,10 +74,8 @@ define([
                 case 'factura':
                     // log.debug('Enter Invoice', 'Ingresé a factura');
                     if (scriptContext.ordenServicio.length > 0) {
-                        log.debug('Enter Invoice', 'LENGTH');
                         let orderS = _controller.getServiceOrder(scriptContext.ordenServicio);
                         if (orderS > 0) {
-                             log.debug('Enter Invoice', '1');
                             response = _controller.createInvoice(scriptContext.ordenServicio);
                         } else {
                             response = _error.ErrorMessages.INVOICE.DOES_NOT_EXIST_SERVICE_ORDER;

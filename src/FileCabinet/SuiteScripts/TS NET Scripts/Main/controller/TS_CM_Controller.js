@@ -13,7 +13,6 @@ define([
  * @param{search} search
  */
     (log, record, search, _constant) => {
-
         //! FUNCTIONS ====================================================================================================================================================
         const createServiceOrder = (requestHeader, requestDetail) => {
             let objRecord = record.create({ type: record.Type.SALES_ORDER, isDynamic: true });

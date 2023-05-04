@@ -2,7 +2,7 @@
  *@NApiVersion 2.1
  *@NScriptType ClientScript
  */
-define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/runtime', 'N/record', 'N/ui/dialog', '../Impulso Plataformas/Controller/TS_Script_Controller'], (search, currentRecord, message, runtime, record, dialog, _controllerParm) => {
+ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/runtime', 'N/record', 'N/ui/dialog', '../Impulso Plataformas/Controller/TS_Script_Controller'], (search, currentRecord, message, runtime, record, dialog, _controllerParm) => {
     let typeMode = '';
     const SALES_ORDER = 'salesorder';
     var CAMBIO_PROPIETARIO = '10';

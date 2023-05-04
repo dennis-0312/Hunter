@@ -105,7 +105,7 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/format'], (log, search, r
             // let id = results.results[0].values[0];
             let turnoUnico = getTurnoId(scriptContext.ordenServicio);
             if (turnoUnico != '') {
-                return { 'codigoTurno': '' }
+                return { 'turnoID': '' }
             } else {
                 let turno = record.create({ type: record.Type.TASK });
                 turno.setValue({ fieldId: 'title', value: scriptContext.codigoTurno });
@@ -128,7 +128,8 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/format'], (log, search, r
                     let internalidOT = result[i].getValue({ name: "internalid", summary: "GROUP", label: "Internal ID" });
                     record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: internalidOT, values: { 'custrecord_ht_ot_taller': scriptContext.taller } });
                 }
-                return { 'codigoTurno': recordTurno }
+                //log.debug('Turno', recordTurno);
+                return { 'turnoID': recordTurno }
             }
         } catch (error) {
             log.error('Error-POST', error);

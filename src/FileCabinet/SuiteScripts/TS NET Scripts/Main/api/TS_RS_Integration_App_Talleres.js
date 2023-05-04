@@ -94,7 +94,6 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                     case RECEPCION:
                         log.debug('Acción', 'Recepción');
                         if (typeof scriptContext.ordenServicio != 'undefined' && scriptContext.ordenServicio.length > 0) {
-
                             let objSearch = search.load({ id: HT_CONSULTA_ORDEN_TRABAJO_SEARCH });
                             let filters = objSearch.filters;
                             const ordenTrabajo = search.createFilter({ name: 'custrecord_ht_ot_orden_serivicio_txt', operator: search.Operator.STARTSWITH, values: scriptContext.ordenServicio });

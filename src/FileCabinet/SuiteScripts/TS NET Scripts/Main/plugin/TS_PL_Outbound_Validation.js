@@ -33,7 +33,6 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                 result.success = false;
                 result.message = error.message;
             }
-
             return result;
         }
 

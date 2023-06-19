@@ -13,8 +13,8 @@ Governance points: N/A
  *@NApiVersion 2.1
 *@NScriptType UserEventScript
 */
-define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/error', '../../Impulso Plataformas/Controller/TS_Script_Controller'],
-    (transaction,config, log, search, record, serverWidget, https, error, _Controller) => {
+define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/error', '../../Impulso Plataformas/Controller/TS_Script_Controller'],
+    (transaction, config, log, search, record, serverWidget, https, error, _Controller) => {
         const HT_DETALLE_ORDEN_SERVICIO = 'customsearch_ht_detalle_orden_servicio'; //HT Detalle Orden de Servicio - PRODUCCION
         const HT_CONSULTA_ORDEN_TRABAJO = 'customsearch_ht_consulta_orden_trabajo'; //HT Consulta Orden de trabajo - PRODUCCION
         const tipo_servicio_alquiler = 1;
@@ -30,7 +30,8 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
         const TIPO_VENTA = 10;
         const CONVENIO = 12;
         const ESTADO_CHEQUEADA = 2;
-        const ENVIO_PLATAFORMAS = 36;
+        const ENVIO_PLATAFORMASPX = 36;
+        const ENVIO_PLATAFORMASTELEC = 38;
         const TYPE_REGISTRO = 'ORDEN_TRABAJO'
         const HABILITAR_LOG_SEGUIMIENTO = 1;
         const HABILITAR_LOG_VALIDACION = 1;
@@ -58,6 +59,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
 
                 }
 
+                form.getField('custrecord_ht_ot_termometro').updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
 
                 /*var btnStockAlquiler = form.addButton({
                     id: 'custpage_lh_btn_alquiler',
@@ -100,7 +102,8 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                 let id = context.newRecord.id;
                 let Origen;
                 let arr = [];
-                let plataformas;
+                let plataformasPX;
+                let plataformasTele;
                 let adp;
                 let adpServicio = 0;
                 let estaChequeada = objRecord.getValue('custrecord_ht_ot_estado');
@@ -115,8 +118,9 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                         let bien = objRecord.getValue('custrecord_ht_ot_vehiculo');
                         let coberturas = _Controller.getCobertura(bien);
                         let busqueda_salesorder = getSalesOrderItem(bien);
+                        log.debug('busqueda_salesorder', busqueda_salesorder);
                         let busqueda_cobertura = getCoberturaItem(bien);
-                        
+
                         let salesorder = record.load({ type: 'salesorder', id: idSalesorder });
                         var numLines = salesorder.getLineCount({ sublistId: 'item' });
                         let chaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
@@ -132,7 +136,8 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                         var valor_tipo_agrupacion_2 = 0;
                         var idOS;
                         var TAG;
-                        var envio = 0;
+                        var envioPX = 0;
+                        var envioTele = 0;
                         var idItem;
                         let parametrosRespo_2 = _Controller.parametrizacion(idItemOT);
                         let monitoreo;
@@ -147,6 +152,12 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                     let parametro = record.load({ type: 'customrecord_ht_cr_pp_valores', id: parametrosRespo_2[j][1], isDynamic: true });
                                     TTR_name = parametro.getValue('custrecord_ht_pp_descripcion');
                                 }
+                                if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASPX) {
+                                    envioPX = parametrosRespo_2[j][1];
+                                }
+                                if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASTELEC) {
+                                    envioTele = parametrosRespo_2[j][1];
+                                }
                                 if (parametrosRespo_2[j][0] == 99 && parametrosRespo_2[j][1] == 9) { //cos cerrar orden de servicio
 
                                     try {
@@ -159,9 +170,10 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                 if (parametrosRespo_2[j][0] == TIPO_AGRUPACION_PRODUCTO) {
                                     valor_tipo_agrupacion_2 = parametrosRespo_2[j][1];
                                 }
+
                             }
                         }
-                 
+
                         if (busqueda_salesorder.length != 0) {
                             for (let i = 0; i < busqueda_salesorder.length; i++) {
 
@@ -169,7 +181,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                 if (parametrosRespo.length != 0) {
                                     var accion_producto = 0;
                                     var valor_tipo_agrupacion = 0;
-                                   
+
                                     for (let j = 0; j < parametrosRespo.length; j++) {
 
 
@@ -180,18 +192,14 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                         if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
                                             valor_tipo_agrupacion = parametrosRespo[j][1];
                                         }
-                                    
-                                        if (parametrosRespo[j][0] == ENVIO_PLATAFORMAS) {
-                                            envio = parametrosRespo[j][1];
-                                   
-                                        }
-                                     
+
+
+
                                         if (accion_producto == VENT_SERVICIOS && valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
                                             adpServicio = accion_producto;
                                             idOS = busqueda_salesorder[i][1];
-                                          
-                                            plataformas = envio;
-                                       
+                                            plataformasPX = envioPX;
+                                            plataformasTele = envioTele;
                                             idItem = busqueda_salesorder[i][0];
                                         }
 
@@ -199,6 +207,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                 }
                             }
                         }
+
                         if (parametrosRespo_2.length != 0) {
                             var accion_producto_2 = 0;
                             for (let j = 0; j < parametrosRespo_2.length; j++) {
@@ -210,6 +219,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                 }
                             }
                         }
+
                         if (busqueda_cobertura.length != 0) {
                             for (let i = 0; i < busqueda_cobertura.length; i++) {
 
@@ -236,7 +246,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                 }
                             }
                         }
-                  
+
                         if (idOS) {
                             var serviceOS = record.load({ type: 'salesorder', id: idOS });
                             var numLines_2 = serviceOS.getLineCount({ sublistId: 'item' });
@@ -248,26 +258,32 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                     let quantity = serviceOS.getSublistValue({ sublistId: 'item', fieldId: 'quantity', line: j });
                                     cantidad = cantidad + quantity;
                                 }
-                             
-                                if (plataformas == 9) {
-                                   
-                                    returEjerepo = _Controller.parametros(ENVIO_PLATAFORMAS, id, adp);
-                                  log.debug(returEjerepo);
+
+                                if (plataformasPX == 9) {
+                                    returEjerepo = _Controller.parametros(ENVIO_PLATAFORMASPX, id, adp);
+                                    log.debug('Estado que devuelve el impulso a plataforma PX- ' + j, returEjerepo + ': ' + returEjerepo);
                                 } else {
                                     let updateTelematic = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
                                     updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
                                     updateTelematic.save();
                                 }
-                               
+                                if (plataformasTele == 9) {
+                                    returEjerepo = _Controller.parametros(ENVIO_PLATAFORMASTELEC, id, adp);
+                                    log.debug('Estado que devuelve el impulso a plataforma tele- ' + j, returEjerepo + ': ' + returEjerepo);
+                                } else {
+                                    let updateTelematic = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
+                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
+                                    updateTelematic.save();
+                                }
                             }
                         }
                         //var itemMeses = idItemType(items);
                         for (let i = 0; i < numLines; i++) {
                             //let items = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                             //let type = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'itemtype', line: i });
-                           
+
                             Origen = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ns_codigo_origen', line: i });
-                        
+
                             //parametrosRespo = _Controller.parametrizacion(items);
                             //var itemMeses = idItemType(items);
                             // if (type == 'Service') {
@@ -310,8 +326,10 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                         var activacion = 16;
                         var instalacion_activacion = 17;
                         var instalacion = 15;
+                        //log.debug('Debug1', returEjerepo + ' - ' + adpServicio);
                         if (returEjerepo && adpServicio != 0) {
                             if (idOS == idSalesorder) {
+                                //log.debug('Debug2', returEjerepo + ' - ' + adpServicio);
                                 let json = {
                                     bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
                                     propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
@@ -332,6 +350,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                 updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
                                 updateTelematic.save();
                             } else {
+                                //log.debug('Debug3', returEjerepo + ' - ' + adpServicio);
                                 let json = {
                                     bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
                                     propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
@@ -353,6 +372,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                 updateTelematic.save();
                             }
                         } else {
+                            //log.debug('Debug4', returEjerepo + ' - ' + adpServicio);
                             let json = {
                                 bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
                                 propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
@@ -417,8 +437,8 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                 });
                             });
                         }
-               
-                    
+
+
                         if (adp == 43) {
                             let estado = objRecord.getValue('custrecord_ht_ot_estado');
                             let idSalesOrder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
@@ -431,11 +451,11 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                                 fulfill = boxserie;
                             }
 
-                          
+
                             var idDispositivo = getInventoryNumber(fulfill);
-                            
+
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
-                         
+
                             if (estado == 2 && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
                                 var serieProducto = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                                 var ubicacion = objRecord.getText('custrecord_ht_ot_ubicacion');
@@ -467,19 +487,15 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                         }
 
                         if (adp = 44) { // chequeo 006 mantenimiento 
-                          
                             let objRecordCreateServicios = record.create({ type: 'customrecord_ht_nc_servicios_instalados', isDynamic: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_bien_si', value: objRecord.getValue('custrecord_ht_ot_vehiculo'), ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_orden_servicio_si', value: idSalesorder, ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_orden_trabajo', value: id, ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_servicio', value: TTR_name, ignoreFieldChange: true });
                             objRecordCreateServicios.save();
-
                         }
-
                         break;
                     default:
-                  
                 }
 
 
@@ -573,14 +589,11 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                 log.error('Error en getCoberturaItem', e);
             }
         }
-        
+
         const cabertura = (json) => {
             let myRestletHeaders = new Array();
             myRestletHeaders['Accept'] = '*/*';
             myRestletHeaders['Content-Type'] = 'application/json';
-
-   
-          
 
             let myRestletResponse = https.requestRestlet({
                 body: JSON.stringify(json),
@@ -589,9 +602,8 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                 headers: myRestletHeaders,
             });
             let response = myRestletResponse.body;
-
         }
-        
+
         function getInventoryNumber(inventorynumber) {
             try {
                 var busqueda = search.create({
@@ -620,7 +632,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                 log.error('Error en getInventoryNumber', e);
             }
         }
-        
+
         const idItemType = (id) => {
             try {
                 var busqueda = search.create({
@@ -677,7 +689,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                         return true;
                     });
                 }
-                
+
                 return estado;
             } catch (e) {
                 log.error('Error en estadoSalesOrder', e);
@@ -700,7 +712,7 @@ define(['N/transaction','N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serve
                 };
 
             } catch (e) {
-                
+
             }
 
         }
@@ -736,6 +748,14 @@ Date: 23/03/2023
 Author: Jeferson Mejia
 Description: Se juntaron los scritps de Orden de Trabajo
 ==============================================================================================================================================*/
+
+
+
+
+
+
+
+
 
 
 

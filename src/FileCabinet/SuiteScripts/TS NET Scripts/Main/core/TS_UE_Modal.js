@@ -24,7 +24,7 @@ define([
 
     const afterSubmit = (scriptContext) => {
         if (scriptContext.type === scriptContext.UserEventType.CREATE) {
-            const objRecord = scriptContext.newRecord;
+            const objRecord = scriptContext.newRecord;//1
             try {
                 let customer = objRecord.getValue({ fieldId: 'entity' });
                 let vehiculo = objRecord.getValue('custbody_ht_so_bien');

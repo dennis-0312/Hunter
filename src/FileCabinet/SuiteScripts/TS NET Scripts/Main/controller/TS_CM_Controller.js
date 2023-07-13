@@ -117,7 +117,6 @@ define([
             filters.push(statusFilter);
             filters.push(mainlineFilter);
             let resultCount = objSearch.runPaged().count;
-            
             let result = objSearch.run().getRange({ start: 0, end: 100 });
             log.debug('Result', result);
             return resultCount;
@@ -201,6 +200,50 @@ define([
             }
         }
 
+        const getServiceOrderforAPI = () => { }
+
+        const getAccountPaymentMethod = (paymentMethod) => {
+            let mySearch = search.create({
+                type: "customrecord_ht_cuentas_nrocuotas",
+                filters:
+                    [
+                        ["custrecord_ht_cc_paymentmethod", "anyof", paymentMethod]
+                    ],
+                columns:
+                    [
+                        search.createColumn({
+                            name: "internalid",
+                            summary: "GROUP",
+                            label: "Internal ID"
+                        }),
+                        search.createColumn({
+                            name: "custrecord_ht_cc_paymentmethod",
+                            summary: "GROUP",
+                            label: "Payment Method"
+                        }),
+                        search.createColumn({
+                            name: "custrecord_ht_cc_cuenta",
+                            summary: "GROUP",
+                            label: "Cuenta"
+                        }),
+                        search.createColumn({
+                            name: "custrecord_ht_cc_cuota",
+                            summary: "GROUP",
+                            label: "Cuota"
+                        })
+                    ]
+            });
+            mySearch.run().each(result => {
+                let entity = result.getValue({ name: 'entity' });
+                return true;
+            });
+
+            /*
+            customrecord_ht_cuentas_nrocuotasSearchObj.id="customsearch1688534783904";
+            customrecord_ht_cuentas_nrocuotasSearchObj.title="Cuentas y Nro Cuotas Search - DEVELOPER (copy)";
+            var newSearchId = customrecord_ht_cuentas_nrocuotasSearchObj.save();
+            */
+        }
 
         return {
             createServiceOrder,
@@ -210,6 +253,14 @@ define([
             getGood,
             getServiceOrder,
             getProvisionDetail,
+            getAccountPaymentMethod
         }
 
     });
+/*
+& SCRIPT SE APLICA EN:
+^getServiceOrder ====================================================================================================================================================
+^ TS_RS_API_Transactions
+^getAccountPaymentMethod ====================================================================================================================================================
+^ TS_RS_API_Transactions
+*/

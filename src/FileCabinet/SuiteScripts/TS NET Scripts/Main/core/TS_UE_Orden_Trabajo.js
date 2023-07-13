@@ -281,7 +281,6 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                         for (let i = 0; i < numLines; i++) {
                             //let items = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                             //let type = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'itemtype', line: i });
-
                             Origen = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ns_codigo_origen', line: i });
 
                             //parametrosRespo = _Controller.parametrizacion(items);

@@ -21,7 +21,6 @@ define(['N/url', 'N/runtime', 'N/record', 'N/currentRecord', 'N/transaction', 'N
                 var fechaFinalTelematic = fechaFinalSplit[2] + '-' + fechaFinalSplit[1] + '-' + fechaFinalSplit[0] + 'T00:00';
                 console.log('fechaInicialTelematic', fechaInicialTelematic);
                 console.log('fechaFinalTelematic', fechaFinalTelematic);
-
                 console.log('htClient', htClient);
                 console.log('bien', bien);
                 console.log('cobertura', cobertura);

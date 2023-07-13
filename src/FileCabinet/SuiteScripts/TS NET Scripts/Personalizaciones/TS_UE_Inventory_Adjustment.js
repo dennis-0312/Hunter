@@ -68,7 +68,6 @@ define(['N/log', 'N/record', 'N/search'], (log, record, search) => {
                                     tipo = tipo[0].value;
                                 } */
                 log.debug('itemAlquiler + TIPO', itemAlquiler + '-' + tipo);
-
                 if (alquiler == true || alquiler == 'T') {
                     if (tipo) {
                         var fixedAsset = record.create({ type: 'customrecord_ncfar_asset', isDynamic: true });

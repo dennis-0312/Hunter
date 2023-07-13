@@ -9,6 +9,16 @@ define(['N/log',
     const HT_ORDEN_TRABAJO_RECORD = 'customrecord_ht_record_ordentrabajo' //HT Orden de trabajo
     var TIPO_AGRUPACION_PRODUCTO = '77';
     const ESTADO_VENTAS = 7;
+    const SI = 9;
+    const SCK_SOLICITA_CLIENTE_MONITOREO = 1;
+    const PXB_ITEM_SOLICITA_CLIENTE_NUEVO = 72;
+    const CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5;
+    const GOT_GENERA_SOLICITUD_DE_TRABAJO = 34;
+    const PCD_PIDE_CODIGO_DE_ORIGEN = 53;
+    const PIM_PEDIR_INFORMACION_MEDICA = 60;
+    const CPI_CONTROL_DE_PRODUCTOS_INSTALADOS = 25;
+    const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
+
     return ({
         getCobertura: (id) => {
             var arrayCobertura = [];
@@ -78,23 +88,19 @@ define(['N/log',
             let response = { status: true, mensaje: '' };
             let currentRecord = id;
             switch (parseInt(parametro)) {
-                case 5:
+                case CPT_CONFIGURA_PLATAFORMA_TELEMATIC:
                     switch (parseInt(type)) {
                         case 43:
-
                             response = _Controller.envioPXAdminInstall(id);
                             break;
                         case 10:
-
                             response = _Controller.envioCambioPropietario(id);
-                            break;
-                            /* _Controller.envioCambioPropietario(id);; */
                             break;
                         default:
                             log.debug('accionEstadoOT');
                     }
                     break;
-                case 34:
+                case GOT_GENERA_SOLICITUD_DE_TRABAJO:
                     if (id.serviceOrder) {
                         let objRecord = record.create({ type: HT_ORDEN_TRABAJO_RECORD });
                         objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_servicio', value: id.serviceOrder });
@@ -106,18 +112,17 @@ define(['N/log',
                         objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
                         response = objRecord.save();
                     }
-
                     break;
-                case 72:
-
+                case PXB_ITEM_SOLICITA_CLIENTE_NUEVO:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente' });
                     if (!item_cliente) {
                         response.status = false;
-                        response.mensaje = 'No existe un Cliente para el item ' + item + '.'
+                        response.mensaje = 'Debe Ingresar un Nuevo Propietario.'
+                        //response.mensaje = 'Debe Ingresar un Nuevo Propietario para el item: ' + item + '.'
                     }
                     break;
-                case 1:
+                case SCK_SOLICITA_CLIENTE_MONITOREO:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente_monitoreo = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo' });
                     if (!item_cliente_monitoreo) {
@@ -125,7 +130,7 @@ define(['N/log',
                         response.mensaje = 'No existe un Cliente Monitoreo para el item ' + item + '.'
                     }
                     break;
-                case 53:
+                case PCD_PIDE_CODIGO_DE_ORIGEN:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente_monitoreo = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ns_codigo_origen' });
                     if (!item_cliente_monitoreo) {
@@ -133,8 +138,7 @@ define(['N/log',
                         response.mensaje = 'No existe un Codigo de Origen en el item ' + item + '.'
                     }
                     break;
-                case 25://cpi control de productos instalados
-
+                case CPI_CONTROL_DE_PRODUCTOS_INSTALADOS://cpi control de productos instalados
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
                     let tipoItem;
                     let parametrosRespoitem = _Controller.parametrizacion(item);
@@ -169,7 +173,7 @@ define(['N/log',
                         response.mensaje = 'El bien ingresado no cuenta con dispositivo instalado'
                     }
                     break;
-                case 60:
+                case PIM_PEDIR_INFORMACION_MEDICA:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_ficha_medica = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_fichamedica' });
                     if (!item_ficha_medica) {
@@ -177,12 +181,16 @@ define(['N/log',
                         response.mensaje = 'No existe una Ficha Médica para el item ' + item + '.'
                     }
                     break;
+                case CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS:
+                    let dispositivoCustodia = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ts_dispositivo_en_custodia' });
+                    if (dispositivoCustodia.length == 0) {
+                        response.status = false;
+                        response.mensaje = 'Debe Ingresar La Serie del Dispositivo en Custodia.'
+                    }
                 default:
                     log.debug('accionEstadoOT');
             }
-
             return response;
         }
-
     });
 });

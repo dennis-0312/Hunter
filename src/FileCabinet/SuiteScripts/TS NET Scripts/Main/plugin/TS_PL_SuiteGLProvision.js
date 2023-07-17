@@ -180,6 +180,8 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
         var accountPaymentMethod;
         var creditmemoid;
         var jsonAccounts = new Array();
+        var accountMethod;
+        var creditMemo;
 
         try {
             var countTransaction = transactionRecord.getLineItemCount('payment');
@@ -212,15 +214,13 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                             }
                             jsonAccounts.push(json);
                         }
-
                     }
                 }
             }
-
             nlapiLogExecution("DEBUG", 'JSONFinal: ' + recordType, JSON.stringify(jsonAccounts));
 
             for (var k = 0; k < jsonAccounts.length; k++) {
-                var creditMemo = jsonAccounts[k][0].tranid;
+                creditMemo = jsonAccounts[k][0].tranid;
 
                 var reteIVAAcc = parseInt(jsonAccounts[k][0].account);
                 var reteIVAAmount = parseFloat(jsonAccounts[k][0].amount);
@@ -230,8 +230,8 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
 
                 var methodAcc = parseInt(jsonAccounts[k][2].account);
                 var methodAmount = parseFloat(jsonAccounts[k][2].amount);
-
-                //nlapiLogExecution("DEBUG", 'SuiteGL', JSON.stringify(element));
+                accountMethod = methodAcc;
+               //nlapiLogExecution("DEBUG", 'SuiteGL', accountMethod);
 
                 var newLine = customLines.addNewLine();
                 newLine.setDebitAmount(reteIVAAmount);
@@ -259,6 +259,29 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                 newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
                 newLine.setClassId(standardLines.getLine(0).getClassId());
                 newLine.setLocationId(standardLines.getLine(0).getLocationId());
+            }
+
+            var countStandard = parseInt(standardLines.getCount());
+            for (var i = 0; i < countStandard; i++) {
+                if (standardLines.getLine(i).getAccountId() == accountCajaTransito) {
+                    var newLine = customLines.addNewLine();
+                    newLine.setCreditAmount(standardLines.getLine(i).getCreditAmount());
+                    newLine.setAccountId(accountMethod);
+                    newLine.setMemo(creditMemo);
+                    newLine.setEntityId(standardLines.getLine(0).getEntityId());
+                    newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+                    newLine.setClassId(standardLines.getLine(0).getClassId());
+                    newLine.setLocationId(standardLines.getLine(0).getLocationId());
+
+                    var newLine = customLines.addNewLine();
+                    newLine.setDebitAmount(standardLines.getLine(i).getCreditAmount());
+                    newLine.setAccountId(accountCajaTransito);
+                    newLine.setMemo(creditMemo);
+                    newLine.setEntityId(standardLines.getLine(0).getEntityId());
+                    newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+                    newLine.setClassId(standardLines.getLine(0).getClassId());
+                    newLine.setLocationId(standardLines.getLine(0).getLocationId());
+                }
             }
         } catch (error) {
             nlapiLogExecution('ERROR', recordType, error);

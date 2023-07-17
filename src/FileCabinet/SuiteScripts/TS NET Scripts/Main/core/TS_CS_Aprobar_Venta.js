@@ -103,7 +103,6 @@ define(['N/url',
                                         if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
                                             idCoberturaItem = busqueda_cobertura[i][1];
                                         }
-
                                     }
                                 }
                             }
@@ -139,7 +138,6 @@ define(['N/url',
                             type: transaction.Type.SALES_ORDER, //disable Void Transactions Using Reversing Journals in Account Pref
                             id: idRecord
                         });
-
                     }
                     location.reload();
                 }

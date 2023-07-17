@@ -648,10 +648,13 @@ define(['N/log', 'N/search', 'N/record'], (log, search, record) => {
                 let filters = objSearch.filters;
                 const transactionFilter = search.createFilter({ name: 'internalid', join: 'custrecord_ht_ot_orden_servicio', operator: search.Operator.ANYOF, values: scriptContext.ordenServicio });
                 filters.push(transactionFilter);
-                //let resultCount = objSearch.runPaged().count;
+                let resultCount = objSearch.runPaged().count;
+                log.debug('resultCount', resultCount);
                 let result = objSearch.run().getRange({ start: 0, end: 100 });
+                log.debug('result', result);
                 for (let i in result) {
-                    let internalidOT = result[i].getValue({ name: "internalid", summary: "GROUP", label: "Internal ID" });
+                    let internalidOT = result[i].getValue({ name: "internalid", label: "Internal ID" });
+                    log.debug('Turno', internalidOT);
                     record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: internalidOT, values: { 'custrecord_ht_ot_taller': scriptContext.taller } });
                 }
                 //log.debug('Turno', recordTurno);

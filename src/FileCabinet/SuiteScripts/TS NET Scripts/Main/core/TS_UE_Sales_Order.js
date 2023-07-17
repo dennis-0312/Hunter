@@ -24,6 +24,10 @@ define([
     var ENVIO_PLATAFORMAS = '5';
     var SOLICITA_FACTURACION = '33';
     var TIPO_AGRUPACION_PRODUCTO = '77';
+    var CAMBIO_PROPIETARIO_COBERTURA = '24';
+    const SI = 9
+
+
     const beforeLoad = (scriptContext) => {
         if (scriptContext.type === scriptContext.UserEventType.VIEW) {
             const form = scriptContext.form;
@@ -31,6 +35,7 @@ define([
             let editServiceOrder = form.getButton('edit');
             if (objRecord.getValue('custbodycustbody_ht_os_created_from_sa') == true) editServiceOrder.isDisabled = true;
         }
+
         if (scriptContext.type === scriptContext.UserEventType.VIEW) {
             var currentRecord = scriptContext.newRecord;
             const idRecord = currentRecord.id;
@@ -46,8 +51,7 @@ define([
             let parametro_aprob = 0;
             for (let i = 0; i < numLines; i++) {
                 let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
-                log.debug('items', items);
-
+                //log.debug('items', items);
                 let parametrosRespo = _controllerParm.parametrizacion(items);
                 for (let j = 0; j < parametrosRespo.length; j++) {
                     if (parametrosRespo[j][0] == TIPO_TRANSACCION) {
@@ -57,19 +61,19 @@ define([
                         parametro_aprob = parametrosRespo[j][1];
                     }
                 }
-                if (parametro_aprob == 9) {
+                if (parametro_aprob == SI) {
                     var htClient = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente', line: i });
-                    log.debug('htClient', htClient);
+                    //log.debug('htClient', htClient);
                     var monitoreo = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo', line: i });
-                    log.debug('monitoreo', monitoreo);
+                    //log.debug('monitoreo', monitoreo);
                     bien = objRecord.getValue('custbody_ht_so_bien');
                     var fechaInicialItem = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cambio_fecha', line: i });
                     fechaInicial = new Date(fechaInicialItem);
                 }
             }
-            log.debug('parametro_aprob', parametro_aprob);
-            log.debug('aprobacion_venta', aprobacion_venta);
-            // if (parametro_aprob == 9 && aprobacion_venta == 2) {
+            // log.debug('parametro_aprob', parametro_aprob);
+            // log.debug('aprobacion_venta', aprobacion_venta);
+            // if (parametro_aprob == SI && aprobacion_venta == 2) {
             //     form.addButton({
             //         id: 'custpage_ts_aprobar_venta',
             //         label: 'Aprobar Venta',
@@ -318,10 +322,122 @@ define([
         }
 
         if (scriptContext.type === scriptContext.UserEventType.EDIT) {
+            var objRecord = scriptContext.newRecord;
+            const idRecord = objRecord.id;
+            let orderstatus = objRecord.getValue('orderstatus');
+            let numLines = objRecord.getLineCount({ sublistId: 'item' });
+            let aprobacionventa = objRecord.getValue('custbody_ht_os_aprobacionventa');
+            let aprobacioncartera = objRecord.getValue('custbody_ht_os_aprobacioncartera');
+            let parametrocambpropcobertura = 0;
+            var htClient = '';
+            var valor_tipo_agrupacion = 0;
+            var bien = '';
+            var fechaInicial = '';
+            let parametro = 0;
+            let monitoreo
+            let parametro_aprob = 0;
+            let parametrosRespo;
+            let returEjerepo = false;
             try {
-
-                
-                aprobarVenta(idRecord, htClient, bien, fechaInicial, monitoreo)
+                //let aprobacion_venta = objRecord.getValue('custbody_ht_os_aprobacionventa');
+                log.debug('orderstatus', orderstatus);
+                log.debug('aprobacionventa', aprobacionventa);
+                log.debug('aprobacioncartera', aprobacioncartera);
+                if (aprobacionventa == 1 && aprobacioncartera == 1) {
+                    for (let i = 0; i < numLines; i++) {
+                        //objRecord.selectLine({ sublistId: 'item', line: i });
+                        let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
+                        parametrosRespo = _controllerParm.parametrizacion(items);
+                        //log.debug('parametrosRespop', parametrosRespo);
+                        if (parametrosRespo.length != 0) {
+                            for (let j = 0; j < parametrosRespo.length; j++) {
+                                if (parametrosRespo[j][0] == TIPO_TRANSACCION) {
+                                    parametro = parametrosRespo[j][1];
+                                }
+                                if (parametrosRespo[j][0] == CAMBIO_PROPIETARIO_COBERTURA) {
+                                    parametrocambpropcobertura = parametrosRespo[j][1];
+                                }
+                                if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                                    valor_tipo_agrupacion = parametrosRespo[j][1];
+                                }
+                            }
+                        }
+                        htClient = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente', line: i });
+                        log.debug('htClient', htClient);
+                        monitoreo = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo', line: i });
+                        log.debug('monitoreo', monitoreo);
+                        bien = objRecord.getValue('custbody_ht_so_bien');
+                        // var fechaInicialItem = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cambio_fecha', line: i });
+                        // fechaInicial = new Date(fechaInicialItem);
+                    }
+                    log.debug('parametrocambpropcobertura', parametrocambpropcobertura);
+                    log.debug('valor_tipo_agrupacion', valor_tipo_agrupacion);
+                    if (parametrocambpropcobertura == '18') {
+                        //record.submitFields({ type: 'salesorder', id: idRecord, values: { 'custbody_ht_os_aprobacionventa': 1 }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
+                        transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
+                        // location.reload();
+                    } else {
+                        if (parametro != 0) {
+                            log.debug('entra plataformas');
+                            for (let j = 0; j < parametrosRespo.length; j++) {
+                                if (parametrosRespo[j][0] == ENVIO_PLATAFORMAS && parametro == SI) {
+                                    returEjerepo = _controllerParm.parametros(ENVIO_PLATAFORMAS, idRecord, parametro);
+                                }
+                            }
+                            //log.debug('returEjerepo', returEjerepo);
+                            if (returEjerepo == false) {
+                                let idCoberturaItem;
+                                let busqueda_cobertura = getCoberturaItem(bien);
+                                log.debug('busqueda_cobertura', busqueda_cobertura);
+                                // if (busqueda_cobertura.length != 0) {
+                                for (let i = 0; i < busqueda_cobertura.length; i++) {
+                                    log.debug('Init For');
+                                    let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
+                                    //log.debug('parametrosRespo', parametrosRespo);
+                                    if (parametrosRespo.length != 0) {
+                                        var accion_producto_2 = 0;
+                                        var valor_tipo_agrupacion_2 = 0;
+                                        for (let j = 0; j < parametrosRespo.length; j++) {
+                                            if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                                                valor_tipo_agrupacion_2 = parametrosRespo[j][1];
+                                                log.debug('valor_tipo_agrupacion_2', valor_tipo_agrupacion_2);
+                                            }
+                                            if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
+                                                idCoberturaItem = busqueda_cobertura[i][1];
+                                                log.debug('idCoberturaItem', idCoberturaItem);
+                                            }
+                                        }
+                                    }
+                                }
+                                // }
+                                log.debug('monitoreo', monitoreo);
+                                log.debug('htClient', htClient);
+                                log.debug('bien', bien);
+                                log.debug('idCoberturaItem', idCoberturaItem);
+                                record.submitFields({
+                                    type: 'customrecord_ht_co_cobertura',
+                                    id: idCoberturaItem,
+                                    values: {
+                                        'custrecord_ht_co_clientemonitoreo': monitoreo,
+                                        'custrecord_ht_co_propietario': htClient
+                                    },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_bienes',
+                                    id: bien,
+                                    values: {
+                                        'custrecord_ht_bien_propietario': htClient
+                                    },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+                                //record.submitFields({ type: 'salesorder', id: idRecord, values: { 'custbody_ht_os_aprobacionventa': 1, 'orderstatus': 'B' }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
+                                log.debug('despues');
+                                transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
+                            }
+                        }
+                    }
+                }
             } catch (error) {
                 log.error('Erro-Edit', error);
             }
@@ -359,12 +475,15 @@ define([
                         search.createColumn({ name: "internalid", label: "Internal ID" })
                     ]
             });
-            var savedsearch = busqueda.run().getRange(0, 100);
+            var searchResultCount = busqueda.runPaged().count;
+            log.debug('searchResultCount', searchResultCount);
+            //var savedsearch = busqueda.run().getRange(0, 100);
+            //log.debug('savedsearch', savedsearch);
             var internalidItem = '';
             var internalid = '';
             var arrayIdTotal = [];
-            if (savedsearch.length > 0) {
-                busqueda.run().each(function (result) {
+            if (searchResultCount > 0) {
+                busqueda.run().each((result) => {
                     var arrayId = [];
                     internalidItem = result.getValue(busqueda.columns[0]);
                     arrayId.push(internalidItem);
@@ -375,8 +494,8 @@ define([
                 });
             }
             return arrayIdTotal;
-        } catch (e) {
-            log.error('Error en getCoberturaItem', e);
+        } catch (error) {
+            log.error('Error en getCoberturaItem', error);
         }
     }
 
@@ -475,9 +594,7 @@ define([
         let objRecord_salesorder = record.load({ type: 'salesorder', id: idRecord, isDynamic: true });
         let numLines = objRecord_salesorder.getLineCount({ sublistId: 'item' });
         let parametrosRespo;
-
         let returEjerepo = false;
-
         for (let i = 0; i < numLines; i++) {
             objRecord_salesorder.selectLine({ sublistId: 'item', line: i });
             let items = objRecord_salesorder.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
@@ -494,7 +611,6 @@ define([
                     if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
                         valor_tipo_agrupacion = parametrosRespo[j][1];
                     }
-
                 }
             }
         }
@@ -520,33 +636,34 @@ define([
                 //log.debug('returEjerepo', returEjerepo);
 
                 if (returEjerepo == false) {
+                    let idCoberturaItem;
                     let busqueda_cobertura = getCoberturaItem(bien);
                     log.debug('busqueda_cobertura', busqueda_cobertura);
                     if (busqueda_cobertura.length != 0) {
-                        // for (let i = 0; i < busqueda_cobertura.length; i++) {
+                        for (let i = 0; i < busqueda_cobertura.length; i++) {
 
-                        //     let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
-                        //     if (parametrosRespo.length != 0) {
-                        //         var accion_producto_2 = 0;
-                        //         var valor_tipo_agrupacion_2 = 0;
-                        //         for (let j = 0; j < parametrosRespo.length; j++) {
+                            let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
+                            if (parametrosRespo.length != 0) {
+                                var accion_producto_2 = 0;
+                                var valor_tipo_agrupacion_2 = 0;
+                                for (let j = 0; j < parametrosRespo.length; j++) {
 
-                        //             if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
-                        //                 valor_tipo_agrupacion_2 = parametrosRespo[j][1];
-                        //             }
+                                    if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                                        valor_tipo_agrupacion_2 = parametrosRespo[j][1];
+                                    }
 
-                        //             if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
-                        //                 idCoberturaItem = busqueda_cobertura[i][1];
-                        //             }
+                                    if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
+                                        idCoberturaItem = busqueda_cobertura[i][1];
+                                    }
 
-                        //         }
-                        //     }
-                        // }
+                                }
+                            }
+                        }
                     }
                     log.debug('monitoreo', monitoreo);
                     log.debug('htClient', htClient);
                     log.debug('bien', bien);
-
+                    log.debug('idCoberturaItem', idCoberturaItem);
                     record.submitFields({
                         type: 'customrecord_ht_co_cobertura',
                         id: idCoberturaItem,
@@ -556,7 +673,6 @@ define([
                         },
                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                     });
-
                     record.submitFields({
                         type: 'customrecord_ht_record_bienes',
                         id: bien,
@@ -570,17 +686,19 @@ define([
                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                     });
                     log.debug('despues');
-                    transaction.void({type: transaction.Type.SALES_ORDER, id: idRecord});
+                    transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
                 }
             }
         }
     }
 
-    function padTo2Digits(num) {
+
+    const padTo2Digits = (num) => {
         return num.toString().padStart(2, '0');
     }
 
-    function formatDateJson(date) {
+    
+    const formatDateJson = (date) => {
         return [
             date.getFullYear(),
             padTo2Digits(date.getMonth() + 1),

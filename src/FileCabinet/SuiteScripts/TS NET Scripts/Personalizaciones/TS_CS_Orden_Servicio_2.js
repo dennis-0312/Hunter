@@ -399,9 +399,10 @@ define(['N/search',
                                 }
                             }
 
-                        }
+                        } 
 
-                    } /* else if (sublistFieldName == 'custbody_ht_so_bien') {
+                    } 
+                    /* else if (sublistFieldName == 'custbody_ht_so_bien') {
                         currentRecord.setValue({
                             fieldId: 'custbody_ht_facturar_a',
                             value: currentRecord.getValue('entity')

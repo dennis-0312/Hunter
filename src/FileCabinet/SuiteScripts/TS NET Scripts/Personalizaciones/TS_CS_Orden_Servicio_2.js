@@ -73,7 +73,8 @@ define(['N/search',
         var arrayTA = [];
         var arrayItemOT = [];
         var buscar_orden_trabajo = 0;
-        console.log('busqueda_salesorder', busqueda_salesorder);
+        //console.log('busqueda_salesorder', busqueda_salesorder);
+
         if (busqueda_salesorder.length != 0) {
             for (let i = 0; i < busqueda_salesorder.length; i++) {
                 console.log('busqueda_salesorder[i]', busqueda_salesorder[i]);
@@ -112,7 +113,6 @@ define(['N/search',
                         }
                     }
                     console.log('arrayItemOT', arrayItemOT);
-
                 }
             }
         }

@@ -116,6 +116,7 @@ define(['N/log',
                 case PXB_ITEM_SOLICITA_CLIENTE_NUEVO:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente' });
+                    currentRecord.setValue('custbody_es_cambio_de_propietario', true);
                     if (!item_cliente) {
                         response.status = false;
                         response.mensaje = 'Debe Ingresar un Nuevo Propietario.'

@@ -237,6 +237,7 @@ define(['N/search',
                     }
 
                     if (parametrosRespo[j][1] == SI) {
+                        alert('Verificar');
                         let verificar;
                         if (parametrosRespo[j][0] == PARA_AMI) {
                             verificar = _controllerParm.parametros(parametrosRespo[j][0], cliente, idcobertura);
@@ -399,9 +400,9 @@ define(['N/search',
                                 }
                             }
 
-                        } 
+                        }
 
-                    } 
+                    }
                     /* else if (sublistFieldName == 'custbody_ht_so_bien') {
                         currentRecord.setValue({
                             fieldId: 'custbody_ht_facturar_a',
@@ -465,24 +466,10 @@ define(['N/search',
                 clasevalue = clase[0].value;
             }
             //var salesrep = currentRecord.getValue('salesrep');
-            currentRecord.setValue({
-                fieldId: 'custbody_ht_os_ejecutivareferencia',
-                value: currentRecord.getValue('salesrep')
-            });
-            currentRecord.setValue({
-                fieldId: 'custbody_ht_facturar_a',
-                value: currentRecord.getValue('entity')
-            });
-
-            currentRecord.setValue({
-                fieldId: 'department',
-                value: departamentovalue
-            });
-
-            currentRecord.setValue({
-                fieldId: 'class',
-                value: clasevalue
-            });
+            currentRecord.setValue({ fieldId: 'custbody_ht_os_ejecutivareferencia', value: currentRecord.getValue('salesrep') });
+            currentRecord.setValue({ fieldId: 'custbody_ht_facturar_a', value: currentRecord.getValue('entity') });
+            currentRecord.setValue({ fieldId: 'department', value: departamentovalue });
+            currentRecord.setValue({ fieldId: 'class', value: clasevalue });
         }
     }
 

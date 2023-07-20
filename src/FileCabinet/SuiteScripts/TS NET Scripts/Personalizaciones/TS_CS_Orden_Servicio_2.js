@@ -8,7 +8,7 @@ define(['N/search',
     'N/runtime',
     'N/record',
     'N/ui/dialog',
-    '../Impulso Plataformas/Controller/TS_Script_Controller'
+    '../Main/controller/TS_CM_Controller'
 ], (search, currentRecord, message, runtime, record, dialog, _controllerParm) => {
     let typeMode = '';
     const SALES_ORDER = 'salesorder';
@@ -189,15 +189,19 @@ define(['N/search',
                     if (parametrosRespo[j][0] == TIPO_RENOVACION) {
                         valor_tipo_renovacion = parametrosRespo[j][1];
                     }
+
                     if (parametrosRespo[j][0] == PEDIR_INF_EJEC_TRABAJO) {
                         valor_inf_ejec_trabajo = parametrosRespo[j][1];
                     }
+
                     if (parametrosRespo[j][1] == RENOVACION_NORMAL) {
                         flag1 += 1;
                     }
+
                     if (parametrosRespo[j][1] == RENOVACION_ANTICIPADA) {
                         flag2 += 1;
                     }
+                    
                     if (parametrosRespo[j][0] == TIPO_PRODUCTO && parametrosRespo[j][1] == PRODUCTO_BASICO) {
                         flag5 += 1;
                     }
@@ -205,15 +209,16 @@ define(['N/search',
                     if (parametrosRespo[j][0] == TIPO_RENOVACION) {
                         valor_tipo_renovacion = parametrosRespo[j][1];
                     }
+
                     if (parametrosRespo[j][0] == BUSCAR_ORDEN_TRABAJO) {
                         buscar_orden_trabajo = parametrosRespo[j][1];
                     }
+
                     if (parametrosRespo[j][0] == CONTROL_COOPERATIVA && parametrosRespo[j][1] == SI) {
                         if (cooperativa == '') {
                             dialog.alert({ title: 'Alerta', message: 'Se debe ingresar la cooperativa en el Bien' });
                             return false
                         }
-
                     }
 
                     //Validación de Prodcutos Instalados
@@ -237,14 +242,14 @@ define(['N/search',
                     }
 
                     if (parametrosRespo[j][1] == SI) {
-                        alert('Verificar');
+                        //alert('Verificar');
                         let verificar;
                         if (parametrosRespo[j][0] == PARA_AMI) {
                             verificar = _controllerParm.parametros(parametrosRespo[j][0], cliente, idcobertura);
                         } else {
                             verificar = _controllerParm.parametros(parametrosRespo[j][0], linea, idcobertura);
                         }
-                        console.log('verificar', verificar);
+                        //console.log('verificar', verificar);
                         if (verificar.status == false) {
                             dialog.alert({ title: 'Alerta', message: verificar.mensaje });
                             return false

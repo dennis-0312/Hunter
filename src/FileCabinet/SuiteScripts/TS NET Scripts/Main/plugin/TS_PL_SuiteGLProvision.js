@@ -231,7 +231,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                 var methodAcc = parseInt(jsonAccounts[k][2].account);
                 var methodAmount = parseFloat(jsonAccounts[k][2].amount);
                 accountMethod = methodAcc;
-               //nlapiLogExecution("DEBUG", 'SuiteGL', accountMethod);
+                //nlapiLogExecution("DEBUG", 'SuiteGL', accountMethod);
 
                 var newLine = customLines.addNewLine();
                 newLine.setDebitAmount(reteIVAAmount);
@@ -346,6 +346,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                     nlapiLogExecution('DEBUG', recordType, 'ACCOUNT: ' + accountPaymentMethod);
                 }
 
+                // if (standardLines.getLine(1).getAccountId() == reteIVA) {
                 var newLine = customLines.addNewLine();
                 newLine.setCreditAmount(standardLines.getLine(1).getDebitAmount());
                 newLine.setAccountId(reteIVA);
@@ -353,7 +354,9 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                 newLine.setDepartmentId(standardLines.getLine(i).getDepartmentId());
                 newLine.setClassId(standardLines.getLine(i).getClassId());
                 newLine.setLocationId(standardLines.getLine(i).getLocationId());
+                // }
 
+                // if (standardLines.getLine(2).getAccountId() == reteFuente) {
                 var newLine = customLines.addNewLine();
                 newLine.setCreditAmount(standardLines.getLine(2).getDebitAmount());
                 newLine.setAccountId(reteFuente);
@@ -361,6 +364,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                 newLine.setDepartmentId(standardLines.getLine(i).getDepartmentId());
                 newLine.setClassId(standardLines.getLine(i).getClassId());
                 newLine.setLocationId(standardLines.getLine(i).getLocationId());
+                // }
 
                 var newLine = customLines.addNewLine();
                 newLine.setDebitAmount(standardLines.getLine(0).getCreditAmount());
@@ -370,9 +374,6 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                 newLine.setClassId(standardLines.getLine(i).getClassId());
                 newLine.setLocationId(standardLines.getLine(i).getLocationId());
             }
-
-
-
         } catch (error) {
             nlapiLogExecution('ERROR', recordType, error);
         }

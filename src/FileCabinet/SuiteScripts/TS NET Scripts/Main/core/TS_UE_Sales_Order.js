@@ -10,15 +10,14 @@ define([
     'N/plugin',
     'N/transaction',
     '../controller/TS_CM_Controller',
-    '../../Impulso Plataformas/Controller/TS_Script_Controller',
+    // '../../Impulso Plataformas/Controller/TS_Script_Controller',
     'N/https'
-], (log, record, search, serverWidget, plugin, transaction, _controller, _controllerParm, https) => {
+], (log, record, search, serverWidget, plugin, transaction, _controller, https) => {
     const HT_DETALLE_ORDEN_SERVICIO_SEARCH = 'customsearch_ht_detalle_orden_servicio_2'; //HT Detalle Orden de Servicio - PRODUCCION
     const ORDEN_TRABAJO = '34';
     const GENERA_VARIAS_ORDEN_TRABAJO = '90';
     var TIPO_TRANSACCION = '2';
     var MONITOREO = '7';
-    var CAMBIO_PROPIETARIO = '10';
     var SOLICITA_APROBACION = '11';
     var RENOVACION_PRODUCTO = '15';
     var ENVIO_PLATAFORMAS = '5';
@@ -26,6 +25,10 @@ define([
     var TIPO_AGRUPACION_PRODUCTO = '77';
     var CAMBIO_PROPIETARIO_COBERTURA = '24';
     const SI = 9
+    //~BLOQUE ADP Y VALOR====================================================
+    /* Variables para identificación de ADP Y valores */
+    const ADP_ACCION_DEL_PRODUCTO = 2
+    const VALOR_010_CAMBIO_PROPIETARIO = 10;
 
 
     const beforeLoad = (scriptContext) => {
@@ -52,7 +55,7 @@ define([
             for (let i = 0; i < numLines; i++) {
                 let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                 //log.debug('items', items);
-                let parametrosRespo = _controllerParm.parametrizacion(items);
+                let parametrosRespo = _controller.parametrizacion(items);
                 for (let j = 0; j < parametrosRespo.length; j++) {
                     if (parametrosRespo[j][0] == TIPO_TRANSACCION) {
                         parametro = parametrosRespo[j][1];
@@ -103,13 +106,10 @@ define([
                 let plazo = 0;
                 var valor_tipo_agrupacion = 0;
                 for (let i = 0; i < numLines; i++) {
-                    objRecord.selectLine({
-                        sublistId: 'item',
-                        line: i
-                    });
+                    objRecord.selectLine({ sublistId: 'item', line: i });
                     let cantidad = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity' });
                     let items = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
-                    let parametrosRespo = _controllerParm.parametrizacion(items);
+                    let parametrosRespo = _controller.parametrizacion(items);
                     log.debug('parametrosRespo', parametrosRespo);
                     var descriptionItem = getDescription(customer, items);
                     if (descriptionItem) {
@@ -147,15 +147,15 @@ define([
                             renovamos = true;
                             plazo += cantidad;
                         }
-                        if (parametrosRespo[j][0] == ENVIO_PLATAFORMAS && parametrosRespo[j][1] == '9') {
+                        if (parametrosRespo[j][0] == ENVIO_PLATAFORMAS && parametrosRespo[j][1] == SI) {
                             plataformas = true;
                         }
-                        if (parametrosRespo[j][0] == ORDEN_TRABAJO && parametrosRespo[j][1] == '9') {
-                            let workOrder = _controllerParm.parametros(ORDEN_TRABAJO, json);
+                        if (parametrosRespo[j][0] == ORDEN_TRABAJO && parametrosRespo[j][1] == SI) {
+                            let workOrder = _controller.parametros(ORDEN_TRABAJO, json);
                             log.debug('OT ', workOrder);
                         }
-                        if (parametrosRespo[j][0] == GENERA_VARIAS_ORDEN_TRABAJO && parametrosRespo[j][1] == '9') {
-                            let workOrder = _controllerParm.parametros(GENERA_VARIAS_ORDEN_TRABAJO, json);
+                        if (parametrosRespo[j][0] == GENERA_VARIAS_ORDEN_TRABAJO && parametrosRespo[j][1] == SI) {
+                            let workOrder = _controller.parametros(GENERA_VARIAS_ORDEN_TRABAJO, json);
                             log.debug('VOT ', workOrder);
                         }
                     }
@@ -165,9 +165,9 @@ define([
                 log.debug('parametro_fact', parametro_fact);
                 if (parametro_aprob != 9 && parametro_fact == 18) {
                     log.debug('cierra', idRecord);
-                    transaction.void({ type: 'salesorder', id: idRecord });
+                    //transaction.void({ type: 'salesorder', id: idRecord });
                 } else {
-                    if (parametro_aprob == 9) {
+                    if (parametro_aprob == SI) {
                         log.debug('parametro_aprob', parametro_aprob);
                         objRecord.setValue('orderstatus', 'A');
                         objRecord.setValue('custbody_ht_os_aprobacionventa', 2);
@@ -180,7 +180,7 @@ define([
                         if (busqueda_cobertura.length != 0) {
                             for (let i = 0; i < busqueda_cobertura.length; i++) {
 
-                                let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
+                                let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
                                 if (parametrosRespo.length != 0) {
                                     var accion_producto_2 = 0;
                                     var valor_tipo_agrupacion_2 = 0;
@@ -347,7 +347,7 @@ define([
                     for (let i = 0; i < numLines; i++) {
                         //objRecord.selectLine({ sublistId: 'item', line: i });
                         let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
-                        parametrosRespo = _controllerParm.parametrizacion(items);
+                        parametrosRespo = _controller.parametrizacion(items);
                         //log.debug('parametrosRespop', parametrosRespo);
                         if (parametrosRespo.length != 0) {
                             for (let j = 0; j < parametrosRespo.length; j++) {
@@ -374,14 +374,14 @@ define([
                     log.debug('valor_tipo_agrupacion', valor_tipo_agrupacion);
                     if (parametrocambpropcobertura == '18') {
                         //record.submitFields({ type: 'salesorder', id: idRecord, values: { 'custbody_ht_os_aprobacionventa': 1 }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
-                        transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
+                        //transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
                         // location.reload();
                     } else {
                         if (parametro != 0) {
-                            log.debug('entra plataformas');
+                            log.debug('entra plataformas por cambio de propietario');
                             for (let j = 0; j < parametrosRespo.length; j++) {
                                 if (parametrosRespo[j][0] == ENVIO_PLATAFORMAS && parametro == SI) {
-                                    returEjerepo = _controllerParm.parametros(ENVIO_PLATAFORMAS, idRecord, parametro);
+                                    returEjerepo = _controller.parametros(ENVIO_PLATAFORMAS, idRecord, parametro);
                                 }
                             }
                             //log.debug('returEjerepo', returEjerepo);
@@ -392,7 +392,7 @@ define([
                                 // if (busqueda_cobertura.length != 0) {
                                 for (let i = 0; i < busqueda_cobertura.length; i++) {
                                     log.debug('Init For');
-                                    let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
+                                    let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
                                     //log.debug('parametrosRespo', parametrosRespo);
                                     if (parametrosRespo.length != 0) {
                                         var accion_producto_2 = 0;
@@ -433,7 +433,7 @@ define([
                                 });
                                 //record.submitFields({ type: 'salesorder', id: idRecord, values: { 'custbody_ht_os_aprobacionventa': 1, 'orderstatus': 'B' }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
                                 log.debug('despues');
-                                transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
+                                //transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
                             }
                         }
                     }
@@ -461,7 +461,7 @@ define([
     }
 
 
-    function getCoberturaItem(idBien) {
+    const getCoberturaItem = (idBien) => {
         try {
             var busqueda = search.create({
                 type: "customrecord_ht_co_cobertura",
@@ -500,7 +500,7 @@ define([
     }
 
 
-    function getDescription(entity, item) {
+    const getDescription = (entity, item) => {
         try {
             var busqueda = search.create({
                 type: "customrecord_ht_record_descriparticulo",
@@ -642,7 +642,7 @@ define([
                     if (busqueda_cobertura.length != 0) {
                         for (let i = 0; i < busqueda_cobertura.length; i++) {
 
-                            let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
+                            let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
                             if (parametrosRespo.length != 0) {
                                 var accion_producto_2 = 0;
                                 var valor_tipo_agrupacion_2 = 0;
@@ -697,7 +697,7 @@ define([
         return num.toString().padStart(2, '0');
     }
 
-    
+
     const formatDateJson = (date) => {
         return [
             date.getFullYear(),

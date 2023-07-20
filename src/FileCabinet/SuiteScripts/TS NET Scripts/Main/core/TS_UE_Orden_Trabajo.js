@@ -13,8 +13,19 @@ Governance points: N/A
  *@NApiVersion 2.1
 *@NScriptType UserEventScript
 */
-define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/error', '../../Impulso Plataformas/Controller/TS_Script_Controller'],
-    (transaction, config, log, search, record, serverWidget, https, error, _Controller) => {
+define([
+    'N/transaction',
+    'N/config',
+    'N/log',
+    'N/search',
+    'N/record',
+    'N/ui/serverWidget',
+    'N/https',
+    'N/error',
+    'N/format',
+    '../controller/TS_CM_Controller'
+],
+    (transaction, config, log, search, record, serverWidget, https, error, format, _Controller) => {
         const HT_DETALLE_ORDEN_SERVICIO = 'customsearch_ht_detalle_orden_servicio'; //HT Detalle Orden de Servicio - PRODUCCION
         const HT_CONSULTA_ORDEN_TRABAJO = 'customsearch_ht_consulta_orden_trabajo'; //HT Consulta Orden de trabajo - PRODUCCION
         const tipo_servicio_alquiler = 1;
@@ -38,6 +49,14 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
         var INST_DISPOSITIVO = '43';
         var TIPO_AGRUPACION_PRODUCTO = '77';
         var VENT_SERVICIOS = '50';
+        const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
+        const VALOR_001_INST_DISPOSITIVO = 43;
+        const VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO = 44;
+        const SI = 9;
+        const ESTADO_001_INSTALADO = 1;
+
+
+
         const beforeLoad = (context) => {
             let configRecObj = config.load({ type: config.Type.COMPANY_INFORMATION });
             const URL = configRecObj.getValue({ fieldId: 'appurl' });
@@ -55,45 +74,35 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                         label: 'Ensamble de Dispositivo',
                         functionName: 'ensambleDispositivo(' + idOrdenTrabajo + ')'
                     });
-                    form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
-
                 }
-
                 form.getField('custrecord_ht_ot_termometro').updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
-
-                /*var btnStockAlquiler = form.addButton({
-                    id: 'custpage_lh_btn_alquiler',
-                    label: "Stock Alquiler",
-                    functionName: 'reloadFuncion(' + URL + URL_DETALLE_SEARCH + ')'
-                });
-                var btnStockComercial = form.addButton({
-                    id: 'custpage_lh_btn_comercial',
-                    label: "Stock Comercial",
-                    functionName: 'reloadFuncion(' + URL + URL_DETALLE_SEARCH + ')'
-                });
-                var btnStockMateriales = form.addButton({
-                    id: 'custpage_lh_btn_material',
-                    label: "Lista Materiales",
-                    functionName: 'reloadFuncion(1)'
-                });*/
-
+                createEnsambleAlquilerButton(form, objRecord);
+                form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
+            } else if (type_event == context.UserEventType.EDIT) {
+                createEnsambleAlquilerButton(form, objRecord);
+                form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
             }
-            var items = objRecord.getValue('custrecord_ht_ot_item');
-            /*let itemsrelacionado = record.load({ type: 'serializedassemblyitem', id: items });
-            var numLines = itemsrelacionado.getLineCount({ sublistId: 'recmachcustrecord_ht_pp_parametrizacionir' });
-            for (let i = 0; i < numLines; i++) {
-                let codigo = itemsrelacionado.getSublistValue({ sublistId: 'recmachcustrecord_ht_pp_parametrizacionir', fieldId: 'custrecord_ht_pp_codigoit', line: i });
-                if (codigo == "11278") {
-                    items = itemsrelacionado.getSublistValue({ sublistId: 'recmachcustrecord_ht_pp_parametrizacionir', fieldId: 'custrecord_ht_pp_descripcionit', line: i });
-
-                }
-            }*/
-            let updateOrdenTrabajo = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
-            updateOrdenTrabajo.getField("custrecord_ht_ot_noimpulsaplataformas").isDisabled = true;
-            updateOrdenTrabajo.setValue({ fieldId: 'custrecord_ht_ot_itemrelacionado', value: items })
-            updateOrdenTrabajo.save();
         }
 
+        const createEnsambleAlquilerButton = (form, objRecord) => {
+            let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
+            itemName = itemName.toLowerCase()
+            if (!itemName.includes('alq')) return;
+            let salesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
+            let workorder = objRecord.id;
+            let customer = objRecord.getValue('custrecord_ht_ot_cliente_id');
+            let item = objRecord.getValue('custrecord_ht_ot_item');
+            let location = "";
+            if (salesorder) {
+                locationSearch = search.lookupFields({
+                    type: 'salesorder', id: salesorder, columns: ['location']
+                });
+                location = locationSearch.location[0].value;
+            }
+
+            const ensambleAlquiler = `ensambleAlquiler('${item}', '${location}', '${workorder}', '${salesorder}', '${customer}')`;
+            form.addButton({ id: 'custpage_btnalquiler', label: 'Ensamble Alquiler', functionName: ensambleAlquiler });
+        }
 
         const afterSubmit = (context) => {
             if (context.type === context.UserEventType.EDIT) {
@@ -107,10 +116,15 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                 let adp;
                 let adpServicio = 0;
                 let estaChequeada = objRecord.getValue('custrecord_ht_ot_estado');
+                let statusOri = estaChequeada;
+                let estadoInts;
+                const SI = 9;
+
                 if (estaChequeada > 0) {
                     accionEstadoOT = ESTADO_CHEQUEADA;
-
                 }
+
+                //log.debug('accionEstadoOT', accionEstadoOT);
 
                 switch (accionEstadoOT) {
                     case ESTADO_CHEQUEADA:
@@ -118,9 +132,8 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                         let bien = objRecord.getValue('custrecord_ht_ot_vehiculo');
                         let coberturas = _Controller.getCobertura(bien);
                         let busqueda_salesorder = getSalesOrderItem(bien);
-                        log.debug('busqueda_salesorder', busqueda_salesorder);
+                        //log.debug('busqueda_salesorder', busqueda_salesorder);
                         let busqueda_cobertura = getCoberturaItem(bien);
-
                         let salesorder = record.load({ type: 'salesorder', id: idSalesorder });
                         var numLines = salesorder.getLineCount({ sublistId: 'item' });
                         let chaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
@@ -142,6 +155,7 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                         let parametrosRespo_2 = _Controller.parametrizacion(idItemOT);
                         let monitoreo;
                         let idCoberturaItem = '';
+
                         if (parametrosRespo_2.length != 0) {
                             //var accion_producto_2 = 0;
                             for (let j = 0; j < parametrosRespo_2.length; j++) {
@@ -159,32 +173,26 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                     envioTele = parametrosRespo_2[j][1];
                                 }
                                 if (parametrosRespo_2[j][0] == 99 && parametrosRespo_2[j][1] == 9) { //cos cerrar orden de servicio
-
                                     try {
                                         transaction.void({ type: 'salesorder', id: idSalesorder });
                                     } catch (error) {
-                                        log.debug(error);
+                                        log.error(error);
                                     }
-
                                 }
                                 if (parametrosRespo_2[j][0] == TIPO_AGRUPACION_PRODUCTO) {
                                     valor_tipo_agrupacion_2 = parametrosRespo_2[j][1];
                                 }
-
                             }
                         }
 
                         if (busqueda_salesorder.length != 0) {
                             for (let i = 0; i < busqueda_salesorder.length; i++) {
-
                                 let parametrosRespo = _Controller.parametrizacion(busqueda_salesorder[i][0]);
                                 if (parametrosRespo.length != 0) {
                                     var accion_producto = 0;
                                     var valor_tipo_agrupacion = 0;
 
                                     for (let j = 0; j < parametrosRespo.length; j++) {
-
-
                                         if (parametrosRespo[j][0] == TIPO_TRANSACCION) {
                                             accion_producto = parametrosRespo[j][1];
                                         }
@@ -193,8 +201,6 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                             valor_tipo_agrupacion = parametrosRespo[j][1];
                                         }
 
-
-
                                         if (accion_producto == VENT_SERVICIOS && valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
                                             adpServicio = accion_producto;
                                             idOS = busqueda_salesorder[i][1];
@@ -202,6 +208,7 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                             plataformasTele = envioTele;
                                             idItem = busqueda_salesorder[i][0];
                                         }
+
 
                                     }
                                 }
@@ -222,14 +229,12 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
 
                         if (busqueda_cobertura.length != 0) {
                             for (let i = 0; i < busqueda_cobertura.length; i++) {
-
                                 let parametrosRespo = _Controller.parametrizacion(busqueda_cobertura[i][0]);
                                 if (parametrosRespo.length != 0) {
                                     var accion_producto = 0;
                                     var valor_tipo_agrupacion = 0;
                                     var envio = 0;
                                     for (let j = 0; j < parametrosRespo.length; j++) {
-
                                         if (parametrosRespo[j][0] == TIPO_TRANSACCION) {
                                             accion_producto = parametrosRespo[j][1];
                                         }
@@ -240,8 +245,8 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
 
                                         if (accion_producto == INST_DISPOSITIVO && valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
                                             idCoberturaItem = busqueda_cobertura[i][1];
+                                            estadoInts = ESTADO_001_INSTALADO
                                         }
-
                                     }
                                 }
                             }
@@ -259,17 +264,17 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                     cantidad = cantidad + quantity;
                                 }
 
-                                if (plataformasPX == 9) {
+                                if (plataformasPX == SI) {
                                     returEjerepo = _Controller.parametros(ENVIO_PLATAFORMASPX, id, adp);
-                                    log.debug('Estado que devuelve el impulso a plataforma PX- ' + j, returEjerepo + ': ' + returEjerepo);
+                                    log.debug('Estado que devuelve el impulso a plataforma PX- ' + j, JSON.stringify(returEjerepo) + ': ' + JSON.stringify(returEjerepo));
                                 } else {
                                     let updateTelematic = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
                                     updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
                                     updateTelematic.save();
                                 }
-                                if (plataformasTele == 9) {
+                                if (plataformasTele == SI) {
                                     returEjerepo = _Controller.parametros(ENVIO_PLATAFORMASTELEC, id, adp);
-                                    log.debug('Estado que devuelve el impulso a plataforma tele- ' + j, returEjerepo + ': ' + returEjerepo);
+                                    log.debug('Estado que devuelve el impulso a plataforma tele- ' + j, JSON.stringify(returEjerepo) + ': ' + JSON.stringify(returEjerepo));
                                 } else {
                                     let updateTelematic = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
                                     updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
@@ -277,36 +282,9 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                 }
                             }
                         }
-                        //var itemMeses = idItemType(items);
+
                         for (let i = 0; i < numLines; i++) {
-                            //let items = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
-                            //let type = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'itemtype', line: i });
                             Origen = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ns_codigo_origen', line: i });
-
-                            //parametrosRespo = _Controller.parametrizacion(items);
-                            //var itemMeses = idItemType(items);
-                            // if (type == 'Service') {
-                            //     /* if (parametrosRespo.length != 0) {
-                            //         for (let j = 0; j < parametrosRespo.length; j++) {
-                            //             if (parametrosRespo[j][0] == 2) {
-                            //                 adpServicio = parametrosRespo[j][1];
-                            //             }
-                            //             if (parametrosRespo[j][0] == ENVIO_PLATAFORMAS) {
-                            //                 plataformas = parametrosRespo[j][1];
-                            //             }
-                            //         }
-                            //     } */
-                            // } else {
-                            //     if (parametrosRespo.length != 0) {
-                            //         for (let j = 0; j < parametrosRespo.length; j++) {
-                            //             if (parametrosRespo[j][0] == 2) {
-                            //                 adp = parametrosRespo[j][1];
-                            //             }
-                            //         }
-                            //     }
-                            // }
-
-
                         }
 
                         let cobertura = getCobertura(cantidad);
@@ -317,6 +295,7 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                 'custbody_ht_os_trabajado': 'S'
                             }
                         });
+
                         let idItemCobertura = objRecord.getValue('custrecord_ht_ot_item');
                         let idVentAlq = objRecord.getValue('custrecord_ht_ot_item_vent_alq');
                         if (idVentAlq != '') {
@@ -342,12 +321,15 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                     salesorder: idSalesorder,
                                     ordentrabajo: objRecord.id,
                                     monitoreo: monitoreo,
-                                    cobertura: idCoberturaItem
+                                    cobertura: idCoberturaItem,
+                                    estado: estadoInts
                                 }
-                                cabertura(json);
-                                let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                                updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
-                                updateTelematic.save();
+                                createCoberturaWS(json);
+                                if (chaser.length > 0) {
+                                    let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
+                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
+                                    updateTelematic.save();
+                                }
                             } else {
                                 //log.debug('Debug3', returEjerepo + ' - ' + adpServicio);
                                 let json = {
@@ -363,12 +345,16 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                     salesorder: idOS,
                                     ordentrabajo: objRecord.id,
                                     monitoreo: monitoreo,
-                                    cobertura: idCoberturaItem
+                                    cobertura: idCoberturaItem,
+                                    estado: estadoInts
                                 }
-                                cabertura(json);
-                                let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                                updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
-                                updateTelematic.save();
+                                createCoberturaWS(json);
+                                if (chaser.length > 0) {
+                                    let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
+                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
+                                    updateTelematic.save();
+                                }
+
                             }
                         } else {
                             //log.debug('Debug4', returEjerepo + ' - ' + adpServicio);
@@ -380,21 +366,19 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                 serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
                                 salesorder: idSalesorder,
                                 ordentrabajo: objRecord.id,
-                                cobertura: idCoberturaItem
+                                cobertura: idCoberturaItem,
+                                estado: estadoInts
                             }
-                            cabertura(json);
-                            let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                            updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
-                            updateTelematic.save();
-                            record.submitFields({
-                                type: 'customrecord_ht_record_ordentrabajo',
-                                id: id,
-                                values: { 'custrecord_ht_ot_estado': 4 },
-                                options: { enableSourcing: false, ignoreMandatoryFields: true }
-                            });
+                            createCoberturaWS(json);
+                            if (chaser.length > 0) {
+                                let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
+                                updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
+                                updateTelematic.save();
+                                record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: id, values: { 'custrecord_ht_ot_estado': 4 }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
+                            }
                         }
 
-                        if (adpServicio == 21) {
+                        if (adpServicio == CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS) {
                             var customrecord_ht_ct_cobertura_transactionSearchObj = search.create({
                                 type: "customrecord_ht_ct_cobertura_transaction",
                                 filters:
@@ -403,11 +387,7 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                     ],
                                 columns:
                                     [
-                                        search.createColumn({
-                                            name: "scriptid",
-                                            sort: search.Sort.ASC,
-                                            label: "Script ID"
-                                        }),
+                                        search.createColumn({ name: "scriptid", sort: search.Sort.ASC, label: "Script ID" }),
                                         search.createColumn({ name: "custrecord_ht_ct_orden_servicio", label: "HT Orden Servicio" }),
                                         search.createColumn({ name: "custrecord_ht_ct_orden_trabajo", label: "HT Orden de Trabajo" }),
                                         search.createColumn({ name: "custrecord_ht_ct_concepto", label: "HT Concepto" }),
@@ -416,29 +396,22 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                         search.createColumn({ name: "custrecord_ht_ct_transacciones", label: "HT Cobertura" })
                                     ]
                             });
-                            var pageData = customrecord_ht_ct_cobertura_transactionSearchObj.runPaged({
-                                pageSize: 1000
-                            });
-                            pageData.pageRanges.forEach(function (pageRange) {
+                            var pageData = customrecord_ht_ct_cobertura_transactionSearchObj.runPaged({ pageSize: 1000 });
+                            pageData.pageRanges.forEach(pageRange => {
                                 page = pageData.fetch({
                                     index: pageRange.index
                                 });
 
-                                page.data.forEach(function (result) {
+                                page.data.forEach(result => {
                                     var columns = result.columns;
-
-
                                     let updateTelematic = record.load({ type: 'customrecord_ht_co_cobertura', id: result.getValue(columns[5]) });
                                     updateTelematic.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: 2 })
                                     updateTelematic.save();
-
-
                                 });
                             });
                         }
 
-
-                        if (adp == 43) {
+                        if (adp == VALOR_001_INST_DISPOSITIVO) {
                             let estado = objRecord.getValue('custrecord_ht_ot_estado');
                             let idSalesOrder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
                             let dispositivo = objRecord.getValue('custrecord_ht_ot_dispositivo');
@@ -450,20 +423,20 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                 fulfill = boxserie;
                             }
 
-
                             var idDispositivo = getInventoryNumber(fulfill);
-
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
 
                             if (estado == 2 && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
                                 var serieProducto = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                                 var ubicacion = objRecord.getText('custrecord_ht_ot_ubicacion');
-                                record.submitFields({
-                                    type: 'customrecord_ht_record_mantchaser',
-                                    id: serieProducto,
-                                    values: { 'custrecord_ht_mc_ubicacion': ubicacion },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
+                                if (serieProducto.length > 0) {
+                                    record.submitFields({
+                                        type: 'customrecord_ht_record_mantchaser',
+                                        id: serieProducto,
+                                        values: { 'custrecord_ht_mc_ubicacion': ubicacion },
+                                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                    });
+                                }
                                 var newFulfill = record.transform({
                                     fromType: record.Type.SALES_ORDER,
                                     fromId: idSalesOrder,
@@ -475,17 +448,12 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                                     var objSubRecord = newFulfill.getSublistSubrecord({ sublistId: 'item', fieldId: 'inventorydetail', line: 0 })
                                     objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: idDispositivo, line: 0 });;
                                     objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1, line: 0 });
-
                                 }
-                                newFulfill.save({
-                                    enableSourcing: false,
-                                    ignoreMandatoryFields: true
-                                });
-
+                                newFulfill.save({ enableSourcing: false, ignoreMandatoryFields: true });
                             }
                         }
 
-                        if (adp = 44) { // chequeo 006 mantenimiento 
+                        if (adp = VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
                             let objRecordCreateServicios = record.create({ type: 'customrecord_ht_nc_servicios_instalados', isDynamic: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_bien_si', value: objRecord.getValue('custrecord_ht_ot_vehiculo'), ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_orden_servicio_si', value: idSalesorder, ignoreFieldChange: true });
@@ -498,12 +466,282 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
                 }
 
 
+                // //------------------------------Flujo Activo Fijo Alquiler------------------------------
+                // var numSerieId = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
+                // log.debug('numSerieId', numSerieId);
+                // var numSerieText = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
+                // log.debug('numSerieText', numSerieText);
+                // var isCheck = context.newRecord.getValue('custrecord_flujo_de_alquiler');
+                // log.debug('is checked?', isCheck);
+                // let idItemRelacionado = objRecord.getValue('custrecord_ht_ot_itemrelacionado');
+                // log.debug('idItemRelacionado', idItemRelacionado);
+                // let textItemRelacionado = objRecord.getValue('custrecord_ht_ot_itemrelacionado');
+                // log.debug('textItemRelacionado', textItemRelacionado);
+
+                // var busquedaTipoActivo = search.lookupFields({ type: search.Type.ITEM, id: idItemRelacionado, columns: ['custitem_ht_ar_tipoactivo'] });
+                // log.debug('busquedaTipoActivo', busquedaTipoActivo);
+
+                // var item_tipo_activoId = (busquedaTipoActivo.custitem_ht_ar_tipoactivo)[0].value;
+                // log.debug('item_tipo_activoId', item_tipo_activoId);
+
+                // var item_tipo_activoText = (busquedaTipoActivo.custitem_ht_ar_tipoactivo)[0].text;
+                // log.debug('item_tipo_activoText', item_tipo_activoText);
 
 
+                // var historial_orden_de_servicio_id = objRecord.getValue('custrecord_ht_ot_orden_servicio');
+                // log.debug('historial_orden_de_servicio_id', historial_orden_de_servicio_id);
+                // var historial_id_cliente = objRecord.getValue('custrecord_ht_ot_cliente_id');
+                // // var historial_descripcion = objRecord.getValue('custrecord_ht_hs_descripcion');
+                // // var historial_fecha_trabajo = objRecord.getValue('custrecord_ht_ot_fechatrabajoasignacion');
+
+
+                // var historial_estado_ot = 'Instalado';
+                // log.debug('historial_estado_ot', historial_estado_ot);
+                // var historial_vid_auto = objRecord.getValue('custrecord_ht_ot_vehiculo');
+                // log.debug('historial_vid_auto', historial_vid_auto);
+
+                // var historial_placa = objRecord.getValue('custrecord_ht_ot_placa');
+                // log.debug('historial_placa', historial_placa);
+                // var historial_marca = objRecord.getValue('custrecord_ht_ot_marca');
+                // log.debug('historial_marca', historial_marca);
+                // var historial_tipo = objRecord.getValue('custrecord_ht_ot_tipo');
+                // log.debug('historial_tipo', historial_tipo);
+                // var historial_motor = objRecord.getValue('custrecord_ht_ot_motor');
+                // log.debug('historial_motor', historial_motor);
+
+                // var busqueda_sales_order = search.lookupFields({ type: search.Type.SALES_ORDER, id: historial_orden_de_servicio_id, columns: ['custbody_ht_os_tipoordenservicio', 'trandate'] });
+                // log.debug('busqueda_sales_order', busqueda_sales_order);
+
+                // // var typeSalesOrder = (busqueda_sales_order.custbody_ht_os_tipoordenservicio)[0].text;
+                // // log.debug('typeSalesOrder', typeSalesOrder);
+                // var dateSalesOrder = busqueda_sales_order.trandate;
+                // log.debug('dateSalesOrder', dateSalesOrder);
+
+
+                // if (isCheck) {
+                //     //Entra flujo 
+                //     var customrecord_asset_search = search.create({
+                //         type: "customrecord_ncfar_asset",
+                //         filters:
+                //             [
+                //                 ["custrecord_nmero_de_serie_dispositivo", "is", numSerieId]
+                //             ],
+                //         columns:
+                //             [
+                //                 search.createColumn({ name: "custrecord_nmero_de_serie_dispositivo", label: "Número de Serie Dispositivo" }),
+                //                 search.createColumn({ name: "altname", label: "Name" })
+                //             ]
+                //     });
+
+                //     var results = customrecord_asset_search.run().getRange({ start: 0, end: 1 });
+                //     log.debug('results', results);
+
+                //     var historial_id_activo_fijo;
+                //     var nameDispositivo;
+
+
+
+
+                //     // if (results.length > 0) {
+                //     if (false) {
+                //         //EXISTE ACTIVO FIJO
+                //         historial_id_activo_fijo = results[0].id;
+                //         log.debug('historial_id_activo_fijo', historial_id_activo_fijo);
+                //         nameDispositivo = results[0].getValue({ name: 'altname' });
+                //         log.debug('nameDispositivo', nameDispositivo);
+
+                //         log.debug('Entro a flujo de: ', 'generar Historial en activo')
+                //         var descHistorial = textItemRelacionado + " " + itemDispositivoName.displayname + " " + numSerieText;
+                //         log.debug('descHistorial', descHistorial);
+
+                //         var historial = record.create({ type: 'customrecord_ht_record_historialsegui', isDynamic: true });
+                //         historial.setValue('custrecord_ht_hs_numeroordenservicio', historial_orden_de_servicio_id);
+                //         historial.setValue('custrecord_ht_hs_propietariocliente', historial_id_cliente);
+                //         historial.setValue('custrecord_ht_hs_descripcion', descHistorial);
+                //         historial.setText('custrecord_ht_hs_fechaordenservicio', dateSalesOrder);
+                //         historial.setValue('custrecord_ht_hs_estado', 'Instalado');
+                //         historial.setValue('custrecord_ht_hs_vidvehiculo', historial_vid_auto);
+                //         historial.setValue('custrecord_ht_hs_placa', historial_placa);
+                //         historial.setValue('custrecord_ht_hs_marca', historial_marca);
+                //         historial.setValue('custrecord_ht_hs_tipo', historial_tipo);
+                //         historial.setValue('custrecord_ht_hs_motor', historial_motor);
+                //         historial.setValue('custrecord_ht_af_enlace', historial_id_activo_fijo);
+                //         historial.save();
+                //         log.debug('Termino crear historial');
+
+                //     } else {
+                //         //NO EXISTE ACTIVO FIJO -> CREAR ACTIVO
+                //         //Obtener internal id de item serializado y nombre de dispositivo
+                //         //Busqueda Dispositivo Serie
+                //         var billOfMaterialRevision;
+
+                //         log.debug('idItemRelacionado', idItemRelacionado);
+                //         var filters = [["isinactive", "is", "F"], "AND", ["custrecord_ht_articulo_alquileractivo", "anyof", idItemRelacionado]];
+                //         var bomRevisionResultSearch = search.create({
+                //             type: "bomrevision",
+                //             filters,
+                //             columns: ["name"]
+                //         }).run().getRange(0, 1);
+                //         log.debug('bomRevisionResultSearch', bomRevisionResultSearch);
+
+                //         if (bomRevisionResultSearch.length != 0) {
+                //             for (var i = 0; i < bomRevisionResultSearch.length; i++) {
+                //                 billOfMaterialRevision = bomRevisionResultSearch[i].id;
+                //             }
+
+                //             log.debug('billOfMaterialRevision', billOfMaterialRevision);
+
+                //             var recordRevision = record.load({ type: 'bomrevision', id: billOfMaterialRevision })
+                //             var lineCountSublist = recordRevision.getLineCount({ sublistId: 'component' })
+
+                //             var itemDispositivoId;
+                //             for (var j = 0; j < lineCountSublist; j++) {
+                //                 var currentItemSub = recordRevision.getSublistText({
+                //                     sublistId: 'component',
+                //                     fieldId: 'item',
+                //                     line: j
+                //                 }).toLowerCase();
+
+                //                 var currentQuantiSub = recordRevision.getSublistValue({
+                //                     sublistId: 'component',
+                //                     fieldId: 'quantity',
+                //                     line: j
+                //                 });
+
+                //                 if (currentItemSub.indexOf('dispositivo') && currentQuantiSub == 1) {
+                //                     itemDispositivoId = recordRevision.getSublistValue({
+                //                         sublistId: 'component',
+                //                         fieldId: 'item',
+                //                         line: j
+                //                     });
+                //                     break;
+                //                 }
+                //             }
+
+                //             //ITEM NOMBRE DISPOSITIVO
+                //             var itemDispositivoName = search.lookupFields({
+                //                 type: 'serializedinventoryitem',
+                //                 id: itemDispositivoId,
+                //                 columns: ['displayname']
+                //             })
+
+                //             log.debug('itemDispositivoName', itemDispositivoName.displayname);
+
+                //             //BUSQUEDA PARA CONSEGUIR ID DE AJUSTE DE INVENTARIO
+                //             var inventoryadjustmentSearchObj = search.create({
+                //                 type: "inventoryadjustment",
+                //                 filters:
+                //                     [
+                //                         ["type", "anyof", "InvAdjst"],
+                //                         "AND",
+                //                         ["custbody_ht_af_ejecucion_relacionada", "anyof", historial_orden_de_servicio_id],
+                //                         "AND",
+                //                         ["creditfxamount", "isnotempty", ""]
+                //                     ],
+                //                 columns:
+                //                     [
+                //                         search.createColumn({ name: "item", label: "Item" }),
+                //                         search.createColumn({ name: "creditamount", label: "Amount (Credit)" })
+                //                     ]
+                //             });
+
+                //             var resultsInvAdj = inventoryadjustmentSearchObj.run().getRange({ start: 0, end: 1000 });
+                //             log.debug('resultsInvAdj', resultsInvAdj);
+
+                //             if (resultsInvAdj != 0) {
+                //                 var arrResult = [];
+
+                //                 for (var index = 0; index < resultsInvAdj.length; index++) {
+                //                     var jsonTemp = {};
+                //                     jsonTemp.adjInvId = resultsInvAdj[index].id;
+                //                     jsonTemp.adjIdItem = resultsInvAdj[index].getValue({ name: 'item' });
+                //                     jsonTemp.adjCreditAmount = resultsInvAdj[index].getValue({ name: 'creditamount' });
+
+                //                     arrResult.push(jsonTemp);
+
+                //                 }
+
+                //                 var currentInvAdjId;
+                //                 for (var i = 0; i < arrResult.length; i++) {
+                //                     if (arrResult[i].adjIdItem == itemDispositivoId) {
+                //                         currentInvAdjId = arrResult[i].adjInvId;
+                //                         break;
+                //                     }
+
+                //                 }
+
+                //                 //MONTO CREDITO TOTAL
+                //                 var creditoTotal = 0;
+                //                 for (var i = 0; i < arrResult.length; i++) {
+                //                     if (arrResult[i].adjInvId == currentInvAdjId) {
+                //                         creditoTotal += Number(arrResult[i].adjCreditAmount);
+                //                     }
+                //                 }
+                //                 log.debug('creditoTotal', creditoTotal);
+
+                //                 // results[index].getValue({ name: 'debitfxamount' });
+                //                 // var asset_debit_amount = results[0].getValue({ name: 'debitfxamount' });
+                //                 // log.debug('nameDispositivo', nameDispositivo);
+
+
+                //                 //Valores de Nuevo Asset
+                //                 var datosTipoActivo = search.lookupFields({ type: 'customrecord_ncfar_assettype', id: item_tipo_activoId, columns: ['custrecord_assettypeaccmethod', 'custrecord_assettyperesidperc', 'custrecord_assettypelifetime', 'custrecord_assettypedescription'] });
+                //                 log.debug('datosTipoActivo', datosTipoActivo);
+
+                //                 var asset_tipo_activo = (datosTipoActivo.custrecord_assettypeaccmethod)[0].value;
+                //                 log.debug('asset_tipo_activo', asset_tipo_activo);
+                //                 var asset_porcentaje_residual = datosTipoActivo.custrecord_assettyperesidperc.replace('%', '');
+                //                 log.debug('asset_porcentaje_residual', asset_porcentaje_residual);
+                //                 var asset_tiempo_de_vida = datosTipoActivo.custrecord_assettypelifetime;
+                //                 log.debug('asset_tiempo_de_vida', asset_tiempo_de_vida);
+                //                 // var asset_name = datosTipoActivo.custrecord_assettypedescription;
+                //                 // log.debug('asset_name', asset_name);
+
+
+                //                 var fixedAsset = record.create({ type: 'customrecord_ncfar_asset', isDynamic: true });
+
+                //                 fixedAsset.setValue('customform', 145);
+                //                 fixedAsset.setValue('altname', itemDispositivoName.displayname);
+                //                 fixedAsset.setValue('custrecord_assettype', item_tipo_activoId);
+                //                 fixedAsset.setValue('custrecord_assetcost', creditoTotal);
+                //                 fixedAsset.setValue('custrecord_assetresidualperc', Number(asset_porcentaje_residual));
+                //                 fixedAsset.setValue('custrecord_assetresidualvalue', 1);
+                //                 fixedAsset.setValue('custrecord_assetaccmethod', asset_tipo_activo);
+                //                 fixedAsset.setValue('custrecord_assetlifetime', asset_tiempo_de_vida);
+                //                 fixedAsset.setValue('custrecord_nmero_de_serie_dispositivo', numSerieId);
+
+                //                 var id_new_asset = fixedAsset.save()
+                //                 log.debug('id_new_asset', id_new_asset);
+                //                 log.debug('Termino crear activo');
+
+                //                 var historial = record.create({ type: 'customrecord_ht_record_historialsegui', isDynamic: true });
+                //                 var descHistorial = textItemRelacionado + ' ' + itemDispositivoName.displayname + ' ' + numSerieText
+
+                //                 historial.setValue('custrecord_ht_hs_numeroordenservicio', historial_orden_de_servicio_id);
+                //                 historial.setValue('custrecord_ht_hs_propietariocliente', historial_id_cliente);
+                //                 historial.setValue('custrecord_ht_hs_descripcion', descHistorial);
+                //                 historial.setText('custrecord_ht_hs_fechaordenservicio', dateSalesOrder);
+                //                 historial.setValue('custrecord_ht_hs_estado', 'Instalado');
+                //                 historial.setValue('custrecord_ht_hs_vidvehiculo', historial_vid_auto);
+                //                 historial.setValue('custrecord_ht_hs_placa', historial_placa);
+                //                 historial.setValue('custrecord_ht_hs_marca', historial_marca);
+                //                 historial.setValue('custrecord_ht_hs_tipo', historial_tipo);
+                //                 historial.setValue('custrecord_ht_hs_motor', historial_motor);
+                //                 historial.setValue('custrecord_ht_af_enlace', id_new_asset);
+                //                 historial.save();
+                //                 log.debug('Termino crear historial de nuevo activo');
+                //             } else {
+
+                //                 log.debug('No existe ajuste de inventario, con OS Relacionado');
+                //             }
+
+                //         } else {
+                //             log.debug('No se encuentra dispositivo en el item revision');
+                //         }
+                //     }
+                // }
             }
         }
-
-        //const envioPXAdmin = () => { }
 
         function getSalesOrderItem(idBien) {
             try {
@@ -589,7 +827,7 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
             }
         }
 
-        const cabertura = (json) => {
+        const createCoberturaWS = (json) => {
             let myRestletHeaders = new Array();
             myRestletHeaders['Accept'] = '*/*';
             myRestletHeaders['Content-Type'] = 'application/json';
@@ -721,10 +959,6 @@ define(['N/transaction', 'N/config', 'N/log', 'N/search', 'N/record', 'N/ui/serv
             afterSubmit: afterSubmit
         }
     });
-
-
-
-
 /*********************************************************************************************************************************************
 TRACKING
 /*********************************************************************************************************************************************

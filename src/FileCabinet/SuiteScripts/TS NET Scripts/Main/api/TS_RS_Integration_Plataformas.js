@@ -88,6 +88,7 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/https', 'N/task', 'N/file
         objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
         objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
         objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
+        objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
         let response = objRecord.save();
         log.debug('Response', response);
         return { 'Conect': 'ConectPost' };

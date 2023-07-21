@@ -132,6 +132,8 @@ define(['N/log', 'N/search', 'N/record', 'N/redirect', 'N/ui/serverWidget', 'N/r
                 log.debug('test', test);
                 if (test != '') {
                     test = test[0].value;
+
+
                     currentRecord.setValue('location', test);
 
                 }

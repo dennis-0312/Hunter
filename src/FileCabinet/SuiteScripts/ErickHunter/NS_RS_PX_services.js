@@ -31,15 +31,17 @@
                   "</SeguridadPx>\r\n  </soap:Header>\r\n  <soap:Body>\r\n"+    
                   "<AutenticacionUsuarioPx xmlns=\"http://tempuri.org/\" />\r\n  </soap:Body>\r\n</soap:Envelope>";
 
-        const resp = https.post({
+         log.debug('raw',raw);
+      const resp = https.post({
             url: "https://www2.huntermonitoreo.com/API_PX/WSPX.asmx?op=AutenticacionUsuarioPx",
             headers: headers1,
             body: raw
         });
+       
         var xmlDoc = resp.body;
-      log.debug('raw',raw);
         const regex = /.*<AutenticacionUsuarioPxResult>(.*)<\/AutenticacionUsuarioPxResult>.*/;
-        let rowXml = "<Ordenes><Orden><NumeroOrden>"+context.NumeroOrden+"</NumeroOrden><UsuarioIngreso>"+context.UsuarioIngreso+"</UsuarioIngreso>"+
+       
+      let rowXml = "<Ordenes><Orden><NumeroOrden>"+context.NumeroOrden+"</NumeroOrden><UsuarioIngreso>"+context.UsuarioIngreso+"</UsuarioIngreso>"+
                     "<OperacionOrden>"+context.OperacionOrden+"</OperacionOrden>"+
                     "<NombreEjecutiva>"+context.NombreEjecutiva+"</NombreEjecutiva>"+
                     "<Vehiculo>"+
@@ -127,7 +129,6 @@
                     "<EmailConvenio>"+context.VidAnterior+"</EmailConvenio></Convenio></Orden></Ordenes>";
        
         let string = xmlDoc.replace(regex, '$1');
-      log.debug('string',string);
         let headers2 = [];
          headers2['Content-Type'] = 'text/xml';
          headers2['SOAPAction'] = 'http://tempuri.org/InsertaOrden';
@@ -156,100 +157,16 @@
                             headers: headers2,
                              body: rawInsert
         });
+     
   
         const regex2 = /.*<string>(.*)<\/string>.*/;
         let Respon = resp2.body.replace(regex2, '$1');
-        
+       log.debug('XML',rawInsert);
+        log.debug('Response',resp2);
         return Respon;
        
      }
-    function Vehiculo(Vehiculo){
-        var raw = "<Vehiculo>";
-            raw = Vehiculo.Placa ? "<Placa>"+Vehiculo.Placa+"</Placa>" : "<placa/>";
-            raw = Vehiculo.IdMarca ? "<IdMarca>"+Vehiculo.IdMarca+"</IdMarca>" : "<IdMarca/>";
-            raw = Vehiculo.DescMarca ? "<DescMarca>"+Vehiculo.DescMarca+"</DescMarca>" : "<DescMarca/>";
-            raw = Vehiculo.CodigoVehiculo ? "<CodigoVehiculo>"+Vehiculo.CodigoVehiculo+"</CodigoVehiculo>" : "<CodigoVehiculo/>";
-            raw = Vehiculo.Chasis ? "<Chasis>"+Vehiculo.Chasis+"</Chasis>" : "<Chasis/>";
-            raw = Vehiculo.Motor ? "<Motor>"+Vehiculo.Motor+"</Motor>" : "<Motor/>";
-            raw = Vehiculo.Color ? "<Color>"+Vehiculo.Color+"</Color>" : "<Color/>";
-            raw = Vehiculo.Anio ? "<Anio>"+Vehiculo.Anio+"</Anio>" : "<Anio/>";
-            raw = Vehiculo.Tipo ? "<Tipo>"+Vehiculo.Tipo+"</Tipo>" : "<Tipo/>";
-            raw = "</Vehiculo>";         
-         return  raw;                                     
-    }
-    function Dispositivo(Dispositivo){
-        var raw = "<Dispositivo>";
-            raw = Dispositivo.Vid ? "<Vid>"+Dispositivo.Vid+"</Vid>" : "<Vid/>";
-            raw = Dispositivo.IdProducto ? "<IdProducto>"+Dispositivo.IdProducto+"</IdProducto>" : "<IdProducto/>";
-            raw = Dispositivo.DescProducto ? "<DescProducto>"+Dispositivo.DescProducto+"</DescProducto>" : "<DescProducto/>";
-            raw = Dispositivo.CodMarcaDispositivo ? "<CodMarcaDispositivo>"+Dispositivo.CodMarcaDispositivo+"</CodMarcaDispositivo>" : "<CodMarcaDispositivo/>";
-            raw = Dispositivo.MarcaDispositivo ? "<MarcaDispositivo>"+Dispositivo.MarcaDispositivo+"</MarcaDispositivo>" : "<MarcaDispositivo/>";
-            raw = Dispositivo.CodModeloDispositivo ? "<CodModeloDispositivo>"+Dispositivo.CodModeloDispositivo+"</CodModeloDispositivo>" : "<CodModeloDispositivo/>";
-            raw = Dispositivo.ModeloDispositivo ? "<ModeloDispositivo>"+Dispositivo.ModeloDispositivo+"</ModeloDispositivo>" : "<ModeloDispositivo/>";
-            raw = Dispositivo.Sn ? "<Sn>"+Dispositivo.Sn+"</Sn>" : "<Sn/>";
-            raw = Dispositivo.Imei ? "<Imei>"+Dispositivo.Imei+"</Imei>" : "<Imei/>";
-            raw = Dispositivo.NumeroCamaras ? "<NumeroCamaras>"+Dispositivo.NumeroCamaras+"</NumeroCamaras>" : "<NumeroCamaras/>";
-            raw = Dispositivo.DireccionMac ? "<DireccionMac>"+Dispositivo.DireccionMac+"</DireccionMac>" : "<DireccionMac/>";
-            raw = Dispositivo.Icc ? "<Icc>"+Dispositivo.Icc+"</Icc>" : "<Icc/>";
-            raw = Dispositivo.NumeroCelular ? "<NumeroCelular>"+Dispositivo.NumeroCelular+"</NumeroCelular>" : "<NumeroCelular/>";
-            raw = Dispositivo.Operadora ? "<Operadora>"+Dispositivo.Operadora+"</Operadora>" : "<Operadora/>";
-            raw = Dispositivo.EstadoSim ? "<EstadoSim>"+Dispositivo.EstadoSim+"</EstadoSim>" : "<EstadoSim/>";
-            raw = "<ServiciosInstalados><Servicio>";
-            raw = Dispositivo.ServiciosInstalados.CodServicio ? "<CodServicio>"+Dispositivo.ServiciosInstalados.CodServicio+"</CodServicio>" : "<CodServicio/>";
-            raw = Dispositivo.ServiciosInstalados.DescripcionServicio ? "<DescripcionServicio>"+Dispositivo.ServiciosInstalados.DescripcionServicio+"</DescripcionServicio>" : "<DescripcionServicio/>";
-            raw = Dispositivo.ServiciosInstalados.FechaInicioServicio ? "<FechaInicioServicio>"+Dispositivo.ServiciosInstalados.FechaInicioServicio+"</FechaInicioServicio>" : "<FechaInicioServicio/>";
-            raw = Dispositivo.ServiciosInstalados.FechaFinServicio ? "<FechaFinServicio>"+Dispositivo.ServiciosInstalados.FechaFinServicio+"</FechaFinServicio>" : "<FechaInicioServicio/>";
-            raw = Dispositivo.ServiciosInstalados.EstadoServicio ? "<EstadoServicio>"+Dispositivo.ServiciosInstalados.EstadoServicio+"</EstadoServicio>" : "<FechaInicioServicio/>";
-            raw = "</Servicio></ServiciosInstalados>";
-            raw = "</Dispositivo>";       
-         return  raw;                                     
-    }
-    function Propietario(Propietario){
-        var raw = "<Propietario>"+
-                        "<IdentificadorPropietario>"+Propietario.IdentificadorPropietario+"</IdentificadorPropietario>\r\n"+
-                        "<NombrePropietario>"+Propietario.NombrePropietario+"</NombrePropietario>\r\n"+
-                        "<ApellidosPropietario>"+Propietario.ApellidosPropietario+"</ApellidosPropietario>\r\n"+
-                        "<DireccionPropietario>"+Propietario.DireccionPropietario+"</DireccionPropietario>\r\n"+
-                        "<ConvencionalPropietario>"+Propietario.ConvencionalPropietario+"</ConvencionalPropietario>\r\n"+
-                        "<CelularPropietario>"+Propietario.CelularPropietario+"</CelularPropietario>\r\n"+
-                        "<EmailPropietario>"+Propietario.EmailPropietario+"</EmailPropietario>\r\n"+
-                    "</Propietario>";     
-         return  raw;                                     
-    }
-    function Monitor(Monitor){
-        var raw = "<Monitor>\r\n"+
-                        "<IdentificadorMonitorea>"+Monitor.IdentificadorMonitorea+"</IdentificadorMonitorea>\r\n"+
-                        "<NombreMonitorea>"+Monitor.NombreMonitorea+"</NombreMonitorea>\r\n"+
-                        "<ApellidosMonitorea>"+Monitor.ApellidosMonitorea+"</ApellidosMonitorea>\r\n"+
-                        "<DireccionMonitorea>"+Monitor.DireccionMonitorea+"</DireccionMonitorea>\r\n"+
-                        "<ConvencionalMonitorea>"+Monitor.ConvencionalMonitorea+"</ConvencionalMonitorea>\r\n"+
-                        "<CelularMonitorea>"+Monitor.CelularMonitorea+"</CelularMonitorea>\r\n"+
-                        "<EmailMonitorea>"+Monitor.EmailMonitorea+"</EmailMonitorea>\r\n"+
-                    "</Monitor>";   
-         return  raw;                                     
-    }
-    function Concesionario(Concesionario){
-        var raw = "<Concesionario>\r\n"+
-                        "<IdentificadorConcesionario>"+Concesionario.IdentificadorConcesionario+"</IdentificadorConcesionario>\r\n"+
-                        "<RazonSocialConcesionario>"+Concesionario.RazonSocialConcesionario+"</RazonSocialConcesionario>\r\n"+
-                        "<DireccionConcesionario>"+Concesionario.DireccionConcesionario+"</DireccionConcesionario>\r\n"+
-                        "<ConvencionalConcesionario>"+Concesionario.ConvencionalConcesionario+"</ConvencionalConcesionario>\r\n"+
-                        "<CelularConcesionario>"+Concesionario.CelularConcesionario+"</CelularConcesionario>\r\n"+
-                        "<EmailConcesionario/>\r\n"+
-                    "</Concesionario>"; 
-         return  raw;                                     
-    }
-    function Convenio(Convenio){
-        var raw =  "<Convenio>\r\n"+
-                        "<IdentificadorConvenio>"+Convenio.IdentificadorConvenio+"</IdentificadorConvenio>\r\n"+
-                        "<RazonSocialConvenio>"+Convenio.RazonSocialConvenio+"</RazonSocialConvenio>\r\n"+
-                        "<DireccionConvenio>"+Convenio.DireccionConvenio+"</DireccionConvenio>\r\n"+
-                        "<ConvencionalConvenio>"+Convenio.ConvencionalConvenio+"</ConvencionalConvenio>\r\n"+
-                        "<CelularConvenio>"+Convenio.CelularConvenio+"</CelularConvenio>\r\n"+
-                        "<EmailConvenio></EmailConvenio>\r\n"+
-                    "</Convenio>";
-         return  raw;                                     
-    }
+
    return {
      post : _post
    }

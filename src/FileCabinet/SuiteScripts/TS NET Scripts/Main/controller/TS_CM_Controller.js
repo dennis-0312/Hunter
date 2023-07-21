@@ -22,12 +22,15 @@ define([
         const PXB_ITEM_SOLICITA_CLIENTE_NUEVO = 72;
         const CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5;
         const GOT_GENERA_SOLICITUD_DE_TRABAJO = 34;
+        const VOT_VARIAS_ORDENES_DE_TRABAJO = 90;
         const PCD_PIDE_CODIGO_DE_ORIGEN = 53;
         const PIM_PEDIR_INFORMACION_MEDICA = 60;
         const CPI_CONTROL_DE_PRODUCTOS_INSTALADOS = 25;
         const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
         const VALOR_001_INST_DISPOSITIVO = 43;
         const VALOR_010_CAMBIO_DE_PROPIETARIO = 10;
+        const GPG_GENERA_PARAMETRIZACION_EN_GEOSYS = 36;
+        const GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS = 38;
         //! FUNCTIONS ====================================================================================================================================================
         const createServiceOrder = (requestHeader, requestDetail) => {
             let objRecord = record.create({ type: record.Type.SALES_ORDER, isDynamic: true });
@@ -104,10 +107,14 @@ define([
             let response = { status: true, mensaje: '' };
             let currentRecord = id;
             switch (parseInt(parametro)) {
-                case CPT_CONFIGURA_PLATAFORMA_TELEMATIC:
+                case GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
                     switch (parseInt(type)) {
                         case VALOR_001_INST_DISPOSITIVO:
-                            response = _platformController.envioPXAdminInstall(id);
+                            let Dispositivo = _platformController.Dispositivo(id);
+                            let vehiculo = _platformController.vehiculo(id);
+                            let Propietario = _platformController.Propietario(id);
+                            let PropietarioMonitero = _platformController.PropietarioMonitoreo(id);
+                            response = _platformController.envioPXAdminInstall(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
                             break;
                         case VALOR_010_CAMBIO_DE_PROPIETARIO:
                             response = _platformController.envioCambioPropietario(id);
@@ -116,27 +123,97 @@ define([
                             log.debug('accionEstadoOT');
                     }
                     break;
+                case GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS:
+                    switch (parseInt(type)) {
+                        case VALOR_001_INST_DISPOSITIVO:
+                            let Dispositivo = _platformController.Dispositivo(id);
+                            let vehiculo = _platformController.vehiculo(id);
+                            let Propietario = _platformController.Propietario(id);
+                            let PropietarioMonitero = _platformController.PropietarioMonitoreo(id);
+                            response = _platformController.envioPXAdminInstallTelec(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
+                            break;
+                        case VALOR_010_CAMBIO_DE_PROPIETARIO:
+                            response = _platformController.envioCambioPropietario(id);
+                            break;
+                        default:
+                            let cliente = record.load({ type: 'customer', id: id, isDynamic: true });
+                            var numLines = cliente.getLineCount({ sublistId: 'recmachcustrecord_ht_ce_enlace' });
+                            response.status = false;
+                            response.mensaje = 'El cliente no cuenta con un correo tipo AMI .'
+                            for (let index = 0; index < numLines; index++) {
+                                let roles = cliente.getSublistValue({ sublistId: 'recmachcustrecord_ht_ce_enlace', fieldId: 'custrecord_ht_email_tipoemail', line: index });
+                                if (roles == 2) {
+                                    response.status = true;
+                                    response.mensaje = ''
+                                }
+                            }
+                    }
+                    break;
+                case VOT_VARIAS_ORDENES_DE_TRABAJO:
                 case GOT_GENERA_SOLICITUD_DE_TRABAJO:
+                    log.debug(' id.item', id.item);
                     if (id.serviceOrder) {
-                        let objRecord = record.create({ type: HT_ORDEN_TRABAJO_RECORD });
-                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_servicio', value: id.serviceOrder });
-                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_cliente_id', value: id.customer });
-                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_vehiculo', value: id.vehiculo });
-                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_item', value: id.item });
-                        //objRecord.setValue({ fieldId: 'custrecord_ht_ot_descripcionitem', value: id.displayname });
-                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: ESTADO_VENTAS });
-                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
-                        response = objRecord.save();
+
+                        var customrecord_ht_pp_main_item_relacionadoSearchObj = search.create({
+                            type: "customrecord_ht_pp_main_item_relacionado",
+                            filters:
+                                [
+                                    ["custrecord_ht_pp_parametrizacionir", "anyof", id.item]
+                                ],
+                            columns:
+                                [
+                                    search.createColumn({ name: "custrecord_ht_pp_descripcionit", label: "Descripción" })
+                                ]
+                        });
+
+                        var searchResultCount = customrecord_ht_pp_main_item_relacionadoSearchObj.run().getRange(0, 1000);
+                        log.debug("customrecord_ht_pp_main_item_relacionadoSearchObj result count", searchResultCount);
+                        let relatedItemsArr = [];
+
+                        if (searchResultCount.length != 0) {
+                            for (let index = 0; index < searchResultCount.length; index++) {
+                                relatedItemsArr.push(searchResultCount[index].getValue({ name: 'custrecord_ht_pp_descripcionit' }));
+                            }
+                        }
+                        log.debug('Crea ordenes de trabajo')
+                        if (relatedItemsArr.length != 0) {
+                            for (let index = 0; index < relatedItemsArr.length; index++) {
+                                let currentItem = relatedItemsArr[index];
+                                log.debug('i', i);
+                                let objRecord = record.create({ type: HT_ORDEN_TRABAJO_RECORD });
+                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_servicio', value: id.serviceOrder });
+                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_cliente_id', value: id.customer });
+                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_vehiculo', value: id.vehiculo });
+                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_itemrelacionado', value: currentItem });
+                                log.debug('id.item', id.item);
+                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_item', value: id.item });
+                                //objRecord.setValue({ fieldId: 'custrecord_ht_ot_descripcionitem', value: id.displayname });
+                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: ESTADO_VENTAS });
+                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
+
+                                log.debug('record.getsublistvalue', record.getsublistvalue);
+                                response = objRecord.save();
+                            }
+                        } else {
+                            let objRecord = record.create({ type: HT_ORDEN_TRABAJO_RECORD });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_servicio', value: id.serviceOrder });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_cliente_id', value: id.customer });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_vehiculo', value: id.vehiculo });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_item', value: id.item });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_itemrelacionado', value: id.item });
+                            //objRecord.setValue({ fieldId: 'custrecord_ht_ot_descripcionitem', value: id.displayname });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: ESTADO_VENTAS });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
+                            response = objRecord.save();
+                        }
                     }
                     break;
                 case PXB_ITEM_SOLICITA_CLIENTE_NUEVO:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente' });
-                    currentRecord.setValue('custbody_es_cambio_de_propietario', true);
                     if (!item_cliente) {
                         response.status = false;
-                        response.mensaje = 'Debe Ingresar un Nuevo Propietario.'
-                        //response.mensaje = 'Debe Ingresar un Nuevo Propietario para el item: ' + item + '.'
+                        response.mensaje = 'No existe un Cliente para el item ' + item + '.'
                     }
                     break;
                 case SCK_SOLICITA_CLIENTE_MONITOREO:
@@ -155,7 +232,7 @@ define([
                         response.mensaje = 'No existe un Codigo de Origen en el item ' + item + '.'
                     }
                     break;
-                case CPI_CONTROL_DE_PRODUCTOS_INSTALADOS: //cpi control de productos instalados
+                case CPI_CONTROL_DE_PRODUCTOS_INSTALADOS://cpi control de productos instalados
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
                     let tipoItem;
                     let parametrosRespoitem = _platformController.parametrizacion(item);
@@ -167,20 +244,22 @@ define([
                         }
                     }
                     if (type != null) {
+                        var cont = 0;
                         for (let i = 0; i < type.length; i++) {
                             if (type[i] != '') {
                                 let parametrosRespo = _platformController.parametrizacion(type[i]);
-                                //response = parametrosRespo;
                                 if (parametrosRespo.length != 0) {
                                     for (let j = 0; j < parametrosRespo.length; j++) {
-                                        if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] != tipoItem) {
-                                            response.status = false;
-                                            response.mensaje = 'No existe Item instalado con esta parametrizacion del ' + item + '.'
-                                            break;
+                                        if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] == tipoItem) {
+                                            cont += 1;
                                         }
                                     }
                                 }
                             }
+                        }
+                        if (cont == 0) {
+                            response.status = false;
+                            response.mensaje = 'No existe Item instalado con esta parametrizacion del ITEM ' + item + '.'
                         }
                     }
                     if (type == '') {
@@ -417,11 +496,11 @@ define([
                 pageSize: 1000
             });
 
-            pageData.pageRanges.forEach(function (pageRange) {
+            pageData.pageRanges.forEach(pageRange => {
                 page = pageData.fetch({
                     index: pageRange.index
                 });
-                page.data.forEach(function (result) {
+                page.data.forEach(result => {
                     var columns = result.columns;
                     var parametrizacion = new Array();
                     result.getValue(columns[0]) != null ? parametrizacion[0] = result.getValue(columns[0]) : parametrizacion[0] = '';
@@ -450,7 +529,7 @@ define([
     });
 /*
 & SCRIPT SE APLICA EN:
-^getServiceOrder ===========================================================================================================================================================
+^getServiceOrder ====================================================================================================================================================
 ^ TS_RS_API_Transactions
 ^getAccountPaymentMethod ====================================================================================================================================================
 ^ TS_RS_API_Transactions

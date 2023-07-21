@@ -7,18 +7,39 @@
     function execute(context) {
         try {
             var idCustomer = getCustomer();
-            log.debug('idCustomer',idCustomer[i]);
+            //log.debug('idCustomer',idCustomer[i]);
             log.debug('idCustomer',idCustomer.length);
+            
              for (let i = 0; i < idCustomer.length; i++) {
-                let objRecord = record.load({ type: record.Type.CUSTOMER, id: idCustomer[i], isDynamic: true });
+                log.debug('idCustomer ['+i+ ']',idCustomer[i]);
+                var lookupFields_customer = search.lookupFields({
+                    type: record.Type.CUSTOMER,
+                    id: idCustomer[i],
+                    columns: ['custentity_ht_cl_zonaventa']
+                });
+                var customer_territorio = lookupFields_customer.custentity_ht_cl_zonaventa;
+                if(customer_territorio != '') {
+                    customer_territorio = customer_territorio[0].value
+                };
+                log.debug('customer_territorio',customer_territorio);
+                /* let objRecord = record.load({ type: record.Type.CUSTOMER, id: idCustomer[i], isDynamic: true });
                 var territorio = objRecord.getValue('custentity_ht_cl_zonaventa');
-                if(territorio){
-                    log.debug('territorio',territorio);
-                    var idRepresentante = getRepresentante(territorio);
+                log.debug('territorio',territorio); */
+                if(customer_territorio != ''){
+                    //log.debug('territorio',territorio);
+                    var idRepresentante = getRepresentante(customer_territorio);
                     if (idRepresentante){
                     log.debug('idRepresentante',idRepresentante);
-                     var territorio = objRecord.setValue('salesrep',idRepresentante);
-                    objRecord.save(); 
+                    record.submitFields({
+                        type: record.Type.CUSTOMER,
+                        id: idCustomer[i][0],
+                        values: {
+                            'salesrep': idRepresentante
+                        },
+                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                    });
+                   /*   var territorio = objRecord.setValue('salesrep',idRepresentante);
+                    objRecord.save();  */
                     }
                  }
             } 
@@ -39,7 +60,8 @@
                 type: "customer",
                 filters:
                 [
-                ],
+                    ["isperson","is","T"]
+                 ],
                 columns:
                 [
                    search.createColumn({name: "internalid", label: "Internal ID"})

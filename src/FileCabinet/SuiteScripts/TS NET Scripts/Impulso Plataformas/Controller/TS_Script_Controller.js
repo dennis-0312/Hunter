@@ -18,6 +18,9 @@ define(['N/log',
     const PIM_PEDIR_INFORMACION_MEDICA = 60;
     const CPI_CONTROL_DE_PRODUCTOS_INSTALADOS = 25;
     const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
+    const GPG_GENERA_PARAMETRIZACION_EN_GEOSYS = 36;
+    const GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS = 38;
+
 
     return ({
         getCobertura: (id) => {
@@ -88,16 +91,50 @@ define(['N/log',
             let response = { status: true, mensaje: '' };
             let currentRecord = id;
             switch (parseInt(parametro)) {
-                case CPT_CONFIGURA_PLATAFORMA_TELEMATIC:
+                case GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
                     switch (parseInt(type)) {
                         case 43:
-                            response = _Controller.envioPXAdminInstall(id);
+                            let Dispositivo =  _Controller.Dispositivo(id);
+                            let vehiculo =  _Controller.vehiculo(id);
+                            let Propietario =  _Controller.Propietario(id);
+                            let PropietarioMonitero =  _Controller.PropietarioMonitoreo(id);
+                          
+                            response =  _Controller.envioPXAdminInstall(Dispositivo,vehiculo,Propietario,PropietarioMonitero,id);
+                            break;
+                        case 10:
+
+                            response = _Controller.envioCambioPropietario(id);
+                            break;
+                            /* _Controller.envioCambioPropietario(id);; */
+                            break;
+                        default:
+                            log.debug('accionEstadoOT');
+                    }
+                    break;
+                case GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS:
+                    switch (parseInt(type)) {
+                        case 43:
+                            let Dispositivo = _Controller.Dispositivo(id);
+                            let vehiculo = _Controller.vehiculo(id);
+                            let Propietario = _Controller.Propietario(id);
+                            let PropietarioMonitero = _Controller.PropietarioMonitoreo(id);
+                            response = _Controller.envioPXAdminInstallTelec(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
                             break;
                         case 10:
                             response = _Controller.envioCambioPropietario(id);
                             break;
                         default:
-                            log.debug('accionEstadoOT');
+                            let cliente = record.load({ type: 'customer', id: id, isDynamic: true });
+                            var numLines = cliente.getLineCount({ sublistId: 'recmachcustrecord_ht_ce_enlace' });
+                            response.status = false;
+                            response.mensaje = 'El cliente no cuenta con un correo tipo AMI .'
+                            for (let index = 0; index < numLines; index++) {
+                                let roles = cliente.getSublistValue({ sublistId: 'recmachcustrecord_ht_ce_enlace', fieldId: 'custrecord_ht_email_tipoemail', line: index });
+                                if (roles == 2) {
+                                    response.status = true;
+                                    response.mensaje = ''
+                                }
+                            }
                     }
                     break;
                 case GOT_GENERA_SOLICITUD_DE_TRABAJO:
@@ -116,11 +153,9 @@ define(['N/log',
                 case PXB_ITEM_SOLICITA_CLIENTE_NUEVO:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente' });
-                    currentRecord.setValue('custbody_es_cambio_de_propietario', true);
                     if (!item_cliente) {
                         response.status = false;
-                        response.mensaje = 'Debe Ingresar un Nuevo Propietario.'
-                        //response.mensaje = 'Debe Ingresar un Nuevo Propietario para el item: ' + item + '.'
+                        response.mensaje = 'No existe un Cliente para el item ' + item + '.'
                     }
                     break;
                 case SCK_SOLICITA_CLIENTE_MONITOREO:
@@ -153,20 +188,22 @@ define(['N/log',
                         }
                     }
                     if (type != null) {
+                        var cont = 0;
                         for (let i = 0; i < type.length; i++) {
                             if (type[i] != '') {
                                 let parametrosRespo = _Controller.parametrizacion(type[i]);
-                                //response = parametrosRespo;
                                 if (parametrosRespo.length != 0) {
                                     for (let j = 0; j < parametrosRespo.length; j++) {
-                                        if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] != tipoItem) {
-                                            response.status = false;
-                                            response.mensaje = 'No existe Item instalado con esta parametrizacion del ' + item + '.'
-                                            break;
+                                        if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] == tipoItem) {
+                                            cont += 1;
                                         }
                                     }
                                 }
                             }
+                        }
+                        if (cont == 0) {
+                            response.status = false;
+                            response.mensaje = 'No existe Item instalado con esta parametrizacion del ITEM ' + item + '.'
                         }
                     }
                     if (type == '') {

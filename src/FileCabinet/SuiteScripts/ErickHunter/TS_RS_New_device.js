@@ -7,6 +7,7 @@
 
 
     function _post(context) {
+        log.error("context", context.device);
         let headers1 = [];
       	headers1['Accept'] = '*/*';
         headers1['Content-Type'] = 'application/json';

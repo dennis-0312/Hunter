@@ -534,6 +534,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                         break;
                     case ACTUALIZAR:
                         if (typeof scriptContext.idordentrabajo != 'undefined') {
+                            log.debug('Acción', 'Chequeo');
                             let guardar = 0;
                             let action = '';
                             let openRecord = record.load({ type: HT_ORDEN_TRABAJO_RECORD, id: scriptContext.idordentrabajo, isDynamic: true });
@@ -544,6 +545,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                             }
                             if (typeof scriptContext.estadoot != 'undefined') {
                                 openRecord.setValue({ fieldId: "custrecord_ht_ot_estado", value: scriptContext.estadoot });
+                                log.debug('Acción', 'Status: ' + scriptContext.estadoot);
                                 guardar = 1;
                                 action = 'Cambio de estado';
                             }
@@ -562,11 +564,13 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                             openRecord.setValue({ fieldId: "custrecord_ht_ot_ubicacion", value: scriptContext.ubicacion });
 
                             if (guardar == 1) {
-                                openRecord.save();
+                                let os = openRecord.save();
+                                log.debug('Acción', 'Chequeo: ' + os);
                                 respuesta = 'Actualización: ' + action;
                             }
                             //openRecord.setValue({ fieldId: "custrecord_lh_detalle_cppto_" + month, value: montoEjecutado });
                         } else {
+                            log.debug('Acción', 'nternalid Orden de Trabajo no definida');
                             respuesta = 'internalid Orden de Trabajo no definida';
                         }
                         break;

@@ -2,14 +2,7 @@
  * @NApiVersion 2.1
  * @NScriptType ClientScript
  */
-define(['N/url',
-    'N/record',
-    'N/currentRecord',
-    'N/transaction',
-    'N/https',
-    'N/search',
-    '../../Impulso Plataformas/Controller/TS_Script_Controller'
-],
+define(['N/url', 'N/record', 'N/currentRecord', 'N/transaction', 'N/https', 'N/search', '../../Impulso Plataformas/Controller/TS_Script_Controller'],
     (url, record, currentRecord, transaction, https, search, _Controller) => {
         var ENVIO_PLATAFORMAS = '36';
         var TIPO_TRANSACCION = '2';
@@ -20,6 +13,9 @@ define(['N/url',
         }
 
         const aprobarVenta = (idRecord, htClient, bien, fechaInicial, monitoreo) => {
+            //const aprobarVenta = (objRecord) => {
+            //try {
+            //console.log('objRecord',objRecord);
             var f = new Date();
             let parametro = 0;
             let parametrocambpropcobertura = 0;
@@ -44,7 +40,11 @@ define(['N/url',
             let returEjerepo = false;
 
             for (let i = 0; i < numLines; i++) {
-                objRecord_salesorder.selectLine({ sublistId: 'item', line: i });
+                objRecord_salesorder.selectLine({
+                    sublistId: 'item',
+                    line: i
+                });
+
                 let items = objRecord_salesorder.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
                 parametrosRespo = _Controller.parametrizacion(items);
                 console.log(parametrosRespo);
@@ -72,7 +72,12 @@ define(['N/url',
                     values: { 'custbody_ht_os_aprobacionventa': 1 },
                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                 });
-                transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
+
+                transaction.void({
+                    type: transaction.Type.SALES_ORDER, //disable Void Transactions Using Reversing Journals in Account Pref
+                    id: idRecord
+                });
+
                 location.reload();
             } else {
                 if (parametro != 0) {
@@ -80,6 +85,8 @@ define(['N/url',
                     for (let j = 0; j < parametrosRespo.length; j++) {
                         if (parametrosRespo[j][0] == ENVIO_PLATAFORMAS && parametro == '9') {
                             returEjerepo = _Controller.parametros(ENVIO_PLATAFORMAS, idRecord, parametro);
+
+
                         }
                     }
                     console.log('returEjerepo', returEjerepo);
@@ -103,6 +110,7 @@ define(['N/url',
                                         if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
                                             idCoberturaItem = busqueda_cobertura[i][1];
                                         }
+
                                     }
                                 }
                             }
@@ -138,32 +146,148 @@ define(['N/url',
                             type: transaction.Type.SALES_ORDER, //disable Void Transactions Using Reversing Journals in Account Pref
                             id: idRecord
                         });
+
                     }
                     location.reload();
                 }
             }
+
+
+            //if (htClient != '' && bien != '') {
+
+            /*  
+              }*/
+
+
+            /* } else if (cobertura != '' && bien != '' && fechaInicial != '') {
+
+                 let vehiculo = search.lookupFields({
+                     type: 'customrecord_ht_record_bienes',
+                     id: bien,
+                     columns: ['custrecord_ht_bien_placa', 'custrecord_ht_bien_marca', 'custrecord_ht_bien_modelo', 'custrecord_ht_bien_chasis', 'custrecord_ht_bien_motor', 'custrecord_ht_bien_colorcarseg', 'custrecord_ht_bien_tipoterrestre', 'name', 'custrecord_ht_bien_ano', 'custrecord_ht_bien_id_telematic']
+                 });
+                 var idTelematic = vehiculo.custrecord_ht_bien_id_telematic;
+                 var idDispositivo = getDispositivo(bien);
+                 console.log('idDispositivo', idDispositivo);
+                 var PXAdminPrueba = new Array();
+                 for (let i = 0; i < idDispositivo.length; i++) {
+                     let Dispositivo = search.lookupFields({
+                         type: 'customrecord_ht_record_mantchaser',
+                         id: idDispositivo[i],
+                         columns: ['custrecord_ht_mc_vid', 'custrecord_ht_mc_modelo', 'custrecord_ht_mc_unidad', 'custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_nocelularsim', 'custrecord_ht_mc_operadora', 'custrecord_ht_mc_estado', 'custrecord_ht_mc_imei']
+                     });
+                     let unidad = Dispositivo.custrecord_ht_mc_modelo[0].text.split(' - ');
+                     let modelo = Dispositivo.custrecord_ht_mc_unidad[0].text.split(' - ');
+                     let PxAdmin = {
+                         StrToken: fechaActual,
+                         UserName: "PxPrTest",
+                         Password: "PX12%09#w",
+                         NumeroOrden: "1101895503",
+                         UsuarioIngreso: "PRUEBAEVOL",
+                         OperacionOrden: "005",
+
+                         CodigoVehiculo: vehiculo.name,
+
+                         Vid: Dispositivo.custrecord_ht_mc_vid,
+
+                         CodMarcaDispositivo: unidad[0],
+                         MarcaDispositivo: unidad[1],
+                         CodModeloDispositivo: modelo[0],
+                         ModeloDispositivo: modelo[1],
+                         Sn: "4635224500",
+                         Imei: Dispositivo.custrecord_ht_mc_imei,
+                         NumeroCamaras: "0",
+                         DireccionMac: "20:21:03:11:19",
+                         Icc: "2021031119",
+                         NumeroCelular: Dispositivo.custrecord_ht_mc_nocelularsim,
+                         Operadora: Dispositivo.custrecord_ht_mc_nocelularsim[0].text,
+                         EstadoSim: Dispositivo.custrecord_ht_mc_estado[0].text,
+                         OperacionDispositivo: "A",
+                         ServiciosInstalados: ""
+
+                     }
+                     var arrPxAdmin = new Array();
+                     arrPxAdmin = envioPXAdmin(PxAdmin);
+                     PXAdminPrueba.push(arrPxAdmin);
+                 }
+                 let total = 0;
+                 for (let i of PXAdminPrueba) total += i;
+                 console.log('total', total);
+                 let telemat = {
+                     id: idTelematic,
+                     state: 1,
+                     product_expire_date: fechaFinalTelematic,
+                     aceptation_date: fechaInicialTelematic
+                 }
+                 let Telematic = envioTelematicCambioFecha(telemat);
+                 Telematic = JSON.parse(Telematic);
+                 console.log('Telematic', Telematic.asset);
+
+
+                 if (total == idDispositivo.length && Telematic.asset) {
+                     alert('Entro en envio a PXAdmin');
+                     record.submitFields({
+                         type: 'salesorder',
+                         id: idRecord,
+                         values: { 'custbody_ht_os_aprobacionventa': 1 },
+                         options: { enableSourcing: false, ignoreMandatoryFields: true }
+                     });
+                     transaction.void({
+                         type: 'salesorder',
+                         id: idRecord
+                     });
+                     console.log('entrax2');
+                     if (fechaInicial != '' && fechaFinal != '') {
+                         record.submitFields({
+                             type: 'customrecord_ht_co_cobertura',
+                             id: cobertura,
+                             values: {
+                                 'custrecord_ht_co_coberturainicial': fechaInicial,
+                                 'custrecord_ht_co_coberturafinal': fechaFinal
+                             },
+                             options: { enableSourcing: false, ignoreMandatoryFields: true }
+                         });
+                     }
+
+                     location.reload();
+                 } else {
+                     if (PXAdminPrueba != 1) {
+                         alert('Error en envio a PXAdmin');
+                     } else {
+                         alert(Telematic.asset);
+                     }
+                 }
+
+
+             } */
+
+            /*  } catch (err) {
+                  console.log("Error", "[ aprobarVenta ] " + err);
+                  alert('Revisar la conexión de pxAdmin o Telematic');
+              }*/
         }
 
         function padTo2Digits(num) {
             return num.toString().padStart(2, '0');
         }
-
         function formatDateJson(date) {
             return [
+
                 date.getFullYear(),
                 padTo2Digits(date.getMonth() + 1),
                 padTo2Digits(date.getDate())
+
             ].join('');
         }
-
         function formatDateJson(date) {
             return [
+
                 date.getFullYear(),
                 padTo2Digits(date.getMonth() + 1),
                 padTo2Digits(date.getDate())
+
             ].join('');
         }
-
         function getDispositivo(bien) {
             try {
                 var arrDispositivoId = new Array();
@@ -202,7 +326,6 @@ define(['N/url',
                 log.error('Error en getCustomer', e);
             }
         }
-
         const envioPXAdmin = (json) => {
             let myRestletHeaders = new Array();
             myRestletHeaders['Accept'] = '*/*';
@@ -223,7 +346,6 @@ define(['N/url',
             let response = myRestletResponse.body;
             return response;
         }
-
         function getCobertura(id) {
             try {
                 var arrInternalid = []
@@ -252,7 +374,6 @@ define(['N/url',
                 log.error('Error en getCustomer', e);
             }
         }
-
         const envioTelematicCambioFecha = (json) => {
             let myRestletHeaders = new Array();
             myRestletHeaders['Accept'] = '*/*';
@@ -272,7 +393,6 @@ define(['N/url',
             let response = myRestletResponse.body;
             return response;
         }
-
         const envioTelematicCambioPropietario = (json) => {
             let myRestletHeaders = new Array();
             myRestletHeaders['Accept'] = '*/*';
@@ -292,11 +412,11 @@ define(['N/url',
             let response = myRestletResponse.body;
             return response;
         }
-
         return {
             pageInit: pageInit,
             aprobarVenta: aprobarVenta
         };
+
     });
 /********************************************************************************************************************************************************
 TRACKING

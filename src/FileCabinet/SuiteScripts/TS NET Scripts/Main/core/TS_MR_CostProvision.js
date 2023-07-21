@@ -12,30 +12,39 @@ Governance points: N/A
 /**
  *@NApiVersion 2.1
  *@NScriptType MapReduceScript
+ *@NModuleScope Public
  */
 define(['N/log',
     'N/search',
     'N/record',
     'N/task',
     'N/runtime',
-    'N/query',
-    '../controller/TS_CM_Controller',
-], (log, search, record, task, runtime, query, _controller) => {
-
-    const getInputData = () => {
+    'N/query'
+], (log, search, record, task, runtime, query) => {
+   
+    function getInputData () {
         try {
-            const json = _controller.getProvisionDetail();
-            if (json == 0)
-                json = new Array();
-            return json;
+            //var myArray = context.parameters.custscript_my_map_reduce_array;
+            var objContext = runtime.getCurrentScript();
+            var itemID = objContext.getParameter({
+                name: 'custscript_my_map_reduce_array'
+              });
+              var arrTempID = JSON.parse(itemID);
+              log.debug('arrTempID',arrTempID);
+            return arrTempID;
         } catch (error) {
             log.error('Error-getInputData', error);
         }
     }
 
-    const map = (context) => {
+    function map(context) {
         try {
-            context.write({ key: context.key, value: context.value });
+            var key = context.key;
+            var value = context.value;
+            log.debug('value',value);
+            let idInventoryNumber = getInventoryNumber(value);
+            /* var myArray = context.parameters.custscript_my_map_reduce_array;
+            log.debug('myArray',myArray); */
         } catch (error) {
             log.error('Error-map', error);
         }
@@ -43,7 +52,7 @@ define(['N/log',
 
     const reduce = (context) => {
         try {
-            context.write({ key: context.key, value: context.values });
+        
         } catch (error) {
             log.error('Error-reduce', error);
         }
@@ -52,22 +61,43 @@ define(['N/log',
     const summarize = (context) => {
         let records = '';
         try {
-            context.output.iterator().each((key, value) => {
-                records = JSON.parse(JSON.parse(value));
-                let provision = _controller.createProvisionDetail(records[0], records[1], records[2], records[3]);
-                log.debug('Record', 'provision: ' + provision + ' - journal: ' + records[0] + ' - serviceOrder: ' + records[1] + ' - item: ' + records[2] + ' - cost: ' + records[3] + ' - inventory: ' + records[4] + ' - income: ' + records[5] + ' - amountProvided: ' + records[6]);
-                return true;
-            });
+            
+            
         } catch (error) {
             log.error('Error-summarize', error);
         }
     }
-
+    function getInventoryNumber(inventorynumber) {
+        try {
+            var busqueda = search.create({
+                type: "inventorynumber",
+                filters:
+                    [
+                        ["inventorynumber", "is", inventorynumber]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "internalid", label: "Internal ID" })
+                    ]
+            });
+            var savedsearch = busqueda.run().getRange(0, 1);
+            var idInventoryNumber = '';
+            if (savedsearch.length > 0) {
+                busqueda.run().each(function (result) {
+                    idInventoryNumber = result.getValue(busqueda.columns[0]);
+                    return true;
+                });
+            }
+            return idInventoryNumber;
+        } catch (e) {
+            log.error('Error en getInventoryNumber', e);
+        }
+    }
     return {
         getInputData: getInputData,
         map: map,
-        reduce: reduce,
-        summarize: summarize
+        //reduce: reduce,
+        //summarize: summarize
     }
 });
 /*********************************************************************************************************************************************

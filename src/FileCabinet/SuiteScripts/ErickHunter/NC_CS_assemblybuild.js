@@ -6,25 +6,21 @@
 
 
 
-
-	function validateField(context) {
-        var currentRecord = context.Record;
-       
-        var fieldId = context.fieldId;
-        if(fieldId=="custbody_ht_modal_estado"){
-            let invDetailRec = currentRecord.getValue({ fieldId: 'inventorydetail'});
-            var numLines = currentRecord.getLineCount({sublistId: 'component'});
-            console.log(invDetailRec);
-           
-        }
-       
+    const pageInit = (scriptContext) => {
+      var currentRecord = scriptContext.currentRecord;
+      
+       currentRecord.setValue('quantity',1);
+      
+      
     }
+	
 
     
 
     return {
 
-       validateField: validateField,
-      
+       
+       pageInit : pageInit,
     }
 });
+

@@ -42,6 +42,7 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
                 log.debug('busqueda_cobertura',busqueda_cobertura);
                 if (busqueda_cobertura.length != 0) {
                     for (let i = 0; i < busqueda_cobertura.length; i++) {
+
                         let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
                         if (parametrosRespo.length != 0) {
                             var accion_producto_2 = 0;
@@ -55,6 +56,7 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
                                 if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
                                     idCoberturaItem = busqueda_cobertura[i][1];
                                 } 
+
                             }
                         }
                     }
@@ -148,6 +150,10 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
             afterSubmit: afterSubmit
         }
     });
+
+
+
+
 /*********************************************************************************************************************************************
 TRACKING
 /*********************************************************************************************************************************************

@@ -438,13 +438,13 @@ define([
                     sublist.addField({ id: 'sublist_field_units', type: serverWidget.FieldType.TEXT, label: 'UNITS' });
                     sublist.addField({ id: 'sublist_field_inventory', type: serverWidget.FieldType.TEXT, label: 'INVENTORY DETAIL' });
 
-
+                    log.error("item", item);
                     if (item) {
                         var bomrevisionSearchObj = search.create({
                             type: "bomrevision",
                             filters:
                                 [
-                                    ["billofmaterials", "anyof", item]
+                                    ["billofmaterials", "anyof", `${item}`]
                                 ],
                             columns:
                                 [
@@ -460,13 +460,13 @@ define([
                         var pageData = bomrevisionSearchObj.runPaged({
                             pageSize: 1000
                         });
-
+                        log.error("pageData.count", pageData.count);
                         if (pageData.count != 0) {
+                            let count = 0
                             pageData.pageRanges.forEach(function (pageRange) {
                                 page = pageData.fetch({
                                     index: pageRange.index
                                 });
-                                let count = 0
                                 page.data.forEach(function (result) {
                                     var columns = result.columns;
                                     sublist.setSublistValue({ id: 'sublist_field_id', line: count, value: 1 });

@@ -50,6 +50,7 @@ define(['N/log', 'N/record', 'N/search'], (log, record, search) => {
                     newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: 23 });
                     newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1 });
                     newDetail.commitLine({ sublistId: 'inventoryassignment' });
+
                     newAdjust.commitLine({ sublistId: 'inventory' });
 
                     let newRecord = newAdjust.save();

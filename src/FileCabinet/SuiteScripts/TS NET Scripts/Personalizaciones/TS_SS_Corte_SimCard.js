@@ -19,28 +19,33 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
 
             var idSalesOrder = getSalesOrder(mesCierre);
             for (let i = 0; i < idSalesOrder.length; i++) {
-                if (idSalesOrder != "" && idSalesOrder != null) {
-                    //log.debug('idSalesOrder'+'['+i+']',idSalesOrder[i]);
+                if (idSalesOrder[i] != "" && idSalesOrder[i] != null && idSalesOrder[i] != 'undefined') {
+                    log.debug('idSalesOrder'+'['+i+']',idSalesOrder[i]);
                     var idDispositivo = getOrdenTrabajo(idSalesOrder[i]);
-                    //log.debug('idDispositivo:' +'['+i+']',idDispositivo)
-                    if (idDispositivo != "" && idDispositivo != null) {
+                    log.debug('idDispositivo:' +'['+i+']',idDispositivo);
+                    if (idDispositivo != "" && idDispositivo != null && idDispositivo != 'undefined') {
                         var mant_dispositivo = search.lookupFields({
                             type: 'customrecord_ht_record_mantchaser',
                             id: idDispositivo,
-                            columns: ['custrecord_ht_mc_vehiculo', 'custrecord_ht_mc_vid','custrecord_ht_mc_id_telematic']
+                            columns: ['custrecord_ht_mc_vehiculo', 'custrecord_ht_mc_vid', 'custrecord_ht_mc_id_telematic']
                         });
-                        var idVehiculo = (mant_dispositivo.custrecord_ht_mc_vehiculo)[0].value;
+                        var idVehiculo = (mant_dispositivo.custrecord_ht_mc_vehiculo)[0];
+                        log.debug('idVehiculo:' +'['+i+']',idVehiculo);
+                        if(idVehiculo){
+                            idVehiculo = idVehiculo.value
+                        }
                         var idVid = mant_dispositivo.custrecord_ht_mc_vid;
                         var idTelematic = mant_dispositivo.custrecord_ht_mc_id_telematic;
                         log.debug('idVehiculo:' + '[' + i + ']', idVehiculo)
                         //log.debug('idTelematic:' + '[' + i + ']', idTelematic)
-                        if (idVehiculo != "" && idVehiculo != null) {
+                        if (idVehiculo != "" && idVehiculo != null && idVehiculo != 'undefined') {
                             var marca_modelo = search.lookupFields({
                                 type: 'customrecord_ht_record_bienes',
                                 id: idVehiculo,
                                 columns: ['custrecord_ht_bien_marca', 'custrecord_ht_bien_modelo']
                             });
                             var marca = (marca_modelo.custrecord_ht_bien_marca)[0].text;
+
                             marca = marca.split(' ')
                             marca = marca[0];
                             var modelo = (marca_modelo.custrecord_ht_bien_modelo)[0].text;
@@ -51,14 +56,19 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                             var estadoCobertura = search.lookupFields({
                                 type: 'customrecord_ht_co_cobertura',
                                 id: idCobertura,
-                                columns: ['custrecord_ht_co_estado_cobertura','custrecord_ht_co_celularsimcard','custrecord_ht_co_nocelularsimcard','custrecord_ht_co_apn']
+                                columns: ['custrecord_ht_co_estado_cobertura', 'custrecord_ht_co_celularsimcard', 'custrecord_ht_co_nocelularsimcard', 'custrecord_ht_co_apn']
                             });
-                            var nuevoestadoCobertura = (estadoCobertura.custrecord_ht_co_estado_cobertura)[0].value;
+                            
+                            var nuevoestadoCobertura = (estadoCobertura.custrecord_ht_co_estado_cobertura)[0];
+                            log.debug('nuevoestadoCobertura',nuevoestadoCobertura);
+                            if(nuevoestadoCobertura){
+                                nuevoestadoCobertura = nuevoestadoCobertura.value
+                            }
                             var serie = estadoCobertura.custrecord_ht_co_celularsimcard;
                             var celular = estadoCobertura.custrecord_ht_co_nocelularsimcard;
                             var apn = estadoCobertura.custrecord_ht_co_apn
                             log.debug('estadoCobertura:' + '[' + i + ']', nuevoestadoCobertura);
-                            if (idCobertura != "" && idCobertura != null && nuevoestadoCobertura!=1) {
+                            if (idCobertura != "" && idCobertura != null && nuevoestadoCobertura != 1) {
                                 log.debug('marca', marca);
                                 log.debug('modelo', modelo);
                                 record.submitFields({
@@ -77,8 +87,8 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                                     type: 'customrecord_ht_record_detallesimcard',
                                     isDynamic: true
                                 });
-                                jeRec.setValue('custrecord_ht_dsc_estado',1);
-                                jeRec.setValue('custrecord_ht_dsc_coberdispo',idCobertura);
+                                jeRec.setValue('custrecord_ht_dsc_estado', 1);
+                                jeRec.setValue('custrecord_ht_dsc_coberdispo', idCobertura);
                                 jeRec.setValue('custrecord_ht_dsc_serie', serie);
                                 jeRec.setValue('custrecord_ht_dsc_numerocelsim', celular);
                                 jeRec.setValue('custrecord_ht_dsc_estado_conciliacion', 1);
@@ -86,7 +96,7 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                                 jeRec.setValue('name', serie);
                                 jeRec.save();
                                 //id dispositivo
-                                log.debug('idTelematic',idTelematic);
+                                log.debug('idTelematic', idTelematic);
                                 let telemat = {
                                     id: idTelematic,
                                     active: false
@@ -128,7 +138,7 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
             log.error('Error en Execute', error);
         }
     }
-    
+
     function padTo2Digits(num) {
         return num.toString().padStart(2, '0');
     }
@@ -231,7 +241,7 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                         search.createColumn({ name: "internalid", label: "Internal ID" })
                     ]
             });
-            var savedsearch = busqueda.run().getRange(0, 1);
+            var savedsearch = busqueda.run().getRange(0, 100);
             var internalid = '';
             if (savedsearch.length > 0) {
                 busqueda.run().each(function (result) {

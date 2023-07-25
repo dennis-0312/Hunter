@@ -201,7 +201,7 @@ define(['N/search',
                     if (parametrosRespo[j][1] == RENOVACION_ANTICIPADA) {
                         flag2 += 1;
                     }
-                    
+
                     if (parametrosRespo[j][0] == TIPO_PRODUCTO && parametrosRespo[j][1] == PRODUCTO_BASICO) {
                         flag5 += 1;
                     }

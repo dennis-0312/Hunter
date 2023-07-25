@@ -21,18 +21,21 @@ define([
     var SOLICITA_APROBACION = '11';
     var RENOVACION_PRODUCTO = '15';
     var SOLICITA_FACTURACION = '33';
-    const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
     var CAMBIO_PROPIETARIO_COBERTURA = '24';
     const SI = 9
     const NO = 18
     //~BLOQUE ADP Y VALOR====================================================
     /* Variables para identificación de ADP Y valores */
-    const PARAM_ADP_ACCION_DEL_PRODUCTO = 2
+    const ADP_ACCION_DEL_PRODUCTO = 2
     const VALOR_010_CAMBIO_PROPIETARIO = 10;
     const PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5
     const TTR_TIPO_TRANSACCION = 8;
     const CAMB_MOV_CUSTODIA = 131;
     const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
+    const VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO = 44;
+    const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
+    const TCH_TIPO_CHEQUEO_OT = 6;
+    const VALOR_001_CHEQUEO_H_LOJACK = 105;
 
 
     const beforeLoad = (scriptContext) => {
@@ -98,6 +101,8 @@ define([
                 let parametro = 0;
                 let parametro_aprob = 0;
                 let parametro_fact = 0;
+                let workOrder = 0;
+                let adp = 0;
                 const currentRecord = scriptContext.newRecord;
                 let idRecord = currentRecord.id;
                 let objRecord = record.load({ type: 'salesorder', id: idRecord, isDynamic: true });
@@ -109,6 +114,9 @@ define([
                 let numLines = objRecord.getLineCount({ sublistId: 'item' });
                 let plazo = 0;
                 var valor_tipo_agrupacion = 0;
+                let paramChequeo = 0;
+                let coberturaRecord = 0;
+
                 for (let i = 0; i < numLines; i++) {
                     objRecord.selectLine({ sublistId: 'item', line: i });
                     let cantidad = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity' });
@@ -137,67 +145,70 @@ define([
                         if (parametrosRespo[j][0] == TAG_TIPO_AGRUPACION_PRODUCTO) {
                             valor_tipo_agrupacion = parametrosRespo[j][1];
                         }
-                        // log.debug('parametrosRespo[j][0]', parametrosRespo[j][0]);
-                        // log.debug('parametrosRespo[j][1]', parametrosRespo[j][1]);
+
                         if (parametrosRespo[j][0] == SOLICITA_APROBACION) {
                             parametro_aprob = parametrosRespo[j][1];
-                            //log.debug('parametro_aprob1', parametro_aprob);
                         }
+
                         if (parametrosRespo[j][0] == SOLICITA_FACTURACION) {
                             parametro_fact = parametrosRespo[j][1];
-                            //log.debug('parametro_fact1', parametro_fact);
                         }
+
                         if (parametrosRespo[j][1] == RENOVACION_PRODUCTO) {
                             renovamos = true;
                             plazo += cantidad;
                         }
-                        if (parametrosRespo[j][0] == PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC&& parametrosRespo[j][1] == SI) {
+
+                        if (parametrosRespo[j][0] == ADP_ACCION_DEL_PRODUCTO) {
+                            adp = parametrosRespo[j][1]
+                        }
+
+                        if (parametrosRespo[j][0] == PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC && parametrosRespo[j][1] == SI) {
                             plataformas = true;
                         }
+
                         if (parametrosRespo[j][0] == ORDEN_TRABAJO && parametrosRespo[j][1] == SI) {
-                            let workOrder = _controller.parametros(ORDEN_TRABAJO, json);
-                            //log.debug('OT ', workOrder);
+                            workOrder = _controller.parametros(ORDEN_TRABAJO, json);
                         }
+
                         if (parametrosRespo[j][0] == GENERA_VARIAS_ORDEN_TRABAJO && parametrosRespo[j][1] == SI) {
-                            let workOrder = _controller.parametros(GENERA_VARIAS_ORDEN_TRABAJO, json);
-                            //log.debug('VOT ', workOrder);
+                            workOrder = _controller.parametros(GENERA_VARIAS_ORDEN_TRABAJO, json);
                         }
+
+                        if (parametrosRespo[j][0] == TCH_TIPO_CHEQUEO_OT)
+                            paramChequeo = parametrosRespo[j][1];
                     }
                 }
 
                 // log.debug('parametro_aprob', parametro_aprob);
                 // log.debug('parametro_fact', parametro_fact);
                 if (parametro_aprob != SI && parametro_fact == NO) {
-                    log.debug('cierra', idRecord);
+                    //log.debug('cierra', idRecord);
                     //transaction.void({ type: 'salesorder', id: idRecord });
                 } else {
                     if (parametro_aprob == SI) {
-                        log.debug('parametro_aprob', parametro_aprob);
+                        //log.debug('parametro_aprob', parametro_aprob);
                         objRecord.setValue('orderstatus', 'A');
                         objRecord.setValue('custbody_ht_os_aprobacionventa', 2);
                     }
+
                     if (renovamos == true) {
                         var bien = objRecord.getValue('custbody_ht_so_bien');
                         var idCoberturaItem;
                         let busqueda_cobertura = getCoberturaItem(bien);
-                        log.debug('busqueda_cobertura', busqueda_cobertura);
+                        //log.debug('busqueda_cobertura', busqueda_cobertura);
                         if (busqueda_cobertura.length != 0) {
                             for (let i = 0; i < busqueda_cobertura.length; i++) {
-
                                 let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
                                 if (parametrosRespo.length != 0) {
                                     var accion_producto_2 = 0;
                                     var valor_tipo_agrupacion_2 = 0;
                                     for (let j = 0; j < parametrosRespo.length; j++) {
-
-                                        if (parametrosRespo[j][0] == TAG_TIPO_AGRUPACION_PRODUCTO) {
+                                        if (parametrosRespo[j][0] == TAG_TIPO_AGRUPACION_PRODUCTO)
                                             valor_tipo_agrupacion_2 = parametrosRespo[j][1];
-                                        }
 
-                                        if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
+                                        if (valor_tipo_agrupacion == valor_tipo_agrupacion_2)
                                             idCoberturaItem = busqueda_cobertura[i][1];
-                                        }
-
                                     }
                                 }
                             }
@@ -214,7 +225,7 @@ define([
                         });
                         var idDispositivo = cobertura.custrecord_ht_co_numeroserieproducto[0].value;
                         var coberturaplazo = cobertura.custrecord_ht_co_plazo;
-                        log.debug('idDispositivo', idDispositivo);
+                        //log.debug('idDispositivo', idDispositivo);
                         var coberturaAntigua = cobertura.custrecord_ht_co_coberturafinal;
                         var cobertura_inicial = cobertura.custrecord_ht_co_coberturainicial;
                         cobertura_inicial = cobertura_inicial.split('/');
@@ -227,7 +238,7 @@ define([
                             columns: ['custrecord_ht_mc_id_telematic']
                         });
                         var idTelematic = producto.custrecord_ht_mc_id_telematic;
-                        log.debug('idTelematic', idTelematic);
+                        //log.debug('idTelematic', idTelematic);
                         coberturaAntigua = coberturaAntigua.split('/');
                         var nuevaCoberturaAntigua = coberturaAntigua[1] + '/' + coberturaAntigua[0] + '/' + coberturaAntigua[2];
                         var fechaAntigua = Date.parse(nuevaCoberturaAntigua);
@@ -243,9 +254,9 @@ define([
                         coberturaplazo = Number(coberturaplazo);
                         var plazoTotal = parseFloat(plazo) + parseFloat(coberturaplazo);
                         var hoy = new Date();
-                        log.debug('HOY', hoy);
-                        log.debug('newDateInicial', newDateInicial);
-                        log.debug('newDateAntigua', newDateAntigua);
+                        // log.debug('HOY', hoy);
+                        // log.debug('newDateInicial', newDateInicial);
+                        // log.debug('newDateAntigua', newDateAntigua);
 
                         let telemat = {
                             id: idTelematic,
@@ -255,7 +266,7 @@ define([
                         if (plataformas == true) {
                             let Telematic = envioTelematic(telemat);
                             Telematic = JSON.parse(Telematic);
-                            log.debug('Telematic', Telematic);
+                            //log.debug('Telematic', Telematic);
 
                             if (Telematic.asset) {
                                 record.submitFields({
@@ -316,9 +327,41 @@ define([
                     }
                     if (objRecord.getValue('custbody_ht_os_issue_invoice') == true) {
                         let invoice = _controller.createInvoice(objRecord.id);
-                        log.debug('Invoice', invoice);
+                        //log.debug('Invoice', invoice);
                     }
                     objRecord.save({ ignoreMandatoryFields: true, enableSourcing: false });
+                }
+
+                if (adp == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                    log.debug('Chequeo', 'VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO');
+                    let out = 0;
+                    let bien = objRecord.getValue('custbody_ht_so_bien');
+                    let busqueda_cobertura = getCoberturaItem(bien);
+                    if (busqueda_cobertura.length != 0) {
+                        for (let i = 0; i < busqueda_cobertura.length; i++) {
+                            let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
+                            //log.debug('busqueda_cobertura', JSON.stringify(busqueda_cobertura));
+                            if (parametrosRespo.length != 0) {
+                                for (let j = 0; j < parametrosRespo.length; j++) {
+                                    if (parametrosRespo[j][0] == TCH_TIPO_CHEQUEO_OT && parametrosRespo[j][1] == paramChequeo) {
+                                        // log.debug('workOrder', workOrder);
+                                        // log.debug('paramChequeo', paramChequeo);
+                                        // log.debug('Chaser', busqueda_cobertura[i][2]);
+                                        record.submitFields({
+                                            type: 'customrecord_ht_record_ordentrabajo',
+                                            id: workOrder,
+                                            values: { 'custrecord_ht_ot_serieproductoasignacion': busqueda_cobertura[i][2] },
+                                            options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                        });
+                                        out = 1;
+                                        break;
+                                    }
+                                }
+                                if (out == 1)
+                                    break;
+                            }
+                        }
+                    }
                 }
             } catch (error) {
                 log.error('Erro-Create', error);
@@ -370,7 +413,7 @@ define([
                                 if (parametrosRespo[j][0] == TAG_TIPO_AGRUPACION_PRODUCTO) {
                                     valor_tipo_agrupacion = parametrosRespo[j][1];
                                 }
-                                if (parametrosRespo[j][0] == PARAM_ADP_ACCION_DEL_PRODUCTO) {
+                                if (parametrosRespo[j][0] == ADP_ACCION_DEL_PRODUCTO) {
                                     adp = parametrosRespo[j][1]
                                 }
                                 if (parametrosRespo[j][0] == TTR_TIPO_TRANSACCION) {
@@ -602,23 +645,27 @@ define([
                 columns:
                     [
                         search.createColumn({ name: "custrecord_ht_co_producto", label: "HT CO Producto" }),
-                        search.createColumn({ name: "internalid", label: "Internal ID" })
+                        search.createColumn({ name: "internalid", label: "Internal ID" }),
+                        search.createColumn({ name: "custrecord_ht_co_numeroserieproducto", label: "Chaser" })
                     ]
             });
             var searchResultCount = busqueda.runPaged().count;
             log.debug('searchResultCount', searchResultCount);
             //var savedsearch = busqueda.run().getRange(0, 100);
             //log.debug('savedsearch', savedsearch);
-            var internalidItem = '';
-            var internalid = '';
+            let internalidItem = '';
+            let internalid = '';
+            let chaser = '';
             var arrayIdTotal = [];
             if (searchResultCount > 0) {
-                busqueda.run().each((result) => {
+                busqueda.run().each(result => {
                     var arrayId = [];
                     internalidItem = result.getValue(busqueda.columns[0]);
                     arrayId.push(internalidItem);
                     internalid = result.getValue(busqueda.columns[1]);
                     arrayId.push(internalid);
+                    chaser = result.getValue(busqueda.columns[2]);
+                    arrayId.push(chaser);
                     arrayIdTotal.push(arrayId);
                     return true;
                 });
@@ -761,7 +808,7 @@ define([
             if (parametro != 0) {
                 log.debug('entra plataformas');
                 for (let j = 0; j < parametrosRespo.length; j++) {
-                    if (parametrosRespo[j][0] == PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC&& parametro == '9') {
+                    if (parametrosRespo[j][0] == PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC && parametro == '9') {
                         returEjerepo = _controller.parametros(ENVIO_PLATAFORMAS, idRecord, parametro);
                     }
                 }

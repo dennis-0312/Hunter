@@ -23,9 +23,11 @@ define([
     'N/https',
     'N/error',
     'N/format',
+    'N/email',
+    'N/runtime',
     '../controller/TS_CM_Controller'
 ],
-    (transaction, config, log, search, record, serverWidget, https, error, format, _Controller) => {
+    (transaction, config, log, search, record, serverWidget, https, error, format, email, runtime, _Controller) => {
         const HT_DETALLE_ORDEN_SERVICIO = 'customsearch_ht_detalle_orden_servicio'; //HT Detalle Orden de Servicio - PRODUCCION
         const HT_CONSULTA_ORDEN_TRABAJO = 'customsearch_ht_consulta_orden_trabajo'; //HT Consulta Orden de trabajo - PRODUCCION
         const tipo_servicio_alquiler = 1;
@@ -49,12 +51,21 @@ define([
         var INST_DISPOSITIVO = '43';
         var TIPO_AGRUPACION_PRODUCTO = '77';
         var VENT_SERVICIOS = '50';
-        const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
         const VALOR_001_INST_DISPOSITIVO = 43;
-        const VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO = 44;
         const SI = 9;
         const ESTADO_001_INSTALADO = 1;
         const CHEQUEADO = 2;
+        //^BLOQUE PARAMETROS ===================================================================
+        const ADP_ACCION_DEL_PRODUCTO = 2
+        const VALOR_010_CAMBIO_PROPIETARIO = 10;
+        const PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5
+        const TTR_TIPO_TRANSACCION = 8;
+        const CAMB_MOV_CUSTODIA = 131;
+        const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
+        const VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO = 44;
+        const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
+        const TCH_TIPO_CHEQUEO_OT = 6;
+        const VALOR_001_CHEQUEO_H_LOJACK = 105;
 
 
 
@@ -107,6 +118,8 @@ define([
 
         const afterSubmit = (context) => {
             if (context.type === context.UserEventType.EDIT) {
+                let senderId = runtime.getCurrentUser();
+                senderId = senderId.id;
                 let objRecord = context.newRecord;
                 let accionEstadoOT = 'Sin estado';
                 let id = context.newRecord.id;
@@ -132,7 +145,9 @@ define([
                 switch (accionEstadoOT) {
                     case ESTADO_CHEQUEADA:
                         let idSalesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
+                        let valueSalesorder = objRecord.getText('custrecord_ht_ot_orden_servicio');
                         let bien = objRecord.getValue('custrecord_ht_ot_vehiculo');
+                        let valuebien = objRecord.getText('custrecord_ht_ot_vehiculo');
                         let coberturas = _Controller.getCobertura(bien);
                         let busqueda_salesorder = getSalesOrderItem(bien);
                         //log.debug('busqueda_salesorder', busqueda_salesorder);
@@ -141,6 +156,12 @@ define([
                         var numLines = salesorder.getLineCount({ sublistId: 'item' });
                         let chaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                         let idItemOT = objRecord.getValue('custrecord_ht_ot_item');
+                        let conNovedad = objRecord.getValue('custrecord_ht_ot_connovedad');
+                        let serieChaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
+                        let estadoChaser = objRecord.getValue('custrecord_ht_ot_estadochaser');
+                        let recipientId = objRecord.getValue('custrecord_ht_ot_cliente_id');
+                        let customer = objRecord.getText('custrecord_ht_ot_cliente_id');
+                        let comentario = objRecord.getText('custrecord_ht_ot_observacion');
                         var cantidad = 0;
                         let returEjerepo = true;
                         let parametrosRespo;
@@ -158,6 +179,11 @@ define([
                         let parametrosRespo_2 = _Controller.parametrizacion(idItemOT);
                         let monitoreo;
                         let idCoberturaItem = '';
+                        let precio = 0;
+
+                        for (let i = 0; i < numLines; i++) {
+                            precio = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'rate', line: i });
+                        }
 
                         if (parametrosRespo_2.length != 0) {
                             //var accion_producto_2 = 0;
@@ -177,13 +203,18 @@ define([
                                 }
                                 if (parametrosRespo_2[j][0] == 99 && parametrosRespo_2[j][1] == 9) { //cos cerrar orden de servicio
                                     try {
-                                        transaction.void({ type: 'salesorder', id: idSalesorder });
+                                        if (precio == 0)
+                                            transaction.void({ type: 'salesorder', id: idSalesorder });
                                     } catch (error) {
-                                        log.error(error);
+                                        log.error('Error', error + ', ya está cerrada la Orden de Servicio');
                                     }
                                 }
                                 if (parametrosRespo_2[j][0] == TIPO_AGRUPACION_PRODUCTO) {
                                     valor_tipo_agrupacion_2 = parametrosRespo_2[j][1];
+                                }
+
+                                if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO) {
+                                    adpServicio = parametrosRespo_2[j][1];
                                 }
                             }
                         }
@@ -212,6 +243,10 @@ define([
                                             idItem = busqueda_salesorder[i][0];
                                         }
 
+
+                                        if (accion_producto == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                                            idOS = busqueda_salesorder[i][1];
+                                        }
 
                                     }
                                 }
@@ -255,7 +290,9 @@ define([
                             }
                         }
 
+                        // log.debug('idOS', idOS)
                         if (idOS) {
+                            // log.debug('idOSIntro', idOS)
                             var serviceOS = record.load({ type: 'salesorder', id: idOS });
                             var numLines_2 = serviceOS.getLineCount({ sublistId: 'item' });
                             for (let j = 0; j < numLines_2; j++) {
@@ -300,6 +337,7 @@ define([
                         });
 
                         let idItemCobertura = objRecord.getValue('custrecord_ht_ot_item');
+                        log.debug('Prodcuto', idItemCobertura)
                         let idVentAlq = objRecord.getValue('custrecord_ht_ot_item_vent_alq');
                         if (idVentAlq != '') {
                             idItemCobertura = idVentAlq;
@@ -311,9 +349,9 @@ define([
                         //log.debug('Debug1', returEjerepo + ' - ' + adpServicio);
                         if (returEjerepo && adpServicio != 0) {
                             if (idOS == idSalesorder) {
-                                log.debug('MONITOREOOOOOO', 'Cobertura1');
-                                log.debug('ESTADOOOOOOOOO', estadoInts);
-                                //log.debug('Debug2', returEjerepo + ' - ' + adpServicio);
+                                // log.debug('MONITOREOOOOOO', 'Cobertura1');
+                                // log.debug('ESTADOOOOOOOOO', estadoInts);
+                                // log.debug('Debug2', returEjerepo + ' - ' + adpServicio);
                                 let json = {
                                     bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
                                     propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
@@ -328,7 +366,6 @@ define([
                                     ordentrabajo: objRecord.id,
                                     monitoreo: monitoreo,
                                     cobertura: idCoberturaItem,
-                                    estado: estadoInts
                                 }
                                 createCoberturaWS(json);
                                 if (chaser.length > 0) {
@@ -337,8 +374,8 @@ define([
                                     updateTelematic.save();
                                 }
                             } else {
-                                log.debug('MONITOREOOOOOO', 'Cobertura2');
-                                //log.debug('Debug3', returEjerepo + ' - ' + adpServicio);
+                                // log.debug('MONITOREOOOOOO', 'Cobertura2');
+                                // log.debug('Debug3', returEjerepo + ' - ' + adpServicio);
                                 let json = {
                                     bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
                                     propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
@@ -362,25 +399,27 @@ define([
                                 }
                             }
                         } else {
-                            //log.debug('Debug4', returEjerepo + ' - ' + adpServicio);
-                            log.debug('MONITOREOOOOOO', 'Cobertura3');
-                            let json = {
-                                bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
-                                propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
-                                producto: idItemCobertura,
-                                concepto: instalacion,
-                                serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
-                                salesorder: idSalesorder,
-                                ordentrabajo: objRecord.id,
-                                cobertura: idCoberturaItem,
-                                estado: estadoInts
-                            }
-                            createCoberturaWS(json);
-                            if (chaser.length > 0) {
-                                let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                                updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
-                                updateTelematic.save();
-                                record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: id, values: { 'custrecord_ht_ot_estado': 4 }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
+                            if (adpServicio != VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                                // log.debug('Debug4', returEjerepo + ' - ' + adpServicio);
+                                // log.debug('MONITOREOOOOOO', 'Cobertura3');
+                                let json = {
+                                    bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
+                                    propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
+                                    producto: idItemCobertura,
+                                    concepto: instalacion,
+                                    serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
+                                    salesorder: idSalesorder,
+                                    ordentrabajo: objRecord.id,
+                                    cobertura: idCoberturaItem,
+                                    estado: estadoInts
+                                }
+                                createCoberturaWS(json);
+                                if (chaser.length > 0) {
+                                    let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
+                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
+                                    updateTelematic.save();
+                                    record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: id, values: { 'custrecord_ht_ot_estado': 4 }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
+                                }
                             }
                         }
 
@@ -432,7 +471,7 @@ define([
                             var idDispositivo = getInventoryNumber(fulfill);
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
 
-                            if (estado == 2 && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
+                            if (estado == ESTADO_CHEQUEADA && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
                                 var serieProducto = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                                 var ubicacion = objRecord.getText('custrecord_ht_ot_ubicacion');
                                 if (serieProducto.length > 0) {
@@ -459,14 +498,66 @@ define([
                             }
                         }
 
-                        if (adp = VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                        if (adp == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+
                             let objRecordCreateServicios = record.create({ type: 'customrecord_ht_nc_servicios_instalados', isDynamic: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_bien_si', value: objRecord.getValue('custrecord_ht_ot_vehiculo'), ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_orden_servicio_si', value: idSalesorder, ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_orden_trabajo', value: id, ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_servicio', value: TTR_name, ignoreFieldChange: true });
                             objRecordCreateServicios.save();
+
+
+                            if (conNovedad == true) {
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_mantchaser',
+                                    id: serieChaser,
+                                    values: { 'custrecord_ht_mc_estado': estadoChaser },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+
+                                let dispositivo = search.lookupFields({
+                                    type: 'customrecord_ht_record_mantchaser',
+                                    id: serieChaser,
+                                    columns: ['custrecord_ht_mc_seriedispositivo']
+                                });
+                                let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_detallechaserdisp',
+                                    id: idDispositivo,
+                                    values: { 'custrecord_ht_dd_estado': estadoChaser },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                }); 
+
+                                let emailBody = '<p><b>Número de Documento: </b><span style="color: #000000;">' + valueSalesorder + '</span></p>' +
+                                                '<p><b>Cliente: </b><span style="color: #000000;">' + customer + '</span></p>' +
+                                                '<p><b>Bien: </b><span style="color: #000000;">' + valuebien + '</span></p>' +
+                                                '<p><b>Resultado Chequeo: </b><span style="color: #000000;">Con novedad</span></p>' +
+                                                '<p><b>Comentario: </b><span style="color: #000000;">' + comentario + '</span></p>'
+
+                                email.send({
+                                    author: senderId,
+                                    recipients: recipientId,
+                                    subject: 'Resultado de la Orden de Servicio por Mantenimiento - Chequeo ' + valueSalesorder + ' con novedad',
+                                    body: emailBody,
+                                    relatedRecords: {
+                                        transactionId: idSalesorder
+                                    }
+                                    // attachments: [fileObj],
+                                    // relatedRecords: {
+                                    //     entityId: recipientId,
+                                    //     customRecord: {
+                                    //         id: recordId,
+                                    //         recordType: recordTypeId
+                                    //     }
+                                    // }
+                                });
+                            }
                         }
+
+
+
                         break;
                     default:
                 }

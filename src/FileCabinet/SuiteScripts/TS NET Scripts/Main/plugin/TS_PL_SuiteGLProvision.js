@@ -267,7 +267,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                     var newLine = customLines.addNewLine();
                     newLine.setCreditAmount(standardLines.getLine(i).getCreditAmount());
                     newLine.setAccountId(accountMethod);
-                    newLine.setMemo(creditMemo);
+                    // newLine.setMemo(creditMemo);
                     newLine.setEntityId(standardLines.getLine(0).getEntityId());
                     newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
                     newLine.setClassId(standardLines.getLine(0).getClassId());
@@ -276,7 +276,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                     var newLine = customLines.addNewLine();
                     newLine.setDebitAmount(standardLines.getLine(i).getCreditAmount());
                     newLine.setAccountId(accountCajaTransito);
-                    newLine.setMemo(creditMemo);
+                    // newLine.setMemo(creditMemo);
                     newLine.setEntityId(standardLines.getLine(0).getEntityId());
                     newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
                     newLine.setClassId(standardLines.getLine(0).getClassId());

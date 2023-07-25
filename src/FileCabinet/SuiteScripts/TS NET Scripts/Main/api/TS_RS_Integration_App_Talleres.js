@@ -562,6 +562,13 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                             openRecord.setValue({ fieldId: "custrecord_ht_ot_fechatrabajoasignacion", value: new Date(scriptContext.fechatrabajoasignacion) });
                             openRecord.setValue({ fieldId: "custrecord_ht_ot_horatrabajoasignacion", value: new Date(scriptContext.horatrabajoasignacion) });
                             openRecord.setValue({ fieldId: "custrecord_ht_ot_ubicacion", value: scriptContext.ubicacion });
+                            if (scriptContext.novedad){
+                                openRecord.setValue({ fieldId: "custrecord_ht_ot_connovedad", value: scriptContext.novedad });
+                            } else {
+                                openRecord.setValue({ fieldId: "custrecord_ht_ot_sinnovedad", value: scriptContext.novedad });
+                            }
+                            openRecord.setValue({ fieldId: "custrecord_ht_ot_observacion", value: scriptContext.observacion });
+                            openRecord.setValue({ fieldId: "custrecord_ht_ot_estadochaser", value: scriptContext.estadoChequeo });
 
                             if (guardar == 1) {
                                 let os = openRecord.save();

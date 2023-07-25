@@ -79,69 +79,63 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/https', 'N/task', 'N/file
 
     const _post = (scriptContext) => {
         log.debug('ConextPost', scriptContext);
-        try {
-            if (scriptContext.estado == 1) {
-                let response;
-                if (scriptContext.cobertura == '') {
-                    let objRecord = record.create({ type: HT_COBERTURA_RECORD, isDynamic: true });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estado });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
-                    response = objRecord.save();
-                    log.debug('response', response);
-                } else {
-                    let objRecord = record.load({ type: HT_COBERTURA_RECORD, id: scriptContext.cobertura });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estado });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
-                    response = objRecord.save();
-                    log.debug('response', response);
-                }
-
-                let objRecord_2 = record.create({ type: HT_DETALLE_COBERTURA, isDynamic: true });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: response });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: scriptContext.salesorder });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: scriptContext.ordentrabajo });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: scriptContext.concepto });
-                // objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(scriptContext.start) });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(scriptContext.end) });
-                let response_2 = objRecord_2.save();
-            } else {
+        if (scriptContext.estado == 1) {
+            let response;
+            if (scriptContext.cobertura == '') {
                 let objRecord = record.create({ type: HT_COBERTURA_RECORD, isDynamic: true });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estado });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
-                let response = objRecord.save();
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
+                response = objRecord.save();
                 log.debug('response', response);
-                let objRecord_2 = record.create({ type: HT_DETALLE_COBERTURA, isDynamic: true });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: response });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: scriptContext.salesorder });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: scriptContext.ordentrabajo });
-                objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: scriptContext.concepto });
-                // objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
-                objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
-                let response_2 = objRecord_2.save();
+            } else {
+                let objRecord = record.load({ type: HT_COBERTURA_RECORD, id: scriptContext.cobertura });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estado });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
+                response = objRecord.save();
+                log.debug('response', response);
             }
-            return { 'Conect': 'ConectPost' };
-        } catch (error) {
-            log.error('Error', error)
+
+            let objRecord_2 = record.create({ type: HT_DETALLE_COBERTURA, isDynamic: true });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: response });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: scriptContext.salesorder });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: scriptContext.ordentrabajo });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: scriptContext.concepto });
+            // objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(scriptContext.start) });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(scriptContext.end) });
+            let response_2 = objRecord_2.save();
+        } else {
+
+            let objRecord = record.create({ type: HT_COBERTURA_RECORD, isDynamic: true });
+            objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
+            objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
+            objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
+            objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
+            let response = objRecord.save();
+            log.debug('response', response);
+            let objRecord_2 = record.create({ type: HT_DETALLE_COBERTURA, isDynamic: true });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: response });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: scriptContext.salesorder });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: scriptContext.ordentrabajo });
+            objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: scriptContext.concepto });
+            // objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
+            let response_2 = objRecord_2.save();
         }
+        return { 'Conect': 'ConectPost' };
     }
 
     return {

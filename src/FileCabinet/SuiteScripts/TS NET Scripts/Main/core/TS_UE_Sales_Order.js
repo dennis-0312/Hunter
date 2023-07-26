@@ -36,6 +36,7 @@ define([
     const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
     const TCH_TIPO_CHEQUEO_OT = 6;
     const VALOR_001_CHEQUEO_H_LOJACK = 105;
+    const VALOR_002_DESINSTALACION_DE_DISP = 21;
 
 
     const beforeLoad = (scriptContext) => {
@@ -332,8 +333,8 @@ define([
                     objRecord.save({ ignoreMandatoryFields: true, enableSourcing: false });
                 }
 
-                if (adp == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
-                    log.debug('Chequeo', 'VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO');
+                if (adp == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO || adp == VALOR_002_DESINSTALACION_DE_DISP) {
+                    log.debug('Chequeo', 'VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO o VALOR_002_DESINSTALACION_DE_DISP');
                     let out = 0;
                     let bien = objRecord.getValue('custbody_ht_so_bien');
                     let busqueda_cobertura = getCoberturaItem(bien);
@@ -440,7 +441,7 @@ define([
                     // log.debug('DEBUG1', ccd + ' - ' + ttr);
                     if (ccd == SI || ttr == CAMB_MOV_CUSTODIA)
                         esCustodia = 1
-                    if (parametro != 0 && esCustodia == 0) {
+                    if (parametro != 0 && esCustodia == 0 && adp == VALOR_010_CAMBIO_PROPIETARIO) {
                         //log.debug('entra plataformas por cambio de propietario');
                         for (let j = 0; j < parametrosRespo.length; j++) {
                             if (parametrosRespo[j][0] == PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC && parametrosRespo[j][1] == SI) {

@@ -66,7 +66,13 @@ define([
         const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
         const TCH_TIPO_CHEQUEO_OT = 6;
         const VALOR_001_CHEQUEO_H_LOJACK = 105;
-
+        const VALOR_002_DESINSTALACION_DE_DISP = 21;
+        const ALQUILER_PARAM = 13;
+        const COS_CIERRE_DE_ORDEN_DE_SERVICIO = 99;
+        const DISPONIBLE = 5;
+        const INACTIVO = 5;
+        const INSTALADO = 1;
+        const PROCESANDO = 4
 
 
         const beforeLoad = (context) => {
@@ -132,6 +138,7 @@ define([
                 let estaChequeada = objRecord.getValue('custrecord_ht_ot_estado');
                 let statusOri = estaChequeada;
                 let estadoInts;
+                let ingresaFlujoAlquiler;
                 const SI = 9;
                 var serieProductoChaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                 log.debug('serieProductoChaser', serieProductoChaser);
@@ -162,6 +169,10 @@ define([
                         let recipientId = objRecord.getValue('custrecord_ht_ot_cliente_id');
                         let customer = objRecord.getText('custrecord_ht_ot_cliente_id');
                         let comentario = objRecord.getText('custrecord_ht_ot_observacion');
+                        ingresaFlujoAlquiler = objRecord.getValue('custrecord_flujo_de_alquiler');
+                        let taller = objRecord.getValue('custrecord_ht_ot_taller');
+                        let comercial = objRecord.getText('custrecord_ht_ot_serieproductoasignacion');
+
                         var cantidad = 0;
                         let returEjerepo = true;
                         let parametrosRespo;
@@ -180,6 +191,35 @@ define([
                         let monitoreo;
                         let idCoberturaItem = '';
                         let precio = 0;
+                        let esAlquiler = 0;
+                        let objParams = new Array();
+                        let adpAlquiler = 0;
+
+                        let recordTaller = search.lookupFields({
+                            type: 'customrecord_ht_tt_tallertablet',
+                            id: taller,
+                            columns: ['custrecord_ht_tt_oficina']
+                        });
+                        let location = recordTaller.custrecord_ht_tt_oficina[0].value;
+
+                        let objParameters = {
+                            serieChaser: serieChaser,
+                            bien: bien
+                        }
+                        let itemInstallId = _Controller.getInstall(objParameters);
+
+                        objParams = {
+                            location: location,
+                            comercial: comercial,
+                            customer: customer,
+                            salesorder: idSalesorder,
+                            item: itemInstallId,
+                            boleano: false,
+                            serieChaser: serieChaser,
+                            ordentrabajoId: id,
+                            recipientId: recipientId,
+                            bien: bien
+                        }
 
                         for (let i = 0; i < numLines; i++) {
                             precio = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'rate', line: i });
@@ -188,10 +228,10 @@ define([
                         if (parametrosRespo_2.length != 0) {
                             //var accion_producto_2 = 0;
                             for (let j = 0; j < parametrosRespo_2.length; j++) {
-                                if (parametrosRespo_2[j][0] == 2) {
+                                if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO) {
                                     adp = parametrosRespo_2[j][1];
                                 }
-                                if (parametrosRespo_2[j][0] == 8) { // TTR tipo de transaccion
+                                if (parametrosRespo_2[j][0] == TTR_TIPO_TRANSACCION) { // TTR tipo de transaccion
                                     let parametro = record.load({ type: 'customrecord_ht_cr_pp_valores', id: parametrosRespo_2[j][1], isDynamic: true });
                                     TTR_name = parametro.getValue('custrecord_ht_pp_descripcion');
                                 }
@@ -201,7 +241,7 @@ define([
                                 if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASTELEC) {
                                     envioTele = parametrosRespo_2[j][1];
                                 }
-                                if (parametrosRespo_2[j][0] == 99 && parametrosRespo_2[j][1] == 9) { //cos cerrar orden de servicio
+                                if (parametrosRespo_2[j][0] == COS_CIERRE_DE_ORDEN_DE_SERVICIO && parametrosRespo_2[j][1] == SI) { //cos cerrar orden de servicio
                                     try {
                                         if (precio == 0)
                                             transaction.void({ type: 'salesorder', id: idSalesorder });
@@ -215,6 +255,11 @@ define([
 
                                 if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO) {
                                     adpServicio = parametrosRespo_2[j][1];
+                                    adpAlquiler = adpServicio
+                                }
+
+                                if (parametrosRespo_2[j][0] == ALQUILER_PARAM) {
+                                    esAlquiler = parametrosRespo_2[j][1];
                                 }
                             }
                         }
@@ -243,7 +288,6 @@ define([
                                             idItem = busqueda_salesorder[i][0];
                                         }
 
-
                                         if (accion_producto == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
                                             idOS = busqueda_salesorder[i][1];
                                         }
@@ -256,7 +300,7 @@ define([
                         if (parametrosRespo_2.length != 0) {
                             var accion_producto_2 = 0;
                             for (let j = 0; j < parametrosRespo_2.length; j++) {
-                                if (parametrosRespo_2[j][0] == 2) {
+                                if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO) {
                                     adp = parametrosRespo_2[j][1];
                                 }
                                 if (parametrosRespo_2[j][0] == TIPO_AGRUPACION_PRODUCTO) {
@@ -346,79 +390,81 @@ define([
                         var instalacion_activacion = 17;
                         var instalacion = 15;
                         estadoInts = 1 //Instalado
-                        //log.debug('Debug1', returEjerepo + ' - ' + adpServicio);
-                        if (returEjerepo && adpServicio != 0) {
-                            if (idOS == idSalesorder) {
-                                // log.debug('MONITOREOOOOOO', 'Cobertura1');
-                                // log.debug('ESTADOOOOOOOOO', estadoInts);
-                                // log.debug('Debug2', returEjerepo + ' - ' + adpServicio);
-                                let json = {
-                                    bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
-                                    propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
-                                    start: cobertura.coberturaInicial,
-                                    plazo: cantidad,
-                                    end: cobertura.coberturaFinal,
-                                    estado: estadoInts,
-                                    concepto: instalacion_activacion,
-                                    producto: idItemCobertura,
-                                    serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
-                                    salesorder: idSalesorder,
-                                    ordentrabajo: objRecord.id,
-                                    monitoreo: monitoreo,
-                                    cobertura: idCoberturaItem,
-                                }
-                                createCoberturaWS(json);
-                                if (chaser.length > 0) {
-                                    let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
-                                    updateTelematic.save();
+                        log.debug('Debug1', returEjerepo + ' - ' + adpAlquiler);
+                        if (adpAlquiler != VALOR_002_DESINSTALACION_DE_DISP) {
+                            if (returEjerepo && adpServicio != 0) {
+                                if (idOS == idSalesorder) {
+                                    log.debug('MONITOREOOOOOO', 'Cobertura1');
+                                    // log.debug('ESTADOOOOOOOOO', estadoInts);
+                                    // log.debug('Debug2', returEjerepo + ' - ' + adpServicio);
+                                    let json = {
+                                        bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
+                                        propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
+                                        start: cobertura.coberturaInicial,
+                                        plazo: cantidad,
+                                        end: cobertura.coberturaFinal,
+                                        estado: estadoInts,
+                                        concepto: instalacion_activacion,
+                                        producto: idItemCobertura,
+                                        serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
+                                        salesorder: idSalesorder,
+                                        ordentrabajo: objRecord.id,
+                                        monitoreo: monitoreo,
+                                        cobertura: idCoberturaItem,
+                                    }
+                                    createCoberturaWS(json);
+                                    if (chaser.length > 0) {
+                                        let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
+                                        updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: INSTALADO })
+                                        updateTelematic.save();
+                                    }
+                                } else {
+                                    log.debug('MONITOREOOOOOO', 'Cobertura2');
+                                    // log.debug('Debug3', returEjerepo + ' - ' + adpServicio);
+                                    let json = {
+                                        bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
+                                        propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
+                                        start: cobertura.coberturaInicial,
+                                        plazo: cantidad,
+                                        end: cobertura.coberturaFinal,
+                                        estado: estadoInts,
+                                        concepto: activacion,
+                                        producto: idItemCobertura,
+                                        serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
+                                        salesorder: idOS,
+                                        ordentrabajo: objRecord.id,
+                                        monitoreo: monitoreo,
+                                        cobertura: idCoberturaItem,
+                                    }
+                                    createCoberturaWS(json);
+                                    if (chaser.length > 0) {
+                                        let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
+                                        updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: INSTALADO })
+                                        updateTelematic.save();
+                                    }
                                 }
                             } else {
-                                // log.debug('MONITOREOOOOOO', 'Cobertura2');
-                                // log.debug('Debug3', returEjerepo + ' - ' + adpServicio);
-                                let json = {
-                                    bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
-                                    propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
-                                    start: cobertura.coberturaInicial,
-                                    plazo: cantidad,
-                                    end: cobertura.coberturaFinal,
-                                    estado: estadoInts,
-                                    concepto: activacion,
-                                    producto: idItemCobertura,
-                                    serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
-                                    salesorder: idOS,
-                                    ordentrabajo: objRecord.id,
-                                    monitoreo: monitoreo,
-                                    cobertura: idCoberturaItem,
-                                }
-                                createCoberturaWS(json);
-                                if (chaser.length > 0) {
-                                    let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
-                                    updateTelematic.save();
-                                }
-                            }
-                        } else {
-                            if (adpServicio != VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
-                                // log.debug('Debug4', returEjerepo + ' - ' + adpServicio);
-                                // log.debug('MONITOREOOOOOO', 'Cobertura3');
-                                let json = {
-                                    bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
-                                    propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
-                                    producto: idItemCobertura,
-                                    concepto: instalacion,
-                                    serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
-                                    salesorder: idSalesorder,
-                                    ordentrabajo: objRecord.id,
-                                    cobertura: idCoberturaItem,
-                                    estado: estadoInts
-                                }
-                                createCoberturaWS(json);
-                                if (chaser.length > 0) {
-                                    let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: 1 })
-                                    updateTelematic.save();
-                                    record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: id, values: { 'custrecord_ht_ot_estado': 4 }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
+                                if (adpServicio != VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                                    // log.debug('Debug4', returEjerepo + ' - ' + adpServicio);
+                                    log.debug('MONITOREOOOOOO', 'Cobertura3');
+                                    let json = {
+                                        bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
+                                        propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
+                                        producto: idItemCobertura,
+                                        concepto: instalacion,
+                                        serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
+                                        salesorder: idSalesorder,
+                                        ordentrabajo: objRecord.id,
+                                        cobertura: idCoberturaItem,
+                                        estado: estadoInts
+                                    }
+                                    createCoberturaWS(json);
+                                    if (chaser.length > 0) {
+                                        let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
+                                        updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: INSTALADO })
+                                        updateTelematic.save();
+                                        record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: id, values: { 'custrecord_ht_ot_estado': PROCESANDO }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
+                                    }
                                 }
                             }
                         }
@@ -467,10 +513,8 @@ define([
                             } else {
                                 fulfill = boxserie;
                             }
-
                             var idDispositivo = getInventoryNumber(fulfill);
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
-
                             if (estado == ESTADO_CHEQUEADA && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
                                 var serieProducto = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                                 var ubicacion = objRecord.getText('custrecord_ht_ot_ubicacion');
@@ -482,32 +526,33 @@ define([
                                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                                     });
                                 }
-                                var newFulfill = record.transform({
-                                    fromType: record.Type.SALES_ORDER,
-                                    fromId: idSalesOrder,
-                                    toType: record.Type.ITEM_FULFILLMENT
-                                });
-                                var numLines = newFulfill.getLineCount({ sublistId: 'item' });
-                                for (let i = 0; i < numLines; i++) {
-                                    newFulfill.setSublistValue({ sublistId: 'item', fieldId: 'quantity', value: 1, line: i });
-                                    var objSubRecord = newFulfill.getSublistSubrecord({ sublistId: 'item', fieldId: 'inventorydetail', line: 0 })
-                                    objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: idDispositivo, line: 0 });;
-                                    objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1, line: 0 });
+                                try {
+                                    var newFulfill = record.transform({
+                                        fromType: record.Type.SALES_ORDER,
+                                        fromId: idSalesOrder,
+                                        toType: record.Type.ITEM_FULFILLMENT
+                                    });
+                                    var numLines = newFulfill.getLineCount({ sublistId: 'item' });
+                                    for (let i = 0; i < numLines; i++) {
+                                        newFulfill.setSublistValue({ sublistId: 'item', fieldId: 'quantity', value: 1, line: i });
+                                        var objSubRecord = newFulfill.getSublistSubrecord({ sublistId: 'item', fieldId: 'inventorydetail', line: 0 })
+                                        objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: idDispositivo, line: 0 });;
+                                        objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1, line: 0 });
+                                    }
+                                    newFulfill.save({ enableSourcing: false, ignoreMandatoryFields: true });
+                                } catch (error) {
+                                    log.error('Error-Fulfill', error);
                                 }
-                                newFulfill.save({ enableSourcing: false, ignoreMandatoryFields: true });
                             }
                         }
 
                         if (adp == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
-
                             let objRecordCreateServicios = record.create({ type: 'customrecord_ht_nc_servicios_instalados', isDynamic: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_bien_si', value: objRecord.getValue('custrecord_ht_ot_vehiculo'), ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_orden_servicio_si', value: idSalesorder, ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_orden_trabajo', value: id, ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_servicio', value: TTR_name, ignoreFieldChange: true });
                             objRecordCreateServicios.save();
-
-
                             if (conNovedad == true) {
                                 record.submitFields({
                                     type: 'customrecord_ht_record_mantchaser',
@@ -528,13 +573,13 @@ define([
                                     id: idDispositivo,
                                     values: { 'custrecord_ht_dd_estado': estadoChaser },
                                     options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                }); 
+                                });
 
                                 let emailBody = '<p><b>Número de Documento: </b><span style="color: #000000;">' + valueSalesorder + '</span></p>' +
-                                                '<p><b>Cliente: </b><span style="color: #000000;">' + customer + '</span></p>' +
-                                                '<p><b>Bien: </b><span style="color: #000000;">' + valuebien + '</span></p>' +
-                                                '<p><b>Resultado Chequeo: </b><span style="color: #000000;">Con novedad</span></p>' +
-                                                '<p><b>Comentario: </b><span style="color: #000000;">' + comentario + '</span></p>'
+                                    '<p><b>Cliente: </b><span style="color: #000000;">' + customer + '</span></p>' +
+                                    '<p><b>Bien: </b><span style="color: #000000;">' + valuebien + '</span></p>' +
+                                    '<p><b>Resultado Chequeo: </b><span style="color: #000000;">Con novedad</span></p>' +
+                                    '<p><b>Comentario: </b><span style="color: #000000;">' + comentario + '</span></p>'
 
                                 email.send({
                                     author: senderId,
@@ -556,14 +601,51 @@ define([
                             }
                         }
 
+                        if (adp == VALOR_002_DESINSTALACION_DE_DISP && estaChequeada == ESTADO_CHEQUEADA) {//TODO: Revisar actualziaciones cuando es locjack, ya que no tiene simcard
+                            if (esAlquiler == SI) {
+                                log.debug('Alquiler', 'Es alquiler');
+                                let ajusteInv = _Controller.createInventoryAdjustmentIngreso(objParams);
+                                let returnHistorial = _Controller.updateHistorialAF(objParams);
+                                let updateIns = _Controller.updateInstall(objParams)
+                                log.debug('ajusteInv', ajusteInv);
+                                log.debug('returnHistorial', returnHistorial);
+                                log.debug('returnHistorial', updateIns);
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_mantchaser',
+                                    id: serieChaser,
+                                    values: { 'custrecord_ht_mc_estado': estadoChaser },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
 
+                                let dispositivo = search.lookupFields({
+                                    type: 'customrecord_ht_record_mantchaser',
+                                    id: serieChaser,
+                                    columns: ['custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_celularsimcard']
+                                });
+                                let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+                                let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
 
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_detallechaserdisp',
+                                    id: idDispositivo,
+                                    values: { 'custrecord_ht_dd_estado': DISPONIBLE },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_detallechasersim',
+                                    id: idSimCard,
+                                    values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+                            }
+                        }
                         break;
                     default:
                 }
 
                 log.debug('Esta chequeado?', estaChequeada == CHEQUEADO);
-                if (estaChequeada == CHEQUEADO && isCheck) {
+                if (estaChequeada == CHEQUEADO && ingresaFlujoAlquiler == true) {
                     //OBTENCION DE VARIABLES
                     var numSerieId = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                     log.debug('numSerieId', numSerieId);

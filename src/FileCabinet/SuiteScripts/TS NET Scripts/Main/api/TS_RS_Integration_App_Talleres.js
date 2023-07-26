@@ -569,7 +569,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                             }
                             openRecord.setValue({ fieldId: "custrecord_ht_ot_observacion", value: scriptContext.observacion });
                             openRecord.setValue({ fieldId: "custrecord_ht_ot_estadochaser", value: scriptContext.estadoChequeo });
-
+                            openRecord.setValue({ fieldId: "custrecord_ht_ot_supervisorasignacion", value: scriptContext.supervisor });
                             if (guardar == 1) {
                                 let os = openRecord.save();
                                 log.debug('Acción', 'Chequeo: ' + os);

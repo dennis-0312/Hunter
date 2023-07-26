@@ -31,6 +31,13 @@ define([
         const VALOR_010_CAMBIO_DE_PROPIETARIO = 10;
         const GPG_GENERA_PARAMETRIZACION_EN_GEOSYS = 36;
         const GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS = 38;
+        const COMPONENTE_DISPOSITIVO_ID = 1;
+        const EXPENSE_ACCOUNT = 2676;
+        const ECUADOR_SUBSIDIARY = 2;
+        const DEVOLUCION = 6
+        const SUSPENDIDO = 2;
+        const INSTALADO = 1;
+        const DESINSTALADO = 2;
         //! FUNCTIONS ====================================================================================================================================================
         const createServiceOrder = (requestHeader, requestDetail) => {
             let objRecord = record.create({ type: record.Type.SALES_ORDER, isDynamic: true });
@@ -235,7 +242,7 @@ define([
                 case CPI_CONTROL_DE_PRODUCTOS_INSTALADOS://cpi control de productos instalados
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
                     let tipoItem;
-                    let parametrosRespoitem = _platformController.parametrizacion(item);
+                    let parametrosRespoitem = parametrizacion(item);
                     if (parametrosRespoitem.length != 0) {
                         for (let j = 0; j < parametrosRespoitem.length; j++) {
                             if (parametrosRespoitem[j][0] == TIPO_AGRUPACION_PRODUCTO) {
@@ -247,7 +254,7 @@ define([
                         var cont = 0;
                         for (let i = 0; i < type.length; i++) {
                             if (type[i] != '') {
-                                let parametrosRespo = _platformController.parametrizacion(type[i]);
+                                let parametrosRespo = parametrizacion(type[i]);
                                 if (parametrosRespo.length != 0) {
                                     for (let j = 0; j < parametrosRespo.length; j++) {
                                         if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] == tipoItem) {
@@ -285,6 +292,177 @@ define([
                     log.debug('accionEstadoOT');
             }
             return response;
+        }
+
+        const getinventoryNumber = (comercial) => {
+            let serial = "";
+            for (let i = 0; i < comercial.length; i++) {
+                let type = comercial[i].type;
+                if (type == COMPONENTE_DISPOSITIVO_ID) {
+                    serial = comercial[i].seriales[0].serial;
+                }
+            }
+            return getSerialNumber(serial)
+        }
+
+        const getBinNumberAlquiler = (location) => {
+            let binSearch = search.create({
+                type: "bin",
+                filters: [
+                    ["location", "anyof", location],
+                    "AND",
+                    ["custrecord_deposito_para_alquiler", "is", "T"]
+                ],
+                columns: ["binnumber"]
+            }).run().getRange(0, 1);
+            if (binSearch.length) return binSearch[0].id;
+            return "";
+        }
+
+        const getInstall = (objParameters) => {
+            log.debug('getInstall')
+            let productId = 0;
+            let productInstall = search.create({
+                type: "customrecord_ht_co_cobertura",
+                filters:
+                    [
+                        ["custrecord_ht_co_numeroserieproducto", "anyof", objParameters.serieChaser],
+                        "AND",
+                        ["custrecord_ht_co_bien", "anyof", objParameters.bien],
+                        "AND",
+                        ["custrecord_ht_co_estado", "anyof", INSTALADO]
+                    ],
+                columns:
+                    [
+                        'custrecord_ht_co_producto',
+
+                    ]
+            });
+            let resultCount = productInstall.runPaged().count;
+            if (resultCount > 0) {
+                productInstall.run().each(result => {
+                    productId = result.getValue({ name: "custrecord_ht_co_producto" });
+                    return true;
+                });
+            }
+            return productId;
+        }
+
+        const createInventoryAdjustmentIngreso = (scriptParameters) => {
+            //let inventoryNumber = getinventoryNumber(scriptParameters.comercial);
+            let binNumber = getBinNumberAlquiler(scriptParameters.location);
+
+            let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
+
+            newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
+            newAdjust.setValue({ fieldId: 'account', value: EXPENSE_ACCOUNT });
+            newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
+            newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.recipientId });
+            newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
+            newAdjust.setValue({ fieldId: 'custbody_ht_ai_paraalquiler', value: scriptParameters.boleano });
+
+            newAdjust.selectNewLine({ sublistId: 'inventory' });
+            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: scriptParameters.item });
+            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: scriptParameters.location });
+            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: 1 });
+            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'unitcost', value: 0 });
+
+            let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
+
+            newDetail.selectNewLine({ sublistId: 'inventoryassignment' });
+            newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'receiptinventorynumber', value: scriptParameters.comercial });
+            newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: binNumber });
+            newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1 });
+            newDetail.commitLine({ sublistId: 'inventoryassignment' });
+            newAdjust.commitLine({ sublistId: 'inventory' });
+
+            let newRecord = newAdjust.save();
+            log.error("newRecord", newRecord);
+        }
+
+        const updateHistorialAF = (objParameters) => {
+            let historialId = 0;
+            let historialAF = search.create({
+                type: "customrecord_ht_record_historialsegui",
+                filters:
+                    [
+                        ["custrecord_ht_af_enlace.custrecord_assetserialno", "startswith", objParameters.comercial],
+                        "AND",
+                        ["custrecord_ht_hs_vidvehiculo", "startswith", objParameters.bien],
+                        "AND",
+                        ["custrecord_ht_hs_estado", "anyof", INSTALADO]
+                    ],
+                columns:
+                    ['internalid']
+            });
+            let resultCount = historialAF.runPaged().count;
+            if (resultCount > 0) {
+                historialAF.run().each(result => {
+                    historialId = result.getValue({ name: "internalid" });
+                    return true;
+                });
+
+                let dateNow = getDateNow();
+                log.debug('dateNow', dateNow)
+                record.submitFields({
+                    type: 'customrecord_ht_record_historialsegui',
+                    id: historialId,
+                    values: {
+                        'custrecord_ht_hs_numeroordenserviciodes': objParameters.salesorder,
+                        'custrecord_ht_hs_fechaordenserviciodes': new Date(dateNow),
+                        'custrecord_ht_hs_estado': DESINSTALADO
+                    },
+                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                });
+            }
+            return historialId;
+        }
+
+        const historialInstall = (installId, objParameters) => {
+            log.debug('objParameters', JSON.stringify(objParameters))
+            let objRecord = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+            objRecord.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: installId });
+            objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: objParameters.salesorder });
+            objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: objParameters.ordentrabajoId });
+            objRecord.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: DEVOLUCION });
+            objRecord.save();
+        }
+
+
+        const updateInstall = (objParameters) => {
+            log.debug('updateInstall')
+            let installId = 0;
+            let productInstall = search.create({
+                type: "customrecord_ht_co_cobertura",
+                filters:
+                    [
+                        ["custrecord_ht_co_numeroserieproducto", "anyof", objParameters.serieChaser],
+                        "AND",
+                        ["custrecord_ht_co_bien", "anyof", objParameters.bien],
+                        "AND",
+                        ["custrecord_ht_co_estado", "anyof", INSTALADO]
+                    ],
+                columns:
+                    ['internalid']
+            });
+            let resultCount = productInstall.runPaged().count;
+            if (resultCount > 0) {
+                productInstall.run().each(result => {
+                    installId = result.getValue({ name: "internalid" });
+                    return true;
+                });
+                record.submitFields({
+                    type: 'customrecord_ht_co_cobertura',
+                    id: installId,
+                    values: {
+                        'custrecord_ht_co_estado_cobertura': SUSPENDIDO,
+                        'custrecord_ht_co_estado': DESINSTALADO
+                    },
+                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                });
+                historialInstall(installId, objParameters)
+            }
+            return installId
         }
 
         //! QUERIES =======================================================================================================================================================
@@ -511,6 +689,14 @@ define([
             return arr;
         }
 
+        const getDateNow = () => {
+            let fechaHoy = new Date();
+            let dia = fechaHoy.getDate();
+            let mes = fechaHoy.getMonth() + 1; // Los meses en JavaScript comienzan desde 0, por lo que se suma 1
+            let año = fechaHoy.getFullYear();
+            return año + '/' + mes + '/' + dia
+        }
+
 
         return {
             createServiceOrder,
@@ -524,13 +710,19 @@ define([
             getAccountPaymentMethod,
             getCobertura,
             parametrizacion,
+            createInventoryAdjustmentIngreso,
+            updateHistorialAF,
+            getDateNow,
+            updateInstall,
+            getInstall
         }
 
     });
 /*
 & SCRIPT SE APLICA EN:
-^getServiceOrder ====================================================================================================================================================
+^==========================================================================================================================================================================================
 ^ TS_RS_API_Transactions
-^getAccountPaymentMethod ====================================================================================================================================================
 ^ TS_RS_API_Transactions
+^ TS_UE_Sales_Order
+^ TS_UE_Orden_Trabajo
 */

@@ -74,7 +74,7 @@ define(['N/url', 'N/record', 'N/currentRecord', 'N/transaction', 'N/https', 'N/s
                 });
 
                 transaction.void({
-                    type: transaction.Type.SALES_ORDER, //disable Void Transactions Using Reversing Journals in Account Pref
+                    type: transaction.Type.SALES_ORDER, //~~disable Void Transactions Using Reversing Journals in Account Pref
                     id: idRecord
                 });
 

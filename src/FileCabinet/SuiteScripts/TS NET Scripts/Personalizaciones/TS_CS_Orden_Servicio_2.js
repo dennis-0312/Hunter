@@ -44,6 +44,24 @@ define(['N/search',
     var BUSCAR_ORDEN_TRABAJO = '100';
     const SI = 9
     const MON_MONITOREO_VAL = 7;
+    //^BLOQUE PARAMETROS ===================================================================
+    const ADP_ACCION_DEL_PRODUCTO = 2
+    const VALOR_010_CAMBIO_PROPIETARIO = 10;
+    const PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5
+    const TTR_TIPO_TRANSACCION = 8;
+    const CAMB_MOV_CUSTODIA = 131;
+    const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
+    const VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO = 44;
+    const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
+    const TCH_TIPO_CHEQUEO_OT = 6;
+    const VALOR_001_CHEQUEO_H_LOJACK = 105;
+    const VALOR_002_DESINSTALACION_DE_DISP = 21;
+    const ALQUILER_PARAM = 13;
+    const COS_CIERRE_DE_ORDEN_DE_SERVICIO = 99;
+    const DISPONIBLE = 5;
+    const INACTIVO = 5;
+    const INSTALADO = 1;
+    const PROCESANDO = 4
 
     const pageInit = (context) => {
         var currentRecord = context.currentRecord;
@@ -54,6 +72,7 @@ define(['N/search',
 
     const saveRecord = (context) => {
         var currentRecord = context.currentRecord;
+        //let idRec = currentRecord.id;
         let parametro = 0;
         let parametro_salesorder = 0;
         let valor_inf_ejec_trabajo = 0;
@@ -73,12 +92,12 @@ define(['N/search',
         var arrayTA = [];
         var arrayItemOT = [];
         var buscar_orden_trabajo = 0;
-        console.log('busqueda_salesorder', busqueda_salesorder);
+        //console.log('busqueda_salesorder', busqueda_salesorder);
         if (busqueda_salesorder.length != 0) {
             for (let i = 0; i < busqueda_salesorder.length; i++) {
-                console.log('busqueda_salesorder[i]', busqueda_salesorder[i]);
+                //console.log('busqueda_salesorder[i]', busqueda_salesorder[i]);
                 let parametrosRespo = _controllerParm.parametrizacion(busqueda_salesorder[i]);
-                if (parametrosRespo.length != 0) {
+                if (parametrosRespo != 0) {
                     for (let j = 0; j < parametrosRespo.length; j++) {
                         if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
                             parametro_salesorder = parametrosRespo[j][1];
@@ -91,10 +110,9 @@ define(['N/search',
         }
         if (busqueda_item.length != 0) {
             for (let i = 0; i < busqueda_item.length; i++) {
-                console.log('busqueda_item[i]', busqueda_item[i]);
+                //console.log('busqueda_item[i]', busqueda_item[i]);
                 let parametrosRespo = _controllerParm.parametrizacion(busqueda_item[i]);
-                if (parametrosRespo.length != 0) {
-
+                if (parametrosRespo != 0) {
                     var accion_producto = 0;
                     var valor_tipo_agrupacion = 0;
                     for (let j = 0; j < parametrosRespo.length; j++) {
@@ -102,16 +120,16 @@ define(['N/search',
                         if (parametrosRespo[j][0] == TIPO_TRANSACCION) {
                             accion_producto = parametrosRespo[j][1];
                         }
-                        console.log('accion_producto', accion_producto);
+                        //console.log('accion_producto', accion_producto);
                         if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
                             valor_tipo_agrupacion = parametrosRespo[j][1];
                         }
-                        console.log('valor_tipo_agrupacion', valor_tipo_agrupacion);
+                        //console.log('valor_tipo_agrupacion', valor_tipo_agrupacion);
                         if (accion_producto == INST_DISPOSITIVO && valor_tipo_agrupacion != 0) {
                             arrayItemOT.push(valor_tipo_agrupacion);
                         }
                     }
-                    console.log('arrayItemOT', arrayItemOT);
+                    //console.log('arrayItemOT', arrayItemOT);
 
                 }
             }
@@ -126,7 +144,7 @@ define(['N/search',
         var tipo_bien = busqueda_bien.custrecord_ht_bien_tipobien;
 
         let idcobertura = _controllerParm.getCobertura(bien);
-        console.log('idcobertura.length', idcobertura.length);
+        //console.log('idcobertura.length', idcobertura.length);
         let numLines = currentRecord.getLineCount({ sublistId: 'item' });
         var arrayItem = []
         for (let i = 0; i < numLines; i++) {
@@ -147,10 +165,10 @@ define(['N/search',
             let items = currentRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
             let valor_tipo_renovacion = 0;
             let linea = currentRecord.selectLine({ sublistId: 'item', line: i });
-            console.log('linea', linea);
+            // console.log('linea', linea);
             let parametrosRespo = _controllerParm.parametrizacion(items);
-            console.log('parametrizacion pruebas', parametrosRespo);
-            if (parametrosRespo.length != 0) {
+            //console.log('parametrizacion pruebas', parametrosRespo);
+            if (parametrosRespo != 0) {
                 var accion_producto_2 = 0;
                 var valor_tipo_agrupacion_2 = 0;
                 for (let j = 0; j < parametrosRespo.length; j++) {
@@ -162,7 +180,7 @@ define(['N/search',
 
                     }
 
-                    if (parametrosRespo[j][0] == SOLICITA_DISPOSITIVOS_ENTREGADOS && parametrosRespo[j][1] == 9) { //9 = SI
+                    if (parametrosRespo[j][0] == SOLICITA_DISPOSITIVOS_ENTREGADOS && parametrosRespo[j][1] == SI) { //9 = SI
                         flag6 += 1;
                     }
                     /* if (parametro == DESINSTALACION && idcobertura.length == 0) {
@@ -176,8 +194,8 @@ define(['N/search',
                         valor_tipo_agrupacion_2 = parametrosRespo[j][1];
                         arrayitemSO.push(valor_tipo_agrupacion_2);
                     }
-                    console.log('accion_producto_2', accion_producto_2);
-                    console.log('valor_tipo_agrupacion_2', valor_tipo_agrupacion_2);
+                    // console.log('accion_producto_2', accion_producto_2);
+                    // console.log('valor_tipo_agrupacion_2', valor_tipo_agrupacion_2);
                     if (accion_producto_2 == VENT_SERVICIOS && valor_tipo_agrupacion_2 != 0) {
                         arrayTA.push(valor_tipo_agrupacion_2);
                     }
@@ -224,7 +242,7 @@ define(['N/search',
                     //Validación de Prodcutos Instalados
                     if (valor_tipo_renovacion == RENOVACION_NORMAL || parametro == DESISTALACION) {
                         let verificar_instalacion_parametro = _controllerParm.parametros(CPI, linea, idcobertura);
-                        console.log('verificar_instalacion_parametro', verificar_instalacion_parametro);
+                        //console.log('verificar_instalacion_parametro', verificar_instalacion_parametro);
                         if (verificar_instalacion_parametro.status == false) {
                             dialog.alert({ title: 'Alerta', message: verificar_instalacion_parametro.mensaje });
                             return false
@@ -255,8 +273,6 @@ define(['N/search',
                             return false
                         }
                     }
-
-
                 }
                 // console.log('FLAG 3', flag3);
                 // console.log('FLAG 4', flag4);
@@ -269,19 +285,28 @@ define(['N/search',
                     dialog.alert({ title: 'Alerta', message: 'El producto basico debe tener una agrupacion de tipo monitoreo' });
                     return false
                 }
+
+                // if (accion_producto_2 == CAMBIO_PROPIETARIO) {
+                //     //console.log('IDDDDDDDDDDDDD', accion_producto_2 + ' - ' + currentRecord);
+                //     let response = _controllerParm.parametros(CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS, context.currentRecord)
+                //     dialog.alert({ title: 'Alerta', message: response.mensaje });
+                //     return response.status;
+                // }
             }
         }
+
+
 
         if (parametro == CAMBIO_PROPIETARIO && numLines != 1) {
             dialog.alert({ title: 'Alerta', message: 'No se puede tener un Artículo tipo Cambio de Propietario junto a otro Artículo' });
             return false
         }
 
-        console.log('valor_inf_ejec_trabajo', valor_inf_ejec_trabajo);
+        //console.log('valor_inf_ejec_trabajo', valor_inf_ejec_trabajo);
         if (valor_inf_ejec_trabajo == 9) {
-            console.log('valor_inf_ejec_trabajo', valor_inf_ejec_trabajo);
+            //console.log('valor_inf_ejec_trabajo', valor_inf_ejec_trabajo);
             var novedades = currentRecord.getValue('custbody_ht_os_novedades');
-            console.log('novedades', novedades);
+            //console.log('novedades', novedades);
             if (novedades == '') {
                 dialog.alert({ title: 'Alerta', message: 'Debes llenar el campo Novedades' });
                 return false
@@ -293,18 +318,18 @@ define(['N/search',
             dialog.alert({ title: 'Alerta', message: 'El artículo de Renovacion Anticipada debe tener un artículo de Renovacion Normal' });
             return false
         }
-        console.log('arraybusquedaitemSO', arraybusquedaitemSO);
-        console.log('arrayitemSO', arrayitemSO);
+        // console.log('arraybusquedaitemSO', arraybusquedaitemSO);
+        // console.log('arrayitemSO', arrayitemSO);
         debugger;
         var iguales = encontrarElementosIguales(arraybusquedaitemSO, arrayitemSO);
-        console.log('iguales', iguales);
+        //console.log('iguales', iguales);
         if (flag6 > 0 && iguales.length > 0) {
             dialog.alert({ title: 'Alerta', message: 'El articulo tiene el mismo tipo de producto de una orden de servicio creada para este vehiculo' });
             return false
         }
-        console.log('flag7', flag7);
-        console.log('arrayTA', arrayTA);
-        console.log('arrayItemOT', arrayItemOT);
+        // console.log('flag7', flag7);
+        // console.log('arrayTA', arrayTA);
+        // console.log('arrayItemOT', arrayItemOT);
         var iguales_2 = encontrarElementosIguales(arrayTA, arrayItemOT);
         if (flag7 == 0 && iguales_2.length == 0 && buscar_orden_trabajo == 9) {
             dialog.alert({ title: 'Alerta', message: 'No existe una Orden de Trabajo del mismo tipo de agrupacion para el item de servicio' });

@@ -649,7 +649,7 @@ define([
         }
 
         const parametrizacion = (items) => {
-            let arr = [];
+            let arr = new Array();
             var busqueda = search.create({
                 type: "customrecord_ht_pp_main_param_prod",
                 filters:
@@ -670,23 +670,29 @@ define([
                         search.createColumn({ name: "custrecord_ht_pp_parametrizacion_valor", label: "Valor" })
                     ]
             });
-            var pageData = busqueda.runPaged({
-                pageSize: 1000
-            });
+            let resultCount = busqueda.runPaged().count;
+            if (resultCount > 0) {
+                var pageData = busqueda.runPaged({
+                    pageSize: 1000
+                });
 
-            pageData.pageRanges.forEach(pageRange => {
-                page = pageData.fetch({
-                    index: pageRange.index
+                pageData.pageRanges.forEach(pageRange => {
+                    page = pageData.fetch({
+                        index: pageRange.index
+                    });
+                    page.data.forEach(result => {
+                        var columns = result.columns;
+                        var parametrizacion = new Array();
+                        result.getValue(columns[0]) != null ? parametrizacion[0] = result.getValue(columns[0]) : parametrizacion[0] = '';
+                        result.getValue(columns[1]) != null ? parametrizacion[1] = result.getValue(columns[1]) : parametrizacion[1] = '';
+                        arr.push(parametrizacion);
+                    });
                 });
-                page.data.forEach(result => {
-                    var columns = result.columns;
-                    var parametrizacion = new Array();
-                    result.getValue(columns[0]) != null ? parametrizacion[0] = result.getValue(columns[0]) : parametrizacion[0] = '';
-                    result.getValue(columns[1]) != null ? parametrizacion[1] = result.getValue(columns[1]) : parametrizacion[1] = '';
-                    arr.push(parametrizacion);
-                });
-            });
+            } else {
+                arr = resultCount;
+            }
             return arr;
+
         }
 
         const getDateNow = () => {

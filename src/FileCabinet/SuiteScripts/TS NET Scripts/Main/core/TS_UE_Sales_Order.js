@@ -201,7 +201,7 @@ define([
                         if (busqueda_cobertura.length != 0) {
                             for (let i = 0; i < busqueda_cobertura.length; i++) {
                                 let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
-                                if (parametrosRespo.length != 0) {
+                                if (parametrosRespo != 0) {
                                     var accion_producto_2 = 0;
                                     var valor_tipo_agrupacion_2 = 0;
                                     for (let j = 0; j < parametrosRespo.length; j++) {
@@ -342,7 +342,7 @@ define([
                         for (let i = 0; i < busqueda_cobertura.length; i++) {
                             let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
                             //log.debug('busqueda_cobertura', JSON.stringify(busqueda_cobertura));
-                            if (parametrosRespo.length != 0) {
+                            if (parametrosRespo != 0) {
                                 for (let j = 0; j < parametrosRespo.length; j++) {
                                     if (parametrosRespo[j][0] == TCH_TIPO_CHEQUEO_OT && parametrosRespo[j][1] == paramChequeo) {
                                         // log.debug('workOrder', workOrder);
@@ -402,8 +402,8 @@ define([
                         //objRecord.selectLine({ sublistId: 'item', line: i });
                         let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                         parametrosRespo = _controller.parametrizacion(items);
-                        //log.debug('parametrosRespop', parametrosRespo);
-                        if (parametrosRespo.length != 0) {
+                        if (parametrosRespo != 0) {
+                            log.debug('parametrosRespop', parametrosRespo);
                             for (let j = 0; j < parametrosRespo.length; j++) {
                                 if (parametrosRespo[j][0] == TIPO_TRANSACCION) {
                                     parametro = parametrosRespo[j][1];
@@ -426,12 +426,12 @@ define([
                             }
                         }
                         htClient = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente', line: i });
-                        //log.debug('htClient', htClient);
+                        log.debug('htClient', htClient);
                         monitoreo = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo', line: i });
-                        //log.debug('monitoreo', monitoreo);
+                        log.debug('monitoreo', monitoreo);
                         bien = objRecord.getValue('custbody_ht_so_bien');
                         custodiaDisp = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo', line: i });
-                        //log.debug('monitoreo', monitoreo);
+                        log.debug('monitoreo', monitoreo);
                         // var fechaInicialItem = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cambio_fecha', line: i });
                         // fechaInicial = new Date(fechaInicialItem);
                     }
@@ -439,10 +439,13 @@ define([
                     // log.debug('valor_tipo_agrupacion', valor_tipo_agrupacion);
                     // log.debug('ADP', adp);
                     // log.debug('DEBUG1', ccd + ' - ' + ttr);
-                    if (ccd == SI || ttr == CAMB_MOV_CUSTODIA)
+                    if (ccd == SI || ttr == CAMB_MOV_CUSTODIA) {
                         esCustodia = 1
+                    }
+
+                    log.debug('DEBUGGGGGG', adp + ' - ' + esCustodia + ' - ' + parametro);
                     if (parametro != 0 && esCustodia == 0 && adp == VALOR_010_CAMBIO_PROPIETARIO) {
-                        //log.debug('entra plataformas por cambio de propietario');
+                        log.debug('entra plataformas por cambio de propietario');
                         for (let j = 0; j < parametrosRespo.length; j++) {
                             if (parametrosRespo[j][0] == PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC && parametrosRespo[j][1] == SI) {
                                 returEjerepo = _controller.parametros(PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC, idRecord, parametro);
@@ -451,30 +454,33 @@ define([
                         if (returEjerepo == false) {
                             let idCoberturaItem;
                             let busqueda_cobertura = getCoberturaItem(bien);
-                            // log.debug('busqueda_cobertura', busqueda_cobertura);
-                            // log.debug('monitoreo', monitoreo);
-                            // log.debug('htClient', htClient);
-                            // log.debug('bien', bien);
+                            log.debug('busqueda_cobertura', busqueda_cobertura);
+                            log.debug('monitoreo', monitoreo);
+                            log.debug('htClient', htClient);
+                            //log.debug('bien', bien);
                             if (busqueda_cobertura != 0) {
+                                log.debug('bienNNNN', bien);
                                 for (let i = 0; i < busqueda_cobertura.length; i++) {
                                     //log.debug('Init For');
                                     let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
-                                    if (parametrosRespo.length != 0) {
+                                    if (parametrosRespo != 0) {
+
                                         var accion_producto_2 = 0;
                                         var valor_tipo_agrupacion_2 = 0;
                                         for (let j = 0; j < parametrosRespo.length; j++) {
                                             if (parametrosRespo[j][0] == TAG_TIPO_AGRUPACION_PRODUCTO) {
                                                 valor_tipo_agrupacion_2 = parametrosRespo[j][1];
-                                                //log.debug('valor_tipo_agrupacion_2', valor_tipo_agrupacion_2);
+                                                log.debug('valor_tipo_agrupacion_2', valor_tipo_agrupacion_2);
                                             }
                                             if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
                                                 idCoberturaItem = busqueda_cobertura[i][1];
-                                                //log.debug('idCoberturaItem', idCoberturaItem);
+                                                log.debug('idCoberturaItem', idCoberturaItem);
                                             }
                                         }
                                     }
                                 }
-                                //log.debug('idCoberturaItem', idCoberturaItem);
+                                log.debug('idCoberturaItem', idCoberturaItem);
+                                
                                 record.submitFields({
                                     type: 'customrecord_ht_co_cobertura',
                                     id: idCoberturaItem,
@@ -494,7 +500,7 @@ define([
                                 options: { enableSourcing: false, ignoreMandatoryFields: true }
                             });
                             //record.submitFields({ type: 'salesorder', id: idRecord, values: { 'custbody_ht_os_aprobacionventa': 1, 'orderstatus': 'B' }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
-                            //transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
+                            transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
                         }
                     }
 

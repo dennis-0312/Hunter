@@ -33,6 +33,8 @@ define([
         const GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS = 38;
         const COMPONENTE_DISPOSITIVO_ID = 1;
         const EXPENSE_ACCOUNT = 2676;
+        const INVENTORY_ASSET_ACCOUNT = 215;
+        const COST_ACCOUNT = 1242;
         const ECUADOR_SUBSIDIARY = 2;
         const DEVOLUCION = 6
         const SUSPENDIDO = 2;
@@ -156,11 +158,10 @@ define([
                             }
                     }
                     break;
-                case VOT_VARIAS_ORDENES_DE_TRABAJO:
+                // case VOT_VARIAS_ORDENES_DE_TRABAJO:
                 case GOT_GENERA_SOLICITUD_DE_TRABAJO:
                     log.debug(' id.item', id.item);
                     if (id.serviceOrder) {
-
                         var customrecord_ht_pp_main_item_relacionadoSearchObj = search.create({
                             type: "customrecord_ht_pp_main_item_relacionado",
                             filters:
@@ -319,6 +320,20 @@ define([
             return "";
         }
 
+        const getBinNumberComercial = (location) => {
+            let binSearch = search.create({
+                type: "bin",
+                filters: [
+                    ["location", "anyof", location],
+                    "AND",
+                    ["custrecord_deposito_para_bodega_comercia", "is", "T"]
+                ],
+                columns: ["binnumber"]
+            }).run().getRange(0, 1);
+            if (binSearch.length) return binSearch[0].id;
+            return "";
+        }
+
         const getInstall = (objParameters) => {
             log.debug('getInstall')
             let productId = 0;
@@ -348,18 +363,29 @@ define([
             return productId;
         }
 
-        const createInventoryAdjustmentIngreso = (scriptParameters) => {
-            //let inventoryNumber = getinventoryNumber(scriptParameters.comercial);
-            let binNumber = getBinNumberAlquiler(scriptParameters.location);
+        const createInventoryAdjustmentIngreso = (scriptParameters, objParams = 0, tipoFlujo = 0) => {
+            let binNumber, account, unitCost, flujo;
+            if (tipoFlujo == 0) {
+                binNumber = getBinNumberAlquiler(scriptParameters.location);
+                account = EXPENSE_ACCOUNT;
+                unitCost = 0
+                flujo = 'custbody_ht_ai_paraalquiler';
+            } else {
+                // binNumber = getBinNumberComercial(scriptParameters.location);
+                binNumber = objParams.binNumber;
+                account = COST_ACCOUNT;
+                unitCost = 0
+                flujo = 'custbody_ht_ai_porconvenio';
+            }
 
             let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
 
             newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
-            newAdjust.setValue({ fieldId: 'account', value: EXPENSE_ACCOUNT });
+            newAdjust.setValue({ fieldId: 'account', value: account });
             newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
             newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.recipientId });
             newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
-            newAdjust.setValue({ fieldId: 'custbody_ht_ai_paraalquiler', value: scriptParameters.boleano });
+            newAdjust.setValue({ fieldId: flujo, value: scriptParameters.boleano });
 
             newAdjust.selectNewLine({ sublistId: 'inventory' });
             newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: scriptParameters.item });
@@ -377,7 +403,8 @@ define([
             newAdjust.commitLine({ sublistId: 'inventory' });
 
             let newRecord = newAdjust.save();
-            log.error("newRecord", newRecord);
+            //log.error("newRecord", newRecord);
+            return newRecord;
         }
 
         const updateHistorialAF = (objParameters) => {
@@ -428,7 +455,6 @@ define([
             objRecord.save();
         }
 
-
         const updateInstall = (objParameters) => {
             log.debug('updateInstall')
             let installId = 0;
@@ -464,6 +490,252 @@ define([
             }
             return installId
         }
+
+        const updateOrdenTrabajo = (ordentrabajoid, taller, chaser, serieDispositivo, serieSimCard) => {
+            let updateRecord = record.submitFields({
+                type: _constant.customRecord.ORDEN_TRABAJO,
+                id: ordentrabajoid,
+                values: {
+                    // 'custrecord_ht_ot_estado': _constant.Status.CHEQUEADO,
+                    'custrecord_ht_ot_taller': taller,
+                    'custrecord_ht_ot_serieproductoasignacion': chaser,
+                    'custrecord_ht_ot_dispositivo': serieDispositivo,
+                    'custrecord_ht_ot_simcard': serieSimCard,
+                    'custrecord_ht_ot_estadochaser': _constant.Status.INSTALADO,
+                    'custrecord_ht_ot_motivos': _constant.Constants.CONVENIO,
+                    'custrecord_flujo_de_convenio': true
+                },
+                options: {
+                    enableSourcing: false,
+                    ignoreMandatoryFields: true
+                }
+            });
+            return updateRecord;
+        }
+
+        const createChaser = (bien, vid, arrayTypes, arrayComponents) => {
+            log.debug('ArrayComponents', arrayComponents)
+            try {
+                let objRecordCreate = record.create({ type: _constant.customRecord.CHASER, isDynamic: true });
+                for (let i = 0; i < arrayTypes.length; i++) {
+                    //let item = objRecord.getSublistValue({ sublistId: 'component', fieldId: 'item', line: i });
+                    //let quantity = objRecord.getSublistValue({ sublistId: 'component', fieldId: 'quantity', line: i });
+                    // let fieldLookUp = search.lookupFields({ type: 'serializedinventoryitem', id: arrayComponents[i], columns: ['custitem_ht_ai_tipocomponente'] });
+                    let tipeItmes = arrayTypes[i]
+                    // if (Object.keys(fieldLookUp).length != 0) {
+                    //     if (fieldLookUp.custitem_ht_ai_tipocomponente.length != 0) {
+                    //         tipeItmes = fieldLookUp.custitem_ht_ai_tipocomponente[0].value;
+                    //     }
+                    // }
+
+                    //log.debug('tipeItmes', tipeItmes)
+                    if (tipeItmes == 1) {
+                        //log.debug('tipeItmesEntry', tipeItmes)
+                        let chaser = getInventorynumber(arrayComponents, i, tipeItmes);
+                        chaser.pageRanges.forEach(pageRange => {
+                            page = chaser.fetch({ index: pageRange.index });
+                            page.data.forEach(result => {
+                                let columns = result.columns;
+                                // log.debug('ChaserdResultColumns', columns);
+                                // log.debug('custrecord_ht_mc_seriedispositivo', result.getValue(columns[1]));
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_seriedispositivo', value: result.getValue(columns[0]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'name', value: result.getValue(columns[12]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_modelo', value: result.getValue(columns[4]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_unidad', value: result.getValue(columns[3]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_imei', value: result.getValue(columns[6]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_firmware', value: result.getValue(columns[7]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_script', value: result.getValue(columns[8]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_servidor', value: result.getValue(columns[9]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vid', value: vid, ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_estado', value: _constant.Status.INSTALADO, ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_tipodispositivo', value: result.getValue(columns[11]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vehiculo', value: bien, ignoreFieldChange: true });
+                            });
+                        });
+                    }
+
+                    if (tipeItmes == 2) {
+                        //log.debug('tipeItmesEntry', tipeItmes)
+                        let Simcard = getInventorynumber(arrayComponents, i, tipeItmes);
+                        Simcard.pageRanges.forEach(pageRange => {
+                            page = Simcard.fetch({ index: pageRange.index });
+                            page.data.forEach(result => {
+                                let columns = result.columns;
+                                //log.debug('SimcardResultColumns', columns);
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_celularsimcard', value: result.getValue(columns[0]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_nocelularsim', value: result.getValue(columns[7]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_ip', value: result.getValue(columns[5]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_apn', value: result.getValue(columns[6]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_operadora', value: result.getValue(columns[4]), ignoreFieldChange: true });
+                            });
+                        });
+                    }
+
+                    if (tipeItmes == 3) {
+                        //log.debug('tipeItmesEntry', tipeItmes)
+                        let lojack = getInventorynumber(arrayComponents, i, tipeItmes);
+                        lojack.pageRanges.forEach(pageRange => {
+                            page = lojack.fetch({ index: pageRange.index });
+                            page.data.forEach(result => {
+                                let columns = result.columns;
+                                //log.debug('LojackdResultColumns', columns);
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_codigoactivacion', value: result.getValue(columns[2]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_codigorespuesta', value: result.getValue(columns[3]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_estadolojack', value: result.getValue(columns[4]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_seriedispositivolojack', value: result.getValue(columns[0]), ignoreFieldChange: true });
+                                objRecordCreate.setValue({ fieldId: 'name', value: result.getValue(columns[5]), ignoreFieldChange: true });
+                            });
+                        });
+                    }
+                }
+                //objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_enlace', value: id, ignoreFieldChange: true });//^Activar solo si viene de Work Order
+                let recordId = objRecordCreate.save({ enableSourcing: false, ignoreMandatoryFields: false });
+                return recordId;
+            } catch (error) {
+                log.error('Error-CreateChaser', error);
+                return 0;
+            }
+
+        }
+
+        const getInventorynumber = (arrayComponents, i, tipeItmes) => {
+            log.debug('getInventorynumber', 'Entré a getInventorynumber')
+            let tipoItmesText;
+            let customRecord;
+            let columns;
+            let estadoColumna = 0;
+            switch (tipeItmes) {
+                case '1':
+                    tipoItmesText = "custrecord_ht_dd_item";
+                    customRecord = "customrecord_ht_record_detallechaserdisp";
+                    columns = [
+                        search.createColumn({ name: "internalid", label: "ID" }),
+                        search.createColumn({ name: "custrecord_ht_dd_dispositivo", label: "dd_dispositivo" }),
+                        search.createColumn({ name: "custrecord_ht_dd_item", label: "dd_item" }),
+                        search.createColumn({ name: "custrecord_ht_dd_tipodispositivo", label: "dd_tipodispositivo" }),
+                        search.createColumn({ name: "custrecord_ht_dd_modelodispositivo", label: "dd_modelodispositivo" }),
+                        search.createColumn({ name: "custrecord_ht_dd_macaddress", label: "dd_macaddress" }),
+                        search.createColumn({ name: "custrecord_ht_dd_imei", label: "dd_imei" }),
+                        search.createColumn({ name: "custrecord_ht_dd_firmware", label: "dd_firmware" }),
+                        search.createColumn({ name: "custrecord_ht_dd_script", label: "dd_script" }),
+                        search.createColumn({ name: "custrecord_ht_dd_servidor", label: "dd_servidor" }),
+                        search.createColumn({ name: "custrecord_ht_dd_estado", label: "dd_estado" }),
+                        search.createColumn({ name: "custrecord_ht_dd_tipodispocha", label: "dd_tipodispocha" }),
+                        search.createColumn({ name: "name", label: "name" })
+                    ];
+                    break;
+                case '2':
+                    tipoItmesText = "custrecord_ht_ds_serie";
+                    customRecord = "customrecord_ht_record_detallechasersim";
+                    columns = [
+                        search.createColumn({ name: "internalid", label: "ID" }),
+                        search.createColumn({ name: "custrecord_ht_ds_simcard", label: "ds_simcard" }),
+                        search.createColumn({ name: "custrecord_ht_ds_serie", label: "ds_serie" }),
+                        search.createColumn({ name: "custrecord_ht_ds_tiposimcard", label: "ds_tiposimcard" }),
+                        search.createColumn({ name: "custrecord_ht_ds_operadora", label: "ds_operadora" }),
+                        search.createColumn({ name: "custrecord_ht_ds_ip", label: "ds_ip" }),
+                        search.createColumn({ name: "custrecord_ht_ds_apn", label: "ds_apn" }),
+                        search.createColumn({ name: "custrecord_ht_ds_numerocelsim", label: "ds_numerocelsim" }),
+                        search.createColumn({ name: "custrecord_ht_ds_estado", label: "ds_estado" })
+                    ];
+                    break;
+                case '3':
+                    tipoItmesText = "custrecord_ht_cl_seriebox";
+                    customRecord = "customrecord_ht_record_detallechaslojack";
+                    estadoColumna = 4;
+                    columns = [
+                        search.createColumn({ name: "internalid", label: "ID" }),
+                        search.createColumn({ name: "custrecord_ht_cl_seriebox", label: "cl_seriebox" }),
+                        search.createColumn({ name: "custrecord_ht_cl_activacion", label: "cl_activacion" }),
+                        search.createColumn({ name: "custrecord_ht_cl_respuesta", label: "cl_respuesta" }),
+                        search.createColumn({ name: "custrecord_ht_cl_estado", label: "cl_estado" }),
+                        search.createColumn({ name: "name", label: "name" }),
+                    ];
+                    break;
+                default:
+                    break;
+            }
+
+            // let invDetailRec = objRecord.getSublistSubrecord({ sublistId: 'component', fieldId: 'componentinventorydetail', line: i });
+            // let inventoryAssignmentLines = invDetailRec.getLineCount({ sublistId: 'inventoryassignment' });
+
+            // for (let j = 0; j < arrayParams.length; j++) {
+            // let inventorynumber = invDetailRec.getSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', line: j });
+            let inventorynumber = arrayComponents[i];
+            //log.debug('Records', customRecord + ' - ' + tipoItmesText + ' - ' + inventorynumber);
+            let busqueda = search.create({
+                type: customRecord,
+                filters:
+                    [
+                        ["internalid", "anyof", inventorynumber]
+                    ],
+                columns: columns
+            });
+            let pageData = busqueda.runPaged({ pageSize: 1000 });
+            // let objResults = busqueda.run().getRange({ start: 0, end: 1 });
+            // log.debug('pageData', objResults);
+            return pageData;
+            // }
+        }
+
+        const createInventoryAdjustmentSalida = (scriptParameters) => {
+            //log.debug('scriptParameters', scriptParameters);
+            let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
+            newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
+            newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
+            newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.recipientId });
+            newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
+            newAdjust.setValue({ fieldId: 'custbody_ht_ai_porconvenio', value: scriptParameters.boleano });
+            let objParams = setItemstoInventoryAdjustment(newAdjust, scriptParameters, scriptParameters.comercial, scriptParameters.sim);
+            //log.debug('account', objParams.account);
+            newAdjust.setValue({ fieldId: 'account', value: objParams.account });
+            let newRecord = newAdjust.save();
+            //log.error("newRecord", newRecord);
+            return objParams;
+        }
+
+        const setItemstoInventoryAdjustment = (newAdjust, scriptParameters, disp, sim) => {
+            let serie;
+            let arrayComponents = getComponents(scriptParameters.item, scriptParameters.location);
+            let account = arrayComponents[0][4];
+            let binNumber = arrayComponents[0][3]
+            //log.debug('ArrayComponents', arrayComponents);
+            for (let i = 0; i < arrayComponents.length; i++) {
+                if (arrayComponents[i][0].length > 0) {
+                    let item = arrayComponents[i][2];
+                    newAdjust.selectNewLine({ sublistId: 'inventory' });
+                    newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: item });
+                    newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: scriptParameters.location });
+                    newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: -1 });
+                    newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'unitcost', value: arrayComponents[i][0] });
+
+                    let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
+                    newDetail.selectNewLine({ sublistId: 'inventoryassignment' });
+                    if (arrayComponents[i][1] != "4") {
+                        if (arrayComponents[i][1] == 1)
+                            serie = getSerie(disp)
+                        if (arrayComponents[i][1] == 2)
+                            serie = getSerie(sim)
+                        if (arrayComponents[i][1] == 3)
+                            serie = getSerie(disp)
+                        newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: serie });
+                        newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: arrayComponents[i][3] });
+                        newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1 });
+                    } else {
+                        newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: arrayComponents[i][3] });
+                        newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1 });
+                        newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: -1 });
+                    }
+                    newDetail.commitLine({ sublistId: 'inventoryassignment' });
+                    newAdjust.commitLine({ sublistId: 'inventory' });
+                }
+            }
+            return {
+                account: account,
+                binNumber: binNumber
+            }
+        }
+
 
         //! QUERIES =======================================================================================================================================================
         const getTaxes = (tax) => {
@@ -672,14 +944,9 @@ define([
             });
             let resultCount = busqueda.runPaged().count;
             if (resultCount > 0) {
-                var pageData = busqueda.runPaged({
-                    pageSize: 1000
-                });
-
+                var pageData = busqueda.runPaged({ pageSize: 1000 });
                 pageData.pageRanges.forEach(pageRange => {
-                    page = pageData.fetch({
-                        index: pageRange.index
-                    });
+                    page = pageData.fetch({ index: pageRange.index });
                     page.data.forEach(result => {
                         var columns = result.columns;
                         var parametrizacion = new Array();
@@ -703,6 +970,255 @@ define([
             return año + '/' + mes + '/' + dia
         }
 
+        const identifyServiceOrder = (transaction) => {
+            let transactionid = 0;
+            let objSearch = search.create({
+                type: _constant.Transaction.INVOICE,
+                filters:
+                    [
+                        ["type", "anyof", "CustInvc"],
+                        "AND",
+                        ["numbertext", "haskeywords", transaction]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "createdfrom", summary: "GROUP", label: "Created From" }),
+                        search.createColumn({ name: "tranid", summary: "GROUP", label: "Document Number" }),
+                    ]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            if (searchResultCount > 0 && searchResultCount <= 4000) {
+                objSearch.run().each(result => {
+                    transactionid = result.getValue({ name: "createdfrom", summary: "GROUP", label: "Created From" });
+                    return true;
+                });
+            }
+            return transactionid;
+        }
+
+        const getItemOfServiceOrder = (transactionid) => {
+            let objService = new Array();
+            let objSearch = search.create({
+                type: _constant.Transaction.SALES_ORDER,
+                filters:
+                    [
+                        ["type", "anyof", "SalesOrd"],
+                        "AND",
+                        ["internalid", "anyof", transactionid],
+                        "AND",
+                        ["item.type", "anyof", "Assembly", "Kit"]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "tranid", label: "Document Number" }),
+                        search.createColumn({ name: "item", label: "Item" }),
+                        search.createColumn({ name: "itemtype", label: "itemType" })
+                    ]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            if (searchResultCount > 0 && searchResultCount <= 4000) {
+                objSearch.run().each(result => {
+                    let itemid = result.getValue({ name: "item", label: "Item" });
+                    let tranid = result.getValue({ name: "tranid", label: "Document Number" });
+                    objService.push({
+                        itemid: itemid,
+                        tranid: tranid
+                    })
+                    return true;
+                });
+            }
+            return objService;
+        }
+
+        const validateOrdenTrabajo = (transaction, bien) => {
+            let recordid = 0;
+            let objSearch = search.create({
+                type: _constant.customRecord.ORDEN_TRABAJO,
+                filters:
+                    [
+                        ["custrecord_ht_ot_orden_servicio", "anyof", transaction],
+                        "AND",
+                        ["custrecord_ht_ot_vehiculo", "anyof", bien]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "internalid", label: "Internal ID" }),
+                    ]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            if (searchResultCount > 0) {
+                let objResults = objSearch.run().getRange({ start: 0, end: 1 });
+                recordid = objResults[0].getValue({ name: "internalid", label: "Internal ID" });
+            }
+            return recordid;
+        }
+
+        const validateChaser = (bien, dispositivo, sim) => {
+            let recordid = 0;
+            let objSearch = search.create({
+                type: _constant.customRecord.CHASER,
+                filters:
+                    [
+                        ["custrecord_ht_mc_vehiculo", "anyof", bien],
+                        "AND",
+                        ["custrecord_ht_mc_seriedispositivo", "anyof", dispositivo],
+                        "AND",
+                        ["custrecord_ht_mc_celularsimcard", "anyof", sim]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "internalid", label: "Internal ID" })
+                    ]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            if (searchResultCount > 0) {
+                let objResults = objSearch.run().getRange({ start: 0, end: 1 });
+                recordid = objResults[0].getValue({ name: "internalid", label: "Internal ID" });
+            }
+            return recordid;
+        }
+
+        const getOficinaPorTaller = (taller) => {
+            let recordTaller = search.lookupFields({
+                type: 'customrecord_ht_tt_tallertablet',
+                id: taller,
+                columns: ['custrecord_ht_tt_oficina']
+            });
+            return recordTaller.custrecord_ht_tt_oficina[0].value;
+        }
+
+        const getItemType = (itemId) => {
+            let itemRecord = search.lookupFields({
+                type: search.Type.ITEM,
+                id: itemId,
+                columns: ["recordtype"]
+            });
+            return itemRecord.recordtype;
+        }
+
+        const getComponents = (item, location) => {
+            let billofmaterials = 0;
+            let component = 0;
+            let account = 0;
+            let binNumber = 0;
+            let newArray = new Array();
+            let assemblyitemSearchObj = search.create({
+                type: "assemblyitem",
+                filters:
+                    [
+                        ["type", "anyof", "Assembly"],
+                        "AND",
+                        ["internalid", "anyof", item],
+                        "AND",
+                        ["assemblyitembillofmaterials.default", "is", "T"],
+                        "AND",
+                        ["preferredbin", "is", "T"]
+                    ],
+                columns:
+                    [
+                        // search.createColumn({ name: "itemid", sort: search.Sort.ASC, label: "Name" }),
+                        search.createColumn({ name: "billofmaterialsid", join: "assemblyItemBillOfMaterials", label: "Bill of Materials ID" }),
+                        search.createColumn({ name: "assetaccount", label: "Asset Account" }),
+                        search.createColumn({ name: "internalid", join: "binNumber", label: "Internal ID" })
+                        // search.createColumn({ name: "billofmaterials", join: "assemblyItemBillOfMaterials", label: "Bill of Materials" }),
+                        // search.createColumn({ name: "default", join: "assemblyItemBillOfMaterials", label: "Default" })
+
+                    ]
+            });
+            let searchResultCount = assemblyitemSearchObj.runPaged().count;
+            if (searchResultCount > 0) {
+                assemblyitemSearchObj.run().each(result => {
+                    billofmaterials = result.getValue({ name: "billofmaterialsid", join: "assemblyItemBillOfMaterials", label: "Bill of Materials ID" });
+                    account = result.getValue({ name: "assetaccount", label: "Asset Account" });
+                    binNumber = result.getValue({ name: "internalid", join: "binNumber", label: "Internal ID" });
+                    return true;
+                });
+
+                let bomrevisionSearchObj = search.create({
+                    type: "bomrevision",
+                    filters:
+                        [
+                            ["billofmaterials", "anyof", billofmaterials],
+                            "AND",
+                            ["component.quantity", "equalto", "1"]
+                        ],
+                    columns:
+                        [
+                            //search.createColumn({ name: "billofmaterials", label: "Bill of Materials" }),
+                            search.createColumn({ name: "item", join: "component", label: "Item" })
+                        ]
+                });
+                let searchResultCount2 = bomrevisionSearchObj.runPaged().count;
+                if (searchResultCount2 > 0) {
+                    bomrevisionSearchObj.run().each(result => {
+                        component = result.getValue({ name: "item", join: "component", label: "Item" });
+                        let objData = getAverageCost(component, location);
+                        objData.push(component, binNumber, account)
+                        newArray.push(objData)
+                        return true;
+                    });
+                }
+            }
+            return newArray;
+        }
+
+        const getAverageCost = (item, location) => {
+            let averageCost = 0
+            let itemtype = 0;
+            let objData = new Array();
+            let objSearch = search.create({
+                type: "inventoryitem",
+                filters:
+                    [
+                        ["type", "anyof", "InvtPart", "Assembly"],
+                        "AND",
+                        ["internalid", "anyof", item],
+                        "AND",
+                        ["inventorylocation", "anyof", location]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "locationaveragecost", label: "Location Average Cost" }),
+                        search.createColumn({ name: "custitem_ht_ai_tipocomponente", label: "HT Tipo de Componente Chaser" })
+
+                    ]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            if (searchResultCount > 0) {
+                let objResults = objSearch.run().getRange({ start: 0, end: 1 });
+                averageCost = objResults[0].getValue({ name: "locationaveragecost", label: "Location Average Cost" });
+                itemtype = objResults[0].getValue({ name: "custitem_ht_ai_tipocomponente", label: "HT Tipo de Componente Chaser" });
+                objData.push(averageCost, itemtype)
+            }
+            return objData;
+        }
+
+        const getSerie = (number) => {
+            let serie = 0
+            var itemSearchObj = search.create({
+                type: "item",
+                filters:
+                    [
+                        ["type", "anyof", "InvtPart", "Assembly"],
+                        "AND",
+                        ["inventorynumber.inventorynumber", "startswith", number]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "internalid", join: "inventoryNumber", label: "Internal ID" }),
+                        search.createColumn({ name: "inventorynumber", join: "inventoryNumber", label: "Number" })
+                    ]
+            });
+            var searchResultCount = itemSearchObj.runPaged().count;
+            //log.debug("itemSearchObj result count", searchResultCount);
+            itemSearchObj.run().each(function (result) {
+                serie = account = result.getValue({ name: "internalid", join: "inventoryNumber", label: "Internal ID" });
+                return true;
+            });
+            return serie;
+        }
+
+
 
         return {
             createServiceOrder,
@@ -720,7 +1236,17 @@ define([
             updateHistorialAF,
             getDateNow,
             updateInstall,
-            getInstall
+            getInstall,
+            identifyServiceOrder,
+            getItemOfServiceOrder,
+            getOficinaPorTaller,
+            validateOrdenTrabajo,
+            updateOrdenTrabajo,
+            createChaser,
+            validateChaser,
+            createInventoryAdjustmentSalida,
+            getAverageCost,
+            getComponents
         }
 
     });
@@ -731,4 +1257,5 @@ define([
 ^ TS_RS_API_Transactions
 ^ TS_UE_Sales_Order
 ^ TS_UE_Orden_Trabajo
+^ TS_UE_Bien
 */

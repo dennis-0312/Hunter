@@ -57,22 +57,19 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
         log.debug('prueba', id);
 
         if (context.type === 'create') {
-
-
-
             var numLines = objRecord.getLineCount({ sublistId: 'component' });
             let object;
             let Simcard;
             let lojack;
-            let IdVehicula = objRecord.getValue({ fieldId: 'custbody_ht_ce_ordentrabajo' });
+            let IdVehiculo = objRecord.getValue({ fieldId: 'custbody_ht_ce_ordentrabajo' });
             let Vehiculo = search.lookupFields({
                 type: 'customrecord_ht_record_ordentrabajo',
-                id: IdVehicula,
+                id: IdVehiculo,
                 columns: ['custrecord_ht_ot_vehiculo']
             });
+
             let objRecordCreate = record.create({ type: 'customrecord_ht_record_mantchaser', isDynamic: true });
             for (let i = 0; i < numLines; i++) {
-
                 let item = objRecord.getSublistValue({ sublistId: 'component', fieldId: 'item', line: i });
                 let quantity = objRecord.getSublistValue({ sublistId: 'component', fieldId: 'quantity', line: i });
                 let fieldLookUp = search.lookupFields({ type: 'serializedinventoryitem', id: item, columns: ['custitem_ht_ai_tipocomponente'] });
@@ -81,21 +78,15 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                     if (fieldLookUp.custitem_ht_ai_tipocomponente.length != 0) {
                         tipeItmes = fieldLookUp.custitem_ht_ai_tipocomponente[0].value;
                     }
-
                 }
 
                 if (quantity != 0 && tipeItmes == 1) {
-
                     object = getInventorynumber(objRecord, i, tipeItmes);
                     object.pageRanges.forEach(function (pageRange) {
-                        page = object.fetch({
-                            index: pageRange.index
-                        });
-
+                        page = object.fetch({index: pageRange.index});
                         page.data.forEach(function (result) {
                             var columns = result.columns;
                             log.debug('custrecord_ht_mc_seriedispositivo', result.getValue(columns[1]));
-
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_seriedispositivo', value: result.getValue(columns[0]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'name', value: result.getValue(columns[12]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_modelo', value: result.getValue(columns[4]), ignoreFieldChange: true });
@@ -107,19 +98,15 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vid', value: result.getValue(columns[7]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_estado', value: result.getValue(columns[10]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_tipodispositivo', value: result.getValue(columns[11]), ignoreFieldChange: true });
-                            objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vehiculo', value: IdVehicula, ignoreFieldChange: true });
+                            objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vehiculo', value: IdVehiculo, ignoreFieldChange: true });
                         });
                     });
-
                 }
-                if (quantity != 0 && tipeItmes == 2) {
 
+                if (quantity != 0 && tipeItmes == 2) {
                     Simcard = getInventorynumber(objRecord, i, tipeItmes);
                     Simcard.pageRanges.forEach(function (pageRange) {
-                        page = Simcard.fetch({
-                            index: pageRange.index
-                        });
-
+                        page = Simcard.fetch({index: pageRange.index});
                         page.data.forEach(function (result) {
                             var columns = result.columns;
                             log.debug('fsd', result.columns);
@@ -130,17 +117,12 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_operadora', value: result.getValue(columns[4]), ignoreFieldChange: true });
                         });
                     });
-
                 }
+
                 if (quantity != 0 && tipeItmes == 3) {
-
                     lojack = getInventorynumber(objRecord, i, tipeItmes);
-
                     lojack.pageRanges.forEach(function (pageRange) {
-                        page = lojack.fetch({
-                            index: pageRange.index
-                        });
-
+                        page = lojack.fetch({index: pageRange.index});
                         page.data.forEach(function (result) {
                             var columns = result.columns;
                             log.debug('fsd', result.columns);
@@ -151,16 +133,15 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                             objRecordCreate.setValue({ fieldId: 'name', value: result.getValue(columns[5]), ignoreFieldChange: true });
                         });
                     });
-
                 }
 
-
             }
-
             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_enlace', value: id, ignoreFieldChange: true });
             let recordId = objRecordCreate.save({ enableSourcing: false, ignoreMandatoryFields: false });
         }
     }
+
+    
     function getInventorynumber(objRecord, i, tipeItmes) {
         let tipoItmesText;
         let customRecord;
@@ -219,13 +200,10 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
         }
 
         let invDetailRec = objRecord.getSublistSubrecord({ sublistId: 'component', fieldId: 'componentinventorydetail', line: i });
-
         let inventoryAssignmentLines = invDetailRec.getLineCount({ sublistId: 'inventoryassignment' });
 
         for (let j = 0; j < inventoryAssignmentLines; j++) {
-
             let inventorynumber = invDetailRec.getSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', line: j });
-
             var busqueda = search.create({
                 type: customRecord,
                 filters:
@@ -233,16 +211,9 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                         [tipoItmesText, "anyof", inventorynumber]
                     ],
                 columns: columns
-
             });
-            let pageData = busqueda.runPaged({
-                pageSize: 1000
-            });
+            let pageData = busqueda.runPaged({pageSize: 1000});
             return pageData;
-
-
-
-
         }
     }
     return {

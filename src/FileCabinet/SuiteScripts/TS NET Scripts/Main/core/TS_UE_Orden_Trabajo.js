@@ -51,11 +51,11 @@ define([
         var INST_DISPOSITIVO = '43';
         var TIPO_AGRUPACION_PRODUCTO = '77';
         var VENT_SERVICIOS = '50';
+        //^BLOQUE PARAMETROS ===================================================================
         const VALOR_001_INST_DISPOSITIVO = 43;
         const SI = 9;
         const ESTADO_001_INSTALADO = 1;
         const CHEQUEADO = 2;
-        //^BLOQUE PARAMETROS ===================================================================
         const ADP_ACCION_DEL_PRODUCTO = 2
         const VALOR_010_CAMBIO_PROPIETARIO = 10;
         const PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5
@@ -102,26 +102,6 @@ define([
             }
         }
 
-        const createEnsambleAlquilerButton = (form, objRecord) => {
-            let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
-            itemName = itemName.toLowerCase()
-            if (!itemName.includes('alq')) return;
-            let salesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
-            let workorder = objRecord.id;
-            let customer = objRecord.getValue('custrecord_ht_ot_cliente_id');
-            let item = objRecord.getValue('custrecord_ht_ot_item');
-            let location = "";
-            if (salesorder) {
-                locationSearch = search.lookupFields({
-                    type: 'salesorder', id: salesorder, columns: ['location']
-                });
-                location = locationSearch.location[0].value;
-            }
-
-            const ensambleAlquiler = `ensambleAlquiler('${item}', '${location}', '${workorder}', '${salesorder}', '${customer}')`;
-            form.addButton({ id: 'custpage_btnalquiler', label: 'Ensamble Alquiler', functionName: ensambleAlquiler });
-        }
-
         const afterSubmit = (context) => {
             if (context.type === context.UserEventType.EDIT) {
                 let senderId = runtime.getCurrentUser();
@@ -131,6 +111,8 @@ define([
                 let id = context.newRecord.id;
                 let Origen;
                 let arr = [];
+                let impulsaPX = 1;
+                let impulsaTelematics = 1;
                 let plataformasPX;
                 let plataformasTele;
                 let adp;
@@ -139,6 +121,7 @@ define([
                 let statusOri = estaChequeada;
                 let estadoInts;
                 let ingresaFlujoAlquiler;
+                let ingresaFlujoConvenio;
                 const SI = 9;
                 var serieProductoChaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                 log.debug('serieProductoChaser', serieProductoChaser);
@@ -170,8 +153,10 @@ define([
                         let customer = objRecord.getText('custrecord_ht_ot_cliente_id');
                         let comentario = objRecord.getText('custrecord_ht_ot_observacion');
                         ingresaFlujoAlquiler = objRecord.getValue('custrecord_flujo_de_alquiler');
+                        ingresaFlujoConvenio = objRecord.getValue('custrecord_flujo_de_convenio');
                         let taller = objRecord.getValue('custrecord_ht_ot_taller');
                         let comercial = objRecord.getText('custrecord_ht_ot_serieproductoasignacion');
+                        let simTXT = objRecord.getValue('custrecord_ht_ot_simcard');
 
                         var cantidad = 0;
                         let returEjerepo = true;
@@ -218,7 +203,8 @@ define([
                             serieChaser: serieChaser,
                             ordentrabajoId: id,
                             recipientId: recipientId,
-                            bien: bien
+                            bien: bien,
+                            sim: simTXT
                         }
 
                         for (let i = 0; i < numLines; i++) {
@@ -352,17 +338,25 @@ define([
                                     returEjerepo = _Controller.parametros(ENVIO_PLATAFORMASPX, id, adp);
                                     log.debug('Estado que devuelve el impulso a plataforma PX- ' + j, JSON.stringify(returEjerepo) + ': ' + JSON.stringify(returEjerepo));
                                 } else {
-                                    let updateTelematic = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
-                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
-                                    updateTelematic.save();
+                                    impulsaPX = 0;
+                                    // let updateTelematic = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
+                                    // updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
+                                    // updateTelematic.save();
                                 }
-                                if (plataformasTele == SI) {
+                                if (plataformasTele == SI && ingresaFlujoConvenio == false) {
                                     returEjerepo = _Controller.parametros(ENVIO_PLATAFORMASTELEC, id, adp);
                                     log.debug('Estado que devuelve el impulso a plataforma tele- ' + j, JSON.stringify(returEjerepo) + ': ' + JSON.stringify(returEjerepo));
                                 } else {
-                                    let updateTelematic = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
-                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
-                                    updateTelematic.save();
+                                    impulsaTelematics = 0;
+                                    // let updateTelematic = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
+                                    // updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
+                                    // updateTelematic.save();
+                                }
+
+                                if (impulsaPX == 0 && impulsaTelematics == 0) {
+                                    let updateFinalizacionOT = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: id });
+                                    updateFinalizacionOT.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
+                                    updateFinalizacionOT.save();
                                 }
                             }
                         }
@@ -375,9 +369,7 @@ define([
                         record.submitFields({
                             type: record.Type.SALES_ORDER,
                             id: objRecord.getValue('custrecord_ht_ot_orden_servicio'),
-                            values: {
-                                'custbody_ht_os_trabajado': 'S'
-                            }
+                            values: { 'custbody_ht_os_trabajado': 'S' }
                         });
 
                         let idItemCobertura = objRecord.getValue('custrecord_ht_ot_item');
@@ -391,6 +383,7 @@ define([
                         var instalacion = 15;
                         estadoInts = 1 //Instalado
                         log.debug('Debug1', returEjerepo + ' - ' + adpAlquiler);
+
                         if (adpAlquiler != VALOR_002_DESINSTALACION_DE_DISP) {
                             if (returEjerepo && adpServicio != 0) {
                                 if (idOS == idSalesorder) {
@@ -420,7 +413,7 @@ define([
                                     }
                                 } else {
                                     log.debug('MONITOREOOOOOO', 'Cobertura2');
-                                    // log.debug('Debug3', returEjerepo + ' - ' + adpServicio);
+                                    //log.debug('Debug3', returEjerepo + ' - ' + adpServicio);
                                     let json = {
                                         bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
                                         propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
@@ -435,6 +428,10 @@ define([
                                         ordentrabajo: objRecord.id,
                                         monitoreo: monitoreo,
                                         cobertura: idCoberturaItem,
+                                    }
+                                    if (ingresaFlujoConvenio == true) {
+                                        json.concepto = instalacion;
+                                        json.salesorder = idSalesorder;
                                     }
                                     createCoberturaWS(json);
                                     if (chaser.length > 0) {
@@ -502,6 +499,17 @@ define([
                             });
                         }
 
+                        if (statusOri == ESTADO_CHEQUEADA && ingresaFlujoConvenio == true) {
+                            log.debug('Convenio', 'Es convenio');
+                            objParams.item = idItemOT
+                            objParams.boleano = true;
+                            let ajusteInvSalida = _Controller.createInventoryAdjustmentSalida(objParams);
+                            //log.debug('account', ajusteInvSalida);
+                            let ajusteInv = _Controller.createInventoryAdjustmentIngreso(objParams, ajusteInvSalida, 1);
+                            // log.debug('AjusteInventarioPorConvenioSalida', ajusteInvSalida);
+                            log.debug('AjusteInventarioPorConvenio', ajusteInv);
+                        }
+
                         if (adp == VALOR_001_INST_DISPOSITIVO) {
                             let estado = objRecord.getValue('custrecord_ht_ot_estado');
                             let idSalesOrder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
@@ -536,8 +544,9 @@ define([
                                     for (let i = 0; i < numLines; i++) {
                                         newFulfill.setSublistValue({ sublistId: 'item', fieldId: 'quantity', value: 1, line: i });
                                         var objSubRecord = newFulfill.getSublistSubrecord({ sublistId: 'item', fieldId: 'inventorydetail', line: 0 })
-                                        objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: idDispositivo, line: 0 });;
+                                        objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: idDispositivo, line: 0 });
                                         objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1, line: 0 });
+                                        objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1, line: 0 });
                                     }
                                     newFulfill.save({ enableSourcing: false, ignoreMandatoryFields: true });
                                 } catch (error) {
@@ -601,7 +610,7 @@ define([
                             }
                         }
 
-                        if (adp == VALOR_002_DESINSTALACION_DE_DISP && estaChequeada == ESTADO_CHEQUEADA) {//TODO: Revisar actualziaciones cuando es locjack, ya que no tiene simcard
+                        if (adp == VALOR_002_DESINSTALACION_DE_DISP && statusOri == ESTADO_CHEQUEADA) {//TODO: Revisar actualziaciones cuando es locjack, ya que no tiene simcard
                             if (esAlquiler == SI) {
                                 log.debug('Alquiler', 'Es alquiler');
                                 let ajusteInv = _Controller.createInventoryAdjustmentIngreso(objParams);
@@ -1111,9 +1120,7 @@ define([
 
         const getCobertura = (cantidad) => {
             try {
-
                 let date = new Date();
-
                 date.setDate(date.getDate());
                 let date_final = new Date();
                 date_final.setDate(date_final.getDate());
@@ -1123,11 +1130,29 @@ define([
                     coberturaInicial: date,
                     coberturaFinal: date_final
                 };
-
             } catch (e) {
 
             }
 
+        }
+
+        const createEnsambleAlquilerButton = (form, objRecord) => {
+            let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
+            itemName = itemName.toLowerCase()
+            if (!itemName.includes('alq')) return;
+            let salesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
+            let workorder = objRecord.id;
+            let customer = objRecord.getValue('custrecord_ht_ot_cliente_id');
+            let item = objRecord.getValue('custrecord_ht_ot_item');
+            let location = "";
+            if (salesorder) {
+                locationSearch = search.lookupFields({
+                    type: 'salesorder', id: salesorder, columns: ['location']
+                });
+                location = locationSearch.location[0].value;
+            }
+            const ensambleAlquiler = `ensambleAlquiler('${item}', '${location}', '${workorder}', '${salesorder}', '${customer}')`;
+            form.addButton({ id: 'custpage_btnalquiler', label: 'Ensamble Alquiler', functionName: ensambleAlquiler });
         }
 
         return {

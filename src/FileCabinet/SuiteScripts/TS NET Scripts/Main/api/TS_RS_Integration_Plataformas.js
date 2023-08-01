@@ -14,13 +14,30 @@ Governance points: N/A
  *@NApiVersion 2.1
  *@NScriptType Restlet
  */
-define(['N/log', 'N/search', 'N/record', 'N/query', 'N/https', 'N/task', 'N/file'], (log, search, record, query, htpps, task, file) => {
+define([
+    'N/log',
+    'N/search',
+    'N/record',
+    'N/query',
+    'N/https',
+    'N/task',
+    'N/file'
+], (log, search, record, query, htpps, task, file) => {
     const SAVED_CSV_IMPORTS = 341;
     const HT_COBERTURA_RECORD = 'customrecord_ht_co_cobertura';
     const HT_DETALLE_COBERTURA = 'customrecord_ht_ct_cobertura_transaction';
-    const _get = (context) => {
+    const ORDEN_TRABAJO = 'CUSTOMRECORD_HT_RECORD_ORDENTRABAJO';
+    const CHEQUEADO = 2;
+    const _get = (scriptContext) => {
         try {
-            log.debug('ConextGet', context);
+            log.debug('ConextGet', scriptContext);
+            let recordLoad = record.load({ type: ORDEN_TRABAJO, id: scriptContext.myFirstParameter, isDynamic: true, defaultValues: true });
+            recordLoad.setValue({ fieldId: 'custrecord_ht_ot_estado', value: CHEQUEADO });
+            updateRecord = recordLoad.save();
+            return updateRecord;
+
+
+
             //!PRUEBA DEPOSITO CLIENTE
             // let paymentmethod = context.paymentmethod;
             // let customer = context.customer;

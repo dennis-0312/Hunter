@@ -71,7 +71,6 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
                 newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: -1 * quantity });
 
                 let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
-
                 for (let j = 0; j < seriales.length; j++) {
                     let inventoryDetail = seriales[j];
 
@@ -85,7 +84,6 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
                         newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: inventoryDetail.state });
                         newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: -1 * inventoryDetail.quantity });
                     }
-
                     newDetail.commitLine({ sublistId: 'inventoryassignment' });
                 }
                 newAdjust.commitLine({ sublistId: 'inventory' });
@@ -169,9 +167,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
         }
 
         const createInventoryAdjustmentSalidaConAlquiler = (scriptParameters) => {
-
             let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-
             newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
             newAdjust.setValue({ fieldId: 'account', value: EXPENSE_ACCOUNT });
             newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });

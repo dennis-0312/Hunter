@@ -102,7 +102,6 @@ define(['N/log',
                         updatePxadmin.setValue({ fieldId: 'custrecord_ht_ot_pxadminfinalizacion', value: true })
                         updatePxadmin.save();
                         pxadminfinalizacion = true;
-
                     }
 
                 }

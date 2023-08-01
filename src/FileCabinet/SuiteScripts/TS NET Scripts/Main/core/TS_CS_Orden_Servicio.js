@@ -8,7 +8,7 @@ define(['N/search',
     'N/runtime',
     'N/record',
     'N/ui/dialog',
-    '../Main/controller/TS_CM_Controller'
+    '../controller/TS_CM_Controller'
 ], (search, currentRecord, message, runtime, record, dialog, _controllerParm) => {
     let typeMode = '';
     const SALES_ORDER = 'salesorder';

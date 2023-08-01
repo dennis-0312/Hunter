@@ -88,25 +88,25 @@ define(['N/log', 'N/record', 'N/search'], (log, record, search) => {
                 var marcaOrdenTrabajo = objRecord_2.getText('custrecord_ht_os_marca');
                 var motorOrdenTrabajo = objRecord_2.getText('custrecord_ht_ot_motor');
                 var estadoOrdenTrabajo = objRecord_2.getText('custrecord_ht_ot_estado');
-                log.debug('tipoOrdenTrabajo',tipoOrdenTrabajo);
+                log.debug('tipoOrdenTrabajo', tipoOrdenTrabajo);
                 var busqueda_3 = search.lookupFields({
                     type: search.Type.SALES_ORDER,
                     id: nameValueSalesOrder,
-                    columns: ['custbody_ht_os_tipoordenservicio','trandate']
+                    columns: ['custbody_ht_os_tipoordenservicio', 'trandate']
                 });
                 log.debug('busqueda_3', busqueda_3);
-                var typeSalesOrder = (busqueda_3.custbody_ht_os_tipoordenservicio)[0].text; 
-                var createDateSalesOrder =  busqueda_3.trandate; 
-/*                 if (itemAlquiler != '') {
-                    itemAlquiler = itemAlquiler[0].value;
-                } */
-/*                 if (tipo != '') {
-                    tipo = tipo[0].value;
-                } */
+                var typeSalesOrder = (busqueda_3.custbody_ht_os_tipoordenservicio)[0].text;
+                var createDateSalesOrder = busqueda_3.trandate;
+                /*                 if (itemAlquiler != '') {
+                                    itemAlquiler = itemAlquiler[0].value;
+                                } */
+                /*                 if (tipo != '') {
+                                    tipo = tipo[0].value;
+                                } */
                 log.debug('itemAlquiler + TIPO', itemAlquiler + '-' + tipo);
 
                 if (alquiler == true || alquiler == 'T') {
-                    if(tipo){
+                    if (tipo) {
                         var fixedAsset = record.create({
                             type: 'customrecord_ncfar_asset',
                             isDynamic: true
@@ -116,23 +116,23 @@ define(['N/log', 'N/record', 'N/search'], (log, record, search) => {
                         fixedAsset.setValue('custrecord_assetcost', avgunitcost);
                         fixedAsset.setValue('custrecord_assetresidualvalue', 1);
                         fixedAsset.save();
-                        log.debug('fixedAsset.id',fixedAsset.id);
+                        log.debug('fixedAsset.id', fixedAsset.id);
                         var historial = record.create({
                             type: 'customrecord_ht_record_historialsegui',
                             isDynamic: true
                         });
-                        historial.setText('name',nameTextSalesOrder);
-                        historial.setText('custrecord_ht_hs_numeroordenservicio',nameTextSalesOrder);
-                        historial.setValue('custrecord_ht_hs_descripcion',typeSalesOrder);
-                        historial.setValue('custrecord_ht_hs_fechaordenservicio',createDateSalesOrder);
-                        historial.setValue('custrecord_ht_hs_estado',estadoOrdenTrabajo);
-                        historial.setValue('custrecord_ht_hs_propietariocliente',clienteOrdenTrabajo);
-                        historial.setValue('custrecord_ht_hs_vidvehiculo',inventorynumber);
-                        historial.setValue('custrecord_ht_hs_placa',placaOrdenTrabajo);
-                        historial.setValue('custrecord_ht_hs_marca',marcaOrdenTrabajo);
-                        historial.setValue('custrecord_ht_hs_tipo',tipoOrdenTrabajo);
-                        historial.setValue('custrecord_ht_hs_motor',motorOrdenTrabajo);
-                        historial.setValue('custrecord_ht_af_enlace',fixedAsset.id);
+                        historial.setText('name', nameTextSalesOrder);
+                        historial.setText('custrecord_ht_hs_numeroordenservicio', nameTextSalesOrder);
+                        historial.setValue('custrecord_ht_hs_descripcion', typeSalesOrder);
+                        historial.setValue('custrecord_ht_hs_fechaordenservicio', createDateSalesOrder);
+                        historial.setValue('custrecord_ht_hs_estado', estadoOrdenTrabajo);
+                        historial.setValue('custrecord_ht_hs_propietariocliente', clienteOrdenTrabajo);
+                        historial.setValue('custrecord_ht_hs_vidvehiculo', inventorynumber);
+                        historial.setValue('custrecord_ht_hs_placa', placaOrdenTrabajo);
+                        historial.setValue('custrecord_ht_hs_marca', marcaOrdenTrabajo);
+                        historial.setValue('custrecord_ht_hs_tipo', tipoOrdenTrabajo);
+                        historial.setValue('custrecord_ht_hs_motor', motorOrdenTrabajo);
+                        historial.setValue('custrecord_ht_af_enlace', fixedAsset.id);
                         historial.save();
                     }
                     if (itemAlquiler) {

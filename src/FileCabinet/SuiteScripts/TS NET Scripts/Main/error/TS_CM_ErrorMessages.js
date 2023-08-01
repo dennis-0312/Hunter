@@ -14,7 +14,9 @@ define([], () => {
         INVOICE: {
             SERVICE_ORDER_HAS_NOT_BEEN_SHIPPED: "Orden de servicio no definida.",
             DOES_NOT_EXIST_SERVICE_ORDER: "Orden de servicio no existe o ya está facturada."
-        }
+        },
+        IDENTIFICACION_ORDEN_SERVICIO: 'No se encontró resultados para la identificación de la Orden de Servicio en la función identifyServiceOrder()',
+        ITEM_ORDEN_SERVICIO: 'No se encontró el item en la Orden de Servicio en la función getItemOfServiceOrder()'
     };
 
     return { ErrorMessages }

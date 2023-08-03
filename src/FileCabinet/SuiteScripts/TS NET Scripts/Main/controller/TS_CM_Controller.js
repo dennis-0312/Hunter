@@ -373,8 +373,8 @@ define([
             } else {
                 // binNumber = getBinNumberComercial(scriptParameters.location);
                 binNumber = objParams.binNumber;
-                account = COST_ACCOUNT;
-                unitCost = 0
+                account = objParams.account;
+                unitCost = parseFloat(objParams.costo);
                 flujo = 'custbody_ht_ai_porconvenio';
             }
 
@@ -391,7 +391,7 @@ define([
             newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: scriptParameters.item });
             newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: scriptParameters.location });
             newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: 1 });
-            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'unitcost', value: 0 });
+            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'unitcost', value: unitCost });
 
             let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
 
@@ -695,7 +695,9 @@ define([
         }
 
         const setItemstoInventoryAdjustment = (newAdjust, scriptParameters, disp, sim) => {
+            let arrayCosto = new Array()
             let serie;
+            let suma = 0;
             let arrayComponents = getComponents(scriptParameters.item, scriptParameters.location);
             let account = arrayComponents[0][4];
             let binNumber = arrayComponents[0][3]
@@ -728,11 +730,15 @@ define([
                     }
                     newDetail.commitLine({ sublistId: 'inventoryassignment' });
                     newAdjust.commitLine({ sublistId: 'inventory' });
+                    suma += parseFloat(arrayComponents[i][0])
+                    log.debug('SUMA', suma);
                 }
             }
+
             return {
                 account: account,
-                binNumber: binNumber
+                binNumber: binNumber,
+                costo: suma
             }
         }
 
@@ -922,7 +928,7 @@ define([
 
         const parametrizacion = (items) => {
             let arr = new Array();
-            var busqueda = search.create({
+            let busqueda = search.create({
                 type: "customrecord_ht_pp_main_param_prod",
                 filters:
                     [
@@ -944,12 +950,12 @@ define([
             });
             let resultCount = busqueda.runPaged().count;
             if (resultCount > 0) {
-                var pageData = busqueda.runPaged({ pageSize: 1000 });
+                let pageData = busqueda.runPaged({ pageSize: 1000 });
                 pageData.pageRanges.forEach(pageRange => {
                     page = pageData.fetch({ index: pageRange.index });
                     page.data.forEach(result => {
-                        var columns = result.columns;
-                        var parametrizacion = new Array();
+                        let columns = result.columns;
+                        let parametrizacion = new Array();
                         result.getValue(columns[0]) != null ? parametrizacion[0] = result.getValue(columns[0]) : parametrizacion[0] = '';
                         result.getValue(columns[1]) != null ? parametrizacion[1] = result.getValue(columns[1]) : parametrizacion[1] = '';
                         arr.push(parametrizacion);
@@ -1118,8 +1124,9 @@ define([
                     [
                         // search.createColumn({ name: "itemid", sort: search.Sort.ASC, label: "Name" }),
                         search.createColumn({ name: "billofmaterialsid", join: "assemblyItemBillOfMaterials", label: "Bill of Materials ID" }),
-                        search.createColumn({ name: "assetaccount", label: "Asset Account" }),
-                        search.createColumn({ name: "internalid", join: "binNumber", label: "Internal ID" })
+                        //search.createColumn({ name: "assetaccount", label: "Asset Account" }),
+                        search.createColumn({ name: "internalid", join: "binNumber", label: "Internal ID" }),
+                        search.createColumn({ name: "expenseaccount", label: "Expense/COGS Account" })
                         // search.createColumn({ name: "billofmaterials", join: "assemblyItemBillOfMaterials", label: "Bill of Materials" }),
                         // search.createColumn({ name: "default", join: "assemblyItemBillOfMaterials", label: "Default" })
 
@@ -1129,7 +1136,7 @@ define([
             if (searchResultCount > 0) {
                 assemblyitemSearchObj.run().each(result => {
                     billofmaterials = result.getValue({ name: "billofmaterialsid", join: "assemblyItemBillOfMaterials", label: "Bill of Materials ID" });
-                    account = result.getValue({ name: "assetaccount", label: "Asset Account" });
+                    account = result.getValue({ name: "expenseaccount", label: "Expense/COGS Account" });
                     binNumber = result.getValue({ name: "internalid", join: "binNumber", label: "Internal ID" });
                     return true;
                 });

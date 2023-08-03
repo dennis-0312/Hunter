@@ -2,20 +2,21 @@
  *@NApiVersion 2.1
  *@NScriptType UserEventScript
  */
-define(['N/search',
+define([
+    'N/search',
     'N/record',
-    '../TS NET Scripts/Impulso Plataformas/Controller/TS_Script_Controller'
-], (search, record, _controller) => {
-    const ALQUILER_PARAM = 13;
-    const SI = 9;
+    '../controller/TS_CM_Controller',
+    '../constant/TS_CM_Constant',
+    '../error/TS_CM_ErrorMessages'
+], (search, record, _controller, _constant, _errorMessage) => {
     let esAlquiler = 'continue';
+    let esDesinstalacion = 'continue';
     const beforeLoad = (context) => { }
     const beforeSubmit = (context) => { }
 
     const afterSubmit = (context) => {
         let objRecord = context.newRecord;
         let NumeroItmes;
-
         let relateditem = objRecord.getValue({ fieldId: 'relateditem' });
         let transaction = objRecord.getValue({ fieldId: 'transaction' });
         let customer = record.load({ type: 'salesorder', id: transaction });
@@ -24,18 +25,23 @@ define(['N/search',
         try {
             let parametrosRespo = _controller.parametrizacion(relateditem);
             //log.debug('parametrizacion pruebas', parametrosRespo);
-
             if (parametrosRespo.length != 0) {
                 for (let j = 0; j < parametrosRespo.length; j++) {
                     //log.debug('parámetros', parametrosRespo[j][0] + ' - ' + parametrosRespo[j][1]);
-                    if (parametrosRespo[j][0] == ALQUILER_PARAM) {
+                    if (parametrosRespo[j][0] == _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER) {
                         esAlquiler = parametrosRespo[j][1];
+                        break;
+                    }
+
+                    if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO) {
+                        esDesinstalacion = parametrosRespo[j][1];
                         break;
                     }
                 }
             }
             log.debug('ESALQUILER', esAlquiler);
-            if (esAlquiler != SI) {
+            log.debug('ESDESINSTALACION', esDesinstalacion);
+            if (esAlquiler != _constant.Valor.SI && esDesinstalacion != _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
                 for (let i = 0; i < numLines; i++) {
                     let AplicaPPTO = customer.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                     if (AplicaPPTO == relateditem) {

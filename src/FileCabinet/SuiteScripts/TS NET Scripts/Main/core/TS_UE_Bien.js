@@ -47,7 +47,7 @@ define([
          * @since 2015.2
          */
         const afterSubmit = (scriptContext) => {
-            if (scriptContext.type === scriptContext.UserEventType.EDIT) {
+            if (scriptContext.type === scriptContext.UserEventType.CREATE) {
                 const objRecord = scriptContext.newRecord;
                 const bienid = objRecord.id.toString();
                 let vid = objRecord.getValue('name');

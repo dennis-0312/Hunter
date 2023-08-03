@@ -69,15 +69,10 @@ define(['N/log',
                         search.createColumn({ name: "custrecord_ht_pp_parametrizacion_valor", label: "Valor" })
                     ]
             });
-            var pageData = busqueda.runPaged({
-                pageSize: 1000
-            });
-
-            pageData.pageRanges.forEach(function (pageRange) {
-                page = pageData.fetch({
-                    index: pageRange.index
-                });
-                page.data.forEach(function (result) {
+            var pageData = busqueda.runPaged({ pageSize: 1000 });
+            pageData.pageRanges.forEach(pageRange => {
+                page = pageData.fetch({ index: pageRange.index });
+                page.data.forEach(result => {
                     var columns = result.columns;
                     var parametrizacion = new Array();
                     result.getValue(columns[0]) != null ? parametrizacion[0] = result.getValue(columns[0]) : parametrizacion[0] = '';
@@ -94,12 +89,12 @@ define(['N/log',
                 case GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
                     switch (parseInt(type)) {
                         case 43:
-                            let Dispositivo =  _Controller.Dispositivo(id);
-                            let vehiculo =  _Controller.vehiculo(id);
-                            let Propietario =  _Controller.Propietario(id);
-                            let PropietarioMonitero =  _Controller.PropietarioMonitoreo(id);
-                          
-                            response =  _Controller.envioPXAdminInstall(Dispositivo,vehiculo,Propietario,PropietarioMonitero,id);
+                            let Dispositivo = _Controller.Dispositivo(id);
+                            let vehiculo = _Controller.vehiculo(id);
+                            let Propietario = _Controller.Propietario(id);
+                            let PropietarioMonitero = _Controller.PropietarioMonitoreo(id);
+
+                            response = _Controller.envioPXAdminInstall(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
                             break;
                         case 10:
 

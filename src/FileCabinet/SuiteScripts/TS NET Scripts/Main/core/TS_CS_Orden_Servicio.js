@@ -8,8 +8,10 @@ define(['N/search',
     'N/runtime',
     'N/record',
     'N/ui/dialog',
-    '../controller/TS_CM_Controller'
-], (search, currentRecord, message, runtime, record, dialog, _controllerParm) => {
+    '../controller/TS_CM_Controller',
+    '../constant/TS_CM_Constant',
+    '../error/TS_CM_ErrorMessages',
+], (search, currentRecord, message, runtime, record, dialog, _controllerParm, _constant, _errorMessage) => {
     let typeMode = '';
     const SALES_ORDER = 'salesorder';
     var CAMBIO_PROPIETARIO = '10';
@@ -212,7 +214,7 @@ define(['N/search',
                         valor_inf_ejec_trabajo = parametrosRespo[j][1];
                     }
 
-                    if (parametrosRespo[j][1] == RENOVACION_NORMAL) {
+                    if (parametrosRespo[j][1] == _constant.Valor.VALOR_001_RENOVACION_NORMAL) {
                         flag1 += 1;
                     }
 
@@ -240,15 +242,15 @@ define(['N/search',
                     }
 
                     //Validación de Prodcutos Instalados
-                    if (valor_tipo_renovacion == RENOVACION_NORMAL || parametro == DESISTALACION) {
-                        let verificar_instalacion_parametro = _controllerParm.parametros(CPI, linea, idcobertura);
+                    if (valor_tipo_renovacion == _constant.Valor.VALOR_001_RENOVACION_NORMAL || parametro == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
+                        let verificar_instalacion_parametro = _controllerParm.parametros(_constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS, linea, idcobertura);
                         //console.log('verificar_instalacion_parametro', verificar_instalacion_parametro);
                         if (verificar_instalacion_parametro.status == false) {
                             dialog.alert({ title: 'Alerta', message: verificar_instalacion_parametro.mensaje });
                             return false
                         }
                     }
-                    if (parametrosRespo[j][0] == PRODUCTO_UPGRADE && parametrosRespo[j][1] == SI) {
+                    if (parametrosRespo[j][0] == PRODUCTO_UPGRADE && parametrosRespo[j][1] == _constant.Valor.SI) {
                         flag3 += 1;
                     }
                     if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] == MON_MONITOREO_VAL) {

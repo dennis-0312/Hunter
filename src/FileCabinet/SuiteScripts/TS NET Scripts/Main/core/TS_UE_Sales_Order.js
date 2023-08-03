@@ -10,7 +10,6 @@ define([
     'N/plugin',
     'N/transaction',
     '../controller/TS_CM_Controller',
-    // '../../Impulso Plataformas/Controller/TS_Script_Controller',
     'N/https'
 ], (log, record, search, serverWidget, plugin, transaction, _controller, https) => {
     const HT_DETALLE_ORDEN_SERVICIO_SEARCH = 'customsearch_ht_detalle_orden_servicio_2'; //HT Detalle Orden de Servicio - PRODUCCION

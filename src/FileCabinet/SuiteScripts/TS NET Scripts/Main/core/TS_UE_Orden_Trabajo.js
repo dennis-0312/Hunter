@@ -25,9 +25,11 @@ define([
     'N/format',
     'N/email',
     'N/runtime',
-    '../controller/TS_CM_Controller'
+    '../controller/TS_CM_Controller',
+    '../constant/TS_CM_Constant',
+    '../error/TS_CM_ErrorMessages',
 ],
-    (transaction, config, log, search, record, serverWidget, https, error, format, email, runtime, _Controller) => {
+    (transaction, config, log, search, record, serverWidget, https, error, format, email, runtime, _Controller, _constant, _errorMessage) => {
         const HT_DETALLE_ORDEN_SERVICIO = 'customsearch_ht_detalle_orden_servicio'; //HT Detalle Orden de Servicio - PRODUCCION
         const HT_CONSULTA_ORDEN_TRABAJO = 'customsearch_ht_consulta_orden_trabajo'; //HT Consulta Orden de trabajo - PRODUCCION
         const tipo_servicio_alquiler = 1;
@@ -61,12 +63,10 @@ define([
         const PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5
         const TTR_TIPO_TRANSACCION = 8;
         const CAMB_MOV_CUSTODIA = 131;
-        const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
         const VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO = 44;
         const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
         const TCH_TIPO_CHEQUEO_OT = 6;
         const VALOR_001_CHEQUEO_H_LOJACK = 105;
-        const VALOR_002_DESINSTALACION_DE_DISP = 21;
         const ALQUILER_PARAM = 13;
         const COS_CIERRE_DE_ORDEN_DE_SERVICIO = 99;
         const DISPONIBLE = 5;
@@ -86,7 +86,7 @@ define([
             if (type_event == context.UserEventType.VIEW) {
                 let idOrdenTrabajo = objRecord.getValue('custrecord_ht_ot_ordenfabricacion');
                 let estado = objRecord.getValue('custrecord_ht_ot_estado');
-                if (estado == 4) {
+                if (estado == _constant.Status.PROCESANDO) {
                     form.addButton({
                         id: 'custpage_ts_fabricarproducto',
                         label: 'Ensamble de Dispositivo',
@@ -95,9 +95,11 @@ define([
                 }
                 form.getField('custrecord_ht_ot_termometro').updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
                 createEnsambleAlquilerButton(form, objRecord);
+                createEnsambleCustodiaButton(form, objRecord);
                 form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
             } else if (type_event == context.UserEventType.EDIT) {
                 createEnsambleAlquilerButton(form, objRecord);
+                createEnsambleCustodiaButton(form, objRecord);
                 form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
             }
         }
@@ -177,8 +179,9 @@ define([
                         let idCoberturaItem = '';
                         let precio = 0;
                         let esAlquiler = 0;
+                        let entregaCliente = 0;
                         let objParams = new Array();
-                        let adpAlquiler = 0;
+                        let adpDesinstalacion = 0;
 
                         let recordTaller = search.lookupFields({
                             type: 'customrecord_ht_tt_tallertablet',
@@ -241,11 +244,17 @@ define([
 
                                 if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO) {
                                     adpServicio = parametrosRespo_2[j][1];
-                                    adpAlquiler = adpServicio
+                                    adpDesinstalacion = adpServicio
                                 }
 
                                 if (parametrosRespo_2[j][0] == ALQUILER_PARAM) {
                                     esAlquiler = parametrosRespo_2[j][1];
+                                }
+
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.EDC_ENTREGA_DIRECTA_A_CLIENTE) {
+                                    log.debug('ParamIntro', parametrosRespo_2[j][0])
+                                    entregaCliente = parametrosRespo_2[j][1];
+                                    log.debug('ValIntro', entregaCliente)
                                 }
                             }
                         }
@@ -277,7 +286,6 @@ define([
                                         if (accion_producto == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
                                             idOS = busqueda_salesorder[i][1];
                                         }
-
                                     }
                                 }
                             }
@@ -343,7 +351,7 @@ define([
                                     // updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
                                     // updateTelematic.save();
                                 }
-                                if (plataformasTele == SI && ingresaFlujoConvenio == false) {
+                                if (plataformasTele == SI && ingresaFlujoConvenio == false && adpDesinstalacion != _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
                                     returEjerepo = _Controller.parametros(ENVIO_PLATAFORMASTELEC, id, adp);
                                     log.debug('Estado que devuelve el impulso a plataforma tele- ' + j, JSON.stringify(returEjerepo) + ': ' + JSON.stringify(returEjerepo));
                                 } else {
@@ -382,9 +390,9 @@ define([
                         var instalacion_activacion = 17;
                         var instalacion = 15;
                         estadoInts = 1 //Instalado
-                        log.debug('Debug1', returEjerepo + ' - ' + adpAlquiler);
+                        log.debug('Debug1', returEjerepo + ' - ' + adpDesinstalacion);
 
-                        if (adpAlquiler != VALOR_002_DESINSTALACION_DE_DISP) {
+                        if (adpDesinstalacion != _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
                             if (returEjerepo && adpServicio != 0) {
                                 if (idOS == idSalesorder) {
                                     log.debug('MONITOREOOOOOO', 'Cobertura1');
@@ -466,8 +474,8 @@ define([
                             }
                         }
 
-                        if (adpServicio == CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS) {
-                            var customrecord_ht_ct_cobertura_transactionSearchObj = search.create({
+                        if (adpServicio == _constant.Valor.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS) {
+                            let customrecord_ht_ct_cobertura_transactionSearchObj = search.create({
                                 type: "customrecord_ht_ct_cobertura_transaction",
                                 filters:
                                     [
@@ -484,16 +492,13 @@ define([
                                         search.createColumn({ name: "custrecord_ht_ct_transacciones", label: "HT Cobertura" })
                                     ]
                             });
-                            var pageData = customrecord_ht_ct_cobertura_transactionSearchObj.runPaged({ pageSize: 1000 });
+                            let pageData = customrecord_ht_ct_cobertura_transactionSearchObj.runPaged({ pageSize: 1000 });
                             pageData.pageRanges.forEach(pageRange => {
-                                page = pageData.fetch({
-                                    index: pageRange.index
-                                });
-
+                                page = pageData.fetch({ index: pageRange.index });
                                 page.data.forEach(result => {
-                                    var columns = result.columns;
+                                    let columns = result.columns;
                                     let updateTelematic = record.load({ type: 'customrecord_ht_co_cobertura', id: result.getValue(columns[5]) });
-                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: 2 })
+                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: _constant.Status.CHEQUEADO })
                                     updateTelematic.save();
                                 });
                             });
@@ -610,15 +615,49 @@ define([
                             }
                         }
 
-                        if (adp == VALOR_002_DESINSTALACION_DE_DISP && statusOri == ESTADO_CHEQUEADA) {//TODO: Revisar actualziaciones cuando es locjack, ya que no tiene simcard
-                            if (esAlquiler == SI) {
+                        if (adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP && statusOri == ESTADO_CHEQUEADA) {//TODO: Revisar actualziaciones cuando es locjack, ya que no tiene simcard
+                            if (esAlquiler == _constant.Valor.SI) {
                                 log.debug('Alquiler', 'Es alquiler');
                                 let ajusteInv = _Controller.createInventoryAdjustmentIngreso(objParams);
                                 let returnHistorial = _Controller.updateHistorialAF(objParams);
                                 let updateIns = _Controller.updateInstall(objParams)
                                 log.debug('ajusteInv', ajusteInv);
                                 log.debug('returnHistorial', returnHistorial);
-                                log.debug('returnHistorial', updateIns);
+                                log.debug('updateIns', updateIns);
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_mantchaser',
+                                    id: serieChaser,
+                                    values: { 'custrecord_ht_mc_estado': estadoChaser },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+
+                                let dispositivo = search.lookupFields({
+                                    type: 'customrecord_ht_record_mantchaser',
+                                    id: serieChaser,
+                                    columns: ['custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_celularsimcard']
+                                });
+                                let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+                                let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
+
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_detallechaserdisp',
+                                    id: idDispositivo,
+                                    values: { 'custrecord_ht_dd_estado': DISPONIBLE },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_detallechasersim',
+                                    id: idSimCard,
+                                    values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+                            }
+                            log.debug('entrgaCliente', 'es Entrega Cliente: ' + entregaCliente);
+                            if (entregaCliente == _constant.Valor.SI) {
+                                log.debug('entrgaCliente', 'es Entrega Cliente');
+                                let updateIns = _Controller.updateInstall(objParams);
+                                log.debug('updateIns', updateIns);
                                 record.submitFields({
                                     type: 'customrecord_ht_record_mantchaser',
                                     id: serieChaser,
@@ -1133,7 +1172,27 @@ define([
             } catch (e) {
 
             }
+        }
 
+        const createEnsambleCustodiaButton = (form, objRecord) => {
+            let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
+            let relatedItemName = objRecord.getText('custrecord_ht_ot_itemrelacionado') || "";
+            relatedItemName = relatedItemName.toLowerCase();
+            if (!relatedItemName.includes('rein')) return;
+            let salesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
+            let workorder = objRecord.id;
+            let customer = objRecord.getValue('custrecord_ht_ot_cliente_id');
+            let item = objRecord.getValue('custrecord_ht_ot_item');
+            let relateditem = objRecord.getValue('custrecord_ht_ot_itemrelacionado');
+            let location = "";
+            if (salesorder) {
+                locationSearch = search.lookupFields({
+                    type: 'salesorder', id: salesorder, columns: ['location']
+                });
+                location = locationSearch.location[0].value;
+            }
+            const ensambleCustodia = `ensambleCustodia('${item}', '${relateditem}', '${location}', '${workorder}', '${salesorder}', '${customer}')`;
+            form.addButton({ id: 'custpage_btnalquiler', label: 'Reinstalación de Custodia', functionName: ensambleCustodia });
         }
 
         const createEnsambleAlquilerButton = (form, objRecord) => {

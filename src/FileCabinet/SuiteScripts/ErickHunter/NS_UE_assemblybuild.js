@@ -4,7 +4,7 @@
  */
 define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, record, serverWidget) => {
 
-    function beforeLoad(context) {
+    const beforeLoad = (context) => {
         let objRecord = context.newRecord;
 
 
@@ -51,7 +51,8 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
 
 
     }
-    function afterSubmit(context) {
+
+    const afterSubmit = (context) => {
         let id = context.newRecord.id;
         let objRecord = context.newRecord;
         log.debug('prueba', id);
@@ -61,10 +62,10 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
             let object;
             let Simcard;
             let lojack;
-            let IdVehiculo = objRecord.getValue({ fieldId: 'custbody_ht_ce_ordentrabajo' });
-            let Vehiculo = search.lookupFields({
+            let IdOrdenTrabajo = objRecord.getValue({ fieldId: 'custbody_ht_ce_ordentrabajo' });
+            let bienid = search.lookupFields({
                 type: 'customrecord_ht_record_ordentrabajo',
-                id: IdVehiculo,
+                id: IdOrdenTrabajo,
                 columns: ['custrecord_ht_ot_vehiculo']
             });
 
@@ -83,7 +84,7 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                 if (quantity != 0 && tipeItmes == 1) {
                     object = getInventorynumber(objRecord, i, tipeItmes);
                     object.pageRanges.forEach(function (pageRange) {
-                        page = object.fetch({index: pageRange.index});
+                        page = object.fetch({ index: pageRange.index });
                         page.data.forEach(function (result) {
                             var columns = result.columns;
                             log.debug('custrecord_ht_mc_seriedispositivo', result.getValue(columns[1]));
@@ -95,10 +96,11 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_firmware', value: result.getValue(columns[7]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_script', value: result.getValue(columns[8]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_servidor', value: result.getValue(columns[9]), ignoreFieldChange: true });
-                            objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vid', value: result.getValue(columns[7]), ignoreFieldChange: true });
+                            // objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vid', value: result.getValue(columns[7]), ignoreFieldChange: true });
+                            objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vid', value: bienid.custrecord_ht_ot_vehiculo[0].value, ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_estado', value: result.getValue(columns[10]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_tipodispositivo', value: result.getValue(columns[11]), ignoreFieldChange: true });
-                            objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vehiculo', value: IdVehiculo, ignoreFieldChange: true });
+                            objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vehiculo', value: bienid.custrecord_ht_ot_vehiculo[0].value, ignoreFieldChange: true });
                         });
                     });
                 }
@@ -106,7 +108,7 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                 if (quantity != 0 && tipeItmes == 2) {
                     Simcard = getInventorynumber(objRecord, i, tipeItmes);
                     Simcard.pageRanges.forEach(function (pageRange) {
-                        page = Simcard.fetch({index: pageRange.index});
+                        page = Simcard.fetch({ index: pageRange.index });
                         page.data.forEach(function (result) {
                             var columns = result.columns;
                             log.debug('fsd', result.columns);
@@ -122,7 +124,7 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                 if (quantity != 0 && tipeItmes == 3) {
                     lojack = getInventorynumber(objRecord, i, tipeItmes);
                     lojack.pageRanges.forEach(function (pageRange) {
-                        page = lojack.fetch({index: pageRange.index});
+                        page = lojack.fetch({ index: pageRange.index });
                         page.data.forEach(function (result) {
                             var columns = result.columns;
                             log.debug('fsd', result.columns);
@@ -141,8 +143,8 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
         }
     }
 
-    
-    function getInventorynumber(objRecord, i, tipeItmes) {
+
+    const getInventorynumber = (objRecord, i, tipeItmes) => {
         let tipoItmesText;
         let customRecord;
         let columns;
@@ -212,7 +214,7 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget'], (log, search, rec
                     ],
                 columns: columns
             });
-            let pageData = busqueda.runPaged({pageSize: 1000});
+            let pageData = busqueda.runPaged({ pageSize: 1000 });
             return pageData;
         }
     }

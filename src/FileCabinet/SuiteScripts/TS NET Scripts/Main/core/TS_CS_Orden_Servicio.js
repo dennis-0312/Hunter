@@ -104,7 +104,6 @@ define(['N/search',
                         if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
                             parametro_salesorder = parametrosRespo[j][1];
                             arraybusquedaitemSO.push(parametro_salesorder);
-
                         }
                     }
                 }

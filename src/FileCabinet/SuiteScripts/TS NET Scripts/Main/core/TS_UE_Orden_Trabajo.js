@@ -148,6 +148,7 @@ define([
                         var numLines = salesorder.getLineCount({ sublistId: 'item' });
                         let chaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                         let idItemOT = objRecord.getValue('custrecord_ht_ot_item');
+                        let idItemRelacionadoOT = objRecord.getValue('custrecord_ht_ot_itemrelacionado');
                         let conNovedad = objRecord.getValue('custrecord_ht_ot_connovedad');
                         let serieChaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                         let estadoChaser = objRecord.getValue('custrecord_ht_ot_estadochaser');
@@ -159,6 +160,8 @@ define([
                         let taller = objRecord.getValue('custrecord_ht_ot_taller');
                         let comercial = objRecord.getText('custrecord_ht_ot_serieproductoasignacion');
                         let simTXT = objRecord.getValue('custrecord_ht_ot_simcard');
+                        let flujoReinstalacion = objRecord.getValue('custrecord_flujo_de_reinstalacion');
+                        log.error("flujoReinstalacion", flujoReinstalacion);
 
                         var cantidad = 0;
                         let returEjerepo = true;
@@ -180,8 +183,10 @@ define([
                         let precio = 0;
                         let esAlquiler = 0;
                         let entregaCliente = 0;
+                        let entradaCustodia = 0;
                         let objParams = new Array();
                         let adpDesinstalacion = 0;
+                        let esGarantia = 0;
 
                         let recordTaller = search.lookupFields({
                             type: 'customrecord_ht_tt_tallertablet',
@@ -207,7 +212,9 @@ define([
                             ordentrabajoId: id,
                             recipientId: recipientId,
                             bien: bien,
-                            sim: simTXT
+                            sim: simTXT,
+                            deposito: 0,
+                            dispositivo: 0
                         }
 
                         for (let i = 0; i < numLines; i++) {
@@ -217,19 +224,19 @@ define([
                         if (parametrosRespo_2.length != 0) {
                             //var accion_producto_2 = 0;
                             for (let j = 0; j < parametrosRespo_2.length; j++) {
-                                if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO) {
+                                if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO)
                                     adp = parametrosRespo_2[j][1];
-                                }
+
                                 if (parametrosRespo_2[j][0] == TTR_TIPO_TRANSACCION) { // TTR tipo de transaccion
                                     let parametro = record.load({ type: 'customrecord_ht_cr_pp_valores', id: parametrosRespo_2[j][1], isDynamic: true });
                                     TTR_name = parametro.getValue('custrecord_ht_pp_descripcion');
                                 }
-                                if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASPX) {
+                                if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASPX)
                                     envioPX = parametrosRespo_2[j][1];
-                                }
-                                if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASTELEC) {
+
+                                if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASTELEC)
                                     envioTele = parametrosRespo_2[j][1];
-                                }
+
                                 if (parametrosRespo_2[j][0] == COS_CIERRE_DE_ORDEN_DE_SERVICIO && parametrosRespo_2[j][1] == SI) { //cos cerrar orden de servicio
                                     try {
                                         if (precio == 0)
@@ -238,24 +245,31 @@ define([
                                         log.error('Error', error + ', ya está cerrada la Orden de Servicio');
                                     }
                                 }
-                                if (parametrosRespo_2[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                                if (parametrosRespo_2[j][0] == TIPO_AGRUPACION_PRODUCTO)
                                     valor_tipo_agrupacion_2 = parametrosRespo_2[j][1];
-                                }
+
 
                                 if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO) {
                                     adpServicio = parametrosRespo_2[j][1];
                                     adpDesinstalacion = adpServicio
                                 }
 
-                                if (parametrosRespo_2[j][0] == ALQUILER_PARAM) {
+                                if (parametrosRespo_2[j][0] == ALQUILER_PARAM)
                                     esAlquiler = parametrosRespo_2[j][1];
-                                }
+
 
                                 if (parametrosRespo_2[j][0] == _constant.Parameter.EDC_ENTREGA_DIRECTA_A_CLIENTE) {
-                                    log.debug('ParamIntro', parametrosRespo_2[j][0])
                                     entregaCliente = parametrosRespo_2[j][1];
-                                    log.debug('ValIntro', entregaCliente)
+                                    //log.debug('ParamIntro', parametrosRespo_2[j][0])
+                                    //log.debug('ValIntro', entregaCliente)
                                 }
+
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.PGR_PRODUCTO_DE_GARANTÍA && parametrosRespo_2[j][1] == _constant.Valor.SI)
+                                    esGarantia = parametrosRespo_2[j][1];
+
+                                log.debug('ParamIntro', parametrosRespo_2[j][0])
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo_2[j][1] == _constant.Valor.VALOR_001_GENERA_CUSTODIAS)
+                                    entradaCustodia = _constant.Valor.SI
                             }
                         }
 
@@ -292,7 +306,7 @@ define([
                         }
 
                         if (parametrosRespo_2.length != 0) {
-                            var accion_producto_2 = 0;
+                            let accion_producto_2 = 0;
                             for (let j = 0; j < parametrosRespo_2.length; j++) {
                                 if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO) {
                                     adp = parametrosRespo_2[j][1];
@@ -474,35 +488,35 @@ define([
                             }
                         }
 
-                        if (adpServicio == _constant.Valor.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS) {
-                            let customrecord_ht_ct_cobertura_transactionSearchObj = search.create({
-                                type: "customrecord_ht_ct_cobertura_transaction",
-                                filters:
-                                    [
-                                        ["custrecord_ht_ct_orden_servicio", "anyof", Origen]
-                                    ],
-                                columns:
-                                    [
-                                        search.createColumn({ name: "scriptid", sort: search.Sort.ASC, label: "Script ID" }),
-                                        search.createColumn({ name: "custrecord_ht_ct_orden_servicio", label: "HT Orden Servicio" }),
-                                        search.createColumn({ name: "custrecord_ht_ct_orden_trabajo", label: "HT Orden de Trabajo" }),
-                                        search.createColumn({ name: "custrecord_ht_ct_concepto", label: "HT Concepto" }),
-                                        search.createColumn({ name: "custrecord_ht_ct_fecha_inicial", label: "HT Fecha Inicial" }),
-                                        search.createColumn({ name: "custrecord_ht_ct_fecha_final", label: "HT Fecha Final" }),
-                                        search.createColumn({ name: "custrecord_ht_ct_transacciones", label: "HT Cobertura" })
-                                    ]
-                            });
-                            let pageData = customrecord_ht_ct_cobertura_transactionSearchObj.runPaged({ pageSize: 1000 });
-                            pageData.pageRanges.forEach(pageRange => {
-                                page = pageData.fetch({ index: pageRange.index });
-                                page.data.forEach(result => {
-                                    let columns = result.columns;
-                                    let updateTelematic = record.load({ type: 'customrecord_ht_co_cobertura', id: result.getValue(columns[5]) });
-                                    updateTelematic.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: _constant.Status.CHEQUEADO })
-                                    updateTelematic.save();
-                                });
-                            });
-                        }
+                        // if (adpServicio == _constant.Valor.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS) {
+                        //     let customrecord_ht_ct_cobertura_transactionSearchObj = search.create({
+                        //         type: "customrecord_ht_ct_cobertura_transaction",
+                        //         filters:
+                        //             [
+                        //                 ["custrecord_ht_ct_orden_servicio", "anyof", Origen]
+                        //             ],
+                        //         columns:
+                        //             [
+                        //                 search.createColumn({ name: "scriptid", sort: search.Sort.ASC, label: "Script ID" }),
+                        //                 search.createColumn({ name: "custrecord_ht_ct_orden_servicio", label: "HT Orden Servicio" }),
+                        //                 search.createColumn({ name: "custrecord_ht_ct_orden_trabajo", label: "HT Orden de Trabajo" }),
+                        //                 search.createColumn({ name: "custrecord_ht_ct_concepto", label: "HT Concepto" }),
+                        //                 search.createColumn({ name: "custrecord_ht_ct_fecha_inicial", label: "HT Fecha Inicial" }),
+                        //                 search.createColumn({ name: "custrecord_ht_ct_fecha_final", label: "HT Fecha Final" }),
+                        //                 search.createColumn({ name: "custrecord_ht_ct_transacciones", label: "HT Cobertura" })
+                        //             ]
+                        //     });
+                        //     let pageData = customrecord_ht_ct_cobertura_transactionSearchObj.runPaged({ pageSize: 1000 });
+                        //     pageData.pageRanges.forEach(pageRange => {
+                        //         page = pageData.fetch({ index: pageRange.index });
+                        //         page.data.forEach(result => {
+                        //             let columns = result.columns;
+                        //             let updateTelematic = record.load({ type: 'customrecord_ht_co_cobertura', id: result.getValue(columns[5]) });
+                        //             updateTelematic.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: _constant.Status.CHEQUEADO })
+                        //             updateTelematic.save();
+                        //         });
+                        //     });
+                        // }
 
                         if (statusOri == ESTADO_CHEQUEADA && ingresaFlujoConvenio == true) {
                             log.debug('Convenio', 'Es convenio');
@@ -515,7 +529,7 @@ define([
                             log.debug('AjusteInventarioPorConvenio', ajusteInv);
                         }
 
-                        if (adp == VALOR_001_INST_DISPOSITIVO) {
+                        if (adp == VALOR_001_INST_DISPOSITIVO || adp == _constant.Valor.VALOR_003_REINSTALACION_DE_DISP) {
                             let estado = objRecord.getValue('custrecord_ht_ot_estado');
                             let idSalesOrder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
                             let dispositivo = objRecord.getValue('custrecord_ht_ot_dispositivo');
@@ -527,6 +541,7 @@ define([
                                 fulfill = boxserie;
                             }
                             var idDispositivo = getInventoryNumber(fulfill);
+                            log.debug('idDispositivo', idDispositivo)
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
                             if (estado == ESTADO_CHEQUEADA && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
                                 var serieProducto = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
@@ -574,20 +589,40 @@ define([
                                     values: { 'custrecord_ht_mc_estado': estadoChaser },
                                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                                 });
+                                try { //TODO: Revisar para lojacks 1
+                                    let dispositivo = search.lookupFields({
+                                        type: 'customrecord_ht_record_mantchaser',
+                                        id: serieChaser,
+                                        columns: ['custrecord_ht_mc_seriedispositivo']
+                                    });
+                                    let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+                                    record.submitFields({
+                                        type: 'customrecord_ht_record_detallechaserdisp',
+                                        id: idDispositivo,
+                                        values: { 'custrecord_ht_dd_estado': estadoChaser },
+                                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                    });
+                                } catch (error) {
+                                    log.error('Chequeo', 'No es Monitoreo');
+                                }
 
-                                let dispositivo = search.lookupFields({
-                                    type: 'customrecord_ht_record_mantchaser',
-                                    id: serieChaser,
-                                    columns: ['custrecord_ht_mc_seriedispositivo']
-                                });
-                                let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+                                try { //TODO: Revisar para lojacks 2
+                                    let dispositivo = search.lookupFields({
+                                        type: 'customrecord_ht_record_mantchaser',
+                                        id: serieChaser,
+                                        columns: ['custrecord_ht_mc_seriedispositivolojack']
+                                    });
+                                    let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
 
-                                record.submitFields({
-                                    type: 'customrecord_ht_record_detallechaserdisp',
-                                    id: idDispositivo,
-                                    values: { 'custrecord_ht_dd_estado': estadoChaser },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
+                                    record.submitFields({
+                                        type: 'customrecord_ht_record_detallechaslojack',
+                                        id: idDispositivo,
+                                        values: { 'custrecord_ht_cl_estado': estadoChaser },
+                                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                    });
+                                } catch (error) {
+                                    log.error('Chequeo', 'No es Lojack');
+                                }
 
                                 let emailBody = '<p><b>Número de Documento: </b><span style="color: #000000;">' + valueSalesorder + '</span></p>' +
                                     '<p><b>Cliente: </b><span style="color: #000000;">' + customer + '</span></p>' +
@@ -637,8 +672,6 @@ define([
                                     columns: ['custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_celularsimcard']
                                 });
                                 let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
-                                let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
-
                                 record.submitFields({
                                     type: 'customrecord_ht_record_detallechaserdisp',
                                     id: idDispositivo,
@@ -646,16 +679,23 @@ define([
                                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                                 });
 
-                                record.submitFields({
-                                    type: 'customrecord_ht_record_detallechasersim',
-                                    id: idSimCard,
-                                    values: { 'custrecord_ht_ds_estado': INACTIVO },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
+                                try {
+                                    let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
+                                    record.submitFields({
+                                        type: 'customrecord_ht_record_detallechasersim',
+                                        id: idSimCard,
+                                        values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                    });
+                                } catch (error) {
+                                    log.error('Lojack', 'Dispositivo Lojack, no tiene SIM Card.')
+                                }
+
+
                             }
-                            log.debug('entrgaCliente', 'es Entrega Cliente: ' + entregaCliente);
-                            if (entregaCliente == _constant.Valor.SI) {
-                                log.debug('entrgaCliente', 'es Entrega Cliente');
+                            log.debug('esGarantia', esGarantia);
+                            if (entregaCliente == _constant.Valor.SI || esGarantia == _constant.Valor.SI) {
+                                log.debug('entrgaCliente', 'es Entrega Cliente o Garantía');
                                 let updateIns = _Controller.updateInstall(objParams);
                                 log.debug('updateIns', updateIns);
                                 record.submitFields({
@@ -672,6 +712,75 @@ define([
                                 });
                                 let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
                                 let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
+
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_detallechaserdisp',
+                                    id: idDispositivo,
+                                    values: { 'custrecord_ht_dd_estado': DISPONIBLE },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_detallechasersim',
+                                    id: idSimCard,
+                                    values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+
+                                if (esGarantia == _constant.Valor.SI) {
+                                    log.debug('Custodia', 'Es custodia');
+                                    const deposito = _Controller.getBinNumberRevision(objParams.location);
+                                    objParams.deposito = deposito;
+                                    objParams.boleano = true;
+                                    let dispositivo = search.lookupFields({
+                                        type: 'customrecord_ht_record_mantchaser',
+                                        id: serieChaser,
+                                        columns: ['custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_celularsimcard']
+                                    });
+                                    let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+                                    let dispo = search.lookupFields({
+                                        type: 'customrecord_ht_record_detallechaserdisp',
+                                        id: idDispositivo,
+                                        columns: ['custrecord_ht_dd_dispositivo']
+                                    });
+                                    objParams.dispositivo = dispo.custrecord_ht_dd_dispositivo[0].value;
+                                    let ajusteInv = _Controller.createInventoryAdjustmentIngreso(objParams, 0, 3);
+                                    log.debug('ajusteInv', ajusteInv);
+                                }
+                            }
+
+                            if (entradaCustodia == _constant.Valor.SI) {
+                                log.debug('Custodia', 'Es custodia');
+                                const deposito = _Controller.getBinNumberCustodia(objParams.location);
+                                objParams.deposito = deposito;
+                                objParams.boleano = true;
+                                let updateIns = _Controller.updateInstall(objParams)
+                                log.debug('updateIns', updateIns);
+                                record.submitFields({
+                                    type: 'customrecord_ht_record_mantchaser',
+                                    id: serieChaser,
+                                    values: { 'custrecord_ht_mc_estado': estadoChaser },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+
+                                let dispositivo = search.lookupFields({
+                                    type: 'customrecord_ht_record_mantchaser',
+                                    id: serieChaser,
+                                    columns: ['custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_celularsimcard']
+                                });
+                                let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+                                let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
+
+                                let dispo = search.lookupFields({
+                                    type: 'customrecord_ht_record_detallechaserdisp',
+                                    id: idDispositivo,
+                                    columns: ['custrecord_ht_dd_dispositivo']
+                                });
+                                objParams.dispositivo = dispo.custrecord_ht_dd_dispositivo[0].value;
+                                let returnRegistroCustodia = _Controller.createRegistroCustodia(objParams);
+                                let ajusteInv = _Controller.createInventoryAdjustmentIngreso(objParams, 0, 2);
+                                log.debug('ajusteInv', ajusteInv);
+                                log.debug('returnRegistroCustodia', returnRegistroCustodia);
 
                                 record.submitFields({
                                     type: 'customrecord_ht_record_detallechaserdisp',
@@ -715,13 +824,11 @@ define([
                     var item_tipo_activoText = (busquedaTipoActivo.custitem_ht_ar_tipoactivo)[0].text;
                     log.debug('item_tipo_activoText', item_tipo_activoText);
 
-
                     var historial_orden_de_servicio_id = objRecord.getValue('custrecord_ht_ot_orden_servicio');
                     log.debug('historial_orden_de_servicio_id', historial_orden_de_servicio_id);
                     var historial_id_cliente = objRecord.getValue('custrecord_ht_ot_cliente_id');
                     // var historial_descripcion = objRecord.getValue('custrecord_ht_hs_descripcion');
                     // var historial_fecha_trabajo = objRecord.getValue('custrecord_ht_ot_fechatrabajoasignacion');
-
 
                     var historial_estado_ot = 'Instalado';
                     log.debug('historial_estado_ot', historial_estado_ot);
@@ -760,208 +867,201 @@ define([
 
                     var results = customrecord_asset_search.run().getRange({ start: 0, end: 1 });
                     log.debug('results', results);
-
                     var historial_id_activo_fijo;
                     var nameDispositivo;
-
-
-
 
                     if (results.length > 0) {
                         // if (false) {
                         //EXISTE ACTIVO FIJO
-                        historial_id_activo_fijo = results[0].id;
-                        log.debug('historial_id_activo_fijo', historial_id_activo_fijo);
-                        nameDispositivo = results[0].getValue({ name: 'altname' });
-                        log.debug('nameDispositivo', nameDispositivo);
-
-                        log.debug('Entro a flujo de: ', 'generar Historial en activo')
-                        var descHistorial = textItemRelacionado + " " + itemDispositivoName.displayname + " " + numSerieText;
-                        log.debug('descHistorial', descHistorial);
-
-                        var historial = record.create({ type: 'customrecord_ht_record_historialsegui', isDynamic: true });
-                        historial.setValue('custrecord_ht_hs_numeroordenservicio', historial_orden_de_servicio_id);
-                        historial.setValue('custrecord_ht_hs_propietariocliente', historial_id_cliente);
-                        historial.setValue('custrecord_ht_hs_descripcion', descHistorial);
-                        historial.setText('custrecord_ht_hs_fechaordenservicio', dateSalesOrder);
-                        historial.setValue('custrecord_ht_hs_estado', 'Instalado');
-                        historial.setValue('custrecord_ht_hs_vidvehiculo', historial_vid_auto);
-                        historial.setValue('custrecord_ht_hs_placa', historial_placa);
-                        historial.setValue('custrecord_ht_hs_marca', historial_marca);
-                        historial.setValue('custrecord_ht_hs_tipo', historial_tipo);
-                        historial.setValue('custrecord_ht_hs_motor', historial_motor);
-                        historial.setValue('custrecord_ht_af_enlace', historial_id_activo_fijo);
-                        historial.save();
-                        log.debug('Termino crear historial');
-
+                        try {
+                            historial_id_activo_fijo = results[0].id;
+                            log.debug('historial_id_activo_fijo', historial_id_activo_fijo);
+                            nameDispositivo = results[0].getValue({ name: 'altname' });
+                            log.debug('nameDispositivo', nameDispositivo);
+                            log.debug('Entro a flujo de: ', 'generar Historial en activo')
+                            //var descHistorial = textItemRelacionado + " " + itemDispositivoName.displayname + " " + numSerieText;
+                            var descHistorial = textItemRelacionado + " " + numSerieText;
+                            log.debug('descHistorial', descHistorial);
+                            var historial = record.create({ type: 'customrecord_ht_record_historialsegui', isDynamic: true });
+                            historial.setValue('custrecord_ht_hs_numeroordenservicio', historial_orden_de_servicio_id);
+                            historial.setValue('custrecord_ht_hs_propietariocliente', historial_id_cliente);
+                            historial.setValue('custrecord_ht_hs_descripcion', descHistorial);
+                            historial.setText('custrecord_ht_hs_fechaordenservicio', dateSalesOrder);
+                            historial.setValue('custrecord_ht_hs_estado', 'Instalado');
+                            historial.setValue('custrecord_ht_hs_vidvehiculo', historial_vid_auto);
+                            historial.setValue('custrecord_ht_hs_placa', historial_placa);
+                            historial.setValue('custrecord_ht_hs_marca', historial_marca);
+                            historial.setValue('custrecord_ht_hs_tipo', historial_tipo);
+                            historial.setValue('custrecord_ht_hs_motor', historial_motor);
+                            historial.setValue('custrecord_ht_af_enlace', historial_id_activo_fijo);
+                            historial.save();
+                            log.debug('Termino crear historial');
+                        } catch (error) {
+                            log.error('EXISTE ACTIVO FIJO', error);
+                        }
                     } else {
                         //NO EXISTE ACTIVO FIJO -> CREAR ACTIVO
 
                         //Busqueda Dispositivo Serie
-                        var billOfMaterialRevision;
+                        try {
+                            var billOfMaterialRevision;
+                            var filters = [["isinactive", "is", "F"], "AND", ["custrecord_ht_articulo_alquileractivo", "anyof", idItemRelacionado]];
+                            var bomRevisionResultSearch = search.create({
+                                type: "bomrevision",
+                                filters,
+                                columns: ["name"]
+                            }).run().getRange(0, 1);
+                            log.debug('bomRevisionResultSearch', bomRevisionResultSearch);
+                            if (bomRevisionResultSearch.length != 0) {
+                                for (var i = 0; i < bomRevisionResultSearch.length; i++) {
+                                    billOfMaterialRevision = bomRevisionResultSearch[i].id;
+                                }
 
-                        var filters = [["isinactive", "is", "F"], "AND", ["custrecord_ht_articulo_alquileractivo", "anyof", idItemRelacionado]];
-                        var bomRevisionResultSearch = search.create({
-                            type: "bomrevision",
-                            filters,
-                            columns: ["name"]
-                        }).run().getRange(0, 1);
-                        log.debug('bomRevisionResultSearch', bomRevisionResultSearch);
+                                log.debug('billOfMaterialRevision', billOfMaterialRevision);
 
-                        if (bomRevisionResultSearch.length != 0) {
-                            for (var i = 0; i < bomRevisionResultSearch.length; i++) {
-                                billOfMaterialRevision = bomRevisionResultSearch[i].id;
-                            }
-
-                            log.debug('billOfMaterialRevision', billOfMaterialRevision);
-
-                            var recordRevision = record.load({ type: 'bomrevision', id: billOfMaterialRevision })
-                            var lineCountSublist = recordRevision.getLineCount({ sublistId: 'component' })
-
-                            var itemDispositivoId;
-                            for (var j = 0; j < lineCountSublist; j++) {
-                                var currentItemSub = recordRevision.getSublistText({
-                                    sublistId: 'component',
-                                    fieldId: 'item',
-                                    line: j
-                                }).toLowerCase();
-
-                                var currentQuantiSub = recordRevision.getSublistValue({
-                                    sublistId: 'component',
-                                    fieldId: 'quantity',
-                                    line: j
-                                });
-
-                                if (currentItemSub.indexOf('dispositivo') && currentQuantiSub == 1) {
-                                    itemDispositivoId = recordRevision.getSublistValue({
+                                var recordRevision = record.load({ type: 'bomrevision', id: billOfMaterialRevision })
+                                var lineCountSublist = recordRevision.getLineCount({ sublistId: 'component' })
+                                var itemDispositivoId;
+                                for (var j = 0; j < lineCountSublist; j++) {
+                                    var currentItemSub = recordRevision.getSublistText({
                                         sublistId: 'component',
                                         fieldId: 'item',
                                         line: j
+                                    }).toLowerCase();
+
+                                    var currentQuantiSub = recordRevision.getSublistValue({
+                                        sublistId: 'component',
+                                        fieldId: 'quantity',
+                                        line: j
                                     });
-                                    break;
-                                }
-                            }
 
-                            //ITEM NOMBRE DISPOSITIVO
-                            var itemDispositivoName = search.lookupFields({
-                                type: 'serializedinventoryitem',
-                                id: itemDispositivoId,
-                                columns: ['displayname']
-                            });
-
-                            log.debug('itemDispositivoName', itemDispositivoName.displayname);
-
-                            //BUSQUEDA PARA CONSEGUIR ID DE AJUSTE DE INVENTARIO
-                            var inventoryadjustmentSearchObj = search.create({
-                                type: "inventoryadjustment",
-                                filters:
-                                    [
-                                        ["type", "anyof", "InvAdjst"],
-                                        "AND",
-                                        ["custbody_ht_af_ejecucion_relacionada", "anyof", historial_orden_de_servicio_id],
-                                        "AND",
-                                        ["creditfxamount", "isnotempty", ""]
-                                    ],
-                                columns:
-                                    [
-                                        search.createColumn({ name: "item", label: "Item" }),
-                                        search.createColumn({ name: "creditamount", label: "Amount (Credit)" })
-                                    ]
-                            });
-
-                            var resultsInvAdj = inventoryadjustmentSearchObj.run().getRange({ start: 0, end: 1000 });
-                            log.debug('resultsInvAdj', resultsInvAdj);
-
-                            if (resultsInvAdj != 0) {
-                                var arrResult = [];
-
-                                for (var index = 0; index < resultsInvAdj.length; index++) {
-                                    var jsonTemp = {};
-                                    jsonTemp.adjInvId = resultsInvAdj[index].id;
-                                    jsonTemp.adjIdItem = resultsInvAdj[index].getValue({ name: 'item' });
-                                    jsonTemp.adjCreditAmount = resultsInvAdj[index].getValue({ name: 'creditamount' });
-
-                                    arrResult.push(jsonTemp);
-
-                                }
-
-                                var currentInvAdjId;
-                                for (var i = 0; i < arrResult.length; i++) {
-                                    if (arrResult[i].adjIdItem == itemDispositivoId) {
-                                        currentInvAdjId = arrResult[i].adjInvId;
+                                    if (currentItemSub.indexOf('dispositivo') && currentQuantiSub == 1) {
+                                        itemDispositivoId = recordRevision.getSublistValue({
+                                            sublistId: 'component',
+                                            fieldId: 'item',
+                                            line: j
+                                        });
                                         break;
                                     }
-
                                 }
 
-                                //MONTO CREDITO TOTAL
-                                var creditoTotal = 0;
-                                for (var i = 0; i < arrResult.length; i++) {
-                                    if (arrResult[i].adjInvId == currentInvAdjId) {
-                                        creditoTotal += Number(arrResult[i].adjCreditAmount);
+                                //ITEM NOMBRE DISPOSITIVO
+                                var itemDispositivoName = search.lookupFields({
+                                    type: 'serializedinventoryitem',
+                                    id: itemDispositivoId,
+                                    columns: ['displayname']
+                                });
+
+                                log.debug('itemDispositivoName', itemDispositivoName.displayname);
+
+                                //BUSQUEDA PARA CONSEGUIR ID DE AJUSTE DE INVENTARIO
+                                var inventoryadjustmentSearchObj = search.create({
+                                    type: "inventoryadjustment",
+                                    filters:
+                                        [
+                                            ["type", "anyof", "InvAdjst"],
+                                            "AND",
+                                            ["custbody_ht_af_ejecucion_relacionada", "anyof", historial_orden_de_servicio_id],
+                                            "AND",
+                                            ["creditfxamount", "isnotempty", ""]
+                                        ],
+                                    columns:
+                                        [
+                                            search.createColumn({ name: "item", label: "Item" }),
+                                            search.createColumn({ name: "creditamount", label: "Amount (Credit)" })
+                                        ]
+                                });
+
+                                var resultsInvAdj = inventoryadjustmentSearchObj.run().getRange({ start: 0, end: 1000 });
+                                log.debug('resultsInvAdj', resultsInvAdj);
+
+                                if (resultsInvAdj != 0) {
+                                    var arrResult = [];
+                                    for (var index = 0; index < resultsInvAdj.length; index++) {
+                                        var jsonTemp = {};
+                                        jsonTemp.adjInvId = resultsInvAdj[index].id;
+                                        jsonTemp.adjIdItem = resultsInvAdj[index].getValue({ name: 'item' });
+                                        jsonTemp.adjCreditAmount = resultsInvAdj[index].getValue({ name: 'creditamount' });
+                                        arrResult.push(jsonTemp);
                                     }
+
+                                    var currentInvAdjId;
+                                    for (var i = 0; i < arrResult.length; i++) {
+                                        if (arrResult[i].adjIdItem == itemDispositivoId) {
+                                            currentInvAdjId = arrResult[i].adjInvId;
+                                            break;
+                                        }
+                                    }
+
+                                    //MONTO CREDITO TOTAL
+                                    var creditoTotal = 0;
+                                    for (var i = 0; i < arrResult.length; i++) {
+                                        if (arrResult[i].adjInvId == currentInvAdjId) {
+                                            creditoTotal += Number(arrResult[i].adjCreditAmount);
+                                        }
+                                    }
+                                    log.debug('creditoTotal', creditoTotal);
+
+                                    // results[index].getValue({ name: 'debitfxamount' });
+                                    // var asset_debit_amount = results[0].getValue({ name: 'debitfxamount' });
+                                    // log.debug('nameDispositivo', nameDispositivo);
+
+
+                                    //Valores de Nuevo Asset
+                                    var datosTipoActivo = search.lookupFields({ type: 'customrecord_ncfar_assettype', id: item_tipo_activoId, columns: ['custrecord_assettypeaccmethod', 'custrecord_assettyperesidperc', 'custrecord_assettypelifetime', 'custrecord_assettypedescription'] });
+                                    log.debug('datosTipoActivo', datosTipoActivo);
+
+                                    var asset_tipo_activo = (datosTipoActivo.custrecord_assettypeaccmethod)[0].value;
+                                    log.debug('asset_tipo_activo', asset_tipo_activo);
+                                    var asset_porcentaje_residual = datosTipoActivo.custrecord_assettyperesidperc.replace('%', '');
+                                    log.debug('asset_porcentaje_residual', asset_porcentaje_residual);
+                                    var asset_tiempo_de_vida = datosTipoActivo.custrecord_assettypelifetime;
+                                    log.debug('asset_tiempo_de_vida', asset_tiempo_de_vida);
+                                    // var asset_name = datosTipoActivo.custrecord_assettypedescription;
+                                    // log.debug('asset_name', asset_name);
+
+                                    var fixedAsset = record.create({ type: 'customrecord_ncfar_asset', isDynamic: true });
+
+                                    fixedAsset.setValue('customform', 145);
+                                    fixedAsset.setValue('altname', itemDispositivoName.displayname);
+                                    fixedAsset.setValue('custrecord_assettype', item_tipo_activoId);
+                                    fixedAsset.setValue('custrecord_assetcost', creditoTotal);
+                                    fixedAsset.setValue('custrecord_assetresidualperc', Number(asset_porcentaje_residual));
+                                    fixedAsset.setValue('custrecord_assetresidualvalue', 1);
+                                    fixedAsset.setValue('custrecord_assetaccmethod', asset_tipo_activo);
+                                    fixedAsset.setValue('custrecord_assetlifetime', asset_tiempo_de_vida);
+                                    fixedAsset.setValue('custrecord_nmero_de_serie_dispositivo', numSerieId);
+
+                                    var id_new_asset = fixedAsset.save()
+                                    log.debug('id_new_asset', id_new_asset);
+                                    log.debug('Termino crear activo');
+
+                                    var historial = record.create({ type: 'customrecord_ht_record_historialsegui', isDynamic: true });
+                                    var descHistorial = textItemRelacionado + ' ' + itemDispositivoName.displayname + ' ' + numSerieText
+
+                                    historial.setValue('custrecord_ht_hs_numeroordenservicio', historial_orden_de_servicio_id);
+                                    historial.setValue('custrecord_ht_hs_propietariocliente', historial_id_cliente);
+                                    historial.setValue('custrecord_ht_hs_descripcion', descHistorial);
+                                    historial.setText('custrecord_ht_hs_fechaordenservicio', dateSalesOrder);
+                                    historial.setValue('custrecord_ht_hs_estado', 'Instalado');
+                                    historial.setValue('custrecord_ht_hs_vidvehiculo', historial_vid_auto);
+                                    historial.setValue('custrecord_ht_hs_placa', historial_placa);
+                                    historial.setValue('custrecord_ht_hs_marca', historial_marca);
+                                    historial.setValue('custrecord_ht_hs_tipo', historial_tipo);
+                                    historial.setValue('custrecord_ht_hs_motor', historial_motor);
+                                    historial.setValue('custrecord_ht_af_enlace', id_new_asset);
+                                    historial.save();
+                                    log.debug('Termino crear historial de nuevo activo');
+                                } else {
+                                    log.debug('No existe ajuste de inventario, con OS Relacionado');
                                 }
-                                log.debug('creditoTotal', creditoTotal);
-
-                                // results[index].getValue({ name: 'debitfxamount' });
-                                // var asset_debit_amount = results[0].getValue({ name: 'debitfxamount' });
-                                // log.debug('nameDispositivo', nameDispositivo);
-
-
-                                //Valores de Nuevo Asset
-                                var datosTipoActivo = search.lookupFields({ type: 'customrecord_ncfar_assettype', id: item_tipo_activoId, columns: ['custrecord_assettypeaccmethod', 'custrecord_assettyperesidperc', 'custrecord_assettypelifetime', 'custrecord_assettypedescription'] });
-                                log.debug('datosTipoActivo', datosTipoActivo);
-
-                                var asset_tipo_activo = (datosTipoActivo.custrecord_assettypeaccmethod)[0].value;
-                                log.debug('asset_tipo_activo', asset_tipo_activo);
-                                var asset_porcentaje_residual = datosTipoActivo.custrecord_assettyperesidperc.replace('%', '');
-                                log.debug('asset_porcentaje_residual', asset_porcentaje_residual);
-                                var asset_tiempo_de_vida = datosTipoActivo.custrecord_assettypelifetime;
-                                log.debug('asset_tiempo_de_vida', asset_tiempo_de_vida);
-                                // var asset_name = datosTipoActivo.custrecord_assettypedescription;
-                                // log.debug('asset_name', asset_name);
-
-
-                                var fixedAsset = record.create({ type: 'customrecord_ncfar_asset', isDynamic: true });
-
-                                fixedAsset.setValue('customform', 145);
-                                fixedAsset.setValue('altname', itemDispositivoName.displayname);
-                                fixedAsset.setValue('custrecord_assettype', item_tipo_activoId);
-                                fixedAsset.setValue('custrecord_assetcost', creditoTotal);
-                                fixedAsset.setValue('custrecord_assetresidualperc', Number(asset_porcentaje_residual));
-                                fixedAsset.setValue('custrecord_assetresidualvalue', 1);
-                                fixedAsset.setValue('custrecord_assetaccmethod', asset_tipo_activo);
-                                fixedAsset.setValue('custrecord_assetlifetime', asset_tiempo_de_vida);
-                                fixedAsset.setValue('custrecord_nmero_de_serie_dispositivo', numSerieId);
-
-                                var id_new_asset = fixedAsset.save()
-                                log.debug('id_new_asset', id_new_asset);
-                                log.debug('Termino crear activo');
-
-                                var historial = record.create({ type: 'customrecord_ht_record_historialsegui', isDynamic: true });
-                                var descHistorial = textItemRelacionado + ' ' + itemDispositivoName.displayname + ' ' + numSerieText
-
-                                historial.setValue('custrecord_ht_hs_numeroordenservicio', historial_orden_de_servicio_id);
-                                historial.setValue('custrecord_ht_hs_propietariocliente', historial_id_cliente);
-                                historial.setValue('custrecord_ht_hs_descripcion', descHistorial);
-                                historial.setText('custrecord_ht_hs_fechaordenservicio', dateSalesOrder);
-                                historial.setValue('custrecord_ht_hs_estado', 'Instalado');
-                                historial.setValue('custrecord_ht_hs_vidvehiculo', historial_vid_auto);
-                                historial.setValue('custrecord_ht_hs_placa', historial_placa);
-                                historial.setValue('custrecord_ht_hs_marca', historial_marca);
-                                historial.setValue('custrecord_ht_hs_tipo', historial_tipo);
-                                historial.setValue('custrecord_ht_hs_motor', historial_motor);
-                                historial.setValue('custrecord_ht_af_enlace', id_new_asset);
-                                historial.save();
-                                log.debug('Termino crear historial de nuevo activo');
                             } else {
-
-                                log.debug('No existe ajuste de inventario, con OS Relacionado');
+                                log.debug('No se encuentra dispositivo en el item revision');
                             }
-
-                        } else {
-                            log.debug('No se encuentra dispositivo en el item revision');
+                        } catch (error) {
+                            log.error('NO EXISTE ACTIVO FIJO', error);
                         }
+
                     }
                 }
             }
@@ -1176,9 +1276,8 @@ define([
 
         const createEnsambleCustodiaButton = (form, objRecord) => {
             let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
-            let relatedItemName = objRecord.getText('custrecord_ht_ot_itemrelacionado') || "";
-            relatedItemName = relatedItemName.toLowerCase();
-            if (!relatedItemName.includes('rein')) return;
+            itemName = itemName.toLowerCase();
+            if (!itemName.includes('cust')) return;
             let salesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
             let workorder = objRecord.id;
             let customer = objRecord.getValue('custrecord_ht_ot_cliente_id');

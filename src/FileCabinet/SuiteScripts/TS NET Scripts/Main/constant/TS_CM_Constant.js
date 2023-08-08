@@ -64,7 +64,8 @@ define([], () => {
         GPG_GENERA_PARAMETRIZACION_EN_GEOSYS: 36,
         GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS: 38,
         ALQ_PRODUCTO_DE_ALQUILER: 13,
-        EDC_ENTREGA_DIRECTA_A_CLIENTE: 28
+        EDC_ENTREGA_DIRECTA_A_CLIENTE: 28,
+        PGR_PRODUCTO_DE_GARANTÍA: 58
     }
 
     let Valor = {
@@ -75,20 +76,24 @@ define([], () => {
         VALOR_002_DESINSTALACION_DE_DISP: 21,
         VALOR_010_CAMBIO_DE_PROPIETARIO: 10,
         VALOR_001_INST_DISPOSITIVO: 43,
-        VALOR_001_RENOVACION_NORMAL: 16
+        VALOR_001_RENOVACION_NORMAL: 16,
+        VALOR_001_GENERA_CUSTODIAS: 55,
+        VALOR_003_REINSTALACION_DE_DISP: 26
     }
 
     let customRecord = {
         BIENES: 'CUSTOMRECORD_HT_RECORD_BIENES',
         ORDEN_TRABAJO: 'CUSTOMRECORD_HT_RECORD_ORDENTRABAJO',
-        CHASER: 'CUSTOMRECORD_HT_RECORD_MANTCHASER'
+        CHASER: 'CUSTOMRECORD_HT_RECORD_MANTCHASER',
+        CUSTODIA: 'CUSTOMRECORD_HT_RECORD_CUSTODIA'
     }
 
     let Transaction = {
         SALES_ORDER: 'salesorder',
         INVOICE: 'invoice',
         ASSEMBLY_ORDER: 'workorder',
-        ASSEMBLY_BUILD: 'assemblybuild'
+        ASSEMBLY_BUILD: 'assemblybuild',
+        BIN: 'bin'
     }
 
     return {

@@ -32,6 +32,7 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
     const DOCUMENT_TYPE_RECIBO_HONORARIOS = 108; // Recibo por honorarios
     const DOCUMENT_TYPE_DEBIT_MEMO = 2;
     const PE_FEL_Sending_Method = 5; //SB: 5 / PR: ?
+    const PE_FEL_Sending_Method_nc = 6; //SB: 6 / PR: ?
     const PE_Cash_Sale_FEL_Template = 1;
     const PE_Invoice_FEL_Template = 2;
     const PE_Credit_Memo_FEL_Template = 3;
@@ -71,26 +72,6 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
                     objRecord.setValue({ fieldId: 'custbodyts_ec_doc_number_ref', value: number_cr, ignoreFieldChange: true });
                     objRecord.setValue({ fieldId: 'custbodyts_ec_doc_fecha_ref', value: date_ref, ignoreFieldChange: true });
                     objRecord.setValue({ fieldId: 'custbody_ts_ec_folio_fiscal_ref', value: folio_cr, ignoreFieldChange: true });
-
-                }
-
-                if (objRecord.type == INVOICE) {
-                    log.debug('INICIO', 'INICIO INVOICE -------------------------------------------------');
-                    log.debug('END', 'END INVOICE -------------------------------------------------');
-                } else if (objRecord.type == CREDIT_MEMO) {
-                    // let document_type = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
-                    // let serie = objRecord.getText({ fieldId: 'custbody_ts_ec_serie_cxc' });
-                    // let number = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
-                    // let saleseffectivedate = objRecord.getValue({ fieldId: 'prevdate' });
-                    // objRecord.setValue({ fieldId: 'custbodyts_ec_doc_type_ref', value: document_type, ignoreFieldChange: true });
-                    // objRecord.setValue({ fieldId: 'custbodyts_ec_doc_serie_ref', value: serie, ignoreFieldChange: true });
-                    // objRecord.setValue({ fieldId: 'custbodyts_ec_doc_number_ref', value: number, ignoreFieldChange: true });
-                    // objRecord.setValue({ fieldId: 'custbodyts_ec_doc_fecha_ref', value: saleseffectivedate, ignoreFieldChange: true });
-
-                    // objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: DOCUMENT_TYPE_CREDIT_MEMO, ignoreFieldChange: true });
-                    // objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: '', ignoreFieldChange: true });
-                    // objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: '', ignoreFieldChange: true });
-                    // objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: '', ignoreFieldChange: true });
                 }
             } catch (error) {
                 log.error('Error-beforeLoad-General', eventType + '--' + error);
@@ -148,26 +129,8 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
                     let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
                     objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
                     log.debug('montoLetras', montoLetras);
-
-                    //doctype = objRecord.getValue({ fieldId: 'custbody_pe_document_type' }); //*Activar cuando venga a demanda
+                    //doctype = objRecord.getValue({ fieldId: 'custbody_pe_document_type' }); //*Activar cuando venga a demanda para Ibero
                     if (objRecord.type == INVOICE) {
-                        //Bloque obtener Dirección de la tienda ===========================================================================
-                        /* let addressLoc = getAddress(location);
-                        objRecord.setValue({ fieldId: 'custbody_pe_flag_address_location', value: addressLoc }); PREGUNTAR*/
-                        /*                         if (customform == FORM_DEBIT_MEMO) {
-                                                    documentref = objRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
-                                                    doctype = DOCUMENT_TYPE_DEBIT_MEMO;
-                                                    prefix = 'ND-';
-                                                } else { */
-                        // let searchField = search.lookupFields({ type: search.Type.CUSTOMER, id: customer, columns: ['custentity_ec_document_type'] });
-                        // if (searchField.custentity_ec_document_type[0].value == DOCUMENT_TYPE_RUC) {//^: Activar cuando tipo de documento venga de cliente
-                        //     // if (doctype == DOCUMENT_TYPE_FACTURA) { //*Activar cuando venga a demanda
-                        //    doctype  = DOCUMENT_TYPE_FACTURA;//^: Activar cuando tipo de documento venga de cliente
-                        //     prefix = 'FA-';
-                        // } else {
-                        //     doctype = DOCUMENT_TYPE_BOLETA;//^: Activar cuando tipo de documento venga de cliente
-                        //     prefix = 'BV-';
-                        // }
                         doctype = DOCUMENT_TYPE_FACTURA;//^: Activar cuando tipo de documento venga de cliente
                         prefix = 'FA-';
                         try {
@@ -190,7 +153,6 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
                         // prefix = 'NC-';
                     }
                     //objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true }); //^: Activar cuando tipo de documento venga de cliente
-                    
                 }
             } catch (error) {
                 log.error('Error-beforeSubmit-' + objRecord.type, eventType + '--' + error);
@@ -201,101 +163,45 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
 
     const afterSubmit = (context) => {
         const eventType = context.type;
-
-        /*  if (eventType === context.UserEventType.CREATE) {
-             const urlpart1 = 'https://6785603.app.netsuite.com/app/accounting/print/hotprint.nl?regular=T&sethotprinter=T&formnumber=125&trantype=custinvc&&id='
-             const urlpartt2 = '&label=Invoice&printtype=transaction'
-             const objRecord = context.newRecord;
-             try {
-                 let recordId = objRecord.id;
-                 let recordLoad = '';
-                 let tranid = '';
-                 let location = '';
-                 let printer = '';
-                 let predeterminada = '@NONE@'
-                 let searchlookupFields = '';
-                 if (objRecord.type == INVOICE) {
-                     // record.submitFields({
-                     //     type: record.Type.INVOICE,
-                     //     id: recordId,
-                     //     values: {
-                     //         'custbody_pe_flag_print_pdf': urlpart1 + recordId + urlpartt2
-                     //     }
-                     // });
-                     recordLoad = record.load({ type: record.Type.INVOICE, id: recordId, isDynamic: true });
-                 } else if (objRecord.type == CASH_SALE) {
-                     recordLoad = record.load({ type: record.Type.CASH_SALE, id: recordId, isDynamic: true });
-                     tranid = recordLoad.getValue({ fieldId: 'tranid' });
-                     location = recordLoad.getValue({ fieldId: 'location' });
-                     log.debug('LOG-location', location);
-                     log.debug('LOG-printer', printer);
-                     printer = getPrinter(location);
-                     if (printer == 0) {
-                         printer = getPrinter(predeterminada);
-                     }
-                     //searchlookupFields = search.lookupFields({ type: search.Type.CASH_SALE, id: recordId, columns: 'createddate' })
-                 }
-                 let datecreated = String(recordLoad.getValue({ fieldId: 'createddate' }));
-                 //let datecreated = searchlookupFields.datecreated;
-                 log.debug('LOG-datecreated', datecreated);
-                 datecreated = datecreated.split(' ');
-                 let time = datecreated[4];
-                 time = time.split(':');
-                 let hora = parseInt(time[0]) + 3;
-                 if (parseInt(hora) < 10) {
-                     time = '0' + hora + ':' + time[1];
-                 } else {
-                     time = hora + ':' + time[1];
-                 }
-                 log.debug('LOG-time', time);
-                 let otherId = record.submitFields({ type: record.Type.CASH_SALE, id: recordId, values: { 'custbody_pe_flag_hora_emision': time } });
-                 log.debug('LOG-Record-Saved-AS', otherId);
-                 if (objRecord.type == CASH_SALE || objRecord.type == CREDIT_MEMO) {
-                     redirect.toSuitelet({
-                         scriptId: 'customscript_ts_ui_automatic_print',
-                         deploymentId: 'customdeploy_ts_ui_automatic_print',
-                         parameters: {
-                             'custparam_internalid': recordId,
-                             'custparam_tranid': tranid,
-                             'custparam_printer': printer,
-                             'custparam_rectype': objRecord.type
-                         }
-                     });
-                 }
-             } catch (error) {
-                 log.error('Error-afterSubmit', eventType + '--' + error);
-             }
-         }
-  */
-        /*   if (eventType === context.UserEventType.EDIT) {
-              const objRecord = context.newRecord;
-              if (objRecord.type == CASH_SALE || objRecord.type == CREDIT_MEMO) {
-                  try {
-                      let recordId = objRecord.id;
-                      let predeterminada = '@NONE@'
-                      //let searchlookupFields = search.lookupFields({ type: search.Type.CASH_SALE, id: recordId, columns: ['tranid', 'location'] });
-                      let searchlookupFields = search.lookupFields({ type: objRecord.type, id: recordId, columns: ['tranid', 'location'] });
-                      location = searchlookupFields.location[0].value
-                      printer = getPrinter(location);
-                      if (printer == 0) {
-                          printer = getPrinter(predeterminada);
-                      }
-                      log.debug('LOG-location', printer);
-                      redirect.toSuitelet({
-                          scriptId: 'customscript_ts_ui_automatic_print',
-                          deploymentId: 'customdeploy_ts_ui_automatic_print',
-                          parameters: {
-                              'custparam_internalid': recordId,
-                              'custparam_tranid': searchlookupFields.tranid,
-                              'custparam_printer': printer,
-                              'custparam_rectype': objRecord.type
-                          }
-                      });
-                  } catch (error) {
-                      log.error('Error-Print', error);
-                  }
-              }
-          } */
+        const recordId = context.newRecord.id;
+        // if (memo.indexOf(palabra) !== -1) {}
+        if (eventType === context.UserEventType.CREATE) {
+            if (context.newRecord.type == CREDIT_MEMO) {
+                const doctype = DOCUMENT_TYPE_CREDIT_MEMO;
+                const palabraBuscada = "Withholding Tax";
+                const prefix = 'NC-';
+                try {
+                    const memo = context.newRecord.getValue({ fieldId: 'memo' });
+                    if (memo.includes(palabraBuscada)) {
+                        log.debug('Nota de Crédito', 'Certificado de Retención');
+                    } else {
+                        let objRecord = record.load({ type: CREDIT_MEMO, id: recordId, isDynamic: true });
+                        let location = objRecord.getValue({ fieldId: 'location' });
+                        let total = String(objRecord.getValue({ fieldId: 'total' }));
+                        let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
+                        let documentref = objRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
+                        let getserie = getSerie(doctype, location, prefix, documentref);
+                        log.debug('LOG-getserie', getserie);
+                        let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr);
+                        log.debug('LOG-correlative1', correlative);
+                        objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                        log.debug('LOG-correlative2', correlative.numbering);
+                        objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                        log.debug('LOG-correlative3', objRecord.getValue('tranid'));
+                        objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
+                        log.debug('montoLetras', montoLetras);
+                        objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Credit_Memo_FEL_Template, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_FEL_Sending_Method_nc, ignoreFieldChange: true });
+                        objRecord.save();
+                    }
+                } catch (error) {
+                    log.error('Error-afterSubmit-Intro', error);
+                }
+            }
+        }
     }
 
 
@@ -303,6 +209,31 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
         let searchLoad = '';
         try {
             log.debug('DebugSearch1', documenttype + ' - ' + location + ' - ' + prefix + ' - ' + documentref)
+            searchLoad = search.create({
+                type: 'customrecordts_ec_series_impresion',
+                filters: [
+                    ['custrecord_ts_ec_tipo_documento', 'anyof', documenttype],
+                    'AND',
+                    ['custrecord_ts_ec_localidad_serie', 'anyof', location]
+                ],
+                columns: [
+                    { name: 'internalid', sort: search.Sort.ASC },
+                    'custrecord_ts_ec_rango_inicial',
+                    'custrecord_ts_ec_series_impresion'
+                ]
+            });
+            const searchResult = searchLoad.run().getRange({ start: 0, end: 1 });
+            const column01 = searchResult[0].getValue(searchLoad.columns[0]);
+            let column02 = searchResult[0].getValue(searchLoad.columns[1]);
+            let column03 = searchResult[0].getValue(searchLoad.columns[2]);
+            column03 = prefix + column03;
+            column02 = parseInt(column02);
+            return {
+                'serieid': column01,
+                'peinicio': column02,
+                'serieimpr': column03
+            };
+
 
             // if (documenttype == DOCUMENT_TYPE_CREDIT_MEMO) {
             //     log.debug('Debug', 'Entre a search NC');
@@ -336,32 +267,6 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
             //         ]
             //     });
             // }
-
-            searchLoad = search.create({
-                type: 'customrecordts_ec_series_impresion',
-                filters: [
-                    ['custrecord_ts_ec_tipo_documento', 'anyof', documenttype],
-                    'AND',
-                    ['custrecord_ts_ec_localidad_serie', 'anyof', location]
-                ],
-                columns: [
-                    { name: 'internalid', sort: search.Sort.ASC },
-                    'custrecord_ts_ec_rango_inicial',
-                    'custrecord_ts_ec_series_impresion'
-                ]
-            });
-
-            const searchResult = searchLoad.run().getRange({ start: 0, end: 1 });
-            const column01 = searchResult[0].getValue(searchLoad.columns[0]);
-            let column02 = searchResult[0].getValue(searchLoad.columns[1]);
-            let column03 = searchResult[0].getValue(searchLoad.columns[2]);
-            column03 = prefix + column03;
-            column02 = parseInt(column02);
-            return {
-                'serieid': column01,
-                'peinicio': column02,
-                'serieimpr': column03
-            };
         } catch (error) {
             log.error({ title: 'getPeSerie', details: error });
         }
@@ -403,7 +308,6 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
             'numbering': numbering
         }
     }
-
 
     const getAddress = (location) => {
         let address = '';

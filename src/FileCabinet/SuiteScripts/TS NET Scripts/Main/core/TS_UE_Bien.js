@@ -49,6 +49,8 @@ define([
         const afterSubmit = (scriptContext) => {
             if (scriptContext.type === scriptContext.UserEventType.CREATE) {
                 const objRecord = scriptContext.newRecord;
+                let dispositivoTXT = '';
+                let simCardTXT = '';
                 const bienid = objRecord.id.toString();
                 let vid = objRecord.getValue('name');
                 let estadoConvenio = objRecord.getValue('custrecord_ht_bien_estadoconvenio');
@@ -57,8 +59,13 @@ define([
                 let taller = objRecord.getValue('custrecord_ht_bien_taller_convenio');
                 let dispositivo = objRecord.getValue('custrecord_ht_bien_dispositivo_convenio');
                 let simCard = objRecord.getValue('custrecord_ht_bien_simcard_convenio');
-                let dispositivoTXT = objRecord.getText('custrecord_ht_bien_dispositivo_convenio');
-                let simCardTXT = objRecord.getText('custrecord_ht_bien_simcard_convenio');
+                try {
+                    dispositivoTXT = objRecord.getText('custrecord_ht_bien_dispositivo_convenio');
+                    simCardTXT = objRecord.getText('custrecord_ht_bien_simcard_convenio');
+                } catch (error) {
+                    log.error('Error', 'Campos vacíos, no usar getText: ' + error)
+                }
+
                 let datos = new Array();
                 let typeComponents = ["1", "2"]
                 let components = [dispositivo, simCard];
@@ -100,7 +107,7 @@ define([
 
                                 log.debug('OrdenTrabajo', ordenTrabajo);
                                 log.debug('Chaser', chaserRecord);
-                                
+
                                 let updateOrdenTrabajo = _controller.updateOrdenTrabajo(ordenTrabajo, taller, chaserRecord, dispositivoTXT, simCardTXT);
                                 let myUrlParameters = { myFirstParameter: updateOrdenTrabajo }
                                 let myRestletResponse = https.requestRestlet({

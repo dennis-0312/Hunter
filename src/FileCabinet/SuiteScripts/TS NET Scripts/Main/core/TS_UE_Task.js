@@ -49,16 +49,17 @@ define([
                     }
                 }
 
-                const busqueda = search.create({
-                    type: "customrecord_ht_record_ordentrabajo",
-                    filters: [
-                        ["custrecord_ht_ot_orden_servicio", "anyof", transaction]
-                    ],
-                    columns: [
-                        search.createColumn({ name: "internalid", label: "ID" })
-                    ]
-                });
-                var pageData = busqueda.runPaged({ pageSize: 1000 });
+                // const busqueda = search.create({
+                //     type: "customrecord_ht_record_ordentrabajo",
+                //     filters: [
+                //         ["custrecord_ht_ot_orden_servicio", "anyof", transaction]
+                //     ],
+                //     columns: [
+                //         search.createColumn({ name: "internalid", label: "ID" })
+                //     ]
+                // });
+                // var pageData = busqueda.runPaged({ pageSize: 1000 });
+                let ordenTrabajo = _controller.getOrdenTrabajoParaTurno(transaction, relateditem);
                 log.debug('relateditem', relateditem);
                 let params = {
                     soid: transaction,
@@ -67,14 +68,16 @@ define([
                     assemblyitem: relateditem
                 };
                 log.debug('params', params);
-                log.debug('compoundLabel', pageData.pageRanges[0].compoundLabel);
+                //log.debug('compoundLabel', pageData.pageRanges[0].compoundLabel);
 
                 let workOrder = record.create({ type: record.Type.WORK_ORDER, isDynamic: true, defaultValues: params });
                 workOrder.setValue({ fieldId: 'quantity', value: 1 });
-                workOrder.setValue({ fieldId: 'custbody_ht_ce_ordentrabajo', value: pageData.pageRanges[0].compoundLabel });
+                //workOrder.setValue({ fieldId: 'custbody_ht_ce_ordentrabajo', value: pageData.pageRanges[0].compoundLabel });
+                workOrder.setValue({ fieldId: 'custbody_ht_ce_ordentrabajo', value: ordenTrabajo });
                 var woId = workOrder.save();
                 log.debug('woId', woId);
-                let order = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: pageData.pageRanges[0].compoundLabel });
+                //let order = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: pageData.pageRanges[0].compoundLabel });
+                let order = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: ordenTrabajo });
                 order.setValue({ fieldId: 'custrecord_ht_ot_ordenfabricacion', value: woId });
                 order.save();
             }
@@ -83,6 +86,8 @@ define([
             return error.message;
         }
     }
+
+
 
     return {
         beforeLoad: beforeLoad,

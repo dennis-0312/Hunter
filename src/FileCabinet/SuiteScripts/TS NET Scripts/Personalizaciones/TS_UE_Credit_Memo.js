@@ -13,55 +13,55 @@ Governance points: N/A
  *@NApiVersion 2.1
 *@NScriptType UserEventScript
 */
-define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/error','../Impulso Plataformas/Controller/TS_Script_Controller'],
+define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/error', '../Impulso Plataformas/Controller/TS_Script_Controller'],
     (log, search, record, serverWidget, https, error, _controllerParm) => {
         var TIPO_TRANSACCION = '2';
         var TIPO_AGRUPACION_PRODUCTO = '77';
         const afterSubmit = (context) => {
             if (context.type === context.UserEventType.CREATE) {
                 const objRecord = context.newRecord;
-                const idCM = objRecord.id; 
-                var idB = objRecord.getValue('custbody_ht_so_bien');
-                var accion_producto = 0;
-                var valor_tipo_agrupacion = 0;
-                var idCoberturaItem;
-                let numLines = objRecord.getLineCount({ sublistId: 'item' });
-                for (let i = 0; i < numLines; i++) {
-                    let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i});
-                    log.debug('items', items);
-    
-                    let parametrosRespo = _controllerParm.parametrizacion(items);
-                    for (let j = 0; j < parametrosRespo.length; j++) {
-                        if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
-                            valor_tipo_agrupacion = parametrosRespo[j][1];
-                        }
-                    }
-                }
-                log.debug('idB',idB);
-                let busqueda_cobertura = getCoberturaItem(idB);
-                log.debug('busqueda_cobertura',busqueda_cobertura);
-                if (busqueda_cobertura.length != 0) {
-                    for (let i = 0; i < busqueda_cobertura.length; i++) {
-
-                        let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
-                        if (parametrosRespo.length != 0) {
-                            var accion_producto_2 = 0;
-                            var valor_tipo_agrupacion_2 = 0;
-                            for (let j = 0; j < parametrosRespo.length; j++) {
-
-                                if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
-                                    valor_tipo_agrupacion_2 = parametrosRespo[j][1];
-                                }
-
-                                if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
-                                    idCoberturaItem = busqueda_cobertura[i][1];
-                                } 
-
+                const idCM = objRecord.id;
+                const palabraBuscada = "Withholding Tax";
+                const memo = context.newRecord.getValue({ fieldId: 'memo' });
+                if (memo.includes(palabraBuscada)) {
+                    log.debug('Nota de Crédito', 'Certificado de Retención');
+                } else {
+                    var idB = objRecord.getValue('custbody_ht_so_bien');
+                    var accion_producto = 0;
+                    var valor_tipo_agrupacion = 0;
+                    var idCoberturaItem;
+                    let numLines = objRecord.getLineCount({ sublistId: 'item' });
+                    for (let i = 0; i < numLines; i++) {
+                        let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
+                        log.debug('items', items);
+                        let parametrosRespo = _controllerParm.parametrizacion(items);
+                        for (let j = 0; j < parametrosRespo.length; j++) {
+                            if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                                valor_tipo_agrupacion = parametrosRespo[j][1];
                             }
                         }
                     }
-                }    
-                log.debug('idCoberturaItem',idCoberturaItem);
+                    log.debug('idB', idB);
+                    let busqueda_cobertura = getCoberturaItem(idB);
+                    log.debug('busqueda_cobertura', busqueda_cobertura);
+                    if (busqueda_cobertura.length != 0) {
+                        for (let i = 0; i < busqueda_cobertura.length; i++) {
+                            let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
+                            if (parametrosRespo.length != 0) {
+                                var accion_producto_2 = 0;
+                                var valor_tipo_agrupacion_2 = 0;
+                                for (let j = 0; j < parametrosRespo.length; j++) {
+                                    if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                                        valor_tipo_agrupacion_2 = parametrosRespo[j][1];
+                                    }
+                                    if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
+                                        idCoberturaItem = busqueda_cobertura[i][1];
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    log.debug('idCoberturaItem', idCoberturaItem);
                     record.submitFields({
                         type: 'customrecord_ht_co_cobertura',
                         id: idCoberturaItem,
@@ -70,7 +70,7 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
                         },
                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                     });
-                
+                }
             }
         }
 
@@ -125,7 +125,7 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
                 var pageData = busqueda.runPaged({
                     pageSize: 1000
                 });
-    
+
                 pageData.pageRanges.forEach(function (pageRange) {
                     page = pageData.fetch({
                         index: pageRange.index

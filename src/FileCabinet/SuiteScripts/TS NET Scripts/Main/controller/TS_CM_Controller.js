@@ -376,11 +376,35 @@ define([
             return "";
         }
 
-        const getBinNumberCustodia = (location) => {
+        const getBinNumberCustodia = (location, flujo = 0) => {
+            let ubicacion = location;
+            if (flujo == 2) {
+                let objSearch = search.create({
+                    type: "location",
+                    filters:
+                        [
+                            ["custrecord_ht_ub_ubicacioncustodia", "is", "T"],
+                            "AND",
+                            ["custrecord_ht_ubicacion_padre", "anyof", ubicacion]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({ name: "internalid", label: "Internal ID" }),
+                        ]
+                });
+                let searchResultCount = objSearch.runPaged().count;
+                if (searchResultCount > 0) {
+                    objSearch.run().each(result => {
+                        ubicacion = result.getValue({ name: "internalid", label: "Internal ID" });
+                        return true;
+                    });
+                }
+            }
+
             let binSearch = search.create({
                 type: _constant.Transaction.BIN,
                 filters: [
-                    ["location", "anyof", location],
+                    ["location", "anyof", ubicacion],
                     "AND",
                     ["custrecord_deposito_para_custodia", "is", "T"]
                 ],
@@ -435,14 +459,16 @@ define([
 
         const createInventoryAdjustmentIngreso = (scriptParameters, objParams = 0, tipoFlujo = 0) => {
             log.debug('scriptParameters', scriptParameters);
-            let binNumber, account, unitCost, flujo, item;
+            let binNumber, account, unitCost, flujo, item, location;
             if (tipoFlujo == 0) {
                 binNumber = getBinNumberAlquiler(scriptParameters.location);
                 account = EXPENSE_ACCOUNT;
                 unitCost = 0
                 item = scriptParameters.item;
                 flujo = 'custbody_ht_ai_paraalquiler';
+                location = scriptParameters.location;
             }
+
             if (tipoFlujo == 1) {
                 // binNumber = getBinNumberComercial(scriptParameters.location);
                 binNumber = objParams.binNumber;
@@ -450,14 +476,39 @@ define([
                 unitCost = parseFloat(objParams.costo);
                 item = scriptParameters.item;
                 flujo = 'custbody_ht_ai_porconvenio';
+                location = scriptParameters.location;
             }
 
             if (tipoFlujo == 2) {
+                let ubicacion = 0;
                 binNumber = scriptParameters.deposito;
                 account = 1255;
                 unitCost = 0;
-                item = scriptParameters.dispositivo;
+                //item = scriptParameters.item; 42857
+                item = 42857;
                 flujo = 'custbody_ht_ai_custodia';
+
+                let objSearch = search.create({
+                    type: "location",
+                    filters:
+                        [
+                            ["custrecord_ht_ub_ubicacioncustodia", "is", "T"],
+                            "AND",
+                            ["custrecord_ht_ubicacion_padre", "anyof", scriptParameters.location]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({ name: "internalid", label: "Internal ID" }),
+                        ]
+                });
+                let searchResultCount = objSearch.runPaged().count;
+                if (searchResultCount > 0) {
+                    objSearch.run().each(result => {
+                        ubicacion = result.getValue({ name: "internalid", label: "Internal ID" });
+                        return true;
+                    });
+                    location = ubicacion;
+                }
             }
 
             if (tipoFlujo == 3) {
@@ -466,26 +517,25 @@ define([
                 unitCost = 0;
                 item = scriptParameters.dispositivo;
                 flujo = 'custbody_ai_por_garantia';
+                location = scriptParameters.location;
             }
 
             let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
 
             newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
             newAdjust.setValue({ fieldId: 'account', value: account });
-            newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
+            newAdjust.setValue({ fieldId: 'adjlocation', value: location });
             newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.recipientId });
             newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
             newAdjust.setValue({ fieldId: flujo, value: scriptParameters.boleano });
 
             newAdjust.selectNewLine({ sublistId: 'inventory' });
-
             newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: item });
-            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: scriptParameters.location });
+            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: location });
             newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: 1 });
             newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'unitcost', value: unitCost });
 
             let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
-
             newDetail.selectNewLine({ sublistId: 'inventoryassignment' });
             newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'receiptinventorynumber', value: scriptParameters.comercial });
             newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: binNumber });
@@ -838,12 +888,39 @@ define([
             objRecord.setValue({ fieldId: 'name', value: objParams.comercial });
             objRecord.setValue({ fieldId: 'custrecord_ht_ct_cliente', value: objParams.recipientId });
             objRecord.setValue({ fieldId: 'custrecord_ht_ct_nombredispositivo', value: objParams.dispositivo });
+            //objRecord.setValue({ fieldId: 'custrecord_ht_ct_nombredispositivo', value: objParams.item });
             objRecord.setValue({ fieldId: 'custrecord_ht_ct_ubicacion', value: objParams.location });
             objRecord.setValue({ fieldId: 'custrecord_ht_ct_deposito', value: objParams.deposito });
             objRecord.setValue({ fieldId: 'custrecord_ht_ct_estado', value: _constant.Status.DESINSTALADO });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_venta', value: objParams.item });
+            objRecord.setValue({ fieldId: 'custrecord_ht_ct_venta', value: 42857 });
             newCustodia = objRecord.save({ ignoreMandatoryFields: false });
             return newCustodia;
+        }
+
+        const updateRegistroCustodia = (objParams) => {
+            let registroCustodia = 0
+            let objSearch = search.create({
+                type: _constant.customRecord.CUSTODIA,
+                filters: [["name", "haskeywords", objParams.comercial]],
+                columns: [search.createColumn({ name: "internalid", label: "Internal ID" })]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            if (searchResultCount > 0) {
+                objSearch.run().each(result => {
+                    registroCustodia = result.getValue({ name: "internalid", label: "Internal ID" });
+                    return true;
+                });
+                record.submitFields({
+                    type: _constant.customRecord.CUSTODIA,
+                    id: registroCustodia,
+                    values: {
+                        'custrecord_ht_ct_estado': _constant.Status.INSTALADO,
+                        'custrecord_ht_ct_vehiculo': objParams.bien
+                    },
+                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                });
+            }
+            return registroCustodia;
         }
 
 
@@ -1385,7 +1462,8 @@ define([
             getOrdenTrabajoParaTurno,
             createRegistroCustodia,
             getBinNumberCustodia,
-            getBinNumberRevision
+            getBinNumberRevision,
+            updateRegistroCustodia
         }
 
     });

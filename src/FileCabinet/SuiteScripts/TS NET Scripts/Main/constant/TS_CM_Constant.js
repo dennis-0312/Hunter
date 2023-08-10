@@ -26,7 +26,8 @@ define([], () => {
         ECUADOR_SUBSIDIARY: 2,
         EXPENSE_ACCOUNT: 2676,
         COMPONENTE_DISPOSITIVO_ID: 1,
-        CONVENIO: 14
+        CONVENIO: 14,
+        FLUJO_CUSTODIA: 2
     }
 
     let Search = {}
@@ -78,7 +79,9 @@ define([], () => {
         VALOR_001_INST_DISPOSITIVO: 43,
         VALOR_001_RENOVACION_NORMAL: 16,
         VALOR_001_GENERA_CUSTODIAS: 55,
+        VALOR_002_ENTREGA_CUSTODIAS: 56,
         VALOR_003_REINSTALACION_DE_DISP: 26
+
     }
 
     let customRecord = {

@@ -184,6 +184,7 @@ define([
                         let esAlquiler = 0;
                         let entregaCliente = 0;
                         let entradaCustodia = 0;
+                        let entregaCustodia = 0;
                         let objParams = new Array();
                         let adpDesinstalacion = 0;
                         let esGarantia = 0;
@@ -267,9 +268,12 @@ define([
                                 if (parametrosRespo_2[j][0] == _constant.Parameter.PGR_PRODUCTO_DE_GARANTÍA && parametrosRespo_2[j][1] == _constant.Valor.SI)
                                     esGarantia = parametrosRespo_2[j][1];
 
-                                log.debug('ParamIntro', parametrosRespo_2[j][0])
+                                //log.debug('ParamIntro', parametrosRespo_2[j][0])
                                 if (parametrosRespo_2[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo_2[j][1] == _constant.Valor.VALOR_001_GENERA_CUSTODIAS)
                                     entradaCustodia = _constant.Valor.SI
+
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo_2[j][1] == _constant.Valor.VALOR_002_ENTREGA_CUSTODIAS)
+                                    entregaCustodia = _constant.Valor.SI
                             }
                         }
 
@@ -395,7 +399,7 @@ define([
                         });
 
                         let idItemCobertura = objRecord.getValue('custrecord_ht_ot_item');
-                        log.debug('Prodcuto', idItemCobertura)
+                        //log.debug('Prodcuto', idItemCobertura)
                         let idVentAlq = objRecord.getValue('custrecord_ht_ot_item_vent_alq');
                         if (idVentAlq != '') {
                             idItemCobertura = idVentAlq;
@@ -404,7 +408,7 @@ define([
                         var instalacion_activacion = 17;
                         var instalacion = 15;
                         estadoInts = 1 //Instalado
-                        log.debug('Debug1', returEjerepo + ' - ' + adpDesinstalacion);
+                        //log.debug('Debug1', returEjerepo + ' - ' + adpDesinstalacion);
 
                         if (adpDesinstalacion != _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
                             if (returEjerepo && adpServicio != 0) {
@@ -571,6 +575,11 @@ define([
                                     newFulfill.save({ enableSourcing: false, ignoreMandatoryFields: true });
                                 } catch (error) {
                                     log.error('Error-Fulfill', error);
+                                }
+
+                                if (entregaCustodia == _constant.Valor.SI) {
+                                    let updateRecord = _Controller.updateRegistroCustodia(objParams);
+                                    log.debug('UpdateRegistroCustodia', updateRecord);
                                 }
                             }
                         }
@@ -751,10 +760,10 @@ define([
 
                             if (entradaCustodia == _constant.Valor.SI) {
                                 log.debug('Custodia', 'Es custodia');
-                                const deposito = _Controller.getBinNumberCustodia(objParams.location);
+                                const deposito = _Controller.getBinNumberCustodia(objParams.location, 2);
                                 objParams.deposito = deposito;
                                 objParams.boleano = true;
-                                let updateIns = _Controller.updateInstall(objParams)
+                                let updateIns = _Controller.updateInstall(objParams);
                                 log.debug('updateIns', updateIns);
                                 record.submitFields({
                                     type: 'customrecord_ht_record_mantchaser',
@@ -769,7 +778,6 @@ define([
                                     columns: ['custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_celularsimcard']
                                 });
                                 let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
-                                let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
 
                                 let dispo = search.lookupFields({
                                     type: 'customrecord_ht_record_detallechaserdisp',
@@ -789,12 +797,15 @@ define([
                                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                                 });
 
-                                record.submitFields({
-                                    type: 'customrecord_ht_record_detallechasersim',
-                                    id: idSimCard,
-                                    values: { 'custrecord_ht_ds_estado': INACTIVO },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
+                                try {
+                                    let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
+                                    record.submitFields({
+                                        type: 'customrecord_ht_record_detallechasersim',
+                                        id: idSimCard,
+                                        values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                    });
+                                } catch (error) { }
                             }
                         }
                         break;

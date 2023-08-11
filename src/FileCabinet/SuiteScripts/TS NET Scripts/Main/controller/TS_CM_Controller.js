@@ -429,7 +429,7 @@ define([
         }
 
         const getInstall = (objParameters) => {
-            log.debug('getInstall')
+            // log.debug('getInstall')
             let productId = 0;
             let productInstall = search.create({
                 type: "customrecord_ht_co_cobertura",
@@ -921,6 +921,21 @@ define([
                 });
             }
             return registroCustodia;
+        }
+
+        const verifyExistHistorialAF = (objParameters) => {
+            let historialAF = search.create({
+                type: "customrecord_ht_record_historialsegui",
+                filters:
+                    [
+                        ["custrecord_ht_hs_numeroordenservicio", "anyof", objParameters.salesorder],
+                        "AND",
+                        ["custrecord_ht_hs_vidvehiculo", "startswith", objParameters.bien],
+                    ],
+                columns:
+                    ['internalid']
+            });
+            return historialAF;
         }
 
 
@@ -1463,7 +1478,8 @@ define([
             createRegistroCustodia,
             getBinNumberCustodia,
             getBinNumberRevision,
-            updateRegistroCustodia
+            updateRegistroCustodia,
+            verifyExistHistorialAF
         }
 
     });

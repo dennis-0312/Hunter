@@ -330,6 +330,21 @@ define([
                     if (dispositivoCustodia.length == 0) {
                         response.status = false;
                         response.mensaje = 'Debe Ingresar La Serie del Dispositivo en Custodia.'
+                    } else {
+                        let objSearch = search.create({
+                            type: _constant.customRecord.CUSTODIA,
+                            filters: [
+                                ["name", "haskeywords", dispositivoCustodia],
+                                "AND",
+                                ["custrecord_ht_ct_cliente", "anyof", currentRecord.getValue('entity')]
+                            ],
+                            columns: [search.createColumn({ name: "internalid", label: "Internal ID" })]
+                        });
+                        let searchResultCount = objSearch.runPaged().count;
+                        if (searchResultCount == 0) {
+                            response.status = false;
+                            response.mensaje = 'No existe un registro de custodia para esta serie o no le pertenece a este cliente.'
+                        }
                     }
                 default:
                     log.debug('accionEstadoOT');
@@ -378,28 +393,28 @@ define([
 
         const getBinNumberCustodia = (location, flujo = 0) => {
             let ubicacion = location;
-            if (flujo == 2) {
-                let objSearch = search.create({
-                    type: "location",
-                    filters:
-                        [
-                            ["custrecord_ht_ub_ubicacioncustodia", "is", "T"],
-                            "AND",
-                            ["custrecord_ht_ubicacion_padre", "anyof", ubicacion]
-                        ],
-                    columns:
-                        [
-                            search.createColumn({ name: "internalid", label: "Internal ID" }),
-                        ]
-                });
-                let searchResultCount = objSearch.runPaged().count;
-                if (searchResultCount > 0) {
-                    objSearch.run().each(result => {
-                        ubicacion = result.getValue({ name: "internalid", label: "Internal ID" });
-                        return true;
-                    });
-                }
-            }
+            // if (flujo == _constant.Constants.FLUJO_CUSTODIA) {
+            //     let objSearch = search.create({
+            //         type: "location",
+            //         filters:
+            //             [
+            //                 ["custrecord_ht_ub_ubicacioncustodia", "is", "T"],
+            //                 "AND",
+            //                 ["custrecord_ht_ubicacion_padre", "anyof", ubicacion]
+            //             ],
+            //         columns:
+            //             [
+            //                 search.createColumn({ name: "internalid", label: "Internal ID" }),
+            //             ]
+            //     });
+            //     let searchResultCount = objSearch.runPaged().count;
+            //     if (searchResultCount > 0) {
+            //         objSearch.run().each(result => {
+            //             ubicacion = result.getValue({ name: "internalid", label: "Internal ID" });
+            //             return true;
+            //         });
+            //     }
+            // }
 
             let binSearch = search.create({
                 type: _constant.Transaction.BIN,
@@ -479,36 +494,43 @@ define([
                 location = scriptParameters.location;
             }
 
-            if (tipoFlujo == 2) {
+            if (tipoFlujo == _constant.Constants.FLUJO_CUSTODIA) {
                 let ubicacion = 0;
                 binNumber = scriptParameters.deposito;
                 account = 1255;
                 unitCost = 0;
                 //item = scriptParameters.item; 42857
-                item = 42857;
+                // item = 42857;
+                let dispositivo = search.lookupFields({
+                    type: 'serializedassemblyitem',
+                    id: scriptParameters.item,
+                    columns: ['custitem_ht_it_item_reins_custodia']
+                });
+                item = dispositivo.custitem_ht_it_item_reins_custodia[0].value;
                 flujo = 'custbody_ht_ai_custodia';
 
-                let objSearch = search.create({
-                    type: "location",
-                    filters:
-                        [
-                            ["custrecord_ht_ub_ubicacioncustodia", "is", "T"],
-                            "AND",
-                            ["custrecord_ht_ubicacion_padre", "anyof", scriptParameters.location]
-                        ],
-                    columns:
-                        [
-                            search.createColumn({ name: "internalid", label: "Internal ID" }),
-                        ]
-                });
-                let searchResultCount = objSearch.runPaged().count;
-                if (searchResultCount > 0) {
-                    objSearch.run().each(result => {
-                        ubicacion = result.getValue({ name: "internalid", label: "Internal ID" });
-                        return true;
-                    });
-                    location = ubicacion;
-                }
+                // let objSearch = search.create({
+                //     type: "location",
+                //     filters:
+                //         [
+                //             ["custrecord_ht_ub_ubicacioncustodia", "is", "T"],
+                //             "AND",
+                //             ["custrecord_ht_ubicacion_padre", "anyof", scriptParameters.location]
+                //         ],
+                //     columns:
+                //         [
+                //             search.createColumn({ name: "internalid", label: "Internal ID" }),
+                //         ]
+                // });
+                // let searchResultCount = objSearch.runPaged().count;
+                // if (searchResultCount > 0) {
+                //     objSearch.run().each(result => {
+                //         ubicacion = result.getValue({ name: "internalid", label: "Internal ID" });
+                //         return true;
+                //     });
+                //     location = ubicacion;
+                // }
+                location = scriptParameters.location;
             }
 
             if (tipoFlujo == 3) {
@@ -884,20 +906,33 @@ define([
         }
 
         const createRegistroCustodia = (objParams) => {
-            const objRecord = record.create({ type: _constant.customRecord.CUSTODIA, isDynamic: true });
-            objRecord.setValue({ fieldId: 'name', value: objParams.comercial });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_cliente', value: objParams.recipientId });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_nombredispositivo', value: objParams.dispositivo });
-            //objRecord.setValue({ fieldId: 'custrecord_ht_ct_nombredispositivo', value: objParams.item });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_ubicacion', value: objParams.location });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_deposito', value: objParams.deposito });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_estado', value: _constant.Status.DESINSTALADO });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_venta', value: 42857 });
-            newCustodia = objRecord.save({ ignoreMandatoryFields: false });
+            let newCustodia = 0;
+            let objSearch = search.create({
+                type: _constant.customRecord.CUSTODIA,
+                filters: [
+                    ["name", "haskeywords", objParams.comercial],
+                    "AND",
+                    ["custrecord_ht_ct_cliente", "anyof", objParams.recipientId]
+                ],
+                columns: [search.createColumn({ name: "internalid", label: "Internal ID" })]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            if (searchResultCount == 0) {
+                const objRecord = record.create({ type: _constant.customRecord.CUSTODIA, isDynamic: true });
+                objRecord.setValue({ fieldId: 'name', value: objParams.comercial });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_cliente', value: objParams.recipientId });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_nombredispositivo', value: objParams.dispositivo });
+                //objRecord.setValue({ fieldId: 'custrecord_ht_ct_nombredispositivo', value: objParams.item });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_ubicacion', value: objParams.location });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_deposito', value: objParams.deposito });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_estado', value: _constant.Status.DESINSTALADO });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_venta', value: 42857 });
+                newCustodia = objRecord.save({ ignoreMandatoryFields: false });
+            }
             return newCustodia;
         }
 
-        const updateRegistroCustodia = (objParams) => {
+        const deleteRegistroCustodia = (objParams) => {
             let registroCustodia = 0
             let objSearch = search.create({
                 type: _constant.customRecord.CUSTODIA,
@@ -910,17 +945,28 @@ define([
                     registroCustodia = result.getValue({ name: "internalid", label: "Internal ID" });
                     return true;
                 });
-                record.submitFields({
+
+                // record.submitFields({
+                //     type: _constant.customRecord.CUSTODIA,
+                //     id: registroCustodia,
+                //     values: {
+                //         'custrecord_ht_ct_estado': _constant.Status.INSTALADO,
+                //         'custrecord_ht_ct_vehiculo': objParams.bien
+                //     },
+                //     options: { enableSourcing: false, ignoreMandatoryFields: true }
+                // });
+
+                let deleteRecordPromise = record.delete.promise({
                     type: _constant.customRecord.CUSTODIA,
-                    id: registroCustodia,
-                    values: {
-                        'custrecord_ht_ct_estado': _constant.Status.INSTALADO,
-                        'custrecord_ht_ct_vehiculo': objParams.bien
-                    },
-                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                    id: registroCustodia
+                });
+                deleteRecordPromise.then(() => {
+                    log.debug('Success', 'Custodia Record successfully deleted');
+                }, (error) => {
+                    log.error('Ocurrió un error al elimianr el registro de custodia', error);
                 });
             }
-            return registroCustodia;
+            // return registroCustodia;
         }
 
         const verifyExistHistorialAF = (objParameters) => {
@@ -1478,7 +1524,7 @@ define([
             createRegistroCustodia,
             getBinNumberCustodia,
             getBinNumberRevision,
-            updateRegistroCustodia,
+            deleteRegistroCustodia,
             verifyExistHistorialAF
         }
 

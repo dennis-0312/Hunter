@@ -161,8 +161,6 @@ define([
                         let comercial = objRecord.getText('custrecord_ht_ot_serieproductoasignacion');
                         let simTXT = objRecord.getValue('custrecord_ht_ot_simcard');
                         let flujoReinstalacion = objRecord.getValue('custrecord_flujo_de_reinstalacion');
-                        //log.error("flujoReinstalacion", flujoReinstalacion);
-
                         var cantidad = 0;
                         let returEjerepo = true;
                         let parametrosRespo;
@@ -190,6 +188,7 @@ define([
                         let plataformasPX;
                         let plataformasTele;
                         let adp;
+                        let device;
 
                         let recordTaller = search.lookupFields({
                             type: 'customrecord_ht_tt_tallertablet',
@@ -583,8 +582,7 @@ define([
                                 }
 
                                 if (entregaCustodia == _constant.Valor.SI) {
-                                    let updateRecord = _Controller.updateRegistroCustodia(objParams);
-                                    //log.debug('UpdateRegistroCustodia', updateRecord);
+                                    _Controller.deleteRegistroCustodia(objParams);
                                 }
                             }
                         }
@@ -762,53 +760,94 @@ define([
                             }
 
                             if (entradaCustodia == _constant.Valor.SI) {
-                                log.debug('Custodia', 'Es custodia');
-                                const deposito = _Controller.getBinNumberCustodia(objParams.location, 2);
+                                log.debug('Flujo Custodia', 'Es custodia');
+                                const deposito = _Controller.getBinNumberCustodia(objParams.location, _constant.Constants.FLUJO_CUSTODIA);
                                 objParams.deposito = deposito;
                                 objParams.boleano = true;
                                 let updateIns = _Controller.updateInstall(objParams);
                                 log.debug('updateIns', updateIns);
-                                record.submitFields({
-                                    type: 'customrecord_ht_record_mantchaser',
-                                    id: serieChaser,
-                                    values: { 'custrecord_ht_mc_estado': estadoChaser },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
-
-                                let dispositivo = search.lookupFields({
-                                    type: 'customrecord_ht_record_mantchaser',
-                                    id: serieChaser,
-                                    columns: ['custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_celularsimcard']
-                                });
-                                let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
-
-                                let dispo = search.lookupFields({
-                                    type: 'customrecord_ht_record_detallechaserdisp',
-                                    id: idDispositivo,
-                                    columns: ['custrecord_ht_dd_dispositivo']
-                                });
-                                objParams.dispositivo = dispo.custrecord_ht_dd_dispositivo[0].value;
-                                let returnRegistroCustodia = _Controller.createRegistroCustodia(objParams);
-                                let ajusteInv = _Controller.createInventoryAdjustmentIngreso(objParams, 0, 2);
-                                log.debug('ajusteInv', ajusteInv);
-                                log.debug('returnRegistroCustodia', returnRegistroCustodia);
-
-                                record.submitFields({
-                                    type: 'customrecord_ht_record_detallechaserdisp',
-                                    id: idDispositivo,
-                                    values: { 'custrecord_ht_dd_estado': DISPONIBLE },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
-
-                                try {
-                                    let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
+                                if (tag == _constant.Valor.VALOR_LOJ_LOJACK) {
+                                    //LOJACK
+                                    log.debug('TAG', 'LOJACK: ' + tag)
                                     record.submitFields({
-                                        type: 'customrecord_ht_record_detallechasersim',
-                                        id: idSimCard,
-                                        values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                        type: _constant.customRecord.CHASER,
+                                        id: serieProducto,
+                                        values: {
+                                            'custrecord_ht_mc_ubicacion': ubicacion,
+                                            'custrecord_ht_mc_estadolojack': estadoChaser
+                                        },
                                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                                     });
+
+                                    let dispositivo = search.lookupFields({
+                                        type: _constant.customRecord.CHASER,
+                                        id: serieProducto,
+                                        columns: ['custrecord_ht_mc_seriedispositivolojack']
+                                    });
+                                    let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivolojack[0].value;
+
+                                    record.submitFields({
+                                        type: 'customrecord_ht_record_detallechaslojack',
+                                        id: idDispositivo,
+                                        values: { 'custrecord_ht_cl_estado': estadoChaser },
+                                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                    });
+
+                                    let dispo = search.lookupFields({
+                                        type: 'customrecord_ht_record_detallechaslojack',
+                                        id: idDispositivo,
+                                        columns: ['custrecord_ht_cl_lojack']
+                                    });
+                                    device = dispo.custrecord_ht_cl_lojack[0].value;
+                                } else {
+                                    record.submitFields({
+                                        type: _constant.customRecord.CHASER,
+                                        id: serieChaser,
+                                        values: {
+                                            'custrecord_ht_mc_estado': estadoChaser,
+                                            'custrecord_ht_mc_estadolodispositivo': estadoChaser,
+                                        },
+                                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                    });
+
+                                    let dispositivo = search.lookupFields({
+                                        type: _constant.customRecord.CHASER,
+                                        id: serieChaser,
+                                        columns: ['custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_celularsimcard']
+                                    });
+                                    let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+                                    record.submitFields({
+                                        type: 'customrecord_ht_record_detallechaserdisp',
+                                        id: idDispositivo,
+                                        values: { 'custrecord_ht_dd_estado': DISPONIBLE },
+                                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                    });
+
+                                    try {
+                                        let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
+                                        record.submitFields({
+                                            type: 'customrecord_ht_record_detallechasersim',
+                                            id: idSimCard,
+                                            values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                            options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                        });
+                                    } catch (error) {
+                                        log.error('CHASER', 'No Tiene Sim Card');
+                                    }
+                                    let dispo = search.lookupFields({
+                                        type: 'customrecord_ht_record_detallechaserdisp',
+                                        id: idDispositivo,
+                                        columns: ['custrecord_ht_dd_dispositivo']
+                                    });
+                                    device = dispo.custrecord_ht_dd_dispositivo[0].value;
+                                }
+                                objParams.dispositivo = device
+                                let returnRegistroCustodia = _Controller.createRegistroCustodia(objParams);
+                                try {
+                                    let ajusteInv = _Controller.createInventoryAdjustmentIngreso(objParams, 0, _constant.Constants.FLUJO_CUSTODIA);
+                                    log.debug('ajusteInv', ajusteInv);
                                 } catch (error) { }
+                                log.debug('returnRegistroCustodia', returnRegistroCustodia);
                             }
                         }
 

@@ -274,6 +274,14 @@ define(['N/search',
                             return false
                         }
                     }
+
+                    if (parametrosRespo[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo[j][1] == _constant.Valor.VALOR_002_ENTREGA_CUSTODIAS) {
+                        let response = _controllerParm.parametros(CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS, context.currentRecord)
+                        if (response.status == false){
+                            dialog.alert({ title: 'Alerta', message: response.mensaje });
+                        }
+                        return response.status;
+                    }
                 }
                 // console.log('FLAG 3', flag3);
                 // console.log('FLAG 4', flag4);
@@ -287,16 +295,9 @@ define(['N/search',
                     return false
                 }
 
-                // if (accion_producto_2 == CAMBIO_PROPIETARIO) {
-                //     //console.log('IDDDDDDDDDDDDD', accion_producto_2 + ' - ' + currentRecord);
-                //     let response = _controllerParm.parametros(CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS, context.currentRecord)
-                //     dialog.alert({ title: 'Alerta', message: response.mensaje });
-                //     return response.status;
-                // }
+
             }
         }
-
-
 
         if (parametro == CAMBIO_PROPIETARIO && numLines != 1) {
             dialog.alert({ title: 'Alerta', message: 'No se puede tener un Artículo tipo Cambio de Propietario junto a otro Artículo' });

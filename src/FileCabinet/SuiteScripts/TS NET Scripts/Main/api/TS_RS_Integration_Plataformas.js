@@ -111,6 +111,7 @@ define([
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_familia_prod', value: scriptContext.ttr });
                     response = objRecord.save();
                     log.debug('responseNuevoRegistro', response);
                 } else {
@@ -125,6 +126,7 @@ define([
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_familia_prod', value: scriptContext.ttr });
                     response = objRecord.save();
                     log.debug('responseExisteRegistro', response);
                 }
@@ -164,6 +166,7 @@ define([
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_familia_prod', value: scriptContext.ttr });
                 let response = objRecord.save();
                 log.debug('response', response);
 

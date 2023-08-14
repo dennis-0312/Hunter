@@ -61,8 +61,6 @@ define([
         const ADP_ACCION_DEL_PRODUCTO = 2
         const VALOR_010_CAMBIO_PROPIETARIO = 10;
         const PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5
-        const TTR_TIPO_TRANSACCION = 8;
-        const CAMB_MOV_CUSTODIA = 131;
         const VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO = 44;
         const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
         const TCH_TIPO_CHEQUEO_OT = 6;
@@ -86,13 +84,23 @@ define([
             if (type_event == context.UserEventType.VIEW) {
                 let idOrdenTrabajo = objRecord.getValue('custrecord_ht_ot_ordenfabricacion');
                 let estado = objRecord.getValue('custrecord_ht_ot_estado');
-                let ordenFabricacion = objRecord.getValue('custrecord_ht_ot_ordenfabricacion');
-                if (estado == _constant.Status.PROCESANDO && ordenFabricacion.length > 0) {
-                    form.addButton({
-                        id: 'custpage_ts_fabricarproducto',
-                        label: 'Ensamble de Dispositivo',
-                        functionName: 'ensambleDispositivo(' + idOrdenTrabajo + ')'
-                    });
+                let serieDispositivo = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
+                if (estado == _constant.Status.PROCESANDO) {
+                    if (serieDispositivo.length > 0) {
+                        form.addButton({
+                            id: 'custpage_ts_chequeo',
+                            label: 'Chequear Orden',
+                            functionName: 'chequearOrden(' + id + ')'
+                        });
+                    }
+
+                    if (idOrdenTrabajo.length > 0) {
+                        form.addButton({
+                            id: 'custpage_ts_fabricarproducto',
+                            label: 'Ensamble de Dispositivo',
+                            functionName: 'ensambleDispositivo(' + idOrdenTrabajo + ')'
+                        });
+                    }
                 }
                 form.getField('custrecord_ht_ot_termometro').updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
                 createEnsambleAlquilerButton(form, objRecord);
@@ -124,11 +132,11 @@ define([
 
                 let ingresaFlujoConvenio;
                 const SI = 9;
-                var serieProductoChaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
+                let serieProductoChaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                 //log.debug('serieProductoChaser', serieProductoChaser);
 
                 if (estaChequeada > 0) {
-                    accionEstadoOT = estaChequeada;//TODO: Revisar esta sessicón porque puede impactar la instalación sin activicación de servicio.
+                    accionEstadoOT = estaChequeada;//TODO: Revisar esta sección porque puede impactar la instalación sin activicación de servicio.
                     //accionEstadoOT = ESTADO_CHEQUEADA
                 }
 
@@ -161,34 +169,39 @@ define([
                         let comercial = objRecord.getText('custrecord_ht_ot_serieproductoasignacion');
                         let simTXT = objRecord.getValue('custrecord_ht_ot_simcard');
                         let flujoReinstalacion = objRecord.getValue('custrecord_flujo_de_reinstalacion');
-                        var cantidad = 0;
-                        let returEjerepo = true;
-                        let parametrosRespo;
-                        var parametro_salesorder = 0;
-                        var arrayItemOT = [];
-                        var arrayID = [];
-                        var arrayTA = [];
-                        let TTR_name = '';
-                        let tag = 0;
-                        var idOS;
-                        var envioPX = 0;
-                        var envioTele = 0;
-                        var idItem;
+                        let cantidad = 0, parametro_salesorder = 0, tag = 0, idOS = 0, envioPX = 0, envioTele = 0, idItem = 0, monitoreo = 0, precio = 0, esAlquiler = 0, entregaCliente = 0,
+                            entradaCustodia = 0, entregaCustodia = 0, adpDesinstalacion = 0, esGarantia = 0, plataformasPX = 0, plataformasTele = 0, adp, device, parametrosRespo = 0, ttrid = 0,
+                            TTR_name = '', idCoberturaItem = '', returEjerepo = true, arrayItemOT = new Array(), arrayID = new Array(), arrayTA = new Array(), objParams = new Array();
                         let parametrosRespo_2 = _Controller.parametrizacion(idItemOT);
-                        let monitoreo;
-                        let idCoberturaItem = '';
-                        let precio = 0;
-                        let esAlquiler = 0;
-                        let entregaCliente = 0;
-                        let entradaCustodia = 0;
-                        let entregaCustodia = 0;
-                        let objParams = new Array();
-                        let adpDesinstalacion = 0;
-                        let esGarantia = 0;
-                        let plataformasPX;
-                        let plataformasTele;
-                        let adp;
-                        let device;
+
+                        // let arrayItemOT, arrayID, arrayTA, objParams = new Array();
+                        // let cantidad = 0;
+                        // let parametrosRespo = 0;
+                        // let parametro_salesorder = 0;
+                        // let arrayItemOT = new Array();
+                        // let arrayID = new Array()
+                        // let arrayTA = new Array();
+                        // let TTR_name = '';
+                        // let tag = 0;
+                        // let idOS;
+                        // let envioPX = 0;
+                        // let envioTele = 0;
+                        // let idItem = 0;
+                        // let monitoreo = 0
+                        // let idCoberturaItem = '';
+                        // let precio = 0;
+                        // let esAlquiler = 0;
+                        // let entregaCliente = 0;
+                        // let entradaCustodia = 0;
+                        // let entregaCustodia = 0;
+                        // let objParams = new Array();
+                        // let adpDesinstalacion = 0;
+                        // let esGarantia = 0;
+                        // let plataformasPX;
+                        // let plataformasTele;
+                        // let adp = 0;
+                        // let device = 0;
+
 
                         let recordTaller = search.lookupFields({
                             type: 'customrecord_ht_tt_tallertablet',
@@ -228,9 +241,10 @@ define([
                                 if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO)
                                     adp = parametrosRespo_2[j][1];
 
-                                if (parametrosRespo_2[j][0] == TTR_TIPO_TRANSACCION) { // TTR tipo de transaccion
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION) { // TTR tipo de transaccion
                                     let parametro = record.load({ type: 'customrecord_ht_cr_pp_valores', id: parametrosRespo_2[j][1], isDynamic: true });
                                     TTR_name = parametro.getValue('custrecord_ht_pp_descripcion');
+                                    ttrid = parametrosRespo_2[j][1]
                                 }
                                 if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASPX)
                                     envioPX = parametrosRespo_2[j][1];
@@ -238,7 +252,7 @@ define([
                                 if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASTELEC)
                                     envioTele = parametrosRespo_2[j][1];
 
-                                if (parametrosRespo_2[j][0] == COS_CIERRE_DE_ORDEN_DE_SERVICIO && parametrosRespo_2[j][1] == SI) { //cos cerrar orden de servicio
+                                if (parametrosRespo_2[j][0] == COS_CIERRE_DE_ORDEN_DE_SERVICIO && parametrosRespo_2[j][1] == _constant.Valor.SI) { //cos cerrar orden de servicio
                                     try {
                                         if (precio == 0)
                                             transaction.void({ type: 'salesorder', id: idSalesorder });
@@ -324,9 +338,9 @@ define([
                                             valor_tipo_agrupacion = parametrosRespo[j][1];
                                         }
 
-                                        if (accion_producto == INST_DISPOSITIVO && valor_tipo_agrupacion == tag) {
+                                        if ((accion_producto == _constant.Valor.VALOR_001_INST_DISPOSITIVO || accion_producto == _constant.Valor.VALOR_003_REINSTALACION_DE_DISP) && valor_tipo_agrupacion == tag) {
                                             idCoberturaItem = busqueda_cobertura[i][1];
-                                            estadoInts = ESTADO_001_INSTALADO
+                                            estadoInts = _constant.Status.INSTALADO
                                         }
                                     }
                                 }
@@ -335,7 +349,7 @@ define([
 
                         // log.debug('idOS', idOS)
                         if (idOS) {
-                            // log.debug('idOSIntro', idOS)
+                            log.debug('idOSIntro', idOS)
                             let serviceOS = record.load({ type: 'salesorder', id: idOS });
                             let numLines_2 = serviceOS.getLineCount({ sublistId: 'item' });
                             for (let j = 0; j < numLines_2; j++) {
@@ -417,6 +431,7 @@ define([
                                         ordentrabajo: objRecord.id,
                                         monitoreo: monitoreo,
                                         cobertura: idCoberturaItem,
+                                        ttr: ttrid
                                     }
                                     createCoberturaWS(json);
                                     if (chaser.length > 0) {
@@ -441,6 +456,7 @@ define([
                                         ordentrabajo: objRecord.id,
                                         monitoreo: monitoreo,
                                         cobertura: idCoberturaItem,
+                                        ttr: ttrid
                                     }
                                     if (ingresaFlujoConvenio == true) {
                                         json.concepto = instalacion;
@@ -466,7 +482,8 @@ define([
                                         salesorder: idSalesorder,
                                         ordentrabajo: objRecord.id,
                                         cobertura: idCoberturaItem,
-                                        estado: estadoInts
+                                        estado: estadoInts,
+                                        ttr: ttrid
                                     }
                                     createCoberturaWS(json);
                                     if (chaser.length > 0) {
@@ -490,7 +507,7 @@ define([
                             log.debug('AjusteInventarioPorConvenio', ajusteInv);
                         }
 
-                        if (adp == VALOR_001_INST_DISPOSITIVO || adp == _constant.Valor.VALOR_003_REINSTALACION_DE_DISP) {
+                        if (adp == _constant.Valor.VALOR_001_INST_DISPOSITIVO || adp == _constant.Valor.VALOR_003_REINSTALACION_DE_DISP) {
                             let estado = objRecord.getValue('custrecord_ht_ot_estado');
                             let idSalesOrder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
                             let dispositivo = objRecord.getValue('custrecord_ht_ot_dispositivo');
@@ -515,7 +532,7 @@ define([
                                             type: _constant.customRecord.CHASER,
                                             id: serieProducto,
                                             values: {
-                                                'custrecord_ht_mc_ubicacion': ubicacion,
+                                                'custrecord_ht_mc_estado': estadoChaser,
                                                 'custrecord_ht_mc_estadolojack': estadoChaser
                                             },
                                             options: { enableSourcing: false, ignoreMandatoryFields: true }
@@ -526,11 +543,11 @@ define([
                                             id: serieProducto,
                                             columns: ['custrecord_ht_mc_seriedispositivolojack']
                                         });
-                                        let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivolojack[0].value;
-
+                                        let dispositivoid = dispositivo.custrecord_ht_mc_seriedispositivolojack[0].value;
+                                        //log.debug('dispositivoid', dispositivoid);
                                         record.submitFields({
                                             type: 'customrecord_ht_record_detallechaslojack',
-                                            id: idDispositivo,
+                                            id: dispositivoid,
                                             values: { 'custrecord_ht_cl_estado': estadoChaser },
                                             options: { enableSourcing: false, ignoreMandatoryFields: true }
                                         });
@@ -1336,9 +1353,7 @@ define([
                     coberturaInicial: date,
                     coberturaFinal: date_final
                 };
-            } catch (e) {
-
-            }
+            } catch (e) { }
         }
 
         const createEnsambleCustodiaButton = (form, objRecord) => {
@@ -1407,6 +1422,10 @@ Date: 23/03/2023
 Author: Jeferson Mejia
 Description: Se juntaron los scritps de Orden de Trabajo
 ==============================================================================================================================================*/
+
+
+
+
 
 
 

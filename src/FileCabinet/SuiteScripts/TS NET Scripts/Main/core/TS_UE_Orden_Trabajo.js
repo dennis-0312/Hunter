@@ -61,6 +61,7 @@ define([
         const ADP_ACCION_DEL_PRODUCTO = 2
         const VALOR_010_CAMBIO_PROPIETARIO = 10;
         const PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5
+        const CAMB_MOV_CUSTODIA = 131;
         const VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO = 44;
         const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
         const TCH_TIPO_CHEQUEO_OT = 6;
@@ -105,10 +106,12 @@ define([
                 form.getField('custrecord_ht_ot_termometro').updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
                 createEnsambleAlquilerButton(form, objRecord);
                 createEnsambleCustodiaButton(form, objRecord);
+                createEnsambleGarantiaButton(form, objRecord);
                 form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
             } else if (type_event == context.UserEventType.EDIT) {
                 createEnsambleAlquilerButton(form, objRecord);
                 createEnsambleCustodiaButton(form, objRecord);
+                createEnsambleGarantiaButton(form, objRecord);
                 form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
             }
         }
@@ -238,8 +241,12 @@ define([
 
                         if (parametrosRespo_2.length != 0) {
                             for (let j = 0; j < parametrosRespo_2.length; j++) {
-                                if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO)
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO) {
                                     adp = parametrosRespo_2[j][1];
+                                    adpServicio = parametrosRespo_2[j][1];
+                                    adpDesinstalacion = adpServicio
+                                }
+
 
                                 if (parametrosRespo_2[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION) { // TTR tipo de transaccion
                                     let parametro = record.load({ type: 'customrecord_ht_cr_pp_valores', id: parametrosRespo_2[j][1], isDynamic: true });
@@ -260,28 +267,20 @@ define([
                                         log.error('Error', error + ', ya está cerrada la Orden de Servicio');
                                     }
                                 }
-                                if (parametrosRespo_2[j][0] == TIPO_AGRUPACION_PRODUCTO)
+
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO)
                                     tag = parametrosRespo_2[j][1];
 
-                                if (parametrosRespo_2[j][0] == ADP_ACCION_DEL_PRODUCTO) {
-                                    adpServicio = parametrosRespo_2[j][1];
-                                    adpDesinstalacion = adpServicio
-                                }
-
-                                if (parametrosRespo_2[j][0] == ALQUILER_PARAM)
-                                    esAlquiler = parametrosRespo_2[j][1];
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER)
+                                    esAlquiler = _constant.Valor.SI;
 
 
-                                if (parametrosRespo_2[j][0] == _constant.Parameter.EDC_ENTREGA_DIRECTA_A_CLIENTE) {
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.EDC_ENTREGA_DIRECTA_A_CLIENTE)
                                     entregaCliente = parametrosRespo_2[j][1];
-                                    //log.debug('ParamIntro', parametrosRespo_2[j][0])
-                                    //log.debug('ValIntro', entregaCliente)
-                                }
 
                                 if (parametrosRespo_2[j][0] == _constant.Parameter.PGR_PRODUCTO_DE_GARANTÍA && parametrosRespo_2[j][1] == _constant.Valor.SI)
                                     esGarantia = parametrosRespo_2[j][1];
 
-                                //log.debug('ParamIntro', parametrosRespo_2[j][0])
                                 if (parametrosRespo_2[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo_2[j][1] == _constant.Valor.VALOR_001_GENERA_CUSTODIAS)
                                     entradaCustodia = _constant.Valor.SI
 
@@ -400,7 +399,6 @@ define([
                         });
 
                         let idItemCobertura = objRecord.getValue('custrecord_ht_ot_item');
-                        //log.debug('Prodcuto', idItemCobertura)
                         let idVentAlq = objRecord.getValue('custrecord_ht_ot_item_vent_alq');
                         if (idVentAlq != '') {
                             idItemCobertura = idVentAlq;
@@ -871,43 +869,29 @@ define([
                         if (estaChequeada == CHEQUEADO && ingresaFlujoAlquiler == true) {
                             //OBTENCION DE VARIABLES
                             let numSerieId = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
-                            //log.debug('numSerieId', numSerieId);
                             let numSerieText = objRecord.getText('custrecord_ht_ot_serieproductoasignacion');
-                            //log.debug('numSerieText', numSerieText);
                             let isCheck = context.newRecord.getValue('custrecord_flujo_de_alquiler');
-                            //log.debug('is checked?', isCheck);
                             let idItemRelacionado = objRecord.getValue('custrecord_ht_ot_item');
-                            //log.debug('idItemRelacionado', idItemRelacionado);
                             let textItemRelacionado = objRecord.getText('custrecord_ht_ot_item');
-                            //log.debug('textItemRelacionado', textItemRelacionado);
                             let busquedaTipoActivo = search.lookupFields({ type: search.Type.ITEM, id: idItemRelacionado, columns: ['custitem_ht_ar_tipoactivo'] });
-                            //log.debug('busquedaTipoActivo', busquedaTipoActivo);
                             let item_tipo_activoId = (busquedaTipoActivo.custitem_ht_ar_tipoactivo)[0].value;
-                            //log.debug('item_tipo_activoId', item_tipo_activoId);
                             let item_tipo_activoText = (busquedaTipoActivo.custitem_ht_ar_tipoactivo)[0].text;
-                            //log.debug('item_tipo_activoText', item_tipo_activoText);
                             let historial_orden_de_servicio_id = objRecord.getValue('custrecord_ht_ot_orden_servicio');
-                            //log.debug('historial_orden_de_servicio_id', historial_orden_de_servicio_id);
                             let historial_id_cliente = objRecord.getValue('custrecord_ht_ot_cliente_id');
                             // var historial_descripcion = objRecord.getValue('custrecord_ht_hs_descripcion');
                             // var historial_fecha_trabajo = objRecord.getValue('custrecord_ht_ot_fechatrabajoasignacion');
-                            //log.debug('historial_estado_ot', historial_estado_ot);
                             let historial_vid_auto = objRecord.getValue('custrecord_ht_ot_vehiculo');
-                            //log.debug('historial_vid_auto', historial_vid_auto);
                             let historial_placa = objRecord.getValue('custrecord_ht_ot_placa');
-                            //log.debug('historial_placa', historial_placa);
                             let historial_marca = objRecord.getValue('custrecord_ht_ot_marca');
-                            //log.debug('historial_marca', historial_marca);
                             let historial_tipo = objRecord.getValue('custrecord_ht_ot_tipo');
-                            //log.debug('historial_tipo', historial_tipo);
                             let historial_motor = objRecord.getValue('custrecord_ht_ot_motor');
-                            //log.debug('historial_motor', historial_motor);
-                            let busqueda_sales_order = search.lookupFields({ type: search.Type.SALES_ORDER, id: historial_orden_de_servicio_id, columns: ['custbody_ht_os_tipoordenservicio', 'trandate'] });
-                            //log.debug('busqueda_sales_order', busqueda_sales_order);
+                            let busqueda_sales_order = search.lookupFields({
+                                type: search.Type.SALES_ORDER,
+                                id: historial_orden_de_servicio_id,
+                                columns: ['custbody_ht_os_tipoordenservicio', 'trandate']
+                            });
                             // var typeSalesOrder = (busqueda_sales_order.custbody_ht_os_tipoordenservicio)[0].text;
-                            // log.debug('typeSalesOrder', typeSalesOrder);
                             let dateSalesOrder = busqueda_sales_order.trandate;
-                            //log.debug('dateSalesOrder', dateSalesOrder);
 
                             let customrecord_asset_search = search.create({
                                 type: "customrecord_ncfar_asset",
@@ -1008,24 +992,11 @@ define([
                                         let lineCountSublist = recordRevision.getLineCount({ sublistId: 'component' })
                                         let itemDispositivoId;
                                         for (let j = 0; j < lineCountSublist; j++) {
-                                            let currentItemSub = recordRevision.getSublistText({
-                                                sublistId: 'component',
-                                                fieldId: 'item',
-                                                line: j
-                                            }).toLowerCase();
-
-                                            let currentQuantiSub = recordRevision.getSublistValue({
-                                                sublistId: 'component',
-                                                fieldId: 'quantity',
-                                                line: j
-                                            });
+                                            let currentItemSub = recordRevision.getSublistText({ sublistId: 'component', fieldId: 'item', line: j }).toLowerCase();
+                                            let currentQuantiSub = recordRevision.getSublistValue({ sublistId: 'component', fieldId: 'quantity', line: j });
 
                                             if (currentItemSub.indexOf('dispositivo') && currentQuantiSub == 1) {
-                                                itemDispositivoId = recordRevision.getSublistValue({
-                                                    sublistId: 'component',
-                                                    fieldId: 'item',
-                                                    line: j
-                                                });
+                                                itemDispositivoId = recordRevision.getSublistValue({ sublistId: 'component', fieldId: 'item', line: j });
                                                 break;
                                             }
                                         }
@@ -1036,7 +1007,6 @@ define([
                                             id: itemDispositivoId,
                                             columns: ['displayname']
                                         });
-                                        //log.debug('itemDispositivoName', itemDispositivoName.displayname);
 
                                         //BUSQUEDA PARA CONSEGUIR ID DE AJUSTE DE INVENTARIO
                                         let inventoryadjustmentSearchObj = search.create({
@@ -1068,40 +1038,44 @@ define([
                                                 jsonTemp.adjCreditAmount = resultsInvAdj[index].getValue({ name: 'creditamount' });
                                                 arrResult.push(jsonTemp);
                                             }
-
-                                            let currentInvAdjId;
-                                            for (let i = 0; i < arrResult.length; i++) {
-                                                if (arrResult[i].adjIdItem == itemDispositivoId) {
-                                                    currentInvAdjId = arrResult[i].adjInvId;
-                                                    break;
-                                                }
-                                            }
+                                            log.debug('Montossssss', arrResult)
+                                            // let currentInvAdjId;
+                                            // for (let i = 0; i < arrResult.length; i++) {
+                                            //     log.debug('Loop1', arrResult[i].adjIdItem + ' == ' +  itemDispositivoId)
+                                            //     if (arrResult[i].adjIdItem == itemDispositivoId) {
+                                            //         log.debug('Loop2', arrResult[i].adjIdItem + ' == ' +  itemDispositivoId)
+                                            //         currentInvAdjId = arrResult[i].adjInvId;
+                                            //         break;
+                                            //     }
+                                            // }
 
                                             //MONTO CREDITO TOTAL
                                             let creditoTotal = 0;
                                             for (let i = 0; i < arrResult.length; i++) {
-                                                if (arrResult[i].adjInvId == currentInvAdjId) {
+                                                // if (arrResult[i].adjInvId == currentInvAdjId) {
                                                     creditoTotal += Number(arrResult[i].adjCreditAmount);
-                                                }
+                                                // 
                                             }
                                             log.debug('creditoTotal', creditoTotal);
                                             // results[index].getValue({ name: 'debitfxamount' });
                                             // let asset_debit_amount = results[0].getValue({ name: 'debitfxamount' });
-                                            // log.debug('nameDispositivo', nameDispositivo);
 
 
                                             //Valores de Nuevo Asset
-                                            let datosTipoActivo = search.lookupFields({ type: 'customrecord_ncfar_assettype', id: item_tipo_activoId, columns: ['custrecord_assettypeaccmethod', 'custrecord_assettyperesidperc', 'custrecord_assettypelifetime', 'custrecord_assettypedescription'] });
-                                            // log.debug('datosTipoActivo', datosTipoActivo);
+                                            let datosTipoActivo = search.lookupFields({
+                                                type: 'customrecord_ncfar_assettype',
+                                                id: item_tipo_activoId,
+                                                columns: [
+                                                    'custrecord_assettypeaccmethod',
+                                                    'custrecord_assettyperesidperc',
+                                                    'custrecord_assettypelifetime',
+                                                    'custrecord_assettypedescription'
+                                                ]
+                                            });
 
                                             let asset_tipo_activo = (datosTipoActivo.custrecord_assettypeaccmethod)[0].value;
-                                            // log.debug('asset_tipo_activo', asset_tipo_activo);
                                             let asset_porcentaje_residual = datosTipoActivo.custrecord_assettyperesidperc.replace('%', '');
-                                            // log.debug('asset_porcentaje_residual', asset_porcentaje_residual);
                                             let asset_tiempo_de_vida = datosTipoActivo.custrecord_assettypelifetime;
-                                            // log.debug('asset_tiempo_de_vida', asset_tiempo_de_vida);
-                                            // let asset_name = datosTipoActivo.custrecord_assettypedescription;
-                                            // log.debug('asset_name', asset_name);
 
                                             let fixedAsset = record.create({ type: 'customrecord_ncfar_asset', isDynamic: true });
                                             fixedAsset.setValue('customform', 145);
@@ -1356,6 +1330,26 @@ define([
             } catch (e) { }
         }
 
+        const createEnsambleGarantiaButton = (form, objRecord) => {
+            let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
+            itemName = itemName.toLowerCase()
+            let itemVenta = objRecord.getValue('custrecord_ts_item_venta_garantia') || "";
+            if (!(itemName.includes('gara') && itemVenta)) return;
+            let salesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
+            let workorder = objRecord.id;
+            let customer = objRecord.getValue('custrecord_ht_ot_cliente_id');
+            let item = objRecord.getValue('custrecord_ht_ot_item');
+            let location = "";
+            if (salesorder) {
+                locationSearch = search.lookupFields({
+                    type: 'salesorder', id: salesorder, columns: ['location']
+                });
+                location = locationSearch.location[0].value;
+            }
+            const ensambleGarantia = `ensambleGarantia('${itemVenta}', '${location}', '${workorder}', '${salesorder}', '${customer}')`;
+            form.addButton({ id: 'custpage_btngarantia', label: 'Ensamble Garantía', functionName: ensambleGarantia });
+        }
+
         const createEnsambleCustodiaButton = (form, objRecord) => {
             let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
             itemName = itemName.toLowerCase();
@@ -1422,7 +1416,6 @@ Date: 23/03/2023
 Author: Jeferson Mejia
 Description: Se juntaron los scritps de Orden de Trabajo
 ==============================================================================================================================================*/
-
 
 
 

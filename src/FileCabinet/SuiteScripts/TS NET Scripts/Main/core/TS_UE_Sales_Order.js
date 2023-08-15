@@ -336,7 +336,7 @@ define([
                     if (busqueda_cobertura.length != 0) {
                         for (let i = 0; i < busqueda_cobertura.length; i++) {
                             let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
-                            //log.debug('busqueda_cobertura', JSON.stringify(busqueda_cobertura));
+                            log.debug('busqueda_cobertura', JSON.stringify(busqueda_cobertura));
                             if (parametrosRespo != 0) {
                                 for (let j = 0; j < parametrosRespo.length; j++) {
                                     if (parametrosRespo[j][0] == _constant.Parameter.TCH_TIPO_CHEQUEO_OT && parametrosRespo[j][1] == paramChequeo) {
@@ -348,14 +348,19 @@ define([
                                                 options: { enableSourcing: false, ignoreMandatoryFields: true }
                                             });
                                         }
-
-                                        if (esUpgrade == _constant.Valor.SI) {
-                                            record.submitFields({
-                                                type: 'customrecord_ht_co_cobertura',
-                                                id: busqueda_cobertura[i][1],
-                                                values: { 'custrecord_ht_co_familia_prod': ttr },
-                                                options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                            });
+                                        if (aprobacionventa == _constant.Status.APROBADO && aprobacioncartera == _constant.Status.APROBADO) {
+                                            log.debug('Entry', 'Cobertura');
+                                            if (esUpgrade == _constant.Valor.SI) {
+                                                record.submitFields({
+                                                    type: 'customrecord_ht_co_cobertura',
+                                                    id: busqueda_cobertura[i][1],
+                                                    values: {
+                                                        'custrecord_ht_co_familia_prod': ttr,
+                                                        'custrecord_ht_co_estado': _constant.Status.CONVERTIDO
+                                                    },
+                                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                                });
+                                            }
                                         }
                                         out = 1;
                                         break;
@@ -388,7 +393,30 @@ define([
                         }
                     });
                 }
-
+                log.error("esGarantia", esGarantia);
+                if (esGarantia) {
+                    var bien = objRecord.getValue('custbody_ht_so_bien');
+                    let itemVentaGarantia = getCoberturaItem(bien);
+                    log.error("itemVentaGarantia", itemVentaGarantia);
+                    if (itemVentaGarantia.length) {
+                        let workOrderResult = search.create({
+                            type: "customrecord_ht_record_ordentrabajo",
+                            filters: [["custrecord_ht_ot_orden_servicio", "anyof", idRecord]],
+                            columns: ["internalid"]
+                        }).run().getRange(0, 100);
+                        log.error("workOrderResult", workOrderResult.length);
+                        if (workOrderResult.length) {
+                            for (let i = 0; i < workOrderResult.length; i++) {
+                                let workOrder = workOrderResult[i].id;
+                                let workOrderRecord = record.submitFields({
+                                    type: "customrecord_ht_record_ordentrabajo",
+                                    id: workOrder,
+                                    values: { "custrecord_ts_item_venta_garantia": itemVentaGarantia[0][0] }
+                                });
+                            }
+                        }
+                    }
+                }
                 // if (generaOrdenTrabajo == 1 && esGarantia == 0) {
                 //     workOrder = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, json);
                 // }
@@ -396,6 +424,8 @@ define([
                 log.error('Erro-Create', error);
             }
         }
+
+
 
         if (scriptContext.type === scriptContext.UserEventType.EDIT) {
             var objRecord = scriptContext.newRecord;
@@ -417,7 +447,7 @@ define([
             let returEjerepo = false;
             let adp;
             let ttr;
-            let ccd = 0;
+            let ccd = 0, paramChequeo = 0, esUpgrade = _constant.Valor.NO;
             let esCustodia = 0;
             let custodiaDisp = 0;
             try {
@@ -425,7 +455,7 @@ define([
                 // log.debug('orderstatus', orderstatus);
                 // log.debug('aprobacionventa', aprobacionventa);
                 // log.debug('aprobacioncartera', aprobacioncartera);
-                if (aprobacionventa == 1 && aprobacioncartera == 1) {
+                if (aprobacionventa == _constant.Status.APROBADO && aprobacioncartera == _constant.Status.APROBADO) {
                     for (let i = 0; i < numLines; i++) {
                         //objRecord.selectLine({ sublistId: 'item', line: i });
                         let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
@@ -433,24 +463,29 @@ define([
                         if (parametrosRespo != 0) {
                             log.debug('parametrosRespop', parametrosRespo);
                             for (let j = 0; j < parametrosRespo.length; j++) {
-                                if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO) {
+                                if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO)
                                     parametro = parametrosRespo[j][1];
-                                }
-                                if (parametrosRespo[j][0] == _constant.Parameter.CPC_HMONITOREO_CAMBIO_PROPETARIO_CON_COBERTURAS) {
+
+                                if (parametrosRespo[j][0] == _constant.Parameter.CPC_HMONITOREO_CAMBIO_PROPETARIO_CON_COBERTURAS)
                                     parametrocambpropcobertura = parametrosRespo[j][1];
-                                }
-                                if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO) {
+
+                                if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO)
                                     valor_tipo_agrupacion = parametrosRespo[j][1];
-                                }
-                                if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO) {
+
+                                if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO)
                                     adp = parametrosRespo[j][1]
-                                }
-                                if (parametrosRespo[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION) {
+
+                                if (parametrosRespo[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION)
                                     ttr = parametrosRespo[j][1]
-                                }
-                                if (parametrosRespo[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS) {
+
+                                if (parametrosRespo[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS)
                                     ccd = parametrosRespo[j][1]
-                                }
+
+                                if (parametrosRespo[j][0] == _constant.Parameter.CPR_CONVERSION_DE_PRODUCTO_UPGRADE && parametrosRespo[j][1] == _constant.Valor.SI)
+                                    esUpgrade = _constant.Valor.SI;
+
+                                if (parametrosRespo[j][0] == _constant.Parameter.TCH_TIPO_CHEQUEO_OT)
+                                    paramChequeo = parametrosRespo[j][1];
                             }
                         }
                         htClient = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente', line: i });
@@ -578,8 +613,49 @@ define([
                     }
 
 
-                    
-
+                    if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                        log.debug('Chequeo', 'VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO o VALOR_002_DESINSTALACION_DE_DISP');
+                        let out = 0;
+                        let bien = objRecord.getValue('custbody_ht_so_bien');
+                        let busqueda_cobertura = getCoberturaItem(bien);
+                        if (busqueda_cobertura.length != 0) {
+                            for (let i = 0; i < busqueda_cobertura.length; i++) {
+                                let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
+                                log.debug('busqueda_cobertura', JSON.stringify(busqueda_cobertura));
+                                if (parametrosRespo != 0) {
+                                    for (let j = 0; j < parametrosRespo.length; j++) {
+                                        if (parametrosRespo[j][0] == _constant.Parameter.TCH_TIPO_CHEQUEO_OT && parametrosRespo[j][1] == paramChequeo) {
+                                            //TODO: Habilitar este bloque para cuando se haga el ajuste del proceso por aprobación ==========
+                                            // if (workOrder != 0) {
+                                            //     record.submitFields({
+                                            //         type: 'customrecord_ht_record_ordentrabajo',
+                                            //         id: workOrder,
+                                            //         values: { 'custrecord_ht_ot_serieproductoasignacion': busqueda_cobertura[i][2] },
+                                            //         options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                            //     });
+                                            // }
+                                            log.debug('Entry', 'Cobertura');
+                                            if (esUpgrade == _constant.Valor.SI) {
+                                                record.submitFields({
+                                                    type: 'customrecord_ht_co_cobertura',
+                                                    id: busqueda_cobertura[i][1],
+                                                    values: {
+                                                        'custrecord_ht_co_familia_prod': ttr,
+                                                        'custrecord_ht_co_estado': _constant.Status.CONVERTIDO
+                                                    },
+                                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                                });
+                                            }
+                                            out = 1;
+                                            break;
+                                        }
+                                    }
+                                    if (out == 1)
+                                        break;
+                                }
+                            }
+                        }
+                    }
                 }
             } catch (error) {
                 log.error('Erro-Edit', error);

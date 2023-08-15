@@ -43,6 +43,9 @@ define([], () => {
         VENTAS: 7,
         CHEQUEADO: 2,
         DEVOLUCION: 6,
+        CONVERTIDO: 11,
+        APROBADO: 1,
+        APROBACION_PENDIENTE: 2
     }
 
     let Parameter = {

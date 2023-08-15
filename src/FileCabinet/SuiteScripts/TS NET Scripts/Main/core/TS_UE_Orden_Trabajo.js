@@ -87,13 +87,14 @@ define([
                 let estado = objRecord.getValue('custrecord_ht_ot_estado');
                 let serieDispositivo = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                 if (estado == _constant.Status.PROCESANDO) {
-                    if (serieDispositivo.length > 0) {
-                        form.addButton({
-                            id: 'custpage_ts_chequeo',
-                            label: 'Chequear Orden',
-                            functionName: 'chequearOrden(' + id + ')'
-                        });
-                    }
+                    //TODO: Solo para pruebas internas por si no se chequea, luego activar y borrar el botón sin validaci´no de estado, línea 99
+                    // if (serieDispositivo.length > 0) {
+                    //     form.addButton({
+                    //         id: 'custpage_ts_chequeo',
+                    //         label: 'Chequear Orden',
+                    //         functionName: 'chequearOrden(' + id + ')'
+                    //     });
+                    // }
 
                     if (idOrdenTrabajo.length > 0) {
                         form.addButton({
@@ -103,6 +104,17 @@ define([
                         });
                     }
                 }
+
+                if (estado == _constant.Status.PROCESANDO || estado == _constant.Status.CHEQUEADO) {
+                    if (serieDispositivo.length > 0) {
+                        form.addButton({
+                            id: 'custpage_ts_chequeo',
+                            label: 'Chequear Orden',
+                            functionName: 'chequearOrden(' + id + ')'
+                        });
+                    }
+                }
+
                 form.getField('custrecord_ht_ot_termometro').updateDisplayType({ displayType: serverWidget.FieldDisplayType.HIDDEN });
                 createEnsambleAlquilerButton(form, objRecord);
                 createEnsambleCustodiaButton(form, objRecord);
@@ -516,7 +528,7 @@ define([
                             } else {
                                 fulfill = boxserie;
                             }
-                            var idDispositivo = getInventoryNumber(fulfill);
+                            var idDispositivo = getInventoryNumber(fulfill, idItemOT);
                             log.debug('idDispositivo', idDispositivo)
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
                             if (estado == ESTADO_CHEQUEADA && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
@@ -567,11 +579,11 @@ define([
                                             id: serieProducto,
                                             columns: ['custrecord_ht_mc_seriedispositivo']
                                         });
-                                        let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+                                        let dispositivoid = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
 
                                         record.submitFields({
                                             type: 'customrecord_ht_record_detallechaserdisp',
-                                            id: idDispositivo,
+                                            id: dispositivoid,
                                             values: { 'custrecord_ht_dd_estado': estadoChaser },
                                             options: { enableSourcing: false, ignoreMandatoryFields: true }
                                         });
@@ -718,7 +730,7 @@ define([
                                     log.error('Lojack', 'Dispositivo Lojack, no tiene SIM Card.')
                                 }
                             }
-                            // log.debug('esGarantia', esGarantia);
+
                             if (entregaCliente == _constant.Valor.SI || esGarantia == _constant.Valor.SI) {
                                 log.debug('entrgaCliente', 'es Entrega Cliente o Garantía');
                                 let updateIns = _Controller.updateInstall(objParams);
@@ -1053,7 +1065,7 @@ define([
                                             let creditoTotal = 0;
                                             for (let i = 0; i < arrResult.length; i++) {
                                                 // if (arrResult[i].adjInvId == currentInvAdjId) {
-                                                    creditoTotal += Number(arrResult[i].adjCreditAmount);
+                                                creditoTotal += Number(arrResult[i].adjCreditAmount);
                                                 // 
                                             }
                                             log.debug('creditoTotal', creditoTotal);
@@ -1076,6 +1088,7 @@ define([
                                             let asset_tipo_activo = (datosTipoActivo.custrecord_assettypeaccmethod)[0].value;
                                             let asset_porcentaje_residual = datosTipoActivo.custrecord_assettyperesidperc.replace('%', '');
                                             let asset_tiempo_de_vida = datosTipoActivo.custrecord_assettypelifetime;
+                                            //let dateNow = _Controller.getDateNow();
 
                                             let fixedAsset = record.create({ type: 'customrecord_ncfar_asset', isDynamic: true });
                                             fixedAsset.setValue('customform', 145);
@@ -1083,11 +1096,13 @@ define([
                                             fixedAsset.setValue('custrecord_assettype', item_tipo_activoId);
                                             fixedAsset.setValue('custrecord_assetserialno', numSerieText);
                                             fixedAsset.setValue('custrecord_assetcost', creditoTotal);
+                                            fixedAsset.setValue('custrecord_assetcurrentcost', creditoTotal);
                                             fixedAsset.setValue('custrecord_assetresidualperc', Number(asset_porcentaje_residual));
                                             fixedAsset.setValue('custrecord_assetresidualvalue', 1);
                                             fixedAsset.setValue('custrecord_assetaccmethod', asset_tipo_activo);
                                             fixedAsset.setValue('custrecord_assetlifetime', asset_tiempo_de_vida);
                                             fixedAsset.setValue('custrecord_nmero_de_serie_dispositivo', numSerieId);
+                                            //fixedAsset.setValue('custrecord_assetdeprstartdate', new Date(dateNow));
                                             fixedAsset.setValue('custrecord_ht_alquilado', true);
                                             let id_new_asset = fixedAsset.save()
                                             // log.debug('id_new_asset', id_new_asset);
@@ -1223,13 +1238,16 @@ define([
             let response = myRestletResponse.body;
         }
 
-        function getInventoryNumber(inventorynumber) {
+        function getInventoryNumber(inventorynumber, item) {
             try {
                 var busqueda = search.create({
                     type: "inventorynumber",
                     filters:
                         [
-                            ["inventorynumber", "is", inventorynumber],
+                            // ["inventorynumber", "is", inventorynumber],
+                            ["inventorynumber", "startswith", inventorynumber],
+                            "AND",
+                            ["item", "anyof", item],
                             "AND",
                             ["quantityavailable", "equalto", "1"]
                         ],

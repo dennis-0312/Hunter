@@ -440,6 +440,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
         try {
             if (typeof scriptContext.accion != 'undefined') {
                 accion = scriptContext.accion;
+                accion = accion.toLowerCase();
                 let guardar = 0;
                 let guardarBien = 0;
                 let recepcion = '';

@@ -612,7 +612,7 @@ define(["N/search", "N/currentRecord", "N/ui/message", "N/url", "N/runtime"], (
             ignoreFieldChange: true,
           });
         }
-      }else if(typeMode == "edit"){
+      } else if (typeMode == "edit") {
         if (typeTransaction === "customrecord_ht_record_bienes") {
           var flag = true;
           var Bienes = getBien(objRecord.id, flag);
@@ -773,7 +773,7 @@ define(["N/search", "N/currentRecord", "N/ui/message", "N/url", "N/runtime"], (
         type: "customrecord_ht_record_bienes",
         filters:
           [
-            ["isinactive","is","F"]
+            ["isinactive", "is", "F"]
           ],
         columns:
           [

@@ -572,6 +572,7 @@ define([
 
         const updateHistorialAF = (objParameters) => {
             let historialId = 0;
+            let activoFijo = 0;
             let historialAF = search.create({
                 type: "customrecord_ht_record_historialsegui",
                 filters:
@@ -583,12 +584,16 @@ define([
                         ["custrecord_ht_hs_estado", "anyof", INSTALADO]
                     ],
                 columns:
-                    ['internalid']
+                    [
+                        'internalid',
+                        'custrecord_ht_af_enlace'
+                    ]
             });
             let resultCount = historialAF.runPaged().count;
             if (resultCount > 0) {
                 historialAF.run().each(result => {
                     historialId = result.getValue({ name: "internalid" });
+                    activoFijo = result.getValue({ name: "custrecord_ht_af_enlace" });
                     return true;
                 });
 
@@ -605,6 +610,14 @@ define([
                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                 });
             }
+            try {
+                record.submitFields({
+                    type: 'customrecord_ncfar_asset',
+                    id: activoFijo,
+                    values: { 'custrecord_ht_alquilado': false },
+                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                });
+            } catch (error) { }
             return historialId;
         }
 

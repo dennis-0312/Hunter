@@ -53,6 +53,7 @@ define([
                 let simCardTXT = '';
                 const bienid = objRecord.id.toString();
                 let vid = objRecord.getValue('name');
+                let altname = objRecord.getValue('altname');
                 let estadoConvenio = objRecord.getValue('custrecord_ht_bien_estadoconvenio');
                 let documentNumber = objRecord.getValue('custrecord_ht_bien_seguimiento');
                 let customer = objRecord.getValue('custrecord_ht_bien_propietario');
@@ -127,8 +128,31 @@ define([
                             log.error('Error-identifyServiceOrder', _errorMessage.ErrorMessages.IDENTIFICACION_ORDEN_SERVICIO);
                         }
                     }
+
+                    if (altname.includes(bienid) == false) {
+                        record.submitFields({
+                            type: 'customrecord_ht_record_bienes',
+                            id: bienid,
+                            values: { 'altname': altname + bienid },
+                            options: { enableSourcing: false, ignoreMandatoryFields: true }
+                        });
+                    }
                 } catch (error) {
                     log.debug('Error', error);
+                }
+            }
+
+            if (scriptContext.type === scriptContext.UserEventType.EDIT) {
+                const objRecord = scriptContext.newRecord;
+                const bienid = objRecord.id.toString();
+                let altname = objRecord.getValue('altname');
+                if (altname.includes(bienid) == false) {
+                    record.submitFields({
+                        type: 'customrecord_ht_record_bienes',
+                        id: bienid,
+                        values: { 'altname': altname + bienid },
+                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                    });
                 }
             }
         }

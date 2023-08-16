@@ -27,7 +27,14 @@ define([], () => {
         EXPENSE_ACCOUNT: 2676,
         COMPONENTE_DISPOSITIVO_ID: 1,
         CONVENIO: 14,
-        FLUJO_CUSTODIA: 2
+        FLUJO_CUSTODIA: 2,
+        CREATE: 'create',
+        EDIT: 'edit',
+        COPY: 'copy',
+        VEHICULO: 1,
+        MOTO: 2,
+        TERRESTRE: 1,
+        PRODUCCION: 5
     }
 
     let Search = {}
@@ -108,6 +115,11 @@ define([], () => {
         BIN: 'bin'
     }
 
+    let Form = {
+        CANDADO: 229,
+        VEHICULO: 154
+    }
+
     return {
         Constants,
         Status,
@@ -115,6 +127,7 @@ define([], () => {
         Valor,
         Search,
         customRecord,
-        Transaction
+        Transaction,
+        Form
     }
 })

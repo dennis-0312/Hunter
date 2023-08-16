@@ -1551,4 +1551,5 @@ define([
 ^ TS_UE_Orden_Trabajo
 ^ TS_UE_Bien
 ^ TS_UE_Task
+^ TS_CS_Bienes_Nombre
 */

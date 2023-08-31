@@ -619,13 +619,13 @@ define([
             }
 
             if (tipoBien == _constant.Constants.PRODUCCION) {
-                // let field = objRecord.getField('altname');
-                // field.isDisabled = false;
-                objRecord.setValue('altname', 'CAND');
-
+                //const objRecord = scriptContext.newRecord;
+                const bienid = objRecord.id.toString();
+                let altname = objRecord.getValue('altname');
+                if (altname.includes(bienid) == false) {
+                    objRecord.setValue('altname', 'PROD');
+                }
             }
-
-
         } catch (error) {
             log.error("Error en el fieldChange", error);
             return false;

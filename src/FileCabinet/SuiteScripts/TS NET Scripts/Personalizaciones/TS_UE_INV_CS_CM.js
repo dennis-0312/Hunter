@@ -79,11 +79,10 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
         }
     }
 
-
     const beforeSubmit = (context) => {
         const eventType = context.type;
         let documentref = '';
-        if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.EDIT) {
+        if (eventType === context.UserEventType.CREATE /*|| eventType === context.UserEventType.EDIT*/) {
             const objRecord = context.newRecord;
             try {
                 if (objRecord.type == VENDOR_BILL || objRecord.type == BILL_CREDIT) {
@@ -160,7 +159,6 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
         }
     }
 
-
     const afterSubmit = (context) => {
         const eventType = context.type;
         const recordId = context.newRecord.id;
@@ -203,7 +201,6 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
             }
         }
     }
-
 
     const getSerie = (documenttype, location, prefix, documentref = 0) => {
         let searchLoad = '';
@@ -272,7 +269,6 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
         }
     }
 
-
     const generateCorrelative = (return_pe_inicio, serieid, serieimpr) => {
         let ceros;
         let correlative;
@@ -338,7 +334,6 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
             return 0;
         }
     }
-
 
     //?BLOQUE DE CONVERSIÓN MONTO EN LETRAS================================================================================================================================================================================================
     function Unidades(num) {
@@ -416,7 +411,6 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
             case 8: return 'OCHOCIENTOS ' + Decenas(decenas);
             case 9: return 'NOVECIENTOS ' + Decenas(decenas);
         }
-
         return Decenas(decenas);
     }//Centenas()
 
@@ -502,6 +496,7 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
             return Millones(data.enteros) + ' ' + data.letrasMonedaPlural + ' ' + data.letrasCentavos;
     }
 
+    
     function getDateRef(_idDocumentRef) {
         try {
 
@@ -525,6 +520,8 @@ define(['N/log', 'N/search', 'N/record', 'N/runtime', 'N/redirect', 'N/url', 'N/
             log.error('Error en getDateRef', e);
         }
     }
+
+
     return {
         beforeLoad: beforeLoad,
         afterSubmit: afterSubmit,

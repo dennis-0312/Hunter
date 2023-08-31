@@ -30,12 +30,12 @@ define([
                     //log.debug('parámetros', parametrosRespo[j][0] + ' - ' + parametrosRespo[j][1]);
                     if (parametrosRespo[j][0] == _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER) {
                         esAlquiler = parametrosRespo[j][1];
-                        break;
+                        // break;
                     }
 
                     if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO) {
                         esDesinstalacion = parametrosRespo[j][1];
-                        break;
+                        // break;
                     }
                 }
             }
@@ -79,7 +79,9 @@ define([
                     order.setValue({ fieldId: 'custrecord_ht_ot_ordenfabricacion', value: woId });
                     order.save();
                 } else {
+                    log.debug('ESALQUILER2', esAlquiler);
                     if (esAlquiler == _constant.Valor.SI) {
+                        log.debug('ESALQUILER3', esAlquiler);
                         record.submitFields({
                             type: _constant.customRecord.ORDEN_TRABAJO,
                             id: ordenTrabajo,

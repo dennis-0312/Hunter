@@ -396,6 +396,8 @@ define([
                                     updateFinalizacionOT.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
                                     updateFinalizacionOT.save();
                                 }
+
+                                
                             }
                         }
 

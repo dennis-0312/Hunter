@@ -3,7 +3,14 @@
  * @NScriptType ClientScript
  * @NModuleScope SameAccount
  */
-define(['N/url', 'N/runtime', 'N/record', 'N/ui/dialog'], (url, runtime, record, dialog) => {
+define([
+    'N/url',
+    'N/runtime',
+    'N/record',
+    'N/ui/dialog',
+    '../controller/TS_CM_Controller',
+    '../constant/TS_CM_Constant'
+], (url, runtime, record, dialog, _controller, _constant) => {
     const DEVICE_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_warrant_assem_buil_21";
     const DEVICE_ASSEMBLY_BUILD_SCRIPT_ID_ = "customscript_ts_ui_warrant_assem_buil_21";
     const RENT_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_warrant_assem_buil_21";
@@ -32,6 +39,7 @@ define(['N/url', 'N/runtime', 'N/record', 'N/ui/dialog'], (url, runtime, record,
 
     const ensambleAlquiler = (item, location, workorder, salesorder, customer) => {
         try {
+            console.log({ item, location, workorder, salesorder, customer });
             var host = url.resolveDomain({
                 hostType: url.HostType.APPLICATION,
                 accountId: runtime.accountId
@@ -107,14 +115,26 @@ define(['N/url', 'N/runtime', 'N/record', 'N/ui/dialog'], (url, runtime, record,
     }
 
     const chequearOrden = (internalid) => {
+        let pideNumberBox = 0;
         try {
             let objRecord = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: internalid });
             if (objRecord.getValue('custrecord_ht_ot_estadochaser').length > 0) {
                 if (objRecord.getValue('custrecord_ht_ot_estadochaser') != estadoDisponible) {
-                    objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: estadoChequeado });
-                    response = objRecord.save();
-                    //console.log('response', response);
-                    location.reload();
+                    let parametrosRespo = _controller.parametrizacion(objRecord.getValue({ fieldId: 'custrecord_ht_ot_item' }));
+                    for (let j = 0; j < parametrosRespo.length; j++) {
+                        if (parametrosRespo[j][0] == _constant.Parameter.PNB_PIDE_NUMBER_BOX && parametrosRespo[j][1] == _constant.Valor.SI) {
+                            pideNumberBox = _constant.Valor.SI;
+                            break;
+                        }
+                    }
+
+                    if (pideNumberBox == 0) {
+                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: estadoChequeado });
+                        response = objRecord.save();
+                        location.reload();
+                    } else {
+                        dialog.alert({ title: 'Alerta', message: 'Se debe ingresar un dato para el campo BOX SERIE.' });
+                    }
                 } else {
                     dialog.alert({ title: 'Alerta', message: 'El estado del dispositivo Chaser debe ser diferente a disponible.' });
                 }
@@ -125,7 +145,6 @@ define(['N/url', 'N/runtime', 'N/record', 'N/ui/dialog'], (url, runtime, record,
             console.log('Error', error);
         }
     }
-
 
     return {
         pageInit,

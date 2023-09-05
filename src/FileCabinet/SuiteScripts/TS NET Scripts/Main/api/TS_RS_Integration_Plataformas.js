@@ -103,7 +103,7 @@ define([
                     let objRecord = record.create({ type: HT_COBERTURA_RECORD, isDynamic: true });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estado });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
@@ -118,7 +118,7 @@ define([
                     let objRecord = record.load({ type: HT_COBERTURA_RECORD, id: scriptContext.cobertura });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estado });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });

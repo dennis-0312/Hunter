@@ -34,6 +34,9 @@ define([], () => {
         VEHICULO: 1,
         MOTO: 2,
         TERRESTRE: 1,
+        MARITIMO: 2,
+        TANQUE: 3,
+        INMUEBLE: 4,
         PRODUCCION: 5
     }
 
@@ -52,7 +55,8 @@ define([], () => {
         DEVOLUCION: 6,
         CONVERTIDO: 11,
         APROBADO: 1,
-        APROBACION_PENDIENTE: 2
+        APROBACION_PENDIENTE: 2,
+        PENDIENTE_DE_ACTIVACION: 3
     }
 
     let Parameter = {
@@ -79,7 +83,9 @@ define([], () => {
         GOF_GENERA_SOLICITUD_DE_FACTURACION: 33,
         APR_SOLICITA_APROBACIÓN: 11,
         CPC_HMONITOREO_CAMBIO_PROPETARIO_CON_COBERTURAS: 24,
-        CPR_CONVERSION_DE_PRODUCTO_UPGRADE: 26
+        CPR_CONVERSION_DE_PRODUCTO_UPGRADE: 26,
+        PNB_PIDE_NUMBER_BOX: 66,
+        PMI_PRODUCTO_PARA_MONITOREO_DE_INMUEBLES: 63
     }
 
     let Valor = {

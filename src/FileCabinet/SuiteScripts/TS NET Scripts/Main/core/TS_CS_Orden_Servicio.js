@@ -276,7 +276,7 @@ define(['N/search',
 
                     if (parametrosRespo[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo[j][1] == _constant.Valor.VALOR_002_ENTREGA_CUSTODIAS) {
                         let response = _controllerParm.parametros(CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS, context.currentRecord)
-                        if (response.status == false){
+                        if (response.status == false) {
                             dialog.alert({ title: 'Alerta', message: response.mensaje });
                         }
                         return response.status;
@@ -345,18 +345,19 @@ define(['N/search',
     const validateField = (context) => {
         try {
             //const objRecord = currentRecord.get();
-            var currentRecord = context.currentRecord;
-            var sublistName = context.sublistId;
-            var typeTransaction = currentRecord.type;
-            var sublistFieldName = context.fieldId;
-            var userObj = runtime.getCurrentUser()
-            var userId = userObj.id
+            let currentRecord = context.currentRecord;
+            let sublistName = context.sublistId;
+            let typeTransaction = currentRecord.type;
+            let sublistFieldName = context.fieldId;
+            let bien = currentRecord.getValue('custbody_ht_so_bien');
+            let userObj = runtime.getCurrentUser()
+            let userId = userObj.id
             let numLines = currentRecord.getLineCount({ sublistId: 'item' });
             parametro_reconexion = 0;
             if (typeMode == 'create' || typeMode == 'copy' || typeMode == 'edit') {
                 if (typeTransaction == SALES_ORDER) {
                     //console.log('sublistName  item', sublistFieldName);
-                    var userObj = runtime.getCurrentUser()
+                    let userObj = runtime.getCurrentUser()
                     if (sublistName == 'item') {
                         //console.log('sublistFieldName item', sublistFieldName);
                         if (sublistFieldName == 'item') {
@@ -366,27 +367,27 @@ define(['N/search',
                             console.log('description',description); */
                             let parametrosRespo = _controllerParm.parametrizacion(idItem);
                             for (let j = 0; j < parametrosRespo.length; j++) {
-                                if (parametrosRespo[j][0] == RECONEXION_SERVICIO && parametrosRespo[j][1] == '9') {
+                                if (parametrosRespo[j][0] == RECONEXION_SERVICIO && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     console.log('Parametrizacion', 'El item' + idItem + ' es de reconexion de servicio.');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de reconexion de servicio.' });
                                 }
-                                if (parametrosRespo[j][0] == ALQUILER && parametrosRespo[j][1] == '9') {
+                                if (parametrosRespo[j][0] == _controllerParm.Parameter.ALQ_PRODUCTO_DE_ALQUILER && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     console.log('Parametrizacion', 'El item' + idItem + ' es de alquiler.');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de alquiler.' });
                                 }
-                                if (parametrosRespo[j][0] == PRODUCTO_GARANTIA && parametrosRespo[j][1] == '9') {
+                                if (parametrosRespo[j][0] == _controllerParm.Parameter.PGR_PRODUCTO_DE_GARANTÍA && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     console.log('Parametrizacion', 'El item ' + idItem + ' es de garantia.');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de garantia.' });
                                 }
-                                if (parametrosRespo[j][0] == MONITOREO_GEOSYS && parametrosRespo[j][1] == '9') {
+                                if (parametrosRespo[j][0] == MONITOREO_GEOSYS && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     console.log('Parametrizacion', 'El item ' + idItem + ' va ser monitoreado desde la plataforma px.');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' va ser monitoreado desde la plataforma px.' });
                                 }
-                                if (parametrosRespo[j][0] == SERVICIO_TRANSMISION && parametrosRespo[j][1] == '9') {
+                                if (parametrosRespo[j][0] == SERVICIO_TRANSMISION && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     console.log('Parametrizacion', 'El item ' + idItem + ' es de transmisión');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de transmisión' });
                                 }
-                                if (parametrosRespo[j][0] == CARGO_TECNOLOGIA && parametrosRespo[j][1] == '9') {
+                                if (parametrosRespo[j][0] == CARGO_TECNOLOGIA && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     console.log('Parametrizacion', 'El item ' + idItem + ' es de categoria de hunter cargo');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de categoria de hunter cargo' });
                                 }
@@ -394,25 +395,34 @@ define(['N/search',
                                     console.log('Parametrizacion', 'El item ' + idItem + ' es de tipo DEMO');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de tipo DEMO' });
                                 }
-                                if (parametrosRespo[j][0] == ITEM_REPUESTO && parametrosRespo[j][1] == '9') {
+                                if (parametrosRespo[j][0] == ITEM_REPUESTO && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     console.log('Parametrizacion', 'El item ' + idItem + ' es un ITEM de REPUESTO');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es un ITEM de REPUESTO' });
                                 }
-                                if (parametrosRespo[j][0] == PRODUCTO_CONTROL_INTERNO && parametrosRespo[j][1] == '9') {
+                                if (parametrosRespo[j][0] == PRODUCTO_CONTROL_INTERNO && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     console.log('Parametrizacion', 'El item ' + idItem + ' es un ITEM Comercial');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es un ITEM Comercial' });
+                                }
+
+                                if (parametrosRespo[j][0] == _constant.Parameter.PMI_PRODUCTO_PARA_MONITOREO_DE_INMUEBLES && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                    let typeBien = verifyType(bien);
+                                    if (typeBien == _constant.Constants.INMUEBLE) {
+                                        console.log('Parametrizacion', 'El bien ingresado ES de tipo INMUEBLE');
+                                    } else {
+                                        console.log('Parametrizacion', 'El bien ingresado NO ES de tipo INMUEBLE');
+                                    }
                                 }
                             }
                             console.log('parametrizacion pruebas', parametrosRespo);
                             // console.log('idItem', idItem);
-                            var internalid = getServiceSale(idItem);
+                            let internalid = getServiceSale(idItem);
                             // console.log('internalid', internalid);
-                            var employee = search.lookupFields({
+                            let employee = search.lookupFields({
                                 type: 'employee',
                                 id: userObj.id,
                                 columns: ['location']
                             });
-                            var test = employee.location;
+                            let test = employee.location;
 
                             if (internalid) {
                                 currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity', value: '12' });
@@ -430,9 +440,7 @@ define(['N/search',
                                     currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: test });
                                 }
                             }
-
                         }
-
                     }
                     /* else if (sublistFieldName == 'custbody_ht_so_bien') {
                         currentRecord.setValue({
@@ -607,6 +615,31 @@ define(['N/search',
         } catch (e) {
             log.error('Error en getServiceSale', e);
         }
+    }
+
+    const verifyType = (bien) => {
+        let tipoBien = 0;
+        let objSearch = search.create({
+            type: _constant.customRecord.BIENES,
+            filters:
+                [
+                    ["internalid", "anyof", bien],
+                    "AND",
+                    ["custrecord_ht_bien_tipobien", "anyof", _constant.Constants.INMUEBLE]
+
+                ],
+            columns:
+                [
+                    search.createColumn({ name: "custrecord_ht_bien_tipobien", label: "Tipo de bien" }),
+                ]
+        });
+        let searchResultCount = objSearch.runPaged().count;
+        if (searchResultCount > 0)
+            return _constant.Constants.INMUEBLE;
+        // objSearch.run().each(result => {
+        //     tipoBien = result.getValue({ name: "custrecord_ht_bien_tipobien" });
+        //     return true;
+        // });
     }
 
     return {

@@ -77,33 +77,17 @@ define([
     const afterSubmit = (scriptContext) => {
         if (scriptContext.type === scriptContext.UserEventType.CREATE) {
             try {
-                let parametro = 0;
-                let parametro_aprob = 0;
-                let parametro_fact = 0;
-                let workOrder = 0;
-                let adp = 0;
                 const currentRecord = scriptContext.newRecord;
                 let idRecord = currentRecord.id;
                 let objRecord = record.load({ type: 'salesorder', id: idRecord, isDynamic: true });
                 let customer = objRecord.getValue('entity');
                 let vehiculo = objRecord.getValue('custbody_ht_so_bien');
-                let renovamos = false;
-                let plataformas = false;
                 let ordenServicio = objRecord.getValue('tranid');
                 let numLines = objRecord.getLineCount({ sublistId: 'item' });
                 let aprobacionventa = objRecord.getValue('custbody_ht_os_aprobacionventa');
                 let aprobacioncartera = objRecord.getValue('custbody_ht_os_aprobacioncartera');
-                let plazo = 0;
-                var valor_tipo_agrupacion = 0;
-                let paramChequeo = 0;
-                let coberturaRecord = 0;
-                let generaOrdenTrabajo = 0;
-                let esGarantia = 0;
-                let esUpgrade = _constant.Valor.NO;
-                let ccd = 0;
-                let dispositivoEnCustodia = "";
-                let itemCustodia = {}
-                let ttr = 0;
+                let parametro = 0, parametro_aprob = 0, parametro_fact = 0, workOrder = 0, adp = 0, plazo = 0, valor_tipo_agrupacion = 0, paramChequeo = 0, coberturaRecord = 0, generaOrdenTrabajo = 0, esGarantia = 0, esUpgrade = _constant.Valor.NO, ccd = 0,
+                    dispositivoEnCustodia = "", itemCustodia = {}, ttr = 0, renovamos = false, plataformas = false;
 
                 for (let i = 0; i < numLines; i++) {
                     objRecord.selectLine({ sublistId: 'item', line: i });
@@ -393,6 +377,7 @@ define([
                         }
                     });
                 }
+
                 log.error("esGarantia", esGarantia);
                 if (esGarantia) {
                     var bien = objRecord.getValue('custbody_ht_so_bien');
@@ -424,7 +409,6 @@ define([
                 log.error('Erro-Create', error);
             }
         }
-
 
 
         if (scriptContext.type === scriptContext.UserEventType.EDIT) {

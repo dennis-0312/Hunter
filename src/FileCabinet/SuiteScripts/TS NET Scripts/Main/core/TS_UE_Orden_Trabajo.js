@@ -143,7 +143,7 @@ define([
                 let estaChequeada = objRecord.getValue('custrecord_ht_ot_estado');
                 let ingresaFlujoAlquiler;
                 let statusOri = estaChequeada;
-                let estadoInts;
+                let estadoInts, noChequeado = 0;
 
                 let ingresaFlujoConvenio;
                 let serieProductoChaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
@@ -185,7 +185,7 @@ define([
 
                         let cantidad = 0, parametro_salesorder = 0, tag = 0, idOS = 0, envioPX = 0, envioTele = 0, idItem = 0, monitoreo = 0, precio = 0, esAlquiler = 0, entregaCliente = 0,
                             entradaCustodia = 0, entregaCustodia = 0, adpDesinstalacion = 0, esGarantia = 0, plataformasPX = 0, plataformasTele = 0, adp, device, parametrosRespo = 0, ttrid = 0,
-                            TTR_name = '', idCoberturaItem = '', returEjerepo = true, arrayItemOT = new Array(), arrayID = new Array(), arrayTA = new Array(), objParams = new Array(), noChequeado = 0;
+                            TTR_name = '', idCoberturaItem = '', returEjerepo = true, arrayItemOT = new Array(), arrayID = new Array(), arrayTA = new Array(), objParams = new Array();
 
                         let parametrosRespo_2 = _Controller.parametrizacion(idItemOT);
 
@@ -289,6 +289,7 @@ define([
                                         }
 
                                         if (accion_producto == VENT_SERVICIOS && valor_tipo_agrupacion == tag) {
+                                            log.debug('Entry', 'Entra a item de transmision');
                                             adpServicio = accion_producto;
                                             idOS = busqueda_salesorder[i][1];
                                             plataformasPX = envioPX;
@@ -411,7 +412,8 @@ define([
                                         ordentrabajo: objRecord.id,
                                         monitoreo: monitoreo,
                                         cobertura: idCoberturaItem,
-                                        ttr: ttrid
+                                        ttr: ttrid,
+                                        estadoCobertura: estadoInts
                                     }
                                     createCoberturaWS(json);
                                     if (chaser.length > 0) {
@@ -436,14 +438,16 @@ define([
                                         monitoreo: monitoreo,
                                         cobertura: idCoberturaItem,
                                         ttr: ttrid,
+                                        estadoCobertura: estadoInts
                                     }
 
-                                    if (idOS == 0){
+                                    if (idOS == 0) {
                                         json.concepto = instalacion;
-                                        json.salesorder = idSalesorder,
+                                        json.salesorder = idSalesorder;
+                                        json.estadoCobertura = _constant.Status.PENDIENTE_DE_ACTIVACION
                                         noChequeado = 1
                                     }
-                                        
+
                                     if (ingresaFlujoConvenio == true) {
                                         json.concepto = instalacion;
                                         json.salesorder = idSalesorder;
@@ -1138,10 +1142,17 @@ define([
                     default:
                 }
 
-
+                if (noChequeado == 1) {
+                    record.submitFields({
+                        type: objRecord.type,
+                        id: id,
+                        values: { 'custrecord_ht_ot_estado': _constant.Status.PROCESANDO },
+                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                    });
+                }
             }
         }
-        
+
         function createAssetValues(newRec) {
             var deprStartDate = newRec.getValue({ fieldId: 'custrecord_assetdeprstartdate' });
             var lastDeprDate = newRec.getValue({ fieldId: 'custrecord_assetlastdeprdate' });

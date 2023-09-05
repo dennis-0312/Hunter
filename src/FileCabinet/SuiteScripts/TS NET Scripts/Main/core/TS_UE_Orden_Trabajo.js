@@ -146,7 +146,6 @@ define([
                 let estadoInts;
 
                 let ingresaFlujoConvenio;
-                const SI = 9;
                 let serieProductoChaser = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                 //log.debug('serieProductoChaser', serieProductoChaser);
 
@@ -154,7 +153,6 @@ define([
                     accionEstadoOT = estaChequeada;//TODO: Revisar esta sección porque puede impactar la instalación sin activicación de servicio.
                     //accionEstadoOT = ESTADO_CHEQUEADA
                 }
-
                 //log.debug('accionEstadoOT', accionEstadoOT);
 
                 switch (parseInt(accionEstadoOT)) {
@@ -184,39 +182,12 @@ define([
                         let comercial = objRecord.getText('custrecord_ht_ot_serieproductoasignacion');
                         let simTXT = objRecord.getValue('custrecord_ht_ot_simcard');
                         let flujoReinstalacion = objRecord.getValue('custrecord_flujo_de_reinstalacion');
+
                         let cantidad = 0, parametro_salesorder = 0, tag = 0, idOS = 0, envioPX = 0, envioTele = 0, idItem = 0, monitoreo = 0, precio = 0, esAlquiler = 0, entregaCliente = 0,
                             entradaCustodia = 0, entregaCustodia = 0, adpDesinstalacion = 0, esGarantia = 0, plataformasPX = 0, plataformasTele = 0, adp, device, parametrosRespo = 0, ttrid = 0,
-                            TTR_name = '', idCoberturaItem = '', returEjerepo = true, arrayItemOT = new Array(), arrayID = new Array(), arrayTA = new Array(), objParams = new Array();
+                            TTR_name = '', idCoberturaItem = '', returEjerepo = true, arrayItemOT = new Array(), arrayID = new Array(), arrayTA = new Array(), objParams = new Array(), noChequeado = 0;
+
                         let parametrosRespo_2 = _Controller.parametrizacion(idItemOT);
-
-                        // let arrayItemOT, arrayID, arrayTA, objParams = new Array();
-                        // let cantidad = 0;
-                        // let parametrosRespo = 0;
-                        // let parametro_salesorder = 0;
-                        // let arrayItemOT = new Array();
-                        // let arrayID = new Array()
-                        // let arrayTA = new Array();
-                        // let TTR_name = '';
-                        // let tag = 0;
-                        // let idOS;
-                        // let envioPX = 0;
-                        // let envioTele = 0;
-                        // let idItem = 0;
-                        // let monitoreo = 0
-                        // let idCoberturaItem = '';
-                        // let precio = 0;
-                        // let esAlquiler = 0;
-                        // let entregaCliente = 0;
-                        // let entradaCustodia = 0;
-                        // let entregaCustodia = 0;
-                        // let objParams = new Array();
-                        // let adpDesinstalacion = 0;
-                        // let esGarantia = 0;
-                        // let plataformasPX;
-                        // let plataformasTele;
-                        // let adp = 0;
-                        // let device = 0;
-
 
                         let recordTaller = search.lookupFields({
                             type: 'customrecord_ht_tt_tallertablet',
@@ -244,7 +215,8 @@ define([
                             bien: bien,
                             sim: simTXT,
                             deposito: 0,
-                            dispositivo: 0
+                            dispositivo: 0,
+                            tag: 0
                         }
 
                         for (let i = 0; i < numLines; i++) {
@@ -258,7 +230,6 @@ define([
                                     adpServicio = parametrosRespo_2[j][1];
                                     adpDesinstalacion = adpServicio
                                 }
-
 
                                 if (parametrosRespo_2[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION) { // TTR tipo de transaccion
                                     let parametro = record.load({ type: 'customrecord_ht_cr_pp_valores', id: parametrosRespo_2[j][1], isDynamic: true });
@@ -396,8 +367,6 @@ define([
                                     updateFinalizacionOT.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
                                     updateFinalizacionOT.save();
                                 }
-
-                                
                             }
                         }
 
@@ -417,18 +386,17 @@ define([
                         if (idVentAlq != '') {
                             idItemCobertura = idVentAlq;
                         }
-                        var activacion = 16;
-                        var instalacion_activacion = 17;
-                        var instalacion = 15;
+                        let activacion = 16;
+                        let instalacion_activacion = 17;
+                        let instalacion = 15;
                         estadoInts = 1 //Instalado
                         //log.debug('Debug1', returEjerepo + ' - ' + adpDesinstalacion);
 
                         if (adpDesinstalacion != _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
                             if (returEjerepo && adpServicio != 0) {
+                                log.debug('SALES ORDER!!!!!!!!!!!!', idOS + '==' + idSalesorder)
                                 if (idOS == idSalesorder) {
                                     log.debug('MONITOREOOOOOO', 'Cobertura1');
-                                    // log.debug('ESTADOOOOOOOOO', estadoInts);
-                                    // log.debug('Debug2', returEjerepo + ' - ' + adpServicio);
                                     let json = {
                                         bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
                                         propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
@@ -439,7 +407,7 @@ define([
                                         concepto: instalacion_activacion,
                                         producto: idItemCobertura,
                                         serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
-                                        salesorder: idSalesorder,
+                                        salesorder: idOS,
                                         ordentrabajo: objRecord.id,
                                         monitoreo: monitoreo,
                                         cobertura: idCoberturaItem,
@@ -453,7 +421,6 @@ define([
                                     }
                                 } else {
                                     log.debug('MONITOREOOOOOO', 'Cobertura2');
-                                    //log.debug('Debug3', returEjerepo + ' - ' + adpServicio);
                                     let json = {
                                         bien: objRecord.getValue('custrecord_ht_ot_vehiculo'),
                                         propietario: objRecord.getValue('custrecord_ht_ot_cliente_id'),
@@ -468,12 +435,21 @@ define([
                                         ordentrabajo: objRecord.id,
                                         monitoreo: monitoreo,
                                         cobertura: idCoberturaItem,
-                                        ttr: ttrid
+                                        ttr: ttrid,
                                     }
+
+                                    if (idOS == 0){
+                                        json.concepto = instalacion;
+                                        json.salesorder = idSalesorder,
+                                        noChequeado = 1
+                                    }
+                                        
                                     if (ingresaFlujoConvenio == true) {
                                         json.concepto = instalacion;
                                         json.salesorder = idSalesorder;
                                     }
+
+
                                     createCoberturaWS(json);
                                     if (chaser.length > 0) {
                                         let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
@@ -531,7 +507,7 @@ define([
                                 fulfill = boxserie;
                             }
                             var idDispositivo = getInventoryNumber(fulfill, idItemOT);
-                            log.debug('idDispositivo', idDispositivo)
+                            //log.debug('idDispositivo', idDispositivo)
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
                             if (estado == ESTADO_CHEQUEADA && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
                                 let serieProducto = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
@@ -539,7 +515,7 @@ define([
                                 if (serieProducto.length > 0) {
                                     if (tag == _constant.Valor.VALOR_LOJ_LOJACK) {
                                         //LOJACK
-                                        log.debug('TAG', 'LOJACK: ' + tag)
+                                        log.debug('TAG', 'LOJACK: ' + tag);
                                         record.submitFields({
                                             type: _constant.customRecord.CHASER,
                                             id: serieProducto,
@@ -694,6 +670,9 @@ define([
                         if (adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP && statusOri == ESTADO_CHEQUEADA) {//TODO: Revisar actualziaciones cuando es locjack, ya que no tiene simcard
                             if (esAlquiler == _constant.Valor.SI) {
                                 log.debug('Alquiler', 'Es alquiler');
+                                if (tag == _constant.Valor.VALOR_LOJ_LOJACK)
+                                    objParams.tag = tag
+
                                 let ajusteInv = _Controller.createInventoryAdjustmentIngreso(objParams);
                                 let returnHistorial = _Controller.updateHistorialAF(objParams);
                                 let updateIns = _Controller.updateInstall(objParams)
@@ -902,7 +881,7 @@ define([
                             let busqueda_sales_order = search.lookupFields({
                                 type: search.Type.SALES_ORDER,
                                 id: historial_orden_de_servicio_id,
-                                columns: ['custbody_ht_os_tipoordenservicio', 'trandate']
+                                columns: ['custbody_ht_os_tipoordenservicio', 'trandate', 'location', 'subsidiary']
                             });
                             // var typeSalesOrder = (busqueda_sales_order.custbody_ht_os_tipoordenservicio)[0].text;
                             let dateSalesOrder = busqueda_sales_order.trandate;
@@ -927,7 +906,7 @@ define([
                             let nameDispositivo;
 
                             if (results.length > 0) {
-                                // if (false) {
+                                //if (false) {
                                 //EXISTE ACTIVO FIJO
                                 try {
                                     let historialSeguimiento;
@@ -1005,6 +984,7 @@ define([
                                         let recordRevision = record.load({ type: 'bomrevision', id: billOfMaterialRevision })
                                         let lineCountSublist = recordRevision.getLineCount({ sublistId: 'component' })
                                         let itemDispositivoId;
+                                        //TODO: Revisar lógica, está trayendo el nombre del primer item que tiene 1, debe traer el nombre del dispositivo seleccionado en el ensamble.
                                         for (let j = 0; j < lineCountSublist; j++) {
                                             let currentItemSub = recordRevision.getSublistText({ sublistId: 'component', fieldId: 'item', line: j }).toLowerCase();
                                             let currentQuantiSub = recordRevision.getSublistValue({ sublistId: 'component', fieldId: 'quantity', line: j });
@@ -1092,21 +1072,39 @@ define([
                                             let asset_tiempo_de_vida = datosTipoActivo.custrecord_assettypelifetime;
                                             //let dateNow = _Controller.getDateNow();
 
-                                            let fixedAsset = record.create({ type: 'customrecord_ncfar_asset', isDynamic: true });
-                                            fixedAsset.setValue('customform', 145);
+                                            log.error("values", { itemDispositivoName, item_tipo_activoId, creditoTotal, busqueda_sales_order, asset_porcentaje_residual, asset_tipo_activo, asset_tiempo_de_vida });
+                                            var fixedAsset = record.create({ type: 'customrecord_ncfar_asset', isDynamic: true });
+                                            creditoTotal = Math.round(creditoTotal * 100) / 100;
+
                                             fixedAsset.setValue('altname', itemDispositivoName.displayname);
                                             fixedAsset.setValue('custrecord_assettype', item_tipo_activoId);
-                                            fixedAsset.setValue('custrecord_assetserialno', numSerieText);
                                             fixedAsset.setValue('custrecord_assetcost', creditoTotal);
-                                            fixedAsset.setValue('custrecord_assetcurrentcost', creditoTotal);
-                                            fixedAsset.setValue('custrecord_assetresidualperc', Number(asset_porcentaje_residual));
-                                            fixedAsset.setValue('custrecord_assetresidualvalue', 1);
-                                            fixedAsset.setValue('custrecord_assetaccmethod', asset_tipo_activo);
                                             fixedAsset.setValue('custrecord_assetlifetime', asset_tiempo_de_vida);
+                                            //fixedAsset.setValue('custrecord_assetresidualperc', Number(asset_porcentaje_residual));
+                                            fixedAsset.setValue('custrecord_assetcurrentcost', creditoTotal);
+                                            fixedAsset.setValue('custrecord_assetbookvalue', creditoTotal);
+                                            fixedAsset.setValue('custrecord_assetlocation', busqueda_sales_order.location[0].value);
+                                            fixedAsset.setValue('custrecord_assetsubsidiary', busqueda_sales_order.subsidiary[0].value);
+                                            var today = new Date();
+                                            fixedAsset.setValue('custrecord_assetpurchasedate', today);
+                                            fixedAsset.setValue('custrecord_assetdeprstartdate', today);
+                                            fixedAsset.setValue('custrecord_assetdeprenddate', new Date(today.getFullYear(), today.getMonth() + Number(asset_tiempo_de_vida), today.getDate() - 1));
                                             fixedAsset.setValue('custrecord_nmero_de_serie_dispositivo', numSerieId);
-                                            //fixedAsset.setValue('custrecord_assetdeprstartdate', new Date(dateNow));
-                                            fixedAsset.setValue('custrecord_ht_alquilado', true);
-                                            let id_new_asset = fixedAsset.save()
+                                            fixedAsset.setValue('custrecord_assetbookvalue', creditoTotal);
+                                            fixedAsset.setValue('custrecord_assetresidualvalue', 1);
+
+                                            //fixedAsset.setValue('custrecord_assetserialno', '1314124');
+                                            //fixedAsset.setValue('custrecord_assetbookvalue', creditoTotal);
+                                            //fixedAsset.setValue('custrecord_assetresidualperc', Number(asset_porcentaje_residual));
+                                            //fixedAsset.setValue('custrecord_assetaccmethod', asset_tipo_activo);
+
+                                            var id_new_asset = fixedAsset.save();
+                                            var fixedAsset = record.load({ type: "customrecord_ncfar_asset", id: id_new_asset });
+                                            var assetValuesId = createAssetValues(fixedAsset);
+                                            fixedAsset.setValue('custrecord_assetvals', assetValuesId);
+                                            fixedAsset.save();
+                                            var adquisicionId = createAcquisitionHistoryFromRecord(fixedAsset);
+                                            log.error("adquisicionId", adquisicionId);
                                             // log.debug('id_new_asset', id_new_asset);
                                             // log.debug('Termino crear activo');
 
@@ -1139,8 +1137,82 @@ define([
                         break;
                     default:
                 }
+
+
             }
         }
+        
+        function createAssetValues(newRec) {
+            var deprStartDate = newRec.getValue({ fieldId: 'custrecord_assetdeprstartdate' });
+            var lastDeprDate = newRec.getValue({ fieldId: 'custrecord_assetlastdeprdate' });
+            var lastForecastDate = deprStartDate > lastDeprDate ?
+                new Date(deprStartDate.getFullYear(),
+                    deprStartDate.getMonth(),
+                    deprStartDate.getDate() - 1)
+                : lastDeprDate;
+            var bookValue = newRec.getValue({ fieldId: 'custrecord_assetcost' });
+            var lastDeprAmt = newRec.getValue({ fieldId: 'custrecord_assetlastdepramt' });
+            var lastPeriod = newRec.getValue({ fieldId: 'custrecord_assetcurrentage' });
+
+            var assetValues = record.create({ type: 'customrecord_fam_assetvalues' });
+            assetValues.setValue({ fieldId: 'custrecord_slaveparentasset', value: newRec.id });
+
+            assetValues.setValue({
+                fieldId: 'custrecord_slavelastforecastdate',
+                value: format.parse({ value: lastForecastDate, type: format.Type.DATE })
+            });
+            assetValues.setValue({ fieldId: 'custrecord_slavebookvalue', value: bookValue });
+            assetValues.setValue({ fieldId: 'custrecord_slavelastdepramt', value: lastDeprAmt });
+            assetValues.setValue({
+                fieldId: 'custrecord_slavelastdeprdate',
+                value: format.parse({ value: lastDeprDate, type: format.Type.DATE })
+            });
+            assetValues.setValue({ fieldId: 'custrecord_slavecurrentage', value: lastPeriod });
+            assetValues.setValue({ fieldId: 'custrecord_slavepriornbv', value: bookValue });
+            var assetValuesId = assetValues.save();
+            log.error("assetValuesId", assetValuesId);
+            return assetValuesId;
+        }
+
+        function createAcquisitionHistoryFromRecord(taxRec) {
+            /*    
+                        var DHR_DEFAULT_NAME = 'dhr-default-name';
+            
+                        
+                        var dhrValues = {
+                            name            : DHR_DEFAULT_NAME,
+                            asset           : taxRec.getValue({fieldId : 'custrecord_altdeprasset'}),
+                            altDepr         : taxRec.id,
+                            altMethod       : taxRec.getValue({fieldId : 'custrecord_altdepraltmethod'}),
+                            actDeprMethod   : taxRec.getValue({fieldId : 'custrecord_altdeprmethod'}),
+                            book            : taxRec.getValue({fieldId : 'custrecord_altdepr_accountingbook'}),
+                            assetType       : taxRec.getValue({fieldId : 'custrecord_altdepr_assettype'}),
+                            transType       : customList.TransactionType.Acquisition,
+                            date            : purchaseDate || taxRec.getValue({fieldId : 'custrecord_altdeprstartdeprdate'}),
+                            transAmount     : taxRec.getValue({fieldId : 'custrecord_altdepr_originalcost'}),
+                            nbv             : taxRec.getValue({fieldId : 'custrecord_altdepr_originalcost'}),
+                            quantity        : +assetQty
+                        };
+                
+                      dhrValues.subsidiary = taxRec.getValue({fieldId : 'custrecord_altdepr_subsidiary'});
+            */
+            var history = record.create({
+                type: "customrecord_ncfar_deprhistory"
+            });
+            history.setValue("name", "dhr-default-name");
+            history.setValue("custrecord_deprhistasset", taxRec.id);
+            //history.setValue("custrecord_deprhistaltdepr", taxRec.id);
+            history.setValue("custrecord_deprhistaltmethod", taxRec.getValue({ fieldId: 'custrecord_altdepraltmethod' }));
+            history.setValue("custrecord_deprhistdeprmethod", taxRec.getValue({ fieldId: 'custrecord_altdeprmethod' }));
+            history.setValue("custrecord_deprhistaccountingbook", 1);
+            history.setValue("custrecord_deprhistassettype", taxRec.getValue({ fieldId: 'custrecord_assettype' }));
+            history.setValue("custrecord_deprhisttype", 1);
+            history.setValue("custrecord_deprhistdate", taxRec.getValue({ fieldId: 'custrecord_assetdeprstartdate' }));
+            history.setValue("custrecord_deprhistamount", taxRec.getValue({ fieldId: 'custrecord_assetcost' }));
+            history.setValue("custrecord_deprhistbookvalue", taxRec.getValue({ fieldId: 'custrecord_assetcost' }));
+            history.setValue("custrecord_deprhistquantity", taxRec.getValue({ fieldId: 'custrecord_ncfar_quantity' }));
+            return history.save();
+        };
 
         function getSalesOrderItem(idBien) {
             try {
@@ -1436,10 +1508,6 @@ Date: 23/03/2023
 Author: Jeferson Mejia
 Description: Se juntaron los scritps de Orden de Trabajo
 ==============================================================================================================================================*/
-
-
-
-
 
 
 

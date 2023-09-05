@@ -98,7 +98,7 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                                         jeRec.setValue('name', serie);
                                         jeRec.save();
                                     } catch (error) {
-                                    
+
                                     }
 
                                     //id dispositivo

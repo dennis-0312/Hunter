@@ -474,14 +474,39 @@ define([
 
         const createInventoryAdjustmentIngreso = (scriptParameters, objParams = 0, tipoFlujo = 0) => {
             log.debug('scriptParameters', scriptParameters);
-            let binNumber, account, unitCost, flujo, item, location;
+            let binNumber, account, unitCost, flujo, item, location, customRecord, field, columns;
             if (tipoFlujo == 0) {
                 binNumber = getBinNumberAlquiler(scriptParameters.location);
                 account = EXPENSE_ACCOUNT;
                 unitCost = 0
-                item = scriptParameters.item;
+                //item = scriptParameters.item;
                 flujo = 'custbody_ht_ai_paraalquiler';
                 location = scriptParameters.location;
+                if (scriptParameters.tag == _constant.Valor.VALOR_LOJ_LOJACK) {
+                    customRecord = 'customrecord_ht_record_detallechaslojack'
+                    field = 'custrecord_ht_cl_lojack'
+                    columns = [search.createColumn({ name: field })];
+                } else {
+                    customRecord = 'customrecord_ht_record_detallechaserdisp'
+                    field = 'custrecord_ht_dd_dispositivo'
+                    columns = [search.createColumn({ name: field })];
+                }
+
+                let busqueda = search.create({
+                    type: customRecord,
+                    filters:
+                        [["name", "startswith", scriptParameters.comercial]],
+                    columns: columns
+                });
+                // let pageData = busqueda.runPaged({ pageSize: 1000 });
+                //let searchResultCount = busqueda.runPaged().count;
+                let objResults = busqueda.run().getRange({ start: 0, end: 1 });
+                //log.debug('JSON-CHASER----', objResults);
+                busqueda.run().each((result) => {
+                    item = result.getValue({ name: field });
+                    return true;
+                });
+
             }
 
             if (tipoFlujo == 1) {
@@ -508,28 +533,6 @@ define([
                 });
                 item = dispositivo.custitem_ht_it_item_reins_custodia[0].value;
                 flujo = 'custbody_ht_ai_custodia';
-
-                // let objSearch = search.create({
-                //     type: "location",
-                //     filters:
-                //         [
-                //             ["custrecord_ht_ub_ubicacioncustodia", "is", "T"],
-                //             "AND",
-                //             ["custrecord_ht_ubicacion_padre", "anyof", scriptParameters.location]
-                //         ],
-                //     columns:
-                //         [
-                //             search.createColumn({ name: "internalid", label: "Internal ID" }),
-                //         ]
-                // });
-                // let searchResultCount = objSearch.runPaged().count;
-                // if (searchResultCount > 0) {
-                //     objSearch.run().each(result => {
-                //         ubicacion = result.getValue({ name: "internalid", label: "Internal ID" });
-                //         return true;
-                //     });
-                //     location = ubicacion;
-                // }
                 location = scriptParameters.location;
             }
 

@@ -126,6 +126,10 @@ define([], () => {
         VEHICULO: 154
     }
 
+    let Roles = {
+        EC_CUENTAS_POR_COBRAR: 1221
+    }
+
     return {
         Constants,
         Status,
@@ -134,6 +138,7 @@ define([], () => {
         Search,
         customRecord,
         Transaction,
-        Form
+        Form,
+        Roles
     }
 })

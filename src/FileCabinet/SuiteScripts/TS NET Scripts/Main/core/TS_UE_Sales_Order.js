@@ -10,11 +10,13 @@ define([
     'N/plugin',
     'N/transaction',
     'N/https',
+    'N/runtime',
+    'N/email',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
     '../error/TS_CM_ErrorMessages',
 
-], (log, record, search, serverWidget, plugin, transaction, https, _controller, _constant, _errorMessage) => {
+], (log, record, search, serverWidget, plugin, transaction, https, runtime, email, _controller, _constant, _errorMessage) => {
     const HT_DETALLE_ORDEN_SERVICIO_SEARCH = 'customsearch_ht_detalle_orden_servicio_2'; //HT Detalle Orden de Servicio - PRODUCCION
 
     const beforeLoad = (scriptContext) => {
@@ -79,6 +81,8 @@ define([
             try {
                 const currentRecord = scriptContext.newRecord;
                 let idRecord = currentRecord.id;
+                let senderId = runtime.getCurrentUser();
+                senderId = senderId.id;
                 let objRecord = record.load({ type: 'salesorder', id: idRecord, isDynamic: true });
                 let customer = objRecord.getValue('entity');
                 let vehiculo = objRecord.getValue('custbody_ht_so_bien');
@@ -87,7 +91,7 @@ define([
                 let aprobacionventa = objRecord.getValue('custbody_ht_os_aprobacionventa');
                 let aprobacioncartera = objRecord.getValue('custbody_ht_os_aprobacioncartera');
                 let parametro = 0, parametro_aprob = 0, parametro_fact = 0, workOrder = 0, adp = 0, plazo = 0, valor_tipo_agrupacion = 0, paramChequeo = 0, coberturaRecord = 0, generaOrdenTrabajo = 0, esGarantia = 0, esUpgrade = _constant.Valor.NO, ccd = 0,
-                    dispositivoEnCustodia = "", itemCustodia = {}, ttr = 0, renovamos = false, plataformas = false;
+                    dispositivoEnCustodia = "", itemCustodia = {}, ttr = 0, renovamos = false, plataformas = false, arrayRecipientsOriginal = new Array(), arrayRecipients = new Array();
 
                 for (let i = 0; i < numLines; i++) {
                     objRecord.selectLine({ sublistId: 'item', line: i });
@@ -160,10 +164,13 @@ define([
                         if (parametrosRespo[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION)
                             ttr = parametrosRespo[j][1]
 
+                        if (parametrosRespo[j][0] == _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER && parametrosRespo[j][1] == _constant.Valor.SI)
+                            esAlquiler = _constant.Valor.SI;
                     }
                 }
 
                 log.error("itemCustodia", itemCustodia);
+                log.error('EsAlquiler', esAlquiler)
                 // log.debug('parametro_aprob', parametro_aprob);
                 // log.debug('parametro_fact', parametro_fact);
                 if (parametro_aprob != _constant.Valor.SI && parametro_fact == _constant.Valor.NO) {
@@ -305,6 +312,7 @@ define([
                             }
                         }
                     }
+
                     if (objRecord.getValue('custbody_ht_os_issue_invoice') == true) {
                         let invoice = _controller.createInvoice(objRecord.id);
                         //log.debug('Invoice', invoice);
@@ -317,6 +325,7 @@ define([
                     let out = 0;
                     let bien = objRecord.getValue('custbody_ht_so_bien');
                     let busqueda_cobertura = getCoberturaItem(bien);
+
                     if (busqueda_cobertura.length != 0) {
                         for (let i = 0; i < busqueda_cobertura.length; i++) {
                             let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
@@ -353,6 +362,51 @@ define([
                                 if (out == 1)
                                     break;
                             }
+                        }
+                    }
+
+                    if (esAlquiler == _constant.Valor.SI && adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
+                        log.error('Entry', 'Ingreso a ');
+                        let emailBody = '<p><b>Orden de Servicio por Desinstalación de Alquiler: </b><span style="color: #000000;">' + ordenServicio + '</span></p>' +
+                            '<p><b>Orden de Servicio por Instalación: </b><span style="color: #000000;">' + customer + '</span></p>' +
+                            '<p><b>Cliente: </b><span style="color: #000000;">' + customer + '</span></p>' +
+                            '<p><b>Bien: </b><span style="color: #000000;">' + vehiculo + '</span></p>'
+
+                        let objSearch = search.create({
+                            type: "employee",
+                            filters:
+                                [
+                                    ["role", "anyof", _constant.Roles.EC_CUENTAS_POR_COBRAR],
+                                    "AND",
+                                    ["email", "isnotempty", ""]
+                                ],
+                            columns:
+                                [
+                                    search.createColumn({ name: "email", label: "Email" })
+                                ]
+                        });
+                        //let searchResultCount = objSearch.runPaged().count;
+                        //log.debug("employeeSearchObj result count", searchResultCount);
+                        objSearch.run().each(result => {
+                            let correo = result.getValue({ name: 'email' });
+                            arrayRecipientsOriginal.push(correo);
+                            return true;
+                        });
+
+                        for (let i = 0; i < arrayRecipientsOriginal.length; i += 10) {
+                            const subArreglo = arrayRecipientsOriginal.slice(i, i + 10);
+                            arrayRecipients.push(subArreglo);
+                        }
+
+                        log.error('ArrayRecipients', arrayRecipients);
+                        for (let j = 0; j < arrayRecipients.length; j++) {
+                            email.send({
+                                author: senderId,
+                                recipients: arrayRecipients[j],
+                                subject: 'Orden de Servicio por Desinstalación de Alquiler ' + ordenServicio,
+                                body: emailBody,
+                                relatedRecords: { transactionId: idRecord }
+                            });
                         }
                     }
                 }

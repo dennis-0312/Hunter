@@ -366,24 +366,16 @@ define([
                     }
 
                     if (esAlquiler == _constant.Valor.SI && adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
-                        log.error('Entry', 'Ingreso a ');
+                        log.error('Entry', 'Ingreso a envío de correo por geneaci´no de desinstalación de alquiler');
                         let emailBody = '<p><b>Orden de Servicio por Desinstalación de Alquiler: </b><span style="color: #000000;">' + ordenServicio + '</span></p>' +
-                            '<p><b>Orden de Servicio por Instalación: </b><span style="color: #000000;">' + customer + '</span></p>' +
+                            //'<p><b>Orden de Servicio por Instalación: </b><span style="color: #000000;">' + customer + '</span></p>' +
                             '<p><b>Cliente: </b><span style="color: #000000;">' + customer + '</span></p>' +
                             '<p><b>Bien: </b><span style="color: #000000;">' + vehiculo + '</span></p>'
 
                         let objSearch = search.create({
                             type: "employee",
-                            filters:
-                                [
-                                    ["role", "anyof", _constant.Roles.EC_CUENTAS_POR_COBRAR],
-                                    "AND",
-                                    ["email", "isnotempty", ""]
-                                ],
-                            columns:
-                                [
-                                    search.createColumn({ name: "email", label: "Email" })
-                                ]
+                            filters: [["role", "anyof", _constant.Roles.EC_CUENTAS_POR_COBRAR], "AND", ["email", "isnotempty", ""]],
+                            columns: [search.createColumn({ name: "email", label: "Email" })]
                         });
                         //let searchResultCount = objSearch.runPaged().count;
                         //log.debug("employeeSearchObj result count", searchResultCount);
@@ -393,20 +385,22 @@ define([
                             return true;
                         });
 
-                        for (let i = 0; i < arrayRecipientsOriginal.length; i += 10) {
-                            const subArreglo = arrayRecipientsOriginal.slice(i, i + 10);
-                            arrayRecipients.push(subArreglo);
-                        }
+                        if (objSearch.runPaged().count > 0) {
+                            for (let i = 0; i < arrayRecipientsOriginal.length; i += 10) {
+                                const subArreglo = arrayRecipientsOriginal.slice(i, i + 10);
+                                arrayRecipients.push(subArreglo);
+                            }
 
-                        log.error('ArrayRecipients', arrayRecipients);
-                        for (let j = 0; j < arrayRecipients.length; j++) {
-                            email.send({
-                                author: senderId,
-                                recipients: arrayRecipients[j],
-                                subject: 'Orden de Servicio por Desinstalación de Alquiler ' + ordenServicio,
-                                body: emailBody,
-                                relatedRecords: { transactionId: idRecord }
-                            });
+                            log.error('ArrayRecipients', arrayRecipients);
+                            for (let j = 0; j < arrayRecipients.length; j++) {
+                                email.send({
+                                    author: senderId,
+                                    recipients: arrayRecipients[j],
+                                    subject: 'Orden de Servicio por Desinstalación de Alquiler ' + ordenServicio,
+                                    body: emailBody,
+                                    relatedRecords: { transactionId: idRecord }
+                                });
+                            }
                         }
                     }
                 }
@@ -793,7 +787,7 @@ define([
         }
     }
 
-    function getCobertura(bien) {
+    const getCobertura = (bien) => {
         try {
             var arrCoberturaId = new Array();
             var busqueda = search.create({

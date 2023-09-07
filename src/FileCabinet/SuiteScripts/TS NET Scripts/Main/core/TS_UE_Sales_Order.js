@@ -450,6 +450,7 @@ define([
                         }
                     }
                 }
+                
                 // if (generaOrdenTrabajo == 1 && esGarantia == 0) {
                 //     workOrder = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, json);
                 // }
@@ -457,7 +458,6 @@ define([
                 log.error('Erro-Create', error);
             }
         }
-
 
         if (scriptContext.type === scriptContext.UserEventType.EDIT) {
             var objRecord = scriptContext.newRecord;

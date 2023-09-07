@@ -2,25 +2,12 @@
  *@NApiVersion 2.1
  *@NScriptType ClientScript
  */
- define(['N/record'], function(record) {
+define(['N/record'], (record) => {
+   const pageInit = (scriptContext) => {
+      let currentRecord = scriptContext.currentRecord;
+      currentRecord.setValue('quantity', 1);
+   }
 
-
-
-    const pageInit = (scriptContext) => {
-      var currentRecord = scriptContext.currentRecord;
-      
-       currentRecord.setValue('quantity',1);
-      
-      
-    }
-	
-
-    
-
-    return {
-
-       
-       pageInit : pageInit,
-    }
+   return { pageInit: pageInit }
 });
 

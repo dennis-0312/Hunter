@@ -395,7 +395,7 @@ define([
 
                         if (adpDesinstalacion != _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
                             if (returEjerepo && adpServicio != 0) {
-                                log.debug('SALES ORDER!!!!!!!!!!!!', idOS + '==' + idSalesorder)
+                                //log.debug('SALES ORDER!!!!!!!!!!!!', idOS + '==' + idSalesorder)
                                 if (idOS == idSalesorder) {
                                     log.debug('MONITOREOOOOOO', 'Cobertura1');
                                     let json = {
@@ -510,8 +510,8 @@ define([
                             } else {
                                 fulfill = boxserie;
                             }
-                            var idDispositivo = getInventoryNumber(fulfill, idItemOT);
-                            //log.debug('idDispositivo', idDispositivo)
+                            let idDispositivo = getInventoryNumber(fulfill, idItemOT);
+                            log.debug('idDispositivo', idDispositivo)
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
                             if (estado == ESTADO_CHEQUEADA && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
                                 let serieProducto = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
@@ -572,15 +572,15 @@ define([
                                     }
                                 }
                                 try {
-                                    var newFulfill = record.transform({
+                                    let newFulfill = record.transform({
                                         fromType: record.Type.SALES_ORDER,
                                         fromId: idSalesOrder,
                                         toType: record.Type.ITEM_FULFILLMENT
                                     });
-                                    var numLines = newFulfill.getLineCount({ sublistId: 'item' });
+                                    let numLines = newFulfill.getLineCount({ sublistId: 'item' });
                                     for (let i = 0; i < numLines; i++) {
                                         newFulfill.setSublistValue({ sublistId: 'item', fieldId: 'quantity', value: 1, line: i });
-                                        var objSubRecord = newFulfill.getSublistSubrecord({ sublistId: 'item', fieldId: 'inventorydetail', line: 0 })
+                                        let objSubRecord = newFulfill.getSublistSubrecord({ sublistId: 'item', fieldId: 'inventorydetail', line: 0 })
                                         objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: idDispositivo, line: 0 });
                                         objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1, line: 0 });
                                         objSubRecord.setSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1, line: 0 });
@@ -812,6 +812,7 @@ define([
                                     });
                                     device = dispo.custrecord_ht_cl_lojack[0].value;
                                 } else {
+                                    log.debug('TAG', 'MONITOREO/CARGO: ' + tag)
                                     record.submitFields({
                                         type: _constant.customRecord.CHASER,
                                         id: serieChaser,

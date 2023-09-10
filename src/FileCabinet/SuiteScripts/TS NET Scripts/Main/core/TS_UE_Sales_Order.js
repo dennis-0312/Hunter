@@ -91,7 +91,7 @@ define([
                 let aprobacionventa = objRecord.getValue('custbody_ht_os_aprobacionventa');
                 let aprobacioncartera = objRecord.getValue('custbody_ht_os_aprobacioncartera');
                 let parametro = 0, parametro_aprob = 0, parametro_fact = 0, workOrder = 0, adp = 0, plazo = 0, valor_tipo_agrupacion = 0, paramChequeo = 0, coberturaRecord = 0, generaOrdenTrabajo = 0, esGarantia = 0, esUpgrade = _constant.Valor.NO, ccd = 0,
-                    dispositivoEnCustodia = "", itemCustodia = {}, ttr = 0, renovamos = false, plataformas = false, arrayRecipientsOriginal = new Array(), arrayRecipients = new Array();
+                    dispositivoEnCustodia = "", itemCustodia = {}, ttr = 0, renovamos = false, plataformas = false, arrayRecipientsOriginal = new Array(), arrayRecipients = new Array(), esAlquiler = 0;
 
                 for (let i = 0; i < numLines; i++) {
                     objRecord.selectLine({ sublistId: 'item', line: i });
@@ -450,7 +450,7 @@ define([
                         }
                     }
                 }
-                
+
                 // if (generaOrdenTrabajo == 1 && esGarantia == 0) {
                 //     workOrder = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, json);
                 // }
@@ -658,14 +658,14 @@ define([
                                     for (let j = 0; j < parametrosRespo.length; j++) {
                                         if (parametrosRespo[j][0] == _constant.Parameter.TCH_TIPO_CHEQUEO_OT && parametrosRespo[j][1] == paramChequeo) {
                                             //TODO: Habilitar este bloque para cuando se haga el ajuste del proceso por aprobación ==========
-                                            // if (workOrder != 0) {
-                                            //     record.submitFields({
-                                            //         type: 'customrecord_ht_record_ordentrabajo',
-                                            //         id: workOrder,
-                                            //         values: { 'custrecord_ht_ot_serieproductoasignacion': busqueda_cobertura[i][2] },
-                                            //         options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                            //     });
-                                            // }
+                                            if (workOrder != 0) {
+                                                record.submitFields({
+                                                    type: 'customrecord_ht_record_ordentrabajo',
+                                                    id: workOrder,
+                                                    values: { 'custrecord_ht_ot_serieproductoasignacion': busqueda_cobertura[i][2] },
+                                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                                });
+                                            }
                                             log.debug('Entry', 'Cobertura');
                                             if (esUpgrade == _constant.Valor.SI) {
                                                 record.submitFields({

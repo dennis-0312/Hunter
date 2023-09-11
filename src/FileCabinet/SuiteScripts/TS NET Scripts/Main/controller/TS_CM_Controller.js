@@ -293,6 +293,7 @@ define([
                             }
                         }
                     }
+                    console.log('TipoBien', tipoItem);
                     if (type != null) {
                         var cont = 0;
                         for (let i = 0; i < type.length; i++) {
@@ -307,9 +308,13 @@ define([
                                 }
                             }
                         }
+                        console.log('Cont', cont);
                         if (cont == 0) {
                             response.status = false;
                             response.mensaje = 'No existe Item instalado con esta parametrizacion del ITEM ' + item + '.'
+                        } else {
+                            response.status = false;
+                            response.mensaje = 'Ya existe un producto instalado con la misma agrupación de producto.'
                         }
                     }
                     if (type == '') {
@@ -1160,8 +1165,8 @@ define([
         }
 
         const getCobertura = (id) => {
-            var arrayCobertura = [];
-            var busqueda = search.create({
+            let arrayCobertura = [];
+            let busqueda = search.create({
                 type: "customrecord_ht_co_cobertura",
                 filters:
                     [
@@ -1172,8 +1177,8 @@ define([
                         search.createColumn({ name: "custrecord_ht_co_producto", label: "HT CO PRODUCTO" })//producto de la cobertura
                     ]
             });
-            var savedsearch = busqueda.run().getRange(0, 100);
-            var internalid = '';
+            let savedsearch = busqueda.run().getRange(0, 100);
+            let internalid = '';
             if (savedsearch.length > 0) {
                 busqueda.run().each(function (result) {
                     internalid = result.getValue(busqueda.columns[0]);

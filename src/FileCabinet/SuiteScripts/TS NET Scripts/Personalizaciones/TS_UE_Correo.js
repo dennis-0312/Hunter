@@ -16,7 +16,6 @@ Governance points: N/A
 define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/error'],
     (log, search, record, serverWidget, https, error) => {
 
-
         const afterSubmit = (context) => {
             if (context.type === context.UserEventType.CREATE || context.type === context.UserEventType.EDIT) {
                 const objRecord = context.newRecord;
@@ -26,13 +25,7 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
                 var principal = objRecord.getValue('custrecord_ht_email_emailprincipal');
                 log.debug('principal', principal)
                 if (principal == true) {
-                    record.submitFields({
-                        type: 'customer',
-                        id: entidad,
-                        values: {
-                            'email': email
-                        }
-                    });
+                    record.submitFields({ type: 'customer', id: entidad, values: { 'email': email } });
                     var idEmail = getIdEmail(entidad, objRecord.id);
                     log.debug('idEmail', idEmail);
                     for (i = 0; i < idEmail.length; i++) {

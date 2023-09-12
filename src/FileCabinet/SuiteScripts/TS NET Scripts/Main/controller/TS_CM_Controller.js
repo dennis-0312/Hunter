@@ -293,7 +293,7 @@ define([
                             }
                         }
                     }
-                    console.log('TipoBien', tipoItem);
+                    //console.log('TipoBien', tipoItem);
                     if (type != null) {
                         var cont = 0;
                         for (let i = 0; i < type.length; i++) {
@@ -308,10 +308,10 @@ define([
                                 }
                             }
                         }
-                        console.log('Cont', cont);
+                        //console.log('Cont', cont);
                         if (cont == 0) {
                             response.status = false;
-                            response.mensaje = 'No existe Item instalado con esta parametrizacion del ITEM ' + item + '.'
+                            response.mensaje = 'No existe Produncto instalado con esta parametrizacion del ITEM ' + item + '.'
                         } else {
                             response.status = false;
                             response.mensaje = 'Ya existe un producto instalado con la misma agrupación de producto.'
@@ -319,7 +319,7 @@ define([
                     }
                     if (type == '') {
                         response.status = false;
-                        response.mensaje = 'El bien ingresado no cuenta con dispositivo instalado'
+                        response.mensaje = 'El bien ingresado no cuenta con dispositivo instalado.'
                     }
                     break;
                 case PIM_PEDIR_INFORMACION_MEDICA:

@@ -101,7 +101,6 @@ define([], () => {
         PCI_PRODUCTO_CONTROL_INTERNO: 93,
         GPR_GRUPO_DE_PRODUCCION: 37,
         PRO_ITEM_COMERCIAL_DE_PRODUCCION: 70
-
     }
 
     let Valor = {
@@ -140,7 +139,8 @@ define([], () => {
         INVOICE: 'invoice',
         ASSEMBLY_ORDER: 'workorder',
         ASSEMBLY_BUILD: 'assemblybuild',
-        BIN: 'bin'
+        BIN: 'bin',
+        VENDOR_PAYMENT: 'vendorpayment'
     }
 
     let Form = {

@@ -20,7 +20,7 @@ define([
         let field = currentRecord.getField('altname');
         // if (currentRecord.getValue("custrecord_ht_bien_tipobien") == _constant.Constants.TERRESTRE)
         field.isDisabled = true;
-        console.log(currentRecord.getValue("custrecord_ht_bien_tipobien"))
+        //console.log(currentRecord.getValue("custrecord_ht_bien_tipobien"))
     };
 
     const saveRecord = (context) => {
@@ -365,7 +365,7 @@ define([
     const fieldChanged = (context) => {
         try {
             const objRecord = context.currentRecord;
-            console.log("objRecord", objRecord);
+            //console.log("objRecord", objRecord);
             const typeTransaction = objRecord.type;
             const sublistFieldName = context.fieldId;
             //const customForm = objRecord.getValue("customform");
@@ -622,8 +622,14 @@ define([
                 //const objRecord = scriptContext.newRecord;
                 const bienid = objRecord.id.toString();
                 let altname = objRecord.getValue('altname');
-                if (altname.includes(bienid) == false) {
-                    objRecord.setValue('altname', 'PROD');
+
+                // if (altname.includes(bienid) == false) {
+                //     console.log(altname)
+                //     objRecord.setValue('altname', 'PROD');
+                // }
+                if (objRecord.getValue('custrecord_ht_bien_placa').length > 0) {
+                    objRecord.setValue('altname', objRecord.getValue('custrecord_ht_bien_placa'));
+                    //console.log(altname)
                 }
             }
         } catch (error) {
@@ -691,7 +697,7 @@ define([
     return {
         pageInit: pageInit,
         saveRecord: saveRecord,
-        fieldChanged: fieldChanged,
+        fieldChanged: fieldChanged
         //sublistChanged: sublistChanged
     };
 });

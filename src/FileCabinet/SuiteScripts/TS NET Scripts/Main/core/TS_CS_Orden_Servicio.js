@@ -180,15 +180,15 @@ define(['N/search',
                         }
                     }
 
-                    if (parametrosRespo[j][0] == _constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS && parametrosRespo[j][1] == _constant.Valor.SI) {
-                        console.log('IDCobertura', idcobertura);
-                        let verificar_instalacion_parametro = _controllerParm.parametros(_constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS, linea, idcobertura);
-                        console.log('verificar_instalacion_parametro', verificar_instalacion_parametro);
-                        if (verificar_instalacion_parametro.status == false) {
-                            dialog.alert({ title: 'Alerta', message: verificar_instalacion_parametro.mensaje });
-                            return false
-                        }
-                    }
+                    // if (parametrosRespo[j][0] == _constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS && parametrosRespo[j][1] == _constant.Valor.SI) {
+                    //     console.log('IDCobertura', idcobertura);
+                    //     let verificar_instalacion_parametro = _controllerParm.parametros(_constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS, linea, idcobertura);
+                    //     console.log('verificar_instalacion_parametro', verificar_instalacion_parametro);
+                    //     if (verificar_instalacion_parametro.status == false) {
+                    //         dialog.alert({ title: 'Alerta', message: verificar_instalacion_parametro.mensaje });
+                    //         return false
+                    //     }
+                    // }
 
                     if (parametrosRespo[j][0] == _constant.Parameter.CPR_CONVERSION_DE_PRODUCTO_UPGRADE && parametrosRespo[j][1] == _constant.Valor.SI) {
                         flag3 += 1;
@@ -279,8 +279,8 @@ define(['N/search',
             return false
         }
 
-        return false;
-        //return true
+        //return false;
+        return true
 
     }
 

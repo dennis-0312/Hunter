@@ -31,7 +31,7 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/format'], (log, 
         log.debug('csvImportTaskId', csvImportTaskId);
 
         let csvTaskStatus = task.checkStatus({ taskId: csvImportTaskId });
-        
+
         log.debug('csvTaskStatus', csvTaskStatus);
         return { 'ConextGet': csvTaskStatus.status };
         //return 'Oracle Netsuite Connected - Release 2023.1';

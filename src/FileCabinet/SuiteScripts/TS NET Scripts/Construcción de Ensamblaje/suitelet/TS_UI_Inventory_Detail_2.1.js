@@ -5,10 +5,8 @@
 define([
     'N/ui/serverWidget',
     'N/search',
-    'N/log',
-    'N/query',
-    'N/config',
-], (serverWidget, search, log, query, config) => {
+    'N/log'
+], (serverWidget, search, log) => {
 
     const onRequest = (context) => {
         let method = context.request.method;
@@ -20,8 +18,9 @@ define([
                 let itemName = context.request.parameters.itemName || " ";
                 let quantity = context.request.parameters.quantity || " ";
                 let units = context.request.parameters.units || " ";
-                let inventoryDetail = getInventoryDetail(item, location);
-                let itemType = getType(item);
+                let bin = context.request.parameters.bin || "";
+                let inventoryDetail = getInventoryBalance(item, location, bin);
+                let itemType = getItemType(item);
 
                 let form = serverWidget.createForm({
                     title: "Detalle de Inventario",
@@ -122,7 +121,7 @@ define([
                         type: serverWidget.SublistType.INLINEEDITOR,
                         label: 'Detalle de Inventario'
                     });
-    
+
                     let serialSublistField = inventoryDetailSubList.addField({
                         id: 'custpage_slf_serial',
                         type: serverWidget.FieldType.SELECT,
@@ -130,7 +129,7 @@ define([
                     });
                     serialSublistField.isMandatory = true;
                     setSerialSublistFieldValues(serialSublistField, inventoryDetail);
-    
+
                     let depositSublistField = inventoryDetailSubList.addField({
                         id: 'custpage_slf_deposit',
                         type: serverWidget.FieldType.SELECT,
@@ -139,7 +138,7 @@ define([
                     });
                     depositSublistField.isMandatory = true;
                     depositSublistField.updateDisplayType({ displayType: serverWidget.FieldDisplayType.DISABLED });
-    
+
                     let stateSublistField = inventoryDetailSubList.addField({
                         id: 'custpage_slf_state',
                         type: serverWidget.FieldType.SELECT,
@@ -148,7 +147,7 @@ define([
                     });
                     stateSublistField.isMandatory = true;
                     stateSublistField.updateDisplayType({ displayType: serverWidget.FieldDisplayType.DISABLED });
-    
+
                     let quantitySublistField = inventoryDetailSubList.addField({
                         id: 'custpage_slf_quantity',
                         type: serverWidget.FieldType.INTEGER,
@@ -158,7 +157,7 @@ define([
                     quantitySublistField.isMandatory = true;
                 }
 
-                
+
 
                 form.addSubmitButton("Guardar");
 
@@ -188,9 +187,10 @@ define([
         }
     }
 
-    const getInventoryDetail = (item, location) => {
+    const getInventoryBalance = (item, location, bin) => {
         if (!(item && location)) return;
-        let inventoryDetailResult = {};
+        let inventoryDetail = getInventoryDetail(item, location);
+        let inventoryBalanceResult = {};
         let inventoryBalanceSearch = search.create({
             type: "inventorybalance",
             filters: [
@@ -201,7 +201,10 @@ define([
             columns: [
                 search.createColumn({ name: "binnumber", label: "Bin Number" }),
                 search.createColumn({ name: "inventorynumber", label: "Inventory Number" }),
-                search.createColumn({ name: "status", label: "Status" })
+                search.createColumn({ name: "status", label: "Status" }),
+                search.createColumn({ name: "isserialitem", join: "item", label: "Is Serialized Item" }),
+                search.createColumn({ name: "onhand", label: "On Hand" }),
+                search.createColumn({ name: "available", label: "Available" })
             ]
         });
 
@@ -212,8 +215,11 @@ define([
             let binNumber = result.getText('binnumber');
             let status = result.getText('status');
             let statusId = result.getValue('status');
+            let isSerialized = result.getValue(result.columns[3]);
 
-            inventoryDetailResult[inventoryNumberId] = {
+            let key = isSerialized ? inventoryNumberId : binNumberId;
+            if (binNumber != bin) return true;
+            inventoryBalanceResult[key] = {
                 inventoryNumber,
                 binNumber,
                 binNumberId,
@@ -223,14 +229,71 @@ define([
             return true;
         });
 
-        log.error("cantidad", Object.keys(inventoryDetailResult).length);
+        log.error("cantidad", Object.keys(inventoryBalanceResult).length);
+        return inventoryBalanceResult;
+    }
+
+    const getInventoryDetail = (item, location) => {
+        if (!(item && location)) return {};
+        let inventoryDetailResult = {};
+        let inventoryDetailSearch = search.create({
+            type: "inventorydetail",
+            filters: [
+                ["location", "anyof", location],
+                "AND",
+                ["item", "anyof", item]
+            ],
+            columns: [
+                search.createColumn({ name: "isserialitem", join: "item", summary: "GROUP", label: "Is Serialized Item" }),
+                search.createColumn({ name: "inventorynumber", summary: "GROUP", label: " Number" }),
+                search.createColumn({ name: "binnumber", summary: "GROUP", label: "Bin Number" }),
+                search.createColumn({ name: "status", summary: "GROUP", label: "Status" }),
+                search.createColumn({ name: "itemcount", summary: "SUM", label: "Quantity" })
+            ]
+        });
+
+        inventoryDetailSearch.run().each(function (result) {
+            let columns = result.columns;
+            let isSerialized = result.getValue(columns[0]);
+            let inventoryNumberId = result.getValue(columns[1]);
+            let inventoryNumber = result.getText(columns[1]);
+            let binNumberId = result.getValue(columns[2]);
+            let binNumber = result.getText(columns[2]);
+            let status = result.getText(columns[3]);
+            let statusId = result.getValue(columns[3]);
+            let quantity = result.getValue(columns[4]);
+            if (quantity == "0") return true;
+            if (!isSerialized) {
+                inventoryDetailResult[binNumberId] = {
+                    isSerialized,
+                    binNumber,
+                    binNumberId,
+                    status,
+                    statusId,
+                    quantity
+                };
+            } else {
+                inventoryDetailResult[inventoryNumberId] = {
+                    isSerialized,
+                    inventoryNumber,
+                    binNumber,
+                    binNumberId,
+                    status,
+                    statusId,
+                    quantity
+                };
+            }
+
+            return true;
+        });
+
         return inventoryDetailResult;
     }
 
-    const getType = (itemId) => {
+    const getItemType = (itemId) => {
         let itemRecord = search.lookupFields({
-            type: search.Type.ITEM, 
-            id: itemId, 
+            type: search.Type.ITEM,
+            id: itemId,
             columns: ["recordtype"]
         });
         return itemRecord.recordtype;

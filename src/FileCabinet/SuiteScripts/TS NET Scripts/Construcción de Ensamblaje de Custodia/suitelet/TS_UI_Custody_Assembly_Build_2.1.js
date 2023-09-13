@@ -5,12 +5,10 @@
 define([
     'N/ui/serverWidget',
     'N/log',
-    'N/config',
-    'N/url',
     'N/task',
     'N/redirect',
-    './lib/TS_LBRY_Assembly_Build_2.1.js'
-], (serverWidget, log, config, url, task, redirect, library) => {
+    './lib/TS_LBRY_Custody_Assembly_Build_2.1.js'
+], (serverWidget, log, task, redirect, library) => {
 
     const onRequest = (context) => {
         try {
@@ -18,16 +16,16 @@ define([
             let userInterface = new library.UserInterface(context.request.parameters);
             const FIELDS = userInterface.FIELDS;
             if (method == 'GET') {
+
                 const PARAMETERS = userInterface.getFormattedParameters();
                 log.error("parameters Q", PARAMETERS);
 
-                let inventoryDetailStyle = userInterface.getInventoryDetailCSS();
-                log.error("inventoryDetailStyle", inventoryDetailStyle);
                 let form = userInterface.createForm(FIELDS.form.main.text);
                 let inlineHtmlField = form.addField(FIELDS.field.inlinehtml.id, serverWidget.FieldType.INLINEHTML, FIELDS.field.inlinehtml.text);
-                inlineHtmlField.setDefaultValue('<script>' + viewInventoryDetail + '</script><style>' + inventoryDetailStyle + '</style>');
+                inlineHtmlField.setDefaultValue('<script>' + viewInventoryDetail + '</script>');
+
                 userInterface.init();
-                form.setClientScript("../TS_CS_Assembly_Build_2.1.js")
+                form.setClientScript("../TS_CS_Custody_Assembly_Build_2.1.js")
 
                 form.addFieldGroup(FIELDS.fieldgroup.primary.id, FIELDS.fieldgroup.primary.text);
                 let customerField = form.addField(FIELDS.field.customer.id, serverWidget.FieldType.SELECT, FIELDS.field.customer.text, FIELDS.fieldgroup.primary.id, 'customer');
@@ -42,20 +40,27 @@ define([
                 salesOrderField.setDefaultValue(PARAMETERS.salesorder);
                 salesOrderField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
-                let itemField = form.addField(FIELDS.field.item.id, serverWidget.FieldType.SELECT, FIELDS.field.item.text, FIELDS.fieldgroup.primary.id, 'item');
-                itemField.setDefaultValue(PARAMETERS.item);
-                itemField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+                let salesItemField = form.addField(FIELDS.field.salesitem.id, serverWidget.FieldType.SELECT, FIELDS.field.salesitem.text, FIELDS.fieldgroup.primary.id, 'item');
+                salesItemField.setDefaultValue(PARAMETERS.item);
+                salesItemField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
-                //let assemblyItemField = form.addField(FIELDS.field.assemblyitem.id, serverWidget.FieldType.SELECT, FIELDS.field.assemblyitem.text, FIELDS.fieldgroup.primary.id, 'item');
-                //assemblyItemField.setDefaultValue(PARAMETERS.item);
-                //assemblyItemField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+                let reinstaallItemField = form.addField(FIELDS.field.reinstallitem.id, serverWidget.FieldType.SELECT, FIELDS.field.reinstallitem.text, FIELDS.fieldgroup.primary.id, 'item');
+                reinstaallItemField.setDefaultValue(PARAMETERS.relateditem);
+                reinstaallItemField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
-                //let billOfMaterialsField = form.addField(FIELDS.field.billofmaterials.id, serverWidget.FieldType.SELECT, FIELDS.field.billofmaterials.text, FIELDS.fieldgroup.primary.id, 'bom');
-                //userInterface.setBillOfMaterialsAndAssemblyItemFieldData(billOfMaterialsField, assemblyItemField, itemField.getDefaultValue());
-                //billOfMaterialsField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+                let deviceItemField = form.addField(FIELDS.field.deviceitem.id, serverWidget.FieldType.SELECT, FIELDS.field.deviceitem.text, FIELDS.fieldgroup.primary.id, 'item');
+                deviceItemField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+
+                let inventoryNumberField = form.addField(FIELDS.field.inventorynumber.id, serverWidget.FieldType.TEXT, FIELDS.field.inventorynumber.text, FIELDS.fieldgroup.primary.id);
+                userInterface.setInventoryNumber(inventoryNumberField, salesOrderField.getDefaultValue(), salesItemField.getDefaultValue());
+                userInterface.setDeviceItem(deviceItemField, inventoryNumberField.getDefaultValue());
+                inventoryNumberField.isMandatory = true;
+
+                let inventoryNumberIdField = form.addField(FIELDS.field.inventorynumberid.id, serverWidget.FieldType.SELECT, FIELDS.field.inventorynumberid.text, FIELDS.fieldgroup.primary.id, 'inventorynumber');
+                inventoryNumberIdField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
                 let billOfMaterialRevisionField = form.addField(FIELDS.field.billofmaterialsrev.id, serverWidget.FieldType.SELECT, FIELDS.field.billofmaterialsrev.text, FIELDS.fieldgroup.primary.id, 'bomrevision');
-                userInterface.setBillOfMaterialsRevisionFieldData(billOfMaterialRevisionField, itemField.getDefaultValue());
+                userInterface.setBillOfMaterialsRevisionFieldData(billOfMaterialRevisionField, salesItemField.getDefaultValue());
                 billOfMaterialRevisionField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
                 form.addFieldGroup(FIELDS.fieldgroup.classification.id, FIELDS.fieldgroup.classification.text);
@@ -72,6 +77,9 @@ define([
                 inventoryDetailField.setDefaultValue("{}");
                 inventoryDetailField.updateDisplayType(serverWidget.FieldDisplayType.NODISPLAY);
 
+                userInterface.setInventoryNumberId(inventoryNumberIdField, locationField.getDefaultValue(), salesItemField.getDefaultValue(), inventoryNumberField.getDefaultValue());
+                inventoryNumberField.updateDisplayType(serverWidget.FieldDisplayType.NODISPLAY);
+
                 form.addSubtab(FIELDS.subtab.components.id, FIELDS.subtab.components.text);
                 let componentSubList = form.addSublist(FIELDS.sublist.components.id, serverWidget.SublistType.LIST, FIELDS.sublist.components.text, FIELDS.subtab.components.id);
                 componentSubList.addSublistField(FIELDS.sublistfield.componentid.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.componentid.text);
@@ -86,15 +94,19 @@ define([
                 let alquilerField = componentSubList.addSublistField(FIELDS.sublistfield.alquiler.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.alquiler.text);
                 alquilerField.updateDisplayType(serverWidget.FieldDisplayType.HIDDEN);
                 componentSubList.addSublistField(FIELDS.sublistfield.inventorydetail.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.inventorydetail.text);
-                userInterface.setComponentsSublistData(componentSubList, billOfMaterialRevisionField.getDefaultValue(), locationField.getDefaultValue(), itemField.getDefaultValue());
+
+                userInterface.setComponentsSublistData(componentSubList, billOfMaterialRevisionField.getDefaultValue(), locationField.getDefaultValue());
+
                 form.addSubmitButton(FIELDS.button.submit.text);
+
                 context.response.writePage(form.form);
+
             } else if (method == 'POST') {
                 let inventoryDetail = JSON.parse(context.request.parameters.custpage_f_inventorydetail);
                 log.error("inventoryDetail", inventoryDetail);
-                let { comercialData, alquilerData } = getSublistData(context.request.parameters.custpage_sl_componentsdata, inventoryDetail);
+                let comercialData = getSublistData(context.request.parameters.custpage_sl_componentsdata, inventoryDetail);
                 log.error("comercialData", comercialData);
-                let parameters = getParametersForSchedule(context.request.parameters, comercialData, alquilerData);
+                let parameters = getParametersForSchedule(context.request.parameters, comercialData);
                 log.error("parameters", parameters);
                 taskSchedule(parameters)
                 redirect.toRecord({
@@ -102,6 +114,7 @@ define([
                     id: context.request.parameters.custpage_f_workorder
                 });
             }
+
         } catch (error) {
             log.error("error", error);
             context.response.writePage(error);
@@ -114,19 +127,21 @@ define([
         scriptParameters.custscript_ts_ss_buil_inv_adj_comercial = comercialData;
         scriptParameters.custscript_ts_ss_buil_inv_adj_customer = parameters.custpage_f_customer || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_location = parameters.custpage_f_location || "";
-        scriptParameters.custscript_ts_ss_buil_inv_adj_item = parameters.custpage_f_item || "";
+        scriptParameters.custscript_ts_ss_buil_inv_adj_item = parameters.custpage_f_reinstallitem || "";
+        scriptParameters.custscript_ts_ss_buil_inv_adj_deviceitem = parameters.custpage_f_deviceitem || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_workorder = parameters.custpage_f_workorder || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_salesorder = parameters.custpage_f_salesorder || "";
-        scriptParameters.custscript_ts_ss_buil_inv_adj_assemblyfl = 'alquiler';
+        scriptParameters.custscript_ts_ss_buil_inv_adj_invtnumber = parameters.custpage_f_inventorynumber || "";
+        scriptParameters.custscript_ts_ss_buil_inv_adj_reinvnumid = parameters.custpage_f_inventorynumberid || "";
+        scriptParameters.custscript_ts_ss_buil_inv_adj_assemblyfl = 'custodia';
         return scriptParameters;
     }
 
     const getSublistData = (sublistData, inventoryDetail) => {
-        let comercialData = [], alquilerData = [];
+        let comercialData = [];
         try {
             const breakLine = /\u0002/;
             const breakColumns = /\u0001/;
-            //{"10936":{"8054":{"serial":"8054","deposit":"4","state":"1","quantity":1}}
             log.error("sublistData", sublistData);
             let lines = sublistData.split(breakLine);
             for (let i = 0; i < lines.length; i++) {
@@ -134,9 +149,9 @@ define([
                 let id = line[0];
                 let type = line[1];
                 let alquiler = line[7];
-                
+
                 log.error(i, inventoryDetail[i]);
-                log.error(i, {line, id, type, alquiler});
+                log.error(i, { line, id, type, alquiler });
                 if (inventoryDetail[i] === undefined) continue;
                 let length = Object.keys(inventoryDetail[i]).length;
                 if (length <= 0) continue;
@@ -146,16 +161,14 @@ define([
                     detail.seriales.push(inventoryDetail[i][serialId]);
                 }
 
-                if (alquiler == 'T') {
-                    alquilerData.push(detail);
-                } else {
+                if (alquiler == 'F') {
                     comercialData.push(detail);
                 }
             }
         } catch (error) {
             log.error("An error was found in [getSublistData] function", error);
         }
-        return { alquilerData, comercialData };
+        return comercialData;
     }
 
     const taskSchedule = (params) => {

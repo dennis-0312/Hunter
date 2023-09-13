@@ -129,7 +129,16 @@ define([
                         }
                     }
 
-                    if (altname.includes(bienid) == false) {
+                    if (objRecord.getValue("custrecord_ht_bien_tipobien") == _constant.Constants.PRODUCCION) {
+                        if (objRecord.getValue('name') != objRecord.getValue('altname')) {
+                            record.submitFields({
+                                type: 'customrecord_ht_record_bienes',
+                                id: bienid,
+                                values: { 'name': altname },
+                                options: { enableSourcing: false, ignoreMandatoryFields: true }
+                            });
+                        }
+                    } else if (altname.includes(bienid) == false) {
                         record.submitFields({
                             type: 'customrecord_ht_record_bienes',
                             id: bienid,
@@ -146,7 +155,17 @@ define([
                 const objRecord = scriptContext.newRecord;
                 const bienid = objRecord.id.toString();
                 let altname = objRecord.getValue('altname');
-                if (altname.includes(bienid) == false) {
+
+                if (objRecord.getValue("custrecord_ht_bien_tipobien") == _constant.Constants.PRODUCCION) {
+                    if (objRecord.getValue('name') != objRecord.getValue('altname')) {
+                        record.submitFields({
+                            type: 'customrecord_ht_record_bienes',
+                            id: bienid,
+                            values: { 'name': altname },
+                            options: { enableSourcing: false, ignoreMandatoryFields: true }
+                        });
+                    }
+                } else if (altname.includes(bienid) == false) {
                     record.submitFields({
                         type: 'customrecord_ht_record_bienes',
                         id: bienid,

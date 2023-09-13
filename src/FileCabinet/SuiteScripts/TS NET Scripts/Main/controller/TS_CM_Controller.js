@@ -159,7 +159,7 @@ define([
                     }
                     break;
                 case _constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO:
-                    log.debug(' id.item', id.item);
+                    log.debug('id.item-Varias', id.item);
                     if (id.serviceOrder) {
                         var customrecord_ht_pp_main_item_relacionadoSearchObj = search.create({
                             type: "customrecord_ht_pp_main_item_relacionado",
@@ -202,7 +202,7 @@ define([
                     }
                     break;
                 case _constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO:
-                    log.debug(' id.item', id.item);
+                    log.debug('id.item', id.item);
                     if (id.serviceOrder) {
                         var customrecord_ht_pp_main_item_relacionadoSearchObj = search.create({
                             type: "customrecord_ht_pp_main_item_relacionado",
@@ -255,6 +255,7 @@ define([
                             objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: ESTADO_VENTAS });
                             objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
                             response = objRecord.save();
+                            log.debug('OTTTTTT', response);
                         }
                     }
                     break;
@@ -312,10 +313,12 @@ define([
                         if (cont == 0) {
                             response.status = false;
                             response.mensaje = 'No existe Produncto instalado con esta parametrizacion del ITEM ' + item + '.'
-                        } else {
-                            response.status = false;
-                            response.mensaje = 'Ya existe un producto instalado con la misma agrupación de producto.'
-                        }
+                        } 
+                        //TODO: Revisar cuando sea para instalación y desinstalación, dependiendo del caso debe validar que tenga instalado y otro no.
+                        // else {
+                        //     response.status = false;
+                        //     response.mensaje = 'Ya existe un producto instalado con la misma agrupación de producto.'
+                        // }
                     }
                     if (type == '') {
                         response.status = false;
@@ -483,7 +486,7 @@ define([
             if (tipoFlujo == 0) {
                 binNumber = getBinNumberAlquiler(scriptParameters.location);
                 account = EXPENSE_ACCOUNT;
-                unitCost = 0
+                unitCost = 0;
                 //item = scriptParameters.item;
                 flujo = 'custbody_ht_ai_paraalquiler';
                 location = scriptParameters.location;
@@ -505,7 +508,7 @@ define([
                 });
                 // let pageData = busqueda.runPaged({ pageSize: 1000 });
                 //let searchResultCount = busqueda.runPaged().count;
-                let objResults = busqueda.run().getRange({ start: 0, end: 1 });
+                //let objResults = busqueda.run().getRange({ start: 0, end: 1 });
                 //log.debug('JSON-CHASER----', objResults);
                 busqueda.run().each((result) => {
                     item = result.getValue({ name: field });

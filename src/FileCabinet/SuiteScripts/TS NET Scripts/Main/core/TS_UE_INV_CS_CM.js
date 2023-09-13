@@ -19,8 +19,11 @@ define(['N/log',
     'N/runtime',
     'N/redirect',
     'N/url',
-    'N/https'
-], (log, search, record, runtime, redirect, url, https) => {
+    'N/https',
+    '../controller/TS_CM_Controller',
+    '../constant/TS_CM_Constant',
+    '../error/TS_CM_ErrorMessages',
+], (log, search, record, runtime, redirect, url, https, _controller, _constant, _errorMessage) => {
     const INVOICE = 'invoice';
     const CASH_SALE = 'cashsale';
     const CREDIT_MEMO = 'creditmemo';
@@ -50,7 +53,7 @@ define(['N/log',
 
     const beforeLoad = (context) => {
         const eventType = context.type;
-        log.error("eventTypebeforeLoad", eventType);
+        //log.error("eventTypebeforeLoad", eventType);
         if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) {
             const objRecord = context.newRecord;
             try {
@@ -100,7 +103,7 @@ define(['N/log',
 
     const beforeSubmit = (context) => {
         const eventType = context.type;
-        log.error("eventTypebeforeSubmit", eventType);
+        //log.error("eventTypebeforeSubmit", eventType);
         let documentref = '';
         if (eventType === context.UserEventType.CREATE /*|| eventType === context.UserEventType.EDIT*/) {
             const objRecord = context.newRecord;
@@ -164,15 +167,13 @@ define(['N/log',
                 log.error('Error-beforeSubmit-' + objRecord.type, eventType + '--' + error);
             }
         }
-
-
     }
 
     const afterSubmit = (context) => {
         const objRecord = context.newRecord;
         const eventType = context.type;
         const recordId = context.newRecord.id;
-        log.error("eventTypeafterSubmit", eventType);
+        //log.error("eventTypeafterSubmit", eventType);
         if (eventType === context.UserEventType.CREATE) {
             //log.error("context.newRecord.type", context.newRecord.type);
             if (context.newRecord.type == CREDIT_MEMO) {
@@ -217,12 +218,83 @@ define(['N/log',
             }
         }
 
-        if (eventType === context.UserEventType.EDIT) {
-            if (objRecord.type == VENDOR_BILL) {
+        if (eventType === context.UserEventType.EDIT || eventType === context.UserEventType.CREATE) {
+            if (objRecord.type == _constant.Transaction.VENDOR_PAYMENT) {
+                let arrayBills = new Array();
                 try {
-                    log.debug('Actualizado', 'Actualizado!!!!!!!!!!')
+                    let objSearch = search.create({
+                        type: objRecord.type,
+                        filters:
+                            [
+                                ["type", "anyof", "VendPymt"],
+                                "AND",
+                                ["internalid", "anyof", recordId],
+                                "AND",
+                                ["appliedtotransaction", "noneof", "@NONE@"],
+                                "AND",
+                                ["appliedtotransaction.custbody5", "is", "T"]
+                            ],
+                        columns:
+                            [
+                                search.createColumn({ name: "appliedtotransaction", label: "Applied To Transaction" }),
+                                // search.createColumn({ name: "lastmodifieddate", sort: search.Sort.DESC, label: "Last Modified" }),
+                                // search.createColumn({ name: "statusref", join: "appliedToTransaction", label: "Status" }),
+                                // search.createColumn({ name: "custbody5", join: "appliedToTransaction", label: "HT_COMISION_PAGO" })
+                            ]
+                    });
+                    let searchResultCount = objSearch.runPaged().count;
+                    if (searchResultCount > 0) {
+                        objSearch.run().each(result => {
+                            let billid = result.getValue('appliedtotransaction');
+                            arrayBills.push(billid);
+                            return true;
+                        });
+                        log.debug('arrayBills', arrayBills);
+
+                        for (let i in arrayBills) {
+                            //log.debug('Bill', arrayBills[i]);
+                            let objSearch2 = search.create({
+                                type: _constant.customRecord.COMISIONES_EXTERNAS,
+                                filters:
+                                    [
+                                        ["custrecord_ht_factura_comision", "anyof", arrayBills[i]],
+                                        "AND",
+                                        [["custrecord_ht_estado_comision", "noneof", _constant.Status.BILL_PAID_IN_FULL], "OR", ["custrecord_ht_estado_ce", "noneof", _constant.Status.PAGADO]]
+                                    ],
+                                columns:
+                                    [
+                                        search.createColumn({ name: "custrecord_ht_estado_comision", label: "HT ESTADO FACTURA " }),
+                                        search.createColumn({ name: "custrecord_ht_estado_ce", label: "HT_ESTADO_COMISION" })
+                                    ]
+                            });
+                            let searchResultCount = objSearch2.runPaged().count;
+                            if (searchResultCount > 0) {
+                                objSearch2.run().each(result => {
+                                    try {
+                                        let comisionid = record.submitFields({
+                                            type: _constant.customRecord.COMISIONES_EXTERNAS,
+                                            id: result.id,
+                                            values: {
+                                                custrecord_ht_estado_comision: _constant.Status.BILL_PAID_IN_FULL,
+                                                custrecord_ht_estado_ce: _constant.Status.PAGADO
+                                            },
+                                            options: { enablesourcing: true }
+                                        });
+                                        log.debug('Estado Comisión', 'Comisión: ' + comisionid + ' actualizada!!!!')
+                                    } catch (error) {
+                                        log.errror('ErrorUpdateComision', error);
+                                    }
+                                    return true;
+                                });
+                            } else {
+                                log.debug('Estado Comisión', 'Ya está con estado pagado o no existe un registro de comisión para la factura: ' + arrayBills[i]);
+                            }
+                        }
+                    } else {
+                        log.debug('Cantidad de Facturas pagadas', 'No se encontraron facturas')
+                    }
                 } catch (error) {
-                    log.error('Error-Update', error);
+                    log.error('Error-VENDOR_PAYMENT', error);
                 }
             }
         }

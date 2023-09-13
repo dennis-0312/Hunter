@@ -13,7 +13,7 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
             let location = getParamFromUrl("location");
             let item = getParamFromUrl("item");
             let row = getParamFromUrl("row");
-            inventoryDetailList = getInventoryDetail(item, location);
+            inventoryDetailList = getInventoryBalance(item, location);
             console.log(inventoryDetailList);
             parentInventoryDetail = getParentInventoryDetail();
             console.log(parentInventoryDetail);
@@ -142,6 +142,64 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
         return parentInventoryDetail;
     }
 
+    const getInventoryBalance = (item, location, bin) => {
+        if (!(item && location)) return;
+        let inventoryBalanceResult = {};
+        let inventoryBalanceSearch = search.create({
+            type: "inventorybalance",
+            filters: [
+                ["location", "anyof", location],
+                "AND",
+                ["item", "anyof", item]
+            ],
+            columns: [
+                search.createColumn({ name: "binnumber", label: "Bin Number" }),
+                search.createColumn({ name: "inventorynumber", label: "Inventory Number" }),
+                search.createColumn({ name: "status", label: "Status" }),
+                search.createColumn({ name: "isserialitem", join: "item", label: "Is Serialized Item" }),
+                search.createColumn({ name: "onhand", label: "On Hand" }),
+                search.createColumn({ name: "available", label: "Available" })
+            ]
+        });
+
+        inventoryBalanceSearch.run().each(function (result) {
+            let inventoryNumberId = result.getValue('inventorynumber');
+            let inventoryNumber = result.getText('inventorynumber');
+            let binNumberId = result.getValue('binnumber');
+            let binNumber = result.getText('binnumber');
+            let status = result.getText('status');
+            let statusId = result.getValue('status');
+            let isSerialized = result.getValue(result.columns[3]);
+            let quantity = result.getValue("onhand");
+
+            if (!isSerialized) {
+                inventoryBalanceResult[binNumberId] = {
+                    isSerialized,
+                    binNumber,
+                    binNumberId,
+                    status,
+                    statusId,
+                    quantity
+                };
+            } else {
+                inventoryBalanceResult[inventoryNumberId] = {
+                    isSerialized,
+                    inventoryNumber,
+                    binNumber,
+                    binNumberId,
+                    status,
+                    statusId,
+                    quantity
+                };
+            }
+
+            return true;
+        });
+
+        log.error("cantidad", Object.keys(inventoryBalanceResult).length);
+        return inventoryBalanceResult;
+    }
+
     const getInventoryDetail = (item, location) => {
         if (!(item && location)) return;
         let inventoryDetailResult = {};
@@ -184,7 +242,6 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
             } else {
                 inventoryDetailResult[inventoryNumberId] = {
                     isSerialized,
-                    type,
                     inventoryNumber,
                     binNumber,
                     binNumberId,
@@ -248,9 +305,11 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
     }
 
     const validateFieldConfiguration = (serial) => {
-        let { columns, customRecord, typeName, estadoColumna } = getDataForSerchByType();
+        let itemType = getParamFromUrl("type");
+        if (itemType == "4") return false;
+        let { columns, customRecord, typeName, estadoColumna, filterBy } = getDataForSerchByType(itemType);
         console.log("validateFieldConfiguration", { columns, customRecord, typeName, estadoColumna });
-        let resultSearch = createSearchByType(customRecord, columns, serial);
+        let resultSearch = createSearchByType(customRecord, columns, serial, filterBy);
         if (!resultSearch.length) {
             alert(`El número de serie seleccionado no es válido`);
             return true;
@@ -280,31 +339,26 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
         return false;
     }
 
-    const createSearchByType = (customRecord, columns, serial) => {
+    const createSearchByType = (customRecord, columns, serial, filterBy) => {
         console.log("createSearchByType", { customRecord, columns, serial });
         var resultSearch = search.create({
             type: customRecord,
-            filters:
-                [
-                    search.createFilter({
-                        name: 'name',
-                        operator: search.Operator.HASKEYWORDS,
-                        values: serial
-                    })
-                ],
+            filters: [
+                [`${filterBy}.inventorynumber`, "is", serial]
+            ],
             columns: columns
         }).run().getRange(0, 1000);
         return resultSearch;
     }
 
-    const getDataForSerchByType = () => {
-        let itemType = getParamFromUrl("type");
-        let columns = [], customRecord = "", typeName = "", estadoColumna;
+    const getDataForSerchByType = (itemType) => {
+        let columns = [], customRecord = "", typeName = "", estadoColumna, filterBy = "";
         switch (itemType) {
             case '1':
                 estadoColumna = 10;
                 typeName = " Dispositivo Chaser";
                 customRecord = "customrecord_ht_record_detallechaserdisp";
+                filterBy = "custrecord_ht_dd_item";
                 columns = [
                     search.createColumn({ name: "internalid", label: "ID" }),
                     search.createColumn({ name: "custrecord_ht_dd_dispositivo", label: "dd_dispositivo" }),
@@ -324,6 +378,7 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
                 estadoColumna = 8;
                 typeName = " Sim Card";
                 customRecord = "customrecord_ht_record_detallechasersim";
+                filterBy = "custrecord_ht_ds_serie";
                 columns = [
                     search.createColumn({ name: "internalid", label: "ID" }),
                     search.createColumn({ name: "custrecord_ht_ds_simcard", label: "ds_simcard" }),
@@ -340,6 +395,7 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
                 typeName = " LOJACK";
                 customRecord = "customrecord_ht_record_detallechaslojack";
                 estadoColumna = 4;
+                filterBy = "custrecord_ht_cl_seriebox";
                 columns = [
                     search.createColumn({ name: "internalid", label: "ID" }),
                     search.createColumn({ name: "custrecord_ht_cl_seriebox", label: "cl_seriebox" }),
@@ -351,7 +407,7 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
             default:
                 break;
         }
-        return { columns, customRecord, typeName, estadoColumna };
+        return { columns, customRecord, typeName, estadoColumna, filterBy };
     }
 
     const closeWindow = () => {

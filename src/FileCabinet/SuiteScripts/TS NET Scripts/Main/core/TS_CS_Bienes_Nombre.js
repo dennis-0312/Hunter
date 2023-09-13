@@ -371,6 +371,7 @@ define([
             //const customForm = objRecord.getValue("customform");
             const tipoBien = objRecord.getValue("custrecord_ht_bien_tipobien");
             if (tipoBien == _constant.Constants.TERRESTRE) {
+                console.log('TERRESTREEEE', Bienes);
                 if (typeMode == _constant.Constants.CREATE || typeMode == _constant.Constants.COPY) {
                     if (typeTransaction === "customrecord_ht_record_bienes") {
                         var flag = false;
@@ -620,16 +621,9 @@ define([
 
             if (tipoBien == _constant.Constants.PRODUCCION) {
                 //const objRecord = scriptContext.newRecord;
-                const bienid = objRecord.id.toString();
-                let altname = objRecord.getValue('altname');
-
-                // if (altname.includes(bienid) == false) {
-                //     console.log(altname)
-                //     objRecord.setValue('altname', 'PROD');
-                // }
                 if (objRecord.getValue('custrecord_ht_bien_placa').length > 0) {
-                    objRecord.setValue('altname', objRecord.getValue('custrecord_ht_bien_placa'));
-                    //console.log(altname)
+                    objRecord.setValue({ fieldId: 'altname', value: objRecord.getValue('custrecord_ht_bien_placa'), ignoreFieldChange: true });
+                    //console.log(objRecord.getValue('custrecord_ht_bien_placa')) 
                 }
             }
         } catch (error) {

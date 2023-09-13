@@ -333,13 +333,18 @@ define([
                             if (parametrosRespo != 0) {
                                 for (let j = 0; j < parametrosRespo.length; j++) {
                                     if (parametrosRespo[j][0] == _constant.Parameter.TCH_TIPO_CHEQUEO_OT && parametrosRespo[j][1] == paramChequeo) {
+                                        log.debug('workOrder', workOrder);
                                         if (workOrder != 0) {
-                                            record.submitFields({
-                                                type: 'customrecord_ht_record_ordentrabajo',
-                                                id: workOrder,
-                                                values: { 'custrecord_ht_ot_serieproductoasignacion': busqueda_cobertura[i][2] },
-                                                options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                            });
+                                            try {
+                                                record.submitFields({
+                                                    type: 'customrecord_ht_record_ordentrabajo',
+                                                    id: workOrder,
+                                                    values: { 'custrecord_ht_ot_serieproductoasignacion': busqueda_cobertura[i][2] },
+                                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                                });
+                                            } catch (error) {
+                                                log.error('Errro-DESISNTALAR', error);
+                                            }
                                         }
                                         if (aprobacionventa == _constant.Status.APROBADO && aprobacioncartera == _constant.Status.APROBADO) {
                                             log.debug('Entry', 'Cobertura');
@@ -493,7 +498,7 @@ define([
                         let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                         parametrosRespo = _controller.parametrizacion(items);
                         if (parametrosRespo != 0) {
-                            log.debug('parametrosRespop', parametrosRespo);
+                            //log.debug('parametrosRespop', parametrosRespo);
                             for (let j = 0; j < parametrosRespo.length; j++) {
                                 if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO)
                                     parametro = parametrosRespo[j][1];
@@ -538,7 +543,7 @@ define([
                         esCustodia = 1
                     }
 
-                    log.debug('DEBUGGGGGG', adp + ' - ' + esCustodia + ' - ' + parametro);
+                    //log.debug('DEBUGGGGGG', adp + ' - ' + esCustodia + ' - ' + parametro);
                     if (parametro != 0 && esCustodia == 0 && adp == _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO) {
                         log.debug('entra plataformas por cambio de propietario');
                         for (let j = 0; j < parametrosRespo.length; j++) {

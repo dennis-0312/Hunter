@@ -9,32 +9,21 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
 
         const FIXED_ASSET_ACCOUNT = "3202"; // SB: 2676
         const EXPENSE_ACCOUNT = "1501";
-        const CUENTA_AJUSTE = "1501";
         const ECUADOR_SUBSIDIARY = "2";
         const COMPONENTE_DISPOSITIVO_ID = "1";
-        const DISPOSITIVO_INSTALADO = "1";
 
         const execute = (context) => {
             try {
                 let scriptParameters = getScriptParameters();
                 log.error("scriptParameters.alquiler.length", scriptParameters.alquiler.length);
+                if (scriptParameters.alquiler.length == 0) {
+                    createInventoryAdjustmentSalidaSinAlquiler(scriptParameters);
 
-                if (scriptParameters.assemblyFlow == 'alquiler') {
-                    if (scriptParameters.alquiler.length == 0) {
-                        createInventoryAdjustmentSalidaSinAlquiler(scriptParameters);
-                        createInventoryAdjustmentIngreso(scriptParameters);
-                    } else {
-                        createInventoryAdjustmentSalidaConAlquiler(scriptParameters);
-                    }
-                    createChaser(scriptParameters);
-                } else if (scriptParameters.assemblyFlow == 'custodia') {
-                    createInventoryAdjustmentSalidaCustodia(scriptParameters);
-                    createChaser(scriptParameters);
-
-                } else if (scriptParameters.assemblyFlow == 'garantia') {
-                    //createInventoryAdjustmentSalidaSinAlquiler(scriptParameters);
-
+                    createInventoryAdjustmentIngreso(scriptParameters);
+                } else {
+                    createInventoryAdjustmentSalidaConAlquiler(scriptParameters);
                 }
+                createChaser(scriptParameters);
             } catch (error) {
                 log.error("error", error)
             }
@@ -42,64 +31,16 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
 
         const getScriptParameters = () => {
             let scriptParameters = {};
-            scriptParameters.alquiler = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_alquiler') ? JSON.parse(currentScript.getParameter('custscript_ts_ss_buil_inv_adj_alquiler')) : "";
-            scriptParameters.comercial = JSON.parse(currentScript.getParameter('custscript_ts_ss_buil_inv_adj_comercial'));
-            scriptParameters.customer = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_customer');
-            scriptParameters.location = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_location');
-            scriptParameters.item = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_item') || "";
-            scriptParameters.workorder = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_workorder') || "";
-            scriptParameters.salesorder = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_salesorder') || "";
-            scriptParameters.esCustodia = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_escustodia') || "";
-            scriptParameters.deviceItem = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_deviceitem');
-            scriptParameters.inventoryNumber = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_invtnumber');
-            scriptParameters.deviceInventoryNumberId = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_reinvnumid');
-            scriptParameters.assemblyFlow = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_assemblyfl');
+
+            scriptParameters.comercial = JSON.parse(currentScript.getParameter('custscript_ts_ss_bld_cus_invad_comercial'));
+            scriptParameters.customer = currentScript.getParameter('custscript_ts_ss_bld_cus_invad_customer');
+            scriptParameters.location = currentScript.getParameter('custscript_ts_ss_bld_cus_invad_location');
+            scriptParameters.item = currentScript.getParameter('custscript_ts_ss_bld_cus_invad_item') || "";
+            scriptParameters.workorder = currentScript.getParameter('custscript_ts_ss_bld_cus_invad_workorder') || "";
+            scriptParameters.salesorder = currentScript.getParameter('custscript_ts_ss_bld_cus_invad_salesorde') || "";
+            scriptParameters.inventorynumber = currentScript.getParameter('custscript_ts_ss_bld_cus_invad_invnumber') || "";
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
-        }
-
-        const createInventoryAdjustmentIngresoCustodia = (scriptParameters) => {
-            let binNumber = getBinNumberCustodia(scriptParameters.location);
-
-            let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-
-            newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
-            newAdjust.setValue({ fieldId: 'account', value: EXPENSE_ACCOUNT });
-            newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
-            newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
-            newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
-            //newAdjust.setValue({ fieldId: 'custbody_ht_ai_paraalquiler', value: true });
-
-            newAdjust.selectNewLine({ sublistId: 'inventory' });
-            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: scriptParameters.item });
-            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: scriptParameters.location });
-            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: 1 });
-            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'unitcost', value: 0 });
-
-            let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
-
-            newDetail.selectNewLine({ sublistId: 'inventoryassignment' });
-            newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'receiptinventorynumber', value: scriptParameters.inventoryNumber });
-            newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: binNumber });
-            newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1 });
-            newDetail.commitLine({ sublistId: 'inventoryassignment' });
-            newAdjust.commitLine({ sublistId: 'inventory' });
-
-            let newRecord = newAdjust.save();
-            log.error("newRecord", newRecord);
-        }
-
-        const createInventoryAdjustmentSalidaCustodia = (scriptParameters) => {
-            let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-
-            newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
-            newAdjust.setValue({ fieldId: 'account', value: EXPENSE_ACCOUNT });
-            newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
-            newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
-            newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
-            setItemstoInventoryAdjustment(newAdjust, scriptParameters);
-            let newRecord = newAdjust.save();
-            log.error("newRecord", newRecord);
         }
 
         const createInventoryAdjustmentSalidaSinAlquiler = (scriptParameters) => {
@@ -148,51 +89,6 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
                 }
                 newAdjust.commitLine({ sublistId: 'inventory' });
             }
-            /*
-            if (scriptParameters.esCustodia == 'T' && scriptParameters.deviceItem) {
-                let { binNumber, status, quantity, inventoryNumber } = getDetailInventoryNumber(scriptParameters);
-                log.error("Fields", {binNumber, status, quantity, inventoryNumber})
-                newAdjust.selectNewLine({ sublistId: 'inventory' });
-                newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: scriptParameters.deviceItem });
-                newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: scriptParameters.location });
-                newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: -1 });
-
-                let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
-                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: scriptParameters.deviceInventoryNumberId });
-                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: binNumber });
-                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: status });
-                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: quantity });
-                newDetail.commitLine({ sublistId: 'inventoryassignment' });
-                newAdjust.commitLine({ sublistId: 'inventory' });
-            }*/
-        }
-
-        const getDetailInventoryNumber = (scriptParameters) => {
-            let inventoryNumberResult = search.create({
-                type: "inventorybalance",
-                filters: [
-                    ["location", "anyof", scriptParameters.location],
-                    "AND",
-                    ["item", "anyof", scriptParameters.deviceItem],
-                    "AND",
-                    ["binnumber.custrecord_deposito_para_custodia", "is", "T"],
-                    "AND",
-                    ["inventorynumber", "anyof", scriptParameters.deviceInventoryNumberId]
-                ],
-                columns: [
-                    search.createColumn({ name: "binnumber", label: "Bin Number" }),
-                    search.createColumn({ name: "inventorynumber", label: "Inventory Number" }),
-                    search.createColumn({ name: "status", label: "Status" }),
-                    search.createColumn({ name: "available", label: "Available" })
-                ]
-            }).run().getRange(0, 1);
-            if (!inventoryNumberResult.length) return {};
-            return {
-                binNumber: inventoryNumberResult[0].getValue('binnumber'),
-                status: inventoryNumberResult[0].getValue('status'),
-                inventoryNumber: inventoryNumberResult[0].getValue('inventorynumber'),
-                quantity: -1
-            };
         }
 
         const getItemType = (itemId) => {
@@ -215,7 +111,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
             newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
             newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
             newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
-            //newAdjust.setValue({ fieldId: 'custbody_ht_ai_paraalquiler', value: true });
+            newAdjust.setValue({ fieldId: 'custbody_ht_ai_paraalquiler', value: true });
 
             newAdjust.selectNewLine({ sublistId: 'inventory' });
             newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: scriptParameters.item });
@@ -234,20 +130,6 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
 
             let newRecord = newAdjust.save();
             log.error("newRecord", newRecord);
-        }
-
-        const getBinNumberCustodia = (location) => {
-            let binSearch = search.create({
-                type: "bin",
-                filters: [
-                    ["location", "anyof", location],
-                    "AND",
-                    ["custrecord_deposito_para_custodia", "is", "T"]
-                ],
-                columns: ["binnumber"]
-            }).run().getRange(0, 1);
-            if (binSearch.length) return binSearch[0].id;
-            return "";
         }
 
         const getBinNumberAlquiler = (location) => {
@@ -314,29 +196,14 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
             try {
                 let objRecordCreate = record.create({ type: 'customrecord_ht_record_mantchaser', isDynamic: true });
 
-                if (scriptParameters.esCustodia == 'T') {
-                    let itemSearch = search.lookupFields({
-                        type: search.Type.ITEM,
-                        id: scriptParameters.deviceItem,
-                        columns: ["custitem_ht_ai_tipocomponente"]
-                    });
-                    if (itemSearch.custitem_ht_ai_tipocomponente.length) {
-                        let type = itemSearch.custitem_ht_ai_tipocomponente[0].value
-                        let searchResult = getCustomInventoryNumber(scriptParameters.inventoryNumber, type, true);
-                        if (searchResult.length) {
-                            setFieldsByType(objRecordCreate, type, searchResult[0], scriptParameters);
-                        }
-                    }
-                } else {
-                    for (let i = 0; i < scriptParameters.alquiler.length; i++) {
-                        let item = scriptParameters.alquiler[i].id;
-                        let type = scriptParameters.alquiler[i].type;
-                        let seriales = scriptParameters.alquiler[i].seriales;
-                        if (!seriales.length) continue;
-                        let searchResult = getCustomInventoryNumber(seriales, type, false);
-                        if (!searchResult.length) continue;
-                        setFieldsByType(objRecordCreate, type, searchResult[0], scriptParameters);
-                    }
+                for (let i = 0; i < scriptParameters.alquiler.length; i++) {
+                    let item = scriptParameters.alquiler[i].id;
+                    let type = scriptParameters.alquiler[i].type;
+                    let seriales = scriptParameters.alquiler[i].seriales;
+                    if (!seriales.length) continue;
+                    let searchResult = getCustomInventoryNumber(seriales, type);
+                    if (!searchResult.length) continue;
+                    setFieldsByType(objRecordCreate, type, searchResult[0], scriptParameters);
                 }
 
                 for (let i = 0; i < scriptParameters.comercial.length; i++) {
@@ -344,24 +211,22 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
                     let type = scriptParameters.comercial[i].type;
                     let seriales = scriptParameters.comercial[i].seriales;
                     if (!seriales.length) continue;
-                    let searchResult = getCustomInventoryNumber(seriales, type, false);
+                    let searchResult = getCustomInventoryNumber(seriales, type);
                     if (!searchResult.length) continue;
                     setFieldsByType(objRecordCreate, type, searchResult[0], scriptParameters);
                 }
-                objRecordCreate.setValue("custrecord_ht_mc_estadolodispositivo", DISPOSITIVO_INSTALADO);
                 let recordId = objRecordCreate.save({ enableSourcing: false, ignoreMandatoryFields: false });
-                let workOrder = updateWorkOrder(recordId, scriptParameters.workorder, scriptParameters.esCustodia);
+                let workOrder = updateWorkOrder(recordId, scriptParameters.workorder);
                 log.error("recordId", recordId);
             } catch (error) {
                 log.error("An error was ocurred in [createChaser] function", error);
             }
         }
 
-        const updateWorkOrder = (chaserId, workOrderId, esCustodia) => {
+        const updateWorkOrder = (chaserId, workOrderId) => {
             let workOrderRecord = record.load({ type: "customrecord_ht_record_ordentrabajo", id: workOrderId, isDynamic: true });
             workOrderRecord.setValue('custrecord_ht_ot_serieproductoasignacion', chaserId);
-            if (esCustodia != "T") workOrderRecord.setValue('custrecord_flujo_de_alquiler', true);
-            else workOrderRecord.setValue('custrecord_flujo_de_custodia', false);
+            workOrderRecord.setValue('custrecord_flujo_de_alquiler', true);
             let id = workOrderRecord.save({ ignoreMandatoryFields: true, enableSourcing: false });
             log.error("updateWorkOrder", id);
         }
@@ -381,7 +246,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_firmware', value: result.getValue(columns[7]), ignoreFieldChange: true });
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_script', value: result.getValue(columns[8]), ignoreFieldChange: true });
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_servidor', value: result.getValue(columns[9]), ignoreFieldChange: true });
-                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vid', value: vehiculo, ignoreFieldChange: true });
+                objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vid', value: result.getValue(columns[7]), ignoreFieldChange: true });
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_estado', value: result.getValue(columns[10]), ignoreFieldChange: true });
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_tipodispositivo', value: result.getValue(columns[11]), ignoreFieldChange: true });
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vehiculo', value: vehiculo, ignoreFieldChange: true });
@@ -402,7 +267,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
             }
         }
 
-        const getCustomInventoryNumber = (seriales, type, isDeviceItem) => {
+        const getCustomInventoryNumber = (seriales, type) => {
             let tipoItmesText;
             let customRecord;
             let columns;
@@ -460,19 +325,15 @@ define(['N/record', 'N/log', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/f
                     return [];
             }
             let serialesId = [];
-            if (isDeviceItem) {
-                serialesId.push(seriales);
-                filter = [`${tipoItmesText}.inventorynumber`, "is", serialesId];
-            } else {
-                for (let i = 0; i < seriales.length; i++) {
-                    let serial = seriales[i].serial;
-                    serialesId.push(serial);
-                }
-                filter = [tipoItmesText, "anyof", serialesId];
+            for (let i = 0; i < seriales.length; i++) {
+                let serial = seriales[i].serial;
+                serialesId.push(serial);
             }
             let customRecordSearchResult = search.create({
                 type: customRecord,
-                filters: [filter],
+                filters: [
+                    [tipoItmesText, "anyof", serialesId]
+                ],
                 columns
             }).run().getRange(0, 1000);
             return customRecordSearchResult;

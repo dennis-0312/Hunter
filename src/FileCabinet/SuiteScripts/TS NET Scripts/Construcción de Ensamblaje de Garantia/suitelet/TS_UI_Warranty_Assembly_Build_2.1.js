@@ -9,7 +9,7 @@ define([
     'N/url',
     'N/task',
     'N/redirect',
-    './lib/TS_LBRY_Assembly_Build_2.1.js'
+    './lib/TS_LBRY_Warranty_Assembly_Build_2.1.js'
 ], (serverWidget, log, config, url, task, redirect, library) => {
 
     const onRequest = (context) => {
@@ -18,16 +18,16 @@ define([
             let userInterface = new library.UserInterface(context.request.parameters);
             const FIELDS = userInterface.FIELDS;
             if (method == 'GET') {
+
                 const PARAMETERS = userInterface.getFormattedParameters();
                 log.error("parameters Q", PARAMETERS);
 
-                let inventoryDetailStyle = userInterface.getInventoryDetailCSS();
-                log.error("inventoryDetailStyle", inventoryDetailStyle);
                 let form = userInterface.createForm(FIELDS.form.main.text);
                 let inlineHtmlField = form.addField(FIELDS.field.inlinehtml.id, serverWidget.FieldType.INLINEHTML, FIELDS.field.inlinehtml.text);
-                inlineHtmlField.setDefaultValue('<script>' + viewInventoryDetail + '</script><style>' + inventoryDetailStyle + '</style>');
+                inlineHtmlField.setDefaultValue('<script>' + viewInventoryDetail + '</script>');
+
                 userInterface.init();
-                form.setClientScript("../TS_CS_Assembly_Build_2.1.js")
+                form.setClientScript("../TS_CS_Warranty_Assembly_Build_2.1.js")
 
                 form.addFieldGroup(FIELDS.fieldgroup.primary.id, FIELDS.fieldgroup.primary.text);
                 let customerField = form.addField(FIELDS.field.customer.id, serverWidget.FieldType.SELECT, FIELDS.field.customer.text, FIELDS.fieldgroup.primary.id, 'customer');
@@ -86,9 +86,13 @@ define([
                 let alquilerField = componentSubList.addSublistField(FIELDS.sublistfield.alquiler.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.alquiler.text);
                 alquilerField.updateDisplayType(serverWidget.FieldDisplayType.HIDDEN);
                 componentSubList.addSublistField(FIELDS.sublistfield.inventorydetail.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.inventorydetail.text);
-                userInterface.setComponentsSublistData(componentSubList, billOfMaterialRevisionField.getDefaultValue(), locationField.getDefaultValue(), itemField.getDefaultValue());
+
+                userInterface.setComponentsSublistData(componentSubList, billOfMaterialRevisionField.getDefaultValue(), locationField.getDefaultValue());
+
                 form.addSubmitButton(FIELDS.button.submit.text);
+
                 context.response.writePage(form.form);
+
             } else if (method == 'POST') {
                 let inventoryDetail = JSON.parse(context.request.parameters.custpage_f_inventorydetail);
                 log.error("inventoryDetail", inventoryDetail);
@@ -102,6 +106,7 @@ define([
                     id: context.request.parameters.custpage_f_workorder
                 });
             }
+
         } catch (error) {
             log.error("error", error);
             context.response.writePage(error);
@@ -117,7 +122,7 @@ define([
         scriptParameters.custscript_ts_ss_buil_inv_adj_item = parameters.custpage_f_item || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_workorder = parameters.custpage_f_workorder || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_salesorder = parameters.custpage_f_salesorder || "";
-        scriptParameters.custscript_ts_ss_buil_inv_adj_assemblyfl = 'alquiler';
+
         return scriptParameters;
     }
 

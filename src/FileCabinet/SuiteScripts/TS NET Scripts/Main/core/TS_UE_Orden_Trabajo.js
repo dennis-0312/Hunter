@@ -71,7 +71,7 @@ define([
         const DISPONIBLE = 5;
         const INACTIVO = 5;
         const INSTALADO = 1;
-        const PROCESANDO = 4
+        const PROCESANDO = 4;
 
 
         const beforeLoad = (context) => {

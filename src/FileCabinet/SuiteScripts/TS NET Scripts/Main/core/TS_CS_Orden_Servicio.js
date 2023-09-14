@@ -302,43 +302,44 @@ define(['N/search',
                     if (sublistName == 'item') {
                         if (sublistFieldName == 'item') {
                             let idItem = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
+                            let idItemTXT = currentRecord.getCurrentSublistText({ sublistId: 'item', fieldId: 'item' });
                             let parametrosRespo = _controllerParm.parametrizacion(idItem);
                             for (let j = 0; j < parametrosRespo.length; j++) {
                                 //console.log('Entre a validar parametrización');
                                 if (parametrosRespo[j][0] == _constant.Parameter.IRS_ITEM_DE_RECONEXION_DE_SERVICIO && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item' + idItem + ' es de reconexion de servicio.');
+                                    console.log('Parametrizacion', 'El item' + idItemTXT + ' es de reconexion de servicio.');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de reconexion de servicio.' });
                                 }
                                 if (parametrosRespo[j][0] == _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item' + idItem + ' es de alquiler.');
+                                    console.log('Parametrizacion', 'El item' + idItemTXT + ' es de alquiler.');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de alquiler.' });
                                 }
                                 if (parametrosRespo[j][0] == _constant.Parameter.PGR_PRODUCTO_DE_GARANTÍA && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item ' + idItem + ' es de garantia.');
+                                    console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de garantia.');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de garantia.' });
                                 }
                                 if (parametrosRespo[j][0] == _constant.Parameter.IGS_PRODUCTO_MONITOREADO_POR_GEOSYS && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item ' + idItem + ' va ser monitoreado desde la plataforma px.');
+                                    console.log('Parametrizacion', 'El item ' + idItemTXT + ' va ser monitoreado desde la plataforma px.');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' va ser monitoreado desde la plataforma px.' });
                                 }
                                 if (parametrosRespo[j][0] == _constant.Parameter.TRM_SERVICIO_DE_TRANSMISION && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item ' + idItem + ' es de transmisión');
+                                    console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de transmisión');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de transmisión' });
                                 }
                                 if (parametrosRespo[j][0] == _constant.Parameter.THC_HUNTER_CARGO_TECNOLOGIA && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item ' + idItem + ' es de categoria de hunter cargo');
+                                    console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de categoria de hunter cargo');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de categoria de hunter cargo' });
                                 }
                                 if (parametrosRespo[j][0] == _constant.Parameter.TDP_TIPO_DE_PRODUCTO && parametrosRespo[j][1] == _constant.Valor.VALOR_009_DEMO) {
-                                    console.log('Parametrizacion', 'El item ' + idItem + ' es de tipo DEMO');
+                                    console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de tipo DEMO');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de tipo DEMO' });
                                 }
                                 if (parametrosRespo[j][0] == _constant.Parameter.IRP_ITEM_DE_REPUESTO && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item ' + idItem + ' es un ITEM de REPUESTO');
+                                    console.log('Parametrizacion', 'El item ' + idItemTXT + ' es un ITEM de REPUESTO');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es un ITEM de REPUESTO' });
                                 }
                                 if (parametrosRespo[j][0] == _constant.Parameter.PCI_PRODUCTO_CONTROL_INTERNO && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item ' + idItem + ' es un ITEM Comercial');
+                                    console.log('Parametrizacion', 'El item ' + idItemTXT + ' es un ITEM Comercial');
                                     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es un ITEM Comercial' });
                                 }
 
@@ -352,11 +353,11 @@ define(['N/search',
                                 }
 
                                 if (parametrosRespo[j][0] == _constant.Parameter.PRO_ITEM_COMERCIAL_DE_PRODUCCION && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item ' + idItem + ' es un de PRODUCCIÓN');
+                                    console.log('Parametrizacion', 'El item ' + idItemTXT + ' es un de PRODUCCIÓN');
                                 }
 
                                 if (parametrosRespo[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    console.log('Parametrizacion', 'El item ' + idItem + ' maneja servicios integrados');
+                                    console.log('Parametrizacion', 'El item ' + idItemTXT + ' maneja servicios integrados.');
                                 }
                             }
                             //console.log('parametrizacion pruebas', parametrosRespo);
@@ -402,8 +403,8 @@ define(['N/search',
                 }
                 return true
             }
-        } catch (e) {
-            console.log('errror en field change', e);
+        } catch (error) {
+            console.log('errror en field change', error);
         }
     }
 

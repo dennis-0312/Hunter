@@ -14,8 +14,7 @@ define([
     'N/email',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
-    '../error/TS_CM_ErrorMessages',
-
+    '../error/TS_CM_ErrorMessages'
 ], (log, record, search, serverWidget, plugin, transaction, https, runtime, email, _controller, _constant, _errorMessage) => {
     const HT_DETALLE_ORDEN_SERVICIO_SEARCH = 'customsearch_ht_detalle_orden_servicio_2'; //HT Detalle Orden de Servicio - PRODUCCION
 
@@ -62,6 +61,7 @@ define([
                     fechaInicial = new Date(fechaInicialItem);
                 }
             }
+
             // log.debug('parametro_aprob', parametro_aprob);
             // log.debug('aprobacion_venta', aprobacion_venta);
             // if (parametro_aprob == SI && aprobacion_venta == 2) {

@@ -151,12 +151,12 @@ define([
 
                 if (estaChequeada > 0) {
                     accionEstadoOT = estaChequeada;//TODO: Revisar esta sección porque puede impactar la instalación sin activicación de servicio.
-                    //accionEstadoOT = ESTADO_CHEQUEADA
+                    //accionEstadoOT = _constant.Status.CHEQUEADO
                 }
                 //log.debug('accionEstadoOT', accionEstadoOT);
 
                 switch (parseInt(accionEstadoOT)) {
-                    case ESTADO_CHEQUEADA:
+                    case _constant.Status.CHEQUEADO:
                         let idSalesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
                         let valueSalesorder = objRecord.getText('custrecord_ht_ot_orden_servicio');
                         let bien = objRecord.getValue('custrecord_ht_ot_vehiculo');
@@ -236,13 +236,13 @@ define([
                                     TTR_name = parametro.getValue('custrecord_ht_pp_descripcion');
                                     ttrid = parametrosRespo_2[j][1]
                                 }
-                                if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASPX)
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS)
                                     envioPX = parametrosRespo_2[j][1];
 
-                                if (parametrosRespo_2[j][0] == ENVIO_PLATAFORMASTELEC)
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS)
                                     envioTele = parametrosRespo_2[j][1];
 
-                                if (parametrosRespo_2[j][0] == COS_CIERRE_DE_ORDEN_DE_SERVICIO && parametrosRespo_2[j][1] == _constant.Valor.SI) { //cos cerrar orden de servicio
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.COS_CIERRE_DE_ORDEN_DE_SERVICIO && parametrosRespo_2[j][1] == _constant.Valor.SI) { //cos cerrar orden de servicio
                                     try {
                                         if (precio == 0)
                                             transaction.void({ type: 'salesorder', id: idSalesorder });
@@ -280,15 +280,15 @@ define([
                                     var valor_tipo_agrupacion = 0;
 
                                     for (let j = 0; j < parametrosRespo.length; j++) {
-                                        if (parametrosRespo[j][0] == TIPO_TRANSACCION) {
+                                        if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO) {
                                             accion_producto = parametrosRespo[j][1];
                                         }
 
-                                        if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                                        if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO) {
                                             valor_tipo_agrupacion = parametrosRespo[j][1];
                                         }
 
-                                        if (accion_producto == VENT_SERVICIOS && valor_tipo_agrupacion == tag) {
+                                        if (accion_producto == _constant.Valor.VALOR_015_VENTA_SERVICIOS && valor_tipo_agrupacion == tag) {
                                             log.debug('Entry', 'Entra a item de transmision');
                                             adpServicio = accion_producto;
                                             idOS = busqueda_salesorder[i][1];
@@ -297,7 +297,7 @@ define([
                                             idItem = busqueda_salesorder[i][0];
                                         }
 
-                                        if (accion_producto == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                                        if (accion_producto == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
                                             idOS = busqueda_salesorder[i][1];
                                         }
                                     }
@@ -313,11 +313,11 @@ define([
                                     var valor_tipo_agrupacion = 0;
                                     var envio = 0;
                                     for (let j = 0; j < parametrosRespo.length; j++) {
-                                        if (parametrosRespo[j][0] == TIPO_TRANSACCION) {
+                                        if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO) {
                                             accion_producto = parametrosRespo[j][1];
                                         }
 
-                                        if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                                        if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO) {
                                             valor_tipo_agrupacion = parametrosRespo[j][1];
                                         }
 
@@ -345,7 +345,7 @@ define([
                                 }
 
                                 if (plataformasPX == _constant.Valor.SI) {
-                                    returEjerepo = _controller.parametros(ENVIO_PLATAFORMASPX, id, adp);
+                                    returEjerepo = _controller.parametros(_constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS, id, adp);
                                     //log.debug('Estado que devuelve el impulso a plataforma PX- ' + j, JSON.stringify(returEjerepo) + ': ' + JSON.stringify(returEjerepo));
                                 } else {
                                     impulsaPX = 0;
@@ -354,7 +354,7 @@ define([
                                     // updateTelematic.save();
                                 }
                                 if (plataformasTele == _constant.Valor.SI && ingresaFlujoConvenio == false && adpDesinstalacion != _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
-                                    returEjerepo = _controller.parametros(ENVIO_PLATAFORMASTELEC, id, adp);
+                                    returEjerepo = _controller.parametros(_constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS, id, adp);
                                     //log.debug('Estado que devuelve el impulso a plataforma tele- ' + j, JSON.stringify(returEjerepo) + ': ' + JSON.stringify(returEjerepo));
                                 } else {
                                     impulsaTelematics = 0;
@@ -418,7 +418,7 @@ define([
                                     createCoberturaWS(json);
                                     if (chaser.length > 0) {
                                         let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                                        updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: INSTALADO })
+                                        updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: _constant.Status.INSTALADO })
                                         updateTelematic.save();
                                     }
                                 } else {
@@ -457,12 +457,12 @@ define([
                                     createCoberturaWS(json);
                                     if (chaser.length > 0) {
                                         let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                                        updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: INSTALADO })
+                                        updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: _constant.Status.INSTALADO })
                                         updateTelematic.save();
                                     }
                                 }
                             } else {
-                                if (adpServicio != VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                                if (adpServicio != _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
                                     // log.debug('Debug4', returEjerepo + ' - ' + adpServicio);
                                     log.debug('MONITOREOOOOOO', 'Cobertura3');
                                     let json = {
@@ -480,15 +480,15 @@ define([
                                     createCoberturaWS(json);
                                     if (chaser.length > 0) {
                                         let updateTelematic = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaser });
-                                        updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: INSTALADO })
+                                        updateTelematic.setValue({ fieldId: 'custrecord_ht_mc_estado', value: _constant.Status.INSTALADO })
                                         updateTelematic.save();
-                                        record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: id, values: { 'custrecord_ht_ot_estado': PROCESANDO }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
+                                        record.submitFields({ type: 'customrecord_ht_record_ordentrabajo', id: id, values: { 'custrecord_ht_ot_estado': _constant.Status.PROCESANDO }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
                                     }
                                 }
                             }
                         }
 
-                        if (statusOri == ESTADO_CHEQUEADA && ingresaFlujoConvenio == true) {
+                        if (statusOri == _constant.Status.CHEQUEADO && ingresaFlujoConvenio == true) {
                             log.debug('Convenio', 'Es convenio');
                             objParams.item = idItemOT
                             objParams.boleano = true;
@@ -513,7 +513,7 @@ define([
                             let idDispositivo = getInventoryNumber(fulfill, idItemOT);
                             log.debug('idDispositivo', idDispositivo)
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
-                            if (estado == ESTADO_CHEQUEADA && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
+                            if (estado == _constant.Status.CHEQUEADO && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
                                 let serieProducto = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                                 let ubicacion = objRecord.getText('custrecord_ht_ot_ubicacion');
                                 if (serieProducto.length > 0) {
@@ -871,7 +871,7 @@ define([
                             }
                         }
 
-                        if (adp == VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                        if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
                             let objRecordCreateServicios = record.create({ type: 'customrecord_ht_nc_servicios_instalados', isDynamic: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_bien_si', value: objRecord.getValue('custrecord_ht_ot_vehiculo'), ignoreFieldChange: true });
                             objRecordCreateServicios.setValue({ fieldId: 'custrecord_ns_orden_servicio_si', value: idSalesorder, ignoreFieldChange: true });
@@ -946,7 +946,7 @@ define([
                             }
                         }
 
-                        if (adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP && statusOri == ESTADO_CHEQUEADA) {//TODO: Revisar actualziaciones cuando es locjack, ya que no tiene simcard
+                        if (adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP && statusOri == _constant.Status.CHEQUEADO) {//TODO: Revisar actualziaciones cuando es locjack, ya que no tiene simcard
                             if (esAlquiler == _constant.Valor.SI) {
                                 log.debug('Alquiler', 'Es alquiler');
                                 if (tag == _constant.Valor.VALOR_LOJ_LOJACK)
@@ -990,7 +990,7 @@ define([
                                     record.submitFields({
                                         type: 'customrecord_ht_record_detallechaserdisp',
                                         id: idDispositivo,
-                                        values: { 'custrecord_ht_dd_estado': DISPONIBLE },
+                                        values: { 'custrecord_ht_dd_estado': _constant.Status.DISPONIBLE },
                                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                                     });
 
@@ -999,7 +999,7 @@ define([
                                         record.submitFields({
                                             type: 'customrecord_ht_record_detallechasersim',
                                             id: idSimCard,
-                                            values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                            values: { 'custrecord_ht_ds_estado': _constant.Status.INACTIVO },
                                             options: { enableSourcing: false, ignoreMandatoryFields: true }
                                         });
                                     } catch (error) {
@@ -1030,14 +1030,14 @@ define([
                                 record.submitFields({
                                     type: 'customrecord_ht_record_detallechaserdisp',
                                     id: idDispositivo,
-                                    values: { 'custrecord_ht_dd_estado': DISPONIBLE },
+                                    values: { 'custrecord_ht_dd_estado': _constant.Status.DISPONIBLE },
                                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                                 });
 
                                 record.submitFields({
                                     type: 'customrecord_ht_record_detallechasersim',
                                     id: idSimCard,
-                                    values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                    values: { 'custrecord_ht_ds_estado': _constant.Status.INACTIVO },
                                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                                 });
 
@@ -1124,7 +1124,7 @@ define([
                                     record.submitFields({
                                         type: 'customrecord_ht_record_detallechaserdisp',
                                         id: idDispositivo,
-                                        values: { 'custrecord_ht_dd_estado': DISPONIBLE },
+                                        values: { 'custrecord_ht_dd_estado': _constant.Status.DISPONIBLE },
                                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                                     });
 
@@ -1133,7 +1133,7 @@ define([
                                         record.submitFields({
                                             type: 'customrecord_ht_record_detallechasersim',
                                             id: idSimCard,
-                                            values: { 'custrecord_ht_ds_estado': INACTIVO },
+                                            values: { 'custrecord_ht_ds_estado': _constant.Status.INACTIVO },
                                             options: { enableSourcing: false, ignoreMandatoryFields: true }
                                         });
                                     } catch (error) {

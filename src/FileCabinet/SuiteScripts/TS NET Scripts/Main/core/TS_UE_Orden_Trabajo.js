@@ -79,8 +79,9 @@ define([
             const URL = configRecObj.getValue({ fieldId: 'appurl' });
             let objRecord = context.newRecord;
             let id = context.newRecord.id;
-            var form = context.form;
-            var type_event = context.type;
+            let form = context.form;
+            let type_event = context.type;
+            let paralizador = 0, boton_panico = 0;
 
             if (type_event == context.UserEventType.VIEW) {
                 let idOrdenTrabajo = objRecord.getValue('custrecord_ht_ot_ordenfabricacion');
@@ -120,15 +121,74 @@ define([
                 createEnsambleCustodiaButton(form, objRecord);
                 createEnsambleGarantiaButton(form, objRecord);
                 form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
+
+
             } else if (type_event == context.UserEventType.EDIT) {
                 createEnsambleAlquilerButton(form, objRecord);
                 createEnsambleCustodiaButton(form, objRecord);
                 createEnsambleGarantiaButton(form, objRecord);
                 form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
             }
+
+            // if (type_event == context.UserEventType.VIEW) {
+            //     //let objRecord = context.newRecord;
+            //     let idSalesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
+            //     let idItemOT = objRecord.getValue({ fieldId: 'custrecord_ht_ot_item' });
+            //     let parametrosRespo_2 = _controller.parametrizacion(idItemOT);
+            //     if (parametrosRespo_2.length != 0) {
+            //         for (let j = 0; j < parametrosRespo_2.length; j++) {
+            //             if (parametrosRespo_2[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo_2[j][1] == _constant.Valor.SI) {
+            //                 let salesorder = record.load({ type: 'salesorder', id: idSalesorder });
+            //                 let numLines = salesorder.getLineCount({ sublistId: 'item' });
+            //                 for (let i = 0; i < numLines; i++) {
+            //                     paralizador = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_paralizador', line: i });
+            //                     if (paralizador) {
+            //                         log.debug('PARALIZADORT', 'es: ' + paralizador);
+            //                         record.submitFields({
+            //                             type: context.newRecord.type,
+            //                             id: objRecord.id,
+            //                             values: { custrecord_ht_ot_paralizador: true },
+            //                             options: { enablesourcing: true }
+            //                         })
+            //                         //objRecord.setValue('custrecord_ht_ot_paralizador', true)
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
         }
 
         const afterSubmit = (context) => {
+            // if (context.type == context.UserEventType.CREATE) {
+            //     let objRecord = context.newRecord;
+            //     let idSalesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
+            //     let idItemOT = objRecord.getValue({ fieldId: 'custrecord_ht_ot_item' });
+            //     let parametrosRespo_2 = _controller.parametrizacion(idItemOT);
+            //     log.debug('LOGGG', parametrosRespo_2);
+            //     if (parametrosRespo_2.length != 0) {
+            //         for (let j = 0; j < parametrosRespo_2.length; j++) {
+            //             if (parametrosRespo_2[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo_2[j][1] == _constant.Valor.SI) {
+            //                 let salesorder = record.load({ type: 'salesorder', id: idSalesorder });
+            //                 let numLines = salesorder.getLineCount({ sublistId: 'item' });
+            //                 for (let i = 0; i < numLines; i++) {
+            //                     paralizador = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_paralizador', line: i });
+            //                     if (paralizador) {
+            //                         log.debug('PARALIZADORT', 'es: ' + paralizador);
+            //                         record.submitFields({
+            //                             type: context.newRecord.type,
+            //                             id: objRecord.id,
+            //                             values: { custrecord_ht_ot_paralizador: true },
+            //                             options: { enablesourcing: true }
+            //                         })
+            //                         //objRecord.setValue('custrecord_ht_ot_paralizador', true)
+            //                     }
+            //                 }
+            //             }
+            //         }
+            //     }
+            // }
+
             if (context.type === context.UserEventType.EDIT) {
                 let senderId = runtime.getCurrentUser();
                 senderId = senderId.id;
@@ -266,9 +326,6 @@ define([
 
                                 if (parametrosRespo_2[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo_2[j][1] == _constant.Valor.VALOR_001_GENERA_CUSTODIAS)
                                     entradaCustodia = _constant.Valor.SI
-
-                                if (parametrosRespo_2[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo_2[j][1] == _constant.Valor.VALOR_002_ENTREGA_CUSTODIAS)
-                                    entregaCustodia = _constant.Valor.SI
                             }
                         }
 
@@ -331,8 +388,9 @@ define([
                         }
 
                         // log.debug('idOS', idOS)
+
                         if (idOS) {
-                            log.debug('idOSIntro', idOS)
+                            log.debug('idOSIntroImpulsoPlataformas', idOS)
                             let serviceOS = record.load({ type: 'salesorder', id: idOS });
                             let numLines_2 = serviceOS.getLineCount({ sublistId: 'item' });
                             for (let j = 0; j < numLines_2; j++) {
@@ -353,6 +411,7 @@ define([
                                     // updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_noimpulsaplataformas', value: true })
                                     // updateTelematic.save();
                                 }
+
                                 if (plataformasTele == _constant.Valor.SI && ingresaFlujoConvenio == false && adpDesinstalacion != _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
                                     returEjerepo = _controller.parametros(_constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS, id, adp);
                                     //log.debug('Estado que devuelve el impulso a plataforma tele- ' + j, JSON.stringify(returEjerepo) + ': ' + JSON.stringify(returEjerepo));
@@ -452,7 +511,6 @@ define([
                                         json.concepto = instalacion;
                                         json.salesorder = idSalesorder;
                                     }
-
 
                                     createCoberturaWS(json);
                                     if (chaser.length > 0) {
@@ -1153,6 +1211,16 @@ define([
                                     log.debug('ajusteInv', ajusteInv);
                                 } catch (error) { }
                                 log.debug('returnRegistroCustodia', returnRegistroCustodia);
+                            }
+
+                            if (envioPX == _constant.Valor.SI) {
+                                returEjerepo = _controller.parametros(_constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS, id, adp);
+                                log.debug('DESACTIVACIÓN-PX', returEjerepo);
+                            }
+
+                            if (envioTele == _constant.Valor.SI) {
+                                returEjerepo = _controller.parametros(_constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS, id, adp);
+                                log.debug('DESACTIVACIÓN-TM', returEjerepo);
                             }
                         }
                         break;

@@ -13,8 +13,17 @@ Governance points: N/A
  *@NApiVersion 2.1
 *@NScriptType UserEventScript
 */
-define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/error', '../Impulso Plataformas/Controller/TS_Script_Controller'],
-    (log, search, record, serverWidget, https, error, _controllerParm) => {
+define(['N/log',
+    'N/search',
+    'N/record',
+    'N/ui/serverWidget',
+    'N/https',
+    'N/error',
+    '../controller/TS_CM_Controller',
+    '../constant/TS_CM_Constant',
+    '../error/TS_CM_ErrorMessages',
+],
+    (log, search, record, serverWidget, https, error, _controller, _constant, _errorMessage) => {
         var TIPO_TRANSACCION = '2';
         var TIPO_AGRUPACION_PRODUCTO = '77';
         const afterSubmit = (context) => {
@@ -26,15 +35,13 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
                 if (memo.includes(palabraBuscada)) {
                     log.debug('Nota de Crédito', 'Certificado de Retención');
                 } else {
-                    var idB = objRecord.getValue('custbody_ht_so_bien');
-                    var accion_producto = 0;
-                    var valor_tipo_agrupacion = 0;
-                    var idCoberturaItem;
+                    let idB = objRecord.getValue('custbody_ht_so_bien');
+                    let valor_tipo_agrupacion = 0, idCoberturaItem, envioPX = 0, envioTele = 0, itemid = 0;
                     let numLines = objRecord.getLineCount({ sublistId: 'item' });
                     for (let i = 0; i < numLines; i++) {
                         let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                         log.debug('items', items);
-                        let parametrosRespo = _controllerParm.parametrizacion(items);
+                        let parametrosRespo = _controller.parametrizacion(items);
                         for (let j = 0; j < parametrosRespo.length; j++) {
                             if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
                                 valor_tipo_agrupacion = parametrosRespo[j][1];
@@ -43,10 +50,12 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
                     }
                     log.debug('idB', idB);
                     let busqueda_cobertura = getCoberturaItem(idB);
+
                     log.debug('busqueda_cobertura', busqueda_cobertura);
                     if (busqueda_cobertura.length != 0) {
+                        itemid = busqueda_cobertura[i][0]
                         for (let i = 0; i < busqueda_cobertura.length; i++) {
-                            let parametrosRespo = _controllerParm.parametrizacion(busqueda_cobertura[i][0]);
+                            let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
                             if (parametrosRespo.length != 0) {
                                 var accion_producto_2 = 0;
                                 var valor_tipo_agrupacion_2 = 0;
@@ -57,11 +66,18 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
                                     if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
                                         idCoberturaItem = busqueda_cobertura[i][1];
                                     }
+
+                                    if (parametrosRespo[j][0] == _constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS)
+                                        envioPX = parametrosRespo[j][1];
+
+                                    if (parametrosRespo[j][0] == _constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS)
+                                        envioTele = parametrosRespo[j][1];
                                 }
                             }
                         }
                     }
                     log.debug('idCoberturaItem', idCoberturaItem);
+
                     record.submitFields({
                         type: 'customrecord_ht_co_cobertura',
                         id: idCoberturaItem,
@@ -70,6 +86,21 @@ define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/erro
                         },
                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                     });
+
+                    let assetid = objRecord.getValue('custbody_ht_so_bien');
+                    let customerid = objRecord.getValue('entity');
+                    let productoid = itemid;
+                    if (envioPX == _constant.Valor.SI) {
+                        log.debug('DesestimientoPX', 'Función de impulso a PX')
+
+
+                    }
+
+                    if (envioTele == _constant.Valor.SI) {
+                        log.debug('DesestimientoTM', 'Función de impulso a TM')
+
+
+                    }
                 }
             }
         }

@@ -106,7 +106,9 @@ define([], () => {
         DSR_DEFINICION_DE_SERVICIOS: 3,
         UDP_UTILIZA_PARALIZADOR: 87
     }
-
+    case VALOR_002_DESINSTALACION_DE_DISP:
+        //////////////////////
+        break
     let Valor = {
         SI: 9,
         NO: 18,

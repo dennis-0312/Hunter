@@ -15,7 +15,7 @@ Url: https://7451241-sb1.restlets.api.netsuite.com/app/site/hosting/restlet.nl?s
  *@NApiVersion 2.1
  *@NScriptType Restlet
  */
-define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email) => {
+define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format'], (log, search, record, email, format) => {
     const HT_CONSULTA_ORDEN_TRABAJO_SEARCH = 'customsearch_ht_consulta_orden_trabajo'; //HT Consulta Orden de trabajo - PRODUCCION
     const HT_ORDEN_TRABAJO_RECORD = 'customrecord_ht_record_ordentrabajo' //
     const HT_BIEN_RECORD = 'customrecord_ht_record_bienes' //HT Bienes
@@ -443,7 +443,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                 accion = accion.toLowerCase();
                 let guardar = 0;
                 let guardarBien = 0;
-                let recepcion = '';
+                let recepcion = '', recep = 0;
                 switch (accion) {
                     case RECEPCION:
                         log.debug('Acción', 'Recepción');
@@ -490,20 +490,33 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                                 }
 
                                 if (guardar == 1) {
+                                    var now = new Date()
                                     openRecord.setValue({ fieldId: 'company', value: scriptContext.customer });
                                     openRecord.setValue({ fieldId: 'transaction', value: scriptContext.idordenservicio });
+                                    //openRecord.setValue({ fieldId: 'alldayevent', value: true });
+                                    // openRecord.setValue({ fieldId: 'starttime', value: Date.now() - 1 });
+                                    openRecord.setValue({ fieldId: 'custevent_ht_os_hora_recepcion', value: format.format({ value: now, type: format.Type.TIMEOFDAY }) });
                                     //openRecord.setValue({ fieldId: "sendemail", value: true });
                                     let recepcionRec = openRecord.save();
-                                    recepcion = scriptContext.ordenServicio;
+
+
+
+                                    // Assume the time format is hh:mm (24 hours)
+                                    // Say it's 7:01PM right now.
+                                    //let formato = format.format({ value: now, type: format.Type.TIMEOFDAY })
+                                    log.debug('Hora', now);
+
                                     // let submitF = record.submitFields({
                                     //     type: record.Type.CALENDAR_EVENT,
-                                    //     id: savedRecord,
+                                    //     id: recepcionRec,
                                     //     values: {
-                                    //         sendemail: true
+                                    //         starttime: new Date(),
+                                    //         endtime: new Date()
                                     //     }
                                     // });
-                                    log.debug('Recepción', recepcionRec);
+                                    // log.debug('Recepción', submitF);
                                 }
+
 
                                 let openRecordBien = record.load({ type: HT_BIEN_RECORD, id: idvehiculo, isDynamic: true });
                                 if (typeof scriptContext.color != 'undefined' && scriptContext.color.length > 0) {
@@ -525,7 +538,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                                         transactionId: scriptContext.idordenservicio
                                     }
                                 });
-                                respuesta = 'Vehículo recepcionado, recepción: ' + recepcion;
+                                respuesta = 'Vehículo recepcionado, recepción: ' + scriptContext.ordenServicio;
                             } else {
                                 respuesta = 'No se encontró información para está Orden de Trabajo';
                             }
@@ -563,7 +576,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email'], (log, search, record, email
                             openRecord.setValue({ fieldId: "custrecord_ht_ot_fechatrabajoasignacion", value: new Date(scriptContext.fechatrabajoasignacion) });
                             openRecord.setValue({ fieldId: "custrecord_ht_ot_horatrabajoasignacion", value: new Date(scriptContext.horatrabajoasignacion) });
                             openRecord.setValue({ fieldId: "custrecord_ht_ot_ubicacion", value: scriptContext.ubicacion });
-                            if (scriptContext.novedad){
+                            if (scriptContext.novedad) {
                                 openRecord.setValue({ fieldId: "custrecord_ht_ot_connovedad", value: scriptContext.novedad });
                             } else {
                                 openRecord.setValue({ fieldId: "custrecord_ht_ot_sinnovedad", value: scriptContext.novedad });

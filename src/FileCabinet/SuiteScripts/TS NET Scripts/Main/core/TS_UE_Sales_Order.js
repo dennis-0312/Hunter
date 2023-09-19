@@ -90,14 +90,23 @@ define([
                 let numLines = objRecord.getLineCount({ sublistId: 'item' });
                 let aprobacionventa = objRecord.getValue('custbody_ht_os_aprobacionventa');
                 let aprobacioncartera = objRecord.getValue('custbody_ht_os_aprobacioncartera');
-                let parametro = 0, parametro_aprob = 0, parametro_fact = 0, workOrder = 0, adp = 0, plazo = 0, valor_tipo_agrupacion = 0, paramChequeo = 0, coberturaRecord = 0, generaOrdenTrabajo = 0, esGarantia = 0, esUpgrade = _constant.Valor.NO, ccd = 0,
-                    dispositivoEnCustodia = "", itemCustodia = {}, ttr = 0, renovamos = false, plataformas = false, arrayRecipientsOriginal = new Array(), arrayRecipients = new Array(), esAlquiler = 0;
+                let parametro = 0, parametro_aprob = 0, parametro_fact = 0, workOrder = 0, adp = 0, plazo = 0, valor_tipo_agrupacion = 0, paramChequeo = 0, coberturaRecord = 0,
+                    generaOrdenTrabajo = 0, esGarantia = 0, esUpgrade = _constant.Valor.NO, ccd = 0, dispositivoEnCustodia = "", itemCustodia = {}, ttr = 0, renovamos = false,
+                    plataformas = false, arrayRecipientsOriginal = new Array(), arrayRecipients = new Array(), esAlquiler = 0, definicionServicios = false, paralizador = false,
+                    botonPanico = false;
 
                 for (let i = 0; i < numLines; i++) {
                     objRecord.selectLine({ sublistId: 'item', line: i });
                     let cantidad = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity' });
                     let inventoryNumber = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ts_dispositivo_en_custodia' });
                     let items = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
+                    if (!paralizador)
+                        paralizador = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_paralizador' });
+
+                    if (!botonPanico)
+                        botonPanico = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_boton_panico' });
+                    log.debug('Servicios!!!!!!!!!!!!!!', paralizador + ' - ' + botonPanico);
+
                     let parametrosRespo = _controller.parametrizacion(items);
                     //log.debug('parametrosRespo', parametrosRespo);
                     var descriptionItem = getDescription(customer, items);
@@ -166,6 +175,11 @@ define([
 
                         if (parametrosRespo[j][0] == _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER && parametrosRespo[j][1] == _constant.Valor.SI)
                             esAlquiler = _constant.Valor.SI;
+
+                        if (parametrosRespo[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo[j][1] == _constant.Valor.SI) {
+                            log.debug('Servicios11111111111111!!!!!!!!!!!!!!', paralizador + ' - ' + botonPanico);
+                            definicionServicios = true;
+                        }
                     }
                 }
 
@@ -246,11 +260,12 @@ define([
                         // log.debug('newDateAntigua', newDateAntigua);
 
                         let telemat = {
-                            id: idTelematic,
+                            id: vehiculo.custrecord_ht_bien_id_telematic,
                             state: 1,
                             product_expire_date: fechaNuevaCompleta,
                         }
                         if (plataformas == true) {
+                            log.debug('UPDATE-ASSET-IF', telemat);
                             let Telematic = envioTelematic(telemat);
                             Telematic = JSON.parse(Telematic);
                             //log.debug('Telematic', Telematic);
@@ -274,6 +289,7 @@ define([
                                 let response = objRecord_detalle.save();
                             }
                         } else {
+                            log.debug('UPDATE-ASSET-ELSE', telemat);
                             if (newDateAntigua < hoy) {
                                 record.submitFields({
                                     type: 'customrecord_ht_co_cobertura',
@@ -431,6 +447,20 @@ define([
                     });
                 }
 
+                if (definicionServicios) {
+                    log.debug('Servicios22222!!!!!!!!!!!!!!', paralizador + ' - ' + botonPanico);
+                    record.submitFields({
+                        type: _constant.customRecord.ORDEN_TRABAJO,
+                        id: workOrder,
+                        values: {
+                            custrecord_ht_ot_paralizador: paralizador,
+                            custrecord_ht_ot_boton_panico: botonPanico
+                        },
+                        options: { enablesourcing: true }
+                    });
+                    log.debug('PARALIZADORT', workOrder + ' Actualizada');
+                }
+
                 log.error("esGarantia", esGarantia);
                 if (esGarantia) {
                     var bien = objRecord.getValue('custbody_ht_so_bien');
@@ -455,6 +485,7 @@ define([
                         }
                     }
                 }
+
 
                 // if (generaOrdenTrabajo == 1 && esGarantia == 0) {
                 //     workOrder = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, json);
@@ -553,6 +584,8 @@ define([
                         }
                         if (returEjerepo == false) {
                             let idCoberturaItem;
+                            let responsePlataformasPX;
+                            let responsePlataformasTM;
                             let busqueda_cobertura = getCoberturaItem(bien);
                             log.debug('busqueda_cobertura', busqueda_cobertura);
                             log.debug('monitoreo', monitoreo);
@@ -569,16 +602,29 @@ define([
                                         for (let j = 0; j < parametrosRespo.length; j++) {
                                             if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO) {
                                                 valor_tipo_agrupacion_2 = parametrosRespo[j][1];
-                                                log.debug('valor_tipo_agrupacion_2', valor_tipo_agrupacion_2);
+                                                //log.debug('valor_tipo_agrupacion_2', valor_tipo_agrupacion_2);
                                             }
                                             if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {//TODO: Para cambio de propietario de bien debe cambiar a todos los productos instalados.
                                                 idCoberturaItem = busqueda_cobertura[i][1];
-                                                log.debug('idCoberturaItem', idCoberturaItem);
+                                                //log.debug('idCoberturaItem', idCoberturaItem);
+                                            }
+
+                                            if (parametrosRespo[j][0] == _constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                                log.debug('Entré', 'Entré a Parametrizar PX !!!!!');
+                                                responsePlataformasPX = _controller.parametros(_constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS, idRecord, _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO);
+                                            }
+
+                                            if (parametrosRespo[j][0] == _constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                                log.debug('Entré', 'Entré a Parametrizar TM!!!!!');
+                                                responsePlataformasTM = _controller.parametros(_constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS, idRecord, _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO);
                                             }
                                         }
                                     }
                                 }
                                 log.debug('idCoberturaItem', idCoberturaItem);
+                                log.debug('responsePlataformasPX', responsePlataformasPX);
+                                log.debug('responsePlataformasTM', responsePlataformasTM);
+                                //TODO: SOLO PARAPRUEBAS CAMBIO PROPIETARIO, LUEGO ACTIVAR
                                 try {
                                     record.submitFields({
                                         type: 'customrecord_ht_co_cobertura',
@@ -591,6 +637,7 @@ define([
                                     });
                                 } catch (error) { }
                             }
+                            //TODO: SOLO PARAPRUEBAS CAMBIO PROPIETARIO, LUEGO ACTIVAR
                             record.submitFields({
                                 type: 'customrecord_ht_record_bienes',
                                 id: bien,
@@ -599,7 +646,7 @@ define([
                                 },
                                 options: { enableSourcing: false, ignoreMandatoryFields: true }
                             });
-                            //record.submitFields({ type: 'salesorder', id: idRecord, values: { 'custbody_ht_os_aprobacionventa': 1, 'orderstatus': 'B' }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
+                            record.submitFields({ type: 'salesorder', id: idRecord, values: { 'custbody_ht_os_aprobacionventa': 1, 'orderstatus': 'B' }, options: { enableSourcing: false, ignoreMandatoryFields: true } });
                             transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
                         }
                     }
@@ -646,7 +693,9 @@ define([
                                 });
                             }
                         }
-                        transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
+                        try {
+                            transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
+                        } catch (error) { }
                     }
 
 

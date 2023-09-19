@@ -1,0 +1,205 @@
+{
+    "count": 1732,
+    "next": "https://test-telematicsapi.hunterlabs.io/asset/?name=1001120483&page=2",
+    "previous": null,
+    "results": [
+        {
+            "id": 2218,
+            "name": "1001120479",
+            "description": "PLC.:RIP-5315 MOT.:5945315 CHA.:8LFTNY0247M327115 MAR.:007 - BMW TIP.:001 - JEEP MOD.:139 - X2 X2 SD",
+            "user": [
+                750
+            ],
+            "custom_name": "",
+            "asset_type": 2,
+            "product": "PLC.:RIP-5315 MOT.:5945315 CHA.:8LFTNY0247M327115 MAR.:007 - BMW TIP.:001 - JEEP MOD.:139 - X2 X2 SD",
+            "product_expire_date": "2024-03-23T00:00:00Z",
+            "active": true,
+            "attributes": [
+                {
+                    "id": 1703,
+                    "attribute": 10,
+                    "value": "007 - BMW",
+                    "attribute_name": "Brand"
+                },
+                {
+                    "id": 1704,
+                    "attribute": 11,
+                    "value": "007 - BMW",
+                    "attribute_name": "Model"
+                },
+                {
+                    "id": 1705,
+                    "attribute": 16,
+                    "value": "8LFTNY0247M327115",
+                    "attribute_name": "Chasis"
+                },
+                {
+                    "id": 1706,
+                    "attribute": 17,
+                    "value": "5945315",
+                    "attribute_name": "Motor"
+                },
+                {
+                    "id": 1707,
+                    "attribute": 18,
+                    "value": "RIP-5315",
+                    "attribute_name": "Plate"
+                }
+            ],
+            "get_devices": [
+                {
+                    "id": "0427012315",
+                    "company_code": "0991259546001",
+                    "model": 1,
+                    "report_from": 3,
+                    "active": true,
+                    "last_report_ip": null,
+                    "last_report_date": null
+                }
+            ],
+            "get_last_status": null,
+            "owner": null,
+            "state": 1,
+            "get_owner": null,
+            "watching": false,
+            "doors_sensors": 0,
+            "safe_parking_mode": false,
+            "notify_km_maintenance": false,
+            "km_last_maintenance": null,
+            "km_maintenance": null,
+            "notify_battery_level": false,
+            "aceptation_date": "2023-03-23T00:00:00Z",
+            "contract_code": "",
+            "is_branded": false
+        },
+        {
+            "id": 2217,
+            "name": "1001120479",
+            "description": "PLC.:RIP-5315 MOT.:5945315 CHA.:8LFTNY0247M327115 MAR.:007 - BMW TIP.:001 - JEEP MOD.:139 - X2 X2 SD",
+            "user": [
+                750
+            ],
+            "custom_name": "",
+            "asset_type": 2,
+            "product": "PLC.:RIP-5315 MOT.:5945315 CHA.:8LFTNY0247M327115 MAR.:007 - BMW TIP.:001 - JEEP MOD.:139 - X2 X2 SD",
+            "product_expire_date": "2024-03-23T00:00:00Z",
+            "active": true,
+            "attributes": [
+                {
+                    "id": 1698,
+                    "attribute": 10,
+                    "value": "007 - BMW",
+                    "attribute_name": "Brand"
+                },
+                {
+                    "id": 1699,
+                    "attribute": 11,
+                    "value": "007 - BMW",
+                    "attribute_name": "Model"
+                },
+                {
+                    "id": 1700,
+                    "attribute": 16,
+                    "value": "8LFTNY0247M327115",
+                    "attribute_name": "Chasis"
+                },
+                {
+                    "id": 1701,
+                    "attribute": 17,
+                    "value": "5945315",
+                    "attribute_name": "Motor"
+                },
+                {
+                    "id": 1702,
+                    "attribute": 18,
+                    "value": "RIP-5315",
+                    "attribute_name": "Plate"
+                }
+            ],
+            "get_devices": [],
+            "get_last_status": null,
+            "owner": null,
+            "state": 1,
+            "get_owner": null,
+            "watching": false,
+            "doors_sensors": 0,
+            "safe_parking_mode": false,
+            "notify_km_maintenance": false,
+            "km_last_maintenance": null,
+            "km_maintenance": null,
+            "notify_battery_level": false,
+            "aceptation_date": "2023-03-23T00:00:00Z",
+            "contract_code": "",
+            "is_branded": false
+        },
+        {
+            "id": 2216,
+            "name": "PruebaEvol",
+            "description": "PruebaEvol",
+            "user": [],
+            "custom_name": "PruebaEvol",
+            "asset_type": 2,
+            "product": "PruebaEvol",
+            "product_expire_date": "2026-01-06T00:00:00Z",
+            "active": false,
+            "attributes": [],
+            "get_devices": [],
+            "get_last_status": null,
+            "owner": 403,
+            "state": 1,
+            "get_owner": {
+                "id": 403,
+                "username": "mvaldez@carsegsa.com",
+                "first_name": "Mario",
+                "last_name": "Valdez",
+                "email": "mvaldez@carsegsa.com",
+                "customer": {
+                    "company_code": "0991259546001",
+                    "identity_document_type": 2,
+                    "identity_document_number": "0932677495",
+                    "business_name": "CARSEGSA S.A",
+                    "phone_number": "6011450",
+                    "emergency_phone_number": "6011450",
+                    "assistance_phone_number": "6011450",
+                    "technical_support_email": "support@amibyhunter.com",
+                    "account_type": 1,
+                    "nick": "Mario Valdez",
+                    "faceid_enabled": false,
+                    "touchid_enabled": true,
+                    "agreement_aceptation_date": "2019-08-16T16:14:53Z",
+                    "law_acceptance": false,
+                    "law_acceptance_date": null
+                },
+                "is_active": true,
+                "last_login": "2023-02-22T17:33:00.255039Z",
+                "date_joined": "2018-02-02T17:53:04Z",
+                "has_usable_password": true,
+                "get_all_permissions": [
+                    "command.can_set_odometer",
+                    "trip.view_trip",
+                    "asset.view_laststatus",
+                    "command.can_change_report_server",
+                    "alarm.view_notification",
+                    "command.can_run_commands",
+                    "asset.view_asset",
+                    "event.view_status",
+                    "customer.can_access_via_web_browser",
+                    "device.view_server",
+                    "command.view_assetcommand"
+                ]
+            },
+            "watching": false,
+            "doors_sensors": 0,
+            "safe_parking_mode": false,
+            "notify_km_maintenance": false,
+            "km_last_maintenance": null,
+            "km_maintenance": null,
+            "notify_battery_level": false,
+            "aceptation_date": "2021-06-02T00:00:00Z",
+            "contract_code": "PruebaEvol",
+            "is_branded": false
+        },
+        {
+            "id": 2215,
+            "name":"1001120

@@ -119,14 +119,17 @@ define([
                 case GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
                     switch (parseInt(type)) {
                         case VALOR_001_INST_DISPOSITIVO:
-                            let Dispositivo = _platformController.Dispositivo(id);
-                            let vehiculo = _platformController.vehiculo(id);
-                            let Propietario = _platformController.Propietario(id);
-                            let PropietarioMonitero = _platformController.PropietarioMonitoreo(id);
-                            response = _platformController.envioPXAdminInstall(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
+                            response = _platformController.envioPXInstalacionDispositivo(id); // id Orden de Trabajo
                             break;
                         case VALOR_010_CAMBIO_DE_PROPIETARIO:
-                            response = _platformController.envioCambioPropietario(id);
+                            log.debug('VALOR_010_CAMBIO_DE_PROPIETARIOPX', 'Entré a cambiar propietario PX');
+                            response = _platformController.envioPXCambioPropietario(id); // id Orden de Trabajo
+                            log.debug('ResponsePX', response);
+                            break;
+                        case _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP:
+                            log.debug('VALOR_002_DESINSTALACION_DE_DISP_PX', 'Entré a Desinstalacion PX');
+                            response = _platformController.envioPXDesinstalacionDispositivo(id); // id Orden de Trabajo
+                            log.debug('ResponsePX', response);
                             break;
                         default:
                             log.debug('accionEstadoOT');
@@ -135,14 +138,23 @@ define([
                 case GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS:
                     switch (parseInt(type)) {
                         case VALOR_001_INST_DISPOSITIVO:
-                            let Dispositivo = _platformController.Dispositivo(id);
-                            let vehiculo = _platformController.vehiculo(id);
-                            let Propietario = _platformController.Propietario(id);
-                            let PropietarioMonitero = _platformController.PropietarioMonitoreo(id);
-                            response = _platformController.envioPXAdminInstallTelec(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
+                            // let Dispositivo = _platformController.Dispositivo(id);
+                            // let vehiculo = _platformController.vehiculo(id);
+                            // let Propietario = _platformController.Propietario(id);
+                            // let PropietarioMonitero = _platformController.PropietarioMonitoreo(id);
+                            // response = _platformController.envioPXAdminInstallTelec(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
+                            response = _platformController.envioTelecInstalacionNueva(id); // id Orden de Trabajo
                             break;
                         case VALOR_010_CAMBIO_DE_PROPIETARIO:
-                            response = _platformController.envioCambioPropietario(id);
+                            log.debug('VALOR_010_CAMBIO_DE_PROPIETARIOTM', 'Entré a cambiar propietario TM')
+                            // response = _platformController.envioCambioPropietario(id);
+                            response = _platformController.envioTelecCambioPropietario(id); // id Orden de Trabajo
+                            log.debug('ResponseTM', response)
+                            break;
+                        case _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP:
+                            log.debug('VALOR_002_DESINSTALACION_DE_DISP_TM', 'Entré a Desinstalacion MT');
+                            response = _platformController.envioTelecDesinstalacionDispositivo(id); // id Orden de Trabajo
+                            log.debug('ResponseTM', response);
                             break;
                         default:
                             let cliente = record.load({ type: 'customer', id: id, isDynamic: true });
@@ -294,7 +306,6 @@ define([
                             }
                         }
                     }
-                    //console.log('TipoBien', tipoItem);
                     if (type != null) {
                         var cont = 0;
                         for (let i = 0; i < type.length; i++) {
@@ -309,11 +320,10 @@ define([
                                 }
                             }
                         }
-                        //console.log('Cont', cont);
                         if (cont == 0) {
                             response.status = false;
                             response.mensaje = 'No existe Produncto instalado con esta parametrizacion del ITEM ' + item + '.'
-                        } 
+                        }
                         //TODO: Revisar cuando sea para instalación y desinstalación, dependiendo del caso debe validar que tenga instalado y otro no.
                         // else {
                         //     response.status = false;

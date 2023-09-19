@@ -23,7 +23,8 @@ define(['N/log',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
     '../error/TS_CM_ErrorMessages',
-], (log, search, record, runtime, redirect, url, https, _controller, _constant, _errorMessage) => {
+    'N/error',
+], (log, search, record, runtime, redirect, url, https, _controller, _constant, _errorMessage, err) => {
     const INVOICE = 'invoice';
     const CASH_SALE = 'cashsale';
     const CREDIT_MEMO = 'creditmemo';
@@ -103,6 +104,7 @@ define(['N/log',
 
     const beforeSubmit = (context) => {
         const eventType = context.type;
+        log.error('eventType', eventType);
         //log.error("eventTypebeforeSubmit", eventType);
         let documentref = '';
         if (eventType === context.UserEventType.CREATE /*|| eventType === context.UserEventType.EDIT*/) {
@@ -165,6 +167,55 @@ define(['N/log',
                 }
             } catch (error) {
                 log.error('Error-beforeSubmit-' + objRecord.type, eventType + '--' + error);
+            }
+        }
+        
+        if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) {
+            if (context.newRecord.type == VENDOR_BILL) {
+                const objRecord = context.newRecord;
+
+                var customer = objRecord.getValue({ fieldId: 'entity' });
+                var pe_number = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
+                log.error('customer', customer);
+                
+                var existe = buscarFacCompra(customer, pe_number);
+
+                if (existe) {
+                    var myCustomError = err.create({
+                        name: 'ERROR_NUMERO_DOCUMENTO',
+                        message: 'Ya existe una Factura de Compra con el mismo PROVEEDOR y NUMERO PREIMPRESO',
+                        notifyOff: false
+                    });
+                    log.error('Error: ' + myCustomError.name, myCustomError.message);
+                    throw myCustomError;
+                }
+            }
+        } else if(eventType === context.UserEventType.EDIT){
+            if (context.newRecord.type == VENDOR_BILL){
+                let objRecord = context.newRecord;
+                let oldRecord = context.oldRecord;
+
+                var customer_new = objRecord.getValue({ fieldId: 'entity' });
+                var pe_number_new = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
+                log.error('customer_new', customer_new);
+                log.error('pe_number_new', pe_number_new);
+                var customer_old = oldRecord.getValue({ fieldId: 'entity' });
+                var pe_number_old = oldRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
+                log.error('customer_old', customer_old);
+                log.error('pe_number_old', pe_number_old);
+
+                if(customer_new != customer_old || pe_number_new != pe_number_old){
+                    var existe_new = buscarFacCompra(customer_new, pe_number_new);
+                    if (existe_new) {
+                        var myCustomError = err.create({
+                            name: 'ERROR_NUMERO_DOCUMENTO',
+                            message: 'Ya existe una Factura de Compra con el mismo PROVEEDOR y NUMERO PREIMPRESO',
+                            notifyOff: false
+                        });
+                        log.error('Error: ' + myCustomError.name, myCustomError.message);
+                        throw myCustomError;
+                    }
+                }
             }
         }
     }
@@ -595,6 +646,34 @@ define(['N/log',
             log.error('Error en getDateRef', e);
         }
     }
+
+    const buscarFacCompra = (idCustomer, preimpreso) => {
+        var vendorbillSearchObj = search.create({
+            type: "vendorbill",
+            filters:
+                [
+                    ["type", "anyof", "VendBill"],
+                    "AND",
+                    ["name", "anyof", idCustomer],
+                    "AND",
+                    ["custbody_ts_ec_numero_preimpreso", "is", preimpreso],
+                    "AND",
+                    ["mainline", "is", "T"]
+                ],
+            columns:
+                [
+                    search.createColumn({ name: "internalid", label: "ID interno" })
+                ]
+        });
+
+        let objRecord = vendorbillSearchObj.run().getRange(0, 1000);
+        let existe = false;
+        if (objRecord.length > 0) {
+            existe = true;
+        }
+        return existe
+    }
+
     return {
         beforeLoad: beforeLoad,
         afterSubmit: afterSubmit,

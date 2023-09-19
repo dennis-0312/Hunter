@@ -358,7 +358,10 @@ define(['N/search',
 
                                 if (parametrosRespo[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     console.log('Parametrizacion', 'El item ' + idItemTXT + ' maneja servicios integrados.');
+                                    dialog.alert({ title: 'Alerta', message: 'El item ' + idItemTXT + ' maneja servicios integrados.' });
                                 }
+
+                                
                             }
                             //console.log('parametrizacion pruebas', parametrosRespo);
                             // console.log('idItem', idItem);

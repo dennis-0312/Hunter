@@ -1526,6 +1526,14 @@ define([
             return ordenTrabajo;
         }
 
+        const envioTelecCorteSim = (dispositivoId) => {
+            return _platformController.envioTelecCorteSim(dispositivoId)
+
+        }
+
+        const envioPXActualizacionEstado = (dispositivoId, vehiculoId, estadoSim) => {
+            return _platformController.envioTelecCorteSim(dispositivoId, vehiculoId, estadoSim)
+        }
 
         return {
             createServiceOrder,
@@ -1559,7 +1567,9 @@ define([
             getBinNumberCustodia,
             getBinNumberRevision,
             deleteRegistroCustodia,
-            verifyExistHistorialAF
+            verifyExistHistorialAF,
+            envioTelecCorteSim,
+            envioPXActualizacionEstado
         }
 
     });

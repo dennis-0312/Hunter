@@ -107,6 +107,7 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                                         id: idTelematic,
                                         active: false
                                     }
+                                    
                                     let PxAdmin = {
                                         StrToken: fechaActual,
                                         UserName: "PxPrTest",
@@ -114,24 +115,29 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                                         NumeroOrden: "1101895503",
                                         UsuarioIngreso: "PRUEBAEVOL",
                                         OperacionOrden: "017",
-
                                         CodigoVehiculo: idVehiculo,
                                         NumeroCamaras: "0",
                                         Vid: idVid,
                                         IdProducto: idDispositivo,
                                         CodMarcaDispositivo: marca,
                                         CodModeloDispositivo: modelo,
-                                        EstadoSim: "DSC",
+                                        EstadoSim: "DSC",//COR
                                         OperacionDispositivo: "A"
                                     }
                                     let Telematic = envioTelematic(telemat);
                                     let PXAdminPrueba = envioPXAdmin(PxAdmin);
                                     log.debug('Telematic', Telematic);
                                     log.debug('PXAdminPrueba', PXAdminPrueba);
+
+                                    //telematic
+                                    //idchaser
+
+                                    //pxadmin
+                                    //idchaser
+                                    //idbien
+                                    //COR
                                 }
                             }
-
-
                         }
                     }
                 }

@@ -58,7 +58,8 @@ define([], () => {
         APROBACION_PENDIENTE: 2,
         PENDIENTE_DE_ACTIVACION: 3,
         PAGADO: 1,
-        BILL_PAID_IN_FULL: 93
+        BILL_PAID_IN_FULL: 93,
+        ENVIADO_A_CORTE: 1
     }
 
     let Parameter = {
@@ -106,9 +107,7 @@ define([], () => {
         DSR_DEFINICION_DE_SERVICIOS: 3,
         UDP_UTILIZA_PARALIZADOR: 87
     }
-    case VALOR_002_DESINSTALACION_DE_DISP:
-        //////////////////////
-        break
+
     let Valor = {
         SI: 9,
         NO: 18,

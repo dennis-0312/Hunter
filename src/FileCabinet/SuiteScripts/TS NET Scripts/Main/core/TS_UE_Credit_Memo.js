@@ -50,7 +50,6 @@ define(['N/log',
                     }
                     log.debug('idB', idB);
                     let busqueda_cobertura = getCoberturaItem(idB);
-
                     log.debug('busqueda_cobertura', busqueda_cobertura);
                     if (busqueda_cobertura.length != 0) {
                         itemid = busqueda_cobertura[i][0]

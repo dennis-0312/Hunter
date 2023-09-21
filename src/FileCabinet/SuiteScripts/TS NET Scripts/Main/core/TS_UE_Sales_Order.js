@@ -14,16 +14,17 @@ define([
     'N/email',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
-    '../error/TS_CM_ErrorMessages'
-], (log, record, search, serverWidget, plugin, transaction, https, runtime, email, _controller, _constant, _errorMessage) => {
+    '../error/TS_CM_ErrorMessages',
+    '../routes/TS_ROUTER_Sales_Order'
+], (log, record, search, serverWidget, plugin, transaction, https, runtime, email, _controller, _constant, _errorMessage, _router) => {
     const HT_DETALLE_ORDEN_SERVICIO_SEARCH = 'customsearch_ht_detalle_orden_servicio_2'; //HT Detalle Orden de Servicio - PRODUCCION
-
     const beforeLoad = (scriptContext) => {
         if (scriptContext.type === scriptContext.UserEventType.VIEW) {
             const form = scriptContext.form;
             const objRecord = scriptContext.newRecord;
             let editServiceOrder = form.getButton('edit');
             if (objRecord.getValue('custbodycustbody_ht_os_created_from_sa') == true) editServiceOrder.isDisabled = true;
+            _router.getSchedule(scriptContext);
         }
 
         if (scriptContext.type === scriptContext.UserEventType.VIEW) {

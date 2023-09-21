@@ -1018,7 +1018,7 @@ define([
             return historialAF;
         }
 
-
+        
         //! QUERIES =======================================================================================================================================================
         const getTaxes = (tax) => {
             let lookUpTaxCode = search.lookupFields({ type: search.Type.SALES_TAX_ITEM, id: tax, columns: ['internalid', 'rate'] });
@@ -1571,7 +1571,6 @@ define([
             envioTelecCorteSim,
             envioPXActualizacionEstado
         }
-
     });
 /*
 & SCRIPT SE APLICA EN:

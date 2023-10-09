@@ -106,7 +106,7 @@ define([
 
                     if (!botonPanico)
                         botonPanico = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_boton_panico' });
-                    log.debug('Servicios!!!!!!!!!!!!!!', paralizador + ' - ' + botonPanico);
+                    //log.debug('Servicios!!!!!!!!!!!!!!', paralizador + ' - ' + botonPanico);
 
                     let parametrosRespo = _controller.parametrizacion(items);
                     //log.debug('parametrosRespo', parametrosRespo);
@@ -121,7 +121,9 @@ define([
                         customer: customer.toString(),
                         vehiculo: vehiculo,
                         item: parseInt(items),
-                        ordenServicio: ordenServicio
+                        ordenServicio: ordenServicio,
+                        tipoProd: 0,
+                        tipoTrab: 0
                     }
 
                     for (let j = 0; j < parametrosRespo.length; j++) {
@@ -148,12 +150,17 @@ define([
                         if (parametrosRespo[j][0] == _constant.Parameter.CPT_CONFIGURA_PLATAFORMA_TELEMATIC && parametrosRespo[j][1] == _constant.Valor.SI)
                             plataformas = true;
 
-                        if (parametrosRespo[j][0] == _constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO && parametrosRespo[j][1] == _constant.Valor.SI)
-                            workOrder = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, json);
-                        //generaOrdenTrabajo = 1;
+                        if (parametrosRespo[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION)
+                            ttr = parametrosRespo[j][1]
 
-                        if (parametrosRespo[j][0] == _constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO && parametrosRespo[j][1] == _constant.Valor.SI)
+                        if (parametrosRespo[j][0] == _constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO && parametrosRespo[j][1] == _constant.Valor.SI) {
+                            workOrder = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, json);
+                            //generaOrdenTrabajo = 1;
+                        }
+
+                        if (parametrosRespo[j][0] == _constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO && parametrosRespo[j][1] == _constant.Valor.SI) {
                             workOrder = _controller.parametros(_constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO, json);
+                        }
 
                         if (parametrosRespo[j][0] == _constant.Parameter.TCH_TIPO_CHEQUEO_OT)
                             paramChequeo = parametrosRespo[j][1];
@@ -171,17 +178,29 @@ define([
                         if (parametrosRespo[j][0] == _constant.Parameter.CPR_CONVERSION_DE_PRODUCTO_UPGRADE && parametrosRespo[j][1] == _constant.Valor.SI)
                             esUpgrade = _constant.Valor.SI;
 
-                        if (parametrosRespo[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION)
-                            ttr = parametrosRespo[j][1]
-
                         if (parametrosRespo[j][0] == _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER && parametrosRespo[j][1] == _constant.Valor.SI)
                             esAlquiler = _constant.Valor.SI;
 
                         if (parametrosRespo[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo[j][1] == _constant.Valor.SI) {
-                            log.debug('Servicios11111111111111!!!!!!!!!!!!!!', paralizador + ' - ' + botonPanico);
+                            //log.debug('Servicios11111111111111!!!!!!!!!!!!!!', paralizador + ' - ' + botonPanico);
                             definicionServicios = true;
                         }
                     }
+
+                    try {
+                        record.submitFields({
+                            type: _constant.customRecord.ORDEN_TRABAJO,
+                            id: workOrder,
+                            values: {
+                                custrecord_ht_ot_producto: valor_tipo_agrupacion,
+                                custrecord_ht_ot_tipo_trabajo: ttr
+                            },
+                            options: { enablesourcing: true }
+                        });
+                    } catch (error) {
+                        log.error('Error-SubmitFields', 'No tiene el parámetro TAG o TTR configurado');
+                    }
+
                 }
 
                 log.error("itemCustodia", itemCustodia);

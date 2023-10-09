@@ -252,7 +252,6 @@ define([
                                 //objRecord.setValue({ fieldId: 'custrecord_ht_ot_descripcionitem', value: id.displayname });
                                 objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: ESTADO_VENTAS });
                                 objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
-
                                 log.debug('record.getsublistvalue', record.getsublistvalue);
                                 response = objRecord.save();
                             }
@@ -1018,7 +1017,7 @@ define([
             return historialAF;
         }
 
-        
+
         //! QUERIES =======================================================================================================================================================
         const getTaxes = (tax) => {
             let lookUpTaxCode = search.lookupFields({ type: search.Type.SALES_TAX_ITEM, id: tax, columns: ['internalid', 'rate'] });
@@ -1528,11 +1527,10 @@ define([
 
         const envioTelecCorteSim = (dispositivoId) => {
             return _platformController.envioTelecCorteSim(dispositivoId)
-
         }
 
         const envioPXActualizacionEstado = (dispositivoId, vehiculoId, estadoSim) => {
-            return _platformController.envioTelecCorteSim(dispositivoId, vehiculoId, estadoSim)
+            return _platformController.envioPXActualizacionEstado(dispositivoId, vehiculoId, estadoSim)
         }
 
         return {
@@ -1571,6 +1569,7 @@ define([
             envioTelecCorteSim,
             envioPXActualizacionEstado
         }
+
     });
 /*
 & SCRIPT SE APLICA EN:

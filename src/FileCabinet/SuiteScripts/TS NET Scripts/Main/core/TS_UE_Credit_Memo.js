@@ -35,10 +35,11 @@ define(['N/log',
                 if (memo.includes(palabraBuscada)) {
                     log.debug('Nota de Crédito', 'Certificado de Retención');
                 } else {
+                    let i;
                     let idB = objRecord.getValue('custbody_ht_so_bien');
                     let valor_tipo_agrupacion = 0, idCoberturaItem, envioPX = 0, envioTele = 0, itemid = 0;
                     let numLines = objRecord.getLineCount({ sublistId: 'item' });
-                    for (let i = 0; i < numLines; i++) {
+                    for (i = 0; i < numLines; i++) {
                         let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                         log.debug('items', items);
                         let parametrosRespo = _controller.parametrizacion(items);
@@ -52,7 +53,13 @@ define(['N/log',
                     let busqueda_cobertura = getCoberturaItem(idB);
                     log.debug('busqueda_cobertura', busqueda_cobertura);
                     if (busqueda_cobertura.length != 0) {
-                        itemid = busqueda_cobertura[i][0]
+                        // [
+                        //     [
+                        //        "38208",
+                        //        "3855"
+                        //     ]
+                        //  ]
+                        itemid = busqueda_cobertura[0][0]
                         for (let i = 0; i < busqueda_cobertura.length; i++) {
                             let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
                             if (parametrosRespo.length != 0) {
@@ -91,13 +98,34 @@ define(['N/log',
                     let productoid = itemid;
                     if (envioPX == _constant.Valor.SI) {
                         log.debug('DesestimientoPX', 'Función de impulso a PX')
-
-
                     }
 
                     if (envioTele == _constant.Valor.SI) {
                         log.debug('DesestimientoTM', 'Función de impulso a TM')
+                        let vehiculo = search.lookupFields({
+                            type: 'customrecord_ht_record_bienes',
+                            id: idB,
+                            columns: ['custrecord_ht_bien_id_telematic']
+                        })
+                        let telemat = {
+                            id: vehiculo.custrecord_ht_bien_id_telematic,
+                           // state: false,
+                            active: false
+                        }
+                        // const envioTelematic = (json) => {
+                        let myRestletHeaders = new Array();
+                        myRestletHeaders['Accept'] = '*/*';
+                        myRestletHeaders['Content-Type'] = 'application/json';
 
+                        let myRestletResponse = https.requestRestlet({
+                            body: JSON.stringify(telemat),
+                            deploymentId: 'customdeploy_ns_rs_update_asset',
+                            scriptId: 'customscript_ns_rs_update_asset',
+                            headers: myRestletHeaders,
+                        });
+                        let response = myRestletResponse.body;
+                        return response;
+                        // }
 
                     }
                 }

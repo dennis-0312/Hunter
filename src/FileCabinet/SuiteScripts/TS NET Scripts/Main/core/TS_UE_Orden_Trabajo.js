@@ -88,7 +88,7 @@ define([
                 let estado = objRecord.getValue('custrecord_ht_ot_estado');
                 let serieDispositivo = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
                 if (estado == _constant.Status.PROCESANDO) {
-                    //TODO: Solo para pruebas internas por si no se chequea, luego activar y borrar el botón sin validación de estado, línea 99
+                    //^: Solo para pruebas internas por si no se chequea, luego activar y borrar el botón sin validación de estado, línea 99
                     // if (serieDispositivo.length > 0) {
                     //     form.addButton({
                     //         id: 'custpage_ts_chequeo',
@@ -125,9 +125,9 @@ define([
                 let taxNumber = search.lookupFields({
                     type: 'customer',
                     id: objRecord.getValue('custrecord_ht_ot_cliente_id'),
-                    columns: ['vatregnumber','custentity_ts_ec_tipo_persona']
+                    columns: ['vatregnumber', 'custentity_ts_ec_tipo_persona']
                 })
-                log.debug('Tax-Number', taxNumber.vatregnumber)
+                //log.debug('Tax-Number', taxNumber.vatregnumber)
             } else if (type_event == context.UserEventType.EDIT) {
                 createEnsambleAlquilerButton(form, objRecord);
                 createEnsambleCustodiaButton(form, objRecord);
@@ -1218,10 +1218,15 @@ define([
                                 log.debug('returnRegistroCustodia', returnRegistroCustodia);
                             }
 
-                            if (envioPX == _constant.Valor.SI) {
+                            // if (envioPX == _constant.Valor.SI) {
+                            try {
                                 returEjerepo = _controller.parametros(_constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS, id, adp);
                                 log.debug('DESACTIVACIÓN-PX', returEjerepo);
+                            } catch (error) {
+
                             }
+
+                            // }
 
                             if (envioTele == _constant.Valor.SI) {
                                 returEjerepo = _controller.parametros(_constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS, id, adp);

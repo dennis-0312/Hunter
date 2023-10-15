@@ -15,28 +15,12 @@ define([
  */
     (log, record, search, _constant, _platformController) => {
         const HT_ORDEN_TRABAJO_RECORD = 'customrecord_ht_record_ordentrabajo' //HT Orden de trabajo
-        var TIPO_AGRUPACION_PRODUCTO = '77';
         const ESTADO_VENTAS = 7;
-        const SI = 9;
-        const SCK_SOLICITA_CLIENTE_MONITOREO = 1;
-        const PXB_ITEM_SOLICITA_CLIENTE_NUEVO = 72;
-        const CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5;
-        const GOT_GENERA_SOLICITUD_DE_TRABAJO = 34;
-        const VOT_VARIAS_ORDENES_DE_TRABAJO = 90;
-        const PCD_PIDE_CODIGO_DE_ORIGEN = 53;
-        const PIM_PEDIR_INFORMACION_MEDICA = 60;
-        const CPI_CONTROL_DE_PRODUCTOS_INSTALADOS = 25;
-        const CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS = 21;
-        const VALOR_001_INST_DISPOSITIVO = 43;
-        const VALOR_010_CAMBIO_DE_PROPIETARIO = 10;
-        const GPG_GENERA_PARAMETRIZACION_EN_GEOSYS = 36;
-        const GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS = 38;
         const COMPONENTE_DISPOSITIVO_ID = 1;
         const EXPENSE_ACCOUNT = 2676;
         const INVENTORY_ASSET_ACCOUNT = 215;
         const COST_ACCOUNT = 1242;
         const ECUADOR_SUBSIDIARY = 2;
-        const DEVOLUCION = 6
         const SUSPENDIDO = 2;
         const INSTALADO = 1;
         const DESINSTALADO = 2;
@@ -116,12 +100,12 @@ define([
             let response = { status: true, mensaje: '' };
             let currentRecord = id;
             switch (parseInt(parametro)) {
-                case GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
+                case _constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
                     switch (parseInt(type)) {
-                        case VALOR_001_INST_DISPOSITIVO:
+                        case _constant.Valor.VALOR_001_INST_DISPOSITIVO:
                             response = _platformController.envioPXInstalacionDispositivo(id); // id Orden de Trabajo
                             break;
-                        case VALOR_010_CAMBIO_DE_PROPIETARIO:
+                        case _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO:
                             log.debug('VALOR_010_CAMBIO_DE_PROPIETARIOPX', 'Entré a cambiar propietario PX');
                             response = _platformController.envioPXCambioPropietario(id); // id Orden de Trabajo
                             log.debug('ResponsePX', response);
@@ -135,9 +119,9 @@ define([
                             log.debug('accionEstadoOT');
                     }
                     break;
-                case GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS:
+                case _constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS:
                     switch (parseInt(type)) {
-                        case VALOR_001_INST_DISPOSITIVO:
+                        case _constant.Valor.VALOR_001_INST_DISPOSITIVO:
                             // let Dispositivo = _platformController.Dispositivo(id);
                             // let vehiculo = _platformController.vehiculo(id);
                             // let Propietario = _platformController.Propietario(id);
@@ -145,7 +129,7 @@ define([
                             // response = _platformController.envioPXAdminInstallTelec(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
                             response = _platformController.envioTelecInstalacionNueva(id); // id Orden de Trabajo
                             break;
-                        case VALOR_010_CAMBIO_DE_PROPIETARIO:
+                        case _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO:
                             log.debug('VALOR_010_CAMBIO_DE_PROPIETARIOTM', 'Entré a cambiar propietario TM')
                             // response = _platformController.envioCambioPropietario(id);
                             response = _platformController.envioTelecCambioPropietario(id); // id Orden de Trabajo
@@ -270,7 +254,7 @@ define([
                         }
                     }
                     break;
-                case PXB_ITEM_SOLICITA_CLIENTE_NUEVO:
+                case _constant.Parameter.PXB_ITEM_SOLICITA_CLIENTE_NUEVO:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente' });
                     if (!item_cliente) {
@@ -278,7 +262,7 @@ define([
                         response.mensaje = 'No existe un Cliente para el item ' + item + '.'
                     }
                     break;
-                case SCK_SOLICITA_CLIENTE_MONITOREO:
+                case _constant.Parameter.SCK_SOLICITA_CLIENTE_MONITOREO:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente_monitoreo = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo' });
                     if (!item_cliente_monitoreo) {
@@ -286,7 +270,7 @@ define([
                         response.mensaje = 'No existe un Cliente Monitoreo para el item ' + item + '.'
                     }
                     break;
-                case PCD_PIDE_CODIGO_DE_ORIGEN:
+                case _constant.Parameter.PCD_PIDE_CODIGO_DE_ORIGEN:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente_monitoreo = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ns_codigo_origen' });
                     if (!item_cliente_monitoreo) {
@@ -294,13 +278,13 @@ define([
                         response.mensaje = 'No existe un Codigo de Origen en el item ' + item + '.'
                     }
                     break;
-                case CPI_CONTROL_DE_PRODUCTOS_INSTALADOS://cpi control de productos instalados
+                case _constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS://cpi control de productos instalados
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
                     let tipoItem;
                     let parametrosRespoitem = parametrizacion(item);
                     if (parametrosRespoitem.length != 0) {
                         for (let j = 0; j < parametrosRespoitem.length; j++) {
-                            if (parametrosRespoitem[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                            if (parametrosRespoitem[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO) {
                                 tipoItem = parametrosRespoitem[j][1];
                             }
                         }
@@ -312,7 +296,7 @@ define([
                                 let parametrosRespo = parametrizacion(type[i]);
                                 if (parametrosRespo.length != 0) {
                                     for (let j = 0; j < parametrosRespo.length; j++) {
-                                        if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] == tipoItem) {
+                                        if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] == tipoItem) {
                                             cont += 1;
                                         }
                                     }
@@ -334,7 +318,7 @@ define([
                         response.mensaje = 'El bien ingresado no cuenta con dispositivo instalado.'
                     }
                     break;
-                case PIM_PEDIR_INFORMACION_MEDICA:
+                case _constant.Parameter.PIM_PEDIR_INFORMACION_MEDICA:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_ficha_medica = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_fichamedica' });
                     if (!item_ficha_medica) {
@@ -342,7 +326,7 @@ define([
                         response.mensaje = 'No existe una Ficha Médica para el item ' + item + '.'
                     }
                     break;
-                case CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS:
+                case _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS:
                     let dispositivoCustodia = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ts_dispositivo_en_custodia' });
                     if (dispositivoCustodia.length == 0) {
                         response.status = false;
@@ -523,7 +507,6 @@ define([
                     item = result.getValue({ name: field });
                     return true;
                 });
-
             }
 
             if (tipoFlujo == 1) {
@@ -647,7 +630,7 @@ define([
             objRecord.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: installId });
             objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: objParameters.salesorder });
             objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: objParameters.ordentrabajoId });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: DEVOLUCION });
+            objRecord.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.DEVOLUCION });
             objRecord.save();
         }
 
@@ -677,7 +660,7 @@ define([
                     type: 'customrecord_ht_co_cobertura',
                     id: installId,
                     values: {
-                        'custrecord_ht_co_estado_cobertura': SUSPENDIDO,
+                        'custrecord_ht_co_estado_cobertura': _constant.Status.SUSPENDIDO,
                         'custrecord_ht_co_estado': DESINSTALADO
                     },
                     options: { enableSourcing: false, ignoreMandatoryFields: true }
@@ -1220,7 +1203,9 @@ define([
                 columns:
                     [
                         search.createColumn({ name: "custrecord_ht_pp_parametrizacion_rela", label: "Param" }),
-                        search.createColumn({ name: "custrecord_ht_pp_parametrizacion_valor", label: "Valor" })
+                        search.createColumn({ name: "custrecord_ht_pp_parametrizacion_valor", label: "Valor" }),
+                        search.createColumn({ name: "custrecord_ht_pp_code", join: "CUSTRECORD_HT_PP_PARAMETRIZACION_RELA", label: "Código" }),
+                        search.createColumn({ name: "custrecord_ht_pp_codigo", join: "CUSTRECORD_HT_PP_PARAMETRIZACION_VALOR", label: "Código" })
                     ]
             });
             let resultCount = busqueda.runPaged().count;

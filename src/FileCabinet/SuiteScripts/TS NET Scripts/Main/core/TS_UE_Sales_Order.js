@@ -24,7 +24,7 @@ define([
             const objRecord = scriptContext.newRecord;
             let editServiceOrder = form.getButton('edit');
             if (objRecord.getValue('custbodycustbody_ht_os_created_from_sa') == true) editServiceOrder.isDisabled = true;
-            _router.getSchedule(scriptContext);
+            //_router.getSchedule(scriptContext);
         }
 
         if (scriptContext.type === scriptContext.UserEventType.VIEW) {
@@ -188,23 +188,27 @@ define([
                     }
 
                     try {
-                        record.submitFields({
-                            type: _constant.customRecord.ORDEN_TRABAJO,
-                            id: workOrder,
-                            values: {
-                                custrecord_ht_ot_producto: valor_tipo_agrupacion,
-                                custrecord_ht_ot_tipo_trabajo: ttr
-                            },
-                            options: { enablesourcing: true }
-                        });
+                        // log.debug('WORK-Order', workOrder + ' - ' + typeof workOrder);
+                        if (workOrder != 0) {
+                            record.submitFields({
+                                type: _constant.customRecord.ORDEN_TRABAJO,
+                                id: workOrder,
+                                values: {
+                                    custrecord_ht_ot_producto: valor_tipo_agrupacion,
+                                    custrecord_ht_ot_tipo_trabajo: ttr
+                                },
+                                options: { enablesourcing: true }
+                            });
+                        }
+                        
                     } catch (error) {
                         log.error('Error-SubmitFields', 'No tiene el parámetro TAG o TTR configurado');
                     }
 
                 }
 
-                log.error("itemCustodia", itemCustodia);
-                log.error('EsAlquiler', esAlquiler)
+                // log.error("itemCustodia", itemCustodia);
+                // log.error('EsAlquiler', esAlquiler)
                 // log.debug('parametro_aprob', parametro_aprob);
                 // log.debug('parametro_fact', parametro_fact);
                 if (parametro_aprob != _constant.Valor.SI && parametro_fact == _constant.Valor.NO) {
@@ -271,13 +275,14 @@ define([
                         fechaNuevaCompleta = new Date(fechaNuevaCompleta);
                         fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
                         fechaNuevaCompleta = new Date(fechaNuevaCompleta);
+                        fechaNuevaCompleta = new Date()
                         plazo = Number(plazo);
                         coberturaplazo = Number(coberturaplazo);
                         var plazoTotal = parseFloat(plazo) + parseFloat(coberturaplazo);
-                        var hoy = new Date();
                         // log.debug('HOY', hoy);
                         // log.debug('newDateInicial', newDateInicial);
-                        // log.debug('newDateAntigua', newDateAntigua);
+                        //log.debug('newDateAntigua', newDateAntigua);
+                        log.debug('fechaNuevaCompleta', fechaNuevaCompleta);
 
                         let telemat = {
                             id: vehiculo.custrecord_ht_bien_id_telematic,
@@ -481,7 +486,7 @@ define([
                     log.debug('PARALIZADORT', workOrder + ' Actualizada');
                 }
 
-                log.error("esGarantia", esGarantia);
+                //log.error("esGarantia", esGarantia);
                 if (esGarantia) {
                     var bien = objRecord.getValue('custbody_ht_so_bien');
                     let itemVentaGarantia = getCoberturaItem(bien);
@@ -511,7 +516,7 @@ define([
                 //     workOrder = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, json);
                 // }
             } catch (error) {
-                log.error('Erro-Create', error);
+                log.error('Error-Create', error);
             }
         }
 
@@ -577,12 +582,12 @@ define([
                             }
                         }
                         htClient = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente', line: i });
-                        log.debug('htClient', htClient);
+                        //log.debug('htClient', htClient);
                         monitoreo = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo', line: i });
-                        log.debug('monitoreo', monitoreo);
+                        //log.debug('monitoreo', monitoreo);
                         bien = objRecord.getValue('custbody_ht_so_bien');
                         custodiaDisp = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ts_dispositivo_en_custodia', line: i });
-                        log.debug('custodiaDisp', custodiaDisp);
+                        //log.debug('custodiaDisp', custodiaDisp);
                         // var fechaInicialItem = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cambio_fecha', line: i });
                         // fechaInicial = new Date(fechaInicialItem);
                     }
@@ -607,12 +612,12 @@ define([
                             let responsePlataformasPX;
                             let responsePlataformasTM;
                             let busqueda_cobertura = getCoberturaItem(bien);
-                            log.debug('busqueda_cobertura', busqueda_cobertura);
-                            log.debug('monitoreo', monitoreo);
-                            log.debug('htClient', htClient);
+                            // log.debug('busqueda_cobertura', busqueda_cobertura);
+                            // log.debug('monitoreo', monitoreo);
+                            // log.debug('htClient', htClient);
                             //log.debug('bien', bien);
                             if (busqueda_cobertura != 0) {
-                                log.debug('bienNNNN', bien);
+                                //log.debug('bienNNNN', bien);
                                 for (let i = 0; i < busqueda_cobertura.length; i++) {
                                     //log.debug('Init For');
                                     let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);

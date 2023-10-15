@@ -115,16 +115,16 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format'], (log, search, r
                     [
                         search.createColumn({ name: "internalid", summary: "GROUP", label: "Internal ID" }),
                         search.createColumn({ name: "internalid", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "ID interno" }),
-                        search.createColumn({ name: "custrecord_ht_ot_orden_serivicio_txt", summary: "GROUP", label: "HT OT Orden de Servicio TXT" }),//^REQUERIDO POR HUNTER
-                        search.createColumn({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }), //^REQUERIDO POR HUNTER
-                        search.createColumn({ name: "name", sort: search.Sort.ASC, summary: "GROUP", label: "ID" }), //^REQUERIDO POR HUNTER
-                        search.createColumn({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }), //^REQUERIDO POR HUNTER
-                        search.createColumn({ name: "custrecord_ht_ot_fechatrabajoasignacion", summary: "GROUP", label: "HT OT Fecha trabajo" }), //^REQUERIDO POR HUNTER
-                        search.createColumn({ name: "custrecord_ht_ot_horatrabajoasignacion", summary: "GROUP", label: "HT OT Hora trabajo" }), //^REQUERIDO POR HUNTER 
-                        search.createColumn({ name: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "HT OT ID Vehículo" }), //^REQUERIDO POR HUNTER 
-                        search.createColumn({ name: "custrecord_ht_ot_taller", summary: "GROUP", label: "Taller" }), //^REQUERIDO POR HUNTER
-                        search.createColumn({ name: "custrecord_ht_ot_comentariofinalizacion", summary: "GROUP", label: "Comentario" }), //^REQUERIDO POR HUNTER
-                        search.createColumn({ name: "custrecord_ht_ot_observacion", summary: "GROUP", label: "Comentario Técnico" }), //^REQUERIDO POR HUNTER
+                        search.createColumn({ name: "custrecord_ht_ot_orden_serivicio_txt", summary: "GROUP", label: "HT OT Orden de Servicio TXT" }),
+                        search.createColumn({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }), 
+                        search.createColumn({ name: "name", sort: search.Sort.ASC, summary: "GROUP", label: "ID" }), 
+                        search.createColumn({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }), 
+                        search.createColumn({ name: "custrecord_ht_ot_fechatrabajoasignacion", summary: "GROUP", label: "HT OT Fecha trabajo" }), 
+                        search.createColumn({ name: "custrecord_ht_ot_horatrabajoasignacion", summary: "GROUP", label: "HT OT Hora trabajo" }), 
+                        search.createColumn({ name: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "HT OT ID Vehículo" }),  
+                        search.createColumn({ name: "custrecord_ht_ot_taller", summary: "GROUP", label: "Taller" }),
+                        search.createColumn({ name: "custrecord_ht_ot_comentariofinalizacion", summary: "GROUP", label: "Comentario" }), 
+                        search.createColumn({ name: "custrecord_ht_ot_observacion", summary: "GROUP", label: "Comentario Técnico" }), 
                         search.createColumn({ name: "custrecord_ht_ot_tecnicoasignacion", summary: "GROUP", label: "Técnico" }),
                         search.createColumn({ name: "custrecord_ht_ot_fueraciudad", summary: "GROUP", label: "Fuera Ciudad" }),
                         search.createColumn({ name: "custrecord_ht_ot_fuerataller", summary: "GROUP", label: "Fuera taller" }),
@@ -135,6 +135,14 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format'], (log, search, r
                         search.createColumn({ name: "custrecord_ht_ot_motor", summary: "GROUP", label: "Motor" }),
                         search.createColumn({ name: "custrecord_ht_ot_chasis", summary: "GROUP", label: "Chasis" }),
                         search.createColumn({ name: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo Trabajo" }),
+                        search.createColumn({ name: "altname", join: "CUSTRECORD_HT_OT_CLIENTE_ID", summary: "GROUP", label: "Name"}),
+                        search.createColumn({ name: "custentity_ec_vatregnumber", join: "CUSTRECORD_HT_OT_CLIENTE_ID", summary: "GROUP", label: "Doc. Number"}),
+                        search.createColumn({
+                            name: "altname",
+                            join: "CUSTRECORD_HT_OT_VEHICULO",
+                            summary: "GROUP",
+                            label: "Name"
+                         })
                     ]
             });
 
@@ -144,6 +152,8 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format'], (log, search, r
                 result: myPagedData.count
             }
             log.debug('Request', jsonMapping);
+            // let searchResult = mySearch.run().getRange({ start: 0, end: 1000 });
+            // log.debug('RESObj', searchResult);
             myPagedData.pageRanges.forEach(pageRange => {
                 let myPage = myPagedData.fetch({ index: pageRange.index });
                 myPage.data.forEach(result => {
@@ -151,29 +161,33 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format'], (log, search, r
                     let ordenServicioid = result.getValue({ name: "internalid", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OT ID Orden Servicio" })
                     let ordenServicio = result.getValue({ name: "custrecord_ht_ot_orden_serivicio_txt", summary: "GROUP", label: "HT OT Orden de Servicio TXT" }) //^REQUERIDO POR HUNTER
                     let consecionarioid = result.getValue({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }) //^REQUERIDO POR HUNTER
-                    let consecionario = result.getText({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }) == '- None -' ? '':  result.getText({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }) //^REQUERIDO POR HUNTER
+                    let consecionario = result.getText({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }) == '- None -' ? '':  
+                    result.getText({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }).split(' ')[1] + ' ' + result.getText({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }).split(' ')[2] //^REQUERIDO POR HUNTER
                     let ordenTrabajo = result.getValue({ name: "name", sort: search.Sort.ASC, summary: "GROUP", label: "ID" }) //^REQUERIDO POR HUNTER
                     let clienteid = result.getValue({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
-                    let cliente = result.getText({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
+                   // let cliente = result.getText({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
+                    let cliente = result.getValue({ name: "altname",  join: "CUSTRECORD_HT_OT_CLIENTE_ID", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
                     let fechaTrabajo = result.getValue({ name: "custrecord_ht_ot_fechatrabajoasignacion", summary: "GROUP", label: "HT OT Fecha trabajo" }) //^REQUERIDO POR HUNTER
                     let horaTrabajo = result.getValue({ name: "custrecord_ht_ot_horatrabajoasignacion", summary: "GROUP", label: "HT OT Hora trabajo" }) //^REQUERIDO POR HUNTER
                     let vehiculoid = result.getValue({ name: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "HT OT ID Vehículo" }) //^REQUERIDO POR HUNTER 
-                    let vehiculo = result.getText({ name: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "HT OT ID Vehículo" }) //^REQUERIDO POR HUNTER 
+                    let vehiculo = result.getValue({ name: "altname",  join: "CUSTRECORD_HT_OT_VEHICULO", summary: "GROUP", label: "Name" }) //^REQUERIDO POR HUNTER 
                     let tallerid = result.getValue({ name: "custrecord_ht_ot_taller", summary: "GROUP", label: "Taller" }) //^REQUERIDO POR HUNTER
-                    let taller = result.getText({ name: "custrecord_ht_ot_taller", summary: "GROUP", label: "Taller" }) == '- None -' ? 'SIN ASIGNAR' : result.getText({ name: "custrecord_ht_ot_taller", summary: "GROUP", label: "Comentario" })  //^REQUERIDO POR HUNTE//^REQUERIDO POR HUNTER
+                    let taller = result.getText({ name: "custrecord_ht_ot_taller", summary: "GROUP", label: "Taller" }) == '- None -' ? 'SIN ASIGNAR' : result.getText({ name: "custrecord_ht_ot_taller", summary: "GROUP", label: "Taller" }).split(' ')[1]  //^REQUERIDO POR HUNTER
                     let comentario = result.getValue({ name: "custrecord_ht_ot_comentariofinalizacion", summary: "GROUP", label: "Comentario" }) == '- None -' ? '' : result.getValue({ name: "custrecord_ht_ot_comentariofinalizacion", summary: "GROUP", label: "Comentario" })  //^REQUERIDO POR HUNTER
                     let comentarioTec = result.getValue({ name: "custrecord_ht_ot_observacion", summary: "GROUP", label: "Comentario Técnico" }) == '- None -' ? '' : result.getValue({ name: "custrecord_ht_ot_observacion", summary: "GROUP", label: "Comentario Técnico" }) //^REQUERIDO POR HUNTER
                     let tecnicoid = result.getValue({ name: "custrecord_ht_ot_tecnicoasignacion", summary: "GROUP", label: "Técnico" })
-                    let tecnico = result.getText({ name: "custrecord_ht_ot_tecnicoasignacion", summary: "GROUP", label: "Técnico" }) == '- None -' ? 'SIN ASIGNAR' : result.getText({ name: "custrecord_ht_ot_tecnicoasignacion", summary: "GROUP", label: "Comentario" })  //^REQUERIDO POR HUNTER
+                    let tecnico = result.getText({ name: "custrecord_ht_ot_tecnicoasignacion", summary: "GROUP", label: "Técnico" }) == '- None -' ? 'SIN ASIGNAR' : result.getText({ name: "custrecord_ht_ot_tecnicoasignacion", summary: "GROUP", label: "Técnico" }).split(' - ')[1]  //^REQUERIDO POR HUNTER
                     let fueraCuidad = result.getValue({ name: "custrecord_ht_ot_fueraciudad", summary: "GROUP", label: "Fuera Ciudad" })
                     let fueraTaller = result.getValue({ name: "custrecord_ht_ot_fuerataller", summary: "GROUP", label: "Fuera taller" })
-                    let producto = result.getText({ name: "custrecord_ht_ot_producto", summary: "GROUP", label: "Producto" })
-                    let direccion = result.getValue({ name: "custrecord_ht_ot_direccioncliente", summary: "GROUP", label: "Dirección del Cliente" })
+                    let producto = result.getText({ name: "custrecord_ht_ot_producto", summary: "GROUP", label: "Producto" }) == '- None -' ? '' : result.getText({ name: "custrecord_ht_ot_producto", summary: "GROUP", label: "Producto" }).split(' - ')[1]  //^REQUERIDO POR HUNTER
+                    let direccion = result.getValue({ name: "custrecord_ht_ot_direccioncliente", summary: "GROUP", label: "Dirección del Cliente" }) == '- None -' ? '' : result.getValue({ name: "custrecord_ht_ot_direccioncliente", summary: "GROUP", label: "Dirección del Cliente" })
                     let email = result.getValue({ name: "custrecord_ht_ot_correocliente", summary: "GROUP", label: "Correo del Cliente" })
                     let telefono = result.getValue({ name: "custrecord_ht_ot_telefonocliente", summary: "GROUP", label: "Teléfono del Cliente" })
                     let motor = result.getValue({ name: "custrecord_ht_ot_motor", summary: "GROUP", label: "Motor" })
                     let chasis = result.getValue({ name: "custrecord_ht_ot_chasis", summary: "GROUP", label: "Chasis" })
-                    let tipoTrabajo = result.getText({ name: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo Trabajo" })
+                    let tipoTrabajo = result.getText({ name: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo Trabajo" }) == '- None -' ? '' : result.getText({ name: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo Trabajo" }).split(' - ')[1]  //^REQUERIDO POR HUNTER
+                    let ceduleruc = result.getValue({ name: "custentity_ec_vatregnumber", join: "CUSTRECORD_HT_OT_CLIENTE_ID", summary: "GROUP", label: "Doc. Number"})
+                    
 
                     jsonResult.push({
                         ordenServicioid: ordenServicioid,
@@ -185,6 +199,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format'], (log, search, r
                         tecnicoid: tecnicoid,
                         ordenServicio: ordenServicio,
                         ordenTrabajo: ordenTrabajo,
+                        ceduleruc: ceduleruc,
                         cliente: cliente,
                         vehiculo: vehiculo,
                         taller: taller,

@@ -1,9 +1,9 @@
 /*********************************************************************************************************************************************
-This script for Sales Order (Se consumira el servicio para consulta de información de NetSuite y generar la orden de trabajo) 
+This script for Sales Order (Se consumira el servicio para consulta de información de NetSuite y generar la orden de trabajo)
 /*********************************************************************************************************************************************
-File Name: TS_UE_Orden_Trabajo.js                                                                        
-Commit: 01                                                        
-Version: 1.0                                                                     
+File Name: TS_UE_Orden_Trabajo.js
+Commit: 01
+Version: 1.0
 Date: 6/12/2022
 ApiVersion: Script 2.1
 Enviroment: SB
@@ -30,50 +30,6 @@ define([
     '../error/TS_CM_ErrorMessages',
 ],
     (transaction, config, log, search, record, serverWidget, https, error, format, email, runtime, _controller, _constant, _errorMessage) => {
-        const HT_DETALLE_ORDEN_SERVICIO = 'customsearch_ht_detalle_orden_servicio'; //HT Detalle Orden de Servicio - PRODUCCION
-        const HT_CONSULTA_ORDEN_TRABAJO = 'customsearch_ht_consulta_orden_trabajo'; //HT Consulta Orden de trabajo - PRODUCCION
-        const tipo_servicio_alquiler = 1;
-        const tipo_servicio_chequeo = 3;
-        const tipo_servicio_demo = 4;
-        const TIPO_SERVICIO_DESINSTALACION = 5;
-        var TIPO_TRANSACCION = '2';
-        const URL_DETALLE_SEARCH = '/app/common/search/searchresults.nl?searchid=' //+####&whence=
-        const tipo_devolucion = 6;
-        const tipo_garantia = 7;
-        const tipo_renovacion_cobertura = 8;
-        const tipo_upgrade = 9;
-        const TIPO_VENTA = 10;
-        const CONVENIO = 12;
-        const ESTADO_CHEQUEADA = 2;
-        const ENVIO_PLATAFORMASPX = 36;
-        const ENVIO_PLATAFORMASTELEC = 38;
-        const TYPE_REGISTRO = 'ORDEN_TRABAJO'
-        const HABILITAR_LOG_SEGUIMIENTO = 1;
-        const HABILITAR_LOG_VALIDACION = 1;
-        var INST_DISPOSITIVO = '43';
-        var TIPO_AGRUPACION_PRODUCTO = '77';
-        var VENT_SERVICIOS = '50';
-        //^BLOQUE PARAMETROS ===================================================================
-        const VALOR_001_INST_DISPOSITIVO = 43;
-        const SI = 9;
-        const ESTADO_001_INSTALADO = 1;
-        const CHEQUEADO = 2;
-        const ADP_ACCION_DEL_PRODUCTO = 2
-        const VALOR_010_CAMBIO_PROPIETARIO = 10;
-        const PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC = 5
-        const CAMB_MOV_CUSTODIA = 131;
-        const VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO = 44;
-        const TAG_TIPO_AGRUPACION_PRODUCTO = 77;
-        const TCH_TIPO_CHEQUEO_OT = 6;
-        const VALOR_001_CHEQUEO_H_LOJACK = 105;
-        const ALQUILER_PARAM = 13;
-        const COS_CIERRE_DE_ORDEN_DE_SERVICIO = 99;
-        const DISPONIBLE = 5;
-        const INACTIVO = 5;
-        const INSTALADO = 1;
-        const PROCESANDO = 4;
-
-
         const beforeLoad = (context) => {
             let configRecObj = config.load({ type: config.Type.COMPANY_INFORMATION });
             const URL = configRecObj.getValue({ fieldId: 'appurl' });
@@ -120,6 +76,10 @@ define([
                 createEnsambleAlquilerButton(form, objRecord);
                 createEnsambleCustodiaButton(form, objRecord);
                 createEnsambleGarantiaButton(form, objRecord);
+                if (estado == _constant.Status.CHEQUEADO) {
+                    //createCertificadoInstalacionButton(form, objRecord);
+                    createCertificadoPropiedadButton(form, objRecord);
+                }
                 form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
 
                 let taxNumber = search.lookupFields({
@@ -127,73 +87,15 @@ define([
                     id: objRecord.getValue('custrecord_ht_ot_cliente_id'),
                     columns: ['vatregnumber', 'custentity_ts_ec_tipo_persona']
                 })
-                //log.debug('Tax-Number', taxNumber.vatregnumber)
             } else if (type_event == context.UserEventType.EDIT) {
                 createEnsambleAlquilerButton(form, objRecord);
                 createEnsambleCustodiaButton(form, objRecord);
                 createEnsambleGarantiaButton(form, objRecord);
                 form.clientScriptModulePath = './TS_CS_Ensamble_Dispositivo.js';
             }
-
-            // if (type_event == context.UserEventType.VIEW) {
-            //     //let objRecord = context.newRecord;
-            //     let idSalesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
-            //     let idItemOT = objRecord.getValue({ fieldId: 'custrecord_ht_ot_item' });
-            //     let parametrosRespo_2 = _controller.parametrizacion(idItemOT);
-            //     if (parametrosRespo_2.length != 0) {
-            //         for (let j = 0; j < parametrosRespo_2.length; j++) {
-            //             if (parametrosRespo_2[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo_2[j][1] == _constant.Valor.SI) {
-            //                 let salesorder = record.load({ type: 'salesorder', id: idSalesorder });
-            //                 let numLines = salesorder.getLineCount({ sublistId: 'item' });
-            //                 for (let i = 0; i < numLines; i++) {
-            //                     paralizador = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_paralizador', line: i });
-            //                     if (paralizador) {
-            //                         log.debug('PARALIZADORT', 'es: ' + paralizador);
-            //                         record.submitFields({
-            //                             type: context.newRecord.type,
-            //                             id: objRecord.id,
-            //                             values: { custrecord_ht_ot_paralizador: true },
-            //                             options: { enablesourcing: true }
-            //                         })
-            //                         //objRecord.setValue('custrecord_ht_ot_paralizador', true)
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
         }
 
         const afterSubmit = (context) => {
-            // if (context.type == context.UserEventType.CREATE) {
-            //     let objRecord = context.newRecord;
-            //     let idSalesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
-            //     let idItemOT = objRecord.getValue({ fieldId: 'custrecord_ht_ot_item' });
-            //     let parametrosRespo_2 = _controller.parametrizacion(idItemOT);
-            //     log.debug('LOGGG', parametrosRespo_2);
-            //     if (parametrosRespo_2.length != 0) {
-            //         for (let j = 0; j < parametrosRespo_2.length; j++) {
-            //             if (parametrosRespo_2[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo_2[j][1] == _constant.Valor.SI) {
-            //                 let salesorder = record.load({ type: 'salesorder', id: idSalesorder });
-            //                 let numLines = salesorder.getLineCount({ sublistId: 'item' });
-            //                 for (let i = 0; i < numLines; i++) {
-            //                     paralizador = salesorder.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_paralizador', line: i });
-            //                     if (paralizador) {
-            //                         log.debug('PARALIZADORT', 'es: ' + paralizador);
-            //                         record.submitFields({
-            //                             type: context.newRecord.type,
-            //                             id: objRecord.id,
-            //                             values: { custrecord_ht_ot_paralizador: true },
-            //                             options: { enablesourcing: true }
-            //                         })
-            //                         //objRecord.setValue('custrecord_ht_ot_paralizador', true)
-            //                     }
-            //                 }
-            //             }
-            //         }
-            //     }
-            // }
-
             if (context.type === context.UserEventType.EDIT) {
                 let senderId = runtime.getCurrentUser();
                 senderId = senderId.id;
@@ -250,7 +152,7 @@ define([
 
                         let cantidad = 0, parametro_salesorder = 0, tag = 0, idOS = 0, envioPX = 0, envioTele = 0, idItem = 0, monitoreo = 0, precio = 0, esAlquiler = 0, entregaCliente = 0,
                             entradaCustodia = 0, entregaCustodia = 0, adpDesinstalacion = 0, esGarantia = 0, plataformasPX = 0, plataformasTele = 0, adp, device, parametrosRespo = 0, ttrid = 0,
-                            TTR_name = '', idCoberturaItem = '', returEjerepo = true, arrayItemOT = new Array(), arrayID = new Array(), arrayTA = new Array(), objParams = new Array();
+                            TTR_name = '', familia = "", idCoberturaItem = '', returEjerepo = true, arrayItemOT = new Array(), arrayID = new Array(), arrayTA = new Array(), objParams = new Array();
 
                         let parametrosRespo_2 = _controller.parametrizacion(idItemOT);
 
@@ -330,7 +232,18 @@ define([
                                     esGarantia = parametrosRespo_2[j][1];
 
                                 if (parametrosRespo_2[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo_2[j][1] == _constant.Valor.VALOR_001_GENERA_CUSTODIAS)
-                                    entradaCustodia = _constant.Valor.SI
+                                    entradaCustodia = _constant.Valor.SI;
+
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo_2[j][1] == _constant.Valor.VALOR_002_ENTREGA_CUSTODIAS) {
+                                    entregaCustodia = _constant.Valor.SI;
+                                    log.debug('Entré a Cusotdia Entrega', entregaCustodia);
+                                }
+                                    
+
+
+                                if (parametrosRespo_2[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS) {
+                                    familia = parametrosRespo_2[j][1];
+                                }
                             }
                         }
 
@@ -351,7 +264,7 @@ define([
                                         }
 
                                         if (accion_producto == _constant.Valor.VALOR_015_VENTA_SERVICIOS && valor_tipo_agrupacion == tag) {
-                                            log.debug('Entry', 'Entra a item de transmision');
+                                            //log.debug('Entry', 'Entra a item de transmision');
                                             adpServicio = accion_producto;
                                             idOS = busqueda_salesorder[i][1];
                                             plataformasPX = envioPX;
@@ -574,7 +487,7 @@ define([
                                 fulfill = boxserie;
                             }
                             let idDispositivo = getInventoryNumber(fulfill, idItemOT);
-                            log.debug('idDispositivo', idDispositivo)
+                            log.debug('idDispositivo', idDispositivo);
                             var estadoSalesOrder = getSalesOrder(idSalesOrder);
                             if (estado == _constant.Status.CHEQUEADO && (estadoSalesOrder == 'pendingFulfillment' || estadoSalesOrder == 'partiallyFulfilled') && idDispositivo) {
                                 let serieProducto = objRecord.getValue('custrecord_ht_ot_serieproductoasignacion');
@@ -652,7 +565,7 @@ define([
                                 } catch (error) {
                                     log.error('Error-Fulfill', error);
                                 }
-
+                                log.debug('Entré a Cusotdia Entrega2', entregaCustodia);
                                 if (entregaCustodia == _constant.Valor.SI) {
                                     _controller.deleteRegistroCustodia(objParams);
                                 }
@@ -847,7 +760,7 @@ define([
                                                 for (let i = 0; i < arrResult.length; i++) {
                                                     // if (arrResult[i].adjInvId == currentInvAdjId) {
                                                     creditoTotal += Number(arrResult[i].adjCreditAmount);
-                                                    // 
+                                                    //
                                                 }
                                                 log.debug('creditoTotal', creditoTotal);
                                                 // results[index].getValue({ name: 'debitfxamount' });
@@ -1209,7 +1122,8 @@ define([
                                     });
                                     device = dispo.custrecord_ht_dd_dispositivo[0].value;
                                 }
-                                objParams.dispositivo = device
+                                objParams.dispositivo = device;
+                                objParams.familia = familia;
                                 let returnRegistroCustodia = _controller.createRegistroCustodia(objParams);
                                 try {
                                     let ajusteInv = _controller.createInventoryAdjustmentIngreso(objParams, 0, _constant.Constants.FLUJO_CUSTODIA);
@@ -1281,10 +1195,10 @@ define([
         }
 
         function createAcquisitionHistoryFromRecord(taxRec) {
-            /*    
+            /*
                         var DHR_DEFAULT_NAME = 'dhr-default-name';
-            
-                        
+
+
                         var dhrValues = {
                             name            : DHR_DEFAULT_NAME,
                             asset           : taxRec.getValue({fieldId : 'custrecord_altdeprasset'}),
@@ -1299,7 +1213,7 @@ define([
                             nbv             : taxRec.getValue({fieldId : 'custrecord_altdepr_originalcost'}),
                             quantity        : +assetQty
                         };
-                
+
                       dhrValues.subsidiary = taxRec.getValue({fieldId : 'custrecord_altdepr_subsidiary'});
             */
             var history = record.create({
@@ -1528,6 +1442,19 @@ define([
             } catch (e) { }
         }
 
+        const createCertificadoInstalacionButton = (form, objRecord) => {
+            var id = objRecord.id;
+            const type = "instalacion";
+            const printCertificado = `printCertificado('${id}', '${type}')`;
+            form.addButton({ id: 'custpage_btn_cert_inst', label: 'Certificado de Instalación', functionName: printCertificado });
+        }
+        const createCertificadoPropiedadButton = (form, objRecord) => {
+            var id = objRecord.id;
+            const type = "propiedad";
+            const printCertificado = `printCertificado('${id}', '${type}')`;
+            form.addButton({ id: 'custpage_btn_cert_prop', label: 'Certificado de Instalación', functionName: printCertificado });
+        }
+
         const createEnsambleGarantiaButton = (form, objRecord) => {
             let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
             itemName = itemName.toLowerCase()
@@ -1614,26 +1541,3 @@ Date: 23/03/2023
 Author: Jeferson Mejia
 Description: Se juntaron los scritps de Orden de Trabajo
 ==============================================================================================================================================*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

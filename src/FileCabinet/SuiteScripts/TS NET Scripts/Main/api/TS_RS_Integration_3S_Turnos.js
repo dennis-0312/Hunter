@@ -17,7 +17,7 @@ Url: https://7451241-sb1.restlets.api.netsuite.com/app/site/hosting/restlet.nl?s
 define(['N/log', 'N/search', 'N/record'], (log, search, record) => {
     const HT_CONSULTA_ORDEN_SERVICIO_SEARCH = 'customsearch_ht_consulta_orden_servicio'; //HT Consulta Orden de Servicio - PRODUCCION
     const HT_REGISTRO_BIENES_RECORD = 'customrecord_ht_record_registrobienes'; //
-    const HT_ORDEN_TRABAJO_RECORD = 'customrecord_ht_record_ordentrabajo' //
+    const HT_ORDEN_TRABAJO_RECORD = 'customrecord_ht_record_ordentrabajo'; //
     const HT_CONSULTA_ORDEN_TRABAJO_SEARCH = 'customsearch_ht_consulta_orden_trabajo'; //HT Consulta Orden de trabajo - PRODUCCION
     const ESTADO_VENTAS = 7;
     const PRIMER_TURNO = 1;
@@ -34,13 +34,24 @@ define(['N/log', 'N/search', 'N/record'], (log, search, record) => {
 
         try {
             let param = false;
+            let tecnico_param = false;
+            let taller_param = false;
+            let cliente_param = false;
+            let vehiculo_param = false;
+
             let filter =
                 [
                     ["custrecord_ht_ot_orden_servicio.class", "noneof", "@NONE@"],
                     "AND",
                     ["custrecord_ht_ot_orden_servicio.department", "noneof", "@NONE@"]
                 ]
-
+            let filter_Cliente =
+                [
+                    ["isinactive","is","F"]
+                ]
+            let filter_Tecnico = filter;
+            let filter_Taller = filter;
+            let filter_Vehiculo = filter;
             // switch (scriptContext.filtro) {
             //     case 'ordenservicio':
             //         filter = ["custrecord_ht_ot_orden_serivicio_txt", "startswith", scriptContext.ordenservicio]
@@ -91,19 +102,85 @@ define(['N/log', 'N/search', 'N/record'], (log, search, record) => {
                 }
             }
 
-            if (typeof scriptContext.tecnico != 'undefined') {
-                if (scriptContext.tecnico.length != 0) {
-                    filter.push("AND", ["custrecord_ht_ot_tecnicoasignacion", "anyof", scriptContext.tecnico])
+            if (typeof scriptContext.codigotecnico != 'undefined') {
+                if (scriptContext.codigotecnico.length != 0) {
+                    //filter.push("AND", ["custrecord_ht_ot_tecnicoasignacion", "anyof", scriptContext.tecnico])
                     param = true;
+                    filter_Tecnico.push("AND", ["custrecord_ht_ot_tecnicoasignacion.custrecord_ht_tect_codigo", "startswith", scriptContext.codigotecnico])
+                    tecnico_param = true;
                 }
             }
+
+            if (typeof scriptContext.descripciontecnico != 'undefined') {
+                if (scriptContext.descripciontecnico.length != 0) {
+                    param = true;
+                    filter_Tecnico.push("AND", ["custrecord_ht_ot_tecnicoasignacion.custrecord_ht_tect_descripcion", "contains", scriptContext.descripciontecnico])
+                    tecnico_param = true;
+                }
+            }
+
+            if (typeof scriptContext.codigotaller != 'undefined') {
+                if (scriptContext.codigotaller.length != 0) {
+                    param = true;
+                    filter_Taller.push("AND", ["custrecord_ht_ot_taller.custrecord_ht_tt_codigo", "startswith", scriptContext.codigotaller])
+                    taller_param = true;
+                }
+            }
+
+            if (typeof scriptContext.nombrecliente != 'undefined') {
+                if (scriptContext.nombrecliente.length != 0) {
+                    param = true;
+                    filter_Cliente.push("AND", ["altname", "contains", scriptContext.nombrecliente])
+                    cliente_param = true;
+                }
+            }
+
+            if (typeof scriptContext.cedularuc != 'undefined') {
+                if (scriptContext.cedularuc.length != 0) {
+                    param = true;
+                    filter_Cliente.push("AND", ["vatregnumber", "startswith", scriptContext.cedularuc])
+                    cliente_param = true;
+                }
+            }
+
+            if (typeof scriptContext.codigoclientevehiculo != 'undefined') {
+                if (scriptContext.codigoclientevehiculo.length != 0) {
+                    param = true;
+                    filter_Vehiculo.push("AND", ["custrecord_ht_ot_cliente_id.custentity_ec_vatregnumber", "startswith", scriptContext.codigoclientevehiculo])
+                    vehiculo_param = true;
+                }
+            }
+
+            if (typeof scriptContext.nombreclientevehiculo != 'undefined') {
+                if (scriptContext.nombreclientevehiculo.length != 0) {
+                    param = true;
+                    filter_Vehiculo.push("AND", ["custrecord_ht_ot_cliente_id.altname", "contains", scriptContext.nombreclientevehiculo])
+                    vehiculo_param = true;
+                }
+            }   
 
             if (param == false) {
                 return 'Filtro no válido';
             }
 
-            //log.debug('Filter', filter);
+            if (tecnico_param == true && (taller_param == true || cliente_param == true || vehiculo_param == true)) {
+                return 'Filtro no válido';
+            }
 
+            if (taller_param == true && (tecnico_param == true || cliente_param == true || vehiculo_param == true)) {
+                return 'Filtro no válido';
+            }
+
+            if (cliente_param == true && (tecnico_param == true || taller_param == true || vehiculo_param == true)) {
+                return 'Filtro no válido';
+            }
+
+            if (vehiculo_param == true && (tecnico_param == true || cliente_param == true || taller_param == true)) {
+                return 'Filtro no válido';
+            }
+
+            //log.debug('Filter', filter);
+            /*
             const mySearch = search.create({
                 type: HT_ORDEN_TRABAJO_RECORD, //Orden de Trabajo Search - DEVELOPER
                 filters: filter,
@@ -211,6 +288,54 @@ define(['N/log', 'N/search', 'N/record'], (log, search, record) => {
                         search.createColumn({ name: "custrecord_ht_ot_noimpulsaplataformas", summary: "GROUP", label: "No impulsa a Plataformas" })
                     ]
             });
+            */
+
+            const Search_tecnico = search.create({
+                type: HT_ORDEN_TRABAJO_RECORD,
+                filters: filter_Tecnico,
+                columns:
+                    [
+                        search.createColumn({ name: "custrecord_ht_tt_codigo", join: "custrecord_ht_ot_taller", label: "ID Taller" }),
+                        search.createColumn({ name: "custrecord_ht_tt_descripcion", join: "custrecord_ht_ot_taller", label: "Descripcion Taller" })
+                    ]
+            });
+
+            const Search_taller = search.create({
+                type: HT_ORDEN_TRABAJO_RECORD, //Orden de Trabajo Search - DEVELOPER
+                filters: filter_Taller,
+                columns:
+                    [
+                        search.createColumn({ name: "internalid", join: "custrecord_ht_ot_orden_servicio", summary: "GROUP", label: "ID interno" }),
+                        search.createColumn({ name: "altname", join: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Nombre Cliente" }),
+                        search.createColumn({ name: "altname", join: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "Destino Nombre" }),
+                        search.createColumn({ name: "custrecord_ht_pp_descripcion", join: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "HT OT descripcion" }),
+                        search.createColumn({ name: "custrecord_ht_ot_comentariofinalizacion", summary: "GROUP", label: "HT OT Comentario" }),
+                        search.createColumn({ name: "location", join: "custrecord_ht_ot_orden_servicio", summary: "GROUP", label: "HT OT punto de Venta" }),
+                        search.createColumn({ name: "custbody_ht_os_ejecutiva_backoffice", join: "custrecord_ht_ot_orden_servicio", summary: "GROUP", label: "HT OT Usuario Creacion" }),
+                    ]
+            });
+
+            const Search_vehiculo = search.create({
+                type: HT_ORDEN_TRABAJO_RECORD,
+                filters: filter_Vehiculo,
+                columns:
+                    [
+                        search.createColumn({ name: "altname", join: "CUSTRECORD_HT_OT_VEHICULO", label: "Destino Nombre" }),
+                        search.createColumn({ name: "name", join: "CUSTRECORD_HT_OT_VEHICULO", label: "ID" }),
+                    ]
+            });
+
+            const Search_cliente = search.create({
+                type: 'customer', //Orden de Trabajo Search - DEVELOPER
+                filters: filter_Cliente,
+                columns:
+                    [
+                        search.createColumn({ name: "altname", summary: "GROUP", label: "Nombre Cliente" }),
+                        search.createColumn({ name: "vatregnumber", summary: "GROUP", label: "ID Cliente" }),
+                        search.createColumn({ name: "email", summary: "GROUP", label: "email Cliente" }),
+                    ]
+            });
+
             //let count = mySearch.runPaged().count;
 
             // log.debug('Debug', mySearch.run().getRange({ start: 0, end: 100 }))
@@ -411,209 +536,321 @@ define(['N/log', 'N/search', 'N/record'], (log, search, record) => {
             //     });
             //     return true;
             // });
+            
+            if(tecnico_param == true){
+                let arr = []
+                let myPagedData = Search_tecnico.runPaged();
+                myPagedData.pageRanges.forEach(pageRange => {
+                    let myPage = myPagedData.fetch({ index: pageRange.index });
+                    myPage.data.forEach(result => {
+                        let Codigo_Taller = result.getValue({ name: "custrecord_ht_tt_codigo", join: "custrecord_ht_ot_taller", label: "HT OT ID Taller" })
+                        let Descripcion_Taller = result.getValue({ name: "custrecord_ht_tt_descripcion", join: "custrecord_ht_ot_taller", label: "HT OT descripcion Taller" })
+                        let repetido = false;
+                        let arracuxi = [];
+                        for(let i = 0 ; i < arr.length ; i++){
+                            if(arr[i][0] == Codigo_Taller && arr[i][1] == Descripcion_Taller){
+                                repetido = true;
+                            }
+                        }
+                        arracuxi = [Codigo_Taller,Descripcion_Taller]
+                        if(repetido == false){
+                            arr.push(arracuxi);
+                            jsonResult.push({
+                                Codigo_Taller: Codigo_Taller,
+                                Descripcion_Taller: Descripcion_Taller
+                            });
+                        }
+                    });    
+                });
+            } else if(taller_param == true){
+                let myPagedData = Search_taller.runPaged();
+                myPagedData.pageRanges.forEach(pageRange => {
+                    let myPage = myPagedData.fetch({ index: pageRange.index });
+                    myPage.data.forEach(result => {
+                        let ID_OV = result.getValue({ name: "internalid", join: "custrecord_ht_ot_orden_servicio", summary: "GROUP", label: "Orden Servicio" });
+                        let TurnoDatos = getTurnoDatos(ID_OV);
+                        let Hora_Inicio = TurnoDatos[0];
+                        if(Hora_Inicio == null){
+                            Hora_Inicio = '';
+                        }
+                        let Cliente_Nombre = result.getValue({ name: "altname", join: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Nombre Cliente"});
+                        let Destino_Nombre = result.getValue({ name: "altname", join: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "Destino Nombre" });
+                        let Tipo_trabajo_descripcion = result.getValue({ name: "custrecord_ht_pp_descripcion", join: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo trabajo descripcion" });
+                        if(Tipo_trabajo_descripcion == '- None -'){
+                            Tipo_trabajo_descripcion = '';
+                        }
+                        let Comentario = result.getValue({ name: "custrecord_ht_ot_comentariofinalizacion", summary: "GROUP", label: "Comentarios" });
+                        if(Comentario == '- None -'){
+                            Comentario = '';
+                        }
+                        let Fecha_Creacion = TurnoDatos[1];
+                        if(Fecha_Creacion == null){
+                            Fecha_Creacion = '';
+                        }
+                        let Punto_Venta = result.getText({ name: "location", join: "custrecord_ht_ot_orden_servicio", summary: "GROUP", label: "Punto Venta" });
+                        let Usuario_Creacion_id = result.getValue({ name: "custbody_ht_os_ejecutiva_backoffice", join: "custrecord_ht_ot_orden_servicio", summary: "GROUP", label: "Usuario Creacion" });
+                        let Usuario_Creacion = getUsuarioCreacion(Usuario_Creacion_id);
+                        
+                        jsonResult.push({
+                            Hora_Inicio: Hora_Inicio,
+                            Cliente_Nombre: Cliente_Nombre,
+                            Destino_Nombre: Destino_Nombre,
+                            Tipo_trabajo_descripcion: Tipo_trabajo_descripcion,
+                            Comentario: Comentario,
+                            Fecha_Creacion: Fecha_Creacion,
+                            Punto_Venta: Punto_Venta,
+                            Usuario_Creacion: Usuario_Creacion
+                        });
+                    });    
+                });
 
+            }else if(cliente_param == true){
+                let myPagedData = Search_cliente.runPaged();
+                myPagedData.pageRanges.forEach(pageRange => {
+                    let myPage = myPagedData.fetch({ index: pageRange.index });
+                    myPage.data.forEach(result => {
+                        let Nombre = result.getValue({ name: "altname", summary: "GROUP", label: "Nombre Cliente"});
+                        let Cliente_ID = result.getValue({ name: "vatregnumber", summary: "GROUP", label: "ID Cliente" });
+                        let Email = result.getValue({ name: "email", summary: "GROUP", label: "email Cliente" });
+                        jsonResult.push({
+                            Nombre: Nombre,
+                            Cliente_ID: Cliente_ID,
+                            Email: Email
+                        });
+                    });    
+                });
+            } else if(vehiculo_param == true){
+                let myPagedData = Search_vehiculo.runPaged();
+                let arr = []
+                myPagedData.pageRanges.forEach(pageRange => {
+                    let myPage = myPagedData.fetch({ index: pageRange.index });
+                    myPage.data.forEach(result => {
+                        let Destino_Nombre = result.getValue({ name: "altname", join: "CUSTRECORD_HT_OT_VEHICULO", label: "Nombre"});
+                        let Destino_ID = result.getValue({ name: "name", join: "CUSTRECORD_HT_OT_VEHICULO", label: "ID" });
+                        let repetido = false;
+                        let arracuxi = [];
+                        for(let i = 0 ; i < arr.length ; i++){
+                            if(arr[i][0] == Destino_Nombre && arr[i][1] == Destino_ID){
+                                repetido = true;
+                            }
+                        }
+                        arracuxi = [Destino_Nombre,Destino_ID]
+                        if(repetido == false){
+                            arr.push(arracuxi);
+                            jsonResult.push({
+                                Destino_Nombre: Destino_Nombre,
+                                Destino_ID: Destino_ID
+                            });
+                        }
+                        
+                    });    
+                });
+            }
+                
+            /*
+                let myPagedData = mySearch.runPaged();
+                log.debug('Count', myPagedData.count);
+                myPagedData.pageRanges.forEach(pageRange => {
+                    let myPage = myPagedData.fetch({ index: pageRange.index });
+                    myPage.data.forEach(result => {
+                        let ordenTrabajoid = result.getValue({ name: "internalid", summary: "GROUP", label: "Internal ID" })
+                        let ordenServicioid = result.getValue({ name: "internalid", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OT ID Orden Servicio" })
+                        let ordenServicio = result.getValue({ name: "custrecord_ht_ot_orden_serivicio_txt", summary: "GROUP", label: "HT OT Orden de Servicio TXT" })
+                        let clase = result.getText({ name: "class", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Class" })
+                        let fechaEmisiónOrdenServicio = result.getValue({ name: "trandate", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Date" })
+                        let departamento = result.getText({ name: "department", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Department" })
+                        let oficina = result.getText({ name: "location", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Location" })
+                        let aprobacionCartera = result.getValue({ name: "custbody_ht_os_aprobacioncartera", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OS Aprobación Cartera" })
+                        let aprobacionVenta = result.getValue({ name: "custbody_ht_os_aprobacionventa", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OS Aprobación Venta" })
+                        let ejecutivaGestion = result.getValue({ name: "custbody_ht_os_ejecutiva_backoffice", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Ejecutiva de Gestión" })
+                        let ejecutivaReferencia = result.getValue({ name: "custbody_ht_os_ejecutivareferencia", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Ejecutiva de referencia" })
+                        let ejecutivaRenovacion = result.getValue({ name: "salesrep", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Sales Rep" })
+                        let oportunidad = result.getValue({ name: "opportunity", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Opportunity" })
+                        let subsidiaria = result.getValue({ name: "subsidiarynohierarchy", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Subsidiary (no hierarchy)" })
+                        let aseguradora = result.getValue({ name: "custbody_ht_os_companiaseguros", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Aseguradora" })
+                        let consecionario = result.getValue({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" })
+                        let bancos = result.getValue({ name: "custbody2", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Bancos" })
+                        let vendedorCanalDistribucion = result.getValue({ name: "custbody_ht_os_vendcanaldistribucion", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Vendedor del canal de distribución" })
+                        let facturarA = result.getValue({ name: "custbody_ht_facturar_a", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Facturar a" })
+                        let trabajado = result.getValue({ name: "custbody_ht_os_trabajado", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Trabajado" })
+                        let novedadesOrdenServicio = result.getValue({ name: "custbody_ht_os_novedades", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Novedades" })
+                        let ordenTrabajo = result.getValue({ name: "name", sort: search.Sort.ASC, summary: "GROUP", label: "ID" })
+                        let ordenTrabajoEstado = result.getValue({ name: "custrecord_ht_ot_estado", summary: "GROUP", label: "HT OT Estado Orden de trabajo" })
+                        let itemid = result.getValue({ name: "custrecord_ht_ot_item", summary: "GROUP", label: "HT OT Ítem" })
+                        let item = result.getText({ name: "custrecord_ht_ot_item", summary: "GROUP", label: "HT OT Ítem" })
+                        let clienteid = result.getValue({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" })
+                        let cliente = result.getText({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" })
+                        let estadoLojack = result.getValue({ name: "custrecord_ht_ot_estadolojack", summary: "GROUP", label: "Estado Lojack" })
+                        let boxSerie = result.getValue({ name: "custrecord_ht_ot_boxserie", summary: "GROUP", label: "HT Box Serie" })
+                        let confirmacionPXAdmin = result.getValue({ name: "custrecord_ht_ot_pxadminfinalizacion", summary: "GROUP", label: "HT Confirmación PX Admin" })
+                        let estadoChaser = result.getValue({ name: "custrecord_ht_ot_estadochaser", summary: "GROUP", label: "Estado Chaser" })
+                        let confirmacionTelematics = result.getValue({ name: "custrecord_ht_ot_confirmaciontelamatic", summary: "GROUP", label: "HT Confirmación Telematics" })
+                        let modeloBien = result.getText({ name: "custrecord_ht_ot_modelobien", summary: "GROUP", label: "HT OS Modelo" })
+                        let apn = result.getValue({ name: "custrecord_ht_ot_apn", summary: "GROUP", label: "HT OT APN" })
+                        let aireaAcondicionado = result.getValue({ name: "custrecord_ht_ot_aireacondicionado", summary: "GROUP", label: "HT OT Aire acondicionado" })
+                        let alfombraPiso = result.getValue({ name: "custrecord_ht_ot_alfombrapiso", summary: "GROUP", label: "HT OT Alfombra de piso" })
+                        let brazosPlumas = result.getValue({ name: "custrecord_ht_ot_brazosplumas", summary: "GROUP", label: "HT OT Brazos y Plumas" })
+                        let cantidadControles = result.getValue({ name: "custrecord_ht_ot_contidadcontroles", summary: "GROUP", label: "HT OT Cantidad controles" })
+                        let cantidadLlaves = result.getValue({ name: "custrecord_ht_ot_cantidadllaves", summary: "GROUP", label: "HT OT Cantidad llaves" })
+                        let cenicero = result.getValue({ name: "custrecord_ht_ot_cenicero", summary: "GROUP", label: "HT OT Cenicero" })
+                        let chasis = result.getValue({ name: "custrecord_ht_ot_chasis", summary: "GROUP", label: "HT OT Chasis" })
+                        let chocotes = result.getValue({ name: "custrecord_ht_ot_chicotes", summary: "GROUP", label: "HT OT Chicotes" })
+                        let color = result.getValue({ name: "custrecord_ht_ot_color", summary: "GROUP", label: "HT OT Color" })
+                        let codigoActivacion = result.getValue({ name: "custrecord_ht_ot_codigoactivacion", summary: "GROUP", label: "Código de Activación" })
+                        let codigoRespuesta = result.getValue({ name: "custrecord_ht_ot_codigorespuesta", summary: "GROUP", label: "Código de Respuesta" })
+                        let fecha = result.getValue({ name: "created", summary: "GROUP", label: "Date Created" })
+                        let conbustible = result.getValue({ name: "custrecord_ht_ot_porcentajecombustible", summary: "GROUP", label: "HT OT Combustible" })
+                        let conectividadTelematics = result.getValue({ name: "custrecord_ht_ot_telematicfinalizacion", summary: "GROUP", label: "HT OT Conectividad Telematics" })
+                        let conNovedad = result.getValue({ name: "custrecord_ht_ot_connovedad", summary: "GROUP", label: "HT OT Con novedad" })
+                        let correo = result.getValue({ name: "custrecord_ht_ot_correorecepcion", summary: "GROUP", label: "HT OT Correo" })
+                        let direccionCliente = result.getValue({ name: "custrecord_ht_ot_direccioncliente", summary: "GROUP", label: "HT OT Dirección del Cliente" })
+                        let correoCliente = result.getValue({ name: "custrecord_ht_ot_correocliente", summary: "GROUP", label: "HT OT Correo del Cliente" })
+                        let dispositivo = result.getValue({ name: "custrecord_ht_ot_dispositivo", summary: "GROUP", label: "HT OT Dispositivo" })
+                        let fechaEntrega = result.getValue({ name: "custrecord_ht_ot_fechaentrega", summary: "GROUP", label: "HT OT Fecha entrega" })
+                        let fechaTrabajo = result.getValue({ name: "custrecord_ht_ot_fechatrabajoasignacion", summary: "GROUP", label: "HT OT Fecha trabajo" })
+                        let fimaware = result.getValue({ name: "custrecord_ht_ot_firmware", summary: "GROUP", label: "HT OT Firmware" })
+                        let fueraCuidad = result.getValue({ name: "custrecord_ht_ot_fueraciudad", summary: "GROUP", label: "HT OT Fuera Ciudad" })
+                        let fueraTaller = result.getValue({ name: "custrecord_ht_ot_fuerataller", summary: "GROUP", label: "HT OT Fuera taller" })
+                        let horaEntrega = result.getValue({ name: "custrecord_ht_ot_horaentrega", summary: "GROUP", label: "HT OT Hora entrega" })
+                        let horaTrabajo = result.getValue({ name: "custrecord_ht_ot_horatrabajoasignacion", summary: "GROUP", label: "HT OT Hora trabajo" })
+                        let vehiculoid = result.getValue({ name: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "HT OT ID Vehículo" })
+                        let vehiculo = result.getText({ name: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "HT OT ID Vehículo" })
+                        let lucesParqueo = result.getValue({ name: "custrecord_ht_ot_lucesparqueo", summary: "GROUP", label: "HT OT Luces Parqueo" })
+                        let ip = result.getValue({ name: "custrecord_ht_ot_ip", summary: "GROUP", label: "HT OT IP" })
+                        let itemVentAlquiler = result.getValue({ name: "custrecord_ht_ot_item_vent_alq", summary: "GROUP", label: "HT OT Item Vent Alq" })
+                        let listaComentarios = result.getValue({ name: "custrecord_ht_ot_listacomentarios", summary: "GROUP", label: "HT OT Lista de comentarios" })
+                        let marca = result.getValue({ name: "custrecord_ht_ot_marca", summary: "GROUP", label: "HT OT Marca" })
+                        let mascarillas = result.getValue({ name: "custrecord_ht_ot_mascarillas", summary: "GROUP", label: "HT OT Mascarillas" })
+                        let modeloDispositivo = result.getValue({ name: "custrecord_ht_ot_modelo", summary: "GROUP", label: "HT OT Modelo" })
+                        let motivos = result.getValue({ name: "custrecord_ht_ot_motivos", summary: "GROUP", label: "HT OT Motivos" })
+                        let motivoComentario = result.getValue({ name: "custrecord_ht_ot_motivoscomentario", summary: "GROUP", label: "HT OT Motivos Comentario" })
+                        let motor = result.getValue({ name: "custrecord_ht_ot_motor", summary: "GROUP", label: "HT OT Motor" })
+                        let nombreRecibe = result.getValue({ name: "custrecord_ht_ot_nombrereciberecepcion", summary: "GROUP", label: "HT OT Nombre Recibe" })
+                        let nombreEntrega = result.getValue({ name: "custrecord_ht_ot_nombreentregarecepcion", summary: "GROUP", label: "HT OT Nombre entrega" })
+                        let novedades = result.getValue({ name: "custrecord_ht_ot_novedades", summary: "GROUP", label: "HT OT Novedades" })
+                        let odometro = result.getValue({ name: "custrecord_ht_ot_odometro", summary: "GROUP", label: "HT OT Odómetro" })
+                        let paralizador = result.getValue({ name: "custrecord_ht_ot_paralizador", summary: "GROUP", label: "HT OT Paralizador" })
+                        let perillas = result.getValue({ name: "custrecord_ht_ot_perillas", summary: "GROUP", label: "HT OT Perillas" })
+                        let placa = result.getValue({ name: "custrecord_ht_ot_placa", summary: "GROUP", label: "HT OT Placa" })
+                        let script = result.getValue({ name: "custrecord_ht_ot_script", summary: "GROUP", label: "HT OT Script" })
+                        let radio = result.getValue({ name: "custrecord_ht_ot_radio", summary: "GROUP", label: "HT OT Radio" })
+                        let serieProducto = result.getText({ name: "custrecord_ht_ot_serieproductoasignacion", summary: "GROUP", label: "Serie Producto" })
+                        let servidor = result.getValue({ name: "custrecord_ht_ot_servidor", summary: "GROUP", label: "HT OT Servidor" })
+                        let simCard = result.getValue({ name: "custrecord_ht_ot_simcard", summary: "GROUP", label: "HT OT Sim Card" })
+                        let sinNovedad = result.getValue({ name: "custrecord_ht_ot_sinnovedad", summary: "GROUP", label: "HT OT Sin novedad" })
+                        let supervisor = result.getValue({ name: "custrecord_ht_ot_supervisorasignacion", summary: "GROUP", label: "HT OT Supervisor" })
+                        let tapaCombustible = result.getValue({ name: "custrecord_ht_ot_tapacombustible", summary: "GROUP", label: "HT OT Tapa Combustible" })
+                        let telefonoCliente = result.getValue({ name: "custrecord_ht_ot_telefonocliente", summary: "GROUP", label: "HT OT Teléfono del Cliente" })
+                        let termometro = result.getValue({ name: "custrecord_ht_ot_termometro", summary: "GROUP", label: "HT OT Termometro" })
+                        let tipoBien = result.getValue({ name: "custrecord_ht_ot_tipo", summary: "GROUP", label: "HT OT Tipo" })
+                        let tecnicoAsignado = result.getValue({ name: "custrecord_ht_ot_tecnicoasignacion", summary: "GROUP", label: "HT OT Técnico asignado" })
+                        let unidad = result.getValue({ name: "custrecord_ht_ot_unidad", summary: "GROUP", label: "HT OT Unidad" })
+                        let version = result.getValue({ name: "custrecord_ht_ot_version", summary: "GROUP", label: "HT OT Version" })
+                        let imei = result.getValue({ name: "custrecord_ht_ot_imei", summary: "GROUP", label: "IMEI" })
+                        let oficinaAtencion = result.getValue({ name: "custrecord_ht_ot_oficinaatencion", summary: "GROUP", label: "Oficina de atención" })
+                        let impulsaPlataformas = result.getValue({ name: "custrecord_ht_ot_noimpulsaplataformas", summary: "GROUP", label: "No impulsa a Plataformas" })
 
-            let myPagedData = mySearch.runPaged();
-            log.debug('Count', myPagedData.count);
-            myPagedData.pageRanges.forEach(pageRange => {
-                let myPage = myPagedData.fetch({ index: pageRange.index });
-                myPage.data.forEach(result => {
-                    let ordenTrabajoid = result.getValue({ name: "internalid", summary: "GROUP", label: "Internal ID" })
-                    let ordenServicioid = result.getValue({ name: "internalid", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OT ID Orden Servicio" })
-                    let ordenServicio = result.getValue({ name: "custrecord_ht_ot_orden_serivicio_txt", summary: "GROUP", label: "HT OT Orden de Servicio TXT" })
-                    let clase = result.getText({ name: "class", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Class" })
-                    let fechaEmisiónOrdenServicio = result.getValue({ name: "trandate", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Date" })
-                    let departamento = result.getText({ name: "department", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Department" })
-                    let oficina = result.getText({ name: "location", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Location" })
-                    let aprobacionCartera = result.getValue({ name: "custbody_ht_os_aprobacioncartera", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OS Aprobación Cartera" })
-                    let aprobacionVenta = result.getValue({ name: "custbody_ht_os_aprobacionventa", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OS Aprobación Venta" })
-                    let ejecutivaGestion = result.getValue({ name: "custbody_ht_os_ejecutiva_backoffice", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Ejecutiva de Gestión" })
-                    let ejecutivaReferencia = result.getValue({ name: "custbody_ht_os_ejecutivareferencia", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Ejecutiva de referencia" })
-                    let ejecutivaRenovacion = result.getValue({ name: "salesrep", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Sales Rep" })
-                    let oportunidad = result.getValue({ name: "opportunity", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Opportunity" })
-                    let subsidiaria = result.getValue({ name: "subsidiarynohierarchy", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Subsidiary (no hierarchy)" })
-                    let aseguradora = result.getValue({ name: "custbody_ht_os_companiaseguros", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Aseguradora" })
-                    let consecionario = result.getValue({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" })
-                    let bancos = result.getValue({ name: "custbody2", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Bancos" })
-                    let vendedorCanalDistribucion = result.getValue({ name: "custbody_ht_os_vendcanaldistribucion", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Vendedor del canal de distribución" })
-                    let facturarA = result.getValue({ name: "custbody_ht_facturar_a", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Facturar a" })
-                    let trabajado = result.getValue({ name: "custbody_ht_os_trabajado", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Trabajado" })
-                    let novedadesOrdenServicio = result.getValue({ name: "custbody_ht_os_novedades", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Novedades" })
-                    let ordenTrabajo = result.getValue({ name: "name", sort: search.Sort.ASC, summary: "GROUP", label: "ID" })
-                    let ordenTrabajoEstado = result.getValue({ name: "custrecord_ht_ot_estado", summary: "GROUP", label: "HT OT Estado Orden de trabajo" })
-                    let itemid = result.getValue({ name: "custrecord_ht_ot_item", summary: "GROUP", label: "HT OT Ítem" })
-                    let item = result.getText({ name: "custrecord_ht_ot_item", summary: "GROUP", label: "HT OT Ítem" })
-                    let clienteid = result.getValue({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" })
-                    let cliente = result.getText({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" })
-                    let estadoLojack = result.getValue({ name: "custrecord_ht_ot_estadolojack", summary: "GROUP", label: "Estado Lojack" })
-                    let boxSerie = result.getValue({ name: "custrecord_ht_ot_boxserie", summary: "GROUP", label: "HT Box Serie" })
-                    let confirmacionPXAdmin = result.getValue({ name: "custrecord_ht_ot_pxadminfinalizacion", summary: "GROUP", label: "HT Confirmación PX Admin" })
-                    let estadoChaser = result.getValue({ name: "custrecord_ht_ot_estadochaser", summary: "GROUP", label: "Estado Chaser" })
-                    let confirmacionTelematics = result.getValue({ name: "custrecord_ht_ot_confirmaciontelamatic", summary: "GROUP", label: "HT Confirmación Telematics" })
-                    let modeloBien = result.getText({ name: "custrecord_ht_ot_modelobien", summary: "GROUP", label: "HT OS Modelo" })
-                    let apn = result.getValue({ name: "custrecord_ht_ot_apn", summary: "GROUP", label: "HT OT APN" })
-                    let aireaAcondicionado = result.getValue({ name: "custrecord_ht_ot_aireacondicionado", summary: "GROUP", label: "HT OT Aire acondicionado" })
-                    let alfombraPiso = result.getValue({ name: "custrecord_ht_ot_alfombrapiso", summary: "GROUP", label: "HT OT Alfombra de piso" })
-                    let brazosPlumas = result.getValue({ name: "custrecord_ht_ot_brazosplumas", summary: "GROUP", label: "HT OT Brazos y Plumas" })
-                    let cantidadControles = result.getValue({ name: "custrecord_ht_ot_contidadcontroles", summary: "GROUP", label: "HT OT Cantidad controles" })
-                    let cantidadLlaves = result.getValue({ name: "custrecord_ht_ot_cantidadllaves", summary: "GROUP", label: "HT OT Cantidad llaves" })
-                    let cenicero = result.getValue({ name: "custrecord_ht_ot_cenicero", summary: "GROUP", label: "HT OT Cenicero" })
-                    let chasis = result.getValue({ name: "custrecord_ht_ot_chasis", summary: "GROUP", label: "HT OT Chasis" })
-                    let chocotes = result.getValue({ name: "custrecord_ht_ot_chicotes", summary: "GROUP", label: "HT OT Chicotes" })
-                    let color = result.getValue({ name: "custrecord_ht_ot_color", summary: "GROUP", label: "HT OT Color" })
-                    let codigoActivacion = result.getValue({ name: "custrecord_ht_ot_codigoactivacion", summary: "GROUP", label: "Código de Activación" })
-                    let codigoRespuesta = result.getValue({ name: "custrecord_ht_ot_codigorespuesta", summary: "GROUP", label: "Código de Respuesta" })
-                    let fecha = result.getValue({ name: "created", summary: "GROUP", label: "Date Created" })
-                    let conbustible = result.getValue({ name: "custrecord_ht_ot_porcentajecombustible", summary: "GROUP", label: "HT OT Combustible" })
-                    let conectividadTelematics = result.getValue({ name: "custrecord_ht_ot_telematicfinalizacion", summary: "GROUP", label: "HT OT Conectividad Telematics" })
-                    let conNovedad = result.getValue({ name: "custrecord_ht_ot_connovedad", summary: "GROUP", label: "HT OT Con novedad" })
-                    let correo = result.getValue({ name: "custrecord_ht_ot_correorecepcion", summary: "GROUP", label: "HT OT Correo" })
-                    let direccionCliente = result.getValue({ name: "custrecord_ht_ot_direccioncliente", summary: "GROUP", label: "HT OT Dirección del Cliente" })
-                    let correoCliente = result.getValue({ name: "custrecord_ht_ot_correocliente", summary: "GROUP", label: "HT OT Correo del Cliente" })
-                    let dispositivo = result.getValue({ name: "custrecord_ht_ot_dispositivo", summary: "GROUP", label: "HT OT Dispositivo" })
-                    let fechaEntrega = result.getValue({ name: "custrecord_ht_ot_fechaentrega", summary: "GROUP", label: "HT OT Fecha entrega" })
-                    let fechaTrabajo = result.getValue({ name: "custrecord_ht_ot_fechatrabajoasignacion", summary: "GROUP", label: "HT OT Fecha trabajo" })
-                    let fimaware = result.getValue({ name: "custrecord_ht_ot_firmware", summary: "GROUP", label: "HT OT Firmware" })
-                    let fueraCuidad = result.getValue({ name: "custrecord_ht_ot_fueraciudad", summary: "GROUP", label: "HT OT Fuera Ciudad" })
-                    let fueraTaller = result.getValue({ name: "custrecord_ht_ot_fuerataller", summary: "GROUP", label: "HT OT Fuera taller" })
-                    let horaEntrega = result.getValue({ name: "custrecord_ht_ot_horaentrega", summary: "GROUP", label: "HT OT Hora entrega" })
-                    let horaTrabajo = result.getValue({ name: "custrecord_ht_ot_horatrabajoasignacion", summary: "GROUP", label: "HT OT Hora trabajo" })
-                    let vehiculoid = result.getValue({ name: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "HT OT ID Vehículo" })
-                    let vehiculo = result.getText({ name: "custrecord_ht_ot_vehiculo", summary: "GROUP", label: "HT OT ID Vehículo" })
-                    let lucesParqueo = result.getValue({ name: "custrecord_ht_ot_lucesparqueo", summary: "GROUP", label: "HT OT Luces Parqueo" })
-                    let ip = result.getValue({ name: "custrecord_ht_ot_ip", summary: "GROUP", label: "HT OT IP" })
-                    let itemVentAlquiler = result.getValue({ name: "custrecord_ht_ot_item_vent_alq", summary: "GROUP", label: "HT OT Item Vent Alq" })
-                    let listaComentarios = result.getValue({ name: "custrecord_ht_ot_listacomentarios", summary: "GROUP", label: "HT OT Lista de comentarios" })
-                    let marca = result.getValue({ name: "custrecord_ht_ot_marca", summary: "GROUP", label: "HT OT Marca" })
-                    let mascarillas = result.getValue({ name: "custrecord_ht_ot_mascarillas", summary: "GROUP", label: "HT OT Mascarillas" })
-                    let modeloDispositivo = result.getValue({ name: "custrecord_ht_ot_modelo", summary: "GROUP", label: "HT OT Modelo" })
-                    let motivos = result.getValue({ name: "custrecord_ht_ot_motivos", summary: "GROUP", label: "HT OT Motivos" })
-                    let motivoComentario = result.getValue({ name: "custrecord_ht_ot_motivoscomentario", summary: "GROUP", label: "HT OT Motivos Comentario" })
-                    let motor = result.getValue({ name: "custrecord_ht_ot_motor", summary: "GROUP", label: "HT OT Motor" })
-                    let nombreRecibe = result.getValue({ name: "custrecord_ht_ot_nombrereciberecepcion", summary: "GROUP", label: "HT OT Nombre Recibe" })
-                    let nombreEntrega = result.getValue({ name: "custrecord_ht_ot_nombreentregarecepcion", summary: "GROUP", label: "HT OT Nombre entrega" })
-                    let novedades = result.getValue({ name: "custrecord_ht_ot_novedades", summary: "GROUP", label: "HT OT Novedades" })
-                    let odometro = result.getValue({ name: "custrecord_ht_ot_odometro", summary: "GROUP", label: "HT OT Odómetro" })
-                    let paralizador = result.getValue({ name: "custrecord_ht_ot_paralizador", summary: "GROUP", label: "HT OT Paralizador" })
-                    let perillas = result.getValue({ name: "custrecord_ht_ot_perillas", summary: "GROUP", label: "HT OT Perillas" })
-                    let placa = result.getValue({ name: "custrecord_ht_ot_placa", summary: "GROUP", label: "HT OT Placa" })
-                    let script = result.getValue({ name: "custrecord_ht_ot_script", summary: "GROUP", label: "HT OT Script" })
-                    let radio = result.getValue({ name: "custrecord_ht_ot_radio", summary: "GROUP", label: "HT OT Radio" })
-                    let serieProducto = result.getText({ name: "custrecord_ht_ot_serieproductoasignacion", summary: "GROUP", label: "Serie Producto" })
-                    let servidor = result.getValue({ name: "custrecord_ht_ot_servidor", summary: "GROUP", label: "HT OT Servidor" })
-                    let simCard = result.getValue({ name: "custrecord_ht_ot_simcard", summary: "GROUP", label: "HT OT Sim Card" })
-                    let sinNovedad = result.getValue({ name: "custrecord_ht_ot_sinnovedad", summary: "GROUP", label: "HT OT Sin novedad" })
-                    let supervisor = result.getValue({ name: "custrecord_ht_ot_supervisorasignacion", summary: "GROUP", label: "HT OT Supervisor" })
-                    let tapaCombustible = result.getValue({ name: "custrecord_ht_ot_tapacombustible", summary: "GROUP", label: "HT OT Tapa Combustible" })
-                    let telefonoCliente = result.getValue({ name: "custrecord_ht_ot_telefonocliente", summary: "GROUP", label: "HT OT Teléfono del Cliente" })
-                    let termometro = result.getValue({ name: "custrecord_ht_ot_termometro", summary: "GROUP", label: "HT OT Termometro" })
-                    let tipoBien = result.getValue({ name: "custrecord_ht_ot_tipo", summary: "GROUP", label: "HT OT Tipo" })
-                    let tecnicoAsignado = result.getValue({ name: "custrecord_ht_ot_tecnicoasignacion", summary: "GROUP", label: "HT OT Técnico asignado" })
-                    let unidad = result.getValue({ name: "custrecord_ht_ot_unidad", summary: "GROUP", label: "HT OT Unidad" })
-                    let version = result.getValue({ name: "custrecord_ht_ot_version", summary: "GROUP", label: "HT OT Version" })
-                    let imei = result.getValue({ name: "custrecord_ht_ot_imei", summary: "GROUP", label: "IMEI" })
-                    let oficinaAtencion = result.getValue({ name: "custrecord_ht_ot_oficinaatencion", summary: "GROUP", label: "Oficina de atención" })
-                    let impulsaPlataformas = result.getValue({ name: "custrecord_ht_ot_noimpulsaplataformas", summary: "GROUP", label: "No impulsa a Plataformas" })
-
-                    jsonResult.push({
-                        ordenTrabajoid: ordenTrabajoid,
-                        ordenServicioid: ordenServicioid,
-                        ordenServicio: ordenServicio,
-                        clase: clase,
-                        fechaEmisiónOrdenServicio: fechaEmisiónOrdenServicio,
-                        departamento: departamento,
-                        oficina: oficina,
-                        aprobacionCartera: aprobacionCartera,
-                        aprobacionVenta: aprobacionVenta,
-                        ejecutivaGestion: ejecutivaGestion,
-                        ejecutivaReferencia: ejecutivaReferencia,
-                        ejecutivaRenovacion: ejecutivaRenovacion,
-                        oportunidad: oportunidad,
-                        subsidiaria: subsidiaria,
-                        aseguradora: aseguradora,
-                        consecionario: consecionario,
-                        bancos: bancos,
-                        vendedorCanalDistribucion: vendedorCanalDistribucion,
-                        facturarA: facturarA,
-                        trabajado: trabajado,
-                        novedadesOrdenServicio: novedadesOrdenServicio,
-                        ordenTrabajo: ordenTrabajo,
-                        ordenTrabajoEstado: ordenTrabajoEstado,
-                        itemid: itemid,
-                        item: item,
-                        clienteid: clienteid,
-                        cliente: cliente,
-                        estadoLojack: estadoLojack,
-                        boxSerie: boxSerie,
-                        confirmacionPXAdmin: confirmacionPXAdmin,
-                        estadoChaser: estadoChaser,
-                        confirmacionTelematics: confirmacionTelematics,
-                        modeloBien: modeloBien,
-                        apn: apn,
-                        aireaAcondicionado: aireaAcondicionado,
-                        alfombraPiso: alfombraPiso,
-                        brazosPlumas: brazosPlumas,
-                        cantidadControles: cantidadControles,
-                        cantidadLlaves: cantidadLlaves,
-                        cenicero: cenicero,
-                        chasis: chasis,
-                        chocotes: chocotes,
-                        color: color,
-                        codigoActivacion: codigoActivacion,
-                        codigoRespuesta: codigoRespuesta,
-                        conbustible: conbustible,
-                        conectividadTelematics: conectividadTelematics,
-                        conNovedad: conNovedad,
-                        correo: correo,
-                        direccionCliente: direccionCliente,
-                        correoCliente: correoCliente,
-                        dispositivo: dispositivo,
-                        fechaEntrega: fechaEntrega,
-                        fechaTrabajo: fechaTrabajo,
-                        fimaware: fimaware,
-                        fueraCuidad: fueraCuidad,
-                        fueraTaller: fueraTaller,
-                        horaEntrega: horaEntrega,
-                        horaTrabajo: horaTrabajo,
-                        vehiculoid: vehiculoid,
-                        vehiculo: vehiculo,
-                        lucesParqueo: lucesParqueo,
-                        ip: ip,
-                        itemVentAlquiler: itemVentAlquiler,
-                        listaComentarios: listaComentarios,
-                        marca: marca,
-                        mascarillas: mascarillas,
-                        modeloDispositivo, modeloDispositivo,
-                        motivos: motivos,
-                        motivoComentario: motivoComentario,
-                        motor: motor,
-                        nombreRecibe: nombreRecibe,
-                        nombreEntrega: nombreEntrega,
-                        novedades: novedades,
-                        odometro: odometro,
-                        paralizador: paralizador,
-                        perillas: perillas,
-                        placa: placa,
-                        script: script,
-                        radio: radio,
-                        serieProducto: serieProducto,
-                        servidor: servidor,
-                        simCard: simCard,
-                        sinNovedad: sinNovedad,
-                        supervisor: supervisor,
-                        tapaCombustible: tapaCombustible,
-                        telefonoCliente: telefonoCliente,
-                        termometro: termometro,
-                        tipoBien: tipoBien,
-                        tecnicoAsignado: tecnicoAsignado,
-                        unidad: unidad,
-                        version: version,
-                        imei1_: imei,
-                        oficinaAtencion: oficinaAtencion,
-                        impulsaPlataformas: impulsaPlataformas
+                        jsonResult.push({
+                            ordenTrabajoid: ordenTrabajoid,
+                            ordenServicioid: ordenServicioid,
+                            ordenServicio: ordenServicio,
+                            clase: clase,
+                            fechaEmisiónOrdenServicio: fechaEmisiónOrdenServicio,
+                            departamento: departamento,
+                            oficina: oficina,
+                            aprobacionCartera: aprobacionCartera,
+                            aprobacionVenta: aprobacionVenta,
+                            ejecutivaGestion: ejecutivaGestion,
+                            ejecutivaReferencia: ejecutivaReferencia,
+                            ejecutivaRenovacion: ejecutivaRenovacion,
+                            oportunidad: oportunidad,
+                            subsidiaria: subsidiaria,
+                            aseguradora: aseguradora,
+                            consecionario: consecionario,
+                            bancos: bancos,
+                            vendedorCanalDistribucion: vendedorCanalDistribucion,
+                            facturarA: facturarA,
+                            trabajado: trabajado,
+                            novedadesOrdenServicio: novedadesOrdenServicio,
+                            ordenTrabajo: ordenTrabajo,
+                            ordenTrabajoEstado: ordenTrabajoEstado,
+                            itemid: itemid,
+                            item: item,
+                            clienteid: clienteid,
+                            cliente: cliente,
+                            estadoLojack: estadoLojack,
+                            boxSerie: boxSerie,
+                            confirmacionPXAdmin: confirmacionPXAdmin,
+                            estadoChaser: estadoChaser,
+                            confirmacionTelematics: confirmacionTelematics,
+                            modeloBien: modeloBien,
+                            apn: apn,
+                            aireaAcondicionado: aireaAcondicionado,
+                            alfombraPiso: alfombraPiso,
+                            brazosPlumas: brazosPlumas,
+                            cantidadControles: cantidadControles,
+                            cantidadLlaves: cantidadLlaves,
+                            cenicero: cenicero,
+                            chasis: chasis,
+                            chocotes: chocotes,
+                            color: color,
+                            codigoActivacion: codigoActivacion,
+                            codigoRespuesta: codigoRespuesta,
+                            conbustible: conbustible,
+                            conectividadTelematics: conectividadTelematics,
+                            conNovedad: conNovedad,
+                            correo: correo,
+                            direccionCliente: direccionCliente,
+                            correoCliente: correoCliente,
+                            dispositivo: dispositivo,
+                            fechaEntrega: fechaEntrega,
+                            fechaTrabajo: fechaTrabajo,
+                            fimaware: fimaware,
+                            fueraCuidad: fueraCuidad,
+                            fueraTaller: fueraTaller,
+                            horaEntrega: horaEntrega,
+                            horaTrabajo: horaTrabajo,
+                            vehiculoid: vehiculoid,
+                            vehiculo: vehiculo,
+                            lucesParqueo: lucesParqueo,
+                            ip: ip,
+                            itemVentAlquiler: itemVentAlquiler,
+                            listaComentarios: listaComentarios,
+                            marca: marca,
+                            mascarillas: mascarillas,
+                            modeloDispositivo, modeloDispositivo,
+                            motivos: motivos,
+                            motivoComentario: motivoComentario,
+                            motor: motor,
+                            nombreRecibe: nombreRecibe,
+                            nombreEntrega: nombreEntrega,
+                            novedades: novedades,
+                            odometro: odometro,
+                            paralizador: paralizador,
+                            perillas: perillas,
+                            placa: placa,
+                            script: script,
+                            radio: radio,
+                            serieProducto: serieProducto,
+                            servidor: servidor,
+                            simCard: simCard,
+                            sinNovedad: sinNovedad,
+                            supervisor: supervisor,
+                            tapaCombustible: tapaCombustible,
+                            telefonoCliente: telefonoCliente,
+                            termometro: termometro,
+                            tipoBien: tipoBien,
+                            tecnicoAsignado: tecnicoAsignado,
+                            unidad: unidad,
+                            version: version,
+                            imei1_: imei,
+                            oficinaAtencion: oficinaAtencion,
+                            impulsaPlataformas: impulsaPlataformas
+                        });    
                     });
                 });
-            });
+            */
+
             return jsonResult;
         } catch (error) {
             log.error('Error-GET', error);
@@ -742,7 +979,56 @@ define(['N/log', 'N/search', 'N/record'], (log, search, record) => {
         }
     }
 
+    const getTurnoDatos = (id) => {
+        try {
+            var busqueda = search.create({
+                type: "task",
+                filters:
+                    [
+                        ["transaction.internalid", "anyof", id]
+                    ],
+                columns:
+                    [ 
+                        "custevent_ht_tr_hora",
+                        "startdate"
+                    ]
+            });
+            var savedsearch = busqueda.run().getRange(0, 1);
+            var result = [];
+            if (savedsearch.length > 0) {
+                result[0] = savedsearch[0].getValue(busqueda.columns[0]);
+                result[1] = savedsearch[0].getValue(busqueda.columns[1]);
+            }
+            return result;
+        } catch (e) {
+            log.error('Error en getCustomer', e);
+        }
+    }
 
+    const getUsuarioCreacion = (id) => {
+        try {
+            var busqueda = search.create({
+                type: "employee",
+                filters:
+                    [
+                        ["internalid","anyof",id]
+                    ],
+                columns:
+                    [ 
+                        "altname"
+                    ]
+            });
+            var savedsearch = busqueda.run().getRange(0, 1);
+            var neme = '';
+            if (savedsearch.length > 0) {
+                neme = savedsearch[0].getValue(busqueda.columns[0]);
+            }
+            return neme;
+        } catch (e) {
+            log.error('Error en getCustomer', e);
+        }
+    }
+    
     const generateDetalleOS = (id, body) => {
         let ordenServicio = body.ordenServicio;
         let objRecord = record.create({ type: HT_REGISTRO_BIENES_RECORD, isDynamic: true });

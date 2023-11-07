@@ -59,10 +59,7 @@ define([], () => {
         PENDIENTE_DE_ACTIVACION: 3,
         PAGADO: 1,
         BILL_PAID_IN_FULL: 93,
-        ENVIADO_A_CORTE: 1,
-        CONCILIADO: 2,
-        EN_PROCESO_DE_CORTE: 2,
-        SIN_DISPOSITIVO: 4
+        ENVIADO_A_CORTE: 1
     }
 
     let Parameter = {

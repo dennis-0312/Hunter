@@ -1,0 +1,12 @@
+<customlist scriptid="customlist_ht_cuenta_estado">
+  <description>Estados de la cuenta</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC Estado de la cuenta</name>
+  <customvalues>
+    <customvalue scriptid="val_722407_7451241_sb1_945">
+      <isinactive>F</isinactive>
+      <value>ACTIVA</value>
+    </customvalue>
+  </customvalues>
+</customlist>

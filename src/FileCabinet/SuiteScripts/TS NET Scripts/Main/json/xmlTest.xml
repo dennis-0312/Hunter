@@ -1,0 +1,6 @@
+    <configuration>
+        <path>~/AccountConfiguration/*</path>
+    </configuration>
+    <files>
+        <path>~/FileCabinet/*</path>
+    </files>

@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ht_pc_tipocuenta">
+  <description>Tipo de cuenta</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC Tipo de cuenta</name>
+  <customvalues>
+    <customvalue scriptid="val_722396_7451241_sb1_383">
+      <isinactive>F</isinactive>
+      <value>D</value>
+    </customvalue>
+    <customvalue scriptid="val_722397_7451241_sb1_198">
+      <isinactive>F</isinactive>
+      <value>G</value>
+    </customvalue>
+  </customvalues>
+</customlist>

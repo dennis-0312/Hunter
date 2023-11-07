@@ -152,7 +152,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format'], (log, search, r
                 result: myPagedData.count
             }
             log.debug('Request', jsonMapping);
-            // let searchResult = mySearch.run().getRange({ start: 0, end: 1000 });
+            // let searchResult = mySearch.run().getRange({ start: 0, end: 1000 }); 
             // log.debug('RESObj', searchResult);
             myPagedData.pageRanges.forEach(pageRange => {
                 let myPage = myPagedData.fetch({ index: pageRange.index });
@@ -161,11 +161,10 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format'], (log, search, r
                     let ordenServicioid = result.getValue({ name: "internalid", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OT ID Orden Servicio" })
                     let ordenServicio = result.getValue({ name: "custrecord_ht_ot_orden_serivicio_txt", summary: "GROUP", label: "HT OT Orden de Servicio TXT" }) //^REQUERIDO POR HUNTER
                     let consecionarioid = result.getValue({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }) //^REQUERIDO POR HUNTER
-                    let consecionario = result.getText({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }) == '- None -' ? '':  
+                    let consecionario = result.getText({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }) == '- None -' ? '':
                     result.getText({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }).split(' ')[1] + ' ' + result.getText({ name: "custbody_ht_os_concesionario", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT Concesionario" }).split(' ')[2] //^REQUERIDO POR HUNTER
                     let ordenTrabajo = result.getValue({ name: "name", sort: search.Sort.ASC, summary: "GROUP", label: "ID" }) //^REQUERIDO POR HUNTER
                     let clienteid = result.getValue({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
-                   // let cliente = result.getText({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
                     let cliente = result.getValue({ name: "altname",  join: "CUSTRECORD_HT_OT_CLIENTE_ID", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
                     let fechaTrabajo = result.getValue({ name: "custrecord_ht_ot_fechatrabajoasignacion", summary: "GROUP", label: "HT OT Fecha trabajo" }) //^REQUERIDO POR HUNTER
                     let horaTrabajo = result.getValue({ name: "custrecord_ht_ot_horatrabajoasignacion", summary: "GROUP", label: "HT OT Hora trabajo" }) //^REQUERIDO POR HUNTER

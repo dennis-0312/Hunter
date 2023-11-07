@@ -17,9 +17,9 @@ define([
     const pageInit = (context) => {
         let currentRecord = context.currentRecord;
         typeMode = context.mode; //!Importante, no borrar.
-        let field = currentRecord.getField('altname');
+        //let field = currentRecord.getField('altname');
         // if (currentRecord.getValue("custrecord_ht_bien_tipobien") == _constant.Constants.TERRESTRE)
-        field.isDisabled = true;
+        //field.isDisabled = true;
         //console.log(currentRecord.getValue("custrecord_ht_bien_tipobien"))
     };
 

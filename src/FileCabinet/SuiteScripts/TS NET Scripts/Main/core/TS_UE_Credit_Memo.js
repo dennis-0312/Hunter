@@ -24,8 +24,6 @@ define(['N/log',
     '../error/TS_CM_ErrorMessages',
 ],
     (log, search, record, serverWidget, https, error, _controller, _constant, _errorMessage) => {
-        var TIPO_TRANSACCION = '2';
-        var TIPO_AGRUPACION_PRODUCTO = '77';
         const afterSubmit = (context) => {
             if (context.type === context.UserEventType.CREATE) {
                 const objRecord = context.newRecord;
@@ -37,14 +35,14 @@ define(['N/log',
                 } else {
                     let i;
                     let idB = objRecord.getValue('custbody_ht_so_bien');
-                    let valor_tipo_agrupacion = 0, idCoberturaItem, envioPX = 0, envioTele = 0, itemid = 0;
+                    let valor_tipo_agrupacion = 0, idCoberturaItem, envioPX = 0, envioTele = 0, itemid = 0, serieChaser = 0;
                     let numLines = objRecord.getLineCount({ sublistId: 'item' });
                     for (i = 0; i < numLines; i++) {
                         let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                         log.debug('items', items);
                         let parametrosRespo = _controller.parametrizacion(items);
                         for (let j = 0; j < parametrosRespo.length; j++) {
-                            if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                            if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO) {
                                 valor_tipo_agrupacion = parametrosRespo[j][1];
                             }
                         }
@@ -66,11 +64,12 @@ define(['N/log',
                                 var accion_producto_2 = 0;
                                 var valor_tipo_agrupacion_2 = 0;
                                 for (let j = 0; j < parametrosRespo.length; j++) {
-                                    if (parametrosRespo[j][0] == TIPO_AGRUPACION_PRODUCTO) {
+                                    if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO) {
                                         valor_tipo_agrupacion_2 = parametrosRespo[j][1];
                                     }
                                     if (valor_tipo_agrupacion == valor_tipo_agrupacion_2) {
                                         idCoberturaItem = busqueda_cobertura[i][1];
+                                        serieChaser = busqueda_cobertura[i][2];
                                     }
 
                                     if (parametrosRespo[j][0] == _constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS)
@@ -88,10 +87,47 @@ define(['N/log',
                         type: 'customrecord_ht_co_cobertura',
                         id: idCoberturaItem,
                         values: {
-                            'custrecord_ht_co_estado_cobertura': 2
+                            'custrecord_ht_co_estado_cobertura': _constant.Status.SUSPENDIDO,
+                            'custrecord_ht_co_estado_conciliacion': _constant.Status.ENVIADO_A_CORTE
                         },
                         options: { enableSourcing: false, ignoreMandatoryFields: true }
+
                     });
+
+                    record.submitFields({
+                        type: 'customrecord_ht_record_mantchaser',
+                        id: serieChaser,
+                        values: { 'custrecord_ht_mc_estadosimcard': _constant.Status.EN_PROCESO_DE_CORTE },
+                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                    });
+
+                    let dispositivo = search.lookupFields({
+                        type: 'customrecord_ht_record_mantchaser',
+                        id: serieChaser,
+                        columns: ['custrecord_ht_mc_seriedispositivo', 'custrecord_ht_mc_celularsimcard']
+                    });
+                    // let idDispositivo = dispositivo.custrecord_ht_mc_seriedispositivo[0].value;
+                    // record.submitFields({
+                    //     type: 'customrecord_ht_record_detallechaserdisp',
+                    //     id: idDispositivo,
+                    //     values: { 'custrecord_ht_dd_estado': _constant.Status.DISPONIBLE },
+                    //     options: { enableSourcing: false, ignoreMandatoryFields: true }
+                    // });
+
+                    try {
+                        let idSimCard = dispositivo.custrecord_ht_mc_celularsimcard[0].value;
+                        record.submitFields({
+                            type: 'customrecord_ht_record_detallechasersim',
+                            id: idSimCard,
+                            values: {
+                                'custrecord_ht_ds_estado': _constant.Status.EN_PROCESO_DE_CORTE,
+                                'custrecord_ht_ds_fechacorte': new Date()
+                            },
+                            options: { enableSourcing: false, ignoreMandatoryFields: true }
+                        });
+                    } catch (error) {
+                        log.error('Lojack', 'Dispositivo Lojack, no tiene SIM Card.');
+                    }
 
                     let assetid = objRecord.getValue('custbody_ht_so_bien');
                     let customerid = objRecord.getValue('entity');
@@ -109,7 +145,7 @@ define(['N/log',
                         })
                         let telemat = {
                             id: vehiculo.custrecord_ht_bien_id_telematic,
-                           // state: false,
+                            // state: false,
                             active: false
                         }
                         // const envioTelematic = (json) => {
@@ -126,15 +162,14 @@ define(['N/log',
                         let response = myRestletResponse.body;
                         return response;
                         // }
-
                     }
                 }
             }
         }
 
-        function getCoberturaItem(idBien) {
+        const getCoberturaItem = (idBien) => {
             try {
-                var busqueda = search.create({
+                let busqueda = search.create({
                     type: "customrecord_ht_co_cobertura",
                     filters:
                         [
@@ -143,20 +178,24 @@ define(['N/log',
                     columns:
                         [
                             search.createColumn({ name: "custrecord_ht_co_producto", label: "HT CO Producto" }),
-                            search.createColumn({ name: "internalid", label: "Internal ID" })
+                            search.createColumn({ name: "internalid", label: "Internal ID" }),
+                            search.createColumn({ name: "custrecord_ht_co_numeroserieproducto", label: "VID/SERIE" }),
                         ]
                 });
-                var savedsearch = busqueda.run().getRange(0, 100);
-                var internalidItem = '';
-                var internalid = '';
-                var arrayIdTotal = [];
+                let savedsearch = busqueda.run().getRange(0, 100);
+                let internalidItem = '';
+                let internalid = '';
+                let chaser = 0
+                let arrayIdTotal = [];
                 if (savedsearch.length > 0) {
                     busqueda.run().each(function (result) {
-                        var arrayId = [];
+                        let arrayId = [];
                         internalidItem = result.getValue(busqueda.columns[0]);
                         arrayId.push(internalidItem);
                         internalid = result.getValue(busqueda.columns[1]);
                         arrayId.push(internalid);
+                        chaser = result.getValue(busqueda.columns[2]);
+                        arrayId.push(chaser);
                         arrayIdTotal.push(arrayId);
                         return true;
                     });
@@ -166,7 +205,8 @@ define(['N/log',
                 log.error('Error en getCoberturaItem', e);
             }
         }
-        function getCobertura(bien) {
+
+        const getCobertura = (bien) => {
             try {
                 var arrCoberturaId = new Array();
                 var busqueda = search.create({

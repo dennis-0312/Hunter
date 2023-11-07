@@ -383,6 +383,8 @@ define([
                                                     values: { 'custrecord_ht_ot_serieproductoasignacion': busqueda_cobertura[i][2] },
                                                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                                                 });
+
+                                                
                                             } catch (error) {
                                                 log.error('Errro-DESISNTALAR', error);
                                             }

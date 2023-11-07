@@ -660,8 +660,8 @@ define([
                     type: 'customrecord_ht_co_cobertura',
                     id: installId,
                     values: {
-                        'custrecord_ht_co_estado_cobertura': _constant.Status.SUSPENDIDO,
-                        'custrecord_ht_co_estado': DESINSTALADO
+                        'custrecord_ht_co_estado_cobertura': _constant.Status.SIN_DISPOSITIVO,
+                        'custrecord_ht_co_estado': _constant.Status.DESINSTALADO
                     },
                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                 });
@@ -943,6 +943,7 @@ define([
                 objRecord.setValue({ fieldId: 'custrecord_ht_ct_deposito', value: objParams.deposito });
                 objRecord.setValue({ fieldId: 'custrecord_ht_ct_estado', value: _constant.Status.DESINSTALADO });
                 objRecord.setValue({ fieldId: 'custrecord_ht_ct_venta', value: 42857 });
+                //objRecord.setValue({ fieldId: 'custrecord_ht_ct_familia', value: objParams.familia});
                 newCustodia = objRecord.save({ ignoreMandatoryFields: false });
             }
             return newCustodia;
@@ -1218,6 +1219,8 @@ define([
                         let parametrizacion = new Array();
                         result.getValue(columns[0]) != null ? parametrizacion[0] = result.getValue(columns[0]) : parametrizacion[0] = '';
                         result.getValue(columns[1]) != null ? parametrizacion[1] = result.getValue(columns[1]) : parametrizacion[1] = '';
+                        result.getValue(columns[2]) != null ? parametrizacion[2] = result.getValue(columns[2]) : parametrizacion[2] = '';
+                        result.getValue(columns[3]) != null ? parametrizacion[3] = result.getValue(columns[3]) : parametrizacion[3] = '';
                         arr.push(parametrizacion);
                     });
                 });
@@ -1510,6 +1513,10 @@ define([
             return ordenTrabajo;
         }
 
+        const envioTelecActualizacionCobertura = (ordenTrabajoId, fechaFinCobertura) => {
+            return _platformController.envioTelecActualizacionCobertura(ordenTrabajoId, fechaFinCobertura);
+        }
+
         const envioTelecCorteSim = (dispositivoId) => {
             return _platformController.envioTelecCorteSim(dispositivoId)
         }
@@ -1552,6 +1559,7 @@ define([
             deleteRegistroCustodia,
             verifyExistHistorialAF,
             envioTelecCorteSim,
+            envioTelecActualizacionCobertura,
             envioPXActualizacionEstado
         }
 

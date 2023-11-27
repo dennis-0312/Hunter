@@ -3,6 +3,8 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
     var recordType = transactionRecord.getRecordType();
     var id = transactionRecord.getId();
     var accountCajaTransito = 122 //11001010200 CAJA EN TRANSITO INGRESOS
+
+    //var accountCajaTransito = 2687 //11001010200 CAJA EN TRANSITO INGRESOS
     var accountClienteCustodia = 2689 //11004010600 DOCUMENTOS DE CLIENTES EN CUSTODIA
     var reteIVA = 255 //ReteIR for Sales
     var reteFuente = 210 //23-8551 Otros Pasivos Circulantes : VAT on Sales EC

@@ -224,9 +224,7 @@ define(['N/log',
         const objRecord = context.newRecord;
         const eventType = context.type;
         const recordId = context.newRecord.id;
-        //log.error("eventTypeafterSubmit", eventType);
         if (eventType === context.UserEventType.CREATE) {
-            //log.error("context.newRecord.type", context.newRecord.type);
             if (context.newRecord.type == CREDIT_MEMO) {
                 const doctype = DOCUMENT_TYPE_CREDIT_MEMO;
                 const palabraBuscada = "Withholding Tax";
@@ -234,26 +232,19 @@ define(['N/log',
                 try {
                     const memo = context.newRecord.getValue({ fieldId: 'memo' });
                     if (memo.includes(palabraBuscada)) {
-                        //log.debug('Nota de Crédito', 'Certificado de Retención');
                     } else {
-                        //log.error("start", "flow");
                         let objRecord = record.load({ type: CREDIT_MEMO, id: recordId, isDynamic: true });
                         let location = objRecord.getValue({ fieldId: 'location' });
                         let total = String(objRecord.getValue({ fieldId: 'total' }));
                         let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
                         let documentref = objRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
                         let getserie = getSerie(doctype, location, prefix, documentref);
-                        //log.debug('LOG-getserie', getserie);
                         let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr);
-                        //log.debug('LOG-correlative1', correlative);
                         objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true });
                         objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
                         objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
-                        //log.debug('LOG-correlative2', correlative.numbering);
                         objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
-                        //log.debug('LOG-correlative3', objRecord.getValue('tranid'));
                         objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
-                        //log.debug('montoLetras', montoLetras);
                         try {
                             objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Credit_Memo_FEL_Template, ignoreFieldChange: true });
                             objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });

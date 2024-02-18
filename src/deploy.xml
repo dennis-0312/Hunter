@@ -1,8 +1,24 @@
-<!-- <deploy>
+<deploy>
+    <!-- <configuration>
+        <path>~/AccountConfiguration/*</path>
+    </configuration>
+    <files>
+        <path>~/FileCabinet/SuiteScripts/*</path>
+    </files>  -->
     <objects>
-        <path>~/Objects/*</path>
+        <!-- <path>~/Objects/Bundle/*</path> -->
+        <!-- <path>~/Objects/SavedSearch/*</path>
+        <path>~/Objects/WorkFlow/*</path> -->
+        <!-- <path>~/Objects/Role/*</path> -->
+        <!-- <path>~/Objects/Restlet/*</path> -->
+        <!-- <path>~/Objects/Scheduled/*</path> -->
+        <!-- <path>~/Objects/MapReduce/*</path> -->
+        <!-- <path>~/Objects/Suitelet/*</path> -->
+        <!-- <path>~/Objects/Client/*</path>
+        <path>~/Objects/UserEvent/*</path> -->
+        <path>~/Objects/test/*</path>
     </objects>
-    <translationimports>
+    <!-- <translationimports>
         <path>~/Translations/*</path>
-    </translationimports>
-</deploy> -->
+    </translationimports> -->
+</deploy>

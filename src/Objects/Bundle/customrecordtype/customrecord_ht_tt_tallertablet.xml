@@ -1,0 +1,423 @@
+<customrecordtype scriptid="customrecord_ht_tt_tallertablet">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Talleres</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_tt_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Código</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_tt_descripcion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_tt_oficina">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>T</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Oficina</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-103</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_823896_7451241_sb1_608">
+      <custrecord_ht_tt_codigo>25</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>GUAYAQUIL EXPRESS</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>25 GUAYAQUIL EXPRESS</name>
+    </instance>
+    <instance scriptid="val_823897_7451241_sb1_188">
+      <custrecord_ht_tt_codigo>26</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>QUITO</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>26 QUITO</name>
+    </instance>
+    <instance scriptid="val_823898_7451241_sb1_768">
+      <custrecord_ht_tt_codigo>27</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER AMBATO</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>27 TALLER AMBATO</name>
+    </instance>
+    <instance scriptid="val_823899_7451241_sb1_639">
+      <custrecord_ht_tt_codigo>28</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER MANTA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>28 TALLER MANTA</name>
+    </instance>
+    <instance scriptid="val_823900_7451241_sb1_530">
+      <custrecord_ht_tt_codigo>29</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER MACHALA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>29 TALLER MACHALA</name>
+    </instance>
+    <instance scriptid="val_823901_7451241_sb1_481">
+      <custrecord_ht_tt_codigo>30</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER CUENCA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>30 TALLER CUENCA</name>
+    </instance>
+    <instance scriptid="val_823904_7451241_sb1_533">
+      <custrecord_ht_tt_codigo>33</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER IBARRA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>33 TALLER IBARRA</name>
+    </instance>
+    <instance scriptid="val_823905_7451241_sb1_668">
+      <custrecord_ht_tt_codigo>34</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER SANTO DOMINGO</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>34 TALLER SANTO DOMINGO</name>
+    </instance>
+    <instance scriptid="val_823906_7451241_sb1_320">
+      <custrecord_ht_tt_codigo>35</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER LOJA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>35 TALLER LOJA</name>
+    </instance>
+    <instance scriptid="val_823910_7451241_sb1_119">
+      <custrecord_ht_tt_codigo>46</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>GUAYAQUIL VERNAZA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>46 GUAYAQUIL VERNAZA</name>
+    </instance>
+    <instance scriptid="val_823911_7451241_sb1_473">
+      <custrecord_ht_tt_codigo>1696</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER GALAPAGOS</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1696 TALLER GALAPAGOS</name>
+    </instance>
+    <instance scriptid="val_823912_7451241_sb1_285">
+      <custrecord_ht_tt_codigo>1701</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>A NIVEL NACIONAL</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1701 A NIVEL NACIONAL</name>
+    </instance>
+    <instance scriptid="val_823913_7451241_sb1_895">
+      <custrecord_ht_tt_codigo>1703</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>GUAYAQUIL (CONCESIONARIOS FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1703 GUAYAQUIL (CONCESIONARIOS FUERA)</name>
+    </instance>
+    <instance scriptid="val_823914_7451241_sb1_420">
+      <custrecord_ht_tt_codigo>1706</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>PASCUALES</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1706 PASCUALES</name>
+    </instance>
+    <instance scriptid="val_823915_7451241_sb1_282">
+      <custrecord_ht_tt_codigo>1718</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER PASCUALES (FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1718 TALLER PASCUALES (FUERA)</name>
+    </instance>
+    <instance scriptid="val_823916_7451241_sb1_416">
+      <custrecord_ht_tt_codigo>1720</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>REVISION DE GASES</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1720 REVISION DE GASES</name>
+    </instance>
+    <instance scriptid="val_823917_7451241_sb1_272">
+      <custrecord_ht_tt_codigo>1724</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER QUITO MARESA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1724 TALLER QUITO MARESA</name>
+    </instance>
+    <instance scriptid="val_823918_7451241_sb1_857">
+      <custrecord_ht_tt_codigo>1725</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>MILAGRO</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1725 MILAGRO</name>
+    </instance>
+    <instance scriptid="val_823919_7451241_sb1_236">
+      <custrecord_ht_tt_codigo>1726</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>QUITO (CONCESIONARIOS FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1726 QUITO (CONCESIONARIOS FUERA)</name>
+    </instance>
+    <instance scriptid="val_823920_7451241_sb1_156">
+      <custrecord_ht_tt_codigo>1728</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>LOJA (CONCESIONARIOS FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1728 LOJA (CONCESIONARIOS FUERA)</name>
+    </instance>
+    <instance scriptid="val_823921_7451241_sb1_762">
+      <custrecord_ht_tt_codigo>1729</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>AMBATO (CONCESIONARIOS FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1729 AMBATO (CONCESIONARIOS FUERA)</name>
+    </instance>
+    <instance scriptid="val_823922_7451241_sb1_408">
+      <custrecord_ht_tt_codigo>1730</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>IBARRA (CONCESIONARIOS FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1730 IBARRA (CONCESIONARIOS FUERA)</name>
+    </instance>
+    <instance scriptid="val_823923_7451241_sb1_432">
+      <custrecord_ht_tt_codigo>1731</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>MANTA (CONCESIONARIOS FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1731 MANTA (CONCESIONARIOS FUERA)</name>
+    </instance>
+    <instance scriptid="val_823924_7451241_sb1_174">
+      <custrecord_ht_tt_codigo>1732</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>MACHALA (CONCESIONARIOS FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1732 MACHALA (CONCESIONARIOS FUERA)</name>
+    </instance>
+    <instance scriptid="val_823925_7451241_sb1_964">
+      <custrecord_ht_tt_codigo>1733</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>CUENCA(CONCESIONARIOS FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1733 CUENCA(CONCESIONARIOS FUERA)</name>
+    </instance>
+    <instance scriptid="val_823926_7451241_sb1_822">
+      <custrecord_ht_tt_codigo>1734</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>SANTO DOMINGO (CONCESIONARIOS FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1734 SANTO DOMINGO (CONCESIONARIOS FUERA)</name>
+    </instance>
+    <instance scriptid="val_823927_7451241_sb1_620">
+      <custrecord_ht_tt_codigo>1735</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER SERVICE ORIENTE (FUERA)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1735 TALLER SERVICE ORIENTE (FUERA)</name>
+    </instance>
+    <instance scriptid="val_823928_7451241_sb1_717">
+      <custrecord_ht_tt_codigo>1753</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER QUITO TOYOTA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1753 TALLER QUITO TOYOTA</name>
+    </instance>
+    <instance scriptid="val_823929_7451241_sb1_606">
+      <custrecord_ht_tt_codigo>1755</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER PASCUALES CARGA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1755 TALLER PASCUALES CARGA</name>
+    </instance>
+    <instance scriptid="val_823930_7451241_sb1_851">
+      <custrecord_ht_tt_codigo>1756</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER PASCUALES MONITOREO Y LOJACK</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1756 TALLER PASCUALES MONITOREO Y LOJACK</name>
+    </instance>
+    <instance scriptid="val_823931_7451241_sb1_494">
+      <custrecord_ht_tt_codigo>1757</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER PASCUALES CANDADO</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1757 TALLER PASCUALES CANDADO</name>
+    </instance>
+    <instance scriptid="val_823932_7451241_sb1_503">
+      <custrecord_ht_tt_codigo>1758</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER PASCUALES PROYECTO ESCOLAR</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1758 TALLER PASCUALES PROYECTO ESCOLAR</name>
+    </instance>
+    <instance scriptid="val_823933_7451241_sb1_837">
+      <custrecord_ht_tt_codigo>1759</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TALLER PASCUALES PROYECTO BUSES CON RAMPA</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1759 TALLER PASCUALES PROYECTO BUSES CON RAMPA</name>
+    </instance>
+    <instance scriptid="val_823934_7451241_sb1_510">
+      <custrecord_ht_tt_codigo>1761</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>TECNICENTRO NARANJO</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1761 TECNICENTRO NARANJO</name>
+    </instance>
+    <instance scriptid="val_823935_7451241_sb1_774">
+      <custrecord_ht_tt_codigo>1766</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>GUAYAQUIL (INDUATO)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1766 GUAYAQUIL (INDUATO)</name>
+    </instance>
+    <instance scriptid="val_823936_7451241_sb1_812">
+      <custrecord_ht_tt_codigo>1767</custrecord_ht_tt_codigo>
+      <custrecord_ht_tt_descripcion>SANTO DOMINGO (INDUATO)</custrecord_ht_tt_descripcion>
+      <custrecord_ht_tt_oficina>5</custrecord_ht_tt_oficina>
+      <isinactive>F</isinactive>
+      <name>1767 SANTO DOMINGO (INDUATO)</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

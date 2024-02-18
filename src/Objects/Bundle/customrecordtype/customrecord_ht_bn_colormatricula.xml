@@ -1,0 +1,204 @@
+<customrecordtype scriptid="customrecord_ht_bn_colormatricula">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>T</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Color matrícula</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_colormatricula_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_colormatricula_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_810327_7451241_sb1_710">
+      <custrecord_ht_bn_colormatricula_codigo>000</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>NO DEFINIDO</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>000 - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_810328_7451241_sb1_512">
+      <custrecord_ht_bn_colormatricula_codigo>001</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>AMARILLO</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>001 - AMARILLO</name>
+    </instance>
+    <instance scriptid="val_810329_7451241_sb1_951">
+      <custrecord_ht_bn_colormatricula_codigo>002</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>PLATA</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>002 - PLATA</name>
+    </instance>
+    <instance scriptid="val_810330_7451241_sb1_681">
+      <custrecord_ht_bn_colormatricula_codigo>003</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>VINO</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>003 - VINO</name>
+    </instance>
+    <instance scriptid="val_810331_7451241_sb1_411">
+      <custrecord_ht_bn_colormatricula_codigo>004</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>BLANCO</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>004 - BLANCO</name>
+    </instance>
+    <instance scriptid="val_810332_7451241_sb1_273">
+      <custrecord_ht_bn_colormatricula_codigo>005</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>VERDE</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>005 - VERDE</name>
+    </instance>
+    <instance scriptid="val_810333_7451241_sb1_405">
+      <custrecord_ht_bn_colormatricula_codigo>006</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>IRIS</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>006 - IRIS</name>
+    </instance>
+    <instance scriptid="val_810334_7451241_sb1_112">
+      <custrecord_ht_bn_colormatricula_codigo>007</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>ROJO CEREZO</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>007 - ROJO CEREZO</name>
+    </instance>
+    <instance scriptid="val_810335_7451241_sb1_737">
+      <custrecord_ht_bn_colormatricula_codigo>008</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>ZERMATT SILVER</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>008 - ZERMATT SILVER</name>
+    </instance>
+    <instance scriptid="val_810336_7451241_sb1_900">
+      <custrecord_ht_bn_colormatricula_codigo>009</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>TOMATE</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>009 - TOMATE</name>
+    </instance>
+    <instance scriptid="val_810337_7451241_sb1_764">
+      <custrecord_ht_bn_colormatricula_codigo>010</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>ALUMINIO</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>010 - ALUMINIO</name>
+    </instance>
+    <instance scriptid="val_810338_7451241_sb1_640">
+      <custrecord_ht_bn_colormatricula_codigo>011</custrecord_ht_bn_colormatricula_codigo>
+      <custrecord_ht_bn_colormatricula_descrip>CAMUFLADO</custrecord_ht_bn_colormatricula_descrip>
+      <isinactive>F</isinactive>
+      <name>011 - CAMUFLADO</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

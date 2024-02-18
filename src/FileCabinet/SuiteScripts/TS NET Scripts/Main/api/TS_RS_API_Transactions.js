@@ -1,4 +1,4 @@
-//https://7451241-sb1.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=884&deploy=1 - SB
+//https://7451241.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=685&deploy=1 - PR
 /**
  *@NApiVersion 2.1
  *@NScriptType Restlet
@@ -7,11 +7,12 @@ define([
     'N/log',
     '../controller/TS_CM_Controller',
     '../error/TS_CM_ErrorMessages',
-    '../model/TS_Model_ServiceOrder'
-], (log, _controller, _error, _serviceOrder) => {
+    '../model/TS_Model_ServiceOrder',
+    '../constant/TS_CM_Constant'
+], (log, _controller, _error, _serviceOrder, _constant) => {
 
     const _get = (scriptContext) => {
-        return 'Oracle Netsuite Connected - Release 2023.1';
+        return 'Oracle NetSuite Connected - Release 2024.1';
     }
 
     const _post = (scriptContext) => {
@@ -22,9 +23,77 @@ define([
         try {
             switch (scriptContext.accion) {
                 case 'ordendeservicio':
-                    if (scriptContext.bien.length > 0) {
-                        let existsGood = _controller.getGood(scriptContext.bien, scriptContext.cliente);
-                        if (existsGood > 0) {
+                    let items_param = scriptContext.items;
+                    let T_VBI = false;
+                    for (let i in items_param) {
+                        let item_id = items_param[i].item;
+                        let parametro = _controller.parametrizacion(item_id);
+                        for (let j = 0; j < parametro.length; j++) {
+                            if (parametro[j][2] == _constant.Codigo_parametro.COD_VBI_VALIDACION_DE_BIEN_INGRESADO && parametro[j][3] == _constant.Codigo_Valor.COD_SI) {
+                                T_VBI = true;
+                            }
+                        }
+                    }
+                    // log.debug('Parámetro', T_VBI);
+                    if (T_VBI == true && scriptContext.bien.length == 0) {
+                        response = _error.ErrorMessages.SERVICE_ORDER_VALIDATION.GOOD_HAS_NOT_BEEN_SHIPPED;
+                    } else {
+                        if (scriptContext.bien.length > 0) {
+                            let existsGood = _controller.getGood(scriptContext.bien, scriptContext.cliente);
+                            if (existsGood > 0) {
+                                const serviceOrder = new ServiceOrder(
+                                    scriptContext.cliente,
+                                    scriptContext.bien,
+                                    scriptContext.fecha,
+                                    scriptContext.centroCosto,
+                                    scriptContext.clase,
+                                    scriptContext.ubicacion,
+                                    scriptContext.numeroOperacion,
+                                    scriptContext.nota,
+                                    scriptContext.representanteVenta,
+                                    scriptContext.terminoPago,
+                                    scriptContext.emitirFactura,
+                                    scriptContext.consideracionTecnica,
+                                    scriptContext.ejecutivareferencia,
+                                    scriptContext.novedades,
+                                    scriptContext.notacliente,
+                                    scriptContext.cambioPropietarioConvenio,
+                                    scriptContext.canaldistribucion,
+                                    scriptContext.servicios,
+                                    scriptContext.ejecutivagestion
+                                );
+                                let items = scriptContext.items;
+                                for (let i in items) {
+                                    let taxes = _controller.getTaxes(items[i].codigoImpuesto);
+                                    let detail = new Detail(
+                                        items[i].item,
+                                        items[i].nivelPrecio,
+                                        taxes.taxcode,
+                                        taxes.taxrate,
+                                        items[i].cantidad,
+                                        items[i].centroCosto,
+                                        items[i].clase,
+                                        items[i].ubicacion,
+                                        items[i].unidad,
+                                        items[i].descripcion,
+                                        items[i].importe,
+                                        items[i].importeBruto,
+                                        items[i].monto,
+                                        items[i].importeImpuesto,
+                                        items[i].clienteNuevo,
+                                        items[i].clienteMonitoreo,
+                                        items[i].codigoOrigen,
+                                        items[i].dispositivoCustodia
+                                    );
+                                    jsonDetail.push(detail.detail());
+                                }
+                                log.debug('objHeader', serviceOrder.header());
+                                log.debug('objDetail', jsonDetail);
+                                response = _controller.createServiceOrder(serviceOrder.header(), jsonDetail);
+                            } else {
+                                response = _error.ErrorMessages.SERVICE_ORDER_VALIDATION.GOOD_DOES_NOT_EXISTE_OR_DOES_NOT_BELONG_TO_THE_CUSTOMER;
+                            }
+                        } else {
                             const serviceOrder = new ServiceOrder(
                                 scriptContext.cliente,
                                 scriptContext.bien,
@@ -36,7 +105,15 @@ define([
                                 scriptContext.nota,
                                 scriptContext.representanteVenta,
                                 scriptContext.terminoPago,
-                                scriptContext.emitirFactura
+                                scriptContext.emitirFactura,
+                                scriptContext.consideracionTecnica,
+                                scriptContext.ejecutivareferencia,
+                                scriptContext.novedades,
+                                scriptContext.notacliente,
+                                scriptContext.cambioPropietarioConvenio,
+                                scriptContext.canaldistribucion,
+                                scriptContext.servicios,
+                                scriptContext.ejecutivagestion
                             );
 
                             let items = scriptContext.items;
@@ -56,23 +133,22 @@ define([
                                     items[i].importe,
                                     items[i].importeBruto,
                                     items[i].monto,
-                                    items[i].importeImpuesto
+                                    items[i].importeImpuesto,
+                                    items[i].clienteNuevo,
+                                    items[i].clienteMonitoreo,
+                                    items[i].codigoOrigen,
+                                    items[i].dispositivoCustodia
                                 );
                                 jsonDetail.push(detail.detail());
                             }
-                            // log.debug('objHeader', servicio.header());
-                            // log.debug('objDetail', jsonDetail);
+                            log.debug('objHeader', serviceOrder.header());
+                            log.debug('objDetail', jsonDetail);
                             response = _controller.createServiceOrder(serviceOrder.header(), jsonDetail);
-                            //response = 'Ok!';
-                        } else {
-                            response = _error.ErrorMessages.SERVICE_ORDER_VALIDATION.GOOD_DOES_NOT_EXISTE_OR_DOES_NOT_BELONG_TO_THE_CUSTOMER;
                         }
-                    } else {
-                        response = _error.ErrorMessages.SERVICE_ORDER_VALIDATION.GOOD_HAS_NOT_BEEN_SHIPPED;
                     }
                     break;
                 case 'factura':
-                    // log.debug('Enter Invoice', 'Ingresé a factura');
+                    log.debug('Enter Invoice', 'Ingresé a factura');
                     if (scriptContext.ordenServicio.length > 0) {
                         let orderS = _controller.getServiceOrder(scriptContext.ordenServicio);
                         if (orderS > 0) {

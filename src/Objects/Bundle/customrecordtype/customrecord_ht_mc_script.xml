@@ -1,0 +1,1938 @@
+<customrecordtype scriptid="customrecord_ht_mc_script">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT MC Script</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_mc_script_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_mc_script_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_811261_7451241_sb1_817">
+      <custrecord_ht_mc_script_codigo>000</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>INDEFINIDO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>000 - INDEFINIDO</name>
+    </instance>
+    <instance scriptid="val_811262_7451241_sb1_485">
+      <custrecord_ht_mc_script_codigo>001</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>2.6.3 GENERADO EL 16 AGOSTO 2005</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>001 - 2.6.3 GENERADO EL 16 AGOSTO 2005</name>
+    </instance>
+    <instance scriptid="val_811263_7451241_sb1_568">
+      <custrecord_ht_mc_script_codigo>002</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V5.0.0</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>002 - V5.0.0</name>
+    </instance>
+    <instance scriptid="val_811264_7451241_sb1_270">
+      <custrecord_ht_mc_script_codigo>003</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V6.0.0</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>003 - V6.0.0</name>
+    </instance>
+    <instance scriptid="val_811265_7451241_sb1_396">
+      <custrecord_ht_mc_script_codigo>004</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V6.0.0 R</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>004 - V6.0.0 R</name>
+    </instance>
+    <instance scriptid="val_811266_7451241_sb1_156">
+      <custrecord_ht_mc_script_codigo>005</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V6.0.0 MR</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>005 - V6.0.0 MR</name>
+    </instance>
+    <instance scriptid="val_811267_7451241_sb1_944">
+      <custrecord_ht_mc_script_codigo>006</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>1.3.1</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>006 - 1.3.1</name>
+    </instance>
+    <instance scriptid="val_811268_7451241_sb1_398">
+      <custrecord_ht_mc_script_codigo>007</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V 5.0.1 Candado</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>007 - V 5.0.1 Candado</name>
+    </instance>
+    <instance scriptid="val_811269_7451241_sb1_172">
+      <custrecord_ht_mc_script_codigo>008</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V 6.0.1 Candado</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>008 - V 6.0.1 Candado</name>
+    </instance>
+    <instance scriptid="val_811270_7451241_sb1_803">
+      <custrecord_ht_mc_script_codigo>009</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V 7.0.1 Candado</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>009 - V 7.0.1 Candado</name>
+    </instance>
+    <instance scriptid="val_811271_7451241_sb1_842">
+      <custrecord_ht_mc_script_codigo>010</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V8.0.0</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>010 - V8.0.0</name>
+    </instance>
+    <instance scriptid="val_811272_7451241_sb1_113">
+      <custrecord_ht_mc_script_codigo>011</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>1.3.2_LP</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>011 - 1.3.2_LP</name>
+    </instance>
+    <instance scriptid="val_811273_7451241_sb1_476">
+      <custrecord_ht_mc_script_codigo>012</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V9.03 candado</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>012 - V9.03 candado</name>
+    </instance>
+    <instance scriptid="val_811274_7451241_sb1_893">
+      <custrecord_ht_mc_script_codigo>013</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>1.4 EBBM</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>013 - 1.4 EBBM</name>
+    </instance>
+    <instance scriptid="val_811275_7451241_sb1_947">
+      <custrecord_ht_mc_script_codigo>014</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CONT-OCT2012</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>014 - CONT-OCT2012</name>
+    </instance>
+    <instance scriptid="val_811276_7451241_sb1_654">
+      <custrecord_ht_mc_script_codigo>015</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>S1_0_HMSPC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>015 - S1_0_HMSPC</name>
+    </instance>
+    <instance scriptid="val_811277_7451241_sb1_959">
+      <custrecord_ht_mc_script_codigo>016</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>17012013_HBX</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>016 - 17012013_HBX</name>
+    </instance>
+    <instance scriptid="val_811278_7451241_sb1_580">
+      <custrecord_ht_mc_script_codigo>017</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20140207 HM</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>017 - 20140207 HM</name>
+    </instance>
+    <instance scriptid="val_811279_7451241_sb1_573">
+      <custrecord_ht_mc_script_codigo>018</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151118272050hc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>018 - HMC151118272050hc</name>
+    </instance>
+    <instance scriptid="val_811280_7451241_sb1_107">
+      <custrecord_ht_mc_script_codigo>019</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151118272050ihc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>019 - HMC151118272050ihc</name>
+    </instance>
+    <instance scriptid="val_811281_7451241_sb1_506">
+      <custrecord_ht_mc_script_codigo>020</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151118272050-hc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>020 - HMC151118272050-hc</name>
+    </instance>
+    <instance scriptid="val_811282_7451241_sb1_231">
+      <custrecord_ht_mc_script_codigo>021</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151118272050-ihc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>021 - HMB151118272050-ihc</name>
+    </instance>
+    <instance scriptid="val_811283_7451241_sb1_987">
+      <custrecord_ht_mc_script_codigo>022</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151118272050hc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>022 - HMB151118272050hc</name>
+    </instance>
+    <instance scriptid="val_811284_7451241_sb1_952">
+      <custrecord_ht_mc_script_codigo>023</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20140207 SIN IG</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>023 - 20140207 SIN IG</name>
+    </instance>
+    <instance scriptid="val_811285_7451241_sb1_863">
+      <custrecord_ht_mc_script_codigo>024</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151118272050-hc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>024 - HMB151118272050-hc</name>
+    </instance>
+    <instance scriptid="val_811286_7451241_sb1_248">
+      <custrecord_ht_mc_script_codigo>025</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>1402132120-10</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>025 - 1402132120-10</name>
+    </instance>
+    <instance scriptid="val_811287_7451241_sb1_664">
+      <custrecord_ht_mc_script_codigo>026</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>1402132720-10</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>026 - 1402132720-10</name>
+    </instance>
+    <instance scriptid="val_811288_7451241_sb1_953">
+      <custrecord_ht_mc_script_codigo>027</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB010213</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>027 - HMB010213</name>
+    </instance>
+    <instance scriptid="val_811289_7451241_sb1_303">
+      <custrecord_ht_mc_script_codigo>028</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC010213</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>028 - HMC010213</name>
+    </instance>
+    <instance scriptid="val_811290_7451241_sb1_505">
+      <custrecord_ht_mc_script_codigo>029</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>PCL140224212010</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>029 - PCL140224212010</name>
+    </instance>
+    <instance scriptid="val_811291_7451241_sb1_573">
+      <custrecord_ht_mc_script_codigo>031</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TDE1430172X2016</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>031 - TDE1430172X2016</name>
+    </instance>
+    <instance scriptid="val_811292_7451241_sb1_856">
+      <custrecord_ht_mc_script_codigo>032</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB1430172X2016</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>032 - HMB1430172X2016</name>
+    </instance>
+    <instance scriptid="val_811293_7451241_sb1_143">
+      <custrecord_ht_mc_script_codigo>033</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC1430172X2016</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>033 - HMC1430172X2016</name>
+    </instance>
+    <instance scriptid="val_811294_7451241_sb1_341">
+      <custrecord_ht_mc_script_codigo>034</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GEA 20130731</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>034 - GEA 20130731</name>
+    </instance>
+    <instance scriptid="val_811295_7451241_sb1_144">
+      <custrecord_ht_mc_script_codigo>035</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>personalvozSOS</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>035 - personalvozSOS</name>
+    </instance>
+    <instance scriptid="val_811296_7451241_sb1_195">
+      <custrecord_ht_mc_script_codigo>036</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>PCC1450162X2023</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>036 - PCC1450162X2023</name>
+    </instance>
+    <instance scriptid="val_811297_7451241_sb1_152">
+      <custrecord_ht_mc_script_codigo>037</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TT8850_PERSONAL</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>037 - TT8850_PERSONAL</name>
+    </instance>
+    <instance scriptid="val_811298_7451241_sb1_557">
+      <custrecord_ht_mc_script_codigo>038</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Quito_cj_800</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>038 - Quito_cj_800</name>
+    </instance>
+    <instance scriptid="val_811299_7451241_sb1_879">
+      <custrecord_ht_mc_script_codigo>039</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAPST149024272010</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>039 - HAPST149024272010</name>
+    </instance>
+    <instance scriptid="val_811300_7451241_sb1_705">
+      <custrecord_ht_mc_script_codigo>040</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HCV2ST1490024272011</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>040 - HCV2ST1490024272011</name>
+    </instance>
+    <instance scriptid="val_811301_7451241_sb1_229">
+      <custrecord_ht_mc_script_codigo>041</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAF148011272011</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>041 - HAF148011272011</name>
+    </instance>
+    <instance scriptid="val_811302_7451241_sb1_396">
+      <custrecord_ht_mc_script_codigo>042</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HC148004272012</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>042 - HC148004272012</name>
+    </instance>
+    <instance scriptid="val_811303_7451241_sb1_431">
+      <custrecord_ht_mc_script_codigo>043</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAFST149023272011</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>043 - HAFST149023272011</name>
+    </instance>
+    <instance scriptid="val_811304_7451241_sb1_655">
+      <custrecord_ht_mc_script_codigo>044</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAP148011272011</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>044 - HAP148011272011</name>
+    </instance>
+    <instance scriptid="val_811305_7451241_sb1_689">
+      <custrecord_ht_mc_script_codigo>045</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAPST149024272011</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>045 - HAPST149024272011</name>
+    </instance>
+    <instance scriptid="val_811306_7451241_sb1_207">
+      <custrecord_ht_mc_script_codigo>046</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HBH148006272012</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>046 - HBH148006272012</name>
+    </instance>
+    <instance scriptid="val_811307_7451241_sb1_268">
+      <custrecord_ht_mc_script_codigo>047</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HDI1401162X2019</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>047 - HDI1401162X2019</name>
+    </instance>
+    <instance scriptid="val_811308_7451241_sb1_882">
+      <custrecord_ht_mc_script_codigo>048</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB1510232X2013_Sin_IgniciÃ³n</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>048 - HMB1510232X2013_Sin_Ignición</name>
+    </instance>
+    <instance scriptid="val_811309_7451241_sb1_596">
+      <custrecord_ht_mc_script_codigo>049</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC1510232X2013_Sin_IgniciÃ³n</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>049 - HMC1510232X2013_Sin_Ignición</name>
+    </instance>
+    <instance scriptid="val_811310_7451241_sb1_341">
+      <custrecord_ht_mc_script_codigo>050</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TEM1430172X2010</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>050 - TEM1430172X2010</name>
+    </instance>
+    <instance scriptid="val_811311_7451241_sb1_830">
+      <custrecord_ht_mc_script_codigo>051</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB1470302X2026+Salida+invertida</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>051 - HMB1470302X2026+Salida+invertida</name>
+    </instance>
+    <instance scriptid="val_811312_7451241_sb1_665">
+      <custrecord_ht_mc_script_codigo>052</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC1470302X2026+Salida+invertida</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>052 - HMC1470302X2026+Salida+invertida</name>
+    </instance>
+    <instance scriptid="val_811313_7451241_sb1_235">
+      <custrecord_ht_mc_script_codigo>053</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HOF1502252X2014</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>053 - HOF1502252X2014</name>
+    </instance>
+    <instance scriptid="val_811314_7451241_sb1_361">
+      <custrecord_ht_mc_script_codigo>054</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAF2ST151008272012</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>054 - HAF2ST151008272012</name>
+    </instance>
+    <instance scriptid="val_811315_7451241_sb1_828">
+      <custrecord_ht_mc_script_codigo>055</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HCV2ST1490024272013</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>055 - HCV2ST1490024272013</name>
+    </instance>
+    <instance scriptid="val_811316_7451241_sb1_334">
+      <custrecord_ht_mc_script_codigo>056</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAPST149024272012</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>056 - HAPST149024272012</name>
+    </instance>
+    <instance scriptid="val_811317_7451241_sb1_404">
+      <custrecord_ht_mc_script_codigo>057</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAP148011272012</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>057 - HAP148011272012</name>
+    </instance>
+    <instance scriptid="val_811318_7451241_sb1_332">
+      <custrecord_ht_mc_script_codigo>058</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAFST149023272012</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>058 - HAFST149023272012</name>
+    </instance>
+    <instance scriptid="val_811319_7451241_sb1_244">
+      <custrecord_ht_mc_script_codigo>059</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HC148004272013</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>059 - HC148004272013</name>
+    </instance>
+    <instance scriptid="val_811320_7451241_sb1_767">
+      <custrecord_ht_mc_script_codigo>060</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAF148011272012</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>060 - HAF148011272012</name>
+    </instance>
+    <instance scriptid="val_811321_7451241_sb1_913">
+      <custrecord_ht_mc_script_codigo>061</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20140211 hunter_heavy</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>061 - 20140211 hunter_heavy</name>
+    </instance>
+    <instance scriptid="val_811322_7451241_sb1_163">
+      <custrecord_ht_mc_script_codigo>062</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>V9 0 3 - CANDADO LIVIANO GSM 27-09-2012- SLEEP</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>062 - V9 0 3 - CANDADO LIVIANO GSM 27-09-2012- SLEEP</name>
+    </instance>
+    <instance scriptid="val_811323_7451241_sb1_721">
+      <custrecord_ht_mc_script_codigo>063</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20140212 hunter_block_R+</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>063 - 20140212 hunter_block_R+</name>
+    </instance>
+    <instance scriptid="val_811324_7451241_sb1_686">
+      <custrecord_ht_mc_script_codigo>064</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20140209 CerraduraFurgones_Arcas PYCCA CARSEG</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>064 - 20140209 CerraduraFurgones_Arcas PYCCA CARSEG</name>
+    </instance>
+    <instance scriptid="val_811325_7451241_sb1_212">
+      <custrecord_ht_mc_script_codigo>065</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20130619 CerraduraFurgones_Arcas_GARMIN</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>065 - 20130619 CerraduraFurgones_Arcas_GARMIN</name>
+    </instance>
+    <instance scriptid="val_811326_7451241_sb1_326">
+      <custrecord_ht_mc_script_codigo>066</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>DMR_800_power_saving FW2.3.4</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>066 - DMR_800_power_saving FW2.3.4</name>
+    </instance>
+    <instance scriptid="val_811327_7451241_sb1_156">
+      <custrecord_ht_mc_script_codigo>067</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAF152027272013</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>067 - HAF152027272013</name>
+    </instance>
+    <instance scriptid="val_811328_7451241_sb1_177">
+      <custrecord_ht_mc_script_codigo>068</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAF2ST152027272013</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>068 - HAF2ST152027272013</name>
+    </instance>
+    <instance scriptid="val_811329_7451241_sb1_168">
+      <custrecord_ht_mc_script_codigo>069</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAFST152027272013</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>069 - HAFST152027272013</name>
+    </instance>
+    <instance scriptid="val_811330_7451241_sb1_598">
+      <custrecord_ht_mc_script_codigo>070</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAP152027272013</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>070 - HAP152027272013</name>
+    </instance>
+    <instance scriptid="val_811331_7451241_sb1_249">
+      <custrecord_ht_mc_script_codigo>071</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HBH152027272013</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>071 - HBH152027272013</name>
+    </instance>
+    <instance scriptid="val_811332_7451241_sb1_143">
+      <custrecord_ht_mc_script_codigo>072</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HC152027272014</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>072 - HC152027272014</name>
+    </instance>
+    <instance scriptid="val_811333_7451241_sb1_851">
+      <custrecord_ht_mc_script_codigo>073</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HCV3ST152027272014</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>073 - HCV3ST152027272014</name>
+    </instance>
+    <instance scriptid="val_811334_7451241_sb1_972">
+      <custrecord_ht_mc_script_codigo>074</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HAPST152027272013</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>074 - HAPST152027272013</name>
+    </instance>
+    <instance scriptid="val_811335_7451241_sb1_464">
+      <custrecord_ht_mc_script_codigo>075</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20150227 hunter_heavy</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>075 - 20150227 hunter_heavy</name>
+    </instance>
+    <instance scriptid="val_811336_7451241_sb1_347">
+      <custrecord_ht_mc_script_codigo>076</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20150226 ARCASFVR v2.1</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>076 - 20150226 ARCASFVR v2.1</name>
+    </instance>
+    <instance scriptid="val_811337_7451241_sb1_368">
+      <custrecord_ht_mc_script_codigo>077</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20150227 hunter_heavy</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>077 - 20150227 hunter_heavy</name>
+    </instance>
+    <instance scriptid="val_811338_7451241_sb1_779">
+      <custrecord_ht_mc_script_codigo>078</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20150219 CerraduraFurgones_Arcas PYCCA v1.15</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>078 - 20150219 CerraduraFurgones_Arcas PYCCA v1.15</name>
+    </instance>
+    <instance scriptid="val_811339_7451241_sb1_438">
+      <custrecord_ht_mc_script_codigo>079</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151002272040-ih</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>079 - HMC151002272040-ih</name>
+    </instance>
+    <instance scriptid="val_811340_7451241_sb1_644">
+      <custrecord_ht_mc_script_codigo>080</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151002272040h</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>080 - HMC151002272040h</name>
+    </instance>
+    <instance scriptid="val_811341_7451241_sb1_837">
+      <custrecord_ht_mc_script_codigo>081</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151002272040ih</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>081 - HMC151002272040ih</name>
+    </instance>
+    <instance scriptid="val_811342_7451241_sb1_375">
+      <custrecord_ht_mc_script_codigo>082</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151002272040-h</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>082 - HMC151002272040-h</name>
+    </instance>
+    <instance scriptid="val_811343_7451241_sb1_574">
+      <custrecord_ht_mc_script_codigo>083</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151002272040-ih</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>083 - HMB151002272040-ih</name>
+    </instance>
+    <instance scriptid="val_811344_7451241_sb1_280">
+      <custrecord_ht_mc_script_codigo>084</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151002272040h</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>084 - HMB151002272040h</name>
+    </instance>
+    <instance scriptid="val_811345_7451241_sb1_962">
+      <custrecord_ht_mc_script_codigo>085</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151002272040ih</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>085 - HMB151002272040ih</name>
+    </instance>
+    <instance scriptid="val_811346_7451241_sb1_378">
+      <custrecord_ht_mc_script_codigo>086</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151002272040-h</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>086 - HMB151002272040-h</name>
+    </instance>
+    <instance scriptid="val_811347_7451241_sb1_306">
+      <custrecord_ht_mc_script_codigo>087</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>STANDAR PLAN ORO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>087 - STANDAR PLAN ORO</name>
+    </instance>
+    <instance scriptid="val_811348_7451241_sb1_812">
+      <custrecord_ht_mc_script_codigo>088</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20151030 HM sin ignicion</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>088 - 20151030 HM sin ignicion</name>
+    </instance>
+    <instance scriptid="val_811349_7451241_sb1_961">
+      <custrecord_ht_mc_script_codigo>089</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20151030 HM</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>089 - 20151030 HM</name>
+    </instance>
+    <instance scriptid="val_811350_7451241_sb1_490">
+      <custrecord_ht_mc_script_codigo>090</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20151030 TDE</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>090 - 20151030 TDE</name>
+    </instance>
+    <instance scriptid="val_811351_7451241_sb1_639">
+      <custrecord_ht_mc_script_codigo>091</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20151030 HM VOZ</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>091 - 20151030 HM VOZ</name>
+    </instance>
+    <instance scriptid="val_811352_7451241_sb1_337">
+      <custrecord_ht_mc_script_codigo>092</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20151030 CerraduraFurgones_Arcas</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>092 - 20151030 CerraduraFurgones_Arcas</name>
+    </instance>
+    <instance scriptid="val_811353_7451241_sb1_614">
+      <custrecord_ht_mc_script_codigo>093</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20-15-10-30 hunter_heavy</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>093 - 20-15-10-30 hunter_heavy</name>
+    </instance>
+    <instance scriptid="val_811354_7451241_sb1_657">
+      <custrecord_ht_mc_script_codigo>094</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>20-15-10-30 hunter_heavy Portrans</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>094 - 20-15-10-30 hunter_heavy Portrans</name>
+    </instance>
+    <instance scriptid="val_811355_7451241_sb1_134">
+      <custrecord_ht_mc_script_codigo>095</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151118272050-ihc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>095 - HMC151118272050-ihc</name>
+    </instance>
+    <instance scriptid="val_811356_7451241_sb1_341">
+      <custrecord_ht_mc_script_codigo>096</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151118272050hc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>096 - HMC151118272050hc</name>
+    </instance>
+    <instance scriptid="val_811357_7451241_sb1_767">
+      <custrecord_ht_mc_script_codigo>097</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151118272050ihc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>097 - HMC151118272050ihc</name>
+    </instance>
+    <instance scriptid="val_811358_7451241_sb1_908">
+      <custrecord_ht_mc_script_codigo>098</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151118272050ihc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>098 - HMC151118272050ihc</name>
+    </instance>
+    <instance scriptid="val_811359_7451241_sb1_674">
+      <custrecord_ht_mc_script_codigo>099</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC151118272050-hc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>099 - HMC151118272050-hc</name>
+    </instance>
+    <instance scriptid="val_811360_7451241_sb1_723">
+      <custrecord_ht_mc_script_codigo>100</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151118272050-ihc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>100 - HMB151118272050-ihc</name>
+    </instance>
+    <instance scriptid="val_811361_7451241_sb1_202">
+      <custrecord_ht_mc_script_codigo>101</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151118272050hc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>101 - HMB151118272050hc</name>
+    </instance>
+    <instance scriptid="val_811362_7451241_sb1_441">
+      <custrecord_ht_mc_script_codigo>102</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151118272050ihc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>102 - HMB151118272050ihc</name>
+    </instance>
+    <instance scriptid="val_811363_7451241_sb1_872">
+      <custrecord_ht_mc_script_codigo>103</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMB151118272050-hc</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>103 - HMB151118272050-hc</name>
+    </instance>
+    <instance scriptid="val_811364_7451241_sb1_330">
+      <custrecord_ht_mc_script_codigo>104</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TDE110116272040</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>104 - TDE110116272040</name>
+    </instance>
+    <instance scriptid="val_811365_7451241_sb1_395">
+      <custrecord_ht_mc_script_codigo>105</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>MARESA220116272011</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>105 - MARESA220116272011</name>
+    </instance>
+    <instance scriptid="val_811366_7451241_sb1_217">
+      <custrecord_ht_mc_script_codigo>106</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>MaquinariaC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>106 - MaquinariaC</name>
+    </instance>
+    <instance scriptid="val_811367_7451241_sb1_376">
+      <custrecord_ht_mc_script_codigo>107</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>MaquinariaB</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>107 - MaquinariaB</name>
+    </instance>
+    <instance scriptid="val_811368_7451241_sb1_649">
+      <custrecord_ht_mc_script_codigo>108</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM04071610IC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>108 - HM04071610IC</name>
+    </instance>
+    <instance scriptid="val_811369_7451241_sb1_809">
+      <custrecord_ht_mc_script_codigo>109</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM04071610C</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>109 - HM04071610C</name>
+    </instance>
+    <instance scriptid="val_811370_7451241_sb1_700">
+      <custrecord_ht_mc_script_codigo>110</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM04071610I</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>110 - HM04071610I</name>
+    </instance>
+    <instance scriptid="val_811371_7451241_sb1_139">
+      <custrecord_ht_mc_script_codigo>111</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM04071610</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>111 - HM04071610</name>
+    </instance>
+    <instance scriptid="val_811372_7451241_sb1_571">
+      <custrecord_ht_mc_script_codigo>112</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>SKYPATROL TT8750+ 20160815</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>112 - SKYPATROL TT8750+ 20160815</name>
+    </instance>
+    <instance scriptid="val_811373_7451241_sb1_629">
+      <custrecord_ht_mc_script_codigo>113</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TEM100816</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>113 - TEM100816</name>
+    </instance>
+    <instance scriptid="val_811374_7451241_sb1_315">
+      <custrecord_ht_mc_script_codigo>114</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HDI10081610</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>114 - HDI10081610</name>
+    </instance>
+    <instance scriptid="val_811375_7451241_sb1_939">
+      <custrecord_ht_mc_script_codigo>115</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HDI10081610C</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>115 - HDI10081610C</name>
+    </instance>
+    <instance scriptid="val_811376_7451241_sb1_123">
+      <custrecord_ht_mc_script_codigo>116</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Maquinaria</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>116 - Maquinaria</name>
+    </instance>
+    <instance scriptid="val_811377_7451241_sb1_819">
+      <custrecord_ht_mc_script_codigo>117</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>166.25 - HUNTER MOTO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>117 - 166.25 - HUNTER MOTO</name>
+    </instance>
+    <instance scriptid="val_811378_7451241_sb1_655">
+      <custrecord_ht_mc_script_codigo>118</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>R20161118</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>118 - R20161118</name>
+    </instance>
+    <instance scriptid="val_811379_7451241_sb1_564">
+      <custrecord_ht_mc_script_codigo>119</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>R20161122</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>119 - R20161122</name>
+    </instance>
+    <instance scriptid="val_811380_7451241_sb1_932">
+      <custrecord_ht_mc_script_codigo>120</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TT8950 HMC20170418</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>120 - TT8950 HMC20170418</name>
+    </instance>
+    <instance scriptid="val_811381_7451241_sb1_177">
+      <custrecord_ht_mc_script_codigo>121</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GL300N CanECO_2 20170511.gl300</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>121 - GL300N CanECO_2 20170511.gl300</name>
+    </instance>
+    <instance scriptid="val_811382_7451241_sb1_515">
+      <custrecord_ht_mc_script_codigo>122</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>SKYPATROL TT8750+ 20170622 HMCorporativo</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>122 - SKYPATROL TT8750+ 20170622 HMCorporativo</name>
+    </instance>
+    <instance scriptid="val_811383_7451241_sb1_495">
+      <custrecord_ht_mc_script_codigo>123</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM26091710.csv</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>123 - HM26091710.csv</name>
+    </instance>
+    <instance scriptid="val_811384_7451241_sb1_382">
+      <custrecord_ht_mc_script_codigo>124</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM26091710C.csv</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>124 - HM26091710C.csv</name>
+    </instance>
+    <instance scriptid="val_811385_7451241_sb1_428">
+      <custrecord_ht_mc_script_codigo>125</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM26091710I.csv</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>125 - HM26091710I.csv</name>
+    </instance>
+    <instance scriptid="val_811386_7451241_sb1_176">
+      <custrecord_ht_mc_script_codigo>126</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM26091710IC.csv</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>126 - HM26091710IC.csv</name>
+    </instance>
+    <instance scriptid="val_811387_7451241_sb1_430">
+      <custrecord_ht_mc_script_codigo>127</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_107_fw_43z_CR300B HMC_PA20171018</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>127 - hw_107_fw_43z_CR300B HMC_PA20171018</name>
+    </instance>
+    <instance scriptid="val_811388_7451241_sb1_295">
+      <custrecord_ht_mc_script_codigo>128</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GMT200N_A03V22_HMM20171113</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>128 - GMT200N_A03V22_HMM20171113</name>
+    </instance>
+    <instance scriptid="val_811389_7451241_sb1_393">
+      <custrecord_ht_mc_script_codigo>129</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GMT200N A03V22 CandadoR 20171113</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>129 - GMT200N A03V22 CandadoR 20171113</name>
+    </instance>
+    <instance scriptid="val_811390_7451241_sb1_865">
+      <custrecord_ht_mc_script_codigo>130</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>AMIMovi11</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>130 - AMIMovi11</name>
+    </instance>
+    <instance scriptid="val_811391_7451241_sb1_854">
+      <custrecord_ht_mc_script_codigo>131</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_23_fw_29e_CelloTrack_V879 HBS20180618.PL</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>131 - hw_23_fw_29e_CelloTrack_V879 HBS20180618.PL</name>
+    </instance>
+    <instance scriptid="val_811392_7451241_sb1_182">
+      <custrecord_ht_mc_script_codigo>132</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Jimi Wetrack Lite Moto 1</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>132 - Jimi Wetrack Lite Moto 1</name>
+    </instance>
+    <instance scriptid="val_811393_7451241_sb1_574">
+      <custrecord_ht_mc_script_codigo>133</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_19_fw_61h_CelloTrack2G_V4615 HBS20180619</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>133 - hw_19_fw_61h_CelloTrack2G_V4615 HBS20180619</name>
+    </instance>
+    <instance scriptid="val_811394_7451241_sb1_477">
+      <custrecord_ht_mc_script_codigo>134</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_19_fw_61h_CelloTrack3G_V4615 HBS20180619_p60</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>134 - hw_19_fw_61h_CelloTrack3G_V4615 HBS20180619_p60</name>
+    </instance>
+    <instance scriptid="val_811395_7451241_sb1_806">
+      <custrecord_ht_mc_script_codigo>135</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM28058IDES</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>135 - HM28058IDES</name>
+    </instance>
+    <instance scriptid="val_811396_7451241_sb1_774">
+      <custrecord_ht_mc_script_codigo>136</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GV200A30V01_280618</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>136 - GV200A30V01_280618</name>
+    </instance>
+    <instance scriptid="val_811397_7451241_sb1_690">
+      <custrecord_ht_mc_script_codigo>137</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMotoLMU2630-070318DES</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>137 - HMotoLMU2630-070318DES</name>
+    </instance>
+    <instance scriptid="val_811398_7451241_sb1_109">
+      <custrecord_ht_mc_script_codigo>138</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM07031810DES</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>138 - HM07031810DES</name>
+    </instance>
+    <instance scriptid="val_811399_7451241_sb1_844">
+      <custrecord_ht_mc_script_codigo>139</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TIADES050618</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>139 - TIADES050618</name>
+    </instance>
+    <instance scriptid="val_811400_7451241_sb1_930">
+      <custrecord_ht_mc_script_codigo>140</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>ESPOL090418</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>140 - ESPOL090418</name>
+    </instance>
+    <instance scriptid="val_811401_7451241_sb1_569">
+      <custrecord_ht_mc_script_codigo>141</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Maquinaria020418</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>141 - Maquinaria020418</name>
+    </instance>
+    <instance scriptid="val_811402_7451241_sb1_219">
+      <custrecord_ht_mc_script_codigo>142</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TDE270318</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>142 - TDE270318</name>
+    </instance>
+    <instance scriptid="val_811403_7451241_sb1_589">
+      <custrecord_ht_mc_script_codigo>143</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMH12H19021810C</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>143 - HMH12H19021810C</name>
+    </instance>
+    <instance scriptid="val_811404_7451241_sb1_243">
+      <custrecord_ht_mc_script_codigo>144</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM07031810CDES</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>144 - HM07031810CDES</name>
+    </instance>
+    <instance scriptid="val_811405_7451241_sb1_907">
+      <custrecord_ht_mc_script_codigo>145</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMHIBERNACION07031810CDES</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>145 - HMHIBERNACION07031810CDES</name>
+    </instance>
+    <instance scriptid="val_811406_7451241_sb1_414">
+      <custrecord_ht_mc_script_codigo>146</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM280518ICDES</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>146 - HM280518ICDES</name>
+    </instance>
+    <instance scriptid="val_811407_7451241_sb1_842">
+      <custrecord_ht_mc_script_codigo>147</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>PruebacandadoR</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>147 - PruebacandadoR</name>
+    </instance>
+    <instance scriptid="val_811408_7451241_sb1_649">
+      <custrecord_ht_mc_script_codigo>148</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CV3-260418QUIFATEX</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>148 - CV3-260418QUIFATEX</name>
+    </instance>
+    <instance scriptid="val_811409_7451241_sb1_529">
+      <custrecord_ht_mc_script_codigo>149</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CV2-300118QUIFATEX</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>149 - CV2-300118QUIFATEX</name>
+    </instance>
+    <instance scriptid="val_811410_7451241_sb1_146">
+      <custrecord_ht_mc_script_codigo>150</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>NISCLAVISACLARO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>150 - NISCLAVISACLARO</name>
+    </instance>
+    <instance scriptid="val_811411_7451241_sb1_415">
+      <custrecord_ht_mc_script_codigo>151</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>NISCLAVISAMOVISTAR</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>151 - NISCLAVISAMOVISTAR</name>
+    </instance>
+    <instance scriptid="val_811412_7451241_sb1_811">
+      <custrecord_ht_mc_script_codigo>152</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>ARCAFVRV2</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>152 - ARCAFVRV2</name>
+    </instance>
+    <instance scriptid="val_811413_7451241_sb1_184">
+      <custrecord_ht_mc_script_codigo>153</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HUNTERARCA2017</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>153 - HUNTERARCA2017</name>
+    </instance>
+    <instance scriptid="val_811414_7451241_sb1_691">
+      <custrecord_ht_mc_script_codigo>154</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>ARCAFVRV1</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>154 - ARCAFVRV1</name>
+    </instance>
+    <instance scriptid="val_811415_7451241_sb1_441">
+      <custrecord_ht_mc_script_codigo>155</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>ARCAPRONACA</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>155 - ARCAPRONACA</name>
+    </instance>
+    <instance scriptid="val_811416_7451241_sb1_722">
+      <custrecord_ht_mc_script_codigo>156</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Furgon210318</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>156 - Furgon210318</name>
+    </instance>
+    <instance scriptid="val_811417_7451241_sb1_602">
+      <custrecord_ht_mc_script_codigo>157</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CV3L011217</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>157 - CV3L011217</name>
+    </instance>
+    <instance scriptid="val_811418_7451241_sb1_842">
+      <custrecord_ht_mc_script_codigo>158</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Contenedor220118</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>158 - Contenedor220118</name>
+    </instance>
+    <instance scriptid="val_811419_7451241_sb1_966">
+      <custrecord_ht_mc_script_codigo>159</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TIA050618</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>159 - TIA050618</name>
+    </instance>
+    <instance scriptid="val_811420_7451241_sb1_387">
+      <custrecord_ht_mc_script_codigo>160</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>PTOLIMPIO140318</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>160 - PTOLIMPIO140318</name>
+    </instance>
+    <instance scriptid="val_811421_7451241_sb1_334">
+      <custrecord_ht_mc_script_codigo>161</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TEM070318</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>161 - TEM070318</name>
+    </instance>
+    <instance scriptid="val_811422_7451241_sb1_729">
+      <custrecord_ht_mc_script_codigo>162</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TDE07031810</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>162 - TDE07031810</name>
+    </instance>
+    <instance scriptid="val_811423_7451241_sb1_876">
+      <custrecord_ht_mc_script_codigo>163</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>MAQUINARIA070318</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>163 - MAQUINARIA070318</name>
+    </instance>
+    <instance scriptid="val_811424_7451241_sb1_960">
+      <custrecord_ht_mc_script_codigo>164</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HumedadTemperatura03</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>164 - HumedadTemperatura03</name>
+    </instance>
+    <instance scriptid="val_811425_7451241_sb1_478">
+      <custrecord_ht_mc_script_codigo>165</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HDI07031810C</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>165 - HDI07031810C</name>
+    </instance>
+    <instance scriptid="val_811426_7451241_sb1_649">
+      <custrecord_ht_mc_script_codigo>166</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HDI07031810</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>166 - HDI07031810</name>
+    </instance>
+    <instance scriptid="val_811427_7451241_sb1_374">
+      <custrecord_ht_mc_script_codigo>167</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Volquetas</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>167 - Volquetas</name>
+    </instance>
+    <instance scriptid="val_811428_7451241_sb1_100">
+      <custrecord_ht_mc_script_codigo>168</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM13031810IC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>168 - HM13031810IC</name>
+    </instance>
+    <instance scriptid="val_811429_7451241_sb1_569">
+      <custrecord_ht_mc_script_codigo>169</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>LOGUEX12</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>169 - LOGUEX12</name>
+    </instance>
+    <instance scriptid="val_811430_7451241_sb1_777">
+      <custrecord_ht_mc_script_codigo>170</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>ARCADEPISO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>170 - ARCADEPISO</name>
+    </instance>
+    <instance scriptid="val_811431_7451241_sb1_649">
+      <custrecord_ht_mc_script_codigo>171</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>LOGUEXPRONACA</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>171 - LOGUEXPRONACA</name>
+    </instance>
+    <instance scriptid="val_811432_7451241_sb1_420">
+      <custrecord_ht_mc_script_codigo>172</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMHIBERNACION07031810C</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>172 - HMHIBERNACION07031810C</name>
+    </instance>
+    <instance scriptid="val_811433_7451241_sb1_275">
+      <custrecord_ht_mc_script_codigo>173</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM07031810C</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>173 - HM07031810C</name>
+    </instance>
+    <instance scriptid="val_811434_7451241_sb1_782">
+      <custrecord_ht_mc_script_codigo>174</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>SKYPATROLTT87750+20170202ARCASFVR</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>174 - SKYPATROLTT87750+20170202ARCASFVR</name>
+    </instance>
+    <instance scriptid="val_811435_7451241_sb1_664">
+      <custrecord_ht_mc_script_codigo>175</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>SKYPATROLTT8750+20170202ARCASSTD</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>175 - SKYPATROLTT8750+20170202ARCASSTD</name>
+    </instance>
+    <instance scriptid="val_811436_7451241_sb1_423">
+      <custrecord_ht_mc_script_codigo>176</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>SKYPATROLTT8750+20170202CERRADURASV1V2</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>176 - SKYPATROLTT8750+20170202CERRADURASV1V2</name>
+    </instance>
+    <instance scriptid="val_811437_7451241_sb1_274">
+      <custrecord_ht_mc_script_codigo>177</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>SKYPATROLTT8750+20170202CERRADURASV3.3</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>177 - SKYPATROLTT8750+20170202CERRADURASV3.3</name>
+    </instance>
+    <instance scriptid="val_811438_7451241_sb1_677">
+      <custrecord_ht_mc_script_codigo>178</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>SKYPATROLTT8750+20160816HunterHeavy</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>178 - SKYPATROLTT8750+20160816HunterHeavy</name>
+    </instance>
+    <instance scriptid="val_811439_7451241_sb1_117">
+      <custrecord_ht_mc_script_codigo>179</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GL300NCanECO_120170511.gl300</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>179 - GL300NCanECO_120170511.gl300</name>
+    </instance>
+    <instance scriptid="val_811440_7451241_sb1_469">
+      <custrecord_ht_mc_script_codigo>180</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GMT200NA03V22HMM20171113</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>180 - GMT200NA03V22HMM20171113</name>
+    </instance>
+    <instance scriptid="val_811441_7451241_sb1_782">
+      <custrecord_ht_mc_script_codigo>181</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GV55CandadoR20161130.CarseG</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>181 - GV55CandadoR20161130.CarseG</name>
+    </instance>
+    <instance scriptid="val_811442_7451241_sb1_559">
+      <custrecord_ht_mc_script_codigo>182</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GV55N07V06CANDR20180108.gv55</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>182 - GV55N07V06CANDR20180108.gv55</name>
+    </instance>
+    <instance scriptid="val_811443_7451241_sb1_463">
+      <custrecord_ht_mc_script_codigo>183</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_19_fw_61h_CelloTrack3G_V4615 HBS20180619</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>183 - hw_19_fw_61h_CelloTrack3G_V4615 HBS20180619</name>
+    </instance>
+    <instance scriptid="val_811444_7451241_sb1_306">
+      <custrecord_ht_mc_script_codigo>184</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_23_fw_29e_CelloTrack_V879 HBS20180709</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>184 - hw_23_fw_29e_CelloTrack_V879 HBS20180709</name>
+    </instance>
+    <instance scriptid="val_811445_7451241_sb1_209">
+      <custrecord_ht_mc_script_codigo>185</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_107_fw_44d_CR300B HM_AMI20180510_PRO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>185 - hw_107_fw_44d_CR300B HM_AMI20180510_PRO</name>
+    </instance>
+    <instance scriptid="val_811446_7451241_sb1_977">
+      <custrecord_ht_mc_script_codigo>186</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GL300N 08v15 HMPersonal 20180718</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>186 - GL300N 08v15 HMPersonal 20180718</name>
+    </instance>
+    <instance scriptid="val_811447_7451241_sb1_903">
+      <custrecord_ht_mc_script_codigo>187</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GL300N 08v15 HMPersonal 20180719_60s</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>187 - GL300N 08v15 HMPersonal 20180719_60s</name>
+    </instance>
+    <instance scriptid="val_811448_7451241_sb1_637">
+      <custrecord_ht_mc_script_codigo>188</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44d_CR300B_V4495 HBR20180803</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>188 - hw_43_fw_44d_CR300B_V4495 HBR20180803</name>
+    </instance>
+    <instance scriptid="val_811449_7451241_sb1_514">
+      <custrecord_ht_mc_script_codigo>189</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HVT001 cigarrillera</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>189 - HVT001 cigarrillera</name>
+    </instance>
+    <instance scriptid="val_811450_7451241_sb1_400">
+      <custrecord_ht_mc_script_codigo>190</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CalAmp Patio Tuerca</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>190 - CalAmp Patio Tuerca</name>
+    </instance>
+    <instance scriptid="val_811451_7451241_sb1_822">
+      <custrecord_ht_mc_script_codigo>191</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CR300B_V4748 PATIOTUERCA</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>191 -   CR300B_V4748 PATIOTUERCA</name>
+    </instance>
+    <instance scriptid="val_811452_7451241_sb1_475">
+      <custrecord_ht_mc_script_codigo>192</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>ET25 90V MAX</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>192 - ET25 90V MAX</name>
+    </instance>
+    <instance scriptid="val_811453_7451241_sb1_982">
+      <custrecord_ht_mc_script_codigo>193</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_CR300B_3G HBR</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>193 - hw_43_CR300B_3G HBR</name>
+    </instance>
+    <instance scriptid="val_811454_7451241_sb1_561">
+      <custrecord_ht_mc_script_codigo>194</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Cerveceria Claro</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>194 - Cerveceria Claro</name>
+    </instance>
+    <instance scriptid="val_811455_7451241_sb1_157">
+      <custrecord_ht_mc_script_codigo>195</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>FMB120_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>195 - FMB120_AMI</name>
+    </instance>
+    <instance scriptid="val_811456_7451241_sb1_155">
+      <custrecord_ht_mc_script_codigo>196</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>196 - HM010519</name>
+    </instance>
+    <instance scriptid="val_811457_7451241_sb1_193">
+      <custrecord_ht_mc_script_codigo>197</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM010519C</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>197 - HM010519C</name>
+    </instance>
+    <instance scriptid="val_811458_7451241_sb1_630">
+      <custrecord_ht_mc_script_codigo>198</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMHIBERNACION010519C</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>198 - HMHIBERNACION010519C</name>
+    </instance>
+    <instance scriptid="val_811459_7451241_sb1_810">
+      <custrecord_ht_mc_script_codigo>199</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM010519I</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>199 - HM010519I</name>
+    </instance>
+    <instance scriptid="val_811460_7451241_sb1_931">
+      <custrecord_ht_mc_script_codigo>200</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM010519IC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>200 - HM010519IC</name>
+    </instance>
+    <instance scriptid="val_811461_7451241_sb1_362">
+      <custrecord_ht_mc_script_codigo>201</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMotoLMU2630-010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>201 - HMotoLMU2630-010519</name>
+    </instance>
+    <instance scriptid="val_811462_7451241_sb1_315">
+      <custrecord_ht_mc_script_codigo>202</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Cerveceria_Cliente_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>202 - Cerveceria_Cliente_010519</name>
+    </instance>
+    <instance scriptid="val_811463_7451241_sb1_723">
+      <custrecord_ht_mc_script_codigo>203</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Furgon_Blindado_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>203 - Furgon_Blindado_010519</name>
+    </instance>
+    <instance scriptid="val_811464_7451241_sb1_988">
+      <custrecord_ht_mc_script_codigo>204</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CERRADURA_V1_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>204 - CERRADURA_V1_010519</name>
+    </instance>
+    <instance scriptid="val_811465_7451241_sb1_652">
+      <custrecord_ht_mc_script_codigo>205</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CV2_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>205 - CV2_010519</name>
+    </instance>
+    <instance scriptid="val_811466_7451241_sb1_350">
+      <custrecord_ht_mc_script_codigo>206</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CV2_STH_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>206 - CV2_STH_010519</name>
+    </instance>
+    <instance scriptid="val_811467_7451241_sb1_829">
+      <custrecord_ht_mc_script_codigo>207</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Arca_De_Piso_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>207 - Arca_De_Piso_010519</name>
+    </instance>
+    <instance scriptid="val_811468_7451241_sb1_254">
+      <custrecord_ht_mc_script_codigo>208</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CERRADURA_V3_LATCHED_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>208 - CERRADURA_V3_LATCHED_010519</name>
+    </instance>
+    <instance scriptid="val_811469_7451241_sb1_408">
+      <custrecord_ht_mc_script_codigo>209</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CERRADURA_V3_PULSE_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>209 - CERRADURA_V3_PULSE_010519</name>
+    </instance>
+    <instance scriptid="val_811470_7451241_sb1_937">
+      <custrecord_ht_mc_script_codigo>210</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>ARCA_FVR_V1_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>210 - ARCA_FVR_V1_010519</name>
+    </instance>
+    <instance scriptid="val_811471_7451241_sb1_390">
+      <custrecord_ht_mc_script_codigo>211</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>ARCA_FVR_V2_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>211 - ARCA_FVR_V2_010519</name>
+    </instance>
+    <instance scriptid="val_811472_7451241_sb1_639">
+      <custrecord_ht_mc_script_codigo>212</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>ARCA_PRONACA_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>212 - ARCA_PRONACA_010519</name>
+    </instance>
+    <instance scriptid="val_811473_7451241_sb1_949">
+      <custrecord_ht_mc_script_codigo>213</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Hunter_Arca_2017_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>213 - Hunter_Arca_2017_010519</name>
+    </instance>
+    <instance scriptid="val_811474_7451241_sb1_531">
+      <custrecord_ht_mc_script_codigo>214</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Loguex_FVR_V2_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>214 - Loguex_FVR_V2_010519</name>
+    </instance>
+    <instance scriptid="val_811475_7451241_sb1_167">
+      <custrecord_ht_mc_script_codigo>215</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Block_Heavy_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>215 - Block_Heavy_010519</name>
+    </instance>
+    <instance scriptid="val_811476_7451241_sb1_540">
+      <custrecord_ht_mc_script_codigo>216</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Contenedor_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>216 - Contenedor_010519</name>
+    </instance>
+    <instance scriptid="val_811477_7451241_sb1_428">
+      <custrecord_ht_mc_script_codigo>217</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Contenedor_Refrigerado_Ignicion_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>217 - Contenedor_Refrigerado_Ignicion_010519</name>
+    </instance>
+    <instance scriptid="val_811478_7451241_sb1_536">
+      <custrecord_ht_mc_script_codigo>218</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>C_V3_L_DI_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>218 - C_V3_L_DI_010519</name>
+    </instance>
+    <instance scriptid="val_811479_7451241_sb1_460">
+      <custrecord_ht_mc_script_codigo>219</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Loguex_Pronoca_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>219 - Loguex_Pronoca_010519</name>
+    </instance>
+    <instance scriptid="val_811480_7451241_sb1_396">
+      <custrecord_ht_mc_script_codigo>220</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>C_V2_Quifatex_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>220 - C_V2_Quifatex_010519</name>
+    </instance>
+    <instance scriptid="val_811481_7451241_sb1_619">
+      <custrecord_ht_mc_script_codigo>221</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>C_V3_Quifatex_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>221 - C_V3_Quifatex_010519</name>
+    </instance>
+    <instance scriptid="val_811482_7451241_sb1_408">
+      <custrecord_ht_mc_script_codigo>222</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TIA_DES_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>222 - TIA_DES_010519</name>
+    </instance>
+    <instance scriptid="val_811483_7451241_sb1_245">
+      <custrecord_ht_mc_script_codigo>223</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Maquinaria_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>223 - Maquinaria_010519</name>
+    </instance>
+    <instance scriptid="val_811484_7451241_sb1_963">
+      <custrecord_ht_mc_script_codigo>224</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Hunter_Pro_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>224 - Hunter_Pro_010519</name>
+    </instance>
+    <instance scriptid="val_811485_7451241_sb1_504">
+      <custrecord_ht_mc_script_codigo>225</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMotoLMU2630-GpsApagado_010519</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>225 - HMotoLMU2630-GpsApagado_010519</name>
+    </instance>
+    <instance scriptid="val_811486_7451241_sb1_845">
+      <custrecord_ht_mc_script_codigo>226</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CTE_CLARO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>226 - CTE_CLARO</name>
+    </instance>
+    <instance scriptid="val_811487_7451241_sb1_337">
+      <custrecord_ht_mc_script_codigo>227</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_107_fw_44q_CR300B_2G_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>227 - hw_107_fw_44q_CR300B_2G_AMI</name>
+    </instance>
+    <instance scriptid="val_811488_7451241_sb1_543">
+      <custrecord_ht_mc_script_codigo>228</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_139_fw_44q_CR300B_2G_GNSS_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>228 - hw_139_fw_44q_CR300B_2G_GNSS_AMI</name>
+    </instance>
+    <instance scriptid="val_811489_7451241_sb1_917">
+      <custrecord_ht_mc_script_codigo>229</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44i_CR300B_3G_V4748 AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>229 - hw_43_fw_44i_CR300B_3G_V4748 AMI</name>
+    </instance>
+    <instance scriptid="val_811490_7451241_sb1_321">
+      <custrecord_ht_mc_script_codigo>230</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44q_CR300B_3G_V5120 AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>230 - hw_43_fw_44q_CR300B_3G_V5120 AMI</name>
+    </instance>
+    <instance scriptid="val_811491_7451241_sb1_461">
+      <custrecord_ht_mc_script_codigo>231</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMC - IQ-50</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>231 - HMC - IQ-50</name>
+    </instance>
+    <instance scriptid="val_811492_7451241_sb1_922">
+      <custrecord_ht_mc_script_codigo>232</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Terrestre.IDP782.ARCOM.V2.1</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>232 - Terrestre.IDP782.ARCOM.V2.1</name>
+    </instance>
+    <instance scriptid="val_811493_7451241_sb1_729">
+      <custrecord_ht_mc_script_codigo>233</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_139_fw_44q_CR300B_HMC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>233 - hw_139_fw_44q_CR300B_HMC</name>
+    </instance>
+    <instance scriptid="val_811494_7451241_sb1_901">
+      <custrecord_ht_mc_script_codigo>234</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_139_fw_44s_CR300B_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>234 - hw_139_fw_44s_CR300B_AMI</name>
+    </instance>
+    <instance scriptid="val_811495_7451241_sb1_563">
+      <custrecord_ht_mc_script_codigo>235</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_139_fw_44s_CR300B_HMC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>235 - hw_139_fw_44s_CR300B_HMC</name>
+    </instance>
+    <instance scriptid="val_811496_7451241_sb1_950">
+      <custrecord_ht_mc_script_codigo>236</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_107_fw_44s_CR300B_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>236 - hw_107_fw_44s_CR300B_AMI</name>
+    </instance>
+    <instance scriptid="val_811497_7451241_sb1_725">
+      <custrecord_ht_mc_script_codigo>237</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_107_fw_44s_CR300B_HMC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>237 - hw_107_fw_44s_CR300B_HMC</name>
+    </instance>
+    <instance scriptid="val_811498_7451241_sb1_241">
+      <custrecord_ht_mc_script_codigo>238</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44s_CR300B_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>238 - hw_43_fw_44s_CR300B_AMI</name>
+    </instance>
+    <instance scriptid="val_811499_7451241_sb1_737">
+      <custrecord_ht_mc_script_codigo>239</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44s_CR300B_HMC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>239 - hw_43_fw_44s_CR300B_HMC</name>
+    </instance>
+    <instance scriptid="val_811500_7451241_sb1_826">
+      <custrecord_ht_mc_script_codigo>240</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44s_CR300B_HBR</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>240 - hw_43_fw_44s_CR300B_HBR</name>
+    </instance>
+    <instance scriptid="val_811501_7451241_sb1_655">
+      <custrecord_ht_mc_script_codigo>241</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_136_fw_34m_nano10</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>241 - hw_136_fw_34m_nano10</name>
+    </instance>
+    <instance scriptid="val_811502_7451241_sb1_897">
+      <custrecord_ht_mc_script_codigo>242</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>FMU130_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>242 - FMU130_AMI</name>
+    </instance>
+    <instance scriptid="val_811503_7451241_sb1_461">
+      <custrecord_ht_mc_script_codigo>243</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_139_fw_44T_CR300B_HMC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>243 - hw_139_fw_44T_CR300B_HMC</name>
+    </instance>
+    <instance scriptid="val_811504_7451241_sb1_621">
+      <custrecord_ht_mc_script_codigo>244</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_139_fw_44T_CR300B_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>244 - hw_139_fw_44T_CR300B_AMI</name>
+    </instance>
+    <instance scriptid="val_811505_7451241_sb1_202">
+      <custrecord_ht_mc_script_codigo>245</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_107_fw_44T_CR300B_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>245 - hw_107_fw_44T_CR300B_AMI</name>
+    </instance>
+    <instance scriptid="val_811506_7451241_sb1_656">
+      <custrecord_ht_mc_script_codigo>246</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44T_CR300B_AMI</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>246 - hw_43_fw_44T_CR300B_AMI</name>
+    </instance>
+    <instance scriptid="val_811507_7451241_sb1_370">
+      <custrecord_ht_mc_script_codigo>247</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44T_CR300B_HMC</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>247 - hw_43_fw_44T_CR300B_HMC</name>
+    </instance>
+    <instance scriptid="val_811508_7451241_sb1_444">
+      <custrecord_ht_mc_script_codigo>248</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HUNTER SECURE</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>248 - HUNTER SECURE</name>
+    </instance>
+    <instance scriptid="val_811509_7451241_sb1_500">
+      <custrecord_ht_mc_script_codigo>249</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>DIRNEA. MAYORES A 20 TRB V3</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>249 -  DIRNEA. MAYORES A 20 TRB V3</name>
+    </instance>
+    <instance scriptid="val_811510_7451241_sb1_489">
+      <custrecord_ht_mc_script_codigo>250</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TERRESTRE.MAQUINARIA AMARILLA</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>250 - TERRESTRE.MAQUINARIA AMARILLA</name>
+    </instance>
+    <instance scriptid="val_811511_7451241_sb1_841">
+      <custrecord_ht_mc_script_codigo>251</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HUNTER GO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>251 - HUNTER GO</name>
+    </instance>
+    <instance scriptid="val_811512_7451241_sb1_718">
+      <custrecord_ht_mc_script_codigo>252</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Wesafe_px</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>252 - Wesafe_px</name>
+    </instance>
+    <instance scriptid="val_811513_7451241_sb1_960">
+      <custrecord_ht_mc_script_codigo>253</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Wesafe_aws</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>253 - Wesafe_aws</name>
+    </instance>
+    <instance scriptid="val_811514_7451241_sb1_621">
+      <custrecord_ht_mc_script_codigo>254</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HM.KITE IGNICION</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>254 - HM.KITE IGNICION</name>
+    </instance>
+    <instance scriptid="val_811515_7451241_sb1_929">
+      <custrecord_ht_mc_script_codigo>255</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>H Monitoreo Kite Motos</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>255 - H Monitoreo Kite Motos</name>
+    </instance>
+    <instance scriptid="val_811516_7451241_sb1_432">
+      <custrecord_ht_mc_script_codigo>256</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>H Monitoreo Kite Alta Gama (Sin IgniciÃ³n)</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>256 - H Monitoreo Kite Alta Gama (Sin Ignición)</name>
+    </instance>
+    <instance scriptid="val_811517_7451241_sb1_198">
+      <custrecord_ht_mc_script_codigo>257</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_107_fw_44v_CR300B_AMI_KITE.PL</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>257 - hw_107_fw_44v_CR300B_AMI_KITE.PL</name>
+    </instance>
+    <instance scriptid="val_811518_7451241_sb1_445">
+      <custrecord_ht_mc_script_codigo>258</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_139_fw_44v_CR300B_AMI_KITE.PL</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>258 - hw_139_fw_44v_CR300B_AMI_KITE.PL</name>
+    </instance>
+    <instance scriptid="val_811519_7451241_sb1_973">
+      <custrecord_ht_mc_script_codigo>259</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44v_CR300B_AMI_KITE.PL</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>259 - hw_43_fw_44v_CR300B_AMI_KITE.PL</name>
+    </instance>
+    <instance scriptid="val_811520_7451241_sb1_240">
+      <custrecord_ht_mc_script_codigo>260</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_139_44v_HM_KITE.PL CR300B</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>260 - hw_139_44v_HM_KITE.PL CR300B</name>
+    </instance>
+    <instance scriptid="val_811521_7451241_sb1_455">
+      <custrecord_ht_mc_script_codigo>261</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_139_fw_44v_HM_CLARO.PLCR300B</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>261 -  hw_139_fw_44v_HM_CLARO.PLCR300B</name>
+    </instance>
+    <instance scriptid="val_811522_7451241_sb1_489">
+      <custrecord_ht_mc_script_codigo>262</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44v__HM_KITE.PL CR300B</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>262 - hw_43_fw_44v__HM_KITE.PL CR300B</name>
+    </instance>
+    <instance scriptid="val_811523_7451241_sb1_796">
+      <custrecord_ht_mc_script_codigo>263</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44v__HM_CLARO.PL CR300B</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>263 - hw_43_fw_44v__HM_CLARO.PL CR300B</name>
+    </instance>
+    <instance scriptid="val_811524_7451241_sb1_262">
+      <custrecord_ht_mc_script_codigo>264</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>200.10 - HM Kite CervecerÃ­a</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>264 - 200.10 - HM Kite Cervecería</name>
+    </instance>
+    <instance scriptid="val_811525_7451241_sb1_200">
+      <custrecord_ht_mc_script_codigo>265</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>200.11 - HM Kite CTE Liviano</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>265 - 200.11 - HM Kite CTE Liviano</name>
+    </instance>
+    <instance scriptid="val_811526_7451241_sb1_550">
+      <custrecord_ht_mc_script_codigo>266</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>200.12 - HM Kite CTE Pesado</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>266 - 200.12 - HM Kite CTE Pesado</name>
+    </instance>
+    <instance scriptid="val_811527_7451241_sb1_719">
+      <custrecord_ht_mc_script_codigo>267</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>200.13 - HM Kite CTE Moto</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>267 - 200.13 - HM Kite CTE Moto</name>
+    </instance>
+    <instance scriptid="val_811528_7451241_sb1_211">
+      <custrecord_ht_mc_script_codigo>268</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>200.14 - HM Kite CTE Moto sin IgniciÃ³n</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>268 - 200.14 - HM Kite CTE Moto sin Ignición</name>
+    </instance>
+    <instance scriptid="val_811529_7451241_sb1_621">
+      <custrecord_ht_mc_script_codigo>269</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>200.15 - HM Kite Tia Temperatura</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>269 - 200.15 - HM Kite Tia Temperatura</name>
+    </instance>
+    <instance scriptid="val_811530_7451241_sb1_953">
+      <custrecord_ht_mc_script_codigo>270</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_168_fw34m_nano10(3g)</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>270 - hw_168_fw34m_nano10(3g)</name>
+    </instance>
+    <instance scriptid="val_811531_7451241_sb1_862">
+      <custrecord_ht_mc_script_codigo>271</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>CelloCAN_3G30 _hw_105_fw38w</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>271 - CelloCAN_3G30 _hw_105_fw38w</name>
+    </instance>
+    <instance scriptid="val_811532_7451241_sb1_621">
+      <custrecord_ht_mc_script_codigo>272</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HW43_FW44v_HBR_KITE_PL_</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>272 - HW43_FW44v_HBR_KITE_PL_</name>
+    </instance>
+    <instance scriptid="val_811533_7451241_sb1_973">
+      <custrecord_ht_mc_script_codigo>273</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HW43_FW44v_HBR_CLARO_PL</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>273 - HW43_FW44v_HBR_CLARO_PL</name>
+    </instance>
+    <instance scriptid="val_811534_7451241_sb1_775">
+      <custrecord_ht_mc_script_codigo>274</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>Kite Maquinaria</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>274 - Kite Maquinaria</name>
+    </instance>
+    <instance scriptid="val_811535_7451241_sb1_357">
+      <custrecord_ht_mc_script_codigo>275</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw_43_fw_44v_CR300B_MOTO_KITE.PL</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>275 - hw_43_fw_44v_CR300B_MOTO_KITE.PL</name>
+    </instance>
+    <instance scriptid="val_811536_7451241_sb1_782">
+      <custrecord_ht_mc_script_codigo>276</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>200.25 H Cargo Kite Arca Version 3</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>276 - 200.25 H Cargo Kite Arca Version 3</name>
+    </instance>
+    <instance scriptid="val_811537_7451241_sb1_986">
+      <custrecord_ht_mc_script_codigo>277</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HW48_FW45d_MINITRACK_2021</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>277 - HW48_FW45d_MINITRACK_2021</name>
+    </instance>
+    <instance scriptid="val_811538_7451241_sb1_392">
+      <custrecord_ht_mc_script_codigo>278</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw91_fw65q_CelloTrackLTE_2021</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>278 - hw91_fw65q_CelloTrackLTE_2021</name>
+    </instance>
+    <instance scriptid="val_811539_7451241_sb1_862">
+      <custrecord_ht_mc_script_codigo>279</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TMT250_HM_21071400</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>279 - TMT250_HM_21071400</name>
+    </instance>
+    <instance scriptid="val_811540_7451241_sb1_338">
+      <custrecord_ht_mc_script_codigo>280</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>FMU130_HunterMonitoreo MOVISTAR</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>280 - FMU130_HunterMonitoreo MOVISTAR</name>
+    </instance>
+    <instance scriptid="val_811541_7451241_sb1_224">
+      <custrecord_ht_mc_script_codigo>281</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>hw43_fw44y_HMTanqueros_2021</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>281 - hw43_fw44y_HMTanqueros_2021</name>
+    </instance>
+    <instance scriptid="val_811542_7451241_sb1_828">
+      <custrecord_ht_mc_script_codigo>282</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>01_GV55W_AMI_2022</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>282 - 01_GV55W_AMI_2022</name>
+    </instance>
+    <instance scriptid="val_811543_7451241_sb1_981">
+      <custrecord_ht_mc_script_codigo>283</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMGEO.ST9100.PKG</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>283 - HMGEO.ST9100.PKG</name>
+    </instance>
+    <instance scriptid="val_811544_7451241_sb1_351">
+      <custrecord_ht_mc_script_codigo>284</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>DIRNEA20TRB.ST9100.PKG</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>284 - DIRNEA20TRB.ST9100.PKG</name>
+    </instance>
+    <instance scriptid="val_811545_7451241_sb1_432">
+      <custrecord_ht_mc_script_codigo>285</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>MARITIMO.PESCA_ARTESANAL.ST9100</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>285 - MARITIMO.PESCA_ARTESANAL.ST9100</name>
+    </instance>
+    <instance scriptid="val_811546_7451241_sb1_249">
+      <custrecord_ht_mc_script_codigo>286</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>210.2_HM_CLARO_Choque_IgniciÃ³n.</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>286 - 210.2_HM_CLARO_Choque_Ignición.</name>
+    </instance>
+    <instance scriptid="val_811547_7451241_sb1_305">
+      <custrecord_ht_mc_script_codigo>287</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>FMP100_KITE_220531_12V.cfg</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>287 - FMP100_KITE_220531_12V.cfg</name>
+    </instance>
+    <instance scriptid="val_811548_7451241_sb1_953">
+      <custrecord_ht_mc_script_codigo>288</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>VL01_HM_HOTSPOT_220613</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>288 -  VL01_HM_HOTSPOT_220613</name>
+    </instance>
+    <instance scriptid="val_811549_7451241_sb1_701">
+      <custrecord_ht_mc_script_codigo>289</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HC_Block_ThunderLock_20220720</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>289 - HC_Block_ThunderLock_20220720</name>
+    </instance>
+    <instance scriptid="val_811550_7451241_sb1_889">
+      <custrecord_ht_mc_script_codigo>290</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>01_GV75W_MOTO_2022</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>290 - 01_GV75W_MOTO_2022</name>
+    </instance>
+    <instance scriptid="val_811551_7451241_sb1_905">
+      <custrecord_ht_mc_script_codigo>291</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>DIRNEA20TRB.ST6100.PKG</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>291 - DIRNEA20TRB.ST6100.PKG</name>
+    </instance>
+    <instance scriptid="val_811552_7451241_sb1_381">
+      <custrecord_ht_mc_script_codigo>292</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GV300W_HMONITOREO_CLARO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>292 - GV300W_HMONITOREO_CLARO</name>
+    </instance>
+    <instance scriptid="val_811553_7451241_sb1_482">
+      <custrecord_ht_mc_script_codigo>293</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GV300W_HMONITOREO_KITE</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>293 - GV300W_HMONITOREO_KITE</name>
+    </instance>
+    <instance scriptid="val_811554_7451241_sb1_536">
+      <custrecord_ht_mc_script_codigo>294</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>GPSPORTABLE</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>294 - GPSPORTABLE</name>
+    </instance>
+    <instance scriptid="val_811555_7451241_sb1_555">
+      <custrecord_ht_mc_script_codigo>295</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>FMC130_HMONITOREO_22101700_Claro</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>295 - FMC130_HMONITOREO_22101700_Claro</name>
+    </instance>
+    <instance scriptid="val_811556_7451241_sb1_754">
+      <custrecord_ht_mc_script_codigo>296</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>FMB920_HMOTO_22100600 Movistar</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>296 - FMB920_HMOTO_22100600 Movistar</name>
+    </instance>
+    <instance scriptid="val_811557_7451241_sb1_147">
+      <custrecord_ht_mc_script_codigo>297</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>TMT250_HM_21071400</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>297 - TMT250_HM_21071400</name>
+    </instance>
+    <instance scriptid="val_811558_7451241_sb1_767">
+      <custrecord_ht_mc_script_codigo>298</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HC ARCA V3</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>298 - HC ARCA V3</name>
+    </instance>
+    <instance scriptid="val_811559_7451241_sb1_138">
+      <custrecord_ht_mc_script_codigo>299</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>LMU,047 V8.5f</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>299 - LMU,047 V8.5f</name>
+    </instance>
+    <instance scriptid="val_811560_7451241_sb1_118">
+      <custrecord_ht_mc_script_codigo>300</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>FMC130_AMI_ CLARO</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>300 - FM_AMI_ CLARO</name>
+    </instance>
+    <instance scriptid="val_811561_7451241_sb1_641">
+      <custrecord_ht_mc_script_codigo>301</custrecord_ht_mc_script_codigo>
+      <custrecord_ht_mc_script_descrip>HMOTO_ICESA.V1.01</custrecord_ht_mc_script_descrip>
+      <isinactive>F</isinactive>
+      <name>301 - HMOTO_ICESA.V1.01</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

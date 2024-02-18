@@ -1,0 +1,870 @@
+<customrecordtype scriptid="customrecord_ht_grupoproductoscomerciale">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>Grupo de productos comerciales</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_codgrupo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>COD_GRUPO</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_descgrupo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>DESC_GRUPO </label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_818771_7451241_sb1_516">
+      <custrecord_ht_codgrupo>3Y</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER GPS CONTENEDOR 3Y</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>3Y HUNTER GPS CONTENEDOR 3Y</name>
+    </instance>
+    <instance scriptid="val_818772_7451241_sb1_783">
+      <custrecord_ht_codgrupo>8M</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER GPS CONTENEDOR 8M</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>8M HUNTER GPS CONTENEDOR 8M</name>
+    </instance>
+    <instance scriptid="val_818773_7451241_sb1_534">
+      <custrecord_ht_codgrupo>AC</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM AMI COOPERATIVAS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>AC HM AMI COOPERATIVAS</name>
+    </instance>
+    <instance scriptid="val_818774_7451241_sb1_788">
+      <custrecord_ht_codgrupo>AD</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>ACCESOS ADICIONALES</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>AD ACCESOS ADICIONALES</name>
+    </instance>
+    <instance scriptid="val_818775_7451241_sb1_879">
+      <custrecord_ht_codgrupo>AH</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HELPAS BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>AH HELPAS BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818776_7451241_sb1_349">
+      <custrecord_ht_codgrupo>AI</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER ASSIST  ALERTA DE IMPACTO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>AI HUNTER ASSIST  ALERTA DE IMPACTO</name>
+    </instance>
+    <instance scriptid="val_818777_7451241_sb1_997">
+      <custrecord_ht_codgrupo>AL</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>ALARMA H6</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>AL ALARMA H6</name>
+    </instance>
+    <instance scriptid="val_818778_7451241_sb1_794">
+      <custrecord_ht_codgrupo>AR</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER ARCA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>AR HUNTER ARCA</name>
+    </instance>
+    <instance scriptid="val_818779_7451241_sb1_951">
+      <custrecord_ht_codgrupo>AT</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>ASSIST 365 BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>AT ASSIST 365 BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818780_7451241_sb1_865">
+      <custrecord_ht_codgrupo>AU</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM AUTOLIDER BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>AU HM AUTOLIDER BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818781_7451241_sb1_453">
+      <custrecord_ht_codgrupo>AY</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>AMI AYASA BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>AY AMI AYASA BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818782_7451241_sb1_981">
+      <custrecord_ht_codgrupo>BC</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM BÁSICO CINASCAR</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>BC HM BÁSICO CINASCAR</name>
+    </instance>
+    <instance scriptid="val_818783_7451241_sb1_666">
+      <custrecord_ht_codgrupo>BE</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER BLOCK ECOLOGICO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>BE HUNTER BLOCK ECOLOGICO</name>
+    </instance>
+    <instance scriptid="val_818784_7451241_sb1_554">
+      <custrecord_ht_codgrupo>BO</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>PRODUCTOS BOUTIQUE</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>BO PRODUCTOS BOUTIQUE</name>
+    </instance>
+    <instance scriptid="val_818785_7451241_sb1_138">
+      <custrecord_ht_codgrupo>BR</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER BLOCK R</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>BR HUNTER BLOCK R</name>
+    </instance>
+    <instance scriptid="val_818786_7451241_sb1_629">
+      <custrecord_ht_codgrupo>BS</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER BLOCK S</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>BS HUNTER BLOCK S</name>
+    </instance>
+    <instance scriptid="val_818787_7451241_sb1_740">
+      <custrecord_ht_codgrupo>C2</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. CORPORATIVO V2</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>C2 H.M. CORPORATIVO V2</name>
+    </instance>
+    <instance scriptid="val_818788_7451241_sb1_349">
+      <custrecord_ht_codgrupo>CA</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER CAM</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CA HUNTER CAM</name>
+    </instance>
+    <instance scriptid="val_818789_7451241_sb1_165">
+      <custrecord_ht_codgrupo>CB</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>CERRADURA PARA CONTENEDOR SIN BLINDAR</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CB CERRADURA PARA CONTENEDOR SIN BLINDAR</name>
+    </instance>
+    <instance scriptid="val_818790_7451241_sb1_389">
+      <custrecord_ht_codgrupo>CC</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. CORPORATIVO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CC H.M. CORPORATIVO</name>
+    </instance>
+    <instance scriptid="val_818791_7451241_sb1_131">
+      <custrecord_ht_codgrupo>CE</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>CERRADURA ELECTRONICA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CE CERRADURA ELECTRONICA</name>
+    </instance>
+    <instance scriptid="val_818792_7451241_sb1_852">
+      <custrecord_ht_codgrupo>CH</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.MONITOREO AMI</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CH H.MONITOREO AMI</name>
+    </instance>
+    <instance scriptid="val_818793_7451241_sb1_412">
+      <custrecord_ht_codgrupo>CI</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MARESA CINASCAR</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CI MARESA CINASCAR</name>
+    </instance>
+    <instance scriptid="val_818794_7451241_sb1_290">
+      <custrecord_ht_codgrupo>CL</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MONITOREO GPS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CL MONITOREO GPS</name>
+    </instance>
+    <instance scriptid="val_818795_7451241_sb1_458">
+      <custrecord_ht_codgrupo>CM</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. BASICO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CM H.M. BASICO</name>
+    </instance>
+    <instance scriptid="val_818796_7451241_sb1_799">
+      <custrecord_ht_codgrupo>CN</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>CANDADOS COBERTURA DIARIA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CN CANDADOS COBERTURA DIARIA</name>
+    </instance>
+    <instance scriptid="val_818797_7451241_sb1_420">
+      <custrecord_ht_codgrupo>CO</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM CAM CASA/OFICINA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CO HM CAM CASA/OFICINA</name>
+    </instance>
+    <instance scriptid="val_818798_7451241_sb1_751">
+      <custrecord_ht_codgrupo>CP</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER PORTATIL</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CP HUNTER PORTATIL</name>
+    </instance>
+    <instance scriptid="val_818799_7451241_sb1_520">
+      <custrecord_ht_codgrupo>CR</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER CONTROL REMOTO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CR HUNTER CONTROL REMOTO</name>
+    </instance>
+    <instance scriptid="val_818800_7451241_sb1_861">
+      <custrecord_ht_codgrupo>CS</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. SATELITAL</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CS H.M. SATELITAL</name>
+    </instance>
+    <instance scriptid="val_818801_7451241_sb1_943">
+      <custrecord_ht_codgrupo>CV</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M.SATELITAL CARRO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CV H.M.SATELITAL CARRO</name>
+    </instance>
+    <instance scriptid="val_818802_7451241_sb1_419">
+      <custrecord_ht_codgrupo>CY</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>TU AUTO EN CASA BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>CY TU AUTO EN CASA BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818803_7451241_sb1_454">
+      <custrecord_ht_codgrupo>DU</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. DUAL</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>DU H.M. DUAL</name>
+    </instance>
+    <instance scriptid="val_818804_7451241_sb1_222">
+      <custrecord_ht_codgrupo>DV</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HCAM PLUS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>DV HCAM PLUS</name>
+    </instance>
+    <instance scriptid="val_818805_7451241_sb1_799">
+      <custrecord_ht_codgrupo>EA</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>ECUA AUTO PLUS BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>EA ECUA AUTO PLUS BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818806_7451241_sb1_957">
+      <custrecord_ht_codgrupo>EC</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM PARA EMBARCACIONES</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>EC HM PARA EMBARCACIONES</name>
+    </instance>
+    <instance scriptid="val_818807_7451241_sb1_974">
+      <custrecord_ht_codgrupo>EH</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>ELEVADOR HIDRAULICO PARA BUSES</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>EH ELEVADOR HIDRAULICO PARA BUSES</name>
+    </instance>
+    <instance scriptid="val_818808_7451241_sb1_547">
+      <custrecord_ht_codgrupo>EI</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER GO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>EI HUNTER GO</name>
+    </instance>
+    <instance scriptid="val_818809_7451241_sb1_823">
+      <custrecord_ht_codgrupo>EP</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MONITOREO GPS PORTABLE</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>EP MONITOREO GPS PORTABLE</name>
+    </instance>
+    <instance scriptid="val_818810_7451241_sb1_833">
+      <custrecord_ht_codgrupo>ER</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MONITOREO EVENTOS EN RUTA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>ER MONITOREO EVENTOS EN RUTA</name>
+    </instance>
+    <instance scriptid="val_818811_7451241_sb1_142">
+      <custrecord_ht_codgrupo>EU</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM. ULTIMA MILLA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>EU HM. ULTIMA MILLA</name>
+    </instance>
+    <instance scriptid="val_818812_7451241_sb1_540">
+      <custrecord_ht_codgrupo>FE</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>ACTUALIZACION DE FIRMWARE</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>FE ACTUALIZACION DE FIRMWARE</name>
+    </instance>
+    <instance scriptid="val_818813_7451241_sb1_309">
+      <custrecord_ht_codgrupo>GA</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER GARMIN</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>GA HUNTER GARMIN</name>
+    </instance>
+    <instance scriptid="val_818814_7451241_sb1_577">
+      <custrecord_ht_codgrupo>GH</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>AMI CHANGAN BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>GH AMI CHANGAN BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818815_7451241_sb1_432">
+      <custrecord_ht_codgrupo>GK</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>GALMACK SATELITAL BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>GK GALMACK SATELITAL BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818816_7451241_sb1_338">
+      <custrecord_ht_codgrupo>GM</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER GPS BÁSICO MVS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>GM HUNTER GPS BÁSICO MVS</name>
+    </instance>
+    <instance scriptid="val_818817_7451241_sb1_948">
+      <custrecord_ht_codgrupo>GP</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER GPS V.2</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>GP HUNTER GPS V.2</name>
+    </instance>
+    <instance scriptid="val_818818_7451241_sb1_711">
+      <custrecord_ht_codgrupo>GS</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM GEO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>GS HM GEO</name>
+    </instance>
+    <instance scriptid="val_818819_7451241_sb1_105">
+      <custrecord_ht_codgrupo>HA</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER CARGO 40 PIES</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HA HUNTER CARGO 40 PIES</name>
+    </instance>
+    <instance scriptid="val_818820_7451241_sb1_449">
+      <custrecord_ht_codgrupo>HC</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER CARGO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HC HUNTER CARGO</name>
+    </instance>
+    <instance scriptid="val_818821_7451241_sb1_232">
+      <custrecord_ht_codgrupo>HE</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER EQUIPAMIENTO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HE HUNTER EQUIPAMIENTO</name>
+    </instance>
+    <instance scriptid="val_818822_7451241_sb1_674">
+      <custrecord_ht_codgrupo>HF</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER FLOTA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HF HUNTER FLOTA</name>
+    </instance>
+    <instance scriptid="val_818823_7451241_sb1_965">
+      <custrecord_ht_codgrupo>HG</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HELP SERVICE CHANGAN</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HG HELP SERVICE CHANGAN</name>
+    </instance>
+    <instance scriptid="val_818824_7451241_sb1_655">
+      <custrecord_ht_codgrupo>HH</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER BLOCK HEAVY</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HH HUNTER BLOCK HEAVY</name>
+    </instance>
+    <instance scriptid="val_818825_7451241_sb1_960">
+      <custrecord_ht_codgrupo>HJ</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM BASICO 2</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HJ HM BASICO 2</name>
+    </instance>
+    <instance scriptid="val_818826_7451241_sb1_506">
+      <custrecord_ht_codgrupo>HM</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. MOTO CORPORATIVO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HM H.M. MOTO CORPORATIVO</name>
+    </instance>
+    <instance scriptid="val_818827_7451241_sb1_528">
+      <custrecord_ht_codgrupo>HP</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER FULL BASICO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HP HUNTER FULL BASICO</name>
+    </instance>
+    <instance scriptid="val_818828_7451241_sb1_601">
+      <custrecord_ht_codgrupo>HR</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H MONITOREO PRO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HR H MONITOREO PRO</name>
+    </instance>
+    <instance scriptid="val_818829_7451241_sb1_919">
+      <custrecord_ht_codgrupo>HS</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER SCHOOL</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HS HUNTER SCHOOL</name>
+    </instance>
+    <instance scriptid="val_818830_7451241_sb1_302">
+      <custrecord_ht_codgrupo>HT</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER GPS HMT</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HT HUNTER GPS HMT</name>
+    </instance>
+    <instance scriptid="val_818831_7451241_sb1_477">
+      <custrecord_ht_codgrupo>HU</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HU HUNTER</name>
+    </instance>
+    <instance scriptid="val_818832_7451241_sb1_730">
+      <custrecord_ht_codgrupo>HX</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER BOX</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>HX HUNTER BOX</name>
+    </instance>
+    <instance scriptid="val_818833_7451241_sb1_429">
+      <custrecord_ht_codgrupo>IC</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER IDENTIFICADOR DE CHOFER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>IC HUNTER IDENTIFICADOR DE CHOFER</name>
+    </instance>
+    <instance scriptid="val_818834_7451241_sb1_656">
+      <custrecord_ht_codgrupo>IG</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>INDUGPS BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>IG INDUGPS BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818835_7451241_sb1_255">
+      <custrecord_ht_codgrupo>KM</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER KM</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>KM HUNTER KM</name>
+    </instance>
+    <instance scriptid="val_818836_7451241_sb1_511">
+      <custrecord_ht_codgrupo>LA</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>PATIOTUERCA CONNECT BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>LA PATIOTUERCA CONNECT BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818837_7451241_sb1_185">
+      <custrecord_ht_codgrupo>LG</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER LIGHT</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>LG HUNTER LIGHT</name>
+    </instance>
+    <instance scriptid="val_818838_7451241_sb1_569">
+      <custrecord_ht_codgrupo>LH</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>LADER LINK BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>LH LADER LINK BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818839_7451241_sb1_101">
+      <custrecord_ht_codgrupo>LM</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER LMVS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>LM HUNTER LMVS</name>
+    </instance>
+    <instance scriptid="val_818840_7451241_sb1_107">
+      <custrecord_ht_codgrupo>LV</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>LLAVES VIRTUALES</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>LV LLAVES VIRTUALES</name>
+    </instance>
+    <instance scriptid="val_818841_7451241_sb1_554">
+      <custrecord_ht_codgrupo>M2</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>GPS FLOTA T2</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>M2 GPS FLOTA T2</name>
+    </instance>
+    <instance scriptid="val_818842_7451241_sb1_537">
+      <custrecord_ht_codgrupo>MA</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MARCACION</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MA MARCACION</name>
+    </instance>
+    <instance scriptid="val_818843_7451241_sb1_427">
+      <custrecord_ht_codgrupo>MB</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. MOTO BASICO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MB H.M. MOTO BASICO</name>
+    </instance>
+    <instance scriptid="val_818844_7451241_sb1_380">
+      <custrecord_ht_codgrupo>MC</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. CORPORATIVO MVS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MC H.M. CORPORATIVO MVS</name>
+    </instance>
+    <instance scriptid="val_818845_7451241_sb1_676">
+      <custrecord_ht_codgrupo>MG</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>GALARMOVIL GPS BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MG GALARMOVIL GPS BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818846_7451241_sb1_997">
+      <custrecord_ht_codgrupo>MI</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM MOTO ICESA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MI HM MOTO ICESA</name>
+    </instance>
+    <instance scriptid="val_818847_7451241_sb1_555">
+      <custrecord_ht_codgrupo>MK</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MASTER KEY</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MK MASTER KEY</name>
+    </instance>
+    <instance scriptid="val_818848_7451241_sb1_528">
+      <custrecord_ht_codgrupo>MR</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MARESA SATELITAL BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MR MARESA SATELITAL BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818849_7451241_sb1_378">
+      <custrecord_ht_codgrupo>MS</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER MASCOTA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MS HUNTER MASCOTA</name>
+    </instance>
+    <instance scriptid="val_818850_7451241_sb1_474">
+      <custrecord_ht_codgrupo>MT</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MARESA MAZTRACK PLATA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MT MARESA MAZTRACK PLATA</name>
+    </instance>
+    <instance scriptid="val_818851_7451241_sb1_874">
+      <custrecord_ht_codgrupo>MV</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER MVS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>MV HUNTER MVS</name>
+    </instance>
+    <instance scriptid="val_818852_7451241_sb1_905">
+      <custrecord_ht_codgrupo>NS</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>NIMBUSTECH SATELITAL BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>NS NIMBUSTECH SATELITAL BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818853_7451241_sb1_717">
+      <custrecord_ht_codgrupo>NV</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>PRODUCTOS VARIOS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>NV PRODUCTOS VARIOS</name>
+    </instance>
+    <instance scriptid="val_818854_7451241_sb1_837">
+      <custrecord_ht_codgrupo>OB</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER OBDII</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>OB HUNTER OBDII</name>
+    </instance>
+    <instance scriptid="val_818855_7451241_sb1_156">
+      <custrecord_ht_codgrupo>OD</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER ODOMETRO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>OD HUNTER ODOMETRO</name>
+    </instance>
+    <instance scriptid="val_818856_7451241_sb1_882">
+      <custrecord_ht_codgrupo>OF</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER ON/OFF GPS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>OF HUNTER ON/OFF GPS</name>
+    </instance>
+    <instance scriptid="val_818857_7451241_sb1_254">
+      <custrecord_ht_codgrupo>OT</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>PRODUCTOS VARIOS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>OT PRODUCTOS VARIOS</name>
+    </instance>
+    <instance scriptid="val_818858_7451241_sb1_788">
+      <custrecord_ht_codgrupo>PC</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER FULL CORPORATIVO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PC HUNTER FULL CORPORATIVO</name>
+    </instance>
+    <instance scriptid="val_818859_7451241_sb1_725">
+      <custrecord_ht_codgrupo>PD</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER PERFIL DE CONDUCCION</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PD HUNTER PERFIL DE CONDUCCION</name>
+    </instance>
+    <instance scriptid="val_818860_7451241_sb1_643">
+      <custrecord_ht_codgrupo>PE</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>POWER WINDOWS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PE POWER WINDOWS</name>
+    </instance>
+    <instance scriptid="val_818861_7451241_sb1_974">
+      <custrecord_ht_codgrupo>PL</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER APERTURA SEGUROS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PL HUNTER APERTURA SEGUROS</name>
+    </instance>
+    <instance scriptid="val_818862_7451241_sb1_411">
+      <custrecord_ht_codgrupo>PM</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. ASISTENCIA REMOTA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PM H.M. ASISTENCIA REMOTA</name>
+    </instance>
+    <instance scriptid="val_818863_7451241_sb1_477">
+      <custrecord_ht_codgrupo>PN</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>PENALIZACION MARESA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PN PENALIZACION MARESA</name>
+    </instance>
+    <instance scriptid="val_818864_7451241_sb1_548">
+      <custrecord_ht_codgrupo>PO</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER GET IN</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PO HUNTER GET IN</name>
+    </instance>
+    <instance scriptid="val_818865_7451241_sb1_355">
+      <custrecord_ht_codgrupo>PP</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H. M. PROTECTOR PAGO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PP H. M. PROTECTOR PAGO</name>
+    </instance>
+    <instance scriptid="val_818866_7451241_sb1_645">
+      <custrecord_ht_codgrupo>PR</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>PROTECTOR DE LLANTAS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PR PROTECTOR DE LLANTAS</name>
+    </instance>
+    <instance scriptid="val_818867_7451241_sb1_687">
+      <custrecord_ht_codgrupo>PS</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H PORTATIL PLUS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PS H PORTATIL PLUS</name>
+    </instance>
+    <instance scriptid="val_818868_7451241_sb1_167">
+      <custrecord_ht_codgrupo>PV</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.M. PERSONAL CON VOZ</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>PV H.M. PERSONAL CON VOZ</name>
+    </instance>
+    <instance scriptid="val_818869_7451241_sb1_838">
+      <custrecord_ht_codgrupo>RE</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>PARALIZADOR</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>RE PARALIZADOR</name>
+    </instance>
+    <instance scriptid="val_818870_7451241_sb1_785">
+      <custrecord_ht_codgrupo>RG</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>PARALIZADOR G</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>RG PARALIZADOR G</name>
+    </instance>
+    <instance scriptid="val_818871_7451241_sb1_759">
+      <custrecord_ht_codgrupo>RL</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>ACL GPS BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>RL ACL GPS BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818872_7451241_sb1_432">
+      <custrecord_ht_codgrupo>RM</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM CORPORATIVO CON ROAMING</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>RM HM CORPORATIVO CON ROAMING</name>
+    </instance>
+    <instance scriptid="val_818873_7451241_sb1_430">
+      <custrecord_ht_codgrupo>RO</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MARESA SATELITAL ORO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>RO MARESA SATELITAL ORO</name>
+    </instance>
+    <instance scriptid="val_818874_7451241_sb1_172">
+      <custrecord_ht_codgrupo>RP</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MARESA SATELITAL PLATA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>RP MARESA SATELITAL PLATA</name>
+    </instance>
+    <instance scriptid="val_818875_7451241_sb1_495">
+      <custrecord_ht_codgrupo>RS</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>RASTREO SATELITAL BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>RS RASTREO SATELITAL BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818876_7451241_sb1_318">
+      <custrecord_ht_codgrupo>RT</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>MARESA SATELITAL PLATINO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>RT MARESA SATELITAL PLATINO</name>
+    </instance>
+    <instance scriptid="val_818877_7451241_sb1_733">
+      <custrecord_ht_codgrupo>SA</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H.SERVICE / PLAN ASISTENCIA</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SA H.SERVICE / PLAN ASISTENCIA</name>
+    </instance>
+    <instance scriptid="val_818878_7451241_sb1_321">
+      <custrecord_ht_codgrupo>SB</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>FURGON SEMIBLINDADO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SB FURGON SEMIBLINDADO</name>
+    </instance>
+    <instance scriptid="val_818879_7451241_sb1_707">
+      <custrecord_ht_codgrupo>SC</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM GEOCS</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SC HM GEOCS</name>
+    </instance>
+    <instance scriptid="val_818880_7451241_sb1_708">
+      <custrecord_ht_codgrupo>SD</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER SAFE DRIVER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SD HUNTER SAFE DRIVER</name>
+    </instance>
+    <instance scriptid="val_818881_7451241_sb1_337">
+      <custrecord_ht_codgrupo>SE</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER CHASER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SE HUNTER CHASER</name>
+    </instance>
+    <instance scriptid="val_818882_7451241_sb1_732">
+      <custrecord_ht_codgrupo>SH</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HOT SPOT BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SH HOT SPOT BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818883_7451241_sb1_408">
+      <custrecord_ht_codgrupo>SL</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H. S.O.S. SERVICIO LEGAL Y VIAL</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SL H. S.O.S. SERVICIO LEGAL Y VIAL</name>
+    </instance>
+    <instance scriptid="val_818884_7451241_sb1_867">
+      <custrecord_ht_codgrupo>SM</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER SMART</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SM HUNTER SMART</name>
+    </instance>
+    <instance scriptid="val_818885_7451241_sb1_787">
+      <custrecord_ht_codgrupo>SO</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HUNTER S.O.S.</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SO HUNTER S.O.S.</name>
+    </instance>
+    <instance scriptid="val_818886_7451241_sb1_628">
+      <custrecord_ht_codgrupo>SP</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>HM SATELITAL PUBLICO</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SP HM SATELITAL PUBLICO</name>
+    </instance>
+    <instance scriptid="val_818887_7451241_sb1_845">
+      <custrecord_ht_codgrupo>SR</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>H. SERVICE / REPROGRAMACION</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SR H. SERVICE / REPROGRAMACION</name>
+    </instance>
+    <instance scriptid="val_818888_7451241_sb1_941">
+      <custrecord_ht_codgrupo>ST</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>SMARTB GPS TRANSP PERSONAL</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>ST SMARTB GPS TRANSP PERSONAL</name>
+    </instance>
+    <instance scriptid="val_818889_7451241_sb1_289">
+      <custrecord_ht_codgrupo>SZ</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>SUZUKI TRACKING BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>SZ SUZUKI TRACKING BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818890_7451241_sb1_712">
+      <custrecord_ht_codgrupo>UM</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>SERVICIO DE RASTREO SATELITAL</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>UM SERVICIO DE RASTREO SATELITAL</name>
+    </instance>
+    <instance scriptid="val_818891_7451241_sb1_872">
+      <custrecord_ht_codgrupo>WS</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>WESAFE BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>WS WESAFE BY HUNTER</name>
+    </instance>
+    <instance scriptid="val_818892_7451241_sb1_198">
+      <custrecord_ht_codgrupo>XL</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>CONTROLADOR DE ROTACION</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>XL CONTROLADOR DE ROTACION</name>
+    </instance>
+    <instance scriptid="val_818893_7451241_sb1_992">
+      <custrecord_ht_codgrupo>YL</custrecord_ht_codgrupo>
+      <custrecord_ht_descgrupo>LOJACK AYASA BY HUNTER</custrecord_ht_descgrupo>
+      <isinactive>F</isinactive>
+      <name>YL LOJACK AYASA BY HUNTER</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

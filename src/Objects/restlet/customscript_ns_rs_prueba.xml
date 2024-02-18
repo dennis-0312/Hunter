@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_prueba">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_CRUD_Prueba</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/ErickHunter/NS_RS_CRUD_prueba.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_prueba">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_CRUD_Prueba</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

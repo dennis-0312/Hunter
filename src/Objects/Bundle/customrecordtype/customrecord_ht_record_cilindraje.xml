@@ -1,0 +1,1014 @@
+<customrecordtype scriptid="customrecord_ht_record_cilindraje">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Cilindraje</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_record_cilindraje_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_record_cilindraje_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_810830_7451241_sb1_521">
+      <custrecord_ht_record_cilindraje_codigo>002</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1.2</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>002 - 1.2</name>
+    </instance>
+    <instance scriptid="val_810831_7451241_sb1_767">
+      <custrecord_ht_record_cilindraje_codigo>003</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1.3</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>003 - 1.3</name>
+    </instance>
+    <instance scriptid="val_810832_7451241_sb1_568">
+      <custrecord_ht_record_cilindraje_codigo>004</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1.4</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>004 - 1.4</name>
+    </instance>
+    <instance scriptid="val_810833_7451241_sb1_858">
+      <custrecord_ht_record_cilindraje_codigo>005</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1.5</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>005 - 1.5</name>
+    </instance>
+    <instance scriptid="val_810834_7451241_sb1_622">
+      <custrecord_ht_record_cilindraje_codigo>006</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1.6</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>006 - 1.6</name>
+    </instance>
+    <instance scriptid="val_810835_7451241_sb1_193">
+      <custrecord_ht_record_cilindraje_codigo>007</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1.7</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>007 - 1.7</name>
+    </instance>
+    <instance scriptid="val_810836_7451241_sb1_688">
+      <custrecord_ht_record_cilindraje_codigo>008</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1.8</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>008 - 1.8</name>
+    </instance>
+    <instance scriptid="val_810837_7451241_sb1_142">
+      <custrecord_ht_record_cilindraje_codigo>010</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2.2</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>010 - 2.2</name>
+    </instance>
+    <instance scriptid="val_810838_7451241_sb1_739">
+      <custrecord_ht_record_cilindraje_codigo>011</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2.3</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>011 - 2.3</name>
+    </instance>
+    <instance scriptid="val_810839_7451241_sb1_828">
+      <custrecord_ht_record_cilindraje_codigo>012</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2.4</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>012 - 2.4</name>
+    </instance>
+    <instance scriptid="val_810840_7451241_sb1_885">
+      <custrecord_ht_record_cilindraje_codigo>013</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2.5</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>013 - 2.5</name>
+    </instance>
+    <instance scriptid="val_810841_7451241_sb1_241">
+      <custrecord_ht_record_cilindraje_codigo>014</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2.6</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>014 - 2.6</name>
+    </instance>
+    <instance scriptid="val_810842_7451241_sb1_167">
+      <custrecord_ht_record_cilindraje_codigo>015</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2.7</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>015 - 2.7</name>
+    </instance>
+    <instance scriptid="val_810843_7451241_sb1_153">
+      <custrecord_ht_record_cilindraje_codigo>016</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2.8</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>016 - 2.8</name>
+    </instance>
+    <instance scriptid="val_810844_7451241_sb1_198">
+      <custrecord_ht_record_cilindraje_codigo>018</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3.2</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>018 - 3.2</name>
+    </instance>
+    <instance scriptid="val_810845_7451241_sb1_861">
+      <custrecord_ht_record_cilindraje_codigo>019</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3.4</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>019 - 3.4</name>
+    </instance>
+    <instance scriptid="val_810846_7451241_sb1_269">
+      <custrecord_ht_record_cilindraje_codigo>020</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3.5</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>020 - 3.5</name>
+    </instance>
+    <instance scriptid="val_810847_7451241_sb1_712">
+      <custrecord_ht_record_cilindraje_codigo>021</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3.7</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>021 - 3.7</name>
+    </instance>
+    <instance scriptid="val_810848_7451241_sb1_614">
+      <custrecord_ht_record_cilindraje_codigo>022</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4.2</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>022 - 4.2</name>
+    </instance>
+    <instance scriptid="val_810849_7451241_sb1_174">
+      <custrecord_ht_record_cilindraje_codigo>023</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4.5</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>023 - 4.5</name>
+    </instance>
+    <instance scriptid="val_810850_7451241_sb1_121">
+      <custrecord_ht_record_cilindraje_codigo>024</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4.7</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>024 - 4.7</name>
+    </instance>
+    <instance scriptid="val_810851_7451241_sb1_996">
+      <custrecord_ht_record_cilindraje_codigo>025</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>5.2</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>025 - 5.2</name>
+    </instance>
+    <instance scriptid="val_810852_7451241_sb1_649">
+      <custrecord_ht_record_cilindraje_codigo>026</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1298</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>026 - 1298</name>
+    </instance>
+    <instance scriptid="val_810853_7451241_sb1_868">
+      <custrecord_ht_record_cilindraje_codigo>027</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1300</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>027 - 1300</name>
+    </instance>
+    <instance scriptid="val_810854_7451241_sb1_185">
+      <custrecord_ht_record_cilindraje_codigo>028</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1500</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>028 - 1500</name>
+    </instance>
+    <instance scriptid="val_810855_7451241_sb1_777">
+      <custrecord_ht_record_cilindraje_codigo>029</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1600</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>029 - 1600</name>
+    </instance>
+    <instance scriptid="val_810856_7451241_sb1_672">
+      <custrecord_ht_record_cilindraje_codigo>030</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1798</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>030 - 1798</name>
+    </instance>
+    <instance scriptid="val_810857_7451241_sb1_376">
+      <custrecord_ht_record_cilindraje_codigo>031</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1800</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>031 - 1800</name>
+    </instance>
+    <instance scriptid="val_810858_7451241_sb1_151">
+      <custrecord_ht_record_cilindraje_codigo>032</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1998</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>032 - 1998</name>
+    </instance>
+    <instance scriptid="val_810859_7451241_sb1_689">
+      <custrecord_ht_record_cilindraje_codigo>033</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2000</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>033 - 2000</name>
+    </instance>
+    <instance scriptid="val_810860_7451241_sb1_497">
+      <custrecord_ht_record_cilindraje_codigo>034</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2400</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>034 - 2400</name>
+    </instance>
+    <instance scriptid="val_810861_7451241_sb1_400">
+      <custrecord_ht_record_cilindraje_codigo>035</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2500</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>035 - 2500</name>
+    </instance>
+    <instance scriptid="val_810862_7451241_sb1_690">
+      <custrecord_ht_record_cilindraje_codigo>036</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2700</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>036 - 2700</name>
+    </instance>
+    <instance scriptid="val_810863_7451241_sb1_525">
+      <custrecord_ht_record_cilindraje_codigo>037</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3000</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>037 - 3000</name>
+    </instance>
+    <instance scriptid="val_810864_7451241_sb1_314">
+      <custrecord_ht_record_cilindraje_codigo>038</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3300</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>038 - 3300</name>
+    </instance>
+    <instance scriptid="val_810865_7451241_sb1_475">
+      <custrecord_ht_record_cilindraje_codigo>039</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3400</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>039 - 3400</name>
+    </instance>
+    <instance scriptid="val_810866_7451241_sb1_401">
+      <custrecord_ht_record_cilindraje_codigo>040</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3500</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>040 - 3500</name>
+    </instance>
+    <instance scriptid="val_810867_7451241_sb1_696">
+      <custrecord_ht_record_cilindraje_codigo>041</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3956</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>041 - 3956</name>
+    </instance>
+    <instance scriptid="val_810868_7451241_sb1_672">
+      <custrecord_ht_record_cilindraje_codigo>042</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4000</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>042 - 4000</name>
+    </instance>
+    <instance scriptid="val_810869_7451241_sb1_933">
+      <custrecord_ht_record_cilindraje_codigo>043</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4500</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>043 - 4500</name>
+    </instance>
+    <instance scriptid="val_810870_7451241_sb1_644">
+      <custrecord_ht_record_cilindraje_codigo>044</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4600</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>044 - 4600</name>
+    </instance>
+    <instance scriptid="val_810871_7451241_sb1_230">
+      <custrecord_ht_record_cilindraje_codigo>045</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4608</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>045 - 4608</name>
+    </instance>
+    <instance scriptid="val_810872_7451241_sb1_589">
+      <custrecord_ht_record_cilindraje_codigo>046</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4700</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>046 - 4700</name>
+    </instance>
+    <instance scriptid="val_810873_7451241_sb1_764">
+      <custrecord_ht_record_cilindraje_codigo>047</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1987</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>047 - 1987</name>
+    </instance>
+    <instance scriptid="val_810874_7451241_sb1_461">
+      <custrecord_ht_record_cilindraje_codigo>048</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2494</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>048 - 2494</name>
+    </instance>
+    <instance scriptid="val_810875_7451241_sb1_822">
+      <custrecord_ht_record_cilindraje_codigo>049</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2694</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>049 - 2694</name>
+    </instance>
+    <instance scriptid="val_810876_7451241_sb1_851">
+      <custrecord_ht_record_cilindraje_codigo>050</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4664</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>050 - 4664</name>
+    </instance>
+    <instance scriptid="val_810877_7451241_sb1_940">
+      <custrecord_ht_record_cilindraje_codigo>051</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1598</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>051 - 1598</name>
+    </instance>
+    <instance scriptid="val_810878_7451241_sb1_667">
+      <custrecord_ht_record_cilindraje_codigo>052</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>NO DEFINIDO</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>052 - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_810879_7451241_sb1_570">
+      <custrecord_ht_record_cilindraje_codigo>053</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3456</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>053 - 3456</name>
+    </instance>
+    <instance scriptid="val_810880_7451241_sb1_838">
+      <custrecord_ht_record_cilindraje_codigo>054</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1496</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>054 - 1496</name>
+    </instance>
+    <instance scriptid="val_810881_7451241_sb1_430">
+      <custrecord_ht_record_cilindraje_codigo>055</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2986</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>055 - 2986</name>
+    </instance>
+    <instance scriptid="val_810882_7451241_sb1_193">
+      <custrecord_ht_record_cilindraje_codigo>056</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1299</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>056 - 1299</name>
+    </instance>
+    <instance scriptid="val_810883_7451241_sb1_724">
+      <custrecord_ht_record_cilindraje_codigo>057</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>0</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>057 - 0</name>
+    </instance>
+    <instance scriptid="val_810884_7451241_sb1_783">
+      <custrecord_ht_record_cilindraje_codigo>058</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1495</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>058 - 1495</name>
+    </instance>
+    <instance scriptid="val_810885_7451241_sb1_649">
+      <custrecord_ht_record_cilindraje_codigo>059</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2600</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>059 - 2600</name>
+    </instance>
+    <instance scriptid="val_810886_7451241_sb1_913">
+      <custrecord_ht_record_cilindraje_codigo>060</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3604</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>060 - 3604</name>
+    </instance>
+    <instance scriptid="val_810887_7451241_sb1_892">
+      <custrecord_ht_record_cilindraje_codigo>061</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3498</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>061 - 3498</name>
+    </instance>
+    <instance scriptid="val_810888_7451241_sb1_252">
+      <custrecord_ht_record_cilindraje_codigo>062</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2360</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>062 - 2360</name>
+    </instance>
+    <instance scriptid="val_810889_7451241_sb1_639">
+      <custrecord_ht_record_cilindraje_codigo>063</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>5700</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>063 - 5700</name>
+    </instance>
+    <instance scriptid="val_810890_7451241_sb1_991">
+      <custrecord_ht_record_cilindraje_codigo>064</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3700</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>064 - 3700</name>
+    </instance>
+    <instance scriptid="val_810891_7451241_sb1_244">
+      <custrecord_ht_record_cilindraje_codigo>065</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3600</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>065 - 3600</name>
+    </instance>
+    <instance scriptid="val_810892_7451241_sb1_962">
+      <custrecord_ht_record_cilindraje_codigo>066</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2200</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>066 - 2200</name>
+    </instance>
+    <instance scriptid="val_810893_7451241_sb1_264">
+      <custrecord_ht_record_cilindraje_codigo>067</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1242</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>067 - 1242</name>
+    </instance>
+    <instance scriptid="val_810894_7451241_sb1_965">
+      <custrecord_ht_record_cilindraje_codigo>068</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1368</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>068 - 1368</name>
+    </instance>
+    <instance scriptid="val_810895_7451241_sb1_735">
+      <custrecord_ht_record_cilindraje_codigo>069</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2393</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>069 - 2393</name>
+    </instance>
+    <instance scriptid="val_810896_7451241_sb1_636">
+      <custrecord_ht_record_cilindraje_codigo>070</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2964</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>070 - 2964</name>
+    </instance>
+    <instance scriptid="val_810897_7451241_sb1_320">
+      <custrecord_ht_record_cilindraje_codigo>071</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1400</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>071 - 1400</name>
+    </instance>
+    <instance scriptid="val_810898_7451241_sb1_966">
+      <custrecord_ht_record_cilindraje_codigo>072</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3200</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>072 - 3200</name>
+    </instance>
+    <instance scriptid="val_810899_7451241_sb1_527">
+      <custrecord_ht_record_cilindraje_codigo>073</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>25</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>073 - 25</name>
+    </instance>
+    <instance scriptid="val_810900_7451241_sb1_319">
+      <custrecord_ht_record_cilindraje_codigo>074</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>16</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>074 - 16</name>
+    </instance>
+    <instance scriptid="val_810901_7451241_sb1_589">
+      <custrecord_ht_record_cilindraje_codigo>075</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>075 - 1</name>
+    </instance>
+    <instance scriptid="val_810902_7451241_sb1_279">
+      <custrecord_ht_record_cilindraje_codigo>076</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1100</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>076 - 1100</name>
+    </instance>
+    <instance scriptid="val_810903_7451241_sb1_251">
+      <custrecord_ht_record_cilindraje_codigo>077</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1200</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>077 - 1200</name>
+    </instance>
+    <instance scriptid="val_810904_7451241_sb1_397">
+      <custrecord_ht_record_cilindraje_codigo>078</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1000</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>078 - 1000</name>
+    </instance>
+    <instance scriptid="val_810905_7451241_sb1_149">
+      <custrecord_ht_record_cilindraje_codigo>079</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>079 - 2</name>
+    </instance>
+    <instance scriptid="val_810906_7451241_sb1_782">
+      <custrecord_ht_record_cilindraje_codigo>080</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2487</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>080 - 2487</name>
+    </instance>
+    <instance scriptid="val_810907_7451241_sb1_151">
+      <custrecord_ht_record_cilindraje_codigo>081</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2755</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>081 - 2755</name>
+    </instance>
+    <instance scriptid="val_810908_7451241_sb1_694">
+      <custrecord_ht_record_cilindraje_codigo>082</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>20</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>082 - 20</name>
+    </instance>
+    <instance scriptid="val_810909_7451241_sb1_772">
+      <custrecord_ht_record_cilindraje_codigo>083</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>083 - 4</name>
+    </instance>
+    <instance scriptid="val_810910_7451241_sb1_274">
+      <custrecord_ht_record_cilindraje_codigo>084</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>084 - 3</name>
+    </instance>
+    <instance scriptid="val_810911_7451241_sb1_509">
+      <custrecord_ht_record_cilindraje_codigo>085</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1398</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>085 - 1398</name>
+    </instance>
+    <instance scriptid="val_810912_7451241_sb1_809">
+      <custrecord_ht_record_cilindraje_codigo>086</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1995</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>086 - 1995</name>
+    </instance>
+    <instance scriptid="val_810913_7451241_sb1_111">
+      <custrecord_ht_record_cilindraje_codigo>087</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1498</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>087 - 1498</name>
+    </instance>
+    <instance scriptid="val_810914_7451241_sb1_503">
+      <custrecord_ht_record_cilindraje_codigo>088</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1497</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>088 - 1497</name>
+    </instance>
+    <instance scriptid="val_810915_7451241_sb1_277">
+      <custrecord_ht_record_cilindraje_codigo>089</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1991</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>089 - 1991</name>
+    </instance>
+    <instance scriptid="val_810916_7451241_sb1_441">
+      <custrecord_ht_record_cilindraje_codigo>090</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>7684</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>090 - 7684</name>
+    </instance>
+    <instance scriptid="val_810917_7451241_sb1_604">
+      <custrecord_ht_record_cilindraje_codigo>091</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>9.95</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>091 - 9.95</name>
+    </instance>
+    <instance scriptid="val_810918_7451241_sb1_294">
+      <custrecord_ht_record_cilindraje_codigo>092</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1796</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>092 - 1796</name>
+    </instance>
+    <instance scriptid="val_810919_7451241_sb1_507">
+      <custrecord_ht_record_cilindraje_codigo>093</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1997</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>093 - 1997</name>
+    </instance>
+    <instance scriptid="val_810920_7451241_sb1_498">
+      <custrecord_ht_record_cilindraje_codigo>094</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1370</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>094 - 1370</name>
+    </instance>
+    <instance scriptid="val_810921_7451241_sb1_139">
+      <custrecord_ht_record_cilindraje_codigo>095</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2771</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>095 - 2771</name>
+    </instance>
+    <instance scriptid="val_810922_7451241_sb1_562">
+      <custrecord_ht_record_cilindraje_codigo>096</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2488</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>096 - 2488</name>
+    </instance>
+    <instance scriptid="val_810923_7451241_sb1_689">
+      <custrecord_ht_record_cilindraje_codigo>098</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>995</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>098 - 995</name>
+    </instance>
+    <instance scriptid="val_810924_7451241_sb1_118">
+      <custrecord_ht_record_cilindraje_codigo>099</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2189</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>099 - 2189</name>
+    </instance>
+    <instance scriptid="val_810925_7451241_sb1_831">
+      <custrecord_ht_record_cilindraje_codigo>100</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2300</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>100 - 2300</name>
+    </instance>
+    <instance scriptid="val_810926_7451241_sb1_674">
+      <custrecord_ht_record_cilindraje_codigo>101</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2405</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>101 - 2405</name>
+    </instance>
+    <instance scriptid="val_810927_7451241_sb1_114">
+      <custrecord_ht_record_cilindraje_codigo>102</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2499</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>102 - 2499</name>
+    </instance>
+    <instance scriptid="val_810928_7451241_sb1_446">
+      <custrecord_ht_record_cilindraje_codigo>103</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2900</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>103 - 2900</name>
+    </instance>
+    <instance scriptid="val_810929_7451241_sb1_559">
+      <custrecord_ht_record_cilindraje_codigo>104</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2999</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>104 - 2999</name>
+    </instance>
+    <instance scriptid="val_810930_7451241_sb1_915">
+      <custrecord_ht_record_cilindraje_codigo>105</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3165</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>105 - 3165</name>
+    </instance>
+    <instance scriptid="val_810931_7451241_sb1_334">
+      <custrecord_ht_record_cilindraje_codigo>106</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3726</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>106 - 3726</name>
+    </instance>
+    <instance scriptid="val_810932_7451241_sb1_253">
+      <custrecord_ht_record_cilindraje_codigo>107</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3800</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>107 - 3800</name>
+    </instance>
+    <instance scriptid="val_810933_7451241_sb1_815">
+      <custrecord_ht_record_cilindraje_codigo>108</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4009</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>108 - 4009</name>
+    </instance>
+    <instance scriptid="val_810934_7451241_sb1_996">
+      <custrecord_ht_record_cilindraje_codigo>109</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4300</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>109 - 4300</name>
+    </instance>
+    <instance scriptid="val_810935_7451241_sb1_898">
+      <custrecord_ht_record_cilindraje_codigo>110</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4613</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>110 - 4613</name>
+    </instance>
+    <instance scriptid="val_810936_7451241_sb1_470">
+      <custrecord_ht_record_cilindraje_codigo>111</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4800</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>111 - 4800</name>
+    </instance>
+    <instance scriptid="val_810937_7451241_sb1_372">
+      <custrecord_ht_record_cilindraje_codigo>112</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>5193</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>112 - 5193</name>
+    </instance>
+    <instance scriptid="val_810938_7451241_sb1_725">
+      <custrecord_ht_record_cilindraje_codigo>113</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>5307</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>113 - 5307</name>
+    </instance>
+    <instance scriptid="val_810939_7451241_sb1_228">
+      <custrecord_ht_record_cilindraje_codigo>114</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>5400</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>114 - 5400</name>
+    </instance>
+    <instance scriptid="val_810940_7451241_sb1_360">
+      <custrecord_ht_record_cilindraje_codigo>115</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>8273</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>115 - 8273</name>
+    </instance>
+    <instance scriptid="val_810941_7451241_sb1_793">
+      <custrecord_ht_record_cilindraje_codigo>116</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>8700</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>116 - 8700</name>
+    </instance>
+    <instance scriptid="val_810942_7451241_sb1_651">
+      <custrecord_ht_record_cilindraje_codigo>117</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>11946</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>117 - 11946</name>
+    </instance>
+    <instance scriptid="val_810943_7451241_sb1_840">
+      <custrecord_ht_record_cilindraje_codigo>118</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>7</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>118 - 7</name>
+    </instance>
+    <instance scriptid="val_810944_7451241_sb1_818">
+      <custrecord_ht_record_cilindraje_codigo>119</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>9</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>119 - 9</name>
+    </instance>
+    <instance scriptid="val_810945_7451241_sb1_197">
+      <custrecord_ht_record_cilindraje_codigo>122</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1206</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>122 - 1206</name>
+    </instance>
+    <instance scriptid="val_810946_7451241_sb1_367">
+      <custrecord_ht_record_cilindraje_codigo>123</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1996</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>123 - 1996</name>
+    </instance>
+    <instance scriptid="val_810947_7451241_sb1_392">
+      <custrecord_ht_record_cilindraje_codigo>124</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1499</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>124 - 1499</name>
+    </instance>
+    <instance scriptid="val_810948_7451241_sb1_933">
+      <custrecord_ht_record_cilindraje_codigo>125</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2998</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>125 - 2998</name>
+    </instance>
+    <instance scriptid="val_810949_7451241_sb1_671">
+      <custrecord_ht_record_cilindraje_codigo>126</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2237</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>126 - 2237</name>
+    </instance>
+    <instance scriptid="val_810950_7451241_sb1_567">
+      <custrecord_ht_record_cilindraje_codigo>130</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3445</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>130 - 3445</name>
+    </instance>
+    <instance scriptid="val_810951_7451241_sb1_632">
+      <custrecord_ht_record_cilindraje_codigo>131</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2800</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>131 - 2800</name>
+    </instance>
+    <instance scriptid="val_810952_7451241_sb1_761">
+      <custrecord_ht_record_cilindraje_codigo>132</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>4200</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>132 - 4200</name>
+    </instance>
+    <instance scriptid="val_810953_7451241_sb1_591">
+      <custrecord_ht_record_cilindraje_codigo>133</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2127</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>133 - 2127</name>
+    </instance>
+    <instance scriptid="val_810954_7451241_sb1_406">
+      <custrecord_ht_record_cilindraje_codigo>134</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3907</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>134 - 3907</name>
+    </instance>
+    <instance scriptid="val_810955_7451241_sb1_893">
+      <custrecord_ht_record_cilindraje_codigo>135</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>5123</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>135 - 5123</name>
+    </instance>
+    <instance scriptid="val_810956_7451241_sb1_423">
+      <custrecord_ht_record_cilindraje_codigo>136</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>24</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>136 - 24</name>
+    </instance>
+    <instance scriptid="val_810957_7451241_sb1_709">
+      <custrecord_ht_record_cilindraje_codigo>138</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2498</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>138 - 2498</name>
+    </instance>
+    <instance scriptid="val_810958_7451241_sb1_330">
+      <custrecord_ht_record_cilindraje_codigo>139</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3908</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>139 - 3908</name>
+    </instance>
+    <instance scriptid="val_810959_7451241_sb1_824">
+      <custrecord_ht_record_cilindraje_codigo>140</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1971</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>140 - 1971</name>
+    </instance>
+    <instance scriptid="val_810960_7451241_sb1_809">
+      <custrecord_ht_record_cilindraje_codigo>141</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1198</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>141 - 1198</name>
+    </instance>
+    <instance scriptid="val_810961_7451241_sb1_169">
+      <custrecord_ht_record_cilindraje_codigo>143</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1490</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>143 - 1490</name>
+    </instance>
+    <instance scriptid="val_810962_7451241_sb1_572">
+      <custrecord_ht_record_cilindraje_codigo>144</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1586</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>144 - 1586</name>
+    </instance>
+    <instance scriptid="val_810963_7451241_sb1_340">
+      <custrecord_ht_record_cilindraje_codigo>145</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>175</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>145 - 175</name>
+    </instance>
+    <instance scriptid="val_810964_7451241_sb1_600">
+      <custrecord_ht_record_cilindraje_codigo>146</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>5800</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>146 - 5800</name>
+    </instance>
+    <instance scriptid="val_810965_7451241_sb1_970">
+      <custrecord_ht_record_cilindraje_codigo>147</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>6200</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>147 - 6200</name>
+    </instance>
+    <instance scriptid="val_810966_7451241_sb1_647">
+      <custrecord_ht_record_cilindraje_codigo>148</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>6800</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>148 - 6800</name>
+    </instance>
+    <instance scriptid="val_810967_7451241_sb1_186">
+      <custrecord_ht_record_cilindraje_codigo>149</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>650</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>149 - 650</name>
+    </instance>
+    <instance scriptid="val_810968_7451241_sb1_121">
+      <custrecord_ht_record_cilindraje_codigo>150</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>200</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>150 - 200</name>
+    </instance>
+    <instance scriptid="val_810969_7451241_sb1_190">
+      <custrecord_ht_record_cilindraje_codigo>151</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>250</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>151 - 250</name>
+    </instance>
+    <instance scriptid="val_810970_7451241_sb1_658">
+      <custrecord_ht_record_cilindraje_codigo>152</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1373</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>152 - 1373</name>
+    </instance>
+    <instance scriptid="val_810971_7451241_sb1_371">
+      <custrecord_ht_record_cilindraje_codigo>153</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>1485</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>153 - 1485</name>
+    </instance>
+    <instance scriptid="val_810972_7451241_sb1_692">
+      <custrecord_ht_record_cilindraje_codigo>154</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>3342</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>154 - 3342</name>
+    </instance>
+    <instance scriptid="val_810973_7451241_sb1_719">
+      <custrecord_ht_record_cilindraje_codigo>155</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>2143</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>155 - 2143</name>
+    </instance>
+    <instance scriptid="val_810974_7451241_sb1_429">
+      <custrecord_ht_record_cilindraje_codigo>156</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>124</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>156 - 124</name>
+    </instance>
+    <instance scriptid="val_810975_7451241_sb1_665">
+      <custrecord_ht_record_cilindraje_codigo>157</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>300</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>157 - 300</name>
+    </instance>
+    <instance scriptid="val_810976_7451241_sb1_788">
+      <custrecord_ht_record_cilindraje_codigo>158</custrecord_ht_record_cilindraje_codigo>
+      <custrecord_ht_record_cilindraje_descrip>150</custrecord_ht_record_cilindraje_descrip>
+      <isinactive>F</isinactive>
+      <name>158 - 150</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

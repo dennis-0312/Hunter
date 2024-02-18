@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ec_codigo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC - codigo</name>
+  <customvalues>
+    <customvalue scriptid="val_929199_7451241_sb1_958">
+      <isinactive>F</isinactive>
+      <value>CUE</value>
+    </customvalue>
+    <customvalue scriptid="val_929200_7451241_sb1_515">
+      <isinactive>F</isinactive>
+      <value>CHE</value>
+    </customvalue>
+    <customvalue scriptid="val_929201_7451241_sb1_301">
+      <isinactive>F</isinactive>
+      <value>COB</value>
+    </customvalue>
+    <customvalue scriptid="val_929202_7451241_sb1_890">
+      <isinactive>F</isinactive>
+      <value>IMP</value>
+    </customvalue>
+    <customvalue scriptid="val_929203_7451241_sb1_263">
+      <isinactive>F</isinactive>
+      <value>PEF</value>
+    </customvalue>
+  </customvalues>
+</customlist>

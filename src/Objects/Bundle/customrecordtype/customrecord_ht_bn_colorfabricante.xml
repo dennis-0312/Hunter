@@ -1,0 +1,1236 @@
+<customrecordtype scriptid="customrecord_ht_bn_colorfabricante">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Color Fabricante</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_colorfabricante_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_colorfabricante_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_810141_7451241_sb1_242">
+      <custrecord_ht_bn_colorfabricante_codigo>085</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ALUMINIO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>085 - ALUMINIO</name>
+    </instance>
+    <instance scriptid="val_810142_7451241_sb1_868">
+      <custrecord_ht_bn_colorfabricante_codigo>244</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ALUMINIO METALICO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>244 - ALUMINIO METALICO</name>
+    </instance>
+    <instance scriptid="val_810143_7451241_sb1_777">
+      <custrecord_ht_bn_colorfabricante_codigo>065</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AMABILE ROSE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>065 - AMABILE ROSE</name>
+    </instance>
+    <instance scriptid="val_810144_7451241_sb1_415">
+      <custrecord_ht_bn_colorfabricante_codigo>125</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AMARILLO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>125 - AMARILLO</name>
+    </instance>
+    <instance scriptid="val_810145_7451241_sb1_439">
+      <custrecord_ht_bn_colorfabricante_codigo>074</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AMARILLO DUBAI</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>074 - AMARILLO DUBAI</name>
+    </instance>
+    <instance scriptid="val_810146_7451241_sb1_670">
+      <custrecord_ht_bn_colorfabricante_codigo>138</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AMARILLO LIMA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>138 - AMARILLO LIMA</name>
+    </instance>
+    <instance scriptid="val_810147_7451241_sb1_296">
+      <custrecord_ht_bn_colorfabricante_codigo>136</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ANARANJADO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>136 - ANARANJADO</name>
+    </instance>
+    <instance scriptid="val_810148_7451241_sb1_290">
+      <custrecord_ht_bn_colorfabricante_codigo>029</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>APPLE GREEN</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>029 - APPLE GREEN</name>
+    </instance>
+    <instance scriptid="val_810149_7451241_sb1_911">
+      <custrecord_ht_bn_colorfabricante_codigo>223</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AQUA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>223 - AQUA</name>
+    </instance>
+    <instance scriptid="val_810150_7451241_sb1_632">
+      <custrecord_ht_bn_colorfabricante_codigo>056</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AQUA SILVER</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>056 - AQUA SILVER</name>
+    </instance>
+    <instance scriptid="val_810151_7451241_sb1_561">
+      <custrecord_ht_bn_colorfabricante_codigo>067</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ARC WHITE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>067 - ARC WHITE</name>
+    </instance>
+    <instance scriptid="val_810152_7451241_sb1_260">
+      <custrecord_ht_bn_colorfabricante_codigo>134</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>134 - AZUL</name>
+    </instance>
+    <instance scriptid="val_810153_7451241_sb1_745">
+      <custrecord_ht_bn_colorfabricante_codigo>189</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>189 - AZUL</name>
+    </instance>
+    <instance scriptid="val_810154_7451241_sb1_777">
+      <custrecord_ht_bn_colorfabricante_codigo>095</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL CONSTELACION (METALICO)</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>095 - AZUL CONSTELACION (METALICO)</name>
+    </instance>
+    <instance scriptid="val_810155_7451241_sb1_418">
+      <custrecord_ht_bn_colorfabricante_codigo>057</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL CORCEGA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>057 - AZUL CORCEGA</name>
+    </instance>
+    <instance scriptid="val_810156_7451241_sb1_308">
+      <custrecord_ht_bn_colorfabricante_codigo>005</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL CORSEGA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>005 - AZUL CORSEGA</name>
+    </instance>
+    <instance scriptid="val_810157_7451241_sb1_494">
+      <custrecord_ht_bn_colorfabricante_codigo>205</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL GRIS</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>205 - AZUL GRIS</name>
+    </instance>
+    <instance scriptid="val_810158_7451241_sb1_259">
+      <custrecord_ht_bn_colorfabricante_codigo>187</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL OBSCURO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>187 - AZUL OBSCURO</name>
+    </instance>
+    <instance scriptid="val_810159_7451241_sb1_847">
+      <custrecord_ht_bn_colorfabricante_codigo>175</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL PARIA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>175 - AZUL PARIA</name>
+    </instance>
+    <instance scriptid="val_810160_7451241_sb1_701">
+      <custrecord_ht_bn_colorfabricante_codigo>039</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL POSIDON</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>039 - AZUL POSIDON</name>
+    </instance>
+    <instance scriptid="val_810161_7451241_sb1_968">
+      <custrecord_ht_bn_colorfabricante_codigo>203</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL TINTA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>203 - AZUL TINTA</name>
+    </instance>
+    <instance scriptid="val_810162_7451241_sb1_394">
+      <custrecord_ht_bn_colorfabricante_codigo>206</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL TRUE BLUE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>206 - AZUL TRUE BLUE</name>
+    </instance>
+    <instance scriptid="val_810163_7451241_sb1_576">
+      <custrecord_ht_bn_colorfabricante_codigo>199</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL UNIVERSO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>199 - AZUL UNIVERSO</name>
+    </instance>
+    <instance scriptid="val_810164_7451241_sb1_995">
+      <custrecord_ht_bn_colorfabricante_codigo>086</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL VENECIA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>086 - AZUL VENECIA</name>
+    </instance>
+    <instance scriptid="val_810165_7451241_sb1_496">
+      <custrecord_ht_bn_colorfabricante_codigo>126</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL Y BLANCO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>126 - AZUL Y BLANCO</name>
+    </instance>
+    <instance scriptid="val_810166_7451241_sb1_423">
+      <custrecord_ht_bn_colorfabricante_codigo>230</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>230 - AZUL.</name>
+    </instance>
+    <instance scriptid="val_810167_7451241_sb1_475">
+      <custrecord_ht_bn_colorfabricante_codigo>249</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL..</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>249 - AZUL..</name>
+    </instance>
+    <instance scriptid="val_810168_7451241_sb1_568">
+      <custrecord_ht_bn_colorfabricante_codigo>253</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL...</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>253 - AZUL...</name>
+    </instance>
+    <instance scriptid="val_810169_7451241_sb1_358">
+      <custrecord_ht_bn_colorfabricante_codigo>239</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>AZUL/ROJO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>239 - AZUL/ROJO</name>
+    </instance>
+    <instance scriptid="val_810170_7451241_sb1_174">
+      <custrecord_ht_bn_colorfabricante_codigo>209</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BEIGE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>209 - BEIGE</name>
+    </instance>
+    <instance scriptid="val_810171_7451241_sb1_899">
+      <custrecord_ht_bn_colorfabricante_codigo>181</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BEIGE ANGORA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>181 - BEIGE ANGORA</name>
+    </instance>
+    <instance scriptid="val_810172_7451241_sb1_541">
+      <custrecord_ht_bn_colorfabricante_codigo>025</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BEIGE CARRARA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>025 - BEIGE CARRARA</name>
+    </instance>
+    <instance scriptid="val_810173_7451241_sb1_116">
+      <custrecord_ht_bn_colorfabricante_codigo>150</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BEIGE M</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>150 - BEIGE M</name>
+    </instance>
+    <instance scriptid="val_810174_7451241_sb1_213">
+      <custrecord_ht_bn_colorfabricante_codigo>006</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BEIGE MARRUECOS</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>006 - BEIGE MARRUECOS</name>
+    </instance>
+    <instance scriptid="val_810175_7451241_sb1_748">
+      <custrecord_ht_bn_colorfabricante_codigo>011</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BEIGE METALICO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>011 - BEIGE METALICO</name>
+    </instance>
+    <instance scriptid="val_810176_7451241_sb1_948">
+      <custrecord_ht_bn_colorfabricante_codigo>033</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BEIGE OASIS</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>033 - BEIGE OASIS</name>
+    </instance>
+    <instance scriptid="val_810177_7451241_sb1_427">
+      <custrecord_ht_bn_colorfabricante_codigo>048</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BEIGE TURQUIA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>048 - BEIGE TURQUIA</name>
+    </instance>
+    <instance scriptid="val_810178_7451241_sb1_661">
+      <custrecord_ht_bn_colorfabricante_codigo>081</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLACK GRANITE METALLIC</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>081 - BLACK GRANITE METALLIC</name>
+    </instance>
+    <instance scriptid="val_810179_7451241_sb1_932">
+      <custrecord_ht_bn_colorfabricante_codigo>102</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>102 - BLANCO</name>
+    </instance>
+    <instance scriptid="val_810180_7451241_sb1_383">
+      <custrecord_ht_bn_colorfabricante_codigo>088</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO ANTARTIDA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>088 - BLANCO ANTARTIDA</name>
+    </instance>
+    <instance scriptid="val_810181_7451241_sb1_480">
+      <custrecord_ht_bn_colorfabricante_codigo>049</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO ARTICA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>049 - BLANCO ARTICA</name>
+    </instance>
+    <instance scriptid="val_810182_7451241_sb1_638">
+      <custrecord_ht_bn_colorfabricante_codigo>028</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO MAHLER</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>028 - BLANCO MAHLER</name>
+    </instance>
+    <instance scriptid="val_810183_7451241_sb1_187">
+      <custrecord_ht_bn_colorfabricante_codigo>091</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO NEVADO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>091 - BLANCO NEVADO</name>
+    </instance>
+    <instance scriptid="val_810184_7451241_sb1_750">
+      <custrecord_ht_bn_colorfabricante_codigo>018</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO ORO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>018 - BLANCO ORO</name>
+    </instance>
+    <instance scriptid="val_810185_7451241_sb1_737">
+      <custrecord_ht_bn_colorfabricante_codigo>257</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO PERLA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>257 - BLANCO PERLA</name>
+    </instance>
+    <instance scriptid="val_810186_7451241_sb1_721">
+      <custrecord_ht_bn_colorfabricante_codigo>069</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO POLAR</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>069 - BLANCO POLAR</name>
+    </instance>
+    <instance scriptid="val_810187_7451241_sb1_555">
+      <custrecord_ht_bn_colorfabricante_codigo>051</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO PURO (SOLIDO)</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>051 - BLANCO PURO (SOLIDO)</name>
+    </instance>
+    <instance scriptid="val_810188_7451241_sb1_360">
+      <custrecord_ht_bn_colorfabricante_codigo>105</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO SAL</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>105 - BLANCO SAL</name>
+    </instance>
+    <instance scriptid="val_810189_7451241_sb1_191">
+      <custrecord_ht_bn_colorfabricante_codigo>241</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BLANCO.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>241 - BLANCO.</name>
+    </instance>
+    <instance scriptid="val_810190_7451241_sb1_514">
+      <custrecord_ht_bn_colorfabricante_codigo>256</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BRONCE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>256 - BRONCE</name>
+    </instance>
+    <instance scriptid="val_810191_7451241_sb1_556">
+      <custrecord_ht_bn_colorfabricante_codigo>151</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>BRONCE M</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>151 - BRONCE M</name>
+    </instance>
+    <instance scriptid="val_810192_7451241_sb1_120">
+      <custrecord_ht_bn_colorfabricante_codigo>231</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>CAFE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>231 - CAFE</name>
+    </instance>
+    <instance scriptid="val_810193_7451241_sb1_757">
+      <custrecord_ht_bn_colorfabricante_codigo>238</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>CAFE.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>238 - CAFE.</name>
+    </instance>
+    <instance scriptid="val_810194_7451241_sb1_970">
+      <custrecord_ht_bn_colorfabricante_codigo>258</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>CAMUFLADO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>258 - CAMUFLADO</name>
+    </instance>
+    <instance scriptid="val_810195_7451241_sb1_993">
+      <custrecord_ht_bn_colorfabricante_codigo>087</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>CAPUCCINO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>087 - CAPUCCINO</name>
+    </instance>
+    <instance scriptid="val_810196_7451241_sb1_385">
+      <custrecord_ht_bn_colorfabricante_codigo>017</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>CASABLANCA WHIT</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>017 - CASABLANCA WHIT</name>
+    </instance>
+    <instance scriptid="val_810197_7451241_sb1_385">
+      <custrecord_ht_bn_colorfabricante_codigo>171</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>CELESTE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>171 - CELESTE</name>
+    </instance>
+    <instance scriptid="val_810198_7451241_sb1_350">
+      <custrecord_ht_bn_colorfabricante_codigo>015</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>COBALT BLUE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>015 - COBALT BLUE</name>
+    </instance>
+    <instance scriptid="val_810199_7451241_sb1_643">
+      <custrecord_ht_bn_colorfabricante_codigo>247</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>COBRE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>247 - COBRE</name>
+    </instance>
+    <instance scriptid="val_810200_7451241_sb1_375">
+      <custrecord_ht_bn_colorfabricante_codigo>001</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>COLIMA GRAY</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>001 - COLIMA GRAY</name>
+    </instance>
+    <instance scriptid="val_810201_7451241_sb1_637">
+      <custrecord_ht_bn_colorfabricante_codigo>129</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>CREMA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>129 - CREMA</name>
+    </instance>
+    <instance scriptid="val_810202_7451241_sb1_438">
+      <custrecord_ht_bn_colorfabricante_codigo>234</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>CREMA_TDE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>234 - CREMA_TDE</name>
+    </instance>
+    <instance scriptid="val_810203_7451241_sb1_464">
+      <custrecord_ht_bn_colorfabricante_codigo>083</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>DARK OLIVE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>083 - DARK OLIVE</name>
+    </instance>
+    <instance scriptid="val_810204_7451241_sb1_736">
+      <custrecord_ht_bn_colorfabricante_codigo>046</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>DENIN BLUE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>046 - DENIN BLUE</name>
+    </instance>
+    <instance scriptid="val_810205_7451241_sb1_364">
+      <custrecord_ht_bn_colorfabricante_codigo>153</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>DORADO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>153 - DORADO</name>
+    </instance>
+    <instance scriptid="val_810206_7451241_sb1_273">
+      <custrecord_ht_bn_colorfabricante_codigo>042</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ELECTRIC YELLOW</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>042 - ELECTRIC YELLOW</name>
+    </instance>
+    <instance scriptid="val_810207_7451241_sb1_172">
+      <custrecord_ht_bn_colorfabricante_codigo>222</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>FAWN / BEIGE ARENA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>222 - FAWN / BEIGE ARENA</name>
+    </instance>
+    <instance scriptid="val_810208_7451241_sb1_500">
+      <custrecord_ht_bn_colorfabricante_codigo>063</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>FLAME RED</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>063 - FLAME RED</name>
+    </instance>
+    <instance scriptid="val_810209_7451241_sb1_902">
+      <custrecord_ht_bn_colorfabricante_codigo>021</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GALAXY WHITE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>021 - GALAXY WHITE</name>
+    </instance>
+    <instance scriptid="val_810210_7451241_sb1_693">
+      <custrecord_ht_bn_colorfabricante_codigo>064</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GOLDEN YELLOW</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>064 - GOLDEN YELLOW</name>
+    </instance>
+    <instance scriptid="val_810211_7451241_sb1_333">
+      <custrecord_ht_bn_colorfabricante_codigo>012</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRANADA BLANCK</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>012 - GRANADA BLANCK</name>
+    </instance>
+    <instance scriptid="val_810212_7451241_sb1_914">
+      <custrecord_ht_bn_colorfabricante_codigo>221</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GREGE/FAWN/SAND BEIG</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>221 - GREGE/FAWN/SAND BEIG</name>
+    </instance>
+    <instance scriptid="val_810213_7451241_sb1_283">
+      <custrecord_ht_bn_colorfabricante_codigo>120</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>120 - GRIS</name>
+    </instance>
+    <instance scriptid="val_810214_7451241_sb1_741">
+      <custrecord_ht_bn_colorfabricante_codigo>213</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS-</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>213 - GRIS-</name>
+    </instance>
+    <instance scriptid="val_810215_7451241_sb1_401">
+      <custrecord_ht_bn_colorfabricante_codigo>180</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS ACERO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>180 - GRIS ACERO</name>
+    </instance>
+    <instance scriptid="val_810216_7451241_sb1_893">
+      <custrecord_ht_bn_colorfabricante_codigo>040</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS BRETANA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>040 - GRIS BRETANA</name>
+    </instance>
+    <instance scriptid="val_810217_7451241_sb1_393">
+      <custrecord_ht_bn_colorfabricante_codigo>052</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS ECLIPSE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>052 - GRIS ECLIPSE</name>
+    </instance>
+    <instance scriptid="val_810218_7451241_sb1_417">
+      <custrecord_ht_bn_colorfabricante_codigo>245</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS GRAFITO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>245 - GRIS GRAFITO</name>
+    </instance>
+    <instance scriptid="val_810219_7451241_sb1_617">
+      <custrecord_ht_bn_colorfabricante_codigo>250</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS GRANITO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>250 - GRIS GRANITO</name>
+    </instance>
+    <instance scriptid="val_810220_7451241_sb1_206">
+      <custrecord_ht_bn_colorfabricante_codigo>038</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS LONDON</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>038 - GRIS LONDON</name>
+    </instance>
+    <instance scriptid="val_810221_7451241_sb1_948">
+      <custrecord_ht_bn_colorfabricante_codigo>216</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS OBS / CHARCOAL</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>216 - GRIS OBS / CHARCOAL</name>
+    </instance>
+    <instance scriptid="val_810222_7451241_sb1_274">
+      <custrecord_ht_bn_colorfabricante_codigo>212</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS OBS / PIEDRA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>212 - GRIS OBS / PIEDRA</name>
+    </instance>
+    <instance scriptid="val_810223_7451241_sb1_772">
+      <custrecord_ht_bn_colorfabricante_codigo>115</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS OBSCURO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>115 - GRIS OBSCURO</name>
+    </instance>
+    <instance scriptid="val_810224_7451241_sb1_925">
+      <custrecord_ht_bn_colorfabricante_codigo>211</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS OBSCURO.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>211 - GRIS OBSCURO.</name>
+    </instance>
+    <instance scriptid="val_810225_7451241_sb1_392">
+      <custrecord_ht_bn_colorfabricante_codigo>068</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS PERLA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>068 - GRIS PERLA</name>
+    </instance>
+    <instance scriptid="val_810226_7451241_sb1_495">
+      <custrecord_ht_bn_colorfabricante_codigo>093</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS PLATINA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>093 - GRIS PLATINA</name>
+    </instance>
+    <instance scriptid="val_810227_7451241_sb1_804">
+      <custrecord_ht_bn_colorfabricante_codigo>196</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS PLUTON</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>196 - GRIS PLUTON</name>
+    </instance>
+    <instance scriptid="val_810228_7451241_sb1_313">
+      <custrecord_ht_bn_colorfabricante_codigo>027</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS TRINIDAD</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>027 - GRIS TRINIDAD</name>
+    </instance>
+    <instance scriptid="val_810229_7451241_sb1_541">
+      <custrecord_ht_bn_colorfabricante_codigo>210</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>210 - GRIS.</name>
+    </instance>
+    <instance scriptid="val_810230_7451241_sb1_973">
+      <custrecord_ht_bn_colorfabricante_codigo>215</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>GRIS1</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>215 - GRIS1</name>
+    </instance>
+    <instance scriptid="val_810231_7451241_sb1_844">
+      <custrecord_ht_bn_colorfabricante_codigo>037</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>HIGHWAY YELLOW</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>037 - HIGHWAY YELLOW</name>
+    </instance>
+    <instance scriptid="val_810232_7451241_sb1_159">
+      <custrecord_ht_bn_colorfabricante_codigo>059</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>IMPERIAL BLUE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>059 - IMPERIAL BLUE</name>
+    </instance>
+    <instance scriptid="val_810233_7451241_sb1_805">
+      <custrecord_ht_bn_colorfabricante_codigo>016</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>IVORY</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>016 - IVORY</name>
+    </instance>
+    <instance scriptid="val_810234_7451241_sb1_574">
+      <custrecord_ht_bn_colorfabricante_codigo>002</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>IVORY (SOLID)</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>002 - IVORY (SOLID)</name>
+    </instance>
+    <instance scriptid="val_810235_7451241_sb1_985">
+      <custrecord_ht_bn_colorfabricante_codigo>208</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>IVORY.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>208 - IVORY.</name>
+    </instance>
+    <instance scriptid="val_810236_7451241_sb1_182">
+      <custrecord_ht_bn_colorfabricante_codigo>036</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>JAZZ BLUE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>036 - JAZZ BLUE</name>
+    </instance>
+    <instance scriptid="val_810237_7451241_sb1_885">
+      <custrecord_ht_bn_colorfabricante_codigo>076</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>KASHMIR BLUE PEARL METALLIC</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>076 - KASHMIR BLUE PEARL METALLIC</name>
+    </instance>
+    <instance scriptid="val_810238_7451241_sb1_647">
+      <custrecord_ht_bn_colorfabricante_codigo>055</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>KHAKY GREEN</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>055 - KHAKY GREEN</name>
+    </instance>
+    <instance scriptid="val_810239_7451241_sb1_393">
+      <custrecord_ht_bn_colorfabricante_codigo>054</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>LIGHT CHARDONNA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>054 - LIGHT CHARDONNA</name>
+    </instance>
+    <instance scriptid="val_810240_7451241_sb1_473">
+      <custrecord_ht_bn_colorfabricante_codigo>058</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>LIGHT OPAL GREY</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>058 - LIGHT OPAL GREY</name>
+    </instance>
+    <instance scriptid="val_810241_7451241_sb1_647">
+      <custrecord_ht_bn_colorfabricante_codigo>246</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>LILA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>246 - LILA</name>
+    </instance>
+    <instance scriptid="val_810242_7451241_sb1_495">
+      <custrecord_ht_bn_colorfabricante_codigo>061</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>MARRON SENDERO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>061 - MARRON SENDERO</name>
+    </instance>
+    <instance scriptid="val_810243_7451241_sb1_682">
+      <custrecord_ht_bn_colorfabricante_codigo>214</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>MD.CHARCOAL</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>214 - MD.CHARCOAL</name>
+    </instance>
+    <instance scriptid="val_810244_7451241_sb1_544">
+      <custrecord_ht_bn_colorfabricante_codigo>060</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>MELANGE BEIGE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>060 - MELANGE BEIGE</name>
+    </instance>
+    <instance scriptid="val_810245_7451241_sb1_689">
+      <custrecord_ht_bn_colorfabricante_codigo>084</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>MIGHTY BLU</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>084 - MIGHTY BLU</name>
+    </instance>
+    <instance scriptid="val_810246_7451241_sb1_417">
+      <custrecord_ht_bn_colorfabricante_codigo>072</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>MINT GREEN</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>072 - MINT GREEN</name>
+    </instance>
+    <instance scriptid="val_810247_7451241_sb1_554">
+      <custrecord_ht_bn_colorfabricante_codigo>043</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>MISTY BLUE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>043 - MISTY BLUE</name>
+    </instance>
+    <instance scriptid="val_810248_7451241_sb1_311">
+      <custrecord_ht_bn_colorfabricante_codigo>090</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>MORADO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>090 - MORADO</name>
+    </instance>
+    <instance scriptid="val_810249_7451241_sb1_179">
+      <custrecord_ht_bn_colorfabricante_codigo>047</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>MOSTAZA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>047 - MOSTAZA</name>
+    </instance>
+    <instance scriptid="val_810250_7451241_sb1_717">
+      <custrecord_ht_bn_colorfabricante_codigo>225</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>N. D.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>225 - N. D.</name>
+    </instance>
+    <instance scriptid="val_810251_7451241_sb1_227">
+      <custrecord_ht_bn_colorfabricante_codigo>227</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NARANJA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>227 - NARANJA</name>
+    </instance>
+    <instance scriptid="val_810252_7451241_sb1_129">
+      <custrecord_ht_bn_colorfabricante_codigo>152</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NARANJA OBSCURO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>152 - NARANJA OBSCURO</name>
+    </instance>
+    <instance scriptid="val_810253_7451241_sb1_184">
+      <custrecord_ht_bn_colorfabricante_codigo>007</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NEGRO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>007 - NEGRO</name>
+    </instance>
+    <instance scriptid="val_810254_7451241_sb1_472">
+      <custrecord_ht_bn_colorfabricante_codigo>228</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NEGRO-</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>228 - NEGRO-</name>
+    </instance>
+    <instance scriptid="val_810255_7451241_sb1_713">
+      <custrecord_ht_bn_colorfabricante_codigo>162</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NEGRO NACARADO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>162 - NEGRO NACARADO</name>
+    </instance>
+    <instance scriptid="val_810256_7451241_sb1_791">
+      <custrecord_ht_bn_colorfabricante_codigo>177</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NEGRO ROYAL</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>177 - NEGRO ROYAL</name>
+    </instance>
+    <instance scriptid="val_810257_7451241_sb1_988">
+      <custrecord_ht_bn_colorfabricante_codigo>127</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NEGRO Y BLANCO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>127 - NEGRO Y BLANCO</name>
+    </instance>
+    <instance scriptid="val_810258_7451241_sb1_558">
+      <custrecord_ht_bn_colorfabricante_codigo>217</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NEGRO.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>217 - NEGRO.</name>
+    </instance>
+    <instance scriptid="val_810259_7451241_sb1_330">
+      <custrecord_ht_bn_colorfabricante_codigo>240</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NEGRO..</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>240 - NEGRO..</name>
+    </instance>
+    <instance scriptid="val_810260_7451241_sb1_208">
+      <custrecord_ht_bn_colorfabricante_codigo>255</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NEGRO/ROJO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>255 - NEGRO/ROJO</name>
+    </instance>
+    <instance scriptid="val_810261_7451241_sb1_602">
+      <custrecord_ht_bn_colorfabricante_codigo>229</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NEGRO+</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>229 - NEGRO+</name>
+    </instance>
+    <instance scriptid="val_810262_7451241_sb1_434">
+      <custrecord_ht_bn_colorfabricante_codigo>000</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NO DEFINIDO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>000 - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_810263_7451241_sb1_136">
+      <custrecord_ht_bn_colorfabricante_codigo>073</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>NOBLE WHITE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>073 - NOBLE WHITE</name>
+    </instance>
+    <instance scriptid="val_810264_7451241_sb1_439">
+      <custrecord_ht_bn_colorfabricante_codigo>041</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>OCEAN BLUE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>041 - OCEAN BLUE</name>
+    </instance>
+    <instance scriptid="val_810265_7451241_sb1_649">
+      <custrecord_ht_bn_colorfabricante_codigo>168</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>OLIVA CLARO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>168 - OLIVA CLARO</name>
+    </instance>
+    <instance scriptid="val_810266_7451241_sb1_612">
+      <custrecord_ht_bn_colorfabricante_codigo>045</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>OLIVIN</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>045 - OLIVIN</name>
+    </instance>
+    <instance scriptid="val_810267_7451241_sb1_619">
+      <custrecord_ht_bn_colorfabricante_codigo>053</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ORO BLANCO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>053 - ORO BLANCO</name>
+    </instance>
+    <instance scriptid="val_810268_7451241_sb1_610">
+      <custrecord_ht_bn_colorfabricante_codigo>019</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>OXFORDGRUN</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>019 - OXFORDGRUN</name>
+    </instance>
+    <instance scriptid="val_810269_7451241_sb1_194">
+      <custrecord_ht_bn_colorfabricante_codigo>032</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PEACH ORANGE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>032 - PEACH ORANGE</name>
+    </instance>
+    <instance scriptid="val_810270_7451241_sb1_602">
+      <custrecord_ht_bn_colorfabricante_codigo>022</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PEARL BLACK</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>022 - PEARL BLACK</name>
+    </instance>
+    <instance scriptid="val_810271_7451241_sb1_346">
+      <custrecord_ht_bn_colorfabricante_codigo>075</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PEARL WHITE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>075 - PEARL WHITE</name>
+    </instance>
+    <instance scriptid="val_810272_7451241_sb1_431">
+      <custrecord_ht_bn_colorfabricante_codigo>243</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLATA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>243 - PLATA</name>
+    </instance>
+    <instance scriptid="val_810273_7451241_sb1_820">
+      <custrecord_ht_bn_colorfabricante_codigo>169</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLATA ARABE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>169 - PLATA ARABE</name>
+    </instance>
+    <instance scriptid="val_810274_7451241_sb1_531">
+      <custrecord_ht_bn_colorfabricante_codigo>008</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLATA CELESTIAL</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>008 - PLATA CELESTIAL</name>
+    </instance>
+    <instance scriptid="val_810275_7451241_sb1_862">
+      <custrecord_ht_bn_colorfabricante_codigo>109</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLATEADO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>109 - PLATEADO</name>
+    </instance>
+    <instance scriptid="val_810276_7451241_sb1_994">
+      <custrecord_ht_bn_colorfabricante_codigo>124</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLATEADO Y BLANCO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>124 - PLATEADO Y BLANCO</name>
+    </instance>
+    <instance scriptid="val_810277_7451241_sb1_789">
+      <custrecord_ht_bn_colorfabricante_codigo>237</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLATEADO.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>237 - PLATEADO.</name>
+    </instance>
+    <instance scriptid="val_810278_7451241_sb1_503">
+      <custrecord_ht_bn_colorfabricante_codigo>135</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLOM</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>135 - PLOM</name>
+    </instance>
+    <instance scriptid="val_810279_7451241_sb1_166">
+      <custrecord_ht_bn_colorfabricante_codigo>112</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLOMO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>112 - PLOMO</name>
+    </instance>
+    <instance scriptid="val_810280_7451241_sb1_434">
+      <custrecord_ht_bn_colorfabricante_codigo>232</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLOMO_TDE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>232 - PLOMO_TDE</name>
+    </instance>
+    <instance scriptid="val_810281_7451241_sb1_504">
+      <custrecord_ht_bn_colorfabricante_codigo>233</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>PLOMO_TDE2</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>233 - PLOMO_TDE2</name>
+    </instance>
+    <instance scriptid="val_810282_7451241_sb1_318">
+      <custrecord_ht_bn_colorfabricante_codigo>096</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>POLAR WHITE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>096 - POLAR WHITE</name>
+    </instance>
+    <instance scriptid="val_810283_7451241_sb1_636">
+      <custrecord_ht_bn_colorfabricante_codigo>003</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>POLY SILVER</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>003 - POLY SILVER</name>
+    </instance>
+    <instance scriptid="val_810284_7451241_sb1_888">
+      <custrecord_ht_bn_colorfabricante_codigo>207</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>POR DEFINIR</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>207 - POR DEFINIR</name>
+    </instance>
+    <instance scriptid="val_810285_7451241_sb1_708">
+      <custrecord_ht_bn_colorfabricante_codigo>044</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>RED ROCK</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>044 - RED ROCK</name>
+    </instance>
+    <instance scriptid="val_810286_7451241_sb1_526">
+      <custrecord_ht_bn_colorfabricante_codigo>128</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>128 - ROJO</name>
+    </instance>
+    <instance scriptid="val_810287_7451241_sb1_894">
+      <custrecord_ht_bn_colorfabricante_codigo>123</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO ALMAGRO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>123 - ROJO ALMAGRO</name>
+    </instance>
+    <instance scriptid="val_810288_7451241_sb1_834">
+      <custrecord_ht_bn_colorfabricante_codigo>176</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO ARAPITO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>176 - ROJO ARAPITO</name>
+    </instance>
+    <instance scriptid="val_810289_7451241_sb1_567">
+      <custrecord_ht_bn_colorfabricante_codigo>035</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO CAMBERA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>035 - ROJO CAMBERA</name>
+    </instance>
+    <instance scriptid="val_810290_7451241_sb1_971">
+      <custrecord_ht_bn_colorfabricante_codigo>050</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO CARRERA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>050 - ROJO CARRERA</name>
+    </instance>
+    <instance scriptid="val_810291_7451241_sb1_550">
+      <custrecord_ht_bn_colorfabricante_codigo>094</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO CEREZO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>094 - ROJO CEREZO</name>
+    </instance>
+    <instance scriptid="val_810292_7451241_sb1_958">
+      <custrecord_ht_bn_colorfabricante_codigo>078</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO CEREZO TECHO BLANCO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>078 - ROJO CEREZO TECHO BLANCO</name>
+    </instance>
+    <instance scriptid="val_810293_7451241_sb1_176">
+      <custrecord_ht_bn_colorfabricante_codigo>089</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO CLASICO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>089 - ROJO CLASICO</name>
+    </instance>
+    <instance scriptid="val_810294_7451241_sb1_711">
+      <custrecord_ht_bn_colorfabricante_codigo>010</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO FERRARI</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>010 - ROJO FERRARI</name>
+    </instance>
+    <instance scriptid="val_810295_7451241_sb1_347">
+      <custrecord_ht_bn_colorfabricante_codigo>066</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO FLASH</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>066 - ROJO FLASH</name>
+    </instance>
+    <instance scriptid="val_810296_7451241_sb1_583">
+      <custrecord_ht_bn_colorfabricante_codigo>142</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO OBSCURO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>142 - ROJO OBSCURO</name>
+    </instance>
+    <instance scriptid="val_810297_7451241_sb1_107">
+      <custrecord_ht_bn_colorfabricante_codigo>026</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO RADIANTE / BEIGE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>026 - ROJO RADIANTE / BEIGE</name>
+    </instance>
+    <instance scriptid="val_810298_7451241_sb1_272">
+      <custrecord_ht_bn_colorfabricante_codigo>220</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>ROJO.</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>220 - ROJO.</name>
+    </instance>
+    <instance scriptid="val_810299_7451241_sb1_442">
+      <custrecord_ht_bn_colorfabricante_codigo>226</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>S/C</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>226 - S/C</name>
+    </instance>
+    <instance scriptid="val_810300_7451241_sb1_546">
+      <custrecord_ht_bn_colorfabricante_codigo>077</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>SILKY SILVER METALIC</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>077 - SILKY SILVER METALIC</name>
+    </instance>
+    <instance scriptid="val_810301_7451241_sb1_552">
+      <custrecord_ht_bn_colorfabricante_codigo>080</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>SILVER BIRCH METALLIC</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>080 - SILVER BIRCH METALLIC</name>
+    </instance>
+    <instance scriptid="val_810302_7451241_sb1_281">
+      <custrecord_ht_bn_colorfabricante_codigo>013</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>SILVER GREEN</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>013 - SILVER GREEN</name>
+    </instance>
+    <instance scriptid="val_810303_7451241_sb1_991">
+      <custrecord_ht_bn_colorfabricante_codigo>097</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>SILVER MIST METALLIC</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>097 - SILVER MIST METALLIC</name>
+    </instance>
+    <instance scriptid="val_810304_7451241_sb1_202">
+      <custrecord_ht_bn_colorfabricante_codigo>031</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>SPORTS BLUE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>031 - SPORTS BLUE</name>
+    </instance>
+    <instance scriptid="val_810305_7451241_sb1_811">
+      <custrecord_ht_bn_colorfabricante_codigo>024</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>STRATO PERLA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>024 - STRATO PERLA</name>
+    </instance>
+    <instance scriptid="val_810306_7451241_sb1_143">
+      <custrecord_ht_bn_colorfabricante_codigo>062</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>SUNSET ORANGE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>062 - SUNSET ORANGE</name>
+    </instance>
+    <instance scriptid="val_810307_7451241_sb1_872">
+      <custrecord_ht_bn_colorfabricante_codigo>014</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>SUPER RED</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>014 - SUPER RED</name>
+    </instance>
+    <instance scriptid="val_810308_7451241_sb1_116">
+      <custrecord_ht_bn_colorfabricante_codigo>004</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>TEAL BLUE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>004 - TEAL BLUE</name>
+    </instance>
+    <instance scriptid="val_810309_7451241_sb1_642">
+      <custrecord_ht_bn_colorfabricante_codigo>020</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>TITANSILBER</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>020 - TITANSILBER</name>
+    </instance>
+    <instance scriptid="val_810310_7451241_sb1_438">
+      <custrecord_ht_bn_colorfabricante_codigo>170</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>TURQUESA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>170 - TURQUESA</name>
+    </instance>
+    <instance scriptid="val_810311_7451241_sb1_401">
+      <custrecord_ht_bn_colorfabricante_codigo>070</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>URBAN GREY</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>070 - URBAN GREY</name>
+    </instance>
+    <instance scriptid="val_810312_7451241_sb1_947">
+      <custrecord_ht_bn_colorfabricante_codigo>100</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>UVA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>100 - UVA</name>
+    </instance>
+    <instance scriptid="val_810313_7451241_sb1_201">
+      <custrecord_ht_bn_colorfabricante_codigo>132</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>132 - VERDE</name>
+    </instance>
+    <instance scriptid="val_810314_7451241_sb1_294">
+      <custrecord_ht_bn_colorfabricante_codigo>195</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE ABISAL</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>195 - VERDE ABISAL</name>
+    </instance>
+    <instance scriptid="val_810315_7451241_sb1_432">
+      <custrecord_ht_bn_colorfabricante_codigo>178</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE ARRECIFE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>178 - VERDE ARRECIFE</name>
+    </instance>
+    <instance scriptid="val_810316_7451241_sb1_592">
+      <custrecord_ht_bn_colorfabricante_codigo>079</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE BEIGE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>079 - VERDE BEIGE</name>
+    </instance>
+    <instance scriptid="val_810317_7451241_sb1_475">
+      <custrecord_ht_bn_colorfabricante_codigo>166</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE CLARO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>166 - VERDE CLARO</name>
+    </instance>
+    <instance scriptid="val_810318_7451241_sb1_411">
+      <custrecord_ht_bn_colorfabricante_codigo>179</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE GLACIAR</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>179 - VERDE GLACIAR</name>
+    </instance>
+    <instance scriptid="val_810319_7451241_sb1_502">
+      <custrecord_ht_bn_colorfabricante_codigo>023</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE MALAGA</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>023 - VERDE MALAGA</name>
+    </instance>
+    <instance scriptid="val_810320_7451241_sb1_299">
+      <custrecord_ht_bn_colorfabricante_codigo>163</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE OBSCURO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>163 - VERDE OBSCURO</name>
+    </instance>
+    <instance scriptid="val_810321_7451241_sb1_535">
+      <custrecord_ht_bn_colorfabricante_codigo>235</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE_TDE</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>235 - VERDE_TDE</name>
+    </instance>
+    <instance scriptid="val_810322_7451241_sb1_289">
+      <custrecord_ht_bn_colorfabricante_codigo>236</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE_TDE2</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>236 - VERDE_TDE2</name>
+    </instance>
+    <instance scriptid="val_810323_7451241_sb1_556">
+      <custrecord_ht_bn_colorfabricante_codigo>224</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VERDE1</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>224 - VERDE1</name>
+    </instance>
+    <instance scriptid="val_810324_7451241_sb1_370">
+      <custrecord_ht_bn_colorfabricante_codigo>242</custrecord_ht_bn_colorfabricante_codigo>
+      <custrecord_ht_bn_colorfabricante_descrip>VINO</custrecord_ht_bn_colorfabricante_descrip>
+      <isinactive>F</isinactive>
+      <name>242 - VINO</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

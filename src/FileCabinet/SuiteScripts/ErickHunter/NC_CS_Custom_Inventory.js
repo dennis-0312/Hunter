@@ -10,7 +10,6 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
         let id = currentRecord.getValue({ fieldId: 'item' });
         let fieldLookUp = search.lookupFields({ type: 'serializedinventoryitem', id: id, columns: ['custitem_ht_ai_tipocomponente'] });
         let tipeItmes;
-
         if (Object.keys(fieldLookUp).length != 0) {
             if (fieldLookUp.custitem_ht_ai_tipocomponente.length != 0) {
                 tipeItmes = fieldLookUp.custitem_ht_ai_tipocomponente[0].value;
@@ -21,6 +20,7 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
         let customRecord;
         let columns;
         let estadoColumna = 0;
+        //console.log(tipeItmes);
         switch (tipeItmes) {
             case '1':
                 tipoItmesText = " Dispositivo Chaser";
@@ -37,7 +37,9 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
                     search.createColumn({ name: "custrecord_ht_dd_script", label: "dd_script" }),
                     search.createColumn({ name: "custrecord_ht_dd_servidor", label: "dd_servidor" }),
                     search.createColumn({ name: "custrecord_ht_dd_estado", label: "dd_estado" }),
-                    search.createColumn({ name: "custrecord_ht_dd_tipodispocha", label: "dd_tipodispocha" })
+                    search.createColumn({ name: "custrecord_ht_dd_tipodispocha", label: "dd_tipodispocha" }),
+                    search.createColumn({ name: "custrecord_ht_dd_vid", label: "dd_vid" }),
+                    search.createColumn({ name: "custrecord_ht_dd_sn", label: "dd_sn" })
                 ];
                 break;
             case '2':
@@ -68,10 +70,11 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
                 ];
                 break;
             default:
-                break;
+                alert("Revisar configuración TIPO DE COMPONENTE del artículo")
+                return false;
         }
-        console.log(customRecord);
-        console.log(columns);
+        // console.log(customRecord);
+        // console.log(columns);
         let flag = true;
         for (let j = 0; j < inventoryAssignmentLines; j++) {
             let inventoryAssignment = currentRecord.selectLine({ sublistId: 'inventoryassignment', line: j });
@@ -84,7 +87,6 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
                 console.log('No aplica validación de carga de datos');
             }
 
-
             if (binNumber == '' || tipeItmes == null) {
                 return true;
             }
@@ -94,21 +96,23 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
                     [
                         search.createFilter({
                             name: 'name',
-                            operator: search.Operator.HASKEYWORDS,
+                            //operator: search.Operator.HASKEYWORDS,
+                            operator: search.Operator.IS,
                             values: binNumber
                         })
                     ],
                 columns: columns
             });
+
             var pageData = busqueda.runPaged({ pageSize: 1000 });
 
             if (pageData.count == 0) {
                 dialog.alert({ title: 'Información', message: tipoItmesText + ' ' + binNumber + ' No valido' });
                 return false;
             }
-            pageData.pageRanges.forEach(function (pageRange) {
+            pageData.pageRanges.forEach((pageRange) => {
                 page = pageData.fetch({ index: pageRange.index });
-                page.data.forEach(function (result) {
+                page.data.forEach(result => {
                     var columns = result.columns;
                     for (let i = 0; i < columns.length; i++) {
                         if (result.getValue(columns[i]) == '') {
@@ -117,8 +121,8 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
                             break;
                         }
                     }
-
-                    if (result.getValue(columns[estadoColumna]) != 1 && estadoColumna != 0) {
+                    console.log('ESTADOS', result.getValue(columns[estadoColumna]))
+                    if (result.getValue(columns[estadoColumna]) != 5 && estadoColumna != 0) {
                         dialog.alert({ title: 'Información', message: 'Estado de Dispositivo ' + tipoItmesText + ' no Disponible ' + binNumber });
                         flag = false;
                         return false;

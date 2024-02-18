@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ht_person_type">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Tipo de persona</name>
+  <customvalues>
+    <customvalue scriptid="val_36237_7451241_sb1_334">
+      <isinactive>F</isinactive>
+      <value>Entidad privada</value>
+    </customvalue>
+    <customvalue scriptid="val_36238_7451241_sb1_324">
+      <isinactive>F</isinactive>
+      <value>Entidad publica</value>
+    </customvalue>
+    <customvalue scriptid="val_36239_7451241_sb1_454">
+      <isinactive>F</isinactive>
+      <value>No definido</value>
+    </customvalue>
+    <customvalue scriptid="val_36240_7451241_sb1_656">
+      <isinactive>F</isinactive>
+      <value>Pasaporte</value>
+    </customvalue>
+    <customvalue scriptid="val_36241_7451241_sb1_217">
+      <isinactive>F</isinactive>
+      <value>Persona natural</value>
+    </customvalue>
+  </customvalues>
+</customlist>

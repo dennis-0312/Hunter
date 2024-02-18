@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ht_ct_sexo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Sexo</name>
+  <customvalues>
+    <customvalue scriptid="val_722130_7451241_sb1_889">
+      <isinactive>F</isinactive>
+      <value>MASCULINO</value>
+    </customvalue>
+    <customvalue scriptid="val_722131_7451241_sb1_422">
+      <isinactive>F</isinactive>
+      <value>FEMENINO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

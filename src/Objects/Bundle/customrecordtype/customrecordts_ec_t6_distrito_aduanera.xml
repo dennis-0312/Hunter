@@ -1,0 +1,163 @@
+<customrecordtype scriptid="customrecordts_ec_t6_distrito_aduanera">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>F</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>F</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC - T6 Distrito Aduanera</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>F</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecordts_ec_t6_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_770810_7451241_sb1_948">
+      <custrecordts_ec_t6_codigo>145</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>CEBAF – San Miguel</name>
+    </instance>
+    <instance scriptid="val_770811_7451241_sb1_790">
+      <custrecordts_ec_t6_codigo>91</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Cuenca</name>
+    </instance>
+    <instance scriptid="val_770812_7451241_sb1_644">
+      <custrecordts_ec_t6_codigo>46</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Esmeraldas</name>
+    </instance>
+    <instance scriptid="val_770813_7451241_sb1_451">
+      <custrecordts_ec_t6_codigo>136</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Gerencia General</name>
+    </instance>
+    <instance scriptid="val_770814_7451241_sb1_983">
+      <custrecordts_ec_t6_codigo>19</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Gquil-Aéreo</name>
+    </instance>
+    <instance scriptid="val_770815_7451241_sb1_671">
+      <custrecordts_ec_t6_codigo>28</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Gquil-Marítimo</name>
+    </instance>
+    <instance scriptid="val_770816_7451241_sb1_476">
+      <custrecordts_ec_t6_codigo>82</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Huaquillas</name>
+    </instance>
+    <instance scriptid="val_770817_7451241_sb1_667">
+      <custrecordts_ec_t6_codigo>127</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Latacunga</name>
+    </instance>
+    <instance scriptid="val_770818_7451241_sb1_472">
+      <custrecordts_ec_t6_codigo>109</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Loja-Macara</name>
+    </instance>
+    <instance scriptid="val_770819_7451241_sb1_351">
+      <custrecordts_ec_t6_codigo>37</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Manta</name>
+    </instance>
+    <instance scriptid="val_770820_7451241_sb1_594">
+      <custrecordts_ec_t6_codigo>64</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Pto-Bolívar</name>
+    </instance>
+    <instance scriptid="val_770821_7451241_sb1_967">
+      <custrecordts_ec_t6_codigo>55</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Quito</name>
+    </instance>
+    <instance scriptid="val_770822_7451241_sb1_284">
+      <custrecordts_ec_t6_codigo>118</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Sta Elena</name>
+    </instance>
+    <instance scriptid="val_770823_7451241_sb1_504">
+      <custrecordts_ec_t6_codigo>73</custrecordts_ec_t6_codigo>
+      <isinactive>F</isinactive>
+      <name>Tulcán</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

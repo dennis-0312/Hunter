@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ht_cn_canal">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Canal</name>
+  <customvalues>
+    <customvalue scriptid="val_797144_7451241_sb1_909">
+      <isinactive>F</isinactive>
+      <value>Aseguradora</value>
+    </customvalue>
+    <customvalue scriptid="val_797145_7451241_sb1_354">
+      <isinactive>F</isinactive>
+      <value>Financiera</value>
+    </customvalue>
+    <customvalue scriptid="val_797146_7451241_sb1_437">
+      <isinactive>F</isinactive>
+      <value>Concesionaria</value>
+    </customvalue>
+  </customvalues>
+</customlist>

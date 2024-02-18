@@ -1,0 +1,91 @@
+{
+    "monitoreo": {
+        "username": "dennis.evol2@myevo.biz",
+        "first_name": "DENNIS",
+        "last_name": "FERNANDEZ",
+        "email": "dennis.evol@myevo.biz",
+        "id": "758",
+        "is_active": true,
+        "account_type": 1,
+        "customer": {
+            "company_code": "0991259546001",
+            "identity_document_number": "1303753618",
+            "identity_document_type": 3,
+            "business_name": "",
+            "phone_number": "0945689785",
+            "emergency_phone_number": "0985454544",
+            "assistance_phone_number": "046004640",
+            "technical_support_email": "soporteami@carsegsa.com"
+        }
+    },
+    "customer": {
+        "username": "tsnet.evol@myevol.biz",
+        "first_name": "TS NET",
+        "email": "",
+        "id": "757",
+        "is_active": true,
+        "account_type": 1,
+        "customer": {
+            "company_code": "0991259546001",
+            "identity_document_number": "20381041957",
+            "identity_document_type": 1,
+            "business_name": "TS NET",
+            "phone_number": "0998530571",
+            "emergency_phone_number": "0985454544",
+            "assistance_phone_number": "046004640",
+            "technical_support_email": "soporteami@carsegsa.com"
+        }
+    },
+    "asset": {
+        "id": "",
+        "product": "CH - H.MONITOREO AMI",
+        "name": "ABC-5013",
+        "description": "426",
+        "custom_name": "ABC-5013",
+        "active": true,
+        "asset_type": "2",
+        "product_expire_date": "2024-02-17T05:00:00-05:00",
+        "contract_code": "",
+        "attributes": [
+            {
+                "attribute": "10",
+                "value": "KIA"
+            },
+            {
+                "attribute": "11",
+                "value": "SOLUTO LX AC 1.4 4P 4X2 TM"
+            },
+            {
+                "attribute": "12",
+                "value": "1.4"
+            },
+            {
+                "attribute": "16",
+                "value": "ME1RG4253N2045013"
+            },
+            {
+                "attribute": "17",
+                "value": "G3H7E0145013"
+            },
+            {
+                "attribute": "18",
+                "value": "ABC-5013"
+            },
+            {
+                "attribute": "20",
+                "value": "426"
+            }
+        ],
+        "doors_sensors": "5",
+        "cod_sys": "426",
+        "owner": "757"
+    },
+    "device": {
+        "report_from": "3",
+        "active": true,
+        "model": "1",
+        "company_code": "0991259546001",
+        "id": "CTCR009"
+    },
+    "command": []
+}

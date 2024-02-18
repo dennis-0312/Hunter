@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_ht_estado_cobertura">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Estado de Cobertura</name>
+  <customvalues>
+    <customvalue scriptid="val_793767_7451241_sb1_519">
+      <isinactive>F</isinactive>
+      <value>ACTIVO</value>
+    </customvalue>
+    <customvalue scriptid="val_793768_7451241_sb1_172">
+      <isinactive>F</isinactive>
+      <value>SUSPENDIDO</value>
+    </customvalue>
+    <customvalue scriptid="val_1418730_7451241_sb1_794">
+      <isinactive>F</isinactive>
+      <value>PENDIENTE DE ACTIVACIÓN</value>
+    </customvalue>
+    <customvalue scriptid="val_1429812_7451241_sb1_133">
+      <isinactive>F</isinactive>
+      <value>SIN DISPOSITIVO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

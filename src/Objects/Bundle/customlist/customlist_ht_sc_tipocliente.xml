@@ -1,0 +1,12 @@
+<customlist scriptid="customlist_ht_sc_tipocliente">
+  <description>Tipo Cliente</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT SC Tipo Cliente</name>
+  <customvalues>
+    <customvalue scriptid="val_873686_7451241_sb1_508">
+      <isinactive>F</isinactive>
+      <value>CLIENTES CARSEG</value>
+    </customvalue>
+  </customvalues>
+</customlist>

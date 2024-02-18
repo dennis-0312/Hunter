@@ -1,0 +1,24 @@
+<scheduledscript scriptid="customscript_ts_test_integration_ss">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS Test Integration SS</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/Scripts Integration Test/test_integration_ss.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_test_integration_ss">
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>TS Test Integration SS</title>
+      <recurrence>
+        <single>
+          <repeat></repeat>
+          <startdate>2022-08-18</startdate>
+          <starttime>23:00:00Z</starttime>
+        </single>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</scheduledscript>

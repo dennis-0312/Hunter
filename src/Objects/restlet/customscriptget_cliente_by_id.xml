@@ -1,0 +1,23 @@
+<restlet scriptid="customscriptget_cliente_by_id">
+  <description>obtiene datos de cliente</description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_GET_CLIENTE_BY_ID</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/NS_RS_PRODUCCION_HUNTER/Listados/NS_RS_GET_CLIENTE_BY_ID.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeployns_rs_get_cliente_by_id">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <audsubsidiary></audsubsidiary>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_GET_CLIENTE_BY_ID</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

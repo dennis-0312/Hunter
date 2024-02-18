@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_rs_integration_apptaller">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_Integration_App_Talleres.js</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/api/TS_RS_Integration_App_Talleres.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_rs_integration_apptaller">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>TS_RS_Integration_App_Talleres.js</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_rs_verification_code">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_Verification_Code</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/api/TS_RS_Verification_Code.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_rs_verification_code">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>TS_RS_Verification_Code</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

@@ -1,0 +1,80 @@
+<customrecordtype scriptid="customrecord_ht_record_tipoflota">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>T</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits>3</numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Tipo Flota</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>T</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <instances>
+    <instance scriptid="val_824379_7451241_sb1_533">
+      <altname>OTROS</altname>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_824380_7451241_sb1_207">
+      <altname>DERIVADOS DEL PETROLEO</altname>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_824381_7451241_sb1_903">
+      <altname>PRODUCTOS MINEROS</altname>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_824382_7451241_sb1_414">
+      <altname>CONTENEDORES</altname>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_824383_7451241_sb1_973">
+      <altname>PRODUCTOS DE CONSUMO MASIVO</altname>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_824384_7451241_sb1_967">
+      <altname>PRODUCTOS QUIMICOS</altname>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_824385_7451241_sb1_415">
+      <altname>PRODUCTOS AGRICOLAS</altname>
+      <isinactive>F</isinactive>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

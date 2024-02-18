@@ -1,0 +1,367 @@
+<customrecordtype scriptid="customrecord_ht_registro_tipo_direccion">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Registro Tipo Direccion</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecordht_codigo_tipo_direccion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>CODIGO</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecordht_descripcion_tipo_direccion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>DESCRIPCION</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_email_check_direccion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CHECKBOX</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EMAIL</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_822650_7451241_sb1_587">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>001</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>OFICINA</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>001 - OFICNA</name>
+    </instance>
+    <instance scriptid="val_822651_7451241_sb1_646">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>002</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>DOMICILIO</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>002 - DOMICILIO</name>
+    </instance>
+    <instance scriptid="val_822652_7451241_sb1_296">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>003</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>INFO-HUNTER</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>003 - INFO HUNTER</name>
+    </instance>
+    <instance scriptid="val_822653_7451241_sb1_120">
+      <custrecord_ht_email_check_direccion>T</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>004</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>E-MAIL</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>004 - E-MAIL</name>
+    </instance>
+    <instance scriptid="val_822654_7451241_sb1_172">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>005</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>MATRIZ</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>005 - MATRIZ</name>
+    </instance>
+    <instance scriptid="val_822655_7451241_sb1_723">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>006</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>SUCURSAL</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>006 - SUCURSAL</name>
+    </instance>
+    <instance scriptid="val_822656_7451241_sb1_876">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>007</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>DIR. POR CONFIR</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>007 - DIR. POR CONFIR</name>
+    </instance>
+    <instance scriptid="val_822657_7451241_sb1_717">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>008</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>AGENCIA</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>008 - AGENCIA</name>
+    </instance>
+    <instance scriptid="val_822658_7451241_sb1_868">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>009</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>CAJERO</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>009 - CAJERO</name>
+    </instance>
+    <instance scriptid="val_822661_7451241_sb1_461">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>010</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>DOMICILIO TDE</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>010 - DOMICILIO TDE</name>
+    </instance>
+    <instance scriptid="val_822662_7451241_sb1_134">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>011</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>INFO-HUNTER TDE</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>011 - INFO-HUNTER TDE</name>
+    </instance>
+    <instance scriptid="val_822663_7451241_sb1_995">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>012</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>TRABAJO</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>012 - TRABAJO</name>
+    </instance>
+    <instance scriptid="val_822664_7451241_sb1_697">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>013</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>DIRECCION GEA</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>013 - DIRECCION GEA</name>
+    </instance>
+    <instance scriptid="val_822665_7451241_sb1_612">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>014</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>INFO-HUNTER MAV</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>014 - INFO-HUNTER MAV</name>
+    </instance>
+    <instance scriptid="val_822666_7451241_sb1_600">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>015</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>DOMICILIO MAVES</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>015 - DOMICILIO MAVES</name>
+    </instance>
+    <instance scriptid="val_822667_7451241_sb1_154">
+      <custrecord_ht_email_check_direccion>T</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>016</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>E-MAIL OFICINA</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>016 - E-MAIL OFICINA</name>
+    </instance>
+    <instance scriptid="val_822668_7451241_sb1_206">
+      <custrecord_ht_email_check_direccion>T</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>017</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>E-MAIL FACT.PRI</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>017 - E-MAIL FACT.PRI</name>
+    </instance>
+    <instance scriptid="val_822669_7451241_sb1_227">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>018</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>DIRECCION FACTURACION</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>018 - DIRECCION FACTURACION</name>
+    </instance>
+    <instance scriptid="val_822670_7451241_sb1_916">
+      <custrecord_ht_email_check_direccion>T</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>019</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>E-MAIL REGISTRESE H.O.</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>019 - E-MAIL REGISTRESE H.O.</name>
+    </instance>
+    <instance scriptid="val_822671_7451241_sb1_156">
+      <custrecord_ht_email_check_direccion>T</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>020</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>E-MAIL FACT. SECUND.</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>020 - E-MAIL FACT. SECUND.</name>
+    </instance>
+    <instance scriptid="val_822672_7451241_sb1_802">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>021</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>DOMICILIO MARES</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>021 - DOMICILIO MARES</name>
+    </instance>
+    <instance scriptid="val_822673_7451241_sb1_341">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>022</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>INFO-HUNTER MAR</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>022 - INFO-HUNTER MAR</name>
+    </instance>
+    <instance scriptid="val_822674_7451241_sb1_838">
+      <custrecord_ht_email_check_direccion>T</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>023</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>E-MAIL AMI</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>023 - E-MAIL AMI</name>
+    </instance>
+    <instance scriptid="val_822675_7451241_sb1_998">
+      <custrecord_ht_email_check_direccion>T</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>024</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>E-MAIL MONITORE</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>024 - E-MAIL MONITORE</name>
+    </instance>
+    <instance scriptid="val_822676_7451241_sb1_456">
+      <custrecord_ht_email_check_direccion>T</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>025</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>E-MAIL MONITOREO</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>025 - E-MAIL MONITOREO</name>
+    </instance>
+    <instance scriptid="val_822677_7451241_sb1_880">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>026</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>INFO-HUNTER CONVENIO</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>026 - INFO-HUNTER CONVENIO</name>
+    </instance>
+    <instance scriptid="val_822678_7451241_sb1_556">
+      <custrecord_ht_email_check_direccion>T</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>027</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>E-MAIL CONVENIO</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>027 - E-MAIL CONVENIO</name>
+    </instance>
+    <instance scriptid="val_822679_7451241_sb1_839">
+      <custrecord_ht_email_check_direccion>F</custrecord_ht_email_check_direccion>
+      <custrecordht_codigo_tipo_direccion>028</custrecordht_codigo_tipo_direccion>
+      <custrecordht_descripcion_tipo_direccion>DOMICILIO CONVENIO</custrecordht_descripcion_tipo_direccion>
+      <isinactive>F</isinactive>
+      <name>028 - DOMICILIO CONVENIO</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

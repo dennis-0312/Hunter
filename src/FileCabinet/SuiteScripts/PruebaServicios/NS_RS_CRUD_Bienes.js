@@ -68,13 +68,14 @@ define(['N/log', 'N/record', 'N/search'], function(log, record, search) {
                 let objRecord = record.create({ type: "customrecord_ht_record_bienes", isDynamic: true });
                 //PRIMARY INFORMATION
                 objRecord.setValue({ fieldId: 'customform', value: customerform });//REQUEST
+                objRecord.setValue({ fieldId: 'altname', value: context.altname });//REQUEST
                 objRecord.setValue({ fieldId: 'custrecord_ht_bien_propietario', value: customer }); //* //REQUEST}
                 objRecord.setValue({ fieldId: 'custrecord_ht_bien_codigo', value: context.codigo });
                 objRecord.setValue({ fieldId: 'custrecord_ht_bien_tipobien', value: ht_bien_tipobien });
                 objRecord.setValue({ fieldId: 'custrecord_ht_bien_tipoterrestre', value: ht_bien_tipoterrestre });
                 objRecord.setValue({ fieldId: 'custrecord_ht_bn_estadobien', value: ht_bn_estadobien });
                 objRecord.setValue({ fieldId: 'custrecord_ht_bien_placa', value: context.placa });
-                objRecord.setValue({ fieldId: 'ccustrecord_ht_bien_chasis', value: context.chasis });
+                objRecord.setValue({ fieldId: 'custrecord_ht_bien_chasis', value: context.chasis });
                 objRecord.setValue({ fieldId: 'custrecord_ht_bien_motor', value: context.motor });
                 objRecord.setValue({ fieldId: 'custrecord_ht_bien_marca', value: ht_bien_marca });
                 objRecord.setValue({ fieldId: 'custrecord_ht_bien_modelo', value: context.modelo });

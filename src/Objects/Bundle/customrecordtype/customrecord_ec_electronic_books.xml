@@ -1,0 +1,143 @@
+<customrecordtype scriptid="customrecord_ec_electronic_books">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>T</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>F</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC Electronic Books</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>T</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ec_suite_schedule_eb">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC SuiteSchedule EB</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_20271_7451241_sb1_766">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC ATS Informante</name>
+    </instance>
+    <instance scriptid="val_20272_7451241_sb1_435">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC - ATS Compras detallado</name>
+    </instance>
+    <instance scriptid="val_20273_7451241_sb1_418">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC - ATS Compras Formas de Pago</name>
+    </instance>
+    <instance scriptid="val_20274_7451241_sb1_922">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC - ATS Compras Reembolsos</name>
+    </instance>
+    <instance scriptid="val_20275_7451241_sb1_265">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC - ATS Compras Retenciones</name>
+    </instance>
+    <instance scriptid="val_20276_7451241_sb1_466">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC - ATS Ventas por Cliente</name>
+    </instance>
+    <instance scriptid="val_20277_7451241_sb1_771">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC - ATS Ventas por Establecimientos</name>
+    </instance>
+    <instance scriptid="val_20278_7451241_sb1_244">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC - ATS Ventas Formas de Pago</name>
+    </instance>
+    <instance scriptid="val_20279_7451241_sb1_355">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC – ATS Exportaciones o Ingresos del Exterior</name>
+    </instance>
+    <instance scriptid="val_20280_7451241_sb1_926">
+      <custrecord_ec_suite_schedule_eb></custrecord_ec_suite_schedule_eb>
+      <isinactive>F</isinactive>
+      <name>EC - ATS Comprobantes Anulados</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

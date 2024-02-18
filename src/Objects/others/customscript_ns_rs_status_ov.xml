@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_status_ov">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_Status_ov</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteApps/Pruebas/NS_RS_Status_ov.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_status_ov">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>F</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_Status_ov</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

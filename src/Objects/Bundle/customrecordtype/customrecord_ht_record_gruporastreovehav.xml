@@ -1,0 +1,346 @@
+<customrecordtype scriptid="customrecord_ht_record_gruporastreovehav">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Grupo de Rastreo Vehículo / Avioneta</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_grv_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help>Código</help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Código</label>
+      <linktext></linktext>
+      <maxlength>3</maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_grv_codigotabla">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help>Código Tabla</help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Código Tabla</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_grv_tipotransporte">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help>Tipo de Transporte</help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Tipo de Transporte</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_ht_record_tipotransporte]</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_842548_7451241_sb1_350">
+      <custrecord_ht_grv_codigo>1</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>1 HALCON - MITSUBISHI - MONTERO - PLATA - GNN - 070</name>
+    </instance>
+    <instance scriptid="val_842549_7451241_sb1_370">
+      <custrecord_ht_grv_codigo>10</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>10 PUMA - MAZDA - BT - 50 - GRIS - GRE - 515</name>
+    </instance>
+    <instance scriptid="val_842550_7451241_sb1_712">
+      <custrecord_ht_grv_codigo>11</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>11 ALFA 7 - TOYOTA - HI - LUX - PLATA - AFK - 419</name>
+    </instance>
+    <instance scriptid="val_842551_7451241_sb1_889">
+      <custrecord_ht_grv_codigo>12</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>12 ALFA 10 - TOYOTA - HI - LUX - NEGRO - GQI - 287</name>
+    </instance>
+    <instance scriptid="val_842552_7451241_sb1_717">
+      <custrecord_ht_grv_codigo>13</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>13 ALFA 2 - FORD - RANGER - GRIS - PQX - 327</name>
+    </instance>
+    <instance scriptid="val_842553_7451241_sb1_206">
+      <custrecord_ht_grv_codigo>14</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>14 SIERRA 6 NISSAN - FRONTIER - GRIS - PCH-5009</name>
+    </instance>
+    <instance scriptid="val_842554_7451241_sb1_154">
+      <custrecord_ht_grv_codigo>15</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>15 SIERRA 1 - NISSAN - NAVARA - AZUL - PBT-4081</name>
+    </instance>
+    <instance scriptid="val_842555_7451241_sb1_822">
+      <custrecord_ht_grv_codigo>16</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>16 SIERRA 2 FORD - RANGER - NEGRO - PBJ-7525</name>
+    </instance>
+    <instance scriptid="val_842556_7451241_sb1_368">
+      <custrecord_ht_grv_codigo>17</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>17 SIERRA 3 - TOYOTA - HI LUX - GRIS - PBD-6969</name>
+    </instance>
+    <instance scriptid="val_842557_7451241_sb1_850">
+      <custrecord_ht_grv_codigo>18</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>18 SIERRA 5 - NISSAN -FRONTIER - ROJO - GQM-893</name>
+    </instance>
+    <instance scriptid="val_842558_7451241_sb1_103">
+      <custrecord_ht_grv_codigo>19</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>19 ALFA 1 - MITSUBISHI - MONTERO - VERDE</name>
+    </instance>
+    <instance scriptid="val_842559_7451241_sb1_267">
+      <custrecord_ht_grv_codigo>2</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>2 ALFA 3 - MAZDA - BT - 50 - NEGRO - GRS - 549</name>
+    </instance>
+    <instance scriptid="val_842560_7451241_sb1_755">
+      <custrecord_ht_grv_codigo>20</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>20 SIERRA 4 - TOYOTA HI-LUX - GRIS - DOBLE CAB. 4X2 - TBB-3431</name>
+    </instance>
+    <instance scriptid="val_842561_7451241_sb1_614">
+      <custrecord_ht_grv_codigo>21</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>21 SIERRA 7 - TOYOTA - HI - LUX - PLATEADO - AFK - 419</name>
+    </instance>
+    <instance scriptid="val_842562_7451241_sb1_563">
+      <custrecord_ht_grv_codigo>22</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>22 SIERRA 8 – MAZDA BT-50 COLOR ROJO PLACAS PCL-5782</name>
+    </instance>
+    <instance scriptid="val_842563_7451241_sb1_897">
+      <custrecord_ht_grv_codigo>3</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>3 ALFA 6 - CHEVROLET - GRAN VITARA - GRIS - GOC - 670</name>
+    </instance>
+    <instance scriptid="val_842564_7451241_sb1_246">
+      <custrecord_ht_grv_codigo>4</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>4 ALFA 8  - NISSAN - XTRAIL - GRIS - GRY - 2291</name>
+    </instance>
+    <instance scriptid="val_842565_7451241_sb1_335">
+      <custrecord_ht_grv_codigo>5</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>5 ALFA 9 - CHEVROLET - VITARA - AZUL - GRW - 2244</name>
+    </instance>
+    <instance scriptid="val_842566_7451241_sb1_625">
+      <custrecord_ht_grv_codigo>6</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>6 SIERRA 11  - NISSAN - NAVARA - PLOMA - GRX - 3998</name>
+    </instance>
+    <instance scriptid="val_842567_7451241_sb1_808">
+      <custrecord_ht_grv_codigo>7</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>7 ALFA 12 - TOYOTA - LAND CRUISER - ROJO - GQB - 815</name>
+    </instance>
+    <instance scriptid="val_842568_7451241_sb1_898">
+      <custrecord_ht_grv_codigo>8</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>8 ALFA 4 - MAZDA - B2600 - BEIGE - GPN - 529</name>
+    </instance>
+    <instance scriptid="val_842569_7451241_sb1_662">
+      <custrecord_ht_grv_codigo>9</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIV</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842544_7451241_sb1_534]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>9 ALFA 5 - MAZDA - B2600 - PLATA - GPT - 402</name>
+    </instance>
+    <instance scriptid="val_842570_7451241_sb1_407">
+      <custrecord_ht_grv_codigo>001</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIA</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842545_7451241_sb1_960]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>001 ENDECOTS</name>
+    </instance>
+    <instance scriptid="val_842571_7451241_sb1_702">
+      <custrecord_ht_grv_codigo>002</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIA</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842545_7451241_sb1_960]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>002 TEX MONTESDEOCA</name>
+    </instance>
+    <instance scriptid="val_842572_7451241_sb1_458">
+      <custrecord_ht_grv_codigo>003</custrecord_ht_grv_codigo>
+      <custrecord_ht_grv_codigotabla>TIA</custrecord_ht_grv_codigotabla>
+      <custrecord_ht_grv_tipotransporte>[scriptid=customrecord_ht_record_tipotransporte.val_842545_7451241_sb1_960]</custrecord_ht_grv_tipotransporte>
+      <isinactive>F</isinactive>
+      <name>003 OTROS</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

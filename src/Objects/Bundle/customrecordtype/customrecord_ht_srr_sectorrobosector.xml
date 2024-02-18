@@ -1,0 +1,92 @@
+<customrecordtype scriptid="customrecord_ht_srr_sectorrobosector">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Sector Robo - Sector Recuperación</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <instances>
+    <instance scriptid="val_823493_7451241_sb1_256">
+      <isinactive>F</isinactive>
+      <name>CEN CENTRO</name>
+    </instance>
+    <instance scriptid="val_823494_7451241_sb1_978">
+      <isinactive>F</isinactive>
+      <name>EST ESTE</name>
+    </instance>
+    <instance scriptid="val_823495_7451241_sb1_966">
+      <isinactive>F</isinactive>
+      <name>NNN N/S</name>
+    </instance>
+    <instance scriptid="val_823496_7451241_sb1_557">
+      <isinactive>F</isinactive>
+      <name>NOE NORESTE</name>
+    </instance>
+    <instance scriptid="val_823497_7451241_sb1_366">
+      <isinactive>F</isinactive>
+      <name>NOO NOROESTE</name>
+    </instance>
+    <instance scriptid="val_823498_7451241_sb1_348">
+      <isinactive>F</isinactive>
+      <name>NOR NORTE</name>
+    </instance>
+    <instance scriptid="val_823499_7451241_sb1_660">
+      <isinactive>F</isinactive>
+      <name>OES OESTE</name>
+    </instance>
+    <instance scriptid="val_823500_7451241_sb1_520">
+      <isinactive>F</isinactive>
+      <name>SUE SURESTE</name>
+    </instance>
+    <instance scriptid="val_823501_7451241_sb1_384">
+      <isinactive>F</isinactive>
+      <name>SUO SUROESTE</name>
+    </instance>
+    <instance scriptid="val_823502_7451241_sb1_278">
+      <isinactive>F</isinactive>
+      <name>SUR SUR</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

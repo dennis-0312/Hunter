@@ -1,0 +1,80 @@
+<customlist scriptid="customlist_ht_af_estadofisico">
+  <description>Estado Físico Activo Fijo</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Estado Fisico</name>
+  <customvalues>
+    <customvalue scriptid="val_858511_7451241_sb1_971">
+      <isinactive>T</isinactive>
+      <value>001 EXCELENTE</value>
+    </customvalue>
+    <customvalue scriptid="val_858512_7451241_sb1_927">
+      <isinactive>T</isinactive>
+      <value>002 BUENO</value>
+    </customvalue>
+    <customvalue scriptid="val_858513_7451241_sb1_631">
+      <isinactive>T</isinactive>
+      <value>003 REGULAR</value>
+    </customvalue>
+    <customvalue scriptid="val_858514_7451241_sb1_234">
+      <isinactive>T</isinactive>
+      <value>004 MALO</value>
+    </customvalue>
+    <customvalue scriptid="val_858515_7451241_sb1_204">
+      <isinactive>T</isinactive>
+      <value>005 DAÑADO</value>
+    </customvalue>
+    <customvalue scriptid="val_858516_7451241_sb1_384">
+      <isinactive>T</isinactive>
+      <value>006 REPARADO</value>
+    </customvalue>
+    <customvalue scriptid="val_858517_7451241_sb1_843">
+      <isinactive>T</isinactive>
+      <value>028 EQUIPOS ALQUILER NILCLAVISA - HUNTER</value>
+    </customvalue>
+    <customvalue scriptid="val_858518_7451241_sb1_505">
+      <isinactive>T</isinactive>
+      <value>029 EQUIPOS ALQUILER - HUNTER</value>
+    </customvalue>
+    <customvalue scriptid="val_858519_7451241_sb1_815">
+      <isinactive>T</isinactive>
+      <value>032 EQUIPOS CANDADO - HUNTER</value>
+    </customvalue>
+    <customvalue scriptid="val_1419755_7451241_sb1_532">
+      <isinactive>F</isinactive>
+      <value>VENTA DE ACTIVO</value>
+    </customvalue>
+    <customvalue scriptid="val_1419756_7451241_sb1_324">
+      <isinactive>F</isinactive>
+      <value>DAÑO DE ACTIVO</value>
+    </customvalue>
+    <customvalue scriptid="val_1419757_7451241_sb1_463">
+      <isinactive>F</isinactive>
+      <value>ROBO</value>
+    </customvalue>
+    <customvalue scriptid="val_1419758_7451241_sb1_692">
+      <isinactive>F</isinactive>
+      <value>PERDIDA DE ACTIVO (HURTO)</value>
+    </customvalue>
+    <customvalue scriptid="val_1419759_7451241_sb1_991">
+      <isinactive>F</isinactive>
+      <value>ERROR EN INGRESO</value>
+    </customvalue>
+    <customvalue scriptid="val_1419760_7451241_sb1_804">
+      <isinactive>F</isinactive>
+      <value>DEPRECIACION TOTAL</value>
+    </customvalue>
+    <customvalue scriptid="val_1419761_7451241_sb1_264">
+      <isinactive>F</isinactive>
+      <value>BAJA POR TRANSFERENCIA A BODEGA</value>
+    </customvalue>
+    <customvalue scriptid="val_1419762_7451241_sb1_812">
+      <isinactive>F</isinactive>
+      <value>BAJA AUTORIZADA</value>
+    </customvalue>
+    <customvalue scriptid="val_1419763_7451241_sb1_355">
+      <isinactive>F</isinactive>
+      <value>VENTA ACTIVO FIJO H.M. - H. L. - H. C.</value>
+    </customvalue>
+  </customvalues>
+</customlist>

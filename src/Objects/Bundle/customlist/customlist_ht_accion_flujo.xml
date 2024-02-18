@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ht_accion_flujo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Acción de Flujo</name>
+  <customvalues>
+    <customvalue scriptid="val_1412998_7451241_sb1_365">
+      <isinactive>F</isinactive>
+      <value>Instalación</value>
+    </customvalue>
+    <customvalue scriptid="val_1412999_7451241_sb1_374">
+      <isinactive>F</isinactive>
+      <value>Desinstalación</value>
+    </customvalue>
+    <customvalue scriptid="val_1413000_7451241_sb1_307">
+      <isinactive>F</isinactive>
+      <value>Revisión</value>
+    </customvalue>
+    <customvalue scriptid="val_1413001_7451241_sb1_651">
+      <isinactive>F</isinactive>
+      <value>Activación</value>
+    </customvalue>
+    <customvalue scriptid="val_1413002_7451241_sb1_985">
+      <isinactive>F</isinactive>
+      <value>Reinstalación</value>
+    </customvalue>
+  </customvalues>
+</customlist>

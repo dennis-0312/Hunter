@@ -1,0 +1,218 @@
+<customrecordtype scriptid="customrecord_ec_record_provincia">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC Catalogo Provincia</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ec_pr_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC Código Provincia</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_782044_7451241_sb1_823">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Azuay</name>
+    </instance>
+    <instance scriptid="val_782045_7451241_sb1_324">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Bolivar</name>
+    </instance>
+    <instance scriptid="val_782046_7451241_sb1_251">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Cañar</name>
+    </instance>
+    <instance scriptid="val_782047_7451241_sb1_531">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Carchi</name>
+    </instance>
+    <instance scriptid="val_782048_7451241_sb1_187">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Cotopaxi</name>
+    </instance>
+    <instance scriptid="val_782049_7451241_sb1_957">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Chimborazo</name>
+    </instance>
+    <instance scriptid="val_782050_7451241_sb1_177">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>El Oro</name>
+    </instance>
+    <instance scriptid="val_782051_7451241_sb1_811">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Esmeraldas</name>
+    </instance>
+    <instance scriptid="val_782052_7451241_sb1_389">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Guayas</name>
+    </instance>
+    <instance scriptid="val_782053_7451241_sb1_514">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Imbabura</name>
+    </instance>
+    <instance scriptid="val_782054_7451241_sb1_915">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Loja</name>
+    </instance>
+    <instance scriptid="val_782055_7451241_sb1_423">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Los Rios</name>
+    </instance>
+    <instance scriptid="val_782056_7451241_sb1_237">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Manabi</name>
+    </instance>
+    <instance scriptid="val_782057_7451241_sb1_299">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Morona Santiago</name>
+    </instance>
+    <instance scriptid="val_782058_7451241_sb1_438">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Napo</name>
+    </instance>
+    <instance scriptid="val_782059_7451241_sb1_175">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Pastaza</name>
+    </instance>
+    <instance scriptid="val_782060_7451241_sb1_287">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Pichincha</name>
+    </instance>
+    <instance scriptid="val_782061_7451241_sb1_316">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Tungurahua</name>
+    </instance>
+    <instance scriptid="val_782062_7451241_sb1_534">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Zamora Chinchipe</name>
+    </instance>
+    <instance scriptid="val_782063_7451241_sb1_927">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Galapagos</name>
+    </instance>
+    <instance scriptid="val_782064_7451241_sb1_850">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Sucumbios</name>
+    </instance>
+    <instance scriptid="val_782065_7451241_sb1_384">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Orellana</name>
+    </instance>
+    <instance scriptid="val_782066_7451241_sb1_358">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Santo Domingo De Los Tsachilas</name>
+    </instance>
+    <instance scriptid="val_782067_7451241_sb1_814">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Santa Elena</name>
+    </instance>
+    <instance scriptid="val_782068_7451241_sb1_581">
+      <custrecord_ec_pr_codigo></custrecord_ec_pr_codigo>
+      <isinactive>F</isinactive>
+      <name>Zonas No Delimitadas</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

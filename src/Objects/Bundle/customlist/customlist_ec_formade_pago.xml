@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ec_formade_pago">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC Forma de pago TEF</name>
+  <customvalues>
+    <customvalue scriptid="val_722734_7451241_sb1_800">
+      <isinactive>F</isinactive>
+      <value>CUE</value>
+    </customvalue>
+    <customvalue scriptid="val_722735_7451241_sb1_119">
+      <isinactive>F</isinactive>
+      <value>CHE</value>
+    </customvalue>
+    <customvalue scriptid="val_722736_7451241_sb1_778">
+      <isinactive>F</isinactive>
+      <value>COB</value>
+    </customvalue>
+    <customvalue scriptid="val_930335_7451241_sb1_682">
+      <isinactive>F</isinactive>
+      <value>IMP</value>
+    </customvalue>
+    <customvalue scriptid="val_930336_7451241_sb1_988">
+      <isinactive>F</isinactive>
+      <value>PEF</value>
+    </customvalue>
+  </customvalues>
+</customlist>

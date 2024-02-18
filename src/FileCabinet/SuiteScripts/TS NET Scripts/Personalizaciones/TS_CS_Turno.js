@@ -18,19 +18,17 @@ define(["N/search", "N/currentRecord", "N/ui/message", "N/url", "N/runtime"], (
         try {
             console.log("entra saverecord");
             const objRecord = context.currentRecord;
+            if (typeMode == "create" || typeMode == "copy") {
+                const transaccion = objRecord.getValue("transaction");
+                var Turno = getTurno();
 
-            const transaccion = objRecord.getValue("transaction");
-            var Turno = getTurno();
-
-            for (let i = 0; i < Turno.length; i++) {
-                if (transaccion == Turno[i][0]) {
-                    alert(
-                        "Ya hay un turno para esta transacción."
-                    );
-                    return false;
+                for (let i = 0; i < Turno.length; i++) {
+                    if (transaccion == Turno[i][0]) {
+                        alert("Ya hay un turno para esta transacción.");
+                        return false;
+                    }
                 }
             }
-
             return true;
         } catch (e) {
             console.log("Error en el saveRecord", e);
@@ -47,7 +45,7 @@ define(["N/search", "N/currentRecord", "N/ui/message", "N/url", "N/runtime"], (
                 if (typeTransaction === "task") {
                     var Turno = getTurno();
                     console.log('sublistFieldName', sublistFieldName);
-                    console.log('Turno',Turno);
+                    console.log('Turno', Turno);
                     if (sublistFieldName === "transaction") {
                         const turno = objRecord.getText(sublistFieldName);
                         for (let i = 0; i < Turno.length; i++) {

@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_ts_ui_generador_codig_barra">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_UI_Generador_Codigo_Barras</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Generador Codigo Barras/Suitelet/TS_UI_Generador_Codigo_Barras.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_ui_generador_codig_barra">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>TS_UI_Generador_Codigo_Barras</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

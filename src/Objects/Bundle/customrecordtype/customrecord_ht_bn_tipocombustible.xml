@@ -1,0 +1,192 @@
+<customrecordtype scriptid="customrecord_ht_bn_tipocombustible">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Tipo Combustible</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_tipocombustible_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_tipocombustible_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_810992_7451241_sb1_265">
+      <custrecord_ht_bn_tipocombustible_codigo>001</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>GASOLINA</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>001 - GASOLINA</name>
+    </instance>
+    <instance scriptid="val_810993_7451241_sb1_874">
+      <custrecord_ht_bn_tipocombustible_codigo>002</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>DIESEL</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>002 - DIESEL</name>
+    </instance>
+    <instance scriptid="val_810994_7451241_sb1_526">
+      <custrecord_ht_bn_tipocombustible_codigo>003</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>GAS</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>003 - GAS</name>
+    </instance>
+    <instance scriptid="val_810995_7451241_sb1_318">
+      <custrecord_ht_bn_tipocombustible_codigo>004</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>GASOLINA/GAS</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>004 - GASOLINA/GAS</name>
+    </instance>
+    <instance scriptid="val_810996_7451241_sb1_367">
+      <custrecord_ht_bn_tipocombustible_codigo>005</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>BLANCO</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>005 - BLANCO</name>
+    </instance>
+    <instance scriptid="val_810997_7451241_sb1_796">
+      <custrecord_ht_bn_tipocombustible_codigo>006</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>ELECTRICO</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>006 - ELECTRICO</name>
+    </instance>
+    <instance scriptid="val_810998_7451241_sb1_939">
+      <custrecord_ht_bn_tipocombustible_codigo>007</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>HIBRIDO</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>007 - HIBRIDO</name>
+    </instance>
+    <instance scriptid="val_810999_7451241_sb1_376">
+      <custrecord_ht_bn_tipocombustible_codigo>008</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>NO APLICA</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>008 - NO APLICA</name>
+    </instance>
+    <instance scriptid="val_811000_7451241_sb1_597">
+      <custrecord_ht_bn_tipocombustible_codigo>009</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>&apos;&apos;NULL&apos;</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>009 - &apos;&apos;NULL&apos;</name>
+    </instance>
+    <instance scriptid="val_811001_7451241_sb1_802">
+      <custrecord_ht_bn_tipocombustible_codigo>010</custrecord_ht_bn_tipocombustible_codigo>
+      <custrecord_ht_bn_tipocombustible_descrip>HYBRID</custrecord_ht_bn_tipocombustible_descrip>
+      <isinactive>F</isinactive>
+      <name>010 - HYBRID</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

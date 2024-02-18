@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ht_estado_otros">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Estado Otros Productos</name>
+  <customvalues>
+    <customvalue scriptid="val_873953_7451241_sb1_462">
+      <isinactive>F</isinactive>
+      <value>Activo </value>
+    </customvalue>
+    <customvalue scriptid="val_873954_7451241_sb1_903">
+      <isinactive>F</isinactive>
+      <value>Custodia </value>
+    </customvalue>
+    <customvalue scriptid="val_873955_7451241_sb1_962">
+      <isinactive>F</isinactive>
+      <value>Inactivo </value>
+    </customvalue>
+  </customvalues>
+</customlist>

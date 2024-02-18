@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_ht_lista_emisores">
+  <description>lista de emisores de tarjeta ecuador</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Emisores de Tarjeta</name>
+  <customvalues>
+    <customvalue scriptid="val_1429359_7451241_sb1_961">
+      <isinactive>F</isinactive>
+      <value>AMEX</value>
+    </customvalue>
+    <customvalue scriptid="val_1429360_7451241_sb1_908">
+      <isinactive>F</isinactive>
+      <value>DINERS CLUB</value>
+    </customvalue>
+    <customvalue scriptid="val_1429361_7451241_sb1_121">
+      <isinactive>F</isinactive>
+      <value>MASTERCARD</value>
+    </customvalue>
+    <customvalue scriptid="val_1429362_7451241_sb1_444">
+      <isinactive>F</isinactive>
+      <value>VISA</value>
+    </customvalue>
+  </customvalues>
+</customlist>

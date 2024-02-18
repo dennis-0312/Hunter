@@ -1,0 +1,556 @@
+<customrecordtype scriptid="customrecord_evol_ts_ec_setup_trans_typ">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>T</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>F</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>F</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EVOL - Setup Transaction Type</recordname>
+  <showcreationdate>T</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>T</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecordts_ns_transaction_api">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Transaction Name Api</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ns_apply_redacc">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CHECKBOX</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Apply Redirect Account</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_automatic_set_trans">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CHECKBOX</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Automatic Set Transaction</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_752840_7451241_sb1_240">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Assembly Build</name>
+    </instance>
+    <instance scriptid="val_752841_7451241_sb1_415">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Assembly Unbuild</name>
+    </instance>
+    <instance scriptid="val_752842_7451241_sb1_930">
+      <custrecord_ts_automatic_set_trans>T</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>vendorbill</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Bill</name>
+    </instance>
+    <instance scriptid="val_752843_7451241_sb1_486">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Bill CCard</name>
+    </instance>
+    <instance scriptid="val_752844_7451241_sb1_640">
+      <custrecord_ts_automatic_set_trans>T</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>vendorcredit</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Bill Credit</name>
+    </instance>
+    <instance scriptid="val_752845_7451241_sb1_369">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>vendorpayment</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Bill Payment</name>
+    </instance>
+    <instance scriptid="val_752846_7451241_sb1_587">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Bin Putaway Worksheet</name>
+    </instance>
+    <instance scriptid="val_752847_7451241_sb1_347">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Bin Transfer</name>
+    </instance>
+    <instance scriptid="val_752848_7451241_sb1_801">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Cash Refund</name>
+    </instance>
+    <instance scriptid="val_752849_7451241_sb1_408">
+      <custrecord_ts_automatic_set_trans>T</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>cashsale</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Cash Sale</name>
+    </instance>
+    <instance scriptid="val_752850_7451241_sb1_876">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>CCard Refund</name>
+    </instance>
+    <instance scriptid="val_752851_7451241_sb1_309">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>check</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Cheque</name>
+    </instance>
+    <instance scriptid="val_752852_7451241_sb1_549">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Commission</name>
+    </instance>
+    <instance scriptid="val_752853_7451241_sb1_335">
+      <custrecord_ts_automatic_set_trans>T</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>customtransaction_lmry_payment_complemnt</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Complemento de Pago</name>
+    </instance>
+    <instance scriptid="val_752854_7451241_sb1_687">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Credit Card</name>
+    </instance>
+    <instance scriptid="val_752855_7451241_sb1_921">
+      <custrecord_ts_automatic_set_trans>T</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>T</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>creditmemo</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Credit Memo</name>
+    </instance>
+    <instance scriptid="val_752856_7451241_sb1_766">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Currency Revaluation</name>
+    </instance>
+    <instance scriptid="val_752857_7451241_sb1_889">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>customerdeposit</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Customer Deposit</name>
+    </instance>
+    <instance scriptid="val_752858_7451241_sb1_645">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Customer Refund</name>
+    </instance>
+    <instance scriptid="val_752859_7451241_sb1_388">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Deposit</name>
+    </instance>
+    <instance scriptid="val_752860_7451241_sb1_951">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Deposit Application</name>
+    </instance>
+    <instance scriptid="val_752861_7451241_sb1_197">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Estimate</name>
+    </instance>
+    <instance scriptid="val_752862_7451241_sb1_341">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>expensereport</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Expense Report</name>
+    </instance>
+    <instance scriptid="val_752863_7451241_sb1_123">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Finance Charge</name>
+    </instance>
+    <instance scriptid="val_752864_7451241_sb1_211">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>inventoryadjustment</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Inventory Adjustment</name>
+    </instance>
+    <instance scriptid="val_752865_7451241_sb1_215">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Inventory Cost Revaluation</name>
+    </instance>
+    <instance scriptid="val_752866_7451241_sb1_403">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Inventory Count</name>
+    </instance>
+    <instance scriptid="val_752867_7451241_sb1_969">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Inventory Distribution</name>
+    </instance>
+    <instance scriptid="val_752868_7451241_sb1_474">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Inventory Transfer</name>
+    </instance>
+    <instance scriptid="val_752869_7451241_sb1_179">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Inventory Worksheet</name>
+    </instance>
+    <instance scriptid="val_752870_7451241_sb1_312">
+      <custrecord_ts_automatic_set_trans>T</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>T</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>invoice</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Invoice</name>
+    </instance>
+    <instance scriptid="val_752871_7451241_sb1_429">
+      <custrecord_ts_automatic_set_trans>T</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>T</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>itemfulfillment</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Item Fulfillment</name>
+    </instance>
+    <instance scriptid="val_752872_7451241_sb1_831">
+      <custrecord_ts_automatic_set_trans>T</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>itemreceipt</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Item Receipt</name>
+    </instance>
+    <instance scriptid="val_752873_7451241_sb1_830">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>journalentry</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Journal</name>
+    </instance>
+    <instance scriptid="val_752874_7451241_sb1_514">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Liability Adjustment</name>
+    </instance>
+    <instance scriptid="val_752875_7451241_sb1_915">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Opportunity</name>
+    </instance>
+    <instance scriptid="val_752876_7451241_sb1_408">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Paycheque</name>
+    </instance>
+    <instance scriptid="val_752877_7451241_sb1_239">
+      <custrecord_ts_automatic_set_trans>T</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>customerpayment</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Payment</name>
+    </instance>
+    <instance scriptid="val_752878_7451241_sb1_220">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Payroll Adjustment</name>
+    </instance>
+    <instance scriptid="val_752879_7451241_sb1_219">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Payroll Liability Cheque</name>
+    </instance>
+    <instance scriptid="val_752880_7451241_sb1_296">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>purchaseorder</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Purchase Order</name>
+    </instance>
+    <instance scriptid="val_752881_7451241_sb1_339">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Return Authorisation</name>
+    </instance>
+    <instance scriptid="val_752882_7451241_sb1_927">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Revenue Commitment</name>
+    </instance>
+    <instance scriptid="val_752883_7451241_sb1_119">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Revenue Commitment Reversal</name>
+    </instance>
+    <instance scriptid="val_752884_7451241_sb1_940">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>salesorder</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Sales Order</name>
+    </instance>
+    <instance scriptid="val_752885_7451241_sb1_455">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Sales Tax Payment</name>
+    </instance>
+    <instance scriptid="val_752886_7451241_sb1_860">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Statement Charge</name>
+    </instance>
+    <instance scriptid="val_752887_7451241_sb1_614">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Tegata Payable</name>
+    </instance>
+    <instance scriptid="val_752888_7451241_sb1_943">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Tegata Receivable</name>
+    </instance>
+    <instance scriptid="val_752889_7451241_sb1_450">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Transfer</name>
+    </instance>
+    <instance scriptid="val_752890_7451241_sb1_862">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Transfer Order</name>
+    </instance>
+    <instance scriptid="val_752891_7451241_sb1_661">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api>vendorreturnauthorization</custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Vendor Return Authorization</name>
+    </instance>
+    <instance scriptid="val_752892_7451241_sb1_780">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Work Order</name>
+    </instance>
+    <instance scriptid="val_752893_7451241_sb1_557">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Work Order Close</name>
+    </instance>
+    <instance scriptid="val_752894_7451241_sb1_171">
+      <custrecord_ts_automatic_set_trans>F</custrecord_ts_automatic_set_trans>
+      <custrecord_ts_ns_apply_redacc>F</custrecord_ts_ns_apply_redacc>
+      <custrecordts_ns_transaction_api></custrecordts_ns_transaction_api>
+      <isinactive>F</isinactive>
+      <name>Work Order Completion</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

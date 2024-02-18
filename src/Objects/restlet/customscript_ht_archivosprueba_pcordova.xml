@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ht_archivosprueba_pcordova">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>ArchivosPrueba_Pcordova</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/Capacitacion2/CargaArchivosPrueba_Pcordova.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ht_archivosprueba_pcordova">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>ArchivosPrueba_Pcordova</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

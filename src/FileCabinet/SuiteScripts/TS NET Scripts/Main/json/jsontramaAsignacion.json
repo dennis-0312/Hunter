@@ -1,0 +1,16 @@
+{
+    "accion": "actualizar",
+    "idordentrabajo": "273",
+    "tecnico": "153",
+    "codigodispositivo": "1099",
+    "ubicacion": "19",
+    "horatrabajoasignacion": "23:00",
+    "fechatrabajoasignacion": "2023/12/06",
+    "estadoordendeservicio": "S",
+    "supervisor": "13",
+    "novedad": false,
+    "observacion": "Sin observación",
+    "fueraciudad": false,
+    "fuerataller": false,
+    "estadoChequeo": 1
+}

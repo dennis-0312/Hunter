@@ -1,0 +1,255 @@
+<customrecordtype scriptid="customrecord_ht_mb_catalogodegestion">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Catalogo de gestion</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_cg_codigotabla">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Código tabla</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cg_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Código</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cg_descripcion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_823306_7451241_sb1_241">
+      <custrecord_ht_cg_codigo>01</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>ENERO</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>01 - ENERO</name>
+    </instance>
+    <instance scriptid="val_823307_7451241_sb1_312">
+      <custrecord_ht_cg_codigo>02</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>FEBRERO</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>02 - FEBRERO</name>
+    </instance>
+    <instance scriptid="val_823308_7451241_sb1_282">
+      <custrecord_ht_cg_codigo>03</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>MARZO</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>03 - MARZO</name>
+    </instance>
+    <instance scriptid="val_823309_7451241_sb1_273">
+      <custrecord_ht_cg_codigo>04</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>ABRIL</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>04 - ABRIL</name>
+    </instance>
+    <instance scriptid="val_823310_7451241_sb1_996">
+      <custrecord_ht_cg_codigo>05</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>MAYO</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>05 - MAYO</name>
+    </instance>
+    <instance scriptid="val_823311_7451241_sb1_124">
+      <custrecord_ht_cg_codigo>06</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>JUNIO</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>06 - JUNIO</name>
+    </instance>
+    <instance scriptid="val_823312_7451241_sb1_162">
+      <custrecord_ht_cg_codigo>07</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>JULIO</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>07 - JULIO</name>
+    </instance>
+    <instance scriptid="val_823313_7451241_sb1_772">
+      <custrecord_ht_cg_codigo>08</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>AGOSTO</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>08 - AGOSTO</name>
+    </instance>
+    <instance scriptid="val_823314_7451241_sb1_960">
+      <custrecord_ht_cg_codigo>09</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>SEPTIEMBRE</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>09 - SEPTIEMBRE</name>
+    </instance>
+    <instance scriptid="val_823315_7451241_sb1_231">
+      <custrecord_ht_cg_codigo>10</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>OCTUBRE</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>10 - OCTUBRE</name>
+    </instance>
+    <instance scriptid="val_823316_7451241_sb1_855">
+      <custrecord_ht_cg_codigo>11</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>NOVIEMBRE</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>11 - NOVIEMBRE</name>
+    </instance>
+    <instance scriptid="val_823317_7451241_sb1_901">
+      <custrecord_ht_cg_codigo>12</custrecord_ht_cg_codigo>
+      <custrecord_ht_cg_codigotabla>MES</custrecord_ht_cg_codigotabla>
+      <custrecord_ht_cg_descripcion>DICIEMBRE</custrecord_ht_cg_descripcion>
+      <isinactive>F</isinactive>
+      <name>12 - DICIEMBRE</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

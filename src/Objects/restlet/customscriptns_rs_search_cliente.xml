@@ -1,0 +1,22 @@
+<restlet scriptid="customscriptns_rs_search_cliente">
+  <description>trae los datos del cliente</description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_SEARCH_CLIENTE</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/Capacitación/searchCliente.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeployns_rs_search_cliente">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>NS_RS_SEARCH_CLIENTE</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

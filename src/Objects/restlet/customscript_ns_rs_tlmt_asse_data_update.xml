@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_tlmt_asse_data_update">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS RS Telematic Actualizacion Vehiculo</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/ErickHunter/NS_RS_Telematic_Asset_Data_Update.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_tlmt_asse_data_update">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>ERROR</loglevel>
+      <status>RELEASED</status>
+      <title>TS RS Telematic Actualizacion Vehiculo</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

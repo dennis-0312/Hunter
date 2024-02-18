@@ -1,0 +1,12 @@
+<customlist scriptid="customlist_ht_sc_tiposeguimiento">
+  <description>Tipo seguimiento</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT SC Tipo seguimiento</name>
+  <customvalues>
+    <customvalue scriptid="val_873689_7451241_sb1_278">
+      <isinactive>F</isinactive>
+      <value>VEN - VENTAS</value>
+    </customvalue>
+  </customvalues>
+</customlist>

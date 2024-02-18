@@ -1,0 +1,1151 @@
+<customrecordtype scriptid="customrecord_ht_motivobaja">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Motivo de baja</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_mb_codigotabla">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Código tabla</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_mb_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Código</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_mb_descripcion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_823161_7451241_sb1_252">
+      <custrecord_ht_mb_codigo>001</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente tiene Carlink</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - Cliente tiene Carlink</name>
+    </instance>
+    <instance scriptid="val_823162_7451241_sb1_644">
+      <custrecord_ht_mb_codigo>002</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente tiene Chevystar</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - Cliente tiene Chevystar</name>
+    </instance>
+    <instance scriptid="val_823163_7451241_sb1_461">
+      <custrecord_ht_mb_codigo>003</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente se encuentra fuera de la Ciudad</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 - Cliente se encuentra fuera de la Ciudad</name>
+    </instance>
+    <instance scriptid="val_823164_7451241_sb1_408">
+      <custrecord_ht_mb_codigo>004</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente vive fuera del Pais</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>004 - Cliente vive fuera del Pais</name>
+    </instance>
+    <instance scriptid="val_823165_7451241_sb1_739">
+      <custrecord_ht_mb_codigo>005</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente con gastos de Enfermedad</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>005 - Cliente con gastos de Enfermedad</name>
+    </instance>
+    <instance scriptid="val_823166_7451241_sb1_872">
+      <custrecord_ht_mb_codigo>006</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente con gastos de Sepelio</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>006 - Cliente con gastos de Sepelio</name>
+    </instance>
+    <instance scriptid="val_823167_7451241_sb1_281">
+      <custrecord_ht_mb_codigo>007</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Conflicto con Hunter</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>007 - Conflicto con Hunter</name>
+    </instance>
+    <instance scriptid="val_823168_7451241_sb1_973">
+      <custrecord_ht_mb_codigo>008</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente tiene Multilock</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>008 - Cliente tiene Multilock</name>
+    </instance>
+    <instance scriptid="val_823169_7451241_sb1_163">
+      <custrecord_ht_mb_codigo>009</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>No es Posible Contactarlos</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>009 - No es Posible Contactarlos</name>
+    </instance>
+    <instance scriptid="val_823170_7451241_sb1_816">
+      <custrecord_ht_mb_codigo>010</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Enviaron Carta de No Renovar</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>010 - Enviaron Carta de No Renovar</name>
+    </instance>
+    <instance scriptid="val_823171_7451241_sb1_418">
+      <custrecord_ht_mb_codigo>011</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente quedo en contactarse con Hunter</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>011 - Cliente quedo en contactarse con Hunter</name>
+    </instance>
+    <instance scriptid="val_823172_7451241_sb1_701">
+      <custrecord_ht_mb_codigo>012</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente con Recursos Insuficientes</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>012 - Cliente con Recursos Insuficientes</name>
+    </instance>
+    <instance scriptid="val_823173_7451241_sb1_318">
+      <custrecord_ht_mb_codigo>013</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente con otro Sistema de Rastreo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>013 - Cliente con otro Sistema de Rastreo</name>
+    </instance>
+    <instance scriptid="val_823174_7451241_sb1_862">
+      <custrecord_ht_mb_codigo>014</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>En espera de Datos del Nuevo Propietario</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>014 - En espera de Datos del Nuevo Propietario</name>
+    </instance>
+    <instance scriptid="val_823175_7451241_sb1_915">
+      <custrecord_ht_mb_codigo>015</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>En espera de Autorizacion Financiera</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>015 - En espera de Autorizacion Financiera</name>
+    </instance>
+    <instance scriptid="val_823176_7451241_sb1_331">
+      <custrecord_ht_mb_codigo>016</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente con gastos de Embarazo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>016 - Cliente con gastos de Embarazo</name>
+    </instance>
+    <instance scriptid="val_823177_7451241_sb1_646">
+      <custrecord_ht_mb_codigo>018</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente no concreta Renovacion</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>018 - Cliente no concreta Renovacion</name>
+    </instance>
+    <instance scriptid="val_823178_7451241_sb1_872">
+      <custrecord_ht_mb_codigo>019</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Rechaza  el Servicio</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>019 - Rechaza  el Servicio</name>
+    </instance>
+    <instance scriptid="val_823179_7451241_sb1_997">
+      <custrecord_ht_mb_codigo>020</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Pendiente respuesta de otra Sucursal</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>020 - Pendiente respuesta de otra Sucursal</name>
+    </instance>
+    <instance scriptid="val_823180_7451241_sb1_698">
+      <custrecord_ht_mb_codigo>021</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Perdida Total</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>021 - Perdida Total</name>
+    </instance>
+    <instance scriptid="val_823181_7451241_sb1_965">
+      <custrecord_ht_mb_codigo>022</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Seguro no Exige Hunter</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>022 - Seguro no Exige Hunter</name>
+    </instance>
+    <instance scriptid="val_823182_7451241_sb1_820">
+      <custrecord_ht_mb_codigo>023</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vehiculo Codigo Rojo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>023 - Vehiculo Codigo Rojo</name>
+    </instance>
+    <instance scriptid="val_823183_7451241_sb1_253">
+      <custrecord_ht_mb_codigo>024</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vehiculo Siniestrado</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>024 - Vehiculo Siniestrado</name>
+    </instance>
+    <instance scriptid="val_823184_7451241_sb1_756">
+      <custrecord_ht_mb_codigo>025</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vehiculo Vendido, no hay Datos del Nuevo Propietario</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>025 - Vehiculo Vendido, no hay Datos del Nuevo Propietario</name>
+    </instance>
+    <instance scriptid="val_823185_7451241_sb1_468">
+      <custrecord_ht_mb_codigo>026</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cortesia</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>026 - Cortesia</name>
+    </instance>
+    <instance scriptid="val_823186_7451241_sb1_220">
+      <custrecord_ht_mb_codigo>027</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Clientes del Oriente</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>027 - Clientes del Oriente</name>
+    </instance>
+    <instance scriptid="val_823187_7451241_sb1_242">
+      <custrecord_ht_mb_codigo>028</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Clientes Especiales</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>028 - Clientes Especiales</name>
+    </instance>
+    <instance scriptid="val_823188_7451241_sb1_755">
+      <custrecord_ht_mb_codigo>029</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente tiene Sherlock</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>029 - Cliente tiene Sherlock</name>
+    </instance>
+    <instance scriptid="val_823189_7451241_sb1_598">
+      <custrecord_ht_mb_codigo>030</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente tiene Controlcar</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>030 - Cliente tiene Controlcar</name>
+    </instance>
+    <instance scriptid="val_823190_7451241_sb1_524">
+      <custrecord_ht_mb_codigo>031</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Auto Viejo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>031 - Auto Viejo</name>
+    </instance>
+    <instance scriptid="val_823191_7451241_sb1_317">
+      <custrecord_ht_mb_codigo>032</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Sin Dispositivo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>032 - Sin Dispositivo</name>
+    </instance>
+    <instance scriptid="val_823192_7451241_sb1_783">
+      <custrecord_ht_mb_codigo>033</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vehiculo en Taller</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>033 - Vehiculo en Taller</name>
+    </instance>
+    <instance scriptid="val_823193_7451241_sb1_311">
+      <custrecord_ht_mb_codigo>034</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cambio a otro mes</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>034 - Cambio a otro mes</name>
+    </instance>
+    <instance scriptid="val_823194_7451241_sb1_162">
+      <custrecord_ht_mb_codigo>035</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Comprara Vehiculo Nuevo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>035 - Comprara Vehiculo Nuevo</name>
+    </instance>
+    <instance scriptid="val_823195_7451241_sb1_780">
+      <custrecord_ht_mb_codigo>036</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Custodia</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>036 - Custodia</name>
+    </instance>
+    <instance scriptid="val_823196_7451241_sb1_301">
+      <custrecord_ht_mb_codigo>037</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Pendiente respuesta de Vicepresidencia</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>037 - Pendiente respuesta de Vicepresidencia</name>
+    </instance>
+    <instance scriptid="val_823197_7451241_sb1_435">
+      <custrecord_ht_mb_codigo>038</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Pendiente aprobacion de nuestro Dpto. Financiero</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>038 - Pendiente aprobacion de nuestro Dpto. Financiero</name>
+    </instance>
+    <instance scriptid="val_823198_7451241_sb1_167">
+      <custrecord_ht_mb_codigo>039</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Pendiente ajuste de informacion por parte de nuestro Dpto. de Sistemas</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>039 - Pendiente ajuste de informacion por parte de nuestro Dpto. de Sistemas</name>
+    </instance>
+    <instance scriptid="val_823199_7451241_sb1_775">
+      <custrecord_ht_mb_codigo>040</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Clientes Corporativos</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>040 - Clientes Corporativos</name>
+    </instance>
+    <instance scriptid="val_823200_7451241_sb1_630">
+      <custrecord_ht_mb_codigo>041</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente con Cuenta Incobrable</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>041 - Cliente con Cuenta Incobrable</name>
+    </instance>
+    <instance scriptid="val_823201_7451241_sb1_556">
+      <custrecord_ht_mb_codigo>042</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>DESINTALADO EN MES DE RENOVACION</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>042 - DESINTALADO EN MES DE RENOVACION</name>
+    </instance>
+    <instance scriptid="val_823202_7451241_sb1_385">
+      <custrecord_ht_mb_codigo>043</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Seguimiento Posterior</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>043 - Seguimiento Posterior</name>
+    </instance>
+    <instance scriptid="val_823203_7451241_sb1_890">
+      <custrecord_ht_mb_codigo>044</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Actualizan datos</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>044 - Actualizan datos</name>
+    </instance>
+    <instance scriptid="val_823204_7451241_sb1_309">
+      <custrecord_ht_mb_codigo>045</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Agenda chequeo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>045 - Agenda chequeo</name>
+    </instance>
+    <instance scriptid="val_823205_7451241_sb1_850">
+      <custrecord_ht_mb_codigo>046</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente interesado</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>046 - Cliente interesado</name>
+    </instance>
+    <instance scriptid="val_823206_7451241_sb1_846">
+      <custrecord_ht_mb_codigo>047</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente nos llamara</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>047 - Cliente nos llamara</name>
+    </instance>
+    <instance scriptid="val_823207_7451241_sb1_583">
+      <custrecord_ht_mb_codigo>048</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Enviar cotizacion</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>048 - Enviar cotizacion</name>
+    </instance>
+    <instance scriptid="val_823208_7451241_sb1_814">
+      <custrecord_ht_mb_codigo>049</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Enviar informacion servicio</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>049 - Enviar informacion servicio</name>
+    </instance>
+    <instance scriptid="val_823209_7451241_sb1_175">
+      <custrecord_ht_mb_codigo>050</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Solicita visita ejecutiva</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>050 - Solicita visita ejecutiva</name>
+    </instance>
+    <instance scriptid="val_823210_7451241_sb1_987">
+      <custrecord_ht_mb_codigo>051</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Fallecio cliente</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>051 - Fallecio cliente</name>
+    </instance>
+    <instance scriptid="val_823211_7451241_sb1_762">
+      <custrecord_ht_mb_codigo>052</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Linea dañada</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>052 - Linea dañada</name>
+    </instance>
+    <instance scriptid="val_823212_7451241_sb1_573">
+      <custrecord_ht_mb_codigo>053</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>No contesta horas laborables</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>053 - No contesta horas laborables</name>
+    </instance>
+    <instance scriptid="val_823213_7451241_sb1_878">
+      <custrecord_ht_mb_codigo>054</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>No contesta horas no laborables</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>054 - No contesta horas no laborables</name>
+    </instance>
+    <instance scriptid="val_823214_7451241_sb1_968">
+      <custrecord_ht_mb_codigo>055</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>No existe telefono</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>055 - No existe telefono</name>
+    </instance>
+    <instance scriptid="val_823215_7451241_sb1_811">
+      <custrecord_ht_mb_codigo>056</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Numero equivocado</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>056 - Numero equivocado</name>
+    </instance>
+    <instance scriptid="val_823216_7451241_sb1_783">
+      <custrecord_ht_mb_codigo>057</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vive fuera del pais</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>057 - Vive fuera del pais</name>
+    </instance>
+    <instance scriptid="val_823217_7451241_sb1_318">
+      <custrecord_ht_mb_codigo>058</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Entregar cotizacion</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>058 - Entregar cotizacion</name>
+    </instance>
+    <instance scriptid="val_823218_7451241_sb1_149">
+      <custrecord_ht_mb_codigo>059</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Entregar fact/contrato</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>059 - Entregar fact/contrato</name>
+    </instance>
+    <instance scriptid="val_823219_7451241_sb1_592">
+      <custrecord_ht_mb_codigo>060</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Para cierre de negocio</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>060 - Para cierre de negocio</name>
+    </instance>
+    <instance scriptid="val_823220_7451241_sb1_766">
+      <custrecord_ht_mb_codigo>061</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Retirar pago</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>061 - Retirar pago</name>
+    </instance>
+    <instance scriptid="val_823221_7451241_sb1_587">
+      <custrecord_ht_mb_codigo>062</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente de vacaciones</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>062 - Cliente de vacaciones</name>
+    </instance>
+    <instance scriptid="val_823222_7451241_sb1_586">
+      <custrecord_ht_mb_codigo>063</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente fuera de la ciudad</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>063 - Cliente fuera de la ciudad</name>
+    </instance>
+    <instance scriptid="val_823223_7451241_sb1_343">
+      <custrecord_ht_mb_codigo>064</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente no concreta cierre</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>064 - Cliente no concreta cierre</name>
+    </instance>
+    <instance scriptid="val_823224_7451241_sb1_715">
+      <custrecord_ht_mb_codigo>065</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Datos nuevo propietario veh.</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>065 - Datos nuevo propietario veh.</name>
+    </instance>
+    <instance scriptid="val_823225_7451241_sb1_817">
+      <custrecord_ht_mb_codigo>066</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Problema economico</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>066 - Problema economico</name>
+    </instance>
+    <instance scriptid="val_823226_7451241_sb1_526">
+      <custrecord_ht_mb_codigo>067</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Problemas de salud</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>067 - Problemas de salud</name>
+    </instance>
+    <instance scriptid="val_823227_7451241_sb1_843">
+      <custrecord_ht_mb_codigo>068</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vehiculo en taller</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>068 - Vehiculo en taller</name>
+    </instance>
+    <instance scriptid="val_823228_7451241_sb1_873">
+      <custrecord_ht_mb_codigo>069</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Facturado</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>069 - Facturado</name>
+    </instance>
+    <instance scriptid="val_823229_7451241_sb1_561">
+      <custrecord_ht_mb_codigo>070</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Contrato firmado</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>070 - Contrato firmado</name>
+    </instance>
+    <instance scriptid="val_823230_7451241_sb1_397">
+      <custrecord_ht_mb_codigo>071</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Aseguradora no exige</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>071 - Aseguradora no exige</name>
+    </instance>
+    <instance scriptid="val_823231_7451241_sb1_150">
+      <custrecord_ht_mb_codigo>072</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente no quiere recibir llamadas</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>072 - Cliente no quiere recibir llamadas</name>
+    </instance>
+    <instance scriptid="val_823232_7451241_sb1_621">
+      <custrecord_ht_mb_codigo>073</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Codigo rojo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>073 - Codigo rojo</name>
+    </instance>
+    <instance scriptid="val_823233_7451241_sb1_864">
+      <custrecord_ht_mb_codigo>074</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Falta recursos economicos</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>074 - Falta recursos economicos</name>
+    </instance>
+    <instance scriptid="val_823234_7451241_sb1_218">
+      <custrecord_ht_mb_codigo>075</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Malas referencias hunter</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>075 - Malas referencias hunter</name>
+    </instance>
+    <instance scriptid="val_823235_7451241_sb1_968">
+      <custrecord_ht_mb_codigo>076</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>No quiere nuestro servicio</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>076 - No quiere nuestro servicio</name>
+    </instance>
+    <instance scriptid="val_823236_7451241_sb1_140">
+      <custrecord_ht_mb_codigo>077</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Precio muy alto</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>077 - Precio muy alto</name>
+    </instance>
+    <instance scriptid="val_823237_7451241_sb1_591">
+      <custrecord_ht_mb_codigo>078</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Se paso a competencia</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>078 - Se paso a competencia</name>
+    </instance>
+    <instance scriptid="val_823238_7451241_sb1_408">
+      <custrecord_ht_mb_codigo>079</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vehiculo siniestrado</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>079 - Vehiculo siniestrado</name>
+    </instance>
+    <instance scriptid="val_823239_7451241_sb1_372">
+      <custrecord_ht_mb_codigo>080</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vehiculo vendido</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>080 - Vehiculo vendido</name>
+    </instance>
+    <instance scriptid="val_823240_7451241_sb1_355">
+      <custrecord_ht_mb_codigo>081</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vehiculo viejo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>081 - Vehiculo viejo</name>
+    </instance>
+    <instance scriptid="val_823241_7451241_sb1_361">
+      <custrecord_ht_mb_codigo>082</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Canal distribucion deriva el cobro al dueño del vehiculo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>082 - Canal distribucion deriva el cobro al dueño del vehiculo</name>
+    </instance>
+    <instance scriptid="val_823242_7451241_sb1_886">
+      <custrecord_ht_mb_codigo>083</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente indica fecha de cancelacion tentativa</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>083 - Cliente indica fecha de cancelacion tentativa</name>
+    </instance>
+    <instance scriptid="val_823243_7451241_sb1_447">
+      <custrecord_ht_mb_codigo>084</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente no recibio factura</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>084 - Cliente no recibio factura</name>
+    </instance>
+    <instance scriptid="val_823244_7451241_sb1_897">
+      <custrecord_ht_mb_codigo>085</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente pide anular factura</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>085 - Cliente pide anular factura</name>
+    </instance>
+    <instance scriptid="val_823245_7451241_sb1_426">
+      <custrecord_ht_mb_codigo>086</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Solicita estado de cuenta</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>086 - Solicita estado de cuenta</name>
+    </instance>
+    <instance scriptid="val_823246_7451241_sb1_499">
+      <custrecord_ht_mb_codigo>087</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>E-mail con error</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>087 - E-mail con error</name>
+    </instance>
+    <instance scriptid="val_823247_7451241_sb1_359">
+      <custrecord_ht_mb_codigo>088</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>No existe telefono/dañado</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>088 - No existe telefono/dañado</name>
+    </instance>
+    <instance scriptid="val_823248_7451241_sb1_435">
+      <custrecord_ht_mb_codigo>089</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Retirar retencion</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>089 - Retirar retencion</name>
+    </instance>
+    <instance scriptid="val_823249_7451241_sb1_768">
+      <custrecord_ht_mb_codigo>090</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Entregar aviso de cobro/suspension</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>090 - Entregar aviso de cobro/suspension</name>
+    </instance>
+    <instance scriptid="val_823250_7451241_sb1_773">
+      <custrecord_ht_mb_codigo>091</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Entregar estado de cuenta</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>091 - Entregar estado de cuenta</name>
+    </instance>
+    <instance scriptid="val_823251_7451241_sb1_490">
+      <custrecord_ht_mb_codigo>092</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cambio fecha del pago por el cliente</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>092 - Cambio fecha del pago por el cliente</name>
+    </instance>
+    <instance scriptid="val_823252_7451241_sb1_363">
+      <custrecord_ht_mb_codigo>093</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente retiene cancelacion por falta de recepcion de documentos actas</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>093 - Cliente retiene cancelacion por falta de recepcion de documentos actas</name>
+    </instance>
+    <instance scriptid="val_823253_7451241_sb1_462">
+      <custrecord_ht_mb_codigo>094</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Gestionar con usuario interno el pago</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>094 - Gestionar con usuario interno el pago</name>
+    </instance>
+    <instance scriptid="val_823254_7451241_sb1_851">
+      <custrecord_ht_mb_codigo>095</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Inconformidad del servicio</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>095 - Inconformidad del servicio</name>
+    </instance>
+    <instance scriptid="val_823255_7451241_sb1_452">
+      <custrecord_ht_mb_codigo>096</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Pendiente entrega de retencion</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>096 - Pendiente entrega de retencion</name>
+    </instance>
+    <instance scriptid="val_823256_7451241_sb1_742">
+      <custrecord_ht_mb_codigo>097</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Pendiente informacion del dpto.soporte tecnico de monitoreo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>097 - Pendiente informacion del dpto.soporte tecnico de monitoreo</name>
+    </instance>
+    <instance scriptid="val_823257_7451241_sb1_119">
+      <custrecord_ht_mb_codigo>098</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Dentro del plazo de factura</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>098 - Dentro del plazo de factura</name>
+    </instance>
+    <instance scriptid="val_823258_7451241_sb1_682">
+      <custrecord_ht_mb_codigo>099</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Fuera del plazo de factura</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>099 - Fuera del plazo de factura</name>
+    </instance>
+    <instance scriptid="val_823259_7451241_sb1_588">
+      <custrecord_ht_mb_codigo>100</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Aprob. por vtas. con malas referencias crediticias</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>100 - Aprob. por vtas. con malas referencias crediticias</name>
+    </instance>
+    <instance scriptid="val_823260_7451241_sb1_606">
+      <custrecord_ht_mb_codigo>101</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente con cta. incobrable</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>101 - Cliente con cta. incobrable</name>
+    </instance>
+    <instance scriptid="val_823261_7451241_sb1_360">
+      <custrecord_ht_mb_codigo>102</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Vehiculo desinstalado</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>102 - Vehiculo desinstalado</name>
+    </instance>
+    <instance scriptid="val_823262_7451241_sb1_639">
+      <custrecord_ht_mb_codigo>103</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cliente no concreta pago</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>103 - Cliente no concreta pago</name>
+    </instance>
+    <instance scriptid="val_823263_7451241_sb1_882">
+      <custrecord_ht_mb_codigo>104</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Perdida Total</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>104 - Perdida Total</name>
+    </instance>
+    <instance scriptid="val_823264_7451241_sb1_125">
+      <custrecord_ht_mb_codigo>105</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Venderá Vehículo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>105 - Venderá Vehículo</name>
+    </instance>
+    <instance scriptid="val_823265_7451241_sb1_890">
+      <custrecord_ht_mb_codigo>106</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Fuera del Pais</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>106 - Fuera del Pais</name>
+    </instance>
+    <instance scriptid="val_823266_7451241_sb1_222">
+      <custrecord_ht_mb_codigo>107</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Se deja mensaje con familiar</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>107 - Se deja mensaje con familiar</name>
+    </instance>
+    <instance scriptid="val_823267_7451241_sb1_530">
+      <custrecord_ht_mb_codigo>108</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Se solicita contactar en otra fecha</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>108 - Se solicita contactar en otra fecha</name>
+    </instance>
+    <instance scriptid="val_823268_7451241_sb1_253">
+      <custrecord_ht_mb_codigo>109</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Linea Dañada/No existe</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>109 - Linea Dañada/No existe</name>
+    </instance>
+    <instance scriptid="val_823269_7451241_sb1_445">
+      <custrecord_ht_mb_codigo>110</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Deja Mensaje en buzón</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>110 - Deja Mensaje en buzón</name>
+    </instance>
+    <instance scriptid="val_823270_7451241_sb1_744">
+      <custrecord_ht_mb_codigo>111</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Sin información Syshunter</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>111 - Sin información Syshunter</name>
+    </instance>
+    <instance scriptid="val_823271_7451241_sb1_165">
+      <custrecord_ht_mb_codigo>112</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Analizará propuesta</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>112 - Analizará propuesta</name>
+    </instance>
+    <instance scriptid="val_823272_7451241_sb1_873">
+      <custrecord_ht_mb_codigo>113</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Se acercará a oficina</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>113 - Se acercará a oficina</name>
+    </instance>
+    <instance scriptid="val_823273_7451241_sb1_509">
+      <custrecord_ht_mb_codigo>114</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Necesita consultar con su familia</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>114 - Necesita consultar con su familia</name>
+    </instance>
+    <instance scriptid="val_823274_7451241_sb1_393">
+      <custrecord_ht_mb_codigo>115</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Caso para analizar</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>115 - Caso para analizar</name>
+    </instance>
+    <instance scriptid="val_823275_7451241_sb1_713">
+      <custrecord_ht_mb_codigo>116</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Venta años anticipados</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>116 - Venta años anticipados</name>
+    </instance>
+    <instance scriptid="val_823276_7451241_sb1_790">
+      <custrecord_ht_mb_codigo>117</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Contactar en otro mes</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>117 - Contactar en otro mes</name>
+    </instance>
+    <instance scriptid="val_823277_7451241_sb1_528">
+      <custrecord_ht_mb_codigo>118</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Visita coordinada</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>118 - Visita coordinada</name>
+    </instance>
+    <instance scriptid="val_823278_7451241_sb1_325">
+      <custrecord_ht_mb_codigo>119</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Condonación de la deuda</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>119 - Condonación de la deuda</name>
+    </instance>
+    <instance scriptid="val_823279_7451241_sb1_806">
+      <custrecord_ht_mb_codigo>120</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cambio de propietario</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>120 - Cambio de propietario</name>
+    </instance>
+    <instance scriptid="val_823280_7451241_sb1_990">
+      <custrecord_ht_mb_codigo>121</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cambio de equipo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>121 - Cambio de equipo</name>
+    </instance>
+    <instance scriptid="val_823281_7451241_sb1_471">
+      <custrecord_ht_mb_codigo>122</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Cancelación de la deuda</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>122 - Cancelación de la deuda</name>
+    </instance>
+    <instance scriptid="val_823282_7451241_sb1_870">
+      <custrecord_ht_mb_codigo>123</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Gestión “TOP 100 Exportadores Ecuador”</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>123 - Gestión “TOP 100 Exportadores Ecuador”</name>
+    </instance>
+    <instance scriptid="val_823283_7451241_sb1_577">
+      <custrecord_ht_mb_codigo>124</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Gestión POR FACTURAR OS</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>124 - Gestión POR FACTURAR OS</name>
+    </instance>
+    <instance scriptid="val_823284_7451241_sb1_583">
+      <custrecord_ht_mb_codigo>125</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Gestión POR INSTALAR DISPOSITIVOS</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>125 - Gestión POR INSTALAR DISPOSITIVOS</name>
+    </instance>
+    <instance scriptid="val_823285_7451241_sb1_710">
+      <custrecord_ht_mb_codigo>126</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Gestión “Campaña Colaboradores”</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>126 - Gestión “Campaña Colaboradores”</name>
+    </instance>
+    <instance scriptid="val_823286_7451241_sb1_207">
+      <custrecord_ht_mb_codigo>127</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Gestión “Best Empresas Ecuador”</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>127 - Gestión “Best Empresas Ecuador”</name>
+    </instance>
+    <instance scriptid="val_823287_7451241_sb1_475">
+      <custrecord_ht_mb_codigo>129</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>CLIENTE POTENCIAL</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>129 - CLIENTE POTENCIAL</name>
+    </instance>
+    <instance scriptid="val_823288_7451241_sb1_971">
+      <custrecord_ht_mb_codigo>201</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Problema con la app (aperturas/no reporta/no alertas/notificaciones)</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>201 - Problema con la app (aperturas/no reporta/no alertas/notificaciones)</name>
+    </instance>
+    <instance scriptid="val_823289_7451241_sb1_623">
+      <custrecord_ht_mb_codigo>202</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Transferencias de llamadas sin contestar</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>202 - Transferencias de llamadas sin contestar</name>
+    </instance>
+    <instance scriptid="val_823290_7451241_sb1_991">
+      <custrecord_ht_mb_codigo>203</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Queja por la atencion recibida</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>203 - Queja por la atencion recibida</name>
+    </instance>
+    <instance scriptid="val_823291_7451241_sb1_229">
+      <custrecord_ht_mb_codigo>204</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>vehiculo codigo rojo ( sin recuperar)</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>204 - vehiculo codigo rojo ( sin recuperar)</name>
+    </instance>
+    <instance scriptid="val_823292_7451241_sb1_810">
+      <custrecord_ht_mb_codigo>205</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Bloqueo de vehìculo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>205 - Bloqueo de vehìculo</name>
+    </instance>
+    <instance scriptid="val_823293_7451241_sb1_371">
+      <custrecord_ht_mb_codigo>206</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Sin atencion a los requerimientos comerciales</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>206 - Sin atencion a los requerimientos comerciales</name>
+    </instance>
+    <instance scriptid="val_823294_7451241_sb1_907">
+      <custrecord_ht_mb_codigo>207</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Solicitan turnos de chequeos</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>207 - Solicitan turnos de chequeos</name>
+    </instance>
+    <instance scriptid="val_823295_7451241_sb1_483">
+      <custrecord_ht_mb_codigo>208</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Correcciones de facturas emitidas</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>208 - Correcciones de facturas emitidas</name>
+    </instance>
+    <instance scriptid="val_823296_7451241_sb1_314">
+      <custrecord_ht_mb_codigo>209</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Devoluciones de valores</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>209 - Devoluciones de valores</name>
+    </instance>
+    <instance scriptid="val_823297_7451241_sb1_637">
+      <custrecord_ht_mb_codigo>210</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Reportar robos de vehiculos</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>210 - Reportar robos de vehiculos</name>
+    </instance>
+    <instance scriptid="val_823298_7451241_sb1_843">
+      <custrecord_ht_mb_codigo>211</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Solicitud Bloqueo /desbloqoueo de vehiculo</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>211 - Solicitud Bloqueo /desbloqoueo de vehiculo</name>
+    </instance>
+    <instance scriptid="val_823299_7451241_sb1_846">
+      <custrecord_ht_mb_codigo>212</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Solicitud de Requerimientos comerciales</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>212 - Solicitud de Requerimientos comerciales</name>
+    </instance>
+    <instance scriptid="val_823300_7451241_sb1_770">
+      <custrecord_ht_mb_codigo>213</custrecord_ht_mb_codigo>
+      <custrecord_ht_mb_codigotabla>MDB</custrecord_ht_mb_codigotabla>
+      <custrecord_ht_mb_descripcion>Transferencia de llamadas a otras areas.</custrecord_ht_mb_descripcion>
+      <isinactive>F</isinactive>
+      <name>213 - Transferencia de llamadas a otras areas.</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

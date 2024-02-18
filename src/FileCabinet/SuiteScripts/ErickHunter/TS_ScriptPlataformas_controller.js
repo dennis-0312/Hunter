@@ -1,6 +1,7 @@
 /**
  * @NApiVersion 2.1
  */
+//^NO SE UTILIZA ===========================================
 define(['N/log',
     'N/search',
     'N/record',
@@ -44,12 +45,15 @@ define(['N/log',
 
                 let Dispositivo = search.lookupFields({
                     type: 'customrecord_ht_record_mantchaser', id: order.getValue('custrecord_ht_ot_serieproductoasignacion'),
-                    columns: ['custrecord_ht_mc_vid', 'custrecord_ht_mc_modelo',
+                    columns: [
+                        'custrecord_ht_mc_vid',
+                        'custrecord_ht_mc_modelo',
                         'custrecord_ht_mc_unidad',
                         'custrecord_ht_mc_seriedispositivo',
                         'custrecord_ht_mc_nocelularsim',
                         'custrecord_ht_mc_operadora',
-                        'custrecord_ht_mc_estado', 'name'
+                        'custrecord_ht_mc_estadolodispositivo', 'name'
+                        // 'custrecord_ht_mc_estado', 'name'
                     ]
                 });
                 let unidad = Dispositivo.custrecord_ht_mc_modelo[0].text.split(' - ');
@@ -91,7 +95,8 @@ define(['N/log',
                         Icc: "2021031119",
                         NumeroCelular: Dispositivo.custrecord_ht_mc_nocelularsim,
                         Operadora: Dispositivo.custrecord_ht_mc_nocelularsim[0].text,
-                        EstadoSim: Dispositivo.custrecord_ht_mc_estado[0].text,
+                        EstadoSim: Dispositivo.custrecord_ht_mc_estadolodispositivo[0].text,
+                        //EstadoSim: Dispositivo.custrecord_ht_mc_estado[0].text,
                         OperacionDispositivo: "C",
                         ServiciosInstalados: "",
                         VidAnterior: "",

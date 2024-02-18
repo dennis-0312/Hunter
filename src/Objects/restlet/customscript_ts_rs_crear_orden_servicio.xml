@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_rs_crear_orden_servicio">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_Crear_Orden_Servicio</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/api/TS_RS_API_Transactions.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_rs_crear_orden_servicio">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>TS_RS_Crear_Orden_Servicio</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

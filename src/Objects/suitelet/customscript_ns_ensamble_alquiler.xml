@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_ns_ensamble_alquiler">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>Ensamble Alquileres</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/ErickHunter/TS_UI_Alquiler.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_ensamble_alquiler">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>Ensamble Alquileres</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

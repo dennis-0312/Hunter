@@ -1,0 +1,24 @@
+<scheduledscript scriptid="customscript_ts_ss_pruebainvoice">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>ts_ss_pruebainvoice</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Personalizaciones/ts_ss_pruebainvoice.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_ss_pruebainvoice">
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>NOTSCHEDULED</status>
+      <title>ts_ss_pruebainvoice</title>
+      <recurrence>
+        <single>
+          <repeat></repeat>
+          <startdate>2023-06-19</startdate>
+          <starttime>23:00:00Z</starttime>
+        </single>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</scheduledscript>

@@ -1,0 +1,76 @@
+<customlist scriptid="customlist_ht__lista_bn_estadobien">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <name>HT Estado Bien</name>
+  <customvalues>
+    <customvalue scriptid="val_777890_7451241_sb1_153">
+      <isinactive>F</isinactive>
+      <value>ANULADO</value>
+    </customvalue>
+    <customvalue scriptid="val_777891_7451241_sb1_250">
+      <isinactive>F</isinactive>
+      <value>BAJA POR CUENTA INCOBRABLE</value>
+    </customvalue>
+    <customvalue scriptid="val_785656_7451241_sb1_738">
+      <isinactive>F</isinactive>
+      <value>BAJA TEMPORAL</value>
+    </customvalue>
+    <customvalue scriptid="val_785657_7451241_sb1_732">
+      <isinactive>F</isinactive>
+      <value>CLIENTES DE ORIENTE</value>
+    </customvalue>
+    <customvalue scriptid="val_785658_7451241_sb1_473">
+      <isinactive>F</isinactive>
+      <value>CODIGO BLANCO</value>
+    </customvalue>
+    <customvalue scriptid="val_777892_7451241_sb1_414">
+      <isinactive>F</isinactive>
+      <value>CODIGO ROJO</value>
+    </customvalue>
+    <customvalue scriptid="val_777893_7451241_sb1_851">
+      <isinactive>F</isinactive>
+      <value>CUENTA INCOBRABLE RENOVABLE</value>
+    </customvalue>
+    <customvalue scriptid="val_777894_7451241_sb1_112">
+      <isinactive>F</isinactive>
+      <value>DADO DE BAJA</value>
+    </customvalue>
+    <customvalue scriptid="val_777895_7451241_sb1_588">
+      <isinactive>F</isinactive>
+      <value>FUNCIONARIO CARSEG</value>
+    </customvalue>
+    <customvalue scriptid="val_777896_7451241_sb1_632">
+      <isinactive>F</isinactive>
+      <value>NO INCLUIDO EN PRESUPUESTO</value>
+    </customvalue>
+    <customvalue scriptid="val_777897_7451241_sb1_989">
+      <isinactive>F</isinactive>
+      <value>NO LE INTERESA RENOVAR</value>
+    </customvalue>
+    <customvalue scriptid="val_777898_7451241_sb1_218">
+      <isinactive>F</isinactive>
+      <value>PERDIDA TOTAL</value>
+    </customvalue>
+    <customvalue scriptid="val_785659_7451241_sb1_623">
+      <isinactive>F</isinactive>
+      <value>RECOMPRA</value>
+    </customvalue>
+    <customvalue scriptid="val_785661_7451241_sb1_525">
+      <isinactive>F</isinactive>
+      <value>SUSPENDIDO DEBITO AUTOMATICO</value>
+    </customvalue>
+    <customvalue scriptid="val_785660_7451241_sb1_236">
+      <isinactive>F</isinactive>
+      <value>SUSPENDIDO POR FALTA DE PAGO</value>
+    </customvalue>
+    <customvalue scriptid="val_777899_7451241_sb1_906">
+      <isinactive>F</isinactive>
+      <value>VEHICULO VENDIDO</value>
+    </customvalue>
+    <customvalue scriptid="val_777900_7451241_sb1_340">
+      <isinactive>F</isinactive>
+      <value>VIGENTE</value>
+    </customvalue>
+  </customvalues>
+</customlist>

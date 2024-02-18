@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_ht_mc_tipodispositivo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT MC Tipo dispositivo</name>
+  <customvalues>
+    <customvalue scriptid="val_820240_7451241_sb1_757">
+      <isinactive>F</isinactive>
+      <value>000 - NO DEFINIDO</value>
+    </customvalue>
+    <customvalue scriptid="val_811055_7451241_sb1_990">
+      <isinactive>F</isinactive>
+      <value>001 - SOS</value>
+    </customvalue>
+    <customvalue scriptid="val_800313_7451241_sb1_737">
+      <isinactive>F</isinactive>
+      <value>002 - VEHICULAR</value>
+    </customvalue>
+    <customvalue scriptid="val_811056_7451241_sb1_514">
+      <isinactive>F</isinactive>
+      <value>003 - SATELITAL</value>
+    </customvalue>
+  </customvalues>
+</customlist>

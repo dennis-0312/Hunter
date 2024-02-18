@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_hu_consultabienes">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>_NS_RS_HU_ConsultaBienes</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/IntegracionesHunter/NS_RS_HU_ConsultaBienes.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_hu_consultabienes">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>_NS_RS_HU_ConsultaBienes</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

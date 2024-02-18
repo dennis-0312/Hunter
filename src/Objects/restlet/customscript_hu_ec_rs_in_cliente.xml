@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_hu_ec_rs_in_cliente">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>HU_EC_RS_IN_CLIENTE</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/IntegracionesHunter/HU_EC_RS_IN_CLIENTE.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_hu_ec_rs_in_cliente">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>ERROR</loglevel>
+      <status>RELEASED</status>
+      <title>HU_EC_RS_IN_CLIENTE</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

@@ -1,0 +1,696 @@
+<customrecordtype scriptid="customrecord_ht_bien_marca">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description>Marca</description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Marca de Bienes</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_marca_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_marca_descripcion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_801586_7451241_sb1_255">
+      <custrecord_ht_marca_codigo>000</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>NO DEFINIDO</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>000 - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_801587_7451241_sb1_897">
+      <custrecord_ht_marca_codigo>001</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>ACURA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - ACURA</name>
+    </instance>
+    <instance scriptid="val_801588_7451241_sb1_918">
+      <custrecord_ht_marca_codigo>002</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>AUTO</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - AUTO</name>
+    </instance>
+    <instance scriptid="val_801589_7451241_sb1_621">
+      <custrecord_ht_marca_codigo>003</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>ARO CROSS LANDER</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 - ARO CROSS LANDER</name>
+    </instance>
+    <instance scriptid="val_801590_7451241_sb1_946">
+      <custrecord_ht_marca_codigo>004</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>ASIA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>004 - ASIA</name>
+    </instance>
+    <instance scriptid="val_801591_7451241_sb1_735">
+      <custrecord_ht_marca_codigo>005</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>AUDI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>005 - AUDI</name>
+    </instance>
+    <instance scriptid="val_801592_7451241_sb1_271">
+      <custrecord_ht_marca_codigo>006</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>BAJAJ</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>006 - BAJAJ</name>
+    </instance>
+    <instance scriptid="val_801593_7451241_sb1_159">
+      <custrecord_ht_marca_codigo>007</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>BMW</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>007 - BMW</name>
+    </instance>
+    <instance scriptid="val_801594_7451241_sb1_606">
+      <custrecord_ht_marca_codigo>008</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>BUICK</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>008 - BUICK</name>
+    </instance>
+    <instance scriptid="val_801595_7451241_sb1_506">
+      <custrecord_ht_marca_codigo>009</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>CADILLAC</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>009 - CADILLAC</name>
+    </instance>
+    <instance scriptid="val_801596_7451241_sb1_672">
+      <custrecord_ht_marca_codigo>010</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>CHANGAN</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>010 - CHANGAN</name>
+    </instance>
+    <instance scriptid="val_801597_7451241_sb1_459">
+      <custrecord_ht_marca_codigo>011</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>CHEROKEE</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>011 - CHEROKEE</name>
+    </instance>
+    <instance scriptid="val_801598_7451241_sb1_913">
+      <custrecord_ht_marca_codigo>012</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>CHEVROLET</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>012 - CHEVROLET</name>
+    </instance>
+    <instance scriptid="val_801599_7451241_sb1_808">
+      <custrecord_ht_marca_codigo>013</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>CHRYSLER</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>013 - CHRYSLER</name>
+    </instance>
+    <instance scriptid="val_801600_7451241_sb1_882">
+      <custrecord_ht_marca_codigo>014</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>CITROEN</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>014 - CITROEN</name>
+    </instance>
+    <instance scriptid="val_801601_7451241_sb1_148">
+      <custrecord_ht_marca_codigo>015</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>DAEWOO</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>015 - DAEWOO</name>
+    </instance>
+    <instance scriptid="val_801602_7451241_sb1_126">
+      <custrecord_ht_marca_codigo>016</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>DAIHATSU</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>016 - DAIHATSU</name>
+    </instance>
+    <instance scriptid="val_801603_7451241_sb1_372">
+      <custrecord_ht_marca_codigo>017</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>DATSUN</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>017 - DATSUN</name>
+    </instance>
+    <instance scriptid="val_801604_7451241_sb1_120">
+      <custrecord_ht_marca_codigo>018</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>DEUTZ</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>018 - DEUTZ</name>
+    </instance>
+    <instance scriptid="val_801605_7451241_sb1_702">
+      <custrecord_ht_marca_codigo>019</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>DIMEX</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>019 - DIMEX</name>
+    </instance>
+    <instance scriptid="val_801606_7451241_sb1_908">
+      <custrecord_ht_marca_codigo>020</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>DODGE</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>020 - DODGE</name>
+    </instance>
+    <instance scriptid="val_801607_7451241_sb1_302">
+      <custrecord_ht_marca_codigo>021</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>DUCATI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>021 - DUCATI</name>
+    </instance>
+    <instance scriptid="val_801608_7451241_sb1_793">
+      <custrecord_ht_marca_codigo>022</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>EAGLE</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>022 - EAGLE</name>
+    </instance>
+    <instance scriptid="val_801609_7451241_sb1_473">
+      <custrecord_ht_marca_codigo>023</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>ENCAVA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>023 - ENCAVA</name>
+    </instance>
+    <instance scriptid="val_801610_7451241_sb1_666">
+      <custrecord_ht_marca_codigo>024</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>ENDURO</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>024 - ENDURO</name>
+    </instance>
+    <instance scriptid="val_801611_7451241_sb1_647">
+      <custrecord_ht_marca_codigo>025</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>FIAT</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>025 - FIAT</name>
+    </instance>
+    <instance scriptid="val_801612_7451241_sb1_442">
+      <custrecord_ht_marca_codigo>026</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>FORD</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>026 - FORD</name>
+    </instance>
+    <instance scriptid="val_801613_7451241_sb1_866">
+      <custrecord_ht_marca_codigo>027</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>FREIGHTLINER</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>027 - FREIGHTLINER</name>
+    </instance>
+    <instance scriptid="val_801614_7451241_sb1_418">
+      <custrecord_ht_marca_codigo>028</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>GMC</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>028 - GMC</name>
+    </instance>
+    <instance scriptid="val_801615_7451241_sb1_721">
+      <custrecord_ht_marca_codigo>029</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>GREAT WALL</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>029 - GREAT WALL</name>
+    </instance>
+    <instance scriptid="val_801616_7451241_sb1_589">
+      <custrecord_ht_marca_codigo>030</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>HARLEY DAVIDSON</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>030 - HARLEY DAVIDSON</name>
+    </instance>
+    <instance scriptid="val_801617_7451241_sb1_759">
+      <custrecord_ht_marca_codigo>031</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>HINO</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>031 - HINO</name>
+    </instance>
+    <instance scriptid="val_801618_7451241_sb1_310">
+      <custrecord_ht_marca_codigo>032</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>HONDA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>032 - HONDA</name>
+    </instance>
+    <instance scriptid="val_801619_7451241_sb1_350">
+      <custrecord_ht_marca_codigo>033</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>HYUNDAI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>033 - HYUNDAI</name>
+    </instance>
+    <instance scriptid="val_801620_7451241_sb1_429">
+      <custrecord_ht_marca_codigo>034</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>INFINITI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>034 - INFINITI</name>
+    </instance>
+    <instance scriptid="val_801621_7451241_sb1_346">
+      <custrecord_ht_marca_codigo>035</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>INTERNATIONAL</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>035 - INTERNATIONAL</name>
+    </instance>
+    <instance scriptid="val_801622_7451241_sb1_205">
+      <custrecord_ht_marca_codigo>036</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>ISUZU</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>036 - ISUZU</name>
+    </instance>
+    <instance scriptid="val_801623_7451241_sb1_450">
+      <custrecord_ht_marca_codigo>037</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>JAGUAR</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>037 - JAGUAR</name>
+    </instance>
+    <instance scriptid="val_801624_7451241_sb1_115">
+      <custrecord_ht_marca_codigo>038</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>JEEP</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>038 - JEEP</name>
+    </instance>
+    <instance scriptid="val_801625_7451241_sb1_166">
+      <custrecord_ht_marca_codigo>039</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>JIANSHE</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>039 - JIANSHE</name>
+    </instance>
+    <instance scriptid="val_801626_7451241_sb1_956">
+      <custrecord_ht_marca_codigo>040</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>KAWASAKI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>040 - KAWASAKI</name>
+    </instance>
+    <instance scriptid="val_801627_7451241_sb1_485">
+      <custrecord_ht_marca_codigo>041</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>KENWORTH</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>041 - KENWORTH</name>
+    </instance>
+    <instance scriptid="val_801628_7451241_sb1_115">
+      <custrecord_ht_marca_codigo>042</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>KIA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>042 - KIA</name>
+    </instance>
+    <instance scriptid="val_801629_7451241_sb1_334">
+      <custrecord_ht_marca_codigo>043</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>LADA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>043 - LADA</name>
+    </instance>
+    <instance scriptid="val_801630_7451241_sb1_649">
+      <custrecord_ht_marca_codigo>044</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>LAIBAOCHI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>044 - LAIBAOCHI</name>
+    </instance>
+    <instance scriptid="val_801631_7451241_sb1_203">
+      <custrecord_ht_marca_codigo>045</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>LAND ROVER</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>045 - LAND ROVER</name>
+    </instance>
+    <instance scriptid="val_801632_7451241_sb1_823">
+      <custrecord_ht_marca_codigo>046</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>LEXUS</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>046 - LEXUS</name>
+    </instance>
+    <instance scriptid="val_801633_7451241_sb1_157">
+      <custrecord_ht_marca_codigo>047</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>LINCOLN</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>047 - LINCOLN</name>
+    </instance>
+    <instance scriptid="val_801634_7451241_sb1_243">
+      <custrecord_ht_marca_codigo>048</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>LML</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>048 - LML</name>
+    </instance>
+    <instance scriptid="val_801635_7451241_sb1_558">
+      <custrecord_ht_marca_codigo>049</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>LOTUS</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>049 - LOTUS</name>
+    </instance>
+    <instance scriptid="val_801636_7451241_sb1_838">
+      <custrecord_ht_marca_codigo>050</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>MACK</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>050 - MACK</name>
+    </instance>
+    <instance scriptid="val_822368_7451241_sb1_363">
+      <custrecord_ht_marca_codigo>060</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>HONDA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>060 - HONDA</name>
+    </instance>
+    <instance scriptid="val_822509_7451241_sb1_855">
+      <custrecord_ht_marca_codigo>058</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>NISSAN</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>058 - NISSAN</name>
+    </instance>
+    <instance scriptid="val_834697_7451241_sb1_997">
+      <custrecord_ht_marca_codigo>051</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>MAN</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>051 - MAN</name>
+    </instance>
+    <instance scriptid="val_834698_7451241_sb1_637">
+      <custrecord_ht_marca_codigo>052</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>MAZDA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>052 - MAZDA</name>
+    </instance>
+    <instance scriptid="val_834699_7451241_sb1_961">
+      <custrecord_ht_marca_codigo>053</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>MERCEDES BENZ</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>053 - MERCEDES BENZ</name>
+    </instance>
+    <instance scriptid="val_834700_7451241_sb1_518">
+      <custrecord_ht_marca_codigo>054</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>MERCURY</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>054 - MERCURY</name>
+    </instance>
+    <instance scriptid="val_834701_7451241_sb1_726">
+      <custrecord_ht_marca_codigo>055</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>MINI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>055 - MINI</name>
+    </instance>
+    <instance scriptid="val_834702_7451241_sb1_774">
+      <custrecord_ht_marca_codigo>056</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>MITSUBISHI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>056 - MITSUBISHI</name>
+    </instance>
+    <instance scriptid="val_834703_7451241_sb1_770">
+      <custrecord_ht_marca_codigo>059</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>OLDSMOBILE</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>059 - OLDSMOBILE</name>
+    </instance>
+    <instance scriptid="val_834704_7451241_sb1_388">
+      <custrecord_ht_marca_codigo>061</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>PEUGEOT</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>061 - PEUGEOT</name>
+    </instance>
+    <instance scriptid="val_834705_7451241_sb1_341">
+      <custrecord_ht_marca_codigo>062</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>PLYMOUTH</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>062 - PLYMOUTH</name>
+    </instance>
+    <instance scriptid="val_834706_7451241_sb1_616">
+      <custrecord_ht_marca_codigo>063</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>PONTIAC</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>063 - PONTIAC</name>
+    </instance>
+    <instance scriptid="val_834707_7451241_sb1_369">
+      <custrecord_ht_marca_codigo>064</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>PORSCHE</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>064 - PORSCHE</name>
+    </instance>
+    <instance scriptid="val_834708_7451241_sb1_660">
+      <custrecord_ht_marca_codigo>065</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>RANGE ROVER</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>065 - RANGE ROVER</name>
+    </instance>
+    <instance scriptid="val_834709_7451241_sb1_917">
+      <custrecord_ht_marca_codigo>066</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>RENAULT</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>066 - RENAULT</name>
+    </instance>
+    <instance scriptid="val_834710_7451241_sb1_634">
+      <custrecord_ht_marca_codigo>067</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>ROVER</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>067 - ROVER</name>
+    </instance>
+    <instance scriptid="val_834711_7451241_sb1_157">
+      <custrecord_ht_marca_codigo>068</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>SAMSUNG</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>068 - SAMSUNG</name>
+    </instance>
+    <instance scriptid="val_834712_7451241_sb1_788">
+      <custrecord_ht_marca_codigo>069</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>SSANYONG</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>069 - SSANYONG</name>
+    </instance>
+    <instance scriptid="val_834713_7451241_sb1_904">
+      <custrecord_ht_marca_codigo>070</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>SCANIA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>070 - SCANIA</name>
+    </instance>
+    <instance scriptid="val_834714_7451241_sb1_986">
+      <custrecord_ht_marca_codigo>072</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>SINSKI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>072 - SINSKI</name>
+    </instance>
+    <instance scriptid="val_834715_7451241_sb1_169">
+      <custrecord_ht_marca_codigo>073</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>SKODA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>073 - SKODA</name>
+    </instance>
+    <instance scriptid="val_834716_7451241_sb1_578">
+      <custrecord_ht_marca_codigo>074</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>SUBARU</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>074 - SUBARU</name>
+    </instance>
+    <instance scriptid="val_834717_7451241_sb1_609">
+      <custrecord_ht_marca_codigo>075</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>SUZUKI</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>075 - SUZUKI</name>
+    </instance>
+    <instance scriptid="val_834718_7451241_sb1_463">
+      <custrecord_ht_marca_codigo>076</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>TATA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>076 - TATA</name>
+    </instance>
+    <instance scriptid="val_834719_7451241_sb1_314">
+      <custrecord_ht_marca_codigo>077</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>TOYOTA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>077 - TOYOTA</name>
+    </instance>
+    <instance scriptid="val_834720_7451241_sb1_178">
+      <custrecord_ht_marca_codigo>078</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>VESPA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>078 - VESPA</name>
+    </instance>
+    <instance scriptid="val_834721_7451241_sb1_677">
+      <custrecord_ht_marca_codigo>079</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>VOLKSWAGEN</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>079 - VOLKSWAGEN</name>
+    </instance>
+    <instance scriptid="val_834722_7451241_sb1_989">
+      <custrecord_ht_marca_codigo>080</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>VOLVO</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>080 - VOLVO</name>
+    </instance>
+    <instance scriptid="val_834723_7451241_sb1_634">
+      <custrecord_ht_marca_codigo>081</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>WESTERN STAR</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>081 - WESTERN STAR</name>
+    </instance>
+    <instance scriptid="val_834724_7451241_sb1_882">
+      <custrecord_ht_marca_codigo>082</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>WHITE</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>082 - WHITE</name>
+    </instance>
+    <instance scriptid="val_834725_7451241_sb1_485">
+      <custrecord_ht_marca_codigo>084</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>WRANGLER</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>084 - WRANGLER</name>
+    </instance>
+    <instance scriptid="val_834726_7451241_sb1_489">
+      <custrecord_ht_marca_codigo>085</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>YAMAHA</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>085 - YAMAHA</name>
+    </instance>
+    <instance scriptid="val_834727_7451241_sb1_465">
+      <custrecord_ht_marca_codigo>086</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>ZIL</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>086 - ZIL</name>
+    </instance>
+    <instance scriptid="val_834728_7451241_sb1_341">
+      <custrecord_ht_marca_codigo>088</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>JAC</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>088 - JAC</name>
+    </instance>
+    <instance scriptid="val_834729_7451241_sb1_651">
+      <custrecord_ht_marca_codigo>089</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>FAW</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>089 - FAW</name>
+    </instance>
+    <instance scriptid="val_834730_7451241_sb1_362">
+      <custrecord_ht_marca_codigo>090</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>MOTOR UNO</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>090 - MOTOR UNO</name>
+    </instance>
+    <instance scriptid="val_834731_7451241_sb1_395">
+      <custrecord_ht_marca_codigo>093</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>DEER</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>093 - DEER</name>
+    </instance>
+    <instance scriptid="val_834732_7451241_sb1_166">
+      <custrecord_ht_marca_codigo>100</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>SMART</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>100 - SMART</name>
+    </instance>
+    <instance scriptid="val_834733_7451241_sb1_443">
+      <custrecord_ht_marca_codigo>150</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>SAFE</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>150 - SAFE</name>
+    </instance>
+    <instance scriptid="val_834734_7451241_sb1_386">
+      <custrecord_ht_marca_codigo>160</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>KOMATSU</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>160 - KOMATSU</name>
+    </instance>
+    <instance scriptid="val_834735_7451241_sb1_476">
+      <custrecord_ht_marca_codigo>162</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>DONG FENG</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>162 - DONG FENG</name>
+    </instance>
+    <instance scriptid="val_834736_7451241_sb1_879">
+      <custrecord_ht_marca_codigo>166</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>HUMMER</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>166 - HUMMER</name>
+    </instance>
+    <instance scriptid="val_834737_7451241_sb1_517">
+      <custrecord_ht_marca_codigo>189</custrecord_ht_marca_codigo>
+      <custrecord_ht_marca_descripcion>D LONG FC</custrecord_ht_marca_descripcion>
+      <isinactive>F</isinactive>
+      <name>189 - D LONG FC</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

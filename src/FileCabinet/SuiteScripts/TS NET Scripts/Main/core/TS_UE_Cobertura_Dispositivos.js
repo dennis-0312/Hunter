@@ -3,6 +3,7 @@
  * @NScriptType UserEventScript
  */
 define(['N/log',
+    'N/search',
     'N/record',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
@@ -12,7 +13,7 @@ define(['N/log',
  * @param{log} log
  * @param{record} record
  */
-    (log, record, _controller, _constant, _errorMessages) => {
+    (log, search, record, _controller, _constant, _errorMessages) => {
         /**
          * Defines the function definition that is executed before record is loaded.
          * @param {Object} scriptContext
@@ -78,7 +79,31 @@ define(['N/log',
                         log.error('Error-Corte', error);
                     }
                 }
+
+                actualizacionCoberturaTelematic(objRecord);
             }
+
+        }
+
+        const actualizacionCoberturaTelematic = (objRecord) => {
+            let ordenTrabajoId = obtenerOrdenTrabajo(objRecord.id);
+            if (!ordenTrabajoId) return;
+            _controller.envioTelecActualizacionCobertura(ordenTrabajoId, objRecord.getValue('custrecord_ht_co_coberturafinal'));
+        }
+
+        const obtenerOrdenTrabajo = (coberturaId) => {
+            let resultSearch = search.create({
+                type: "customrecord_ht_ct_cobertura_transaction",
+                filters: [
+                  ["custrecord_ht_ct_transacciones","anyof",coberturaId]
+                ],
+                columns: [
+                   search.createColumn({ name: "custrecord_ht_ct_orden_trabajo", label: "Orden de Trabajo" }),
+                   search.createColumn({ name: "created", sort: search.Sort.DESC, label: "Date Created" })
+                 ]
+            }).run().getRange(0,1000);
+            if (!resultSearch.length) return;
+            return resultSearch[0].getValue("custrecord_ht_ct_orden_trabajo");
         }
 
         return {

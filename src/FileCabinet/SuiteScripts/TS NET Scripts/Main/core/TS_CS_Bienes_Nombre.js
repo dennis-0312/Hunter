@@ -109,89 +109,91 @@ define([
                                 }
                             }
                         }
-                    } else if (tipo_terrestre == _constant.Constants.MOTO) {
-                        if (bien_placa != "S/P") {
-                            if (bien_placa.match(patron_placa_moto) == null) {
-                                alert("Debe de ingresar una placa válida por ejemplo (AB123C) o (AB012C), o sin placa (S/P) si la desconoce.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_placa == Bienes[i][0]) {
-                                        alert("Las placas no se pueden repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                            if (bien_motor.match(patron_motor_chasis) == null) {
-                                alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                            if (bien_chasis.match(patron_motor_chasis) == null) {
-                                alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                        } else {
-                            if (bien_motor.match(patron_motor_chasis) == null) {
-                                alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                            if (bien_chasis.match(patron_motor_chasis) == null) {
-                                alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        if (bien_motor.match(patron_motor_chasis) == null) {
-                            alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales");
-                            return false;
-                        } else {
-                            for (let i = 0; i < Bienes.length; i++) {
-                                if (bien_motor == Bienes[i][1]) {
-                                    alert("El motor no se puede repetir.");
-                                    return false;
-                                }
-                            }
-                        }
-                        if (bien_chasis.match(patron_motor_chasis) == null) {
-                            alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales");
-                            return false;
-                        } else {
-                            for (let i = 0; i < Bienes.length; i++) {
-                                if (bien_chasis == Bienes[i][2]) {
-                                    alert("El chasis no se puede repetir.");
-                                    return false;
-                                }
-                            }
-                        }
                     }
+                    //else if (tipo_terrestre == _constant.Constants.MOTO) {
+                    //     if (bien_placa != "S/P") {
+                    //         if (bien_placa.match(patron_placa_moto) == null) {
+                    //             alert("Debe de ingresar una placa válida por ejemplo (AB123C) o (AB012C), o sin placa (S/P) si la desconoce.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_placa == Bienes[i][0]) {
+                    //                     alert("Las placas no se pueden repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //         if (bien_motor.match(patron_motor_chasis) == null) {
+                    //             alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_motor == Bienes[i][1]) {
+                    //                     alert("El motor no se puede repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //         if (bien_chasis.match(patron_motor_chasis) == null) {
+                    //             alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_chasis == Bienes[i][2]) {
+                    //                     alert("El chasis no se puede repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //     } else {
+                    //         if (bien_motor.match(patron_motor_chasis) == null) {
+                    //             alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_motor == Bienes[i][1]) {
+                    //                     alert("El motor no se puede repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //         if (bien_chasis.match(patron_motor_chasis) == null) {
+                    //             alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_chasis == Bienes[i][2]) {
+                    //                     alert("El chasis no se puede repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+                    // }
+                    // else {
+                    //     if (bien_motor.match(patron_motor_chasis) == null) {
+                    //         alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales");
+                    //         return false;
+                    //     } else {
+                    //         for (let i = 0; i < Bienes.length; i++) {
+                    //             if (bien_motor == Bienes[i][1]) {
+                    //                 alert("El motor no se puede repetir.");
+                    //                 return false;
+                    //             }
+                    //         }
+                    //     }
+                    //     if (bien_chasis.match(patron_motor_chasis) == null) {
+                    //         alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales");
+                    //         return false;
+                    //     } else {
+                    //         for (let i = 0; i < Bienes.length; i++) {
+                    //             if (bien_chasis == Bienes[i][2]) {
+                    //                 alert("El chasis no se puede repetir.");
+                    //                 return false;
+                    //             }
+                    //         }
+                    //     }
+                    // }
                 } else if (typeMode == _constant.Constants.EDIT) {
                     var tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
                     const bien_placa = objRecord.getText("custrecord_ht_bien_placa");
@@ -271,89 +273,91 @@ define([
                                 }
                             }
                         }
-                    } else if (tipo_terrestre == _constant.Constants.MOTO) {
-                        if (bien_placa != "S/P") {
-                            if (bien_placa.match(patron_placa_moto) == null) {
-                                alert("Debe de ingresar una placa válida por ejemplo (AB123C) o (AB012C), o sin placa (S/P) si la desconoce.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_placa == Bienes[i][0]) {
-                                        alert("Las placas no se pueden repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                            if (bien_motor.match(patron_motor_chasis) == null) {
-                                alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                            if (bien_chasis.match(patron_motor_chasis) == null) {
-                                alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                        } else {
-                            if (bien_motor.match(patron_motor_chasis) == null) {
-                                alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                            if (bien_chasis.match(patron_motor_chasis) == null) {
-                                alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
-                                return false;
-                            } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
-                                        return false;
-                                    }
-                                }
-                            }
-                        }
-                    } else {
-                        if (bien_motor.match(patron_motor_chasis) == null) {
-                            alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales");
-                            return false;
-                        } else {
-                            for (let i = 0; i < Bienes.length; i++) {
-                                if (bien_motor == Bienes[i][1]) {
-                                    alert("El motor no se puede repetir.");
-                                    return false;
-                                }
-                            }
-                        }
-                        if (bien_chasis.match(patron_motor_chasis) == null) {
-                            alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales");
-                            return false;
-                        } else {
-                            for (let i = 0; i < Bienes.length; i++) {
-                                if (bien_chasis == Bienes[i][2]) {
-                                    alert("El chasis no se puede repetir.");
-                                    return false;
-                                }
-                            }
-                        }
                     }
+                    // else if (tipo_terrestre == _constant.Constants.MOTO) {
+                    //     if (bien_placa != "S/P") {
+                    //         if (bien_placa.match(patron_placa_moto) == null) {
+                    //             alert("Debe de ingresar una placa válida por ejemplo (AB123C) o (AB012C), o sin placa (S/P) si la desconoce.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_placa == Bienes[i][0]) {
+                    //                     alert("Las placas no se pueden repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //         if (bien_motor.match(patron_motor_chasis) == null) {
+                    //             alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_motor == Bienes[i][1]) {
+                    //                     alert("El motor no se puede repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //         if (bien_chasis.match(patron_motor_chasis) == null) {
+                    //             alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_chasis == Bienes[i][2]) {
+                    //                     alert("El chasis no se puede repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //     } else {
+                    //         if (bien_motor.match(patron_motor_chasis) == null) {
+                    //             alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_motor == Bienes[i][1]) {
+                    //                     alert("El motor no se puede repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //         if (bien_chasis.match(patron_motor_chasis) == null) {
+                    //             alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
+                    //             return false;
+                    //         } else {
+                    //             for (let i = 0; i < Bienes.length; i++) {
+                    //                 if (bien_chasis == Bienes[i][2]) {
+                    //                     alert("El chasis no se puede repetir.");
+                    //                     return false;
+                    //                 }
+                    //             }
+                    //         }
+                    //     }
+                    // } 
+                    // else {
+                    //     if (bien_motor.match(patron_motor_chasis) == null) {
+                    //         alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales");
+                    //         return false;
+                    //     } else {
+                    //         for (let i = 0; i < Bienes.length; i++) {
+                    //             if (bien_motor == Bienes[i][1]) {
+                    //                 alert("El motor no se puede repetir.");
+                    //                 return false;
+                    //             }
+                    //         }
+                    //     }
+                    //     if (bien_chasis.match(patron_motor_chasis) == null) {
+                    //         alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales");
+                    //         return false;
+                    //     } else {
+                    //         for (let i = 0; i < Bienes.length; i++) {
+                    //             if (bien_chasis == Bienes[i][2]) {
+                    //                 alert("El chasis no se puede repetir.");
+                    //                 return false;
+                    //             }
+                    //         }
+                    //     }
+                    // }
                 }
             }
             return true;
@@ -395,18 +399,19 @@ define([
                                             }
                                         }
                                     }
-                                } else if (tipo_terrestre == _constant.Constants.MOTO) {
-                                    var patron_placa = /^[A-Z]{2}[0-9]{3}[A-Z]{1}$/;
-                                    if (bien_placa.match(patron_placa) == null) {
-                                        alert("Debe de ingresar una placa válida por ejemplo (AB123C) o (AB012C), o sin placa (S/P) si la desconoce.");
-                                    } else {
-                                        for (let i = 0; i < Bienes.length; i++) {
-                                            if (bien_placa == Bienes[i][0]) {
-                                                alert("Las placas no se pueden repetir.");
-                                            }
-                                        }
-                                    }
-                                }
+                                } 
+                                // else if (tipo_terrestre == _constant.Constants.MOTO) {
+                                //     var patron_placa = /^[A-Z]{2}[0-9]{3}[A-Z]{1}$/;
+                                //     if (bien_placa.match(patron_placa) == null) {
+                                //         alert("Debe de ingresar una placa válida por ejemplo (AB123C) o (AB012C), o sin placa (S/P) si la desconoce.");
+                                //     } else {
+                                //         for (let i = 0; i < Bienes.length; i++) {
+                                //             if (bien_placa == Bienes[i][0]) {
+                                //                 alert("Las placas no se pueden repetir.");
+                                //             }
+                                //         }
+                                //     }
+                                // }
                             }
                         } else if (sublistFieldName === "custrecord_ht_bien_numeropuertas") {
                             const nro_puertas = objRecord.getText(sublistFieldName);
@@ -619,13 +624,13 @@ define([
                 }
             }
 
-            if (tipoBien == _constant.Constants.PRODUCCION) {
-                //const objRecord = scriptContext.newRecord;
-                if (objRecord.getValue('custrecord_ht_bien_placa').length > 0) {
-                    objRecord.setValue({ fieldId: 'altname', value: objRecord.getValue('custrecord_ht_bien_placa'), ignoreFieldChange: true });
-                    //console.log(objRecord.getValue('custrecord_ht_bien_placa')) 
-                }
-            }
+            // if (tipoBien == _constant.Constants.PRODUCCION) {
+            //     //const objRecord = scriptContext.newRecord;
+            //     if (objRecord.getValue('custrecord_ht_bien_placa').length > 0) {
+            //         objRecord.setValue({ fieldId: 'altname', value: objRecord.getValue('custrecord_ht_bien_placa'), ignoreFieldChange: true });
+            //         //console.log(objRecord.getValue('custrecord_ht_bien_placa')) 
+            //     }
+            // }
         } catch (error) {
             log.error("Error en el fieldChange", error);
             return false;
@@ -686,7 +691,6 @@ define([
             log.error('Error en getBien', error);
         }
     }
-
 
     return {
         pageInit: pageInit,

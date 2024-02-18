@@ -1,0 +1,666 @@
+<customrecordtype scriptid="customrecordts_ec_paraiso_fiscal">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>T</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>F</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>F</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC - T17 Paraíso Fiscal</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>F</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecordts_ec_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Código</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecordts_ec_pais_fiscal">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - País Fiscal</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_ts_ec_pe_pais]</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_724014_7451241_sb1_893">
+      <custrecordts_ec_codigo>2</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722460_7451241_sb1_296]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ANTIGUA Y BARBUDA (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724015_7451241_sb1_919">
+      <custrecordts_ec_codigo>3</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722620_7451241_sb1_323]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ARCHIPIÉLAGO DE SVALBARD</name>
+    </instance>
+    <instance scriptid="val_724016_7451241_sb1_393">
+      <custrecordts_ec_codigo>4</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722466_7451241_sb1_808]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ARUBA</name>
+    </instance>
+    <instance scriptid="val_724017_7451241_sb1_751">
+      <custrecordts_ec_codigo>5</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722474_7451241_sb1_318]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>BARBADOS (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724018_7451241_sb1_475">
+      <custrecordts_ec_codigo>6</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722477_7451241_sb1_868]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>BELICE (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724019_7451241_sb1_265">
+      <custrecordts_ec_codigo>9</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722483_7451241_sb1_204]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>BRUNEI DARUSSALAM (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724020_7451241_sb1_520">
+      <custrecordts_ec_codigo>10</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722566_7451241_sb1_964]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>CAMPIONE D&apos;ITALIA (Comune di Campioned&apos;Italia)</name>
+    </instance>
+    <instance scriptid="val_724021_7451241_sb1_202">
+      <custrecordts_ec_codigo>11</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722535_7451241_sb1_927]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>COLONIA DE GIBRALTAR</name>
+    </instance>
+    <instance scriptid="val_724022_7451241_sb1_180">
+      <custrecordts_ec_codigo>12</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722471_7451241_sb1_781]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>COMUNIDAD DE LAS BAHAMAS (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724023_7451241_sb1_142">
+      <custrecordts_ec_codigo>13</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722580_7451241_sb1_805]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>CURAZAO</name>
+    </instance>
+    <instance scriptid="val_724024_7451241_sb1_276">
+      <custrecordts_ec_codigo>18</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722582_7451241_sb1_491]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>EMIRATOS ÁRABES UNIDOS (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724025_7451241_sb1_244">
+      <custrecordts_ec_codigo>14</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722536_7451241_sb1_850]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ESTADO ASOCIADO DE GRANADA (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724026_7451241_sb1_510">
+      <custrecordts_ec_codigo>15</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722472_7451241_sb1_645]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ESTADO DE BAHREIN (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724027_7451241_sb1_758">
+      <custrecordts_ec_codigo>16</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722576_7451241_sb1_937]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ESTADO DE KUWAIT (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724028_7451241_sb1_639">
+      <custrecordts_ec_codigo>17</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722635_7451241_sb1_907]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ESTADO LIBRE ASOCIADO DE PUERTO RICO (Estado asociado a los EEUU)</name>
+    </instance>
+    <instance scriptid="val_724029_7451241_sb1_808">
+      <custrecordts_ec_codigo>19</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722583_7451241_sb1_116]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>FEDERACIÓN DE SAN CRISTÓBAL (Islas Saint Kitts and Nevis: independientes)</name>
+    </instance>
+    <instance scriptid="val_724030_7451241_sb1_562">
+      <custrecordts_ec_codigo>20</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722586_7451241_sb1_840]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>GRAN DUCADO DE LUXEMBURGO</name>
+    </instance>
+    <instance scriptid="val_724031_7451241_sb1_922">
+      <custrecordts_ec_codigo>21</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722538_7451241_sb1_130]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>GROENLANDIA</name>
+    </instance>
+    <instance scriptid="val_724032_7451241_sb1_948">
+      <custrecordts_ec_codigo>22</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722540_7451241_sb1_324]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>GUAM (Territorio no autónomo de los EEUU)</name>
+    </instance>
+    <instance scriptid="val_724033_7451241_sb1_733">
+      <custrecordts_ec_codigo>89</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722552_7451241_sb1_729]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>HONG KONG</name>
+    </instance>
+    <instance scriptid="val_724034_7451241_sb1_148">
+      <custrecordts_ec_codigo>23</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722656_7451241_sb1_617]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLA DE ASCENSIÓN</name>
+    </instance>
+    <instance scriptid="val_724035_7451241_sb1_218">
+      <custrecordts_ec_codigo>27</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722586_7451241_sb1_840]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLA DE COCOS O KEELING</name>
+    </instance>
+    <instance scriptid="val_724036_7451241_sb1_619">
+      <custrecordts_ec_codigo>31</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722587_7451241_sb1_668]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLA DE SAN PEDRO Y MIGUELÓN</name>
+    </instance>
+    <instance scriptid="val_724037_7451241_sb1_527">
+      <custrecordts_ec_codigo>24</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722725_7451241_sb1_294]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLAS AZORES</name>
+    </instance>
+    <instance scriptid="val_724038_7451241_sb1_977">
+      <custrecordts_ec_codigo>25</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722584_7451241_sb1_113]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLAS CAIMÁN (Territorio no autónomo del Reino Unido)</name>
+    </instance>
+    <instance scriptid="val_724039_7451241_sb1_427">
+      <custrecordts_ec_codigo>26</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722585_7451241_sb1_348]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLAS CHRISTMAS</name>
+    </instance>
+    <instance scriptid="val_724040_7451241_sb1_727">
+      <custrecordts_ec_codigo>32</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722543_7451241_sb1_741]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLAS DEL CANAL (Guernesey, Alderney, Isla de Great Stark, Herm, Little Sark, Brechou, Jethou, Lihou)</name>
+    </instance>
+    <instance scriptid="val_724041_7451241_sb1_158">
+      <custrecordts_ec_codigo>88</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722569_7451241_sb1_846]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLAS DEL CANAL (Jersey)</name>
+    </instance>
+    <instance scriptid="val_724042_7451241_sb1_876">
+      <custrecordts_ec_codigo>34</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722589_7451241_sb1_370]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLAS SALOMÓN</name>
+    </instance>
+    <instance scriptid="val_724043_7451241_sb1_760">
+      <custrecordts_ec_codigo>36</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722591_7451241_sb1_580]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLAS VÍRGENES BRITÁNICAS (Territorio no autónomo del Reino Unido)</name>
+    </instance>
+    <instance scriptid="val_724044_7451241_sb1_859">
+      <custrecordts_ec_codigo>37</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722594_7451241_sb1_775]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLAS VÍRGENES DE ESTADOS UNIDOS DE AMÉRICA</name>
+    </instance>
+    <instance scriptid="val_724045_7451241_sb1_704">
+      <custrecordts_ec_codigo>38</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722575_7451241_sb1_369]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>KIRIBATI</name>
+    </instance>
+    <instance scriptid="val_724046_7451241_sb1_223">
+      <custrecordts_ec_codigo>40</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722587_7451241_sb1_668]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>MACAO</name>
+    </instance>
+    <instance scriptid="val_724047_7451241_sb1_833">
+      <custrecordts_ec_codigo>41</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722725_7451241_sb1_294]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>MADEIRA (Territorio de Portugal)</name>
+    </instance>
+    <instance scriptid="val_724048_7451241_sb1_858">
+      <custrecordts_ec_codigo>42</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722510_7451241_sb1_376]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>MANCOMUNIDAD DE DOMINICA (Estado asociado)</name>
+    </instance>
+    <instance scriptid="val_724049_7451241_sb1_349">
+      <custrecordts_ec_codigo>43</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722595_7451241_sb1_274]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>MONTSERRAT (Territorio no autónomo del Reino Unido)</name>
+    </instance>
+    <instance scriptid="val_724050_7451241_sb1_529">
+      <custrecordts_ec_codigo>45</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722617_7451241_sb1_296]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>NIGERIA</name>
+    </instance>
+    <instance scriptid="val_724051_7451241_sb1_110">
+      <custrecordts_ec_codigo>46</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722597_7451241_sb1_874]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>NIUE</name>
+    </instance>
+    <instance scriptid="val_724052_7451241_sb1_540">
+      <custrecordts_ec_codigo>47</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722599_7451241_sb1_477]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>PALAU</name>
+    </instance>
+    <instance scriptid="val_724053_7451241_sb1_268">
+      <custrecordts_ec_codigo>48</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722600_7451241_sb1_725]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>PITCAIRN</name>
+    </instance>
+    <instance scriptid="val_724054_7451241_sb1_557">
+      <custrecordts_ec_codigo>49</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722529_7451241_sb1_233]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>POLINESIA FRANCESA (Territorio de Ultramar de Francia)</name>
+    </instance>
+    <instance scriptid="val_724055_7451241_sb1_832">
+      <custrecordts_ec_codigo>50</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722584_7451241_sb1_113]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>PRINCIPADO DE LIECHTENSTEIN (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724056_7451241_sb1_159">
+      <custrecordts_ec_codigo>51</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722606_7451241_sb1_390]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>PRINCIPADO DE MÓNACO</name>
+    </instance>
+    <instance scriptid="val_724057_7451241_sb1_769">
+      <custrecordts_ec_codigo>52</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722457_7451241_sb1_521]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>PRINCIPADO DEL VALLE DE ANDORRA</name>
+    </instance>
+    <instance scriptid="val_724058_7451241_sb1_250">
+      <custrecordts_ec_codigo>53</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722601_7451241_sb1_781]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REINO DE SWAZILANDIA (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724059_7451241_sb1_205">
+      <custrecordts_ec_codigo>54</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722684_7451241_sb1_704]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REINO DE TONGA (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724060_7451241_sb1_222">
+      <custrecordts_ec_codigo>55</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722571_7451241_sb1_907]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REINO HACHEMITA DE JORDANIA</name>
+    </instance>
+    <instance scriptid="val_724061_7451241_sb1_622">
+      <custrecordts_ec_codigo>56</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722547_7451241_sb1_614]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA COOPERATIVA DE GUYANA (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724062_7451241_sb1_731">
+      <custrecordts_ec_codigo>57</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722454_7451241_sb1_636]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE ALBANIA</name>
+    </instance>
+    <instance scriptid="val_724063_7451241_sb1_184">
+      <custrecordts_ec_codigo>58</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722458_7451241_sb1_248]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE ANGOLA</name>
+    </instance>
+    <instance scriptid="val_724064_7451241_sb1_886">
+      <custrecordts_ec_codigo>59</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722488_7451241_sb1_756]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE CABO VERDE (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724065_7451241_sb1_838">
+      <custrecordts_ec_codigo>60</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722498_7451241_sb1_203]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE CHIPRE</name>
+    </instance>
+    <instance scriptid="val_724066_7451241_sb1_550">
+      <custrecordts_ec_codigo>61</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722509_7451241_sb1_487]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE DJIBOUTI (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724067_7451241_sb1_268">
+      <custrecordts_ec_codigo>62</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722602_7451241_sb1_323]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE LAS ISLAS MARSHALL (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724068_7451241_sb1_388">
+      <custrecordts_ec_codigo>63</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722582_7451241_sb1_491]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE LIBERIA (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724069_7451241_sb1_230">
+      <custrecordts_ec_codigo>64</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722593_7451241_sb1_110]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE MALDIVAS (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724070_7451241_sb1_724">
+      <custrecordts_ec_codigo>65</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722595_7451241_sb1_274]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE MALTA (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724071_7451241_sb1_504">
+      <custrecordts_ec_codigo>66</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722600_7451241_sb1_725]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE MAURICIO</name>
+    </instance>
+    <instance scriptid="val_724072_7451241_sb1_238">
+      <custrecordts_ec_codigo>67</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722612_7451241_sb1_970]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE NAURU (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724073_7451241_sb1_742">
+      <custrecordts_ec_codigo>68</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722629_7451241_sb1_499]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE PANAMÁ (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724074_7451241_sb1_913">
+      <custrecordts_ec_codigo>69</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722662_7451241_sb1_392]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE SEYCHELLES (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724075_7451241_sb1_145">
+      <custrecordts_ec_codigo>71</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722605_7451241_sb1_993]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE TÚNEZ</name>
+    </instance>
+    <instance scriptid="val_724076_7451241_sb1_880">
+      <custrecordts_ec_codigo>72</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722698_7451241_sb1_278]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE VANUATU</name>
+    </instance>
+    <instance scriptid="val_724077_7451241_sb1_932">
+      <custrecordts_ec_codigo>73</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722706_7451241_sb1_775]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DEL YEMEN</name>
+    </instance>
+    <instance scriptid="val_724078_7451241_sb1_829">
+      <custrecordts_ec_codigo>74</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722607_7451241_sb1_394]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DEMOCRÁTICA SOCIALISTA DE SRI LANKA</name>
+    </instance>
+    <instance scriptid="val_724079_7451241_sb1_424">
+      <custrecordts_ec_codigo>80</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722611_7451241_sb1_352]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>SAN MARTÍN</name>
+    </instance>
+    <instance scriptid="val_724080_7451241_sb1_874">
+      <custrecordts_ec_codigo>78</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722656_7451241_sb1_617]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>SANTA ELENA</name>
+    </instance>
+    <instance scriptid="val_724081_7451241_sb1_824">
+      <custrecordts_ec_codigo>79</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722609_7451241_sb1_414]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>SANTA LUCÍA</name>
+    </instance>
+    <instance scriptid="val_724082_7451241_sb1_187">
+      <custrecordts_ec_codigo>81</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722653_7451241_sb1_957]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>SERENÍSIMA REPÚBLICA DE SAN MARINO (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_724083_7451241_sb1_434">
+      <custrecordts_ec_codigo>82</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722623_7451241_sb1_415]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>SULTANADO DE OMAN</name>
+    </instance>
+    <instance scriptid="val_724084_7451241_sb1_185">
+      <custrecordts_ec_codigo>83</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722612_7451241_sb1_970]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>TOKELAU</name>
+    </instance>
+    <instance scriptid="val_724085_7451241_sb1_987">
+      <custrecordts_ec_codigo>84</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722656_7451241_sb1_617]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>TRISTAN DA CUNHA (SH Saint Helena)</name>
+    </instance>
+    <instance scriptid="val_724086_7451241_sb1_903">
+      <custrecordts_ec_codigo>85</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722691_7451241_sb1_839]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>TUVALU</name>
+    </instance>
+    <instance scriptid="val_724087_7451241_sb1_428">
+      <custrecordts_ec_codigo>86</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722614_7451241_sb1_532]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ZONA LIBRE DE OSTRAVA</name>
+    </instance>
+    <instance scriptid="val_724101_7451241_sb1_103">
+      <custrecordts_ec_codigo>1</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722459_7451241_sb1_186]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ANGUILA (Territorio no autónomo del Reino Unido)</name>
+    </instance>
+    <instance scriptid="val_724103_7451241_sb1_359">
+      <custrecordts_ec_codigo>7</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722479_7451241_sb1_235]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>BERMUDAS (Territorio no autónomo del Reino Unido)</name>
+    </instance>
+    <instance scriptid="val_724104_7451241_sb1_181">
+      <custrecordts_ec_codigo>28</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722502_7451241_sb1_248]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLA DE COOK (Territorio autónomo asociado a Nueva Zelanda)</name>
+    </instance>
+    <instance scriptid="val_724107_7451241_sb1_236">
+      <custrecordts_ec_codigo>29</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722560_7451241_sb1_795]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLA DE MAN (Territorio del Reino Unido)</name>
+    </instance>
+    <instance scriptid="val_724108_7451241_sb1_445">
+      <custrecordts_ec_codigo>30</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722606_7451241_sb1_390]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLA DE NORFOLK</name>
+    </instance>
+    <instance scriptid="val_724109_7451241_sb1_509">
+      <custrecordts_ec_codigo>33</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722588_7451241_sb1_309]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLA QESHM</name>
+    </instance>
+    <instance scriptid="val_724112_7451241_sb1_122">
+      <custrecordts_ec_codigo>35</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722592_7451241_sb1_718]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>ISLAS TURKAS E ISLAS CAICOS (Territorio no autónomo del Reino Unido)</name>
+    </instance>
+    <instance scriptid="val_724113_7451241_sb1_816">
+      <custrecordts_ec_codigo>39</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722592_7451241_sb1_718]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>LABUAN</name>
+    </instance>
+    <instance scriptid="val_724114_7451241_sb1_351">
+      <custrecordts_ec_codigo>44</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722610_7451241_sb1_674]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>MYANMAR (ex Birmania)</name>
+    </instance>
+    <instance scriptid="val_724115_7451241_sb1_335">
+      <custrecordts_ec_codigo>8</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722579_7451241_sb1_351]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>PAISES BAJOS (HOLANDA)</name>
+    </instance>
+    <instance scriptid="val_724116_7451241_sb1_916">
+      <custrecordts_ec_codigo>70</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722603_7451241_sb1_164]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>REPÚBLICA DE TRINIDAD Y TOBAGO</name>
+    </instance>
+    <instance scriptid="val_724118_7451241_sb1_574">
+      <custrecordts_ec_codigo>75</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722650_7451241_sb1_833]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>SAMOA AMERICANA (Territorio no autónomo de los EEUU)</name>
+    </instance>
+    <instance scriptid="val_724124_7451241_sb1_963">
+      <custrecordts_ec_codigo>76</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_724122_7451241_sb1_381]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>SAMOA OCCIDENTAL</name>
+    </instance>
+    <instance scriptid="val_724126_7451241_sb1_803">
+      <custrecordts_ec_codigo>77</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722608_7451241_sb1_581]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>SAN VICENTE Y LAS GRANADINAS (Estado independiente)</name>
+    </instance>
+    <instance scriptid="val_813507_7451241_sb1_427">
+      <custrecordts_ec_codigo>01</custrecordts_ec_codigo>
+      <custrecordts_ec_pais_fiscal>[scriptid=customrecord_ts_ec_pe_pais.val_722722_7451241_sb1_585]</custrecordts_ec_pais_fiscal>
+      <isinactive>F</isinactive>
+      <name>prueba paraiso fiscal</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

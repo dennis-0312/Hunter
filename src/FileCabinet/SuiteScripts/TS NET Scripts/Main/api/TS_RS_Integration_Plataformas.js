@@ -28,6 +28,7 @@ define([
     const HT_DETALLE_COBERTURA = 'customrecord_ht_ct_cobertura_transaction';
     const ORDEN_TRABAJO = 'CUSTOMRECORD_HT_RECORD_ORDENTRABAJO';
     const CHEQUEADO = 2;
+    const PROCESANDO = 4;
 
     const _get = (scriptContext) => {
         try {
@@ -99,7 +100,7 @@ define([
             if (scriptContext.estado == 1) {
                 let response;
                 let historial;
-                if (scriptContext.cobertura == '') {
+                if (scriptContext.cobertura == 0) {
                     let objRecord = record.create({ type: HT_COBERTURA_RECORD, isDynamic: true });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
@@ -118,10 +119,12 @@ define([
                     let objRecord = record.load({ type: HT_COBERTURA_RECORD, id: scriptContext.cobertura });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
+                    if (scriptContext.t_PPS == true) {
+                        objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
+                        objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
+                        objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
+                        objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
+                    }
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
                     //objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
@@ -130,7 +133,6 @@ define([
                     response = objRecord.save();
                     log.debug('responseExisteRegistro', response);
                 }
-
                 let objSearch = verifyExistHistorial(scriptContext.salesorder, scriptContext.ordentrabajo);
                 let searchResultCount = objSearch.runPaged().count;
                 if (searchResultCount > 0) {
@@ -144,10 +146,13 @@ define([
                     objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: scriptContext.ordentrabajo });
                     objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: scriptContext.concepto });
                     // objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
-                    objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(scriptContext.start) });
-                    objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(scriptContext.end) });
+                    if (scriptContext.t_PPS == true) {
+                        objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(scriptContext.start) });
+                        objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(scriptContext.end) });
+                    }
                     let response_2 = objRecord_2.save();
                     log.debug('responseExisteHistorial', response_2);
+
                 } else {
                     let objRecord_2 = record.create({ type: HT_DETALLE_COBERTURA, isDynamic: true });
                     objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: response });
@@ -166,7 +171,7 @@ define([
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
-                objRecord.setValue({ fieldId: 'custrecord_ht_co_familia_prod', value: scriptContext.ttr });
+                objRecord.setValue({ fieldId: '0', value: scriptContext.ttr });
                 let response = objRecord.save();
                 log.debug('response', response);
 

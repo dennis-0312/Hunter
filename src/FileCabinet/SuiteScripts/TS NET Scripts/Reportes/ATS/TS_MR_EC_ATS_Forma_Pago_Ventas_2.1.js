@@ -13,9 +13,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             try {
                 let environmentFeatures = getEnviromentFeatures();
                 let scriptParameters = getScriptParameters(environmentFeatures);
-
                 let transactions = getATSFormaPagoVentas(scriptParameters, environmentFeatures);
-
                 return transactions;
             } catch (error) {
                 log.error("error", error);
@@ -144,14 +142,12 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
         const getScriptParameters = (environmentFeatures) => {
             let scriptParameters = {};
-
             if (environmentFeatures.hasSubsidiaries)
                 scriptParameters.subsidiaryId = currentScript.getParameter('custscript_ts_mr_ec_ats_form_pv_subsidia');
             scriptParameters.periodId = currentScript.getParameter('custscript_ts_mr_ec_ats_form_pv_period');
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_mr_ec_ats_form_pv_folder');
             scriptParameters.atsFilesId = currentScript.getParameter('custscript_ts_mr_ec_ats_form_pv_atsfiles');
             scriptParameters.logId = currentScript.getParameter('custscript_ts_mr_ec_ats_form_pv_logid');
-
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
         }
@@ -179,11 +175,8 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             if (environmentFeatures.hasSubsidiaries) {
                 params['custscript_ts_mr_ec_ats_anulado_subsidia'] = scriptParameters.subsidiaryId;
             }
-
             params['custscript_ts_mr_ec_ats_anulado_period'] = scriptParameters.periodId;
-
             params['custscript_ts_mr_ec_ats_anulado_folder'] = scriptParameters.folderId;
-
             params['custscript_ts_mr_ec_ats_anulado_atsfiles'] = scriptParameters.atsFilesId;
             params['custscript_ts_mr_ec_ats_anulado_logid'] = scriptParameters.logId;
             log.error("executeMapReduce", params);

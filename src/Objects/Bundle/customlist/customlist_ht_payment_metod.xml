@@ -1,0 +1,12 @@
+<customlist scriptid="customlist_ht_payment_metod">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Payment Metod</name>
+  <customvalues>
+    <customvalue scriptid="val_36469_7451241_sb1_348">
+      <isinactive>F</isinactive>
+      <value>Transferencia</value>
+    </customvalue>
+  </customvalues>
+</customlist>

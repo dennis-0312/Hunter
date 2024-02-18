@@ -2,27 +2,47 @@
  *@NApiVersion 2.1
  *@NScriptType Restlet
  */
-define(['N/log', 'N/record', 'N/file', 'N/search'], function(log, record, file, search) {
+define(['N/log', 'N/record', 'N/file', 'N/search'], function (log, record, file, search) {
 
     function _get(busqueda) {
         try {
-          
-   log.debug('Request', busqueda);
-           // let customer = "12881";
-          // let objRecord = record.load({ type: record.Type.CUSTOMER_DEPOSIT, customer: customer, isDynamic: true });
-          
-            let objRecord = record.load({ type: record.Type.CUSTOMER_DEPOSIT, id: busqueda.busqueda});
+            // let fileObj = file.create({
+            //     name: 'PruebaPcordova.txt',
+            //     fileType: file.Type.PLAINTEXT,
+            //     contents: 'Hello World\nHello World ! 1'
+            // })
+
+            // fileObj.encoding = file.encoding.MAC_ROMAN
+            // fileObj.folder = 30
+
+            // let idfile = fileObj.save();
+
+
+
+            // let miEjecucion = task.create({
+            //     taskType: task.TaskType.SCHEDULED_SCRIPT,
+            //     scriptId: 'customscript_ns_ss_orden_venta',
+            //     deploymentId: 'customdeploy_ns_ss_orden_venta'
+            // });
+            // let miRespuesta = miEjecucion.submit();
+            // log.debug('Respuesta', miRespuesta);
+
+            log.debug('Request', busqueda);
+            // let customer = "12881";
+            // let objRecord = record.load({ type: record.Type.CUSTOMER_DEPOSIT, customer: customer, isDynamic: true });
+
+            let objRecord = record.load({ type: record.Type.CUSTOMER_DEPOSIT, id: busqueda.busqueda });
             log.debug('Busqueda.........', objRecord);
             //let objRecord = record.load({ type: record.Type.CUSTOMER, id: idcustomer, isDynamic: true });
-           let payment = objRecord.getValue({ fieldId: 'payment' });
+            let payment = objRecord.getValue({ fieldId: 'payment' });
             let trandate = objRecord.getValue({ fieldId: 'trandate' });
             let memo = objRecord.getValue({ fieldId: 'memo' });
             let customer = objRecord.getValue({ fieldId: 'customer' });
             let internalid = objRecord.getValue({ fieldId: 'internalid' });
             let customerdeposit = objRecord.getValue({ fieldId: 'customerdeposit' });
             return {
-               objRecord:objRecord
-              
+                objRecord: objRecord
+
             }
         } catch (error) {
             log.error('Error-GET', error)
@@ -41,7 +61,7 @@ define(['N/log', 'N/record', 'N/file', 'N/search'], function(log, record, file, 
             //let payment = '100';
             let currency = '1'
             let exchangerate = '1';
-          let subsidiary='2';
+            let subsidiary = '2';
             //const start = Date.now();
             //let postingperiod='117';
             //let meno='Prueba de recibo';
@@ -50,9 +70,9 @@ define(['N/log', 'N/record', 'N/file', 'N/search'], function(log, record, file, 
             //let trandate ='12/06/2022'; //mes-dia-año
             let customerform = context.customerform;
             //let customer = context.customer;
-           let vatregnumber = context.customer;
+            let vatregnumber = context.customer;
             let payment = context.payment;
-let checknumber = context.checknumber
+            let checknumber = context.checknumber
             //const start = Date.now();
             //let postingperiod='117';
             let meno = context.meno;
@@ -64,55 +84,55 @@ let checknumber = context.checknumber
             //let undepfunds='T';
             //let trandate ='12/06/2022'; //mes-dia-año
 
-           // consulta de internalId
+            // consulta de internalId
             var busquedaCustomer = search.create({
                 type: search.Type.CUSTOMER,
-                columns: ['entityid', 'altname','internalid'],
-                 filters: ['vatregnumber', search.Operator.STARTSWITH, vatregnumber]
+                columns: ['entityid', 'altname', 'internalid'],
+                filters: ['vatregnumber', search.Operator.STARTSWITH, vatregnumber]
             });
-           var myResultSet = busquedaCustomer.run().getRange({start: 0, end: 1});;
-  	  log.debug('Busqueda.........', myResultSet);     
-          log.debug('Usuario Ingreso.........', usuario);      
-        var theCount = busquedaCustomer.runPaged().count;
+            var myResultSet = busquedaCustomer.run().getRange({ start: 0, end: 1 });;
+            log.debug('Busqueda.........', myResultSet);
+            log.debug('Usuario Ingreso.........', usuario);
+            var theCount = busquedaCustomer.runPaged().count;
             if (theCount != 1) {
-                log.debug('Busqueda.Error........', myResultSet);    
+                log.debug('Busqueda.Error........', myResultSet);
             } else {
-                 //consulta de customer el id
+                //consulta de customer el id
                 var customer = myResultSet[0].getValue(busquedaCustomer.columns[2]);
                 log.debug('customer........', customer);
- // CREATION ORDER RECORD
-            let objRecord = record.create({ type: record.Type.CUSTOMER_DEPOSIT});
+                // CREATION ORDER RECORD
+                let objRecord = record.create({ type: record.Type.CUSTOMER_DEPOSIT });
 
-            //PRIMARY INFORMATION
-            objRecord.setValue({ fieldId: 'customform', value: customerform });
-            objRecord.setValue({ fieldId: 'customer', value: customer });
-            objRecord.setValue({ fieldId: 'payment', value: payment });
-            objRecord.setValue({ fieldId: 'currency', value: currency });
-            objRecord.setValue({ fieldId: 'exchangerate', value: exchangerate });
-            objRecord.setValue({ fieldId: 'trandate', value: new Date(context.fecha) })
+                //PRIMARY INFORMATION
+                objRecord.setValue({ fieldId: 'customform', value: customerform });
+                objRecord.setValue({ fieldId: 'customer', value: customer });
+                objRecord.setValue({ fieldId: 'payment', value: payment });
+                objRecord.setValue({ fieldId: 'currency', value: currency });
+                objRecord.setValue({ fieldId: 'exchangerate', value: exchangerate });
+                objRecord.setValue({ fieldId: 'trandate', value: new Date(context.fecha) })
                 // objRecord.setValue({ fieldId: 'postingperiod', value: postingperiod });
-             objRecord.setValue({ fieldId: 'memo', value: meno });
-            objRecord.setValue({ fieldId: 'paymentoption', value: paymentoption });
-            //objRecord.setValue({ fieldId: 'paymentinstrumenttype', value: paymentoption });
-            //objRecord.setValue({ fieldId: 'paymentmethodtypeid', value: paymentoption });
-            objRecord.setValue({ fieldId: 'undepfunds', value: undepfunds });
+                objRecord.setValue({ fieldId: 'memo', value: meno });
+                objRecord.setValue({ fieldId: 'paymentoption', value: paymentoption });
+                //objRecord.setValue({ fieldId: 'paymentinstrumenttype', value: paymentoption });
+                //objRecord.setValue({ fieldId: 'paymentmethodtypeid', value: paymentoption });
+                objRecord.setValue({ fieldId: 'undepfunds', value: undepfunds });
 
-            objRecord.setValue({ fieldId: 'subsidiary', value: subsidiary });
-            objRecord.setValue({ fieldId: 'department', value: department });
-            objRecord.setValue({ fieldId: 'class', value: clases });
-            objRecord.setValue({ fieldId: 'location', value: location });
-               if (paymentoption=='2'){
-                    
+                objRecord.setValue({ fieldId: 'subsidiary', value: subsidiary });
+                objRecord.setValue({ fieldId: 'department', value: department });
+                objRecord.setValue({ fieldId: 'class', value: clases });
+                objRecord.setValue({ fieldId: 'location', value: location });
+                if (paymentoption == '2') {
+
                     objRecord.setValue({ fieldId: 'checknumber', value: checknumber });
                 }
-            let recordId = objRecord.save({ ignoreMandatoryFields: false });
-              log.debug('paymentoption', paymentoption);
-            log.debug('Recibo', recordId);
-         
-            }
-           
+                let recordId = objRecord.save({ ignoreMandatoryFields: false });
+                log.debug('paymentoption', paymentoption);
+                log.debug('Recibo', recordId);
 
-           
+            }
+
+
+
             return "Grabado..........";
 
         } catch (error) {

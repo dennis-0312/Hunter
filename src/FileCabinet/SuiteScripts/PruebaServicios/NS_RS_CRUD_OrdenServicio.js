@@ -108,7 +108,7 @@ const start = Date.now();
                 //*objRecord.setValue({ fieldId: 'custbody_il_metodo_entrega', value: deliverymethod }); //REQUEST
                 //*objRecord.setValue({ fieldId: 'custbody_il_codigo_cupon', value: context.couponcode }); //REQUEST
 
-                //TODO: DETAILS ITEMS ===================================================
+                //?: DETAILS ITEMS ===================================================
                 const itemLine = objRecord.selectNewLine({ sublistId: 'item' });
                 for (let i in items) {
                     let mul = 0;
@@ -164,7 +164,6 @@ const start = Date.now();
                     //custcol_pe_afec_igv
                     objRecord.commitLine({ sublistId: 'item' });
                 }
-                //TODO 
 
                 let OrdenServicioId = objRecord.save({ ignoreMandatoryFields: false });
                 log.debug('OrdenServicio.....', OrdenServicioId);

@@ -7,6 +7,8 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
     (search, email, file, runtime, log, format, record, task) => {
 
         const MAX_PAGINATION_SIZE = 1000;
+        const SEARCH_EC_ATS_COMPRAS_DETALLADAS = 'customsearch_ts_ec_compras_detalladas' //EC - ATS Compras Detalladas
+        const SEARCH_EC_ATS_COMPRAS_DETALLADAS_INFORME_GASTO = 'customsearch_ts_ec_compras_detalladas_ig' //EC - ATS Compras Detalladas Informe Gasto
         var currentScript = runtime.getCurrentScript();
 
         const getInputData = () => {
@@ -15,8 +17,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 let scriptParameters = getScriptParameters(environmentFeatures);
 
                 let transactions = getATSComprasDetalladas(scriptParameters, environmentFeatures);
-
-                return transactions;
+                let expenseReport = getATSComprasDetalladasInformeGasto(scriptParameters, environmentFeatures);
+                log.error("expenseReport", expenseReport);
+                return transactions.concat(expenseReport);
             } catch (error) {
                 log.error("error", error);
             }
@@ -222,19 +225,19 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
                 let rowString = `${codigoCompra}|${codigoSustento}|${tipoIdentificacionProveedor}|${numeroIdentificacionProveedor}|${codigoTipoComprobante}|` +
                     `${parteRelacionada}|${tipoProveedor}|${razonSocialProveedor}|${fechaRegistro}|${establecimientoCV}|${puntoEmisionCV}|${numeroSecuencialCV}|` +
-                    `${fechaEmision}|${numeroAutorizacion}|${baseImponibleNoIva}|${baseImponible0Iva}|${baseImponibleGravada}|${baseImponibleExenta}${montoIce}|` +
+                    `${fechaEmision}|${numeroAutorizacion}|${baseImponibleNoIva}|${baseImponible0Iva}|${baseImponibleGravada}|${baseImponibleExenta}|${montoIce}|` +
                     `${montoIva}|${retencionIva10}|${retencionIva20}|${retencionIva30}|${retencionIva50}|${retencionIva70}|${retencionIva100}|${totalBasesImponibles}|` +
                     `${pagoLocalExtranjero}|${tipoRegimen}|${paisEfectuaPagoRegimen}|${paisEfectuaPagoParaiso}|${denominacionPago}|${paisEfectuaPago}|${aplicaConvenioDobleTributacion}|` +
                     `${pagoExteriorSujetoRetencionNormativaLegal}|${pagoRegimenFiscalPreferente}|${establecimientoCR}|${puntoEmisionCR}|${numeroSecuencialCR}|${numeroAutorizacionCR}|` +
                     `${fechaEmisionCR}|${codigoTipoCM}|${establecimientoCM}|${puntoEmisionCM}|${secuencialCM}|${numeroAutorizacionCM}\r\n`;
 
+                log.error("rowString", rowString);
                 context.write({
                     key: context.key,
                     value: {
                         rowString
                     }
                 });
-
             } catch (error) {
                 log.error("error", error);
             }
@@ -299,9 +302,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
         const getEnviromentFeatures = () => {
             let features = {};
-            features.hasSubsidiaries = runtime.isFeatureInEffect({
-                feature: "SUBSIDIARIES"
-            });
+            features.hasSubsidiaries = runtime.isFeatureInEffect({ feature: "SUBSIDIARIES" });
             return features;
         }
 
@@ -320,9 +321,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
         }
 
         const getATSComprasDetalladas = (scriptParameters, environmentFeatures) => {
-            let aTSComprasDetalladasSearch = search.load({
-                id: 'customsearch_ts_ec_compras_detalladas'
-            });
+            let aTSComprasDetalladasSearch = search.load({ id: SEARCH_EC_ATS_COMPRAS_DETALLADAS });
 
             if (scriptParameters.periodId) {
                 let periodFilter = search.createFilter({
@@ -346,11 +345,52 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
             let resultArray = [];
             for (let i = 0; i < pagedData.pageRanges.length; i++) {
-
                 let page = pagedData.fetch({
                     index: pagedData.pageRanges[i].index
                 });
+                for (let j = 0; j < page.data.length; j++) {
+                    let result = page.data[j];
+                    let columns = result.columns;
 
+                    let rowArray = [];
+                    for (let k = 0; k < columns.length; k++) {
+                        rowArray.push(result.getValue(columns[k]));
+                    }
+                    resultArray.push(rowArray);
+                }
+            }
+            return resultArray;
+        }
+
+        const getATSComprasDetalladasInformeGasto = (scriptParameters, environmentFeatures) => {
+            let periodRecord = getRecordPeriod(scriptParameters.periodId);
+            let aTSComprasDetalladasInformeGastoSearch = search.load({ id: SEARCH_EC_ATS_COMPRAS_DETALLADAS_INFORME_GASTO });
+
+            if (scriptParameters.periodId) {
+                let periodFilter = search.createFilter({
+                    name: 'expensedate',
+                    operator: search.Operator.WITHIN,
+                    values: [periodRecord.startdate, periodRecord.enddate]
+                });
+                aTSComprasDetalladasInformeGastoSearch.filters.push(periodFilter);
+            }
+
+            if (environmentFeatures.hasSubsidiaries) {
+                let subsidiaryFilter = search.createFilter({
+                    name: 'subsidiary',
+                    operator: search.Operator.ANYOF,
+                    values: scriptParameters.subsidiaryId
+                });
+                aTSComprasDetalladasInformeGastoSearch.filters.push(subsidiaryFilter);
+            }
+
+            let pagedData = aTSComprasDetalladasInformeGastoSearch.runPaged({ pageSize: MAX_PAGINATION_SIZE });
+
+            let resultArray = [];
+            for (let i = 0; i < pagedData.pageRanges.length; i++) {
+                let page = pagedData.fetch({
+                    index: pagedData.pageRanges[i].index
+                });
                 for (let j = 0; j < page.data.length; j++) {
                     let result = page.data[j];
                     let columns = result.columns;
@@ -384,6 +424,16 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
         const roundTwoDecimals = (number) => {
             return Math.round(Number(number) * 100) / 100;
+        }
+
+        const getRecordPeriod = (periodId) => {
+            let periodRecord = search.lookupFields({
+                type: search.Type.ACCOUNTING_PERIOD,
+                id: periodId,
+                columns: ['startdate', 'enddate']
+            });
+
+            return periodRecord;
         }
 
         return {

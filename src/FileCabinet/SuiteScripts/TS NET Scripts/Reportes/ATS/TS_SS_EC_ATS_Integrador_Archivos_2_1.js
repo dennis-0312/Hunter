@@ -8,7 +8,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
         let currentScript = runtime.getCurrentScript();
 
         const FTL_TEMPLATE_NAME = "./TS_FTL_EC_ATS_XML.ftl";
-        const FOLDER_ID = "1593";
+        const FOLDER_ID = "506"; //Path => SuiteBundles : Bundle 419588 : com.netsuite.psgsbe : src : cs : field_change_handler
         const execute = (context) => {
             try {
                 let environmentFeatures = getEnviromentFeatures();
@@ -24,7 +24,6 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 } else {
 
                 }
-
             } catch (error) {
                 log.error("error", error)
             }
@@ -139,42 +138,53 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
         const buildJson = (atsFiles) => {
             let jsonBuilded = {};
             let identificacionInformante = getFileContentByName(atsFiles, "IDENTIFICACION DEL INFORMANTE");
+            log.error("identificacionInformante", identificacionInformante);
             setIdentificacionInformante(jsonBuilded, identificacionInformante);
 
             let comprasReembolso = getFileContentByName(atsFiles, "COMPRAS REMBOLSO");
             comprasReembolso.pop();
+            log.error("comprasReembolso", comprasReembolso);
 
             let formasPago = getFileContentByName(atsFiles, "FORMA DE PAGO");
             formasPago.pop();
+            log.error("formasPago", formasPago);
 
             let comprasRetenciones = getFileContentByName(atsFiles, "COMPRAS RETENCIONES");
             comprasRetenciones.pop();
+            log.error("comprasRetenciones", comprasRetenciones);
 
             let comprasDetalladas = getFileContentByName(atsFiles, "COMPRAS DETALLADAS");
             comprasDetalladas.pop();
+            log.error("comprasDetalladas", comprasDetalladas);
 
             setComprasDetalladas(jsonBuilded, comprasDetalladas, comprasReembolso, formasPago, comprasRetenciones);
-            
+
             let ventasClientes = getFileContentByName(atsFiles, "VENTAS DE CLIENTES");
             ventasClientes.pop();
+            log.error("ventasClientes", ventasClientes);
 
+            /*
             let formasPagoVenta = getFileContentByName(atsFiles, "FORMA DE PAGO VENTAS");
             formasPagoVenta.pop();
+            log.error("formasPagoVenta", formasPagoVenta);*/
 
-            setVentasDetalladas(jsonBuilded, ventasClientes, formasPagoVenta);
+            setVentasDetalladas(jsonBuilded, ventasClientes/*, formasPagoVenta*/);
 
             let ventasEstablecimiento = getFileContentByName(atsFiles, "VENTAS POR ESTABLECIMIENTO");
             ventasEstablecimiento.pop();
+            log.error("ventasEstablecimiento", ventasEstablecimiento);
 
             setVentasPorEstablecimiento(jsonBuilded, ventasEstablecimiento);
-            
+
             let ventasExportaciones = getFileContentByName(atsFiles, "VENTAS DE EXPORTACIONES");
             ventasExportaciones.pop();
+            log.error("ventasExportaciones", ventasExportaciones);
 
             setVentasDeExportación(jsonBuilded, ventasExportaciones);
-            
+
             let comprobantesAnulados = getFileContentByName(atsFiles, "ANULADOS");
             comprobantesAnulados.pop();
+            log.error("comprobantesAnulados", comprobantesAnulados);
 
             setComprobanteAnulados(jsonBuilded, comprobantesAnulados);
 
@@ -244,11 +254,12 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             jsonBuilded.Anio = identificacion[3] || "";
             jsonBuilded.Mes = identificacion[4] || "";
             jsonBuilded.numEstabRuc = identificacion[5] || "";
-            jsonBuilded.totalVentas = identificacion[6] || 0;
+            jsonBuilded.totalVentas = Number(identificacion[6]) || 0;
             jsonBuilded.codigoOperativo = identificacion[7] || "";
         }
 
         const setComprasDetalladas = (jsonBuilded, comprasDetalladas, comprasReembolso, formasPago, comprasRetenciones) => {
+            //!SS => EC - ATS Compras Detalladas - customsearch_ts_ec_compras_detalladas
             let compras = [];
 
             for (let i = 0; i < comprasDetalladas.length; i++) {
@@ -256,46 +267,46 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 let pagoExterior = {};
                 let formasDePago = {};
                 let compraDetallada = comprasDetalladas[i].split('|');
-                let codigoCompra = compraDetallada[0];
+                let codigoCompra = compraDetallada[0]; //* 1 Codigo de compra
 
-                detalleCompras.codSustento = compraDetallada[1] || "";
-                detalleCompras.tpIdProv = compraDetallada[2] || "";
-                detalleCompras.idProv = compraDetallada[3] || "";
-                detalleCompras.tipoComprobante = compraDetallada[4] || "";
-                detalleCompras.parteRel = compraDetallada[5] || "";
-                detalleCompras.tipoProv = compraDetallada[6] || "";
-                detalleCompras.denoProv = compraDetallada[7] || "";
-                detalleCompras.fechaRegistro = compraDetallada[8] || "";
-                detalleCompras.establecimiento = compraDetallada[9] || "";
-                detalleCompras.puntoEmision = compraDetallada[10] || "";
-                detalleCompras.secuencial = compraDetallada[11] || "";
-                detalleCompras.fechaEmision = compraDetallada[12] || "";
-                detalleCompras.autorizacion = compraDetallada[13] || "";
-                detalleCompras.baseNoGraIva = compraDetallada[14] || "";
-                detalleCompras.baseImponible = compraDetallada[15] || "";
-                detalleCompras.baseImpGrav = compraDetallada[16] || "";
-                detalleCompras.baseImpExe = compraDetallada[17] || "";
-                detalleCompras.montoIce = compraDetallada[18] || "";
-                detalleCompras.montoIva = compraDetallada[19] || "";
-                detalleCompras.valRetBien10 = compraDetallada[20] || "";
-                detalleCompras.valRetServ20 = compraDetallada[21] || "";
-                detalleCompras.valorRetBienes = compraDetallada[22] || "";
-                detalleCompras.valRetServ50 = compraDetallada[23] || "";
-                detalleCompras.valorRetServicios = compraDetallada[24] || "";
-                detalleCompras.valRetServ100 = compraDetallada[25] || "";
+                detalleCompras.codSustento = compraDetallada[1] || ""; //* 2 Codigo de sustento
+                detalleCompras.tpIdProv = compraDetallada[2] || ""; //* 3 Tipo de identificacion del proveedor
+                detalleCompras.idProv = compraDetallada[3] || ""; //* 4 Numero de identificacion del proveedor
+                detalleCompras.tipoComprobante = compraDetallada[4] || ""; //* 5 Codigo del tipo de comprobante
+                detalleCompras.parteRel = compraDetallada[5] || ""; //* 6 Parte relacionada
+                detalleCompras.tipoProv = compraDetallada[6] || ""; //* 7 Tipo de proveedor
+                detalleCompras.denoProv = compraDetallada[7] || ""; //* 8 Proveedor razon social
+                detalleCompras.fechaRegistro = compraDetallada[8] || ""; //* 9 CV Fecha de registro
+                detalleCompras.establecimiento = compraDetallada[9] || ""; //* 10 CV Establecimiento
+                detalleCompras.puntoEmision = compraDetallada[10] || ""; //* 11 CV Punto emision
+                detalleCompras.secuencial = compraDetallada[11] || ""; //* 12 CV Secuencial
+                detalleCompras.fechaEmision = compraDetallada[12] || ""; //* 13 CV Fecha de emision
+                detalleCompras.autorizacion = compraDetallada[13] || ""; //* 14 CV Numero de autorizacion
+                detalleCompras.baseNoGraIva = Number(compraDetallada[14]) || 0; //* 15 Base Imponible no objeto de IVA
+                detalleCompras.baseImponible = Number(compraDetallada[15]) || 0; //* 16 Base imponible tarifa 0% de IVA 
+                detalleCompras.baseImpGrav = Number(compraDetallada[16]) || 0; //* 17 Base imponible gravada
+                detalleCompras.baseImpExe = Number(compraDetallada[17]) || 0; //* 18 Base exenta
+                detalleCompras.montoIce = Number(compraDetallada[18]) || 0; //* 19 Monto ICE
+                detalleCompras.montoIva = Number(compraDetallada[19]) || 0; //* 20 Monto IVA
+                detalleCompras.valRetBien10 = Number(compraDetallada[20]) || 0; //* 21 Retencion bienes 10%
+                detalleCompras.valRetServ20 = Number(compraDetallada[21]) || 0; //* 22 Retencion servicios 20%
+                detalleCompras.valorRetBienes = Number(compraDetallada[22]) || 0; //* 23 Retencion de IVA 30% bienes
+                detalleCompras.valRetServ50 = Number(compraDetallada[23]) || 0; //* 24 Retencion de IVA 50% bienes
+                detalleCompras.valorRetServicios = Number(compraDetallada[24]) || 0; //* 25 Retencion de IVA 70% servicios
+                detalleCompras.valRetServ100 = Number(compraDetallada[25]) || 0; //* 26 Retencion de IVA 100%
 
                 let totbasesImpReemb = getTotalBaseImponibleReembolso(codigoCompra, comprasReembolso);
                 detalleCompras.totbasesImpReemb = totbasesImpReemb || 0;
 
-                pagoExterior.pagoLocExt = compraDetallada[27];
-                pagoExterior.tipoRegi = compraDetallada[28];
-                pagoExterior.paisEfecPagoGen = compraDetallada[29];
-                pagoExterior.paisEfecPagoParFis = compraDetallada[30];
-                pagoExterior.denopago = compraDetallada[31];
-                pagoExterior.paisEfecPago = compraDetallada[32];
-                pagoExterior.aplicConvDobTrib = compraDetallada[33];
-                pagoExterior.pagExtSujRetNorLeg = compraDetallada[34];
-                pagoExterior.pagoRegFis = compraDetallada[35];
+                pagoExterior.pagoLocExt = compraDetallada[27]; //* 28 Pago Local o Extranjero
+                pagoExterior.tipoRegi = compraDetallada[28]; //* 29 Tipos de regimen fiscal del exterior
+                pagoExterior.paisEfecPagoGen = compraDetallada[29]; //* 30 País de residencia o establecimiento permanente a quién se efectúa el pago régimen general
+                pagoExterior.paisEfecPagoParFis = compraDetallada[30]; //* 31 País de residencia o establecimiento permanente a quién se efectúa el pago paraíso fiscal
+                pagoExterior.denopago = compraDetallada[31]; //* 32 Denominación del régimen fiscal preferente o jurisdicción de menor imposición.
+                pagoExterior.paisEfecPago = compraDetallada[32]; //* 33 País al que se efectúa el pago
+                pagoExterior.aplicConvDobTrib = compraDetallada[33]; //* 34 ¿Aplica convenio de doble tributación?
+                pagoExterior.pagExtSujRetNorLeg = compraDetallada[34]; //* 35 ¿Pago al exterior en aplicación a la Normativa Legal?
+                pagoExterior.pagoRegFis = compraDetallada[35]; //* 36 ¿El pago es a un régimen fiscal preferente o de menor imposición?
 
                 detalleCompras.pagoExterior = pagoExterior;
 
@@ -305,49 +316,46 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 let air = getComprasRetenciones(codigoCompra, comprasRetenciones);
                 detalleCompras.air = air;
 
-                detalleCompras.estabRetencion1 = compraDetallada[36];
-                detalleCompras.ptoEmiRetencion1 = compraDetallada[37];
-                detalleCompras.secRetencion1 = compraDetallada[38];
-                detalleCompras.autRetencion1 = compraDetallada[39];
-                detalleCompras.fechaEmiRet1 = compraDetallada[40];
-
+                detalleCompras.estabRetencion1 = compraDetallada[36]; //* 37 No. de serie del comprobante de retención - establecimiento
+                detalleCompras.ptoEmiRetencion1 = compraDetallada[37]; //* 38 No. de serie del comprobante de retención - punto de emisión
+                detalleCompras.secRetencion1 = compraDetallada[38]; //* 39 No. secuencial del comprobante de retención
+                detalleCompras.autRetencion1 = compraDetallada[39]; //* 40 No. de autorización del comprobante de retención
+                detalleCompras.fechaEmiRet1 = compraDetallada[40]; //* 41 Fecha de emision del comprobante de retención
                 compras.push(detalleCompras);
             }
             jsonBuilded.compras = compras;
         }
 
-        const setVentasDetalladas = (jsonBuilded, ventasClientes, formasPago) => {
+        const setVentasDetalladas = (jsonBuilded, ventasClientes/*, formasPago*/) => {
             let ventas = [];
 
             for (let i = 0; i < ventasClientes.length; i++) {
                 let detalleVentas = {};
 
                 let ventaCliente = ventasClientes[i].split('|');
-                let codigoVenta = ventaCliente[0];
-                detalleVentas.tpIdCliente = ventaCliente[1];
-                detalleVentas.idCliente = ventaCliente[2];
-                detalleVentas.parteRel = ventaCliente[3];
-                detalleVentas.tipoCliente = ventaCliente[4];
-                detalleVentas.DenoCli = ventaCliente[5];
+                //let codigoVenta = ventaCliente[0];
+                detalleVentas.tpIdCliente = ventaCliente[0];
+                detalleVentas.idCliente = ventaCliente[1];
+                detalleVentas.parteRelVtas = ventaCliente[2];
+                detalleVentas.tipoCliente = ventaCliente[3];
+                detalleVentas.DenoCli = ventaCliente[4];
 
-                detalleVentas.tipoComprobante = ventaCliente[6];
-                detalleVentas.tipoEm = ventaCliente[7];
+                detalleVentas.tipoComprobante = ventaCliente[5];
+                detalleVentas.tipoEmision = ventaCliente[6];
 
-                detalleVentas.numeroComprobantes = ventaCliente[8];
-                detalleVentas.baseNoGraIva = ventaCliente[9];
-                detalleVentas.baseImponible = ventaCliente[10];
-                detalleVentas.baseImpGrav = ventaCliente[11];
-                detalleVentas.montoIva = ventaCliente[12];
-                /*
-                detalleVentas.tipoCompe = "";
-                detalleVentas.monto = "";
-                */
-                detalleVentas.montoIce = ventaCliente[13];
-                detalleVentas.valorRetIva = ventaCliente[14];
-                detalleVentas.valorRetRenta = ventaCliente[15];
+                detalleVentas.numeroComprobantes = ventaCliente[7];
+                detalleVentas.baseNoGraIva = Number(ventaCliente[8]) || 0;
+                detalleVentas.baseImponible = Number(ventaCliente[9]) || 0;
+                detalleVentas.baseImpGrav = Number(ventaCliente[10]) || 0;
+                detalleVentas.montoIva = Number(ventaCliente[11]) || 0;
 
-                let formasDePago = getFormasPagoVenta(codigoVenta, formasPago);
+                detalleVentas.montoIce = Number(ventaCliente[12]) || 0;
+                detalleVentas.valorRetIva = Number(ventaCliente[13]) || 0;
+                detalleVentas.valorRetRenta = Number(ventaCliente[14]) || 0;
+
+                let formasDePago = getFormasPagoVenta(ventaCliente[15]);
                 detalleVentas.formasDePago = formasDePago;
+                ventas.push(detalleVentas);
             }
 
             jsonBuilded.ventas = ventas;
@@ -361,8 +369,8 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 let ventaEstablecimiento = ventasEstablecimiento[i].split('|');
 
                 ventaEst.codEstab = ventaEstablecimiento[0];
-                ventaEst.ventasEstab = ventaEstablecimiento[1];
-                ventaEst.ivaComp = ventaEstablecimiento[2];
+                ventaEst.ventasEstab = Number(ventaEstablecimiento[1]) || 0;
+                ventaEst.ivaComp = Number(ventaEstablecimiento[2]) || 0;
                 ventas.push(ventaEst);
             }
 
@@ -379,10 +387,10 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
 
                 detalleAnulados.tipoComprobante = comprobanteAnulado[0];
                 detalleAnulados.establecimiento = comprobanteAnulado[1];
-                detalleAnulados.puntoEmision = comprobanteAnulado[3];
-                detalleAnulados.secuencialInicio = comprobanteAnulado[4];
-                detalleAnulados.secuencialFin = comprobanteAnulado[5];
-                detalleAnulados.autorizacion = comprobanteAnulado[6];
+                detalleAnulados.puntoEmision = comprobanteAnulado[2];
+                detalleAnulados.secuencialInicio = comprobanteAnulado[3];
+                detalleAnulados.secuencialFin = comprobanteAnulado[4];
+                detalleAnulados.autorizacion = comprobanteAnulado[5];
 
                 anulados.push(detalleAnulados);
             }
@@ -410,8 +418,8 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 detalleExportaciones.pagoRegFis = ventaExportacion[11];
                 detalleExportaciones.exportacionDe = ventaExportacion[12];
                 detalleExportaciones.tipIngExt = ventaExportacion[13];
-                detalleExportaciones.ingextgravotropaís = ventaExportacion[14];
-                detalleExportaciones.impuestootropaís = ventaExportacion[15];
+                detalleExportaciones.ingExtGravOtroPais = ventaExportacion[14];
+                detalleExportaciones.impuestootropais = Number(ventaExportacion[15]) || 0;
                 detalleExportaciones.tipoComprobante = ventaExportacion[16];
                 detalleExportaciones.distAduanero = ventaExportacion[17];
                 detalleExportaciones.anio = ventaExportacion[18];
@@ -421,8 +429,8 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 detalleExportaciones.docTransp = ventaExportacion[22];
                 detalleExportaciones.fechaEmbarque = ventaExportacion[23];
                 detalleExportaciones.fue = ventaExportacion[24];
-                detalleExportaciones.valorFOB = ventaExportacion[25];
-                detalleExportaciones.valorFOBComprobante = ventaExportacion[26];
+                detalleExportaciones.valorFOB = Number(ventaExportacion[25]) || 0;
+                detalleExportaciones.valorFOBComprobante = Number(ventaExportacion[26]) || 0;
                 detalleExportaciones.establecimiento = ventaExportacion[27];
                 detalleExportaciones.puntoEmision = ventaExportacion[28];
                 detalleExportaciones.secuencial = ventaExportacion[29];
@@ -432,7 +440,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 exportaciones.push(detalleExportaciones);
             }
             log.error("exportaciones", exportaciones),
-            jsonBuilded.exportaciones = exportaciones;
+                jsonBuilded.exportaciones = exportaciones;
         }
 
         const getTotalBaseImponibleReembolso = (codigoCompra, comprasReembolso) => {
@@ -451,14 +459,14 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 if (formaPago[0] != codigoCompra) continue;
                 return formaPago[1];
             }
+            return "";
         }
 
-        const getFormasPagoVenta = (codigoVenta, formasPago) => {
-            let formasDePago = []
+        const getFormasPagoVenta = (formasPago) => {
+            let formasDePago = [];
+            formasPago = formasPago.split(',');
             for (let i = 0; i < formasPago.length; i++) {
-                let formaPago = formasPago[i].split('|');
-                if (formaPago[0] != codigoVenta) continue;
-                formasDePago.push(formaPago[1]);
+                formasDePago.push(formasPago[i]);
             }
             return formasDePago;
         }
@@ -469,10 +477,10 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 let compraRetencion = comprasRetenciones[i].split('|');
                 if (compraRetencion[0] == codigoCompra) {
                     let detalleAir = {};
-                    detalleAir.codRetAir = compraRetencion[1];
-                    detalleAir.baseImpAir = compraRetencion[2];
-                    detalleAir.porcentajeAir = compraRetencion[3];
-                    detalleAir.valRetAir = compraRetencion[4];
+                    detalleAir.codRetAir = compraRetencion[1]; //& 2 Concepto de Retención en la fuente de Impuesto a la Renta 
+                    detalleAir.baseImpAir = Number(compraRetencion[2]) || 0; //& 3 Base Imponible Renta
+                    detalleAir.porcentajeAir = compraRetencion[3]; //& 4 Porcentaje de Retención en la fuente de Impuesto a la Renta
+                    detalleAir.valRetAir = Number(compraRetencion[4]) || 0; //& 5 Monto de retención de Renta
                     air.push(detalleAir);
                 }
             }

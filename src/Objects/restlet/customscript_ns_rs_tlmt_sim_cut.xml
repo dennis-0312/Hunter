@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_tlmt_sim_cut">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS RS Telematic Corte SIM</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/ErickHunter/NS_RS_Telematic_SIM_Cut.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_tlmt_sim_cut">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>ERROR</loglevel>
+      <status>RELEASED</status>
+      <title>TS RS Telematic Corte SIM</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ht_cc_tipoconfiguracion">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT CC Tipo de configuración</name>
+  <customvalues>
+    <customvalue scriptid="val_781608_7451241_sb1_872">
+      <isinactive>F</isinactive>
+      <value>Dispositivo</value>
+    </customvalue>
+    <customvalue scriptid="val_781609_7451241_sb1_319">
+      <isinactive>F</isinactive>
+      <value>Sim Card</value>
+    </customvalue>
+  </customvalues>
+</customlist>

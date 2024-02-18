@@ -1,0 +1,12 @@
+<customlist scriptid="customlist_ht_dp_banco">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT DP Banco</name>
+  <customvalues>
+    <customvalue scriptid="val_779953_7451241_sb1_704">
+      <isinactive>F</isinactive>
+      <value>Banco Bolivariano</value>
+    </customvalue>
+  </customvalues>
+</customlist>

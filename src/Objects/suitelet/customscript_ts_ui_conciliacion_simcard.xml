@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_ts_ui_conciliacion_simcard">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_UI_Conciliacion_SimCard</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Personalizaciones/TS_UI_Conciliacion_SimCard.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_ui_conciliacion_simcard">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole></runasrole>
+      <status>RELEASED</status>
+      <title>TS_UI_Conciliacion_SimCard</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

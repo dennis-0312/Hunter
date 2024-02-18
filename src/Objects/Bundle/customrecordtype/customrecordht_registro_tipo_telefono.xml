@@ -1,0 +1,300 @@
+<customrecordtype scriptid="customrecordht_registro_tipo_telefono">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Registro Tipo Teléfono</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>T</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_codigo_telefono">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Código</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_descripcion_tipo_telefono">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_822685_7451241_sb1_372">
+      <custrecord_ht_codigo_telefono>001</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>TELEFONO</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>001 - TELEFONO</name>
+    </instance>
+    <instance scriptid="val_822686_7451241_sb1_402">
+      <custrecord_ht_codigo_telefono>002</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>FAX</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>002 - FAX</name>
+    </instance>
+    <instance scriptid="val_822687_7451241_sb1_628">
+      <custrecord_ht_codigo_telefono>003</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>PBX</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>003 - PBX</name>
+    </instance>
+    <instance scriptid="val_822688_7451241_sb1_741">
+      <custrecord_ht_codigo_telefono>004</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CELULAR</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>004 - CELULAR</name>
+    </instance>
+    <instance scriptid="val_822689_7451241_sb1_404">
+      <custrecord_ht_codigo_telefono>005</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>TELEFONO-EXTRA</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>005 - TELEFONO-EXTRA</name>
+    </instance>
+    <instance scriptid="val_822690_7451241_sb1_872">
+      <custrecord_ht_codigo_telefono>006</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CELULAR-EXTRA</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>006 - CELULAR-EXTRA</name>
+    </instance>
+    <instance scriptid="val_822691_7451241_sb1_366">
+      <custrecord_ht_codigo_telefono>007</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>RECEPTOR</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>007 - RECEPTOR</name>
+    </instance>
+    <instance scriptid="val_822692_7451241_sb1_847">
+      <custrecord_ht_codigo_telefono>008</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>TRABAJO</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>008 - TRABAJO</name>
+    </instance>
+    <instance scriptid="val_822693_7451241_sb1_963">
+      <custrecord_ht_codigo_telefono>009</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CONTACTO CELULAR</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>009 - CONTACTO CELULAR</name>
+    </instance>
+    <instance scriptid="val_822694_7451241_sb1_459">
+      <custrecord_ht_codigo_telefono>010</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CONTACTO CONVENCIONAL</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>010 - CONTACTO CONVENCIONAL </name>
+    </instance>
+    <instance scriptid="val_822695_7451241_sb1_645">
+      <custrecord_ht_codigo_telefono>011</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>TELEFONO TDE</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>011 - TELEFONO TDE</name>
+    </instance>
+    <instance scriptid="val_822696_7451241_sb1_740">
+      <custrecord_ht_codigo_telefono>012</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>TELEFONO SOS</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>012 - TELEFONO SOS</name>
+    </instance>
+    <instance scriptid="val_822697_7451241_sb1_978">
+      <custrecord_ht_codigo_telefono>013</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CONTACTO CONVENCIONAL</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>013 - CONTACTO CONVENCIONAL </name>
+    </instance>
+    <instance scriptid="val_822698_7451241_sb1_923">
+      <custrecord_ht_codigo_telefono>014</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>VECINO CONVENCIONAL</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>014 - VECINO CONVENCIONAL </name>
+    </instance>
+    <instance scriptid="val_822699_7451241_sb1_759">
+      <custrecord_ht_codigo_telefono>015</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>TELEFONO MAVESA</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>015 - TELEFONO MAVESA</name>
+    </instance>
+    <instance scriptid="val_822700_7451241_sb1_367">
+      <custrecord_ht_codigo_telefono>016</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CELULAR TDE</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>016 - CELULAR TDE</name>
+    </instance>
+    <instance scriptid="val_822701_7451241_sb1_918">
+      <custrecord_ht_codigo_telefono>017</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CELULAR FACTURACION</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>017 - CELULAR FACTURACION</name>
+    </instance>
+    <instance scriptid="val_822702_7451241_sb1_365">
+      <custrecord_ht_codigo_telefono>018</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>REGISTRESE H.O. CONVENCIONAL</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>018 - REGISTRESE H.O. CONVENCIONAL </name>
+    </instance>
+    <instance scriptid="val_822703_7451241_sb1_740">
+      <custrecord_ht_codigo_telefono>019</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>REGISTRESE H.O. CELULAR</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>019 - REGISTRESE H.O. CELULAR </name>
+    </instance>
+    <instance scriptid="val_822704_7451241_sb1_611">
+      <custrecord_ht_codigo_telefono>020</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>TELEFONO MARESA</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>020 - TELEFONO MARESA</name>
+    </instance>
+    <instance scriptid="val_822705_7451241_sb1_701">
+      <custrecord_ht_codigo_telefono>021</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CELULAR MARESA</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>021 - CELULAR MARESA</name>
+    </instance>
+    <instance scriptid="val_822706_7451241_sb1_847">
+      <custrecord_ht_codigo_telefono>022</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>ALERTA IMPACT. PRINC.</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>022 - ALERTA IMPACT. PRINC.</name>
+    </instance>
+    <instance scriptid="val_822707_7451241_sb1_920">
+      <custrecord_ht_codigo_telefono>023</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>ALERTA IMPACT. SECUN.</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>023 - ALERTA IMPACT. SECUN.</name>
+    </instance>
+    <instance scriptid="val_822708_7451241_sb1_216">
+      <custrecord_ht_codigo_telefono>024</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>ALERTA IMPACT. OTRO</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>024 - ALERTA IMPACT. OTRO</name>
+    </instance>
+    <instance scriptid="val_822709_7451241_sb1_933">
+      <custrecord_ht_codigo_telefono>025</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CONVENIO CELULAR</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>025 - CONVENIO CELULAR</name>
+    </instance>
+    <instance scriptid="val_822710_7451241_sb1_846">
+      <custrecord_ht_codigo_telefono>026</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CONVENIO CONVENCIONAL</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>026 - CONVENIO CONVENCIONAL</name>
+    </instance>
+    <instance scriptid="val_822711_7451241_sb1_309">
+      <custrecord_ht_codigo_telefono>027</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>TELEFONO CONVENIO</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>027 - TELEFONO CONVENIO</name>
+    </instance>
+    <instance scriptid="val_822712_7451241_sb1_894">
+      <custrecord_ht_codigo_telefono>028</custrecord_ht_codigo_telefono>
+      <custrecord_ht_descripcion_tipo_telefono>CELULAR CONVENIO</custrecord_ht_descripcion_tipo_telefono>
+      <isinactive>F</isinactive>
+      <name>028 - CELULAR CONVENIO</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_ts_ui_get_inventory_detail">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS UI Get Inventory Detail 2.1</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Construcción de Ensamblaje/api/TS_UI_Get_Inventory_Detail_2.1.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_ui_get_inventory_detail">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype>GET</eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>ERROR</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>TS UI Get Inventory Detail 2.1</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

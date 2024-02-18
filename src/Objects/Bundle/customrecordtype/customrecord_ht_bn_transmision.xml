@@ -1,0 +1,180 @@
+<customrecordtype scriptid="customrecord_ht_bn_transmision">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Transmisión de Bien</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_descripcion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_779920_7451241_sb1_695">
+      <custrecord_ht_bn_codigo>AUT</custrecord_ht_bn_codigo>
+      <custrecord_ht_bn_descripcion>AUTOMÁTICA</custrecord_ht_bn_descripcion>
+      <isinactive>F</isinactive>
+      <name>AUT - AUTOMÁTICA</name>
+    </instance>
+    <instance scriptid="val_779921_7451241_sb1_610">
+      <custrecord_ht_bn_codigo>HIB</custrecord_ht_bn_codigo>
+      <custrecord_ht_bn_descripcion>ECVT (HIBRIDOS)</custrecord_ht_bn_descripcion>
+      <isinactive>F</isinactive>
+      <name>HIB - ECVT (HIBRIDOS)</name>
+    </instance>
+    <instance scriptid="val_779922_7451241_sb1_780">
+      <custrecord_ht_bn_codigo>MEC</custrecord_ht_bn_codigo>
+      <custrecord_ht_bn_descripcion>MECANICA</custrecord_ht_bn_descripcion>
+      <isinactive>F</isinactive>
+      <name>MEC - MECANICA</name>
+    </instance>
+    <instance scriptid="val_779923_7451241_sb1_952">
+      <custrecord_ht_bn_codigo>MIX</custrecord_ht_bn_codigo>
+      <custrecord_ht_bn_descripcion>MIXTA</custrecord_ht_bn_descripcion>
+      <isinactive>F</isinactive>
+      <name>MIX - MIXTA</name>
+    </instance>
+    <instance scriptid="val_779924_7451241_sb1_945">
+      <custrecord_ht_bn_codigo>NOD</custrecord_ht_bn_codigo>
+      <custrecord_ht_bn_descripcion>NO DEFINIDO</custrecord_ht_bn_descripcion>
+      <isinactive>F</isinactive>
+      <name>NOD - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_809881_7451241_sb1_851">
+      <custrecord_ht_bn_codigo>CAD</custrecord_ht_bn_codigo>
+      <custrecord_ht_bn_descripcion>CADENA</custrecord_ht_bn_descripcion>
+      <isinactive>F</isinactive>
+      <name>CAD - CADENA</name>
+    </instance>
+    <instance scriptid="val_809882_7451241_sb1_194">
+      <custrecord_ht_bn_codigo>CVT</custrecord_ht_bn_codigo>
+      <custrecord_ht_bn_descripcion>ECVT</custrecord_ht_bn_descripcion>
+      <isinactive>F</isinactive>
+      <name>CVT - ECVT</name>
+    </instance>
+    <instance scriptid="val_809883_7451241_sb1_382">
+      <custrecord_ht_bn_codigo>MAN</custrecord_ht_bn_codigo>
+      <custrecord_ht_bn_descripcion>MANUAL</custrecord_ht_bn_descripcion>
+      <isinactive>F</isinactive>
+      <name>MAN - MANUAL</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

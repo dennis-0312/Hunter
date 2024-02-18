@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_rs_integration_plataform">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_Integration_Plataformas</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/api/TS_RS_Integration_Plataformas.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_rs_integration_plataform">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>TS_RS_Integration_Plataformas</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

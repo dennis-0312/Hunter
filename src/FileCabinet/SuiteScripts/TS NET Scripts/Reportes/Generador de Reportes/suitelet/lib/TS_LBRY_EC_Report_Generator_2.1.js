@@ -203,6 +203,7 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
                 ]
             });
 
+
             let line = 0;
             searchResult.run().each(function (result) {
                 let columns = result.columns;

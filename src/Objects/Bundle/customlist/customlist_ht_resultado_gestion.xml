@@ -1,0 +1,48 @@
+<customlist scriptid="customlist_ht_resultado_gestion">
+  <description>LISTA LOS RESULTADOS DE LA GESTION DEL REGISTRO DE SEGUIMIENTO</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT LIST RESULTADO GESTION</name>
+  <customvalues>
+    <customvalue scriptid="val_780894_7451241_sb1_612">
+      <isinactive>F</isinactive>
+      <value>CONTACTO CON EXITO</value>
+    </customvalue>
+    <customvalue scriptid="val_780895_7451241_sb1_641">
+      <isinactive>F</isinactive>
+      <value>NO CONTACTADO</value>
+    </customvalue>
+    <customvalue scriptid="val_780896_7451241_sb1_711">
+      <isinactive>F</isinactive>
+      <value>VISITA AGENDADA</value>
+    </customvalue>
+    <customvalue scriptid="val_780897_7451241_sb1_177">
+      <isinactive>F</isinactive>
+      <value>VOLVER A CONTACTARSE</value>
+    </customvalue>
+    <customvalue scriptid="val_780898_7451241_sb1_121">
+      <isinactive>F</isinactive>
+      <value>NEGOCIO GANADO</value>
+    </customvalue>
+    <customvalue scriptid="val_780899_7451241_sb1_804">
+      <isinactive>F</isinactive>
+      <value>NEGOCIO PERDIDO</value>
+    </customvalue>
+    <customvalue scriptid="val_780900_7451241_sb1_170">
+      <isinactive>F</isinactive>
+      <value>INTERESADOS EN RENOVAR</value>
+    </customvalue>
+    <customvalue scriptid="val_780901_7451241_sb1_376">
+      <isinactive>F</isinactive>
+      <value>RECLAMO</value>
+    </customvalue>
+    <customvalue scriptid="val_780902_7451241_sb1_877">
+      <isinactive>F</isinactive>
+      <value>SERIVICO AL CLIENTE</value>
+    </customvalue>
+    <customvalue scriptid="val_780903_7451241_sb1_248">
+      <isinactive>F</isinactive>
+      <value>CONTACTO FALLIDO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

@@ -1,0 +1,2049 @@
+<customrecordtype scriptid="customrecord_ht_ci_catalogoinstaldores">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Catalogo instaladores</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_ci_codigotabla">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Código tabla</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_ci_idusuario">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT ID Usuario</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_ci_descripcioninstaladores">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_ci_codigousuario">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Codigo usuario</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_ci_3sturno">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CHECKBOX</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT 3S Turno</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_823672_7451241_sb1_809">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>BCEDEN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BRYAN CEDEÑO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2636</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2636 - BRYAN CEDEÑO</name>
+    </instance>
+    <instance scriptid="val_823673_7451241_sb1_320">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>BCIFUE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BOLIVAR CIFUENTES</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>366</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>366 - BOLIVAR CIFUENTES</name>
+    </instance>
+    <instance scriptid="val_823674_7451241_sb1_881">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CCAIZA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CAIZA ORTIZ CARLOS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1120</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1120 - CAIZA ORTIZ CARLOS</name>
+    </instance>
+    <instance scriptid="val_823675_7451241_sb1_712">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DRIOS</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>DANNY FERNANDO RÍOS SANMARTIN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2409</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2409 - DANNY FERNANDO RÍOS SANMARTIN</name>
+    </instance>
+    <instance scriptid="val_823676_7451241_sb1_287">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EBENAL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>EDISON BENALCAZAR</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1229</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1229 - EDISON BENALCAZAR</name>
+    </instance>
+    <instance scriptid="val_823677_7451241_sb1_966">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EMENDO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MENDOZA MIELES ENDY MANUEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1595</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1595 - MENDOZA MIELES ENDY MANUEL</name>
+    </instance>
+    <instance scriptid="val_823678_7451241_sb1_479">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EORTIZ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ENRIQUE MAXIMO ORTIZ</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1023</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1023 - ENRIQUE MAXIMO ORTIZ</name>
+    </instance>
+    <instance scriptid="val_823679_7451241_sb1_916">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EPARRA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PARRALES EDUARDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>478</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>478 - PARRALES EDUARDO</name>
+    </instance>
+    <instance scriptid="val_823680_7451241_sb1_304">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FCHACO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CHACON BARETO FREDDY VICENTE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>028</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>028 - CHACON BARETO FREDDY VICENTE</name>
+    </instance>
+    <instance scriptid="val_823681_7451241_sb1_534">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FCHANC</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CHANCAY CONFORME FERNANDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1121</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1121 - CHANCAY CONFORME FERNANDO</name>
+    </instance>
+    <instance scriptid="val_823682_7451241_sb1_329">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FCHIRT</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>FABIAN CHIRTALA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>173</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>173 - FABIAN CHIRTALA</name>
+    </instance>
+    <instance scriptid="val_823683_7451241_sb1_106">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FESPIN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ALDO FABRICIO ESPINOZA RAMIREZ</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2379</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2379 - ALDO FABRICIO ESPINOZA RAMIREZ</name>
+    </instance>
+    <instance scriptid="val_823684_7451241_sb1_432">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FJARAM</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JARAMILLO CAICEDO FRANKLIN ISMAEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>059</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>059 - JARAMILLO CAICEDO FRANKLIN ISMAEL</name>
+    </instance>
+    <instance scriptid="val_823685_7451241_sb1_492">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>GAROCA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>AROCA GARZON GILSON ALEX</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1737</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1737 - AROCA GARZON GILSON ALEX</name>
+    </instance>
+    <instance scriptid="val_823686_7451241_sb1_900">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>GZAMOR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ZAMORA GABRIELA PAMELA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2541</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2541 - ZAMORA GABRIELA PAMELA</name>
+    </instance>
+    <instance scriptid="val_823687_7451241_sb1_395">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>HALAY</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ALAY CHAVEZ HECTOR</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1123</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1123 - ALAY CHAVEZ HECTOR</name>
+    </instance>
+    <instance scriptid="val_823688_7451241_sb1_995">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>HLAGUN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>LAGUNA MERINO HERNAN DAVID</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2149</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2149 - LAGUNA MERINO HERNAN DAVID</name>
+    </instance>
+    <instance scriptid="val_823689_7451241_sb1_248">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>IRODRI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RODRIGUEZ VILLAREAL CESAR IVAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>784</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>784 - RODRIGUEZ VILLAREAL CESAR IVAN</name>
+    </instance>
+    <instance scriptid="val_823690_7451241_sb1_453">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>ITUMBA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>TUMBACO IVAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>718</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>718 - TUMBACO IVAN</name>
+    </instance>
+    <instance scriptid="val_823691_7451241_sb1_366">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JBAQUE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BAQUEDANO LEON JUAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>767</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>767 - BAQUEDANO LEON JUAN</name>
+    </instance>
+    <instance scriptid="val_823692_7451241_sb1_265">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JCHANG</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CHANGO GUAMAN JORGE LUIS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1612</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1612 - CHANGO GUAMAN JORGE LUIS</name>
+    </instance>
+    <instance scriptid="val_823693_7451241_sb1_426">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JCHOLO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CHOLO TAÙI FREDDY JAVIER</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>800</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>800 - CHOLO TAÙI FREDDY JAVIER</name>
+    </instance>
+    <instance scriptid="val_823694_7451241_sb1_358">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JLOOR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>LOOR BENITES JUAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>878</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>878 - LOOR BENITES JUAN</name>
+    </instance>
+    <instance scriptid="val_823695_7451241_sb1_373">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JMACIA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JOSUÉ FELIPE MACÍAS LEÓN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2372</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2372 - JOSUÉ FELIPE MACÍAS LEÓN</name>
+    </instance>
+    <instance scriptid="val_823696_7451241_sb1_851">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JMEJIA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JAIME ANGEL MEJIA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>640</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>640 - JAIME ANGEL MEJIA</name>
+    </instance>
+    <instance scriptid="val_823697_7451241_sb1_628">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>KMITE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>KAREN LISSET MITE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2517</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2517 - KAREN LISSET MITE</name>
+    </instance>
+    <instance scriptid="val_823698_7451241_sb1_177">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>KPENAR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>KELVIN PEÑARRIETA BOHORQUEZ</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2401</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2401 - KELVIN PEÑARRIETA BOHORQUEZ</name>
+    </instance>
+    <instance scriptid="val_823699_7451241_sb1_730">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LCAMAC</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CAMACHO BARZOLA LUIS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1125</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1125 - CAMACHO BARZOLA LUIS</name>
+    </instance>
+    <instance scriptid="val_823700_7451241_sb1_320">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LCANTO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CANTOS CRUZ LUIS MIGUEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>694</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>694 - CANTOS CRUZ LUIS MIGUEL</name>
+    </instance>
+    <instance scriptid="val_823701_7451241_sb1_523">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LGORDI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>GORDILLO VILLAMAR LUIS JACINTO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>613</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>613 - GORDILLO VILLAMAR LUIS JACINTO</name>
+    </instance>
+    <instance scriptid="val_823702_7451241_sb1_251">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LMUÑOZ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MUÑOZ TACO LUIS ANIBAL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>689</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>689 - MUÑOZ TACO LUIS ANIBAL</name>
+    </instance>
+    <instance scriptid="val_823703_7451241_sb1_130">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MFZAM</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MARLON FERNANDO ZAMBRANO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2664</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2664 - MARLON FERNANDO ZAMBRANO</name>
+    </instance>
+    <instance scriptid="val_823704_7451241_sb1_991">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MKUKAN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MA GABRIELA KUKAN CALDERON</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2376</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2376 - MA GABRIELA KUKAN CALDERON</name>
+    </instance>
+    <instance scriptid="val_823705_7451241_sb1_665">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MMDIA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>DIAZ MOROCHO MAURICIO ALEJANDRO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>351</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>351 - DIAZ MOROCHO MAURICIO ALEJANDRO</name>
+    </instance>
+    <instance scriptid="val_823706_7451241_sb1_960">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>NAGUIL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>NYLSO AGUILAR</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>334</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>334 - NYLSO AGUILAR</name>
+    </instance>
+    <instance scriptid="val_823707_7451241_sb1_703">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>OGARRI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>OMAR GARRIDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>325</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>325 - OMAR GARRIDO</name>
+    </instance>
+    <instance scriptid="val_823708_7451241_sb1_433">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>PBACUI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BACUILIMA MACANCELA PAUL RENE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>791</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>791 - BACUILIMA MACANCELA PAUL RENE</name>
+    </instance>
+    <instance scriptid="val_823709_7451241_sb1_551">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>PBALLA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BALLADARES CHICAIZA PEDRO DAVI</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1223</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1223 - BALLADARES CHICAIZA PEDRO DAVI</name>
+    </instance>
+    <instance scriptid="val_823710_7451241_sb1_933">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RCHAMB</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CHAMBA RICHARD</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>490</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>490 - CHAMBA RICHARD</name>
+    </instance>
+    <instance scriptid="val_823711_7451241_sb1_680">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RLEON</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RICHARD LEON RODRIGUEZ</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1111</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1111 - RICHARD LEON RODRIGUEZ</name>
+    </instance>
+    <instance scriptid="val_823712_7451241_sb1_406">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RYALVA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ALVARADO BUESTAN RONY YAMIL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1387</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1387 - ALVARADO BUESTAN RONY YAMIL</name>
+    </instance>
+    <instance scriptid="val_823713_7451241_sb1_418">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>SCANDO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CANDO ESPINEL SEGUNDO ARCENIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1556</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1556 - CANDO ESPINEL SEGUNDO ARCENIO</name>
+    </instance>
+    <instance scriptid="val_823714_7451241_sb1_788">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>SCOLLA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SEGUNDO COLLAHUAZO SIMBAÑA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>688</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>688 - SEGUNDO COLLAHUAZO SIMBAÑA</name>
+    </instance>
+    <instance scriptid="val_823715_7451241_sb1_446">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>SPILIC</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PILICITA SEGUNDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>801</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>801 - PILICITA SEGUNDO</name>
+    </instance>
+    <instance scriptid="val_823716_7451241_sb1_906">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>WSANCH</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SANCHEZ MENA WILLIAM</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1155</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1155 - SANCHEZ MENA WILLIAM</name>
+    </instance>
+    <instance scriptid="val_823717_7451241_sb1_199">
+      <custrecord_ht_ci_3sturno>T</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>WUBILL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>UBILLA VILLACIS WINPER ALEJANDRO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>243</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>243 - UBILLA VILLACIS WINPER ALEJANDRO</name>
+    </instance>
+    <instance scriptid="val_823718_7451241_sb1_317">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario></custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ALEX PORRAS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>073</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>073 - ALEX PORRAS</name>
+    </instance>
+    <instance scriptid="val_823719_7451241_sb1_212">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario></custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>EDISON BENALCAZAR</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1129</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1129 - EDISON BENALCAZAR</name>
+    </instance>
+    <instance scriptid="val_823720_7451241_sb1_443">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario></custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ROMEL GRANJA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>660</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>660 - ROMEL GRANJA</name>
+    </instance>
+    <instance scriptid="val_823721_7451241_sb1_725">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>ACHICA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CHICAIZA CAJAMARCA ALEX DANILO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2092</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2092 - CHICAIZA CAJAMARCA ALEX DANILO</name>
+    </instance>
+    <instance scriptid="val_823722_7451241_sb1_462">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>ACORDO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CORDOVA CARDENAS ANGEL EDILMER</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1568</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1568 - CORDOVA CARDENAS ANGEL EDILMER</name>
+    </instance>
+    <instance scriptid="val_823723_7451241_sb1_990">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>AFREIR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ARMANDO FREIRE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>829</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>829 - ARMANDO FREIRE</name>
+    </instance>
+    <instance scriptid="val_823724_7451241_sb1_904">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>AGSALA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SALAZAR ZAMBRANO ANDRES GERARD</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1991</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1991 - SALAZAR ZAMBRANO ANDRES GERARD</name>
+    </instance>
+    <instance scriptid="val_823725_7451241_sb1_508">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>AORDON</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ORDONEZ HERNANDEZ ALEX ARCELLO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>149</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>149 - ORDONEZ HERNANDEZ ALEX ARCELLO</name>
+    </instance>
+    <instance scriptid="val_823726_7451241_sb1_740">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>AORTEG</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ORTEGA MELO ALEJANDRA CECILIA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2116</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2116 - ORTEGA MELO ALEJANDRA CECILIA</name>
+    </instance>
+    <instance scriptid="val_823727_7451241_sb1_480">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>AORTIZ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ORTIZ CASTRO DAVID</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>769</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>769 - ORTIZ CASTRO DAVID</name>
+    </instance>
+    <instance scriptid="val_823728_7451241_sb1_472">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>ARAUJO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>XAVIER ARAUJO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>574</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>574 - XAVIER ARAUJO</name>
+    </instance>
+    <instance scriptid="val_823729_7451241_sb1_910">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>ATEJAD</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>TEJADA MORA MIGUEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1122</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1122 - TEJADA MORA MIGUEL</name>
+    </instance>
+    <instance scriptid="val_823730_7451241_sb1_644">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>BHERNA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BELTRAN HERNANDEZ BOLAÑOZ EDULFO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>420</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>420 - BELTRAN HERNANDEZ BOLAÑOZ EDULFO</name>
+    </instance>
+    <instance scriptid="val_823731_7451241_sb1_400">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>BOCHOA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>OCHOA VILLAMAR BRUCE LUCIANO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>693</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>693 - OCHOA VILLAMAR BRUCE LUCIANO</name>
+    </instance>
+    <instance scriptid="val_823732_7451241_sb1_615">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CALOMA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ALOMALIZA PEÑAFIEL CARLOS JULI</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2163</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2163 - ALOMALIZA PEÑAFIEL CARLOS JULI</name>
+    </instance>
+    <instance scriptid="val_823733_7451241_sb1_911">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CBAQUE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CARLOS BAQUE MORAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1540</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1540 - CARLOS BAQUE MORAN</name>
+    </instance>
+    <instance scriptid="val_823734_7451241_sb1_699">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CGMEND</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MENDIETA MITE CESAR GUILLERMO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1243</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1243 - MENDIETA MITE CESAR GUILLERMO</name>
+    </instance>
+    <instance scriptid="val_823735_7451241_sb1_531">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CGUZMA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>GUZMAN BENALCAZAR CARLOS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1182</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1182 - GUZMAN BENALCAZAR CARLOS</name>
+    </instance>
+    <instance scriptid="val_823736_7451241_sb1_826">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CMOREI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MOREIRA ORTEGA CARLOS ENRIQUE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>075</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>075 - MOREIRA ORTEGA CARLOS ENRIQUE</name>
+    </instance>
+    <instance scriptid="val_823737_7451241_sb1_827">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CMTORR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CRISTHIAN MAURICIO TORRES VERA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>265</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>265 - CRISTHIAN MAURICIO TORRES VERA</name>
+    </instance>
+    <instance scriptid="val_823738_7451241_sb1_659">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CNUNEZ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>NUÑEZ REVELO CRISTIAN RUBEN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1588</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1588 - NUÑEZ REVELO CRISTIAN RUBEN</name>
+    </instance>
+    <instance scriptid="val_823739_7451241_sb1_745">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CRAMON</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RAMON SANCHEZ CARLOS MAURICIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1019</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1019 - RAMON SANCHEZ CARLOS MAURICIO</name>
+    </instance>
+    <instance scriptid="val_823740_7451241_sb1_125">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CRIVAR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RIVADENEIRA ANGULO CHRISTIAN RAFAEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>692</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>692 - RIVADENEIRA ANGULO CHRISTIAN RAFAEL</name>
+    </instance>
+    <instance scriptid="val_823741_7451241_sb1_263">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CRUBIO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RUBIO MORENO CRISTHIAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1086</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1086 - RUBIO MORENO CRISTHIAN</name>
+    </instance>
+    <instance scriptid="val_823742_7451241_sb1_678">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>CVILLA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>VILLAMARIN DROUET CESAR ALBERTO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>708</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>708 - VILLAMARIN DROUET CESAR ALBERTO</name>
+    </instance>
+    <instance scriptid="val_823743_7451241_sb1_419">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DAGOME</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>GOMEZ OLIVO DOUGLAS ALFREDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>812</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>812 - GOMEZ OLIVO DOUGLAS ALFREDO</name>
+    </instance>
+    <instance scriptid="val_823744_7451241_sb1_508">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DARAQU</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>DAVID ARAQUE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>707</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>707 - DAVID ARAQUE</name>
+    </instance>
+    <instance scriptid="val_823745_7451241_sb1_530">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DARBOL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>DAVID ARBOLEDA CEVALLOS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>333</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>333 - DAVID ARBOLEDA CEVALLOS</name>
+    </instance>
+    <instance scriptid="val_823746_7451241_sb1_224">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DCAMPA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>DARWIN CAMPANA PEREA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>988</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>988 - DARWIN CAMPANA PEREA</name>
+    </instance>
+    <instance scriptid="val_823747_7451241_sb1_641">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DCARRE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CARRERA DIEGO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>785</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>785 - CARRERA DIEGO</name>
+    </instance>
+    <instance scriptid="val_823748_7451241_sb1_345">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DCHICO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CHICO CHAMORRO DANNY JAVIER</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>169</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>169 - CHICO CHAMORRO DANNY JAVIER</name>
+    </instance>
+    <instance scriptid="val_823749_7451241_sb1_671">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DFRANC</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>FRANCO MENDEZ DAVID</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>874</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>874 - FRANCO MENDEZ DAVID</name>
+    </instance>
+    <instance scriptid="val_823750_7451241_sb1_380">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DJIMEN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JIMENEZ SAAVEDRA DANIEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1119</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1119 - JIMENEZ SAAVEDRA DANIEL</name>
+    </instance>
+    <instance scriptid="val_823751_7451241_sb1_554">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DNICOL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>DIEGO NICOLALDE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2528</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2528 - DIEGO NICOLALDE</name>
+    </instance>
+    <instance scriptid="val_823752_7451241_sb1_175">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DNORER</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>NORERO GAVILANES DAVID ALEXANDER</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>081</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>081 - NORERO GAVILANES DAVID ALEXANDER</name>
+    </instance>
+    <instance scriptid="val_823753_7451241_sb1_823">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DPICO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>DARWIN JOSE PICO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>488</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>488 - DARWIN JOSE PICO</name>
+    </instance>
+    <instance scriptid="val_823754_7451241_sb1_693">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DQUICH</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>QUICHIMBO DIEGO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>871</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>871 - QUICHIMBO DIEGO</name>
+    </instance>
+    <instance scriptid="val_823755_7451241_sb1_740">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DROMAN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ROMAN ARMIJOS DIEGO ARMANDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>839</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>839 - ROMAN ARMIJOS DIEGO ARMANDO</name>
+    </instance>
+    <instance scriptid="val_823756_7451241_sb1_867">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>DTATYO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>TATAYO VIRACUCHA DIEGO FERNANDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1995</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1995 - TATAYO VIRACUCHA DIEGO FERNANDO</name>
+    </instance>
+    <instance scriptid="val_823757_7451241_sb1_540">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EANDRA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ANDRADE CEDEÑO MARIO ENRIQUE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1549</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1549 - ANDRADE CEDEÑO MARIO ENRIQUE</name>
+    </instance>
+    <instance scriptid="val_823758_7451241_sb1_682">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EBARRO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BARROS BONILLA ERNESTO MAURICI</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1610</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1610 - BARROS BONILLA ERNESTO MAURICI</name>
+    </instance>
+    <instance scriptid="val_823759_7451241_sb1_509">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>ECORTE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CORTEZ EDGAR</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1382</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1382 - CORTEZ EDGAR</name>
+    </instance>
+    <instance scriptid="val_823760_7451241_sb1_469">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EERAZO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ERAZO REYNA EUSEBIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>770</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>770 - ERAZO REYNA EUSEBIO</name>
+    </instance>
+    <instance scriptid="val_823761_7451241_sb1_773">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EESPIN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ESPIN FONSECA EDWIN PAUL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>345</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>345 - ESPIN FONSECA EDWIN PAUL</name>
+    </instance>
+    <instance scriptid="val_823762_7451241_sb1_163">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EGAVIL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>GAVILANEZ QUISHPE EDISON EDUAR</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1409</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1409 - GAVILANEZ QUISHPE EDISON EDUAR</name>
+    </instance>
+    <instance scriptid="val_823763_7451241_sb1_811">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EMEDIN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MEDINA RIVERA ENRIQUE FABIAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>524</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>524 - MEDINA RIVERA ENRIQUE FABIAN</name>
+    </instance>
+    <instance scriptid="val_823764_7451241_sb1_614">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EPEÑAL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PEÑALOZA TRUJILLO EFRAIN CELSO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1558</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1558 - PEÑALOZA TRUJILLO EFRAIN CELSO</name>
+    </instance>
+    <instance scriptid="val_823765_7451241_sb1_696">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>ESANCH</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SANCHEZ MACIAS EDISON RENE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1752</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1752 - SANCHEZ MACIAS EDISON RENE</name>
+    </instance>
+    <instance scriptid="val_823766_7451241_sb1_583">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>ESIMBA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SIMBAÑA ZURITA EDGAR ELIAS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>197</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>197 - SIMBAÑA ZURITA EDGAR ELIAS</name>
+    </instance>
+    <instance scriptid="val_823767_7451241_sb1_952">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>ETAPIA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>EUGENIO TAPIA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>062</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>062 - EUGENIO TAPIA</name>
+    </instance>
+    <instance scriptid="val_823768_7451241_sb1_238">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EXCMUN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CARLOS ALBERTO MUÑOZ GOMEZ</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2414</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2414 - CARLOS ALBERTO MUÑOZ GOMEZ</name>
+    </instance>
+    <instance scriptid="val_823769_7451241_sb1_552">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EXEOTA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>EDWIN GEOVANNY OTAVALO SASI</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2412</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2412 - EDWIN GEOVANNY OTAVALO SASI</name>
+    </instance>
+    <instance scriptid="val_823770_7451241_sb1_971">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EXJCUJ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JOSE LEOPOLDO CUJI ZARUMA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2413</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2413 - JOSE LEOPOLDO CUJI ZARUMA</name>
+    </instance>
+    <instance scriptid="val_823771_7451241_sb1_431">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>EXJSEV</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SEGUNDO JAVIER SEVILLANO GUZMAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2410</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2410 - SEGUNDO JAVIER SEVILLANO GUZMAN</name>
+    </instance>
+    <instance scriptid="val_823772_7451241_sb1_271">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FAVILA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>AVILA HUACON FERNANDO JAVIER</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>005</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>005 - AVILA HUACON FERNANDO JAVIER</name>
+    </instance>
+    <instance scriptid="val_823773_7451241_sb1_791">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FCASCA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CASCANTE GARCIA FRANCISCO MIGUEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>987</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>987 - CASCANTE GARCIA FRANCISCO MIGUEL</name>
+    </instance>
+    <instance scriptid="val_823774_7451241_sb1_121">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FFUENT</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>FUENTES GALVES FERNANDO DAVID</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>174</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>174 - FUENTES GALVES FERNANDO DAVID</name>
+    </instance>
+    <instance scriptid="val_823775_7451241_sb1_272">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FOCHOA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>OCHOA ZAMBRANO FABRICIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1080</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1080 - OCHOA ZAMBRANO FABRICIO</name>
+    </instance>
+    <instance scriptid="val_823776_7451241_sb1_885">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FPERZ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PEREZ OVIEDO MIGUEL FRANCISCO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>960</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>960 - PEREZ OVIEDO MIGUEL FRANCISCO</name>
+    </instance>
+    <instance scriptid="val_823777_7451241_sb1_645">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FREELJ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>EJECUTIVA FREE LANCE LOJA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>000</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>000 - EJECUTIVA FREE LANCE LOJA</name>
+    </instance>
+    <instance scriptid="val_823778_7451241_sb1_995">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FRIVER</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RIVERA ASHQUI FAUSTO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1572</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1572 - RIVERA ASHQUI FAUSTO</name>
+    </instance>
+    <instance scriptid="val_823779_7451241_sb1_304">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>FVILLA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>VILLARREAL RIVERA FERNANDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>955</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>955 - VILLARREAL RIVERA FERNANDO</name>
+    </instance>
+    <instance scriptid="val_823780_7451241_sb1_712">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>GDELGA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>DELGADO CUEVA GALO ERNESTO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2475</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2475 - DELGADO CUEVA GALO ERNESTO</name>
+    </instance>
+    <instance scriptid="val_823781_7451241_sb1_593">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>GGUAMB</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>GUAMBUGUETE AGUALONGO GUIDO NE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1210</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1210 - GUAMBUGUETE AGUALONGO GUIDO NE</name>
+    </instance>
+    <instance scriptid="val_823782_7451241_sb1_855">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>HDUMES</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>HERNAN DUMES ARIAS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>701</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>701 - HERNAN DUMES ARIAS</name>
+    </instance>
+    <instance scriptid="val_823783_7451241_sb1_203">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>IFACON</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>FACONDA GUILCAPI IVAN ANGEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>314</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>314 - FACONDA GUILCAPI IVAN ANGEL</name>
+    </instance>
+    <instance scriptid="val_823784_7451241_sb1_499">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>IMARQU</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MARQUEZ RAMIREZ MANUEL IVAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>066</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>066 - MARQUEZ RAMIREZ MANUEL IVAN</name>
+    </instance>
+    <instance scriptid="val_823785_7451241_sb1_162">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JAZAÑA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>AZAÑA AIÑA JORGE LUIS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1411</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1411 - AZAÑA AIÑA JORGE LUIS</name>
+    </instance>
+    <instance scriptid="val_823786_7451241_sb1_632">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JBARCO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BARCO LOPEZ FERNANDO JAVIER</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1235</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1235 - BARCO LOPEZ FERNANDO JAVIER</name>
+    </instance>
+    <instance scriptid="val_823787_7451241_sb1_423">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JBUELE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BUELE BUELE JHON CLAY</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>886</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>886 - BUELE BUELE JHON CLAY</name>
+    </instance>
+    <instance scriptid="val_823788_7451241_sb1_523">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JCADEN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CADENA SANCHEZ JESUS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>783</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>783 - CADENA SANCHEZ JESUS</name>
+    </instance>
+    <instance scriptid="val_823789_7451241_sb1_458">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JCARDE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CARDENAS MUÑOZ JOSE HUMBERTO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2101</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2101 - CARDENAS MUÑOZ JOSE HUMBERTO</name>
+    </instance>
+    <instance scriptid="val_823790_7451241_sb1_660">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JCOELL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JAFFET COELLO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2411</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2411 - JAFFET COELLO</name>
+    </instance>
+    <instance scriptid="val_823791_7451241_sb1_675">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JCOLLA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JOEL COLLAGUAZO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2628</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2628 - JOEL COLLAGUAZO</name>
+    </instance>
+    <instance scriptid="val_823792_7451241_sb1_794">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JEBURB</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BURBANO SOTOMAYOR JORGE ENRIQUE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>976</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>976 - BURBANO SOTOMAYOR JORGE ENRIQUE</name>
+    </instance>
+    <instance scriptid="val_823793_7451241_sb1_714">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JENARN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>NARANJO GUERRERO JHON EDGARDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1038</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1038 - NARANJO GUERRERO JHON EDGARDO</name>
+    </instance>
+    <instance scriptid="val_823794_7451241_sb1_715">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JESPIN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ESPINOZA BELTRAN JOSE MANUEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1738</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1738 - ESPINOZA BELTRAN JOSE MANUEL</name>
+    </instance>
+    <instance scriptid="val_823795_7451241_sb1_406">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JFBARR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JONATHAN FERNANDO BARRETO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2395</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2395 - JONATHAN FERNANDO BARRETO</name>
+    </instance>
+    <instance scriptid="val_823796_7451241_sb1_468">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JFONSE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>FONSECA COLLANTES JONATHAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2113</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2113 - FONSECA COLLANTES JONATHAN</name>
+    </instance>
+    <instance scriptid="val_823797_7451241_sb1_187">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JLINDA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>LINDAO FLORES JOSE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>768</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>768 - LINDAO FLORES JOSE</name>
+    </instance>
+    <instance scriptid="val_823798_7451241_sb1_535">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JLSANC</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SANCHEZ CAICEDO JOSE LUIS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1126</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1126 - SANCHEZ CAICEDO JOSE LUIS</name>
+    </instance>
+    <instance scriptid="val_823799_7451241_sb1_713">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JMACHU</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MACHUCA JONHATAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>132</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>132 - MACHUCA JONHATAN</name>
+    </instance>
+    <instance scriptid="val_823800_7451241_sb1_589">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JMIELE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MIELES MIELES JEFRY</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1577</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1577 - MIELES MIELES JEFRY</name>
+    </instance>
+    <instance scriptid="val_823801_7451241_sb1_805">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JMIRAN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MIRANDA COBO JOSE XAVIER</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>741</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>741 - MIRANDA COBO JOSE XAVIER</name>
+    </instance>
+    <instance scriptid="val_823802_7451241_sb1_104">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JMORAN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JULIO MORAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1013</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1013 - JULIO MORAN</name>
+    </instance>
+    <instance scriptid="val_823803_7451241_sb1_788">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JORDON</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>J. ORDONEZ</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>909</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>909 - J. ORDONEZ</name>
+    </instance>
+    <instance scriptid="val_823804_7451241_sb1_470">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JORELL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ORELLANA RAMIREZ JOSE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1116</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1116 - ORELLANA RAMIREZ JOSE</name>
+    </instance>
+    <instance scriptid="val_823805_7451241_sb1_918">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JOZAMB</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JORGE ZAMBRANO MOREIRA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>651</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>651 - JORGE ZAMBRANO MOREIRA</name>
+    </instance>
+    <instance scriptid="val_823806_7451241_sb1_145">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JRMEJI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MEJIA AREVALO JOSE RUBEN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1218</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1218 - MEJIA AREVALO JOSE RUBEN</name>
+    </instance>
+    <instance scriptid="val_823807_7451241_sb1_510">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JSALAZ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SALAZAR MORETA JORGE ANIBAL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>409</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>409 - SALAZAR MORETA JORGE ANIBAL</name>
+    </instance>
+    <instance scriptid="val_823808_7451241_sb1_128">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JSANDO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SANDOYA CAUJA JORGE ALBERTO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1242</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1242 - SANDOYA CAUJA JORGE ALBERTO</name>
+    </instance>
+    <instance scriptid="val_823809_7451241_sb1_352">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JSANTO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SANTOS CAMPOVERDE JUAN CARLOS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>500</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>500 - SANTOS CAMPOVERDE JUAN CARLOS</name>
+    </instance>
+    <instance scriptid="val_823810_7451241_sb1_374">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JSEVIL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SEVILLANO JAVIER</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>393</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>393 - SEVILLANO JAVIER</name>
+    </instance>
+    <instance scriptid="val_823811_7451241_sb1_112">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JVALEN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>VALENZUELA PUMA JOSE ALBERTO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>491</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>491 - VALENZUELA PUMA JOSE ALBERTO</name>
+    </instance>
+    <instance scriptid="val_823812_7451241_sb1_913">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JVALLE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>VALLEJO TORRES JOSE LUIS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1743</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1743 - VALLEJO TORRES JOSE LUIS</name>
+    </instance>
+    <instance scriptid="val_823813_7451241_sb1_446">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>JZAMBR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>JHONNY ZAMBRANO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>628</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>628 - JHONNY ZAMBRANO</name>
+    </instance>
+    <instance scriptid="val_823814_7451241_sb1_911">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>KOCHOA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>KEVIN OCHOA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2527</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2527 - KEVIN OCHOA</name>
+    </instance>
+    <instance scriptid="val_823815_7451241_sb1_309">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LAGUIL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>AGUILAR MARTINEZ LUIS FERNANDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>799</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>799 - AGUILAR MARTINEZ LUIS FERNANDO</name>
+    </instance>
+    <instance scriptid="val_823816_7451241_sb1_842">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LCASTI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CASTILLO ERAZO LUIS ROBERTO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>332</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>332 - CASTILLO ERAZO LUIS ROBERTO</name>
+    </instance>
+    <instance scriptid="val_823817_7451241_sb1_145">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LCOVEN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>COVEÑA ARRIAGA LUIS GABRIEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1388</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1388 - COVEÑA ARRIAGA LUIS GABRIEL</name>
+    </instance>
+    <instance scriptid="val_823818_7451241_sb1_432">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LESPIN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ESPINOZA RAMIREZ LUIS FERNANDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1048</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1048 - ESPINOZA RAMIREZ LUIS FERNANDO</name>
+    </instance>
+    <instance scriptid="val_823819_7451241_sb1_815">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LJMURI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MURILLO TIGRERO LUIS JOSE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2148</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2148 - MURILLO TIGRERO LUIS JOSE</name>
+    </instance>
+    <instance scriptid="val_823820_7451241_sb1_916">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LMOSCO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>LUIS ANTONIO MOSCOSO CASTRO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>753</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>753 - LUIS ANTONIO MOSCOSO CASTRO</name>
+    </instance>
+    <instance scriptid="val_823821_7451241_sb1_153">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LMTORO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>TORO CAÑARES LUIS MARCELO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>910</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>910 - TORO CAÑARES LUIS MARCELO</name>
+    </instance>
+    <instance scriptid="val_823822_7451241_sb1_429">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LPARRA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PARRAGA MENDOZA LUIS ALFREDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2156</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2156 - PARRAGA MENDOZA LUIS ALFREDO</name>
+    </instance>
+    <instance scriptid="val_823823_7451241_sb1_747">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LQUING</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>QUINGA PACHAMAMA LUIS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1059</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1059 - QUINGA PACHAMAMA LUIS</name>
+    </instance>
+    <instance scriptid="val_823824_7451241_sb1_170">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LRODRI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>LILIANA RODRIGUEZ</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1141</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1141 - LILIANA RODRIGUEZ</name>
+    </instance>
+    <instance scriptid="val_823825_7451241_sb1_649">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LSANDO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SANDOYA CAUJA LUIS ANTONIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>242</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>242 - SANDOYA CAUJA LUIS ANTONIO</name>
+    </instance>
+    <instance scriptid="val_823826_7451241_sb1_571">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>LSILLO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SILLO MARCATOMA LODER FERNANDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2170</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2170 - SILLO MARCATOMA LODER FERNANDO</name>
+    </instance>
+    <instance scriptid="val_823827_7451241_sb1_222">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MBRAVO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BRAVO MORAN MICHAEL RICHARD</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1602</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1602 - BRAVO MORAN MICHAEL RICHARD</name>
+    </instance>
+    <instance scriptid="val_823828_7451241_sb1_157">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MEGARC</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MIGUEL EDUARDO GARCIA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>217</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>217 - MIGUEL EDUARDO GARCIA</name>
+    </instance>
+    <instance scriptid="val_823829_7451241_sb1_804">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MGUARN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>GUARNIZO GALLARDO MARINO CRISTOBAL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>880</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>880 - GUARNIZO GALLARDO MARINO CRISTOBAL</name>
+    </instance>
+    <instance scriptid="val_823830_7451241_sb1_497">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MJUEZ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MARIA ANDREA JUEZ CASTRO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1150</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1150 - MARIA ANDREA JUEZ CASTRO</name>
+    </instance>
+    <instance scriptid="val_823831_7451241_sb1_239">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MMENA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MENA PALACIOS MAURICIO GEOVANN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1440</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1440 - MENA PALACIOS MAURICIO GEOVANN</name>
+    </instance>
+    <instance scriptid="val_823832_7451241_sb1_683">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MNARAN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>NARANJO CATAGUA MOISES ABRAHAM</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1014</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1014 - NARANJO CATAGUA MOISES ABRAHAM</name>
+    </instance>
+    <instance scriptid="val_823833_7451241_sb1_604">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MPAZMI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PAZMIÑO GUALOTUA MIGUEL ANGEL</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>212</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>212 - PAZMIÑO GUALOTUA MIGUEL ANGEL</name>
+    </instance>
+    <instance scriptid="val_823834_7451241_sb1_665">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MPENAG</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MANUEL PENAGOS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>622</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>622 - MANUEL PENAGOS</name>
+    </instance>
+    <instance scriptid="val_823835_7451241_sb1_542">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MTOLED</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MARIA JOSE TOLEDO SALINAS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1103</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1103 - MARIA JOSE TOLEDO SALINAS</name>
+    </instance>
+    <instance scriptid="val_823836_7451241_sb1_423">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>MVITER</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>VITERI LANDIVAR MARIA BELEN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1183</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1183 - VITERI LANDIVAR MARIA BELEN</name>
+    </instance>
+    <instance scriptid="val_823837_7451241_sb1_661">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>NANCHU</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>NAVARRETE ANCHUNDIA PABLO ANDRÉS</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>904</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>904 - NAVARRETE ANCHUNDIA PABLO ANDRÉS</name>
+    </instance>
+    <instance scriptid="val_823838_7451241_sb1_508">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>NPERAL</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>NATHALIA PERALTA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1149</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1149 - NATHALIA PERALTA</name>
+    </instance>
+    <instance scriptid="val_823839_7451241_sb1_202">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>NTRUJI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>TRUJILLO CABRERA NELSON GUILLERMO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>790</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>790 - TRUJILLO CABRERA NELSON GUILLERMO</name>
+    </instance>
+    <instance scriptid="val_823840_7451241_sb1_926">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>NVARGA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>VARGAS BEJARANO NELSON GONZALO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>118</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>118 - VARGAS BEJARANO NELSON GONZALO</name>
+    </instance>
+    <instance scriptid="val_823841_7451241_sb1_986">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>OERODR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RODRIGUEZ MORA OSCAR EDISON</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1606</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1606 - RODRIGUEZ MORA OSCAR EDISON</name>
+    </instance>
+    <instance scriptid="val_823842_7451241_sb1_963">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>OGUERR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>GUERRERO TEJADA OSCAR OSWALDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1563</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1563 - GUERRERO TEJADA OSCAR OSWALDO</name>
+    </instance>
+    <instance scriptid="val_823843_7451241_sb1_486">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>PCASTR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PATRICIA GINA CASTRO DIAZ</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1056</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1056 - PATRICIA GINA CASTRO DIAZ</name>
+    </instance>
+    <instance scriptid="val_823844_7451241_sb1_820">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>PCHIMB</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CHIMBO AGUILAR PABLO FERNANDO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1047</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1047 - CHIMBO AGUILAR PABLO FERNANDO</name>
+    </instance>
+    <instance scriptid="val_823845_7451241_sb1_553">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>PHURTA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>HURTADO VERA PRESLEIS JAVIER</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>220</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>220 - HURTADO VERA PRESLEIS JAVIER</name>
+    </instance>
+    <instance scriptid="val_823846_7451241_sb1_166">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>PLEON</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PITER LEON</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>648</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>648 - PITER LEON</name>
+    </instance>
+    <instance scriptid="val_823847_7451241_sb1_436">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>PMONTA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MONTALVO ZAMBRANO POLETH</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1894</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1894 - MONTALVO ZAMBRANO POLETH</name>
+    </instance>
+    <instance scriptid="val_823848_7451241_sb1_418">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>PRUEDA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RUEDA PABLO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>956</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>956 - RUEDA PABLO</name>
+    </instance>
+    <instance scriptid="val_823849_7451241_sb1_692">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RAMORA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MORALES HOLGUIN ROBERT ANDRES</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1560</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1560 - MORALES HOLGUIN ROBERT ANDRES</name>
+    </instance>
+    <instance scriptid="val_823850_7451241_sb1_677">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RANGAM</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ANGAMARCA ROMANELIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>170</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>170 - ANGAMARCA ROMANELIO</name>
+    </instance>
+    <instance scriptid="val_823851_7451241_sb1_914">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RBMAYO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MAYORGA RENTERIA RODRIGO BELISARIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>813</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>813 - MAYORGA RENTERIA RODRIGO BELISARIO</name>
+    </instance>
+    <instance scriptid="val_823852_7451241_sb1_405">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RCARRE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CARRERA AMORES RUBEN MAURICIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>948</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>948 - CARRERA AMORES RUBEN MAURICIO</name>
+    </instance>
+    <instance scriptid="val_823853_7451241_sb1_901">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RFLORE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RICARDO HOMERO FLORES CAMPOVERDE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1133</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1133 - RICARDO HOMERO FLORES CAMPOVERDE</name>
+    </instance>
+    <instance scriptid="val_823854_7451241_sb1_578">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RGALAR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ROBERTO GALARZA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>424</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>424 - ROBERTO GALARZA</name>
+    </instance>
+    <instance scriptid="val_823855_7451241_sb1_250">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RREINA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>REINA VACA ROBERTO ALFONSO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1787</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1787 - REINA VACA ROBERTO ALFONSO</name>
+    </instance>
+    <instance scriptid="val_823856_7451241_sb1_782">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RRODRI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>RODRIGUEZ URAPARI ROBERTO VINICIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>706</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>706 - RODRIGUEZ URAPARI ROBERTO VINICIO</name>
+    </instance>
+    <instance scriptid="val_823857_7451241_sb1_710">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>RTOBAR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>ROBERTO TOBAR</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>172</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>172 - ROBERTO TOBAR</name>
+    </instance>
+    <instance scriptid="val_823858_7451241_sb1_155">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>SANDRA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SERGIO ENRIQUE ANDRADE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>2369</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>2369 - SERGIO ENRIQUE ANDRADE</name>
+    </instance>
+    <instance scriptid="val_823859_7451241_sb1_341">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>SBARCO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>BARCO ESTACIO STALIN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>782</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>782 - BARCO ESTACIO STALIN</name>
+    </instance>
+    <instance scriptid="val_823860_7451241_sb1_858">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>SBUITR</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SANTIAGO BUITRON</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>171</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>171 - SANTIAGO BUITRON</name>
+    </instance>
+    <instance scriptid="val_823861_7451241_sb1_612">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>SCRUZ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>CRUZ MENDOZA STUARD WILHMAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>036</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>036 - CRUZ MENDOZA STUARD WILHMAN</name>
+    </instance>
+    <instance scriptid="val_823862_7451241_sb1_436">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>SSORIN</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>SUAREZ SORIANO FELIPE</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>438</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>438 - SUAREZ SORIANO FELIPE</name>
+    </instance>
+    <instance scriptid="val_823863_7451241_sb1_820">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>STELLO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>TELLO SIMBAYA SEGUNDO JOSELITO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>063</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>063 - TELLO SIMBAYA SEGUNDO JOSELITO</name>
+    </instance>
+    <instance scriptid="val_823864_7451241_sb1_687">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>VPRIET</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PRIETO CASTRO VICTOR</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1124</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1124 - PRIETO CASTRO VICTOR</name>
+    </instance>
+    <instance scriptid="val_823865_7451241_sb1_937">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>WCLAUD</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>WILSON CLAUDIO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>280</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>280 - WILSON CLAUDIO</name>
+    </instance>
+    <instance scriptid="val_823866_7451241_sb1_663">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>WHTAPI</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>WILSON TAPIA DIAZ</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>425</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>425 - WILSON TAPIA DIAZ</name>
+    </instance>
+    <instance scriptid="val_823867_7451241_sb1_545">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>WMUNOZ</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>MUÑOZ COELLO WILLIAM GERMAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1394</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1394 - MUÑOZ COELLO WILLIAM GERMAN</name>
+    </instance>
+    <instance scriptid="val_823868_7451241_sb1_438">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>WPARED</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PAREDES ACOSTA WILSON HERNAN</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1739</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1739 - PAREDES ACOSTA WILSON HERNAN</name>
+    </instance>
+    <instance scriptid="val_823869_7451241_sb1_226">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>WPONCE</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>PONCE CUASAPAZ WILSON JAIME</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>1410</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>1410 - PONCE CUASAPAZ WILSON JAIME</name>
+    </instance>
+    <instance scriptid="val_823870_7451241_sb1_397">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>WTAPIA</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>WILLIAM TAPIA</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>061</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>061 - WILLIAM TAPIA</name>
+    </instance>
+    <instance scriptid="val_823871_7451241_sb1_250">
+      <custrecord_ht_ci_3sturno>F</custrecord_ht_ci_3sturno>
+      <custrecord_ht_ci_codigotabla>INS</custrecord_ht_ci_codigotabla>
+      <custrecord_ht_ci_codigousuario>XGAIBO</custrecord_ht_ci_codigousuario>
+      <custrecord_ht_ci_descripcioninstaladores>GAIBOR VINUEZA  XAVIER ALBERTO</custrecord_ht_ci_descripcioninstaladores>
+      <custrecord_ht_ci_idusuario>702</custrecord_ht_ci_idusuario>
+      <isinactive>F</isinactive>
+      <name>702 - GAIBOR VINUEZA  XAVIER ALBERTO</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

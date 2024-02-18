@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ht_ct_estadocivil">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Estado Civil</name>
+  <customvalues>
+    <customvalue scriptid="val_722118_7451241_sb1_330">
+      <isinactive>F</isinactive>
+      <value>SOLTERO</value>
+    </customvalue>
+    <customvalue scriptid="val_722119_7451241_sb1_728">
+      <isinactive>F</isinactive>
+      <value>CASADO</value>
+    </customvalue>
+    <customvalue scriptid="val_722120_7451241_sb1_733">
+      <isinactive>F</isinactive>
+      <value>VIUDO</value>
+    </customvalue>
+    <customvalue scriptid="val_722121_7451241_sb1_326">
+      <isinactive>F</isinactive>
+      <value>DIVORCIADO</value>
+    </customvalue>
+    <customvalue scriptid="val_722122_7451241_sb1_943">
+      <isinactive>F</isinactive>
+      <value>SEPARADO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

@@ -1,0 +1,64 @@
+<customlist scriptid="customlist_ht_ot_motivos">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT OT Motivos</name>
+  <customvalues>
+    <customvalue scriptid="val_781724_7451241_sb1_477">
+      <isinactive>F</isinactive>
+      <value>Ninguna</value>
+    </customvalue>
+    <customvalue scriptid="val_781725_7451241_sb1_518">
+      <isinactive>F</isinactive>
+      <value>No esta en el Concesionario</value>
+    </customvalue>
+    <customvalue scriptid="val_781726_7451241_sb1_249">
+      <isinactive>F</isinactive>
+      <value>Vehículo no esta disponible - Matriculación</value>
+    </customvalue>
+    <customvalue scriptid="val_781727_7451241_sb1_568">
+      <isinactive>F</isinactive>
+      <value>Vehículo no esta disponible - En Proceso de Instalación</value>
+    </customvalue>
+    <customvalue scriptid="val_781728_7451241_sb1_280">
+      <isinactive>F</isinactive>
+      <value>Vehículo no esta disponible - En taller</value>
+    </customvalue>
+    <customvalue scriptid="val_781729_7451241_sb1_394">
+      <isinactive>F</isinactive>
+      <value>Accesorio</value>
+    </customvalue>
+    <customvalue scriptid="val_781730_7451241_sb1_269">
+      <isinactive>F</isinactive>
+      <value>Agencia incorrecta</value>
+    </customvalue>
+    <customvalue scriptid="val_781731_7451241_sb1_159">
+      <isinactive>F</isinactive>
+      <value>Incluir un campo observación para agregar el correcto</value>
+    </customvalue>
+    <customvalue scriptid="val_781732_7451241_sb1_982">
+      <isinactive>F</isinactive>
+      <value>No hay con quien hablar</value>
+    </customvalue>
+    <customvalue scriptid="val_781733_7451241_sb1_753">
+      <isinactive>F</isinactive>
+      <value>No hay con quien hablar</value>
+    </customvalue>
+    <customvalue scriptid="val_781734_7451241_sb1_641">
+      <isinactive>F</isinactive>
+      <value>No hay autorización del Concesionario</value>
+    </customvalue>
+    <customvalue scriptid="val_781735_7451241_sb1_250">
+      <isinactive>F</isinactive>
+      <value>Se cayo la venta</value>
+    </customvalue>
+    <customvalue scriptid="val_781736_7451241_sb1_352">
+      <isinactive>F</isinactive>
+      <value>No alcanzo el tiempo</value>
+    </customvalue>
+    <customvalue scriptid="val_1411461_7451241_sb1_958">
+      <isinactive>F</isinactive>
+      <value>Convenio</value>
+    </customvalue>
+  </customvalues>
+</customlist>

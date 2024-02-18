@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_ht_ot_estadoordentrabajo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Estado Orden de trabajo</name>
+  <customvalues>
+    <customvalue scriptid="val_21328_7451241_sb1_124">
+      <isinactive>F</isinactive>
+      <value>C - CHEQUEADO</value>
+    </customvalue>
+    <customvalue scriptid="val_21330_7451241_sb1_725">
+      <isinactive>F</isinactive>
+      <value>O - PROCESANDO</value>
+    </customvalue>
+    <customvalue scriptid="val_751824_7451241_sb1_332">
+      <isinactive>F</isinactive>
+      <value>V - VENTAS</value>
+    </customvalue>
+    <customvalue scriptid="val_824425_7451241_sb1_640">
+      <isinactive>F</isinactive>
+      <value>E - ENTREGADO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

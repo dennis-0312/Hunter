@@ -1,0 +1,384 @@
+<customrecordtype scriptid="customrecord_ht_record_grupoarticulos">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Grupo de artículos</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Código</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_descripcion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_817985_7451241_sb1_736">
+      <custrecord_ht_codigo>000</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>PRODUCTOS CARSEG</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>000 PRODUCTOS CARSEG</name>
+    </instance>
+    <instance scriptid="val_817986_7451241_sb1_350">
+      <custrecord_ht_codigo>001</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>ALARMA</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 ALARMA</name>
+    </instance>
+    <instance scriptid="val_817987_7451241_sb1_885">
+      <custrecord_ht_codigo>002</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>CAFETERIA / LIMPIEZA</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 CAFETERIA / LIMPIEZA</name>
+    </instance>
+    <instance scriptid="val_817988_7451241_sb1_747">
+      <custrecord_ht_codigo>003</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>COMPONENTE HUNTER MONITOREO</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 COMPONENTE HUNTER MONITOREO</name>
+    </instance>
+    <instance scriptid="val_817989_7451241_sb1_929">
+      <custrecord_ht_codigo>004</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>COMPONENTE HUNTER</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>004 COMPONENTE HUNTER</name>
+    </instance>
+    <instance scriptid="val_817990_7451241_sb1_637">
+      <custrecord_ht_codigo>005</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>CUSTODIAS/RECOMPRAS</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>005 CUSTODIAS/RECOMPRAS</name>
+    </instance>
+    <instance scriptid="val_817991_7451241_sb1_867">
+      <custrecord_ht_codigo>006</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>DISPOSITIVOS EN CONSIGNACION</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>006 DISPOSITIVOS EN CONSIGNACION</name>
+    </instance>
+    <instance scriptid="val_817992_7451241_sb1_456">
+      <custrecord_ht_codigo>007</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>EQUIPOS DE COMUNICACION</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>007 EQUIPOS DE COMUNICACION</name>
+    </instance>
+    <instance scriptid="val_817993_7451241_sb1_872">
+      <custrecord_ht_codigo>008</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>EQUIPOS VARIOS</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>008 EQUIPOS VARIOS</name>
+    </instance>
+    <instance scriptid="val_817994_7451241_sb1_137">
+      <custrecord_ht_codigo>009</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>LICORES</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>009 LICORES</name>
+    </instance>
+    <instance scriptid="val_817995_7451241_sb1_823">
+      <custrecord_ht_codigo>010</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>MATERIALES DE INSTALACION HUNTER MONITOREO</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>010 MATERIALES DE INSTALACION HUNTER MONITOREO</name>
+    </instance>
+    <instance scriptid="val_817996_7451241_sb1_103">
+      <custrecord_ht_codigo>011</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>MATERIALES DE INSTALACION HUNTER</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>011 MATERIALES DE INSTALACION HUNTER</name>
+    </instance>
+    <instance scriptid="val_817997_7451241_sb1_212">
+      <custrecord_ht_codigo>012</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>OBSEQUIOS DE CLIENTES</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>012 OBSEQUIOS DE CLIENTES</name>
+    </instance>
+    <instance scriptid="val_817998_7451241_sb1_824">
+      <custrecord_ht_codigo>013</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>OTROS PRODUCTOS HUNTER</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>013 OTROS PRODUCTOS HUNTER</name>
+    </instance>
+    <instance scriptid="val_817999_7451241_sb1_482">
+      <custrecord_ht_codigo>014</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>OTROS SERVICIOS FLASHCOURIER</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>014 OTROS SERVICIOS FLASHCOURIER</name>
+    </instance>
+    <instance scriptid="val_818000_7451241_sb1_101">
+      <custrecord_ht_codigo>015</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>PAPELERIA Y UTILES DE OFICINA</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>015 PAPELERIA Y UTILES DE OFICINA</name>
+    </instance>
+    <instance scriptid="val_818001_7451241_sb1_135">
+      <custrecord_ht_codigo>016</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>PELICULAS POWER WINDOWS</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>016 PELICULAS POWER WINDOWS</name>
+    </instance>
+    <instance scriptid="val_818002_7451241_sb1_101">
+      <custrecord_ht_codigo>017</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>SERVICIOS HUNTER MONITOREO</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>017 SERVICIOS HUNTER MONITOREO</name>
+    </instance>
+    <instance scriptid="val_818003_7451241_sb1_792">
+      <custrecord_ht_codigo>018</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>SERVICIOS DE COURIER</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>018 SERVICIOS DE COURIER</name>
+    </instance>
+    <instance scriptid="val_818004_7451241_sb1_592">
+      <custrecord_ht_codigo>019</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>SERVICIOS HUNTER</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>019 SERVICIOS HUNTER</name>
+    </instance>
+    <instance scriptid="val_818005_7451241_sb1_999">
+      <custrecord_ht_codigo>020</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>OTROS SERVICIOS HUNTER</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>020 OTROS SERVICIOS HUNTER</name>
+    </instance>
+    <instance scriptid="val_818006_7451241_sb1_262">
+      <custrecord_ht_codigo>021</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>SKY PATROL</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>021 SKY PATROL</name>
+    </instance>
+    <instance scriptid="val_818007_7451241_sb1_669">
+      <custrecord_ht_codigo>022</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>MOTORES ALARMAS</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>022 MOTORES ALARMAS</name>
+    </instance>
+    <instance scriptid="val_818008_7451241_sb1_399">
+      <custrecord_ht_codigo>023</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>MATERIAL DE INSTALACION PELICULAS</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>023 MATERIAL DE INSTALACION PELICULAS</name>
+    </instance>
+    <instance scriptid="val_818009_7451241_sb1_385">
+      <custrecord_ht_codigo>024</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>HUNTER MONITOREO EN CONSIGNACION</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>024 HUNTER MONITOREO EN CONSIGNACION</name>
+    </instance>
+    <instance scriptid="val_818010_7451241_sb1_507">
+      <custrecord_ht_codigo>025</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>LUBRICANTES Y MANTENIMIENTO</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>025 LUBRICANTES Y MANTENIMIENTO</name>
+    </instance>
+    <instance scriptid="val_818011_7451241_sb1_223">
+      <custrecord_ht_codigo>026</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>FERRETERIA - MANTENIMIETO</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>026 FERRETERIA - MANTENIMIETO</name>
+    </instance>
+    <instance scriptid="val_818012_7451241_sb1_251">
+      <custrecord_ht_codigo>027</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>HERRAMIENTAS PARA INSTALACION TALLERES</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>027 HERRAMIENTAS PARA INSTALACION TALLERES</name>
+    </instance>
+    <instance scriptid="val_818013_7451241_sb1_115">
+      <custrecord_ht_codigo>028</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>UNIFORMES</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>028 UNIFORMES</name>
+    </instance>
+    <instance scriptid="val_818014_7451241_sb1_187">
+      <custrecord_ht_codigo>029</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>DOCUMENTOS AUTORIZADOS S.R.I</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>029 DOCUMENTOS AUTORIZADOS S.R.I</name>
+    </instance>
+    <instance scriptid="val_818015_7451241_sb1_307">
+      <custrecord_ht_codigo>050</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>GRUPO COMPRAS</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>050 GRUPO COMPRAS</name>
+    </instance>
+    <instance scriptid="val_818016_7451241_sb1_457">
+      <custrecord_ht_codigo>077</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>ACCESORIOS PARA ALARMAS</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>077 ACCESORIOS PARA ALARMAS</name>
+    </instance>
+    <instance scriptid="val_818017_7451241_sb1_885">
+      <custrecord_ht_codigo>078</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>MARCACION VEHICULAR</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>078 MARCACION VEHICULAR</name>
+    </instance>
+    <instance scriptid="val_818018_7451241_sb1_371">
+      <custrecord_ht_codigo>079</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>EQUIPOS DE SEGURIDAD</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>079 EQUIPOS DE SEGURIDAD</name>
+    </instance>
+    <instance scriptid="val_818019_7451241_sb1_104">
+      <custrecord_ht_codigo>080</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>FARMACIA - MEDICINAS</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>080 FARMACIA - MEDICINAS</name>
+    </instance>
+    <instance scriptid="val_818020_7451241_sb1_530">
+      <custrecord_ht_codigo>081</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>EQUIPOS TECNICOS</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>081 EQUIPOS TECNICOS</name>
+    </instance>
+    <instance scriptid="val_818021_7451241_sb1_975">
+      <custrecord_ht_codigo>082</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>DISPOSITIVOS EN REVISION</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>082 DISPOSITIVOS EN REVISION</name>
+    </instance>
+    <instance scriptid="val_818022_7451241_sb1_682">
+      <custrecord_ht_codigo>083</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>SUMINISTROS COMPUTACION</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>083 SUMINISTROS COMPUTACION</name>
+    </instance>
+    <instance scriptid="val_818023_7451241_sb1_254">
+      <custrecord_ht_codigo>084</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>COMPONENTES HUNTER SATELITAL</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>084 COMPONENTES HUNTER SATELITAL</name>
+    </instance>
+    <instance scriptid="val_818024_7451241_sb1_180">
+      <custrecord_ht_codigo>085</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>INVENTARIO REPUESTOS CAM</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>085 INVENTARIO REPUESTOS CAM</name>
+    </instance>
+    <instance scriptid="val_818025_7451241_sb1_554">
+      <custrecord_ht_codigo>086</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>INVENTARIO LLAVES RASTRACK</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>086 INVENTARIO LLAVES RASTRACK</name>
+    </instance>
+    <instance scriptid="val_818026_7451241_sb1_641">
+      <custrecord_ht_codigo>087</custrecord_ht_codigo>
+      <custrecord_ht_descripcion>SEGURIDAD INDUSTRIAL</custrecord_ht_descripcion>
+      <isinactive>F</isinactive>
+      <name>087 SEGURIDAD INDUSTRIAL</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

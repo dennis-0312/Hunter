@@ -1,0 +1,24 @@
+<scheduledscript scriptid="customscript_ts_ss_test_sftp_gm">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS SS Test SFTP</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Prueba/TS_SS_Test_SFTP_2.1.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeployts_ss_test_sftp_gm">
+      <isdeployed>T</isdeployed>
+      <loglevel>ERROR</loglevel>
+      <status>NOTSCHEDULED</status>
+      <title>TS SS Test SFTP</title>
+      <recurrence>
+        <single>
+          <repeat></repeat>
+          <startdate>2023-10-06</startdate>
+          <starttime>23:00:00Z</starttime>
+        </single>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</scheduledscript>

@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_rs_update_documents_fel">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS RS Update Documents FEL 2.1</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/api/TS_RL_Update_Document_FEL_2.1.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_rs_update_documents_fel">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>ERROR</loglevel>
+      <status>RELEASED</status>
+      <title>TS RS Update Documents FEL 2.1</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

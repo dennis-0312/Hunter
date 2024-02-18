@@ -1,0 +1,873 @@
+<customrecordtype scriptid="customrecord_ht_record_convenio">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Convenio</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_nombreconvenio">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT CN Nombre Convenio</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_fechaingreso">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>DATE</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Fecha de Ingreso</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_fechacaducidad">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>DATE</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Fecha Caducidad</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_co_empleado">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Empleado</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>SET_NULL</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-4</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_ruc_convenio">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT CN Ruc Convenio</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_razon_social">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT CN Razon Social</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_direccion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT CN Direccion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_celular">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT CN Celular</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_email">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT CN Email</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT CN CÓDIGO</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_cn_convencional">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT CN Convencional</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_823413_7451241_sb1_126">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo>001</custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad>2099-12-31</custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso>2022-12-01</custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>001 - TOYOTA DEL ECUADOR</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>001 - TOYOTA DEL ECUADOR</name>
+    </instance>
+    <instance scriptid="val_823414_7451241_sb1_595">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad>2023-12-31</custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso>2021-06-29</custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>004 - CONECA - ALQUILER</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>004 - CONECA - ALQUILER</name>
+    </instance>
+    <instance scriptid="val_823416_7451241_sb1_171">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad>2023-12-31</custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso>2021-05-14</custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>015 - CONVENIO LATAMAUTOS</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>015 - CONVENIO LATAMAUTOS</name>
+    </instance>
+    <instance scriptid="val_823418_7451241_sb1_478">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad>2025-12-31</custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso>2020-08-01</custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>018 - COOP. INDIGENA SAC</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>018 - COOP. INDIGENA SAC</name>
+    </instance>
+    <instance scriptid="val_823420_7451241_sb1_977">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad>2024-12-31</custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso>2021-08-11</custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>021 - CONVENIO SUZUKI</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>021 - CONVENIO SUZUKI</name>
+    </instance>
+    <instance scriptid="val_823422_7451241_sb1_340">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad>2025-12-31</custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso>2021-11-17</custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>022 - CONVENIO GALMACK</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>022 - CONVENIO GALMACK</name>
+    </instance>
+    <instance scriptid="val_823425_7451241_sb1_820">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad>2024-12-31</custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso>2022-01-24</custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>023 - CONVENIO INDUAUTO</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>023 - CONVENIO INDUAUTO</name>
+    </instance>
+    <instance scriptid="val_823428_7451241_sb1_353">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad>2099-12-31</custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso>2022-06-01</custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>024 - CONVENIO LIDERLINK</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>024 - CONVENIO LIDERLINK</name>
+    </instance>
+    <instance scriptid="val_823431_7451241_sb1_681">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad>2099-12-31</custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso>2023-01-01</custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>025 - CONVENIO ICESA</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>025 - CONVENIO ICESA</name>
+    </instance>
+    <instance scriptid="val_858539_7451241_sb1_919">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>002 - ALQUILER CARSEG</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>002 - ALQUILER CARSEG</name>
+    </instance>
+    <instance scriptid="val_858540_7451241_sb1_935">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>003 - TEOJAMA COMERCIAL</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>003 - TEOJAMA COMERCIAL </name>
+    </instance>
+    <instance scriptid="val_858541_7451241_sb1_566">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>006 - FATOSLA</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>006 - FATOSLA</name>
+    </instance>
+    <instance scriptid="val_858542_7451241_sb1_568">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>008 - CONVENIO AYASA</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>008 - CONVENIO AYASA</name>
+    </instance>
+    <instance scriptid="val_858543_7451241_sb1_845">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>009 - CONVENIO LATINA</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>009 - CONVENIO LATINA</name>
+    </instance>
+    <instance scriptid="val_858544_7451241_sb1_320">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>010 - CONVENIO MAVESA</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>010 - CONVENIO MAVESA</name>
+    </instance>
+    <instance scriptid="val_858545_7451241_sb1_621">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>011 - CONVENIO CINASCAR</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>011 - CONVENIO CINASCAR</name>
+    </instance>
+    <instance scriptid="val_858546_7451241_sb1_241">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>012 - SOS - COOPSEGUROS</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>012 - SOS - COOPSEGUROS</name>
+    </instance>
+    <instance scriptid="val_858547_7451241_sb1_675">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>014 - MARESA</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>014 - MARESA</name>
+    </instance>
+    <instance scriptid="val_858548_7451241_sb1_118">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>016 - CONVENIO MARESA CINASCAR</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>016 - CONVENIO MARESA CINASCAR</name>
+    </instance>
+    <instance scriptid="val_858549_7451241_sb1_277">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>017 - CONVENIO CORIS</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>017 - CONVENIO CORIS</name>
+    </instance>
+    <instance scriptid="val_858550_7451241_sb1_727">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>017 - CONVENIO CORIS</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>017 - CONVENIO CORIS</name>
+    </instance>
+    <instance scriptid="val_858551_7451241_sb1_499">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>019 - CONVENIO VAZ</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>019 - CONVENIO VAZ</name>
+    </instance>
+    <instance scriptid="val_858552_7451241_sb1_212">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>020 - CONVENIO CSCG</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>020 - CONVENIO CSCG</name>
+    </instance>
+    <instance scriptid="val_1426286_7451241_sb1_342">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>026 - CONVENIO AMBACAR</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>026 - CONVENIO AMBACAR</name>
+    </instance>
+    <instance scriptid="val_1426287_7451241_sb1_569">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>027 - CONVENIO GALARMOBIL</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>F</isinactive>
+      <name>027 - CONVENIO GALARMOBIL</name>
+    </instance>
+    <instance scriptid="val_1426288_7451241_sb1_211">
+      <custrecord_ht_cn_celular></custrecord_ht_cn_celular>
+      <custrecord_ht_cn_codigo></custrecord_ht_cn_codigo>
+      <custrecord_ht_cn_convencional></custrecord_ht_cn_convencional>
+      <custrecord_ht_cn_direccion></custrecord_ht_cn_direccion>
+      <custrecord_ht_cn_email></custrecord_ht_cn_email>
+      <custrecord_ht_cn_fechacaducidad></custrecord_ht_cn_fechacaducidad>
+      <custrecord_ht_cn_fechaingreso></custrecord_ht_cn_fechaingreso>
+      <custrecord_ht_cn_nombreconvenio>027 - CONVENIO  GALARMOBIL</custrecord_ht_cn_nombreconvenio>
+      <custrecord_ht_cn_razon_social></custrecord_ht_cn_razon_social>
+      <custrecord_ht_cn_ruc_convenio></custrecord_ht_cn_ruc_convenio>
+      <custrecord_ht_co_empleado></custrecord_ht_co_empleado>
+      <isinactive>T</isinactive>
+      <name>027 - CONVENIO  GALARMOBIL</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

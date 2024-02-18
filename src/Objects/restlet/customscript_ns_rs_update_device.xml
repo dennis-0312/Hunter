@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_update_device">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_UPDATE_device</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/ErickHunter/NS_RS_UPDATE_device.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_update_device">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>NS_RS_UPDATE_device</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

@@ -1,0 +1,2089 @@
+<customrecordtype scriptid="customrecord_ts_ec_pe_pais">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>T</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC - País</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_codigo_pais">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Codigo de País</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_pais_">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - País</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-159</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_convenios">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Conventions</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_ts_ec_convenios]</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_722453_7451241_sb1_381">
+      <custrecord_ts_ec_codigo_pais>9013</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Afganistan</name>
+    </instance>
+    <instance scriptid="val_722454_7451241_sb1_636">
+      <custrecord_ts_ec_codigo_pais>9017</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Albania</name>
+    </instance>
+    <instance scriptid="val_722455_7451241_sb1_704">
+      <custrecord_ts_ec_codigo_pais>9019</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Alderney</name>
+    </instance>
+    <instance scriptid="val_722456_7451241_sb1_613">
+      <custrecord_ts_ec_codigo_pais>9023</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Alemania</name>
+    </instance>
+    <instance scriptid="val_722457_7451241_sb1_521">
+      <custrecord_ts_ec_codigo_pais>9037</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Andorra</name>
+    </instance>
+    <instance scriptid="val_722458_7451241_sb1_248">
+      <custrecord_ts_ec_codigo_pais>9040</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Angola</name>
+    </instance>
+    <instance scriptid="val_722459_7451241_sb1_186">
+      <custrecord_ts_ec_codigo_pais>9041</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Anguila</name>
+    </instance>
+    <instance scriptid="val_722460_7451241_sb1_296">
+      <custrecord_ts_ec_codigo_pais>9043</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Antigua Y Barbuda</name>
+    </instance>
+    <instance scriptid="val_722461_7451241_sb1_402">
+      <custrecord_ts_ec_codigo_pais>9047</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Antillas Holandesas</name>
+    </instance>
+    <instance scriptid="val_722462_7451241_sb1_708">
+      <custrecord_ts_ec_codigo_pais>9053</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Arabia Saudita</name>
+    </instance>
+    <instance scriptid="val_722463_7451241_sb1_105">
+      <custrecord_ts_ec_codigo_pais>9059</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Argelia</name>
+    </instance>
+    <instance scriptid="val_722464_7451241_sb1_521">
+      <custrecord_ts_ec_codigo_pais>9063</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Argentina</name>
+    </instance>
+    <instance scriptid="val_722465_7451241_sb1_463">
+      <custrecord_ts_ec_codigo_pais>9026</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Armenia</name>
+    </instance>
+    <instance scriptid="val_722466_7451241_sb1_808">
+      <custrecord_ts_ec_codigo_pais>9027</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Aruba</name>
+    </instance>
+    <instance scriptid="val_722467_7451241_sb1_919">
+      <custrecord_ts_ec_codigo_pais>9028</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Ascencion</name>
+    </instance>
+    <instance scriptid="val_722468_7451241_sb1_992">
+      <custrecord_ts_ec_codigo_pais>9069</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Australia</name>
+    </instance>
+    <instance scriptid="val_722469_7451241_sb1_793">
+      <custrecord_ts_ec_codigo_pais>9072</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Austria</name>
+    </instance>
+    <instance scriptid="val_722470_7451241_sb1_563">
+      <custrecord_ts_ec_codigo_pais>9074</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Azerbaijan</name>
+    </instance>
+    <instance scriptid="val_722471_7451241_sb1_781">
+      <custrecord_ts_ec_codigo_pais>9077</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Bahamas</name>
+    </instance>
+    <instance scriptid="val_722472_7451241_sb1_645">
+      <custrecord_ts_ec_codigo_pais>9080</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Bahrein</name>
+    </instance>
+    <instance scriptid="val_722473_7451241_sb1_172">
+      <custrecord_ts_ec_codigo_pais>9081</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Bangladesh</name>
+    </instance>
+    <instance scriptid="val_722474_7451241_sb1_318">
+      <custrecord_ts_ec_codigo_pais>9083</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Barbados</name>
+    </instance>
+    <instance scriptid="val_722475_7451241_sb1_530">
+      <custrecord_ts_ec_codigo_pais>9091</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Belarus</name>
+    </instance>
+    <instance scriptid="val_722476_7451241_sb1_296">
+      <custrecord_ts_ec_codigo_pais>9087</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Belgica</name>
+    </instance>
+    <instance scriptid="val_722477_7451241_sb1_868">
+      <custrecord_ts_ec_codigo_pais>9088</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Belice</name>
+    </instance>
+    <instance scriptid="val_722478_7451241_sb1_883">
+      <custrecord_ts_ec_codigo_pais>9229</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Benin</name>
+    </instance>
+    <instance scriptid="val_722479_7451241_sb1_235">
+      <custrecord_ts_ec_codigo_pais>9090</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Bermudas</name>
+    </instance>
+    <instance scriptid="val_722480_7451241_sb1_921">
+      <custrecord_ts_ec_codigo_pais>9029</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Bosnia-Herzegovina</name>
+    </instance>
+    <instance scriptid="val_722481_7451241_sb1_693">
+      <custrecord_ts_ec_codigo_pais>9101</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Botswana</name>
+    </instance>
+    <instance scriptid="val_722482_7451241_sb1_246">
+      <custrecord_ts_ec_codigo_pais>9001</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Bouvet Island</name>
+    </instance>
+    <instance scriptid="val_722483_7451241_sb1_204">
+      <custrecord_ts_ec_codigo_pais>9108</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Brunei Darussalam</name>
+    </instance>
+    <instance scriptid="val_722484_7451241_sb1_703">
+      <custrecord_ts_ec_codigo_pais>9111</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Bulgaria</name>
+    </instance>
+    <instance scriptid="val_722485_7451241_sb1_393">
+      <custrecord_ts_ec_codigo_pais>9031</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Burkina Faso</name>
+    </instance>
+    <instance scriptid="val_722486_7451241_sb1_123">
+      <custrecord_ts_ec_codigo_pais>9115</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Burundi</name>
+    </instance>
+    <instance scriptid="val_722487_7451241_sb1_154">
+      <custrecord_ts_ec_codigo_pais>9119</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Butan</name>
+    </instance>
+    <instance scriptid="val_722488_7451241_sb1_756">
+      <custrecord_ts_ec_codigo_pais>9127</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Cabo Verde</name>
+    </instance>
+    <instance scriptid="val_722489_7451241_sb1_920">
+      <custrecord_ts_ec_codigo_pais>9137</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Caiman,Islas</name>
+    </instance>
+    <instance scriptid="val_722490_7451241_sb1_756">
+      <custrecord_ts_ec_codigo_pais>9141</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Camboya</name>
+    </instance>
+    <instance scriptid="val_722491_7451241_sb1_793">
+      <custrecord_ts_ec_codigo_pais>9145</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Camerun,Republica Unida Del</name>
+    </instance>
+    <instance scriptid="val_722492_7451241_sb1_253">
+      <custrecord_ts_ec_codigo_pais>9147</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Campione d&apos;Italia</name>
+    </instance>
+    <instance scriptid="val_722493_7451241_sb1_895">
+      <custrecord_ts_ec_codigo_pais>9155</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Canal (Normandas), Islas</name>
+    </instance>
+    <instance scriptid="val_722494_7451241_sb1_934">
+      <custrecord_ts_ec_codigo_pais>9157</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Canton Y Enderburry</name>
+    </instance>
+    <instance scriptid="val_722495_7451241_sb1_686">
+      <custrecord_ts_ec_codigo_pais>9203</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Chad</name>
+    </instance>
+    <instance scriptid="val_722496_7451241_sb1_233">
+      <custrecord_ts_ec_codigo_pais>9207</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Checoslovaquia</name>
+    </instance>
+    <instance scriptid="val_722497_7451241_sb1_870">
+      <custrecord_ts_ec_codigo_pais>9215</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>China</name>
+    </instance>
+    <instance scriptid="val_722498_7451241_sb1_203">
+      <custrecord_ts_ec_codigo_pais>9221</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Chipre</name>
+    </instance>
+    <instance scriptid="val_722499_7451241_sb1_609">
+      <custrecord_ts_ec_codigo_pais>9165</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Cocos (Keeling),Islas</name>
+    </instance>
+    <instance scriptid="val_722500_7451241_sb1_155">
+      <custrecord_ts_ec_codigo_pais>9173</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Comoras</name>
+    </instance>
+    <instance scriptid="val_722501_7451241_sb1_566">
+      <custrecord_ts_ec_codigo_pais>9177</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Congo</name>
+    </instance>
+    <instance scriptid="val_722502_7451241_sb1_248">
+      <custrecord_ts_ec_codigo_pais>9183</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Cook, Islas</name>
+    </instance>
+    <instance scriptid="val_722503_7451241_sb1_290">
+      <custrecord_ts_ec_codigo_pais>9193</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Costa De Marfil</name>
+    </instance>
+    <instance scriptid="val_722504_7451241_sb1_130">
+      <custrecord_ts_ec_codigo_pais>9196</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Costa Rica</name>
+    </instance>
+    <instance scriptid="val_722505_7451241_sb1_856">
+      <custrecord_ts_ec_codigo_pais>9002</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Cote D&apos;Ivoire</name>
+    </instance>
+    <instance scriptid="val_722506_7451241_sb1_221">
+      <custrecord_ts_ec_codigo_pais>9198</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Croacia</name>
+    </instance>
+    <instance scriptid="val_722507_7451241_sb1_314">
+      <custrecord_ts_ec_codigo_pais>9199</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Cuba</name>
+    </instance>
+    <instance scriptid="val_722508_7451241_sb1_549">
+      <custrecord_ts_ec_codigo_pais>9232</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Dinamarca</name>
+    </instance>
+    <instance scriptid="val_722509_7451241_sb1_487">
+      <custrecord_ts_ec_codigo_pais>9783</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Djibouti</name>
+    </instance>
+    <instance scriptid="val_722510_7451241_sb1_376">
+      <custrecord_ts_ec_codigo_pais>9235</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Dominica</name>
+    </instance>
+    <instance scriptid="val_722511_7451241_sb1_113">
+      <custrecord_ts_ec_codigo_pais>9240</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Egipto</name>
+    </instance>
+    <instance scriptid="val_722512_7451241_sb1_913">
+      <custrecord_ts_ec_codigo_pais>9242</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>El Salvador</name>
+    </instance>
+    <instance scriptid="val_722513_7451241_sb1_988">
+      <custrecord_ts_ec_codigo_pais>9244</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Emiratos Arabes Unidos</name>
+    </instance>
+    <instance scriptid="val_722514_7451241_sb1_519">
+      <custrecord_ts_ec_codigo_pais>9243</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Eritrea</name>
+    </instance>
+    <instance scriptid="val_722515_7451241_sb1_895">
+      <custrecord_ts_ec_codigo_pais>9629</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Escocia</name>
+    </instance>
+    <instance scriptid="val_722516_7451241_sb1_671">
+      <custrecord_ts_ec_codigo_pais>9246</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Eslovaquia</name>
+    </instance>
+    <instance scriptid="val_722517_7451241_sb1_912">
+      <custrecord_ts_ec_codigo_pais>9247</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Eslovenia</name>
+    </instance>
+    <instance scriptid="val_722518_7451241_sb1_579">
+      <custrecord_ts_ec_codigo_pais>9245</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>España</name>
+    </instance>
+    <instance scriptid="val_722519_7451241_sb1_889">
+      <custrecord_ts_ec_codigo_pais>9249</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Estados Unidos</name>
+    </instance>
+    <instance scriptid="val_722520_7451241_sb1_708">
+      <custrecord_ts_ec_codigo_pais>9251</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Estonia</name>
+    </instance>
+    <instance scriptid="val_722521_7451241_sb1_129">
+      <custrecord_ts_ec_codigo_pais>9253</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Etiopia</name>
+    </instance>
+    <instance scriptid="val_722522_7451241_sb1_276">
+      <custrecord_ts_ec_codigo_pais>9003</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Falkland Islands (Malvinas)</name>
+    </instance>
+    <instance scriptid="val_722523_7451241_sb1_102">
+      <custrecord_ts_ec_codigo_pais>9259</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Feroe, Islas</name>
+    </instance>
+    <instance scriptid="val_722524_7451241_sb1_986">
+      <custrecord_ts_ec_codigo_pais>9870</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Fiji</name>
+    </instance>
+    <instance scriptid="val_722525_7451241_sb1_449">
+      <custrecord_ts_ec_codigo_pais>9267</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Filipinas</name>
+    </instance>
+    <instance scriptid="val_722526_7451241_sb1_956">
+      <custrecord_ts_ec_codigo_pais>9271</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Finlandia</name>
+    </instance>
+    <instance scriptid="val_722527_7451241_sb1_162">
+      <custrecord_ts_ec_codigo_pais>9004</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>France, Metropolitan</name>
+    </instance>
+    <instance scriptid="val_722528_7451241_sb1_611">
+      <custrecord_ts_ec_codigo_pais>9275</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Francia</name>
+    </instance>
+    <instance scriptid="val_722529_7451241_sb1_233">
+      <custrecord_ts_ec_codigo_pais>9005</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>French Southern Territories</name>
+    </instance>
+    <instance scriptid="val_722530_7451241_sb1_221">
+      <custrecord_ts_ec_codigo_pais>9281</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Gabon</name>
+    </instance>
+    <instance scriptid="val_722531_7451241_sb1_716">
+      <custrecord_ts_ec_codigo_pais>9285</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Gambia</name>
+    </instance>
+    <instance scriptid="val_722532_7451241_sb1_652">
+      <custrecord_ts_ec_codigo_pais>9286</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Gaza Y Jerico</name>
+    </instance>
+    <instance scriptid="val_722533_7451241_sb1_566">
+      <custrecord_ts_ec_codigo_pais>9287</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Georgia</name>
+    </instance>
+    <instance scriptid="val_722534_7451241_sb1_310">
+      <custrecord_ts_ec_codigo_pais>9289</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Ghana</name>
+    </instance>
+    <instance scriptid="val_722535_7451241_sb1_927">
+      <custrecord_ts_ec_codigo_pais>9293</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Gibraltar</name>
+    </instance>
+    <instance scriptid="val_722536_7451241_sb1_850">
+      <custrecord_ts_ec_codigo_pais>9297</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Granada</name>
+    </instance>
+    <instance scriptid="val_722537_7451241_sb1_705">
+      <custrecord_ts_ec_codigo_pais>9301</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Grecia</name>
+    </instance>
+    <instance scriptid="val_722538_7451241_sb1_130">
+      <custrecord_ts_ec_codigo_pais>9305</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Groenlandia</name>
+    </instance>
+    <instance scriptid="val_722539_7451241_sb1_154">
+      <custrecord_ts_ec_codigo_pais>9309</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Guadalupe</name>
+    </instance>
+    <instance scriptid="val_722540_7451241_sb1_324">
+      <custrecord_ts_ec_codigo_pais>9313</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Guam</name>
+    </instance>
+    <instance scriptid="val_722541_7451241_sb1_821">
+      <custrecord_ts_ec_codigo_pais>9317</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Guatemala</name>
+    </instance>
+    <instance scriptid="val_722542_7451241_sb1_852">
+      <custrecord_ts_ec_codigo_pais>9325</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Guayana Francesa</name>
+    </instance>
+    <instance scriptid="val_722543_7451241_sb1_741">
+      <custrecord_ts_ec_codigo_pais>9327</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Guernsey</name>
+    </instance>
+    <instance scriptid="val_722544_7451241_sb1_781">
+      <custrecord_ts_ec_codigo_pais>9329</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Guinea</name>
+    </instance>
+    <instance scriptid="val_722545_7451241_sb1_913">
+      <custrecord_ts_ec_codigo_pais>9331</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Guinea Ecuatorial</name>
+    </instance>
+    <instance scriptid="val_722546_7451241_sb1_354">
+      <custrecord_ts_ec_codigo_pais>9334</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Guinea-Bissau</name>
+    </instance>
+    <instance scriptid="val_722547_7451241_sb1_614">
+      <custrecord_ts_ec_codigo_pais>9337</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Guyana</name>
+    </instance>
+    <instance scriptid="val_722548_7451241_sb1_337">
+      <custrecord_ts_ec_codigo_pais>9341</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Haiti</name>
+    </instance>
+    <instance scriptid="val_722549_7451241_sb1_123">
+      <custrecord_ts_ec_codigo_pais>9006</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Heard And Mc Donald Islands</name>
+    </instance>
+    <instance scriptid="val_722550_7451241_sb1_871">
+      <custrecord_ts_ec_codigo_pais>9345</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Honduras</name>
+    </instance>
+    <instance scriptid="val_722551_7451241_sb1_376">
+      <custrecord_ts_ec_codigo_pais>9348</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Honduras Britanicas</name>
+    </instance>
+    <instance scriptid="val_722552_7451241_sb1_729">
+      <custrecord_ts_ec_codigo_pais>9351</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Hong Kong</name>
+    </instance>
+    <instance scriptid="val_722553_7451241_sb1_499">
+      <custrecord_ts_ec_codigo_pais>9355</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Hungria</name>
+    </instance>
+    <instance scriptid="val_722554_7451241_sb1_945">
+      <custrecord_ts_ec_codigo_pais>9361</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>India</name>
+    </instance>
+    <instance scriptid="val_722555_7451241_sb1_130">
+      <custrecord_ts_ec_codigo_pais>9365</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Indonesia</name>
+    </instance>
+    <instance scriptid="val_722556_7451241_sb1_776">
+      <custrecord_ts_ec_codigo_pais>9369</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Irak</name>
+    </instance>
+    <instance scriptid="val_722557_7451241_sb1_914">
+      <custrecord_ts_ec_codigo_pais>9372</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Iran, Republica Islamica Del</name>
+    </instance>
+    <instance scriptid="val_722558_7451241_sb1_124">
+      <custrecord_ts_ec_codigo_pais>9375</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Irlanda (Eire)</name>
+    </instance>
+    <instance scriptid="val_722559_7451241_sb1_667">
+      <custrecord_ts_ec_codigo_pais>9377</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Isla Azores</name>
+    </instance>
+    <instance scriptid="val_722560_7451241_sb1_795">
+      <custrecord_ts_ec_codigo_pais>9378</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Isla Del Man</name>
+    </instance>
+    <instance scriptid="val_722561_7451241_sb1_963">
+      <custrecord_ts_ec_codigo_pais>9379</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Islandia</name>
+    </instance>
+    <instance scriptid="val_722562_7451241_sb1_835">
+      <custrecord_ts_ec_codigo_pais>9380</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Islas Canarias</name>
+    </instance>
+    <instance scriptid="val_722563_7451241_sb1_605">
+      <custrecord_ts_ec_codigo_pais>9381</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Islas De Christmas</name>
+    </instance>
+    <instance scriptid="val_722564_7451241_sb1_366">
+      <custrecord_ts_ec_codigo_pais>9382</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Islas Qeshm</name>
+    </instance>
+    <instance scriptid="val_722565_7451241_sb1_572">
+      <custrecord_ts_ec_codigo_pais>9383</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Israel</name>
+    </instance>
+    <instance scriptid="val_722566_7451241_sb1_964">
+      <custrecord_ts_ec_codigo_pais>9386</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Italia</name>
+    </instance>
+    <instance scriptid="val_722567_7451241_sb1_626">
+      <custrecord_ts_ec_codigo_pais>9391</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Jamaica</name>
+    </instance>
+    <instance scriptid="val_722568_7451241_sb1_329">
+      <custrecord_ts_ec_codigo_pais>9399</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Japon</name>
+    </instance>
+    <instance scriptid="val_722569_7451241_sb1_846">
+      <custrecord_ts_ec_codigo_pais>9401</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Jersey</name>
+    </instance>
+    <instance scriptid="val_722570_7451241_sb1_123">
+      <custrecord_ts_ec_codigo_pais>9395</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Jonston, Islas</name>
+    </instance>
+    <instance scriptid="val_722571_7451241_sb1_907">
+      <custrecord_ts_ec_codigo_pais>9403</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Jordania</name>
+    </instance>
+    <instance scriptid="val_722572_7451241_sb1_880">
+      <custrecord_ts_ec_codigo_pais>9406</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Kazajstan</name>
+    </instance>
+    <instance scriptid="val_722573_7451241_sb1_662">
+      <custrecord_ts_ec_codigo_pais>9410</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Kenia</name>
+    </instance>
+    <instance scriptid="val_722574_7451241_sb1_363">
+      <custrecord_ts_ec_codigo_pais>9412</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Kirguizistan</name>
+    </instance>
+    <instance scriptid="val_722575_7451241_sb1_369">
+      <custrecord_ts_ec_codigo_pais>9411</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Kiribati</name>
+    </instance>
+    <instance scriptid="val_722576_7451241_sb1_937">
+      <custrecord_ts_ec_codigo_pais>9413</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Kuwait</name>
+    </instance>
+    <instance scriptid="val_722577_7451241_sb1_546">
+      <custrecord_ts_ec_codigo_pais>9418</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Labun</name>
+    </instance>
+    <instance scriptid="val_722578_7451241_sb1_547">
+      <custrecord_ts_ec_codigo_pais>9420</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Laos, Republica Popular Democratica De</name>
+    </instance>
+    <instance scriptid="val_722579_7451241_sb1_351">
+      <custrecord_ts_ec_codigo_pais>9426</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Lesotho</name>
+    </instance>
+    <instance scriptid="val_722580_7451241_sb1_805">
+      <custrecord_ts_ec_codigo_pais>9429</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Letonia</name>
+    </instance>
+    <instance scriptid="val_722581_7451241_sb1_161">
+      <custrecord_ts_ec_codigo_pais>9431</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Libano</name>
+    </instance>
+    <instance scriptid="val_722582_7451241_sb1_491">
+      <custrecord_ts_ec_codigo_pais>9434</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Liberia</name>
+    </instance>
+    <instance scriptid="val_722583_7451241_sb1_116">
+      <custrecord_ts_ec_codigo_pais>9438</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Libia</name>
+    </instance>
+    <instance scriptid="val_722584_7451241_sb1_113">
+      <custrecord_ts_ec_codigo_pais>9440</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Liechtenstein</name>
+    </instance>
+    <instance scriptid="val_722585_7451241_sb1_348">
+      <custrecord_ts_ec_codigo_pais>9443</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Lituania</name>
+    </instance>
+    <instance scriptid="val_722586_7451241_sb1_840">
+      <custrecord_ts_ec_codigo_pais>9445</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Luxemburgo</name>
+    </instance>
+    <instance scriptid="val_722587_7451241_sb1_668">
+      <custrecord_ts_ec_codigo_pais>9447</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Macao</name>
+    </instance>
+    <instance scriptid="val_722588_7451241_sb1_309">
+      <custrecord_ts_ec_codigo_pais>9448</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Macedonia</name>
+    </instance>
+    <instance scriptid="val_722589_7451241_sb1_370">
+      <custrecord_ts_ec_codigo_pais>9450</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Madagascar</name>
+    </instance>
+    <instance scriptid="val_722590_7451241_sb1_287">
+      <custrecord_ts_ec_codigo_pais>9453</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Madeira</name>
+    </instance>
+    <instance scriptid="val_722591_7451241_sb1_580">
+      <custrecord_ts_ec_codigo_pais>9458</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Malawi</name>
+    </instance>
+    <instance scriptid="val_722592_7451241_sb1_718">
+      <custrecord_ts_ec_codigo_pais>9455</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Malaysia</name>
+    </instance>
+    <instance scriptid="val_722593_7451241_sb1_110">
+      <custrecord_ts_ec_codigo_pais>9461</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Maldivas</name>
+    </instance>
+    <instance scriptid="val_722594_7451241_sb1_775">
+      <custrecord_ts_ec_codigo_pais>9464</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Mali</name>
+    </instance>
+    <instance scriptid="val_722595_7451241_sb1_274">
+      <custrecord_ts_ec_codigo_pais>9467</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Malta</name>
+    </instance>
+    <instance scriptid="val_722596_7451241_sb1_788">
+      <custrecord_ts_ec_codigo_pais>9469</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Marianas Del Norte, Islas</name>
+    </instance>
+    <instance scriptid="val_722597_7451241_sb1_874">
+      <custrecord_ts_ec_codigo_pais>9474</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Marruecos</name>
+    </instance>
+    <instance scriptid="val_722598_7451241_sb1_700">
+      <custrecord_ts_ec_codigo_pais>9472</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Marshall, Islas</name>
+    </instance>
+    <instance scriptid="val_722599_7451241_sb1_477">
+      <custrecord_ts_ec_codigo_pais>9477</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Martinica</name>
+    </instance>
+    <instance scriptid="val_722600_7451241_sb1_725">
+      <custrecord_ts_ec_codigo_pais>9485</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Mauricio</name>
+    </instance>
+    <instance scriptid="val_722601_7451241_sb1_781">
+      <custrecord_ts_ec_codigo_pais>9488</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Mauritania</name>
+    </instance>
+    <instance scriptid="val_722602_7451241_sb1_323">
+      <custrecord_ts_ec_codigo_pais>9007</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Mayotte</name>
+    </instance>
+    <instance scriptid="val_722603_7451241_sb1_164">
+      <custrecord_ts_ec_codigo_pais>9494</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Micronesia, Estados Federados De</name>
+    </instance>
+    <instance scriptid="val_722604_7451241_sb1_779">
+      <custrecord_ts_ec_codigo_pais>9495</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Midway Islas</name>
+    </instance>
+    <instance scriptid="val_722605_7451241_sb1_993">
+      <custrecord_ts_ec_codigo_pais>9496</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Moldavia</name>
+    </instance>
+    <instance scriptid="val_722606_7451241_sb1_390">
+      <custrecord_ts_ec_codigo_pais>9498</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Monaco</name>
+    </instance>
+    <instance scriptid="val_722607_7451241_sb1_394">
+      <custrecord_ts_ec_codigo_pais>9497</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Mongolia</name>
+    </instance>
+    <instance scriptid="val_722608_7451241_sb1_581">
+      <custrecord_ts_ec_codigo_pais>9501</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Montserrat, Isla</name>
+    </instance>
+    <instance scriptid="val_722609_7451241_sb1_414">
+      <custrecord_ts_ec_codigo_pais>9505</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Mozambique</name>
+    </instance>
+    <instance scriptid="val_722610_7451241_sb1_674">
+      <custrecord_ts_ec_codigo_pais>9093</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Myanmar</name>
+    </instance>
+    <instance scriptid="val_722611_7451241_sb1_352">
+      <custrecord_ts_ec_codigo_pais>9507</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Namibia</name>
+    </instance>
+    <instance scriptid="val_722612_7451241_sb1_970">
+      <custrecord_ts_ec_codigo_pais>9508</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Nauru</name>
+    </instance>
+    <instance scriptid="val_722613_7451241_sb1_141">
+      <custrecord_ts_ec_codigo_pais>9511</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Navidad (Christmas), Isla</name>
+    </instance>
+    <instance scriptid="val_722614_7451241_sb1_532">
+      <custrecord_ts_ec_codigo_pais>9517</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Nepal</name>
+    </instance>
+    <instance scriptid="val_722615_7451241_sb1_144">
+      <custrecord_ts_ec_codigo_pais>9521</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Nicaragua</name>
+    </instance>
+    <instance scriptid="val_722616_7451241_sb1_888">
+      <custrecord_ts_ec_codigo_pais>9525</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Niger</name>
+    </instance>
+    <instance scriptid="val_722617_7451241_sb1_296">
+      <custrecord_ts_ec_codigo_pais>9528</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Nigeria</name>
+    </instance>
+    <instance scriptid="val_722618_7451241_sb1_913">
+      <custrecord_ts_ec_codigo_pais>9531</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Niue, Isla</name>
+    </instance>
+    <instance scriptid="val_722619_7451241_sb1_933">
+      <custrecord_ts_ec_codigo_pais>9535</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Norfolk, Isla</name>
+    </instance>
+    <instance scriptid="val_722620_7451241_sb1_323">
+      <custrecord_ts_ec_codigo_pais>9538</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Noruega</name>
+    </instance>
+    <instance scriptid="val_722621_7451241_sb1_409">
+      <custrecord_ts_ec_codigo_pais>9542</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Nueva Caledonia</name>
+    </instance>
+    <instance scriptid="val_722622_7451241_sb1_536">
+      <custrecord_ts_ec_codigo_pais>9548</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Nueva Zelanda</name>
+    </instance>
+    <instance scriptid="val_722623_7451241_sb1_415">
+      <custrecord_ts_ec_codigo_pais>9556</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Oman</name>
+    </instance>
+    <instance scriptid="val_722624_7451241_sb1_363">
+      <custrecord_ts_ec_codigo_pais>9011</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Otros Paises o Lugares</name>
+    </instance>
+    <instance scriptid="val_722625_7451241_sb1_487">
+      <custrecord_ts_ec_codigo_pais>9566</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Pacifico, Islas Del</name>
+    </instance>
+    <instance scriptid="val_722626_7451241_sb1_611">
+      <custrecord_ts_ec_codigo_pais>9573</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Paises Bajos</name>
+    </instance>
+    <instance scriptid="val_722627_7451241_sb1_248">
+      <custrecord_ts_ec_codigo_pais>9576</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Pakistan</name>
+    </instance>
+    <instance scriptid="val_722628_7451241_sb1_127">
+      <custrecord_ts_ec_codigo_pais>9578</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Palau, Islas</name>
+    </instance>
+    <instance scriptid="val_722629_7451241_sb1_499">
+      <custrecord_ts_ec_codigo_pais>9580</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Panama</name>
+    </instance>
+    <instance scriptid="val_722630_7451241_sb1_897">
+      <custrecord_ts_ec_codigo_pais>9545</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Papuasia Nueva Guinea</name>
+    </instance>
+    <instance scriptid="val_722631_7451241_sb1_808">
+      <custrecord_ts_ec_codigo_pais>9586</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Paraguay</name>
+    </instance>
+    <instance scriptid="val_722632_7451241_sb1_441">
+      <custrecord_ts_ec_codigo_pais>9593</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Pitcairn, Isla</name>
+    </instance>
+    <instance scriptid="val_722633_7451241_sb1_703">
+      <custrecord_ts_ec_codigo_pais>9599</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Polinesia Francesa</name>
+    </instance>
+    <instance scriptid="val_722634_7451241_sb1_963">
+      <custrecord_ts_ec_codigo_pais>9603</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Polonia</name>
+    </instance>
+    <instance scriptid="val_722635_7451241_sb1_907">
+      <custrecord_ts_ec_codigo_pais>9611</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Puerto Rico</name>
+    </instance>
+    <instance scriptid="val_722636_7451241_sb1_138">
+      <custrecord_ts_ec_codigo_pais>9618</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Qatar</name>
+    </instance>
+    <instance scriptid="val_722637_7451241_sb1_559">
+      <custrecord_ts_ec_codigo_pais>9628</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Reino Unido</name>
+    </instance>
+    <instance scriptid="val_722638_7451241_sb1_157">
+      <custrecord_ts_ec_codigo_pais>9633</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Republica Arabe Unida</name>
+    </instance>
+    <instance scriptid="val_722639_7451241_sb1_910">
+      <custrecord_ts_ec_codigo_pais>9640</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Republica Centroafricana</name>
+    </instance>
+    <instance scriptid="val_722640_7451241_sb1_985">
+      <custrecord_ts_ec_codigo_pais>9644</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Republica Checa</name>
+    </instance>
+    <instance scriptid="val_722641_7451241_sb1_580">
+      <custrecord_ts_ec_codigo_pais>9645</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Republica De Swazilandia</name>
+    </instance>
+    <instance scriptid="val_722642_7451241_sb1_751">
+      <custrecord_ts_ec_codigo_pais>9646</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Republica De Tunez</name>
+    </instance>
+    <instance scriptid="val_722643_7451241_sb1_129">
+      <custrecord_ts_ec_codigo_pais>9647</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Republica Dominicana</name>
+    </instance>
+    <instance scriptid="val_722644_7451241_sb1_456">
+      <custrecord_ts_ec_codigo_pais>9660</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Reunion</name>
+    </instance>
+    <instance scriptid="val_722645_7451241_sb1_455">
+      <custrecord_ts_ec_codigo_pais>9675</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Ruanda</name>
+    </instance>
+    <instance scriptid="val_722646_7451241_sb1_279">
+      <custrecord_ts_ec_codigo_pais>9670</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Rumania</name>
+    </instance>
+    <instance scriptid="val_722647_7451241_sb1_541">
+      <custrecord_ts_ec_codigo_pais>9676</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Rusia</name>
+    </instance>
+    <instance scriptid="val_722648_7451241_sb1_881">
+      <custrecord_ts_ec_codigo_pais>9685</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Sahara Occidental</name>
+    </instance>
+    <instance scriptid="val_722649_7451241_sb1_167">
+      <custrecord_ts_ec_codigo_pais>9677</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Salomon, Islas</name>
+    </instance>
+    <instance scriptid="val_722650_7451241_sb1_833">
+      <custrecord_ts_ec_codigo_pais>9690</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Samoa Norteamericana</name>
+    </instance>
+    <instance scriptid="val_722651_7451241_sb1_968">
+      <custrecord_ts_ec_codigo_pais>9687</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Samoa Occidental</name>
+    </instance>
+    <instance scriptid="val_722652_7451241_sb1_236">
+      <custrecord_ts_ec_codigo_pais>9695</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>San Cristobal Y Nieves</name>
+    </instance>
+    <instance scriptid="val_722653_7451241_sb1_957">
+      <custrecord_ts_ec_codigo_pais>9697</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>San Marino</name>
+    </instance>
+    <instance scriptid="val_722654_7451241_sb1_474">
+      <custrecord_ts_ec_codigo_pais>9700</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>San Pedro Y Miquelon</name>
+    </instance>
+    <instance scriptid="val_722655_7451241_sb1_175">
+      <custrecord_ts_ec_codigo_pais>9705</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>San Vicente Y Las Granadinas</name>
+    </instance>
+    <instance scriptid="val_722656_7451241_sb1_617">
+      <custrecord_ts_ec_codigo_pais>9710</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Santa Elena</name>
+    </instance>
+    <instance scriptid="val_722657_7451241_sb1_786">
+      <custrecord_ts_ec_codigo_pais>9715</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Santa Lucia</name>
+    </instance>
+    <instance scriptid="val_722658_7451241_sb1_603">
+      <custrecord_ts_ec_codigo_pais>9159</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Santa Sede</name>
+    </instance>
+    <instance scriptid="val_722659_7451241_sb1_198">
+      <custrecord_ts_ec_codigo_pais>9720</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Santo Tome Y Principe</name>
+    </instance>
+    <instance scriptid="val_722660_7451241_sb1_222">
+      <custrecord_ts_ec_codigo_pais>9773</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Sawsilandia</name>
+    </instance>
+    <instance scriptid="val_722661_7451241_sb1_329">
+      <custrecord_ts_ec_codigo_pais>9728</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Senegal</name>
+    </instance>
+    <instance scriptid="val_722662_7451241_sb1_392">
+      <custrecord_ts_ec_codigo_pais>9731</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Seychelles</name>
+    </instance>
+    <instance scriptid="val_722663_7451241_sb1_263">
+      <custrecord_ts_ec_codigo_pais>9735</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Sierra Leona</name>
+    </instance>
+    <instance scriptid="val_722664_7451241_sb1_274">
+      <custrecord_ts_ec_codigo_pais>9741</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Singapur</name>
+    </instance>
+    <instance scriptid="val_722665_7451241_sb1_450">
+      <custrecord_ts_ec_codigo_pais>9744</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Siria, Republica Arabe De</name>
+    </instance>
+    <instance scriptid="val_722666_7451241_sb1_413">
+      <custrecord_ts_ec_codigo_pais>9748</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Somalia</name>
+    </instance>
+    <instance scriptid="val_722667_7451241_sb1_900">
+      <custrecord_ts_ec_codigo_pais>9008</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>South Georgia And The South Sandwich Islands</name>
+    </instance>
+    <instance scriptid="val_722668_7451241_sb1_426">
+      <custrecord_ts_ec_codigo_pais>9750</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Sri Lanka</name>
+    </instance>
+    <instance scriptid="val_722669_7451241_sb1_217">
+      <custrecord_ts_ec_codigo_pais>9756</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Sudafrica, Republica De</name>
+    </instance>
+    <instance scriptid="val_722670_7451241_sb1_282">
+      <custrecord_ts_ec_codigo_pais>9759</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Sudan</name>
+    </instance>
+    <instance scriptid="val_722671_7451241_sb1_830">
+      <custrecord_ts_ec_codigo_pais>9764</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Suecia</name>
+    </instance>
+    <instance scriptid="val_722672_7451241_sb1_137">
+      <custrecord_ts_ec_codigo_pais>9770</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Surinam</name>
+    </instance>
+    <instance scriptid="val_722673_7451241_sb1_234">
+      <custrecord_ts_ec_codigo_pais>9009</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Svalbard And Jan Mayen Islands</name>
+    </instance>
+    <instance scriptid="val_722674_7451241_sb1_481">
+      <custrecord_ts_ec_codigo_pais>9774</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Tadjikistan</name>
+    </instance>
+    <instance scriptid="val_722675_7451241_sb1_812">
+      <custrecord_ts_ec_codigo_pais>9776</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Tailandia</name>
+    </instance>
+    <instance scriptid="val_722676_7451241_sb1_711">
+      <custrecord_ts_ec_codigo_pais>9218</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Taiwan (Formosa)</name>
+    </instance>
+    <instance scriptid="val_722677_7451241_sb1_645">
+      <custrecord_ts_ec_codigo_pais>9780</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Tanzania, Republica Unida De</name>
+    </instance>
+    <instance scriptid="val_722678_7451241_sb1_770">
+      <custrecord_ts_ec_codigo_pais>9786</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Territorio Antartico Britanico</name>
+    </instance>
+    <instance scriptid="val_722679_7451241_sb1_576">
+      <custrecord_ts_ec_codigo_pais>9579</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Territorio Autonomo De Palestina.</name>
+    </instance>
+    <instance scriptid="val_722680_7451241_sb1_391">
+      <custrecord_ts_ec_codigo_pais>9787</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Territorio Britanico Del Oceano Indico</name>
+    </instance>
+    <instance scriptid="val_722681_7451241_sb1_780">
+      <custrecord_ts_ec_codigo_pais>9788</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Timor Del Este</name>
+    </instance>
+    <instance scriptid="val_722682_7451241_sb1_974">
+      <custrecord_ts_ec_codigo_pais>9800</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Togo</name>
+    </instance>
+    <instance scriptid="val_722683_7451241_sb1_579">
+      <custrecord_ts_ec_codigo_pais>9805</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Tokelau</name>
+    </instance>
+    <instance scriptid="val_722684_7451241_sb1_704">
+      <custrecord_ts_ec_codigo_pais>9810</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Tonga</name>
+    </instance>
+    <instance scriptid="val_722685_7451241_sb1_847">
+      <custrecord_ts_ec_codigo_pais>9815</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Trinidad Y Tobago</name>
+    </instance>
+    <instance scriptid="val_722686_7451241_sb1_480">
+      <custrecord_ts_ec_codigo_pais>9816</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Tristan Da Cunha</name>
+    </instance>
+    <instance scriptid="val_722687_7451241_sb1_487">
+      <custrecord_ts_ec_codigo_pais>9820</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Tunicia</name>
+    </instance>
+    <instance scriptid="val_722688_7451241_sb1_181">
+      <custrecord_ts_ec_codigo_pais>9823</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Turcas Y Caicos, Islas</name>
+    </instance>
+    <instance scriptid="val_722689_7451241_sb1_619">
+      <custrecord_ts_ec_codigo_pais>9825</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Turkmenistan</name>
+    </instance>
+    <instance scriptid="val_722690_7451241_sb1_877">
+      <custrecord_ts_ec_codigo_pais>9827</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Turquia</name>
+    </instance>
+    <instance scriptid="val_722691_7451241_sb1_839">
+      <custrecord_ts_ec_codigo_pais>9828</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Tuvalu</name>
+    </instance>
+    <instance scriptid="val_722692_7451241_sb1_511">
+      <custrecord_ts_ec_codigo_pais>9830</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Ucrania</name>
+    </instance>
+    <instance scriptid="val_722693_7451241_sb1_639">
+      <custrecord_ts_ec_codigo_pais>9833</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Uganda</name>
+    </instance>
+    <instance scriptid="val_722694_7451241_sb1_910">
+      <custrecord_ts_ec_codigo_pais>9010</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>United States Minor Outlying Islands</name>
+    </instance>
+    <instance scriptid="val_722695_7451241_sb1_782">
+      <custrecord_ts_ec_codigo_pais>9840</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Urss</name>
+    </instance>
+    <instance scriptid="val_722696_7451241_sb1_777">
+      <custrecord_ts_ec_codigo_pais>9845</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Uruguay</name>
+    </instance>
+    <instance scriptid="val_722697_7451241_sb1_635">
+      <custrecord_ts_ec_codigo_pais>9847</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Uzbekistan</name>
+    </instance>
+    <instance scriptid="val_722698_7451241_sb1_278">
+      <custrecord_ts_ec_codigo_pais>9551</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Vanuatu</name>
+    </instance>
+    <instance scriptid="val_722699_7451241_sb1_667">
+      <custrecord_ts_ec_codigo_pais>9850</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Venezuela</name>
+    </instance>
+    <instance scriptid="val_722700_7451241_sb1_367">
+      <custrecord_ts_ec_codigo_pais>9855</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Viet Nam</name>
+    </instance>
+    <instance scriptid="val_722701_7451241_sb1_321">
+      <custrecord_ts_ec_codigo_pais>9858</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Vietnam (Del Norte)</name>
+    </instance>
+    <instance scriptid="val_722702_7451241_sb1_179">
+      <custrecord_ts_ec_codigo_pais>9863</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Virgenes, Islas (Britanicas)</name>
+    </instance>
+    <instance scriptid="val_722703_7451241_sb1_838">
+      <custrecord_ts_ec_codigo_pais>9866</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Virgenes, Islas (Norteamericanas)</name>
+    </instance>
+    <instance scriptid="val_722704_7451241_sb1_407">
+      <custrecord_ts_ec_codigo_pais>9873</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Wake, Isla</name>
+    </instance>
+    <instance scriptid="val_722705_7451241_sb1_866">
+      <custrecord_ts_ec_codigo_pais>9875</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Wallis Y Fortuna, Islas</name>
+    </instance>
+    <instance scriptid="val_722706_7451241_sb1_775">
+      <custrecord_ts_ec_codigo_pais>9880</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Yemen</name>
+    </instance>
+    <instance scriptid="val_722707_7451241_sb1_177">
+      <custrecord_ts_ec_codigo_pais>9885</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Yugoslavia</name>
+    </instance>
+    <instance scriptid="val_722708_7451241_sb1_898">
+      <custrecord_ts_ec_codigo_pais>9888</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Zaire</name>
+    </instance>
+    <instance scriptid="val_722709_7451241_sb1_126">
+      <custrecord_ts_ec_codigo_pais>9890</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Zambia</name>
+    </instance>
+    <instance scriptid="val_722710_7451241_sb1_264">
+      <custrecord_ts_ec_codigo_pais>9665</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Zimbabwe</name>
+    </instance>
+    <instance scriptid="val_722711_7451241_sb1_886">
+      <custrecord_ts_ec_codigo_pais>9895</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Zona Del Canal De Panama</name>
+    </instance>
+    <instance scriptid="val_722712_7451241_sb1_429">
+      <custrecord_ts_ec_codigo_pais>9896</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Zona Libre Ostrava</name>
+    </instance>
+    <instance scriptid="val_722713_7451241_sb1_736">
+      <custrecord_ts_ec_codigo_pais>9897</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Zona Neutral (Palestina)</name>
+    </instance>
+    <instance scriptid="val_722717_7451241_sb1_642">
+      <custrecord_ts_ec_codigo_pais>9097</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Bolivia</name>
+    </instance>
+    <instance scriptid="val_722718_7451241_sb1_648">
+      <custrecord_ts_ec_codigo_pais>9105</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Brasil</name>
+    </instance>
+    <instance scriptid="val_722719_7451241_sb1_163">
+      <custrecord_ts_ec_codigo_pais>9149</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Canada</name>
+    </instance>
+    <instance scriptid="val_722720_7451241_sb1_761">
+      <custrecord_ts_ec_codigo_pais>9211</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Chile</name>
+    </instance>
+    <instance scriptid="val_722721_7451241_sb1_621">
+      <custrecord_ts_ec_codigo_pais>9169</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Colombia</name>
+    </instance>
+    <instance scriptid="val_722722_7451241_sb1_585">
+      <custrecord_ts_ec_codigo_pais>9239</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Ecuador</name>
+    </instance>
+    <instance scriptid="val_722723_7451241_sb1_373">
+      <custrecord_ts_ec_codigo_pais>9493</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Mexico</name>
+    </instance>
+    <instance scriptid="val_722724_7451241_sb1_487">
+      <custrecord_ts_ec_codigo_pais>120</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Peru</name>
+    </instance>
+    <instance scriptid="val_722725_7451241_sb1_294">
+      <custrecord_ts_ec_codigo_pais>9607</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Portugal</name>
+    </instance>
+    <instance scriptid="val_722726_7451241_sb1_797">
+      <custrecord_ts_ec_codigo_pais>9190</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Republica De Corea (Sur)</name>
+    </instance>
+    <instance scriptid="val_722727_7451241_sb1_757">
+      <custrecord_ts_ec_codigo_pais>9187</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Republica Popular Democratica De Corea (Norte)</name>
+    </instance>
+    <instance scriptid="val_722728_7451241_sb1_580">
+      <custrecord_ts_ec_codigo_pais>9767</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Suiza</name>
+    </instance>
+    <instance scriptid="val_724122_7451241_sb1_381">
+      <custrecord_ts_ec_codigo_pais>382</custrecord_ts_ec_codigo_pais>
+      <custrecord_ts_ec_convenios></custrecord_ts_ec_convenios>
+      <custrecord_ts_ec_pais_>63</custrecord_ts_ec_pais_>
+      <isinactive>F</isinactive>
+      <name>Montenegro</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_ts_ui_ec_impresion_certi">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS Impresion Certificados</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Impresion Certificado/TS_UI_Impresion_Certificado.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_ui_ec_impresion_certi">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>ERROR</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>TS Impresion Certificados</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

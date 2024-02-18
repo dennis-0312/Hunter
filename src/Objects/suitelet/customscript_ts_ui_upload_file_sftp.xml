@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_ts_ui_upload_file_sftp">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS UI Upload File SFTP</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/SFTP Connection/TS_UI_Upload_File_SFTP_2.1.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_ui_upload_file_sftp">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>T</isonline>
+      <loglevel>ERROR</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>TS UI Upload File SFTP</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_ht_bn_tipodeorigenbien">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT BN Tipo de Origen Bien</name>
+  <customvalues>
+    <customvalue scriptid="val_822514_7451241_sb1_479">
+      <isinactive>F</isinactive>
+      <value>NETSUITE</value>
+    </customvalue>
+    <customvalue scriptid="val_822515_7451241_sb1_322">
+      <isinactive>F</isinactive>
+      <value>TDE</value>
+    </customvalue>
+    <customvalue scriptid="val_822516_7451241_sb1_666">
+      <isinactive>T</isinactive>
+      <value>SUZUKI</value>
+    </customvalue>
+    <customvalue scriptid="val_822517_7451241_sb1_969">
+      <isinactive>T</isinactive>
+      <value>HUNTER ONLINE</value>
+    </customvalue>
+  </customvalues>
+</customlist>

@@ -1,0 +1,13 @@
+<customglplugin scriptid="customscript_ts_pl_suite_gl">
+  <description></description>
+  <isinactive>F</isinactive>
+  <loglevel>ERROR</loglevel>
+  <name>TS_PL_SuiteGLProvision</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <runasrole></runasrole>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_SuiteGLProvision.js]</scriptfile>
+  <status>RELEASED</status>
+</customglplugin>

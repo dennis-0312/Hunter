@@ -1,0 +1,52 @@
+<customlist scriptid="customlist_ht_mc_estado">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT MC Estado</name>
+  <customvalues>
+    <customvalue scriptid="val_800310_7451241_sb1_815">
+      <isinactive>F</isinactive>
+      <value>001 - INSTALADO</value>
+    </customvalue>
+    <customvalue scriptid="val_811562_7451241_sb1_964">
+      <isinactive>F</isinactive>
+      <value>002 - DESINSTALADO</value>
+    </customvalue>
+    <customvalue scriptid="val_811563_7451241_sb1_199">
+      <isinactive>F</isinactive>
+      <value>003 - DAÑADO</value>
+    </customvalue>
+    <customvalue scriptid="val_811564_7451241_sb1_167">
+      <isinactive>F</isinactive>
+      <value>004 - CODIGO BLANCO</value>
+    </customvalue>
+    <customvalue scriptid="val_811565_7451241_sb1_893">
+      <isinactive>F</isinactive>
+      <value>005 - DISPONIBLE</value>
+    </customvalue>
+    <customvalue scriptid="val_811566_7451241_sb1_507">
+      <isinactive>F</isinactive>
+      <value>006 - PERDIDO</value>
+    </customvalue>
+    <customvalue scriptid="val_811567_7451241_sb1_145">
+      <isinactive>F</isinactive>
+      <value>007 - DADO DE BAJA</value>
+    </customvalue>
+    <customvalue scriptid="val_811568_7451241_sb1_502">
+      <isinactive>F</isinactive>
+      <value>008 - ENTREGADO A CLIENTE</value>
+    </customvalue>
+    <customvalue scriptid="val_811569_7451241_sb1_523">
+      <isinactive>F</isinactive>
+      <value>009 - RESERVADO</value>
+    </customvalue>
+    <customvalue scriptid="val_811570_7451241_sb1_371">
+      <isinactive>F</isinactive>
+      <value>010 - ANULADO</value>
+    </customvalue>
+    <customvalue scriptid="val_1413183_7451241_sb1_721">
+      <isinactive>F</isinactive>
+      <value>011 - CONVERTIDO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

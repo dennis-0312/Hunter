@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ht_ai_tipocomponente">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Tipo de Componente Chaser</name>
+  <customvalues>
+    <customvalue scriptid="val_819757_7451241_sb1_362">
+      <isinactive>F</isinactive>
+      <value>DISPOSITIVO CHASER</value>
+    </customvalue>
+    <customvalue scriptid="val_819758_7451241_sb1_625">
+      <isinactive>F</isinactive>
+      <value>SIM CARD</value>
+    </customvalue>
+    <customvalue scriptid="val_819759_7451241_sb1_982">
+      <isinactive>F</isinactive>
+      <value>LOJACK</value>
+    </customvalue>
+    <customvalue scriptid="val_819761_7451241_sb1_686">
+      <isinactive>F</isinactive>
+      <value>NINGUNO</value>
+    </customvalue>
+    <customvalue scriptid="val_1420259_7451241_sb1_617">
+      <isinactive>F</isinactive>
+      <value>FABRICACIÓN</value>
+    </customvalue>
+  </customvalues>
+</customlist>

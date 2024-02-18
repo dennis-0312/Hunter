@@ -1,0 +1,192 @@
+<customrecordtype scriptid="customrecord_ht_registro_result_gestion">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Registro Resultado de gestion</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_campo_txt_cod_res_gestion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description>codigo llave del resultado de gestion</description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_campo_txt_des_res_gestion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_797152_7451241_sb1_793">
+      <custrecord_ht_campo_txt_cod_res_gestion>7</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>CONTACTO CON ÉXITO</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>7 - CONTACTO CON ÉXITO</name>
+    </instance>
+    <instance scriptid="val_797153_7451241_sb1_379">
+      <custrecord_ht_campo_txt_cod_res_gestion>8</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>NO CONTACTADO</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>8 - NO CONTACTADO</name>
+    </instance>
+    <instance scriptid="val_797154_7451241_sb1_147">
+      <custrecord_ht_campo_txt_cod_res_gestion>9</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>VISITA AGENDADA</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>9 - VISITA AGENDADA</name>
+    </instance>
+    <instance scriptid="val_797155_7451241_sb1_464">
+      <custrecord_ht_campo_txt_cod_res_gestion>10</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>VOLVER A CONTACTARSE</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>10 - VOLVER A CONTACTARSE</name>
+    </instance>
+    <instance scriptid="val_797156_7451241_sb1_761">
+      <custrecord_ht_campo_txt_cod_res_gestion>11</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>NEGOCIO GANADO</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>11 - NEGOCIO GANADO</name>
+    </instance>
+    <instance scriptid="val_797157_7451241_sb1_763">
+      <custrecord_ht_campo_txt_cod_res_gestion>12</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>NEGOCIO PERDIDO</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>12 - NEGOCIO PERDIDO</name>
+    </instance>
+    <instance scriptid="val_797158_7451241_sb1_471">
+      <custrecord_ht_campo_txt_cod_res_gestion>15</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>INTERESADOS EN RENOVAR</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>15 - INTERESADOS EN RENOVAR</name>
+    </instance>
+    <instance scriptid="val_797159_7451241_sb1_354">
+      <custrecord_ht_campo_txt_cod_res_gestion>20</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>RECLAMO</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>20 - RECLAMO</name>
+    </instance>
+    <instance scriptid="val_797160_7451241_sb1_989">
+      <custrecord_ht_campo_txt_cod_res_gestion>21</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>SERVICIO AL CLIENTE</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>21 - SERVICIO AL CLIENTE</name>
+    </instance>
+    <instance scriptid="val_797161_7451241_sb1_111">
+      <custrecord_ht_campo_txt_cod_res_gestion>22</custrecord_ht_campo_txt_cod_res_gestion>
+      <custrecord_ht_campo_txt_des_res_gestion>CONTACTO FALLIDO</custrecord_ht_campo_txt_des_res_gestion>
+      <isinactive>F</isinactive>
+      <name>22 - CONTACTO FALLIDO</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

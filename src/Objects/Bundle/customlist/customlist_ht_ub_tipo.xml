@@ -1,0 +1,48 @@
+<customlist scriptid="customlist_ht_ub_tipo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT UB Tipo</name>
+  <customvalues>
+    <customvalue scriptid="val_780226_7451241_sb1_429">
+      <isinactive>F</isinactive>
+      <value>Alquiler</value>
+    </customvalue>
+    <customvalue scriptid="val_780227_7451241_sb1_194">
+      <isinactive>F</isinactive>
+      <value>Bodega Comercial</value>
+    </customvalue>
+    <customvalue scriptid="val_780228_7451241_sb1_764">
+      <isinactive>F</isinactive>
+      <value>Custodia</value>
+    </customvalue>
+    <customvalue scriptid="val_780229_7451241_sb1_820">
+      <isinactive>F</isinactive>
+      <value>Custodia SZK</value>
+    </customvalue>
+    <customvalue scriptid="val_780230_7451241_sb1_445">
+      <isinactive>F</isinactive>
+      <value>Custodia TDE</value>
+    </customvalue>
+    <customvalue scriptid="val_780231_7451241_sb1_459">
+      <isinactive>F</isinactive>
+      <value>General</value>
+    </customvalue>
+    <customvalue scriptid="val_780232_7451241_sb1_121">
+      <isinactive>F</isinactive>
+      <value>Hunter</value>
+    </customvalue>
+    <customvalue scriptid="val_780233_7451241_sb1_302">
+      <isinactive>F</isinactive>
+      <value>Hunter Monitoreo</value>
+    </customvalue>
+    <customvalue scriptid="val_780234_7451241_sb1_879">
+      <isinactive>F</isinactive>
+      <value>Induauto</value>
+    </customvalue>
+    <customvalue scriptid="val_780235_7451241_sb1_786">
+      <isinactive>F</isinactive>
+      <value>Suministros</value>
+    </customvalue>
+  </customvalues>
+</customlist>

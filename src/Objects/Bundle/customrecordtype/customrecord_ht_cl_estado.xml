@@ -1,0 +1,85 @@
+<customrecordtype scriptid="customrecord_ht_cl_estado">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Estado Lojack</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <instances>
+    <instance scriptid="val_800291_7451241_sb1_102">
+      <isinactive>F</isinactive>
+      <name>001 - INSTALADO</name>
+    </instance>
+    <instance scriptid="val_818907_7451241_sb1_782">
+      <isinactive>F</isinactive>
+      <name>002 - DESINSTALADO</name>
+    </instance>
+    <instance scriptid="val_818908_7451241_sb1_977">
+      <isinactive>F</isinactive>
+      <name>003 - DAÑADO</name>
+    </instance>
+    <instance scriptid="val_818909_7451241_sb1_117">
+      <isinactive>F</isinactive>
+      <name>004 - CÓDIGO BLANCO</name>
+    </instance>
+    <instance scriptid="val_818910_7451241_sb1_546">
+      <isinactive>F</isinactive>
+      <name>005 - DISPONIBLE</name>
+    </instance>
+    <instance scriptid="val_818912_7451241_sb1_266">
+      <isinactive>F</isinactive>
+      <name>006 - PERDIDO</name>
+    </instance>
+    <instance scriptid="val_818913_7451241_sb1_396">
+      <isinactive>F</isinactive>
+      <name>007 - DADO DE BAJA</name>
+    </instance>
+    <instance scriptid="val_818914_7451241_sb1_583">
+      <isinactive>F</isinactive>
+      <name>008 - ENTREGADO A CLIENTE</name>
+    </instance>
+    <instance scriptid="val_818915_7451241_sb1_716">
+      <isinactive>F</isinactive>
+      <name>009 - RESERVADO</name>
+    </instance>
+    <instance scriptid="val_818916_7451241_sb1_101">
+      <isinactive>F</isinactive>
+      <name>010 - ANULADO</name>
+    </instance>
+  </instances>
+</customrecordtype>

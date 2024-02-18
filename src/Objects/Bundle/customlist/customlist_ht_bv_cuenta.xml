@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_ht_bv_cuenta">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>BV_Cuenta</name>
+  <customvalues>
+    <customvalue scriptid="val_969068_7451241_sb1_474">
+      <isinactive>F</isinactive>
+      <value>03</value>
+    </customvalue>
+    <customvalue scriptid="val_969069_7451241_sb1_166">
+      <isinactive>F</isinactive>
+      <value>04</value>
+    </customvalue>
+    <customvalue scriptid="val_969070_7451241_sb1_196">
+      <isinactive>F</isinactive>
+      <value>08</value>
+    </customvalue>
+    <customvalue scriptid="val_969071_7451241_sb1_820">
+      <isinactive>F</isinactive>
+      <value>09</value>
+    </customvalue>
+  </customvalues>
+</customlist>

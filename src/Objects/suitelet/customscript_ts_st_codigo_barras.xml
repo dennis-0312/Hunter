@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_ts_st_codigo_barras">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_ST_Codigo_Barras</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/core/TS_ST_Codigo_Barras.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_st_codigo_barras">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole></runasrole>
+      <status>RELEASED</status>
+      <title>TS_ST_Codigo_Barras</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

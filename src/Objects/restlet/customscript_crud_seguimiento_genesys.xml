@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_crud_seguimiento_genesys">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_CRUD_SEGUIMIENTO_GENESYS</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/NS_RS_PRODUCCION_HUNTER/Seguimiento/NS_RS_CRUD_SEGUIMIENTO_GENESYS.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_crud_seguimiento_genesys">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_CRUD_SEGUIMIENTO_GENESYS</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

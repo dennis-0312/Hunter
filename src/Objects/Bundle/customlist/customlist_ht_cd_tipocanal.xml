@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ht_cd_tipocanal">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT CD Tipo de Canal</name>
+  <customvalues>
+    <customvalue scriptid="val_800403_7451241_sb1_751">
+      <isinactive>F</isinactive>
+      <value>Aseguradora</value>
+    </customvalue>
+    <customvalue scriptid="val_800404_7451241_sb1_283">
+      <isinactive>F</isinactive>
+      <value>Concesionario</value>
+    </customvalue>
+    <customvalue scriptid="val_800405_7451241_sb1_678">
+      <isinactive>F</isinactive>
+      <value>Financiera</value>
+    </customvalue>
+  </customvalues>
+</customlist>

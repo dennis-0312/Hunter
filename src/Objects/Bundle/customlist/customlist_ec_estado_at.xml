@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ec_estado_at">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC ESTADO AT</name>
+  <customvalues>
+    <customvalue scriptid="val_6271_7451241_sb1_823">
+      <isinactive>F</isinactive>
+      <value>nombre</value>
+    </customvalue>
+    <customvalue scriptid="val_6272_7451241_sb1_241">
+      <isinactive>F</isinactive>
+      <value>estado</value>
+    </customvalue>
+  </customvalues>
+</customlist>

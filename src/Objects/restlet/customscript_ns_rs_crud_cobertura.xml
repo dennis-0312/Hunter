@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_crud_cobertura">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_CRUD_Cobertura</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/PruebaServicios/NS_RS_CRUD_Cobertura.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_crud_cobertura">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>F</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_CRUD_Cobertura</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

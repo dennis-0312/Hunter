@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ht_list_formapago">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Forma de Pago</name>
+  <customvalues>
+    <customvalue scriptid="val_822715_7451241_sb1_918">
+      <isinactive>F</isinactive>
+      <value>CONTADO</value>
+    </customvalue>
+    <customvalue scriptid="val_822716_7451241_sb1_389">
+      <isinactive>F</isinactive>
+      <value>CRÉDITO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

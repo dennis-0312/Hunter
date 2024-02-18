@@ -1,0 +1,40 @@
+<customlist scriptid="customlist_ht_bien_estado">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Estado</name>
+  <customvalues>
+    <customvalue scriptid="val_722086_7451241_sb1_227">
+      <isinactive>F</isinactive>
+      <value>Vigente</value>
+    </customvalue>
+    <customvalue scriptid="val_722087_7451241_sb1_864">
+      <isinactive>F</isinactive>
+      <value>Baja temporal</value>
+    </customvalue>
+    <customvalue scriptid="val_722088_7451241_sb1_280">
+      <isinactive>F</isinactive>
+      <value>Denuncia de robo</value>
+    </customvalue>
+    <customvalue scriptid="val_722089_7451241_sb1_165">
+      <isinactive>F</isinactive>
+      <value>Código rojo</value>
+    </customvalue>
+    <customvalue scriptid="val_722090_7451241_sb1_993">
+      <isinactive>F</isinactive>
+      <value>No incluido en presupuesto</value>
+    </customvalue>
+    <customvalue scriptid="val_722091_7451241_sb1_860">
+      <isinactive>F</isinactive>
+      <value>Clientes en Oriente</value>
+    </customvalue>
+    <customvalue scriptid="val_722092_7451241_sb1_948">
+      <isinactive>F</isinactive>
+      <value>No le interesa renovar</value>
+    </customvalue>
+    <customvalue scriptid="val_722093_7451241_sb1_490">
+      <isinactive>F</isinactive>
+      <value>Suspendido por falta de pago</value>
+    </customvalue>
+  </customvalues>
+</customlist>

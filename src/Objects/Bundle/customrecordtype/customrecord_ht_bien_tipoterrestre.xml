@@ -1,0 +1,418 @@
+<customrecordtype scriptid="customrecord_ht_bien_tipoterrestre">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Tipo terrestre</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_tt_tipobien">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT TT Tipo de Bien</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_ht_bien_tipobien]</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_tt_idtelematic">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT TT Id Telematic</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_bien_tipoterrestre_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_bien_tipoterrestre_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_722082_7451241_sb1_643">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic>2</custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722074_7451241_sb1_958]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>VEHÍCULO</name>
+    </instance>
+    <instance scriptid="val_785632_7451241_sb1_871">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic>1</custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722074_7451241_sb1_958]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>MOTO</name>
+    </instance>
+    <instance scriptid="val_785633_7451241_sb1_900">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722077_7451241_sb1_224]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>BOUTIQUE</name>
+    </instance>
+    <instance scriptid="val_785634_7451241_sb1_138">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722077_7451241_sb1_224]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>CAJERO</name>
+    </instance>
+    <instance scriptid="val_785635_7451241_sb1_135">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722077_7451241_sb1_224]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>GENERAL</name>
+    </instance>
+    <instance scriptid="val_785636_7451241_sb1_635">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722077_7451241_sb1_224]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>MASCOTA</name>
+    </instance>
+    <instance scriptid="val_785637_7451241_sb1_613">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722077_7451241_sb1_224]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>PERSONAL</name>
+    </instance>
+    <instance scriptid="val_785638_7451241_sb1_487">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722077_7451241_sb1_224]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>SMART B</name>
+    </instance>
+    <instance scriptid="val_785639_7451241_sb1_388">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>BLINDAJE CONTENEDOR 40</name>
+    </instance>
+    <instance scriptid="val_785640_7451241_sb1_894">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>BLOCK</name>
+    </instance>
+    <instance scriptid="val_785641_7451241_sb1_865">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>BOX</name>
+    </instance>
+    <instance scriptid="val_785642_7451241_sb1_693">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>CAJA BOTONERA SATELITAL</name>
+    </instance>
+    <instance scriptid="val_785643_7451241_sb1_426">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>CAJA DE SEGURIDAD PARA FURGONES</name>
+    </instance>
+    <instance scriptid="val_785644_7451241_sb1_383">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>CAJA SATELITAL</name>
+    </instance>
+    <instance scriptid="val_785645_7451241_sb1_470">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>CARGO</name>
+    </instance>
+    <instance scriptid="val_785646_7451241_sb1_256">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>CONSOLA DE CONTROL HUNTER BLOCK</name>
+    </instance>
+    <instance scriptid="val_785647_7451241_sb1_263">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>CONTENEDOR</name>
+    </instance>
+    <instance scriptid="val_785648_7451241_sb1_924">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>CONTROLADOR DE PLATAFORMAS</name>
+    </instance>
+    <instance scriptid="val_785649_7451241_sb1_613">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>CONTROLADOR ELECTRONICO DE CERRADURA PARA FURGONES</name>
+    </instance>
+    <instance scriptid="val_785650_7451241_sb1_784">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>DOMO DIGMER</name>
+    </instance>
+    <instance scriptid="val_785651_7451241_sb1_723">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>EBOX PARA INSTALACIÓN FIJA</name>
+    </instance>
+    <instance scriptid="val_785652_7451241_sb1_867">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>HUNTER BLOCK PRECINTO</name>
+    </instance>
+    <instance scriptid="val_785653_7451241_sb1_386">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>HUNTER MONITOREO PESQUERO COMPACTO</name>
+    </instance>
+    <instance scriptid="val_785654_7451241_sb1_192">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>PLUS</name>
+    </instance>
+    <instance scriptid="val_785655_7451241_sb1_602">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>REGULADOR DE ALARMA</name>
+    </instance>
+    <instance scriptid="val_830237_7451241_sb1_919">
+      <custrecord_ht_bien_tipoterrestre_codigo></custrecord_ht_bien_tipoterrestre_codigo>
+      <custrecord_ht_bien_tipoterrestre_descrip></custrecord_ht_bien_tipoterrestre_descrip>
+      <custrecord_ht_tt_idtelematic></custrecord_ht_tt_idtelematic>
+      <custrecord_ht_tt_tipobien>[scriptid=customrecord_ht_bien_tipobien.val_722078_7451241_sb1_812]</custrecord_ht_tt_tipobien>
+      <isinactive>F</isinactive>
+      <name>TECLADO PARA IDENTIFICACIÓN DE CONDUCTOR</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

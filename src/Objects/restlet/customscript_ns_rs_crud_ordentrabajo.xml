@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_crud_ordentrabajo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_CRUD_OrdenTrabajo</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/PruebaServicios/NS_RS_CRUD_OrdenTrabajo.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_crud_ordentrabajo">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>F</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_CRUD_OrdenTrabajo</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_busquedacliente">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_Busquedacliente</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/PruebaServicios/NS_RS_Busquedacliente.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_busquedacliente">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>NS_RS_Busquedacliente</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

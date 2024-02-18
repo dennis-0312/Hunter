@@ -1,0 +1,1674 @@
+<customrecordtype scriptid="customrecord_ht_bn_colorcarseg">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Color Carseg</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_colorcarseg_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_colorcarseg_descripcion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_809884_7451241_sb1_544">
+      <custrecord_ht_bn_colorcarseg_codigo>000</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NO DEFINIDO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>000 - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_809885_7451241_sb1_742">
+      <custrecord_ht_bn_colorcarseg_codigo>001</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - AZUL</name>
+    </instance>
+    <instance scriptid="val_809886_7451241_sb1_390">
+      <custrecord_ht_bn_colorcarseg_codigo>002</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - ROJO</name>
+    </instance>
+    <instance scriptid="val_809887_7451241_sb1_253">
+      <custrecord_ht_bn_colorcarseg_codigo>003</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VERDE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 - VERDE</name>
+    </instance>
+    <instance scriptid="val_809888_7451241_sb1_257">
+      <custrecord_ht_bn_colorcarseg_codigo>004</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AMARILLO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>004 - AMARILLO</name>
+    </instance>
+    <instance scriptid="val_809889_7451241_sb1_303">
+      <custrecord_ht_bn_colorcarseg_codigo>005</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>005 - BLANCO</name>
+    </instance>
+    <instance scriptid="val_809890_7451241_sb1_745">
+      <custrecord_ht_bn_colorcarseg_codigo>006</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NEGRO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>006 - NEGRO</name>
+    </instance>
+    <instance scriptid="val_809891_7451241_sb1_762">
+      <custrecord_ht_bn_colorcarseg_codigo>007</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>007 - GRIS</name>
+    </instance>
+    <instance scriptid="val_809892_7451241_sb1_363">
+      <custrecord_ht_bn_colorcarseg_codigo>008</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VINO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>008 - VINO</name>
+    </instance>
+    <instance scriptid="val_809893_7451241_sb1_537">
+      <custrecord_ht_bn_colorcarseg_codigo>009</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CELESTE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>009 - CELESTE</name>
+    </instance>
+    <instance scriptid="val_809894_7451241_sb1_507">
+      <custrecord_ht_bn_colorcarseg_codigo>010</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>RED LAND</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>010 - RED LAND</name>
+    </instance>
+    <instance scriptid="val_809895_7451241_sb1_524">
+      <custrecord_ht_bn_colorcarseg_codigo>011</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO FERRARI</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>011 - ROJO FERRARI</name>
+    </instance>
+    <instance scriptid="val_809896_7451241_sb1_250">
+      <custrecord_ht_bn_colorcarseg_codigo>012</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>012 - BEIGE</name>
+    </instance>
+    <instance scriptid="val_809897_7451241_sb1_188">
+      <custrecord_ht_bn_colorcarseg_codigo>013</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CAFE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>013 - CAFE</name>
+    </instance>
+    <instance scriptid="val_809898_7451241_sb1_239">
+      <custrecord_ht_bn_colorcarseg_codigo>014</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>TURQUESA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>014 - TURQUESA</name>
+    </instance>
+    <instance scriptid="val_809899_7451241_sb1_408">
+      <custrecord_ht_bn_colorcarseg_codigo>015</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATEADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>015 - PLATEADO</name>
+    </instance>
+    <instance scriptid="val_809900_7451241_sb1_945">
+      <custrecord_ht_bn_colorcarseg_codigo>016</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>DORADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>016 - DORADO</name>
+    </instance>
+    <instance scriptid="val_809901_7451241_sb1_740">
+      <custrecord_ht_bn_colorcarseg_codigo>017</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PERLA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>017 - PERLA</name>
+    </instance>
+    <instance scriptid="val_809902_7451241_sb1_968">
+      <custrecord_ht_bn_colorcarseg_codigo>018</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CHAMPAGNE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>018 - CHAMPAGNE</name>
+    </instance>
+    <instance scriptid="val_809903_7451241_sb1_373">
+      <custrecord_ht_bn_colorcarseg_codigo>019</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>COBRE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>019 - COBRE</name>
+    </instance>
+    <instance scriptid="val_809904_7451241_sb1_127">
+      <custrecord_ht_bn_colorcarseg_codigo>020</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BRONCE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>020 - BRONCE</name>
+    </instance>
+    <instance scriptid="val_809905_7451241_sb1_272">
+      <custrecord_ht_bn_colorcarseg_codigo>021</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL GRANITO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>021 - AZUL GRANITO</name>
+    </instance>
+    <instance scriptid="val_809906_7451241_sb1_767">
+      <custrecord_ht_bn_colorcarseg_codigo>022</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ARENA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>022 - ARENA</name>
+    </instance>
+    <instance scriptid="val_809907_7451241_sb1_277">
+      <custrecord_ht_bn_colorcarseg_codigo>023</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AMARILLO CLARO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>023 - AMARILLO CLARO</name>
+    </instance>
+    <instance scriptid="val_809908_7451241_sb1_785">
+      <custrecord_ht_bn_colorcarseg_codigo>024</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AMARILLO OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>024 - AMARILLO OSCURO</name>
+    </instance>
+    <instance scriptid="val_809909_7451241_sb1_177">
+      <custrecord_ht_bn_colorcarseg_codigo>025</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL PROFUNDO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>025 - AZUL PROFUNDO</name>
+    </instance>
+    <instance scriptid="val_809910_7451241_sb1_174">
+      <custrecord_ht_bn_colorcarseg_codigo>026</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VERDE OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>026 - VERDE OSCURO</name>
+    </instance>
+    <instance scriptid="val_809911_7451241_sb1_564">
+      <custrecord_ht_bn_colorcarseg_codigo>027</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VERDE MALAGA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>027 - VERDE MALAGA</name>
+    </instance>
+    <instance scriptid="val_809912_7451241_sb1_785">
+      <custrecord_ht_bn_colorcarseg_codigo>028</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO DESTELLO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>028 - ROJO DESTELLO</name>
+    </instance>
+    <instance scriptid="val_809913_7451241_sb1_938">
+      <custrecord_ht_bn_colorcarseg_codigo>029</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>029 - ROJO OSCURO</name>
+    </instance>
+    <instance scriptid="val_809914_7451241_sb1_580">
+      <custrecord_ht_bn_colorcarseg_codigo>030</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE CLARO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>030 - BEIGE CLARO</name>
+    </instance>
+    <instance scriptid="val_809915_7451241_sb1_757">
+      <custrecord_ht_bn_colorcarseg_codigo>031</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>031 - BEIGE OSCURO</name>
+    </instance>
+    <instance scriptid="val_809916_7451241_sb1_462">
+      <custrecord_ht_bn_colorcarseg_codigo>032</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CAFE OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>032 - CAFE OSCURO</name>
+    </instance>
+    <instance scriptid="val_809917_7451241_sb1_521">
+      <custrecord_ht_bn_colorcarseg_codigo>033</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CAFE CLARO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>033 - CAFE CLARO</name>
+    </instance>
+    <instance scriptid="val_809918_7451241_sb1_369">
+      <custrecord_ht_bn_colorcarseg_codigo>034</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS LONDON</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>034 - GRIS LONDON</name>
+    </instance>
+    <instance scriptid="val_809919_7451241_sb1_202">
+      <custrecord_ht_bn_colorcarseg_codigo>035</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>035 - GRIS OSCURO</name>
+    </instance>
+    <instance scriptid="val_809920_7451241_sb1_895">
+      <custrecord_ht_bn_colorcarseg_codigo>036</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>LILA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>036 - LILA</name>
+    </instance>
+    <instance scriptid="val_809921_7451241_sb1_806">
+      <custrecord_ht_bn_colorcarseg_codigo>037</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CAQUI ALPINE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>037 - CAQUI ALPINE</name>
+    </instance>
+    <instance scriptid="val_809922_7451241_sb1_319">
+      <custrecord_ht_bn_colorcarseg_codigo>038</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLOMO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>038 - PLOMO</name>
+    </instance>
+    <instance scriptid="val_809923_7451241_sb1_481">
+      <custrecord_ht_bn_colorcarseg_codigo>039</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VIOLETA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>039 - VIOLETA</name>
+    </instance>
+    <instance scriptid="val_809924_7451241_sb1_328">
+      <custrecord_ht_bn_colorcarseg_codigo>040</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CONCHO DE VINO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>040 - CONCHO DE VINO</name>
+    </instance>
+    <instance scriptid="val_809925_7451241_sb1_151">
+      <custrecord_ht_bn_colorcarseg_codigo>041</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ELECTRIC YELLOW</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>041 - ELECTRIC YELLOW</name>
+    </instance>
+    <instance scriptid="val_809926_7451241_sb1_731">
+      <custrecord_ht_bn_colorcarseg_codigo>042</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MARRON CLARO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>042 - MARRON CLARO</name>
+    </instance>
+    <instance scriptid="val_809927_7451241_sb1_270">
+      <custrecord_ht_bn_colorcarseg_codigo>043</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MARRON OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>043 - MARRON OSCURO</name>
+    </instance>
+    <instance scriptid="val_809928_7451241_sb1_959">
+      <custrecord_ht_bn_colorcarseg_codigo>044</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SALMON</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>044 - SALMON</name>
+    </instance>
+    <instance scriptid="val_809929_7451241_sb1_376">
+      <custrecord_ht_bn_colorcarseg_codigo>047</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BURDEOS</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>047 - BURDEOS</name>
+    </instance>
+    <instance scriptid="val_809930_7451241_sb1_487">
+      <custrecord_ht_bn_colorcarseg_codigo>049</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BURDEOS OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>049 - BURDEOS OSCURO</name>
+    </instance>
+    <instance scriptid="val_809931_7451241_sb1_297">
+      <custrecord_ht_bn_colorcarseg_codigo>050</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ANARANJADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>050 - ANARANJADO</name>
+    </instance>
+    <instance scriptid="val_809932_7451241_sb1_228">
+      <custrecord_ht_bn_colorcarseg_codigo>051</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ANARANJADO OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>051 - ANARANJADO OSCURO</name>
+    </instance>
+    <instance scriptid="val_809933_7451241_sb1_169">
+      <custrecord_ht_bn_colorcarseg_codigo>052</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO RADIANTE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>052 - ROJO RADIANTE</name>
+    </instance>
+    <instance scriptid="val_809934_7451241_sb1_113">
+      <custrecord_ht_bn_colorcarseg_codigo>053</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>IMPERIAL BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>053 - IMPERIAL BLUE</name>
+    </instance>
+    <instance scriptid="val_809935_7451241_sb1_660">
+      <custrecord_ht_bn_colorcarseg_codigo>054</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>054 - PLATA</name>
+    </instance>
+    <instance scriptid="val_809936_7451241_sb1_519">
+      <custrecord_ht_bn_colorcarseg_codigo>055</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NARANJA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>055 - NARANJA</name>
+    </instance>
+    <instance scriptid="val_809937_7451241_sb1_875">
+      <custrecord_ht_bn_colorcarseg_codigo>056</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO METALICO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>056 - ROJO METALICO</name>
+    </instance>
+    <instance scriptid="val_809938_7451241_sb1_304">
+      <custrecord_ht_bn_colorcarseg_codigo>057</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VERDE ARRECIFE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>057 - VERDE ARRECIFE</name>
+    </instance>
+    <instance scriptid="val_809939_7451241_sb1_346">
+      <custrecord_ht_bn_colorcarseg_codigo>058</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS GRANITO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>058 - GRIS GRANITO</name>
+    </instance>
+    <instance scriptid="val_809940_7451241_sb1_288">
+      <custrecord_ht_bn_colorcarseg_codigo>059</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>METALICA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>059 - METALICA</name>
+    </instance>
+    <instance scriptid="val_809941_7451241_sb1_154">
+      <custrecord_ht_bn_colorcarseg_codigo>060</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>HABANO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>060 - HABANO</name>
+    </instance>
+    <instance scriptid="val_809942_7451241_sb1_731">
+      <custrecord_ht_bn_colorcarseg_codigo>061</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRANADA BLACK</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>061 - GRANADA BLACK</name>
+    </instance>
+    <instance scriptid="val_809943_7451241_sb1_952">
+      <custrecord_ht_bn_colorcarseg_codigo>062</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>COBALT BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>062 - COBALT BLUE</name>
+    </instance>
+    <instance scriptid="val_809944_7451241_sb1_161">
+      <custrecord_ht_bn_colorcarseg_codigo>063</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CRISTAL SILVER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>063 - CRISTAL SILVER</name>
+    </instance>
+    <instance scriptid="val_809945_7451241_sb1_251">
+      <custrecord_ht_bn_colorcarseg_codigo>065</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO CAMBERRA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>065 - ROJO CAMBERRA</name>
+    </instance>
+    <instance scriptid="val_809946_7451241_sb1_230">
+      <custrecord_ht_bn_colorcarseg_codigo>066</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA ESCUNA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>066 - PLATA ESCUNA</name>
+    </instance>
+    <instance scriptid="val_809947_7451241_sb1_857">
+      <custrecord_ht_bn_colorcarseg_codigo>067</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL OBSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>067 - AZUL OBSCURO</name>
+    </instance>
+    <instance scriptid="val_809948_7451241_sb1_949">
+      <custrecord_ht_bn_colorcarseg_codigo>068</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO MAHLER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>068 - BLANCO MAHLER</name>
+    </instance>
+    <instance scriptid="val_809949_7451241_sb1_432">
+      <custrecord_ht_bn_colorcarseg_codigo>069</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS GRANITO PERLESCENTE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>069 - GRIS GRANITO PERLESCENTE</name>
+    </instance>
+    <instance scriptid="val_809950_7451241_sb1_376">
+      <custrecord_ht_bn_colorcarseg_codigo>070</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO ARCO BIC</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>070 - BLANCO ARCO BIC</name>
+    </instance>
+    <instance scriptid="val_809951_7451241_sb1_451">
+      <custrecord_ht_bn_colorcarseg_codigo>071</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PEARL BLACK</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>071 - PEARL BLACK</name>
+    </instance>
+    <instance scriptid="val_809952_7451241_sb1_528">
+      <custrecord_ht_bn_colorcarseg_codigo>072</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS ROCA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>072 - GRIS ROCA</name>
+    </instance>
+    <instance scriptid="val_809953_7451241_sb1_901">
+      <custrecord_ht_bn_colorcarseg_codigo>073</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CREMA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>073 - CREMA</name>
+    </instance>
+    <instance scriptid="val_809954_7451241_sb1_408">
+      <custrecord_ht_bn_colorcarseg_codigo>074</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GALAXY WHITE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>074 - GALAXY WHITE</name>
+    </instance>
+    <instance scriptid="val_809955_7451241_sb1_260">
+      <custrecord_ht_bn_colorcarseg_codigo>075</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>JAZZ BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>075 - JAZZ BLUE</name>
+    </instance>
+    <instance scriptid="val_809956_7451241_sb1_600">
+      <custrecord_ht_bn_colorcarseg_codigo>076</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ARENA METALIZADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>076 - ARENA METALIZADO</name>
+    </instance>
+    <instance scriptid="val_809957_7451241_sb1_898">
+      <custrecord_ht_bn_colorcarseg_codigo>077</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE TUCSON</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>077 - BEIGE TUCSON</name>
+    </instance>
+    <instance scriptid="val_809958_7451241_sb1_350">
+      <custrecord_ht_bn_colorcarseg_codigo>078</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS CONSTELACION</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>078 - GRIS CONSTELACION</name>
+    </instance>
+    <instance scriptid="val_809959_7451241_sb1_742">
+      <custrecord_ht_bn_colorcarseg_codigo>079</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO BEIGE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>079 - BLANCO BEIGE</name>
+    </instance>
+    <instance scriptid="val_809960_7451241_sb1_736">
+      <custrecord_ht_bn_colorcarseg_codigo>080</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>RED ROCK</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>080 - RED ROCK</name>
+    </instance>
+    <instance scriptid="val_809961_7451241_sb1_504">
+      <custrecord_ht_bn_colorcarseg_codigo>081</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS TRINIDAD</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>081 - GRIS TRINIDAD</name>
+    </instance>
+    <instance scriptid="val_809962_7451241_sb1_373">
+      <custrecord_ht_bn_colorcarseg_codigo>082</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS CUMBERLAN</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>082 - GRIS CUMBERLAN</name>
+    </instance>
+    <instance scriptid="val_809963_7451241_sb1_582">
+      <custrecord_ht_bn_colorcarseg_codigo>083</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA  ACUATICA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>083 - PLATA  ACUATICA</name>
+    </instance>
+    <instance scriptid="val_809964_7451241_sb1_204">
+      <custrecord_ht_bn_colorcarseg_codigo>084</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO ARCO BICAPA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>084 - BLANCO ARCO BICAPA</name>
+    </instance>
+    <instance scriptid="val_809965_7451241_sb1_275">
+      <custrecord_ht_bn_colorcarseg_codigo>085</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PEACH ORANGE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>085 - PEACH ORANGE</name>
+    </instance>
+    <instance scriptid="val_809966_7451241_sb1_802">
+      <custrecord_ht_bn_colorcarseg_codigo>086</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SUNSET ORANGE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>086 - SUNSET ORANGE</name>
+    </instance>
+    <instance scriptid="val_809967_7451241_sb1_243">
+      <custrecord_ht_bn_colorcarseg_codigo>087</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NEGRO TITAN</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>087 - NEGRO TITAN</name>
+    </instance>
+    <instance scriptid="val_809968_7451241_sb1_654">
+      <custrecord_ht_bn_colorcarseg_codigo>088</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MARRON CENDERO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>088 - MARRON CENDERO</name>
+    </instance>
+    <instance scriptid="val_809969_7451241_sb1_159">
+      <custrecord_ht_bn_colorcarseg_codigo>089</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO DINAMO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>089 - ROJO DINAMO</name>
+    </instance>
+    <instance scriptid="val_809970_7451241_sb1_998">
+      <custrecord_ht_bn_colorcarseg_codigo>090</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA POLARIS</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>090 - PLATA POLARIS</name>
+    </instance>
+    <instance scriptid="val_809971_7451241_sb1_487">
+      <custrecord_ht_bn_colorcarseg_codigo>091</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO MICA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>091 - ROJO MICA</name>
+    </instance>
+    <instance scriptid="val_809972_7451241_sb1_299">
+      <custrecord_ht_bn_colorcarseg_codigo>092</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA ASTRAL</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>092 - PLATA ASTRAL</name>
+    </instance>
+    <instance scriptid="val_809973_7451241_sb1_763">
+      <custrecord_ht_bn_colorcarseg_codigo>093</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AQUA SILVER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>093 - AQUA SILVER</name>
+    </instance>
+    <instance scriptid="val_809974_7451241_sb1_308">
+      <custrecord_ht_bn_colorcarseg_codigo>094</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>STONE GRAY</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>094 - STONE GRAY</name>
+    </instance>
+    <instance scriptid="val_809975_7451241_sb1_143">
+      <custrecord_ht_bn_colorcarseg_codigo>095</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL METALICO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>095 - AZUL METALICO</name>
+    </instance>
+    <instance scriptid="val_809976_7451241_sb1_930">
+      <custrecord_ht_bn_colorcarseg_codigo>096</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>FLAME RED</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>096 - FLAME RED</name>
+    </instance>
+    <instance scriptid="val_809977_7451241_sb1_645">
+      <custrecord_ht_bn_colorcarseg_codigo>097</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>REFLEX SILVER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>097 - REFLEX SILVER</name>
+    </instance>
+    <instance scriptid="val_809978_7451241_sb1_186">
+      <custrecord_ht_bn_colorcarseg_codigo>098</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SPARKLING</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>098 - SPARKLING</name>
+    </instance>
+    <instance scriptid="val_809979_7451241_sb1_430">
+      <custrecord_ht_bn_colorcarseg_codigo>099</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>POLY SILVER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>099 - POLY SILVER</name>
+    </instance>
+    <instance scriptid="val_809980_7451241_sb1_505">
+      <custrecord_ht_bn_colorcarseg_codigo>100</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE OASIS</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>100 - BEIGE OASIS</name>
+    </instance>
+    <instance scriptid="val_809981_7451241_sb1_735">
+      <custrecord_ht_bn_colorcarseg_codigo>101</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>URBAN GREY</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>101 - URBAN GREY</name>
+    </instance>
+    <instance scriptid="val_809982_7451241_sb1_173">
+      <custrecord_ht_bn_colorcarseg_codigo>102</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MADERA OSCURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>102 - MADERA OSCURO</name>
+    </instance>
+    <instance scriptid="val_809983_7451241_sb1_500">
+      <custrecord_ht_bn_colorcarseg_codigo>103</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO SPORT</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>103 - ROJO SPORT</name>
+    </instance>
+    <instance scriptid="val_809984_7451241_sb1_940">
+      <custrecord_ht_bn_colorcarseg_codigo>104</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL NOCTURNO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>104 - AZUL NOCTURNO</name>
+    </instance>
+    <instance scriptid="val_809985_7451241_sb1_520">
+      <custrecord_ht_bn_colorcarseg_codigo>105</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS BRETANA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>105 - GRIS BRETANA</name>
+    </instance>
+    <instance scriptid="val_809986_7451241_sb1_684">
+      <custrecord_ht_bn_colorcarseg_codigo>106</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MELANGE BEIGE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>106 - MELANGE BEIGE</name>
+    </instance>
+    <instance scriptid="val_809987_7451241_sb1_719">
+      <custrecord_ht_bn_colorcarseg_codigo>107</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VERDE OSCURO/PLATEADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>107 - VERDE OSCURO/PLATEADO</name>
+    </instance>
+    <instance scriptid="val_809988_7451241_sb1_453">
+      <custrecord_ht_bn_colorcarseg_codigo>108</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL GRISACEO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>108 - AZUL GRISACEO</name>
+    </instance>
+    <instance scriptid="val_809989_7451241_sb1_899">
+      <custrecord_ht_bn_colorcarseg_codigo>109</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE MARROQUI</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>109 - BEIGE MARROQUI</name>
+    </instance>
+    <instance scriptid="val_809990_7451241_sb1_909">
+      <custrecord_ht_bn_colorcarseg_codigo>111</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SUPER RED</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>111 - SUPER RED</name>
+    </instance>
+    <instance scriptid="val_809991_7451241_sb1_171">
+      <custrecord_ht_bn_colorcarseg_codigo>112</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA REFLEX</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>112 - PLATA REFLEX</name>
+    </instance>
+    <instance scriptid="val_809992_7451241_sb1_943">
+      <custrecord_ht_bn_colorcarseg_codigo>113</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS OLIVO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>113 - GRIS OLIVO</name>
+    </instance>
+    <instance scriptid="val_809993_7451241_sb1_732">
+      <custrecord_ht_bn_colorcarseg_codigo>114</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>DYNAMIC ORANGE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>114 - DYNAMIC ORANGE</name>
+    </instance>
+    <instance scriptid="val_809994_7451241_sb1_243">
+      <custrecord_ht_bn_colorcarseg_codigo>115</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO ALMAGRO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>115 - ROJO ALMAGRO</name>
+    </instance>
+    <instance scriptid="val_809995_7451241_sb1_967">
+      <custrecord_ht_bn_colorcarseg_codigo>116</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CANDY APLE RED</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>116 - CANDY APLE RED</name>
+    </instance>
+    <instance scriptid="val_809996_7451241_sb1_553">
+      <custrecord_ht_bn_colorcarseg_codigo>117</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GALWAY GREEN</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>117 - GALWAY GREEN</name>
+    </instance>
+    <instance scriptid="val_809997_7451241_sb1_843">
+      <custrecord_ht_bn_colorcarseg_codigo>118</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS PERLA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>118 - GRIS PERLA</name>
+    </instance>
+    <instance scriptid="val_809998_7451241_sb1_248">
+      <custrecord_ht_bn_colorcarseg_codigo>119</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ARC WHITE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>119 - ARC WHITE</name>
+    </instance>
+    <instance scriptid="val_809999_7451241_sb1_955">
+      <custrecord_ht_bn_colorcarseg_codigo>120</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS METALICO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>120 - GRIS METALICO</name>
+    </instance>
+    <instance scriptid="val_810000_7451241_sb1_111">
+      <custrecord_ht_bn_colorcarseg_codigo>121</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NEWMILD SYLVER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>121 - NEWMILD SYLVER</name>
+    </instance>
+    <instance scriptid="val_810001_7451241_sb1_524">
+      <custrecord_ht_bn_colorcarseg_codigo>122</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO PURO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>122 - BLANCO PURO</name>
+    </instance>
+    <instance scriptid="val_810002_7451241_sb1_376">
+      <custrecord_ht_bn_colorcarseg_codigo>123</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>TRUFFLE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>123 - TRUFFLE</name>
+    </instance>
+    <instance scriptid="val_810003_7451241_sb1_534">
+      <custrecord_ht_bn_colorcarseg_codigo>124</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VERDE AMAZONIA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>124 - VERDE AMAZONIA</name>
+    </instance>
+    <instance scriptid="val_810004_7451241_sb1_776">
+      <custrecord_ht_bn_colorcarseg_codigo>125</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>METEOR GREY</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>125 - METEOR GREY</name>
+    </instance>
+    <instance scriptid="val_810005_7451241_sb1_681">
+      <custrecord_ht_bn_colorcarseg_codigo>126</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL CORCEGA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>126 - AZUL CORCEGA</name>
+    </instance>
+    <instance scriptid="val_810006_7451241_sb1_102">
+      <custrecord_ht_bn_colorcarseg_codigo>127</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO PERLADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>127 - BLANCO PERLADO</name>
+    </instance>
+    <instance scriptid="val_810007_7451241_sb1_854">
+      <custrecord_ht_bn_colorcarseg_codigo>128</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>POSEIDON BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>128 - POSEIDON BLUE</name>
+    </instance>
+    <instance scriptid="val_810008_7451241_sb1_808">
+      <custrecord_ht_bn_colorcarseg_codigo>129</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS NOCTURNO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>129 - GRIS NOCTURNO</name>
+    </instance>
+    <instance scriptid="val_810009_7451241_sb1_128">
+      <custrecord_ht_bn_colorcarseg_codigo>130</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS ECLIPSE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>130 - GRIS ECLIPSE</name>
+    </instance>
+    <instance scriptid="val_810010_7451241_sb1_450">
+      <custrecord_ht_bn_colorcarseg_codigo>131</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MARRON</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>131 - MARRON</name>
+    </instance>
+    <instance scriptid="val_810011_7451241_sb1_276">
+      <custrecord_ht_bn_colorcarseg_codigo>132</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>TEAL BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>132 - TEAL BLUE</name>
+    </instance>
+    <instance scriptid="val_810012_7451241_sb1_708">
+      <custrecord_ht_bn_colorcarseg_codigo>133</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AMARILLO DESTELLO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>133 - AMARILLO DESTELLO</name>
+    </instance>
+    <instance scriptid="val_810013_7451241_sb1_166">
+      <custrecord_ht_bn_colorcarseg_codigo>134</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS ALUMINIUM</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>134 - GRIS ALUMINIUM</name>
+    </instance>
+    <instance scriptid="val_810014_7451241_sb1_474">
+      <custrecord_ht_bn_colorcarseg_codigo>135</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL VENECIA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>135 - AZUL VENECIA</name>
+    </instance>
+    <instance scriptid="val_810015_7451241_sb1_728">
+      <custrecord_ht_bn_colorcarseg_codigo>136</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NEGRO EBONY</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>136 - NEGRO EBONY</name>
+    </instance>
+    <instance scriptid="val_810016_7451241_sb1_952">
+      <custrecord_ht_bn_colorcarseg_codigo>137</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NOBLE WHITE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>137 - NOBLE WHITE</name>
+    </instance>
+    <instance scriptid="val_810017_7451241_sb1_832">
+      <custrecord_ht_bn_colorcarseg_codigo>138</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SPORTS BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>138 - SPORTS BLUE</name>
+    </instance>
+    <instance scriptid="val_810018_7451241_sb1_643">
+      <custrecord_ht_bn_colorcarseg_codigo>139</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SILVER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>139 - SILVER</name>
+    </instance>
+    <instance scriptid="val_810019_7451241_sb1_215">
+      <custrecord_ht_bn_colorcarseg_codigo>140</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>DIAMON WHITE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>140 - DIAMON WHITE</name>
+    </instance>
+    <instance scriptid="val_810020_7451241_sb1_451">
+      <custrecord_ht_bn_colorcarseg_codigo>141</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ALUMINIO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>141 - ALUMINIO</name>
+    </instance>
+    <instance scriptid="val_810021_7451241_sb1_528">
+      <custrecord_ht_bn_colorcarseg_codigo>142</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE GRISACEO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>142 - BEIGE GRISACEO</name>
+    </instance>
+    <instance scriptid="val_810022_7451241_sb1_460">
+      <custrecord_ht_bn_colorcarseg_codigo>143</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA CELESTIAL</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>143 - PLATA CELESTIAL</name>
+    </instance>
+    <instance scriptid="val_810023_7451241_sb1_193">
+      <custrecord_ht_bn_colorcarseg_codigo>144</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE DUNA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>144 - BEIGE DUNA</name>
+    </instance>
+    <instance scriptid="val_810024_7451241_sb1_363">
+      <custrecord_ht_bn_colorcarseg_codigo>145</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ORO BLANCO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>145 - ORO BLANCO</name>
+    </instance>
+    <instance scriptid="val_810025_7451241_sb1_833">
+      <custrecord_ht_bn_colorcarseg_codigo>146</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>LIGHT CHARDONNA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>146 - LIGHT CHARDONNA</name>
+    </instance>
+    <instance scriptid="val_810026_7451241_sb1_943">
+      <custrecord_ht_bn_colorcarseg_codigo>147</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MADERA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>147 - MADERA</name>
+    </instance>
+    <instance scriptid="val_810027_7451241_sb1_805">
+      <custrecord_ht_bn_colorcarseg_codigo>148</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>LIGHT OPAL GREY</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>148 - LIGHT OPAL GREY</name>
+    </instance>
+    <instance scriptid="val_810028_7451241_sb1_534">
+      <custrecord_ht_bn_colorcarseg_codigo>149</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL/PLATA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>149 - AZUL/PLATA</name>
+    </instance>
+    <instance scriptid="val_810029_7451241_sb1_250">
+      <custrecord_ht_bn_colorcarseg_codigo>150</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS AZULADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>150 - GRIS AZULADO</name>
+    </instance>
+    <instance scriptid="val_810030_7451241_sb1_672">
+      <custrecord_ht_bn_colorcarseg_codigo>151</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO RADIANTE/BEIGE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>151 - ROJO RADIANTE/BEIGE</name>
+    </instance>
+    <instance scriptid="val_810031_7451241_sb1_270">
+      <custrecord_ht_bn_colorcarseg_codigo>152</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLACK GRANITE METALLIC</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>152 - BLACK GRANITE METALLIC</name>
+    </instance>
+    <instance scriptid="val_810032_7451241_sb1_579">
+      <custrecord_ht_bn_colorcarseg_codigo>153</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE TURQUIA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>153 - BEIGE TURQUIA</name>
+    </instance>
+    <instance scriptid="val_810033_7451241_sb1_583">
+      <custrecord_ht_bn_colorcarseg_codigo>154</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>DENIM BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>154 - DENIM BLUE</name>
+    </instance>
+    <instance scriptid="val_810034_7451241_sb1_425">
+      <custrecord_ht_bn_colorcarseg_codigo>155</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>OCEAN BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>155 - OCEAN BLUE</name>
+    </instance>
+    <instance scriptid="val_810035_7451241_sb1_580">
+      <custrecord_ht_bn_colorcarseg_codigo>156</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CARBON FLASH</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>156 - CARBON FLASH</name>
+    </instance>
+    <instance scriptid="val_810036_7451241_sb1_592">
+      <custrecord_ht_bn_colorcarseg_codigo>157</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA ESCUNA (2)</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>157 - PLATA ESCUNA (2)</name>
+    </instance>
+    <instance scriptid="val_810037_7451241_sb1_117">
+      <custrecord_ht_bn_colorcarseg_codigo>158</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NEGRO DIAMANTE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>158 - NEGRO DIAMANTE</name>
+    </instance>
+    <instance scriptid="val_810038_7451241_sb1_847">
+      <custrecord_ht_bn_colorcarseg_codigo>159</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL OCEANO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>159 - AZUL OCEANO</name>
+    </instance>
+    <instance scriptid="val_810039_7451241_sb1_725">
+      <custrecord_ht_bn_colorcarseg_codigo>160</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GOLDEN YELLOW</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>160 - GOLDEN YELLOW</name>
+    </instance>
+    <instance scriptid="val_810040_7451241_sb1_292">
+      <custrecord_ht_bn_colorcarseg_codigo>161</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>OPAL FUEGO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>161 - OPAL FUEGO</name>
+    </instance>
+    <instance scriptid="val_810041_7451241_sb1_949">
+      <custrecord_ht_bn_colorcarseg_codigo>163</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>DEEP RUBY METALLIC</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>163 - DEEP RUBY METALLIC</name>
+    </instance>
+    <instance scriptid="val_810042_7451241_sb1_735">
+      <custrecord_ht_bn_colorcarseg_codigo>164</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE MARRUECOS</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>164 - BEIGE MARRUECOS</name>
+    </instance>
+    <instance scriptid="val_810043_7451241_sb1_602">
+      <custrecord_ht_bn_colorcarseg_codigo>165</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AMARILLO DUBAI</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>165 - AMARILLO DUBAI</name>
+    </instance>
+    <instance scriptid="val_810044_7451241_sb1_687">
+      <custrecord_ht_bn_colorcarseg_codigo>166</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO ANTARTIDA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>166 - BLANCO ANTARTIDA</name>
+    </instance>
+    <instance scriptid="val_810045_7451241_sb1_546">
+      <custrecord_ht_bn_colorcarseg_codigo>167</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>APPLE GREEN</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>167 - APPLE GREEN</name>
+    </instance>
+    <instance scriptid="val_810046_7451241_sb1_833">
+      <custrecord_ht_bn_colorcarseg_codigo>168</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>WARM SILVER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>168 - WARM SILVER</name>
+    </instance>
+    <instance scriptid="val_810047_7451241_sb1_305">
+      <custrecord_ht_bn_colorcarseg_codigo>169</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CANDY ORANGE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>169 - CANDY ORANGE</name>
+    </instance>
+    <instance scriptid="val_810048_7451241_sb1_536">
+      <custrecord_ht_bn_colorcarseg_codigo>170</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>DARK BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>170 - DARK BLUE</name>
+    </instance>
+    <instance scriptid="val_810049_7451241_sb1_131">
+      <custrecord_ht_bn_colorcarseg_codigo>172</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL ZAFIRO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>172 - AZUL ZAFIRO</name>
+    </instance>
+    <instance scriptid="val_810050_7451241_sb1_849">
+      <custrecord_ht_bn_colorcarseg_codigo>173</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS MERCURIO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>173 - GRIS MERCURIO</name>
+    </instance>
+    <instance scriptid="val_810051_7451241_sb1_404">
+      <custrecord_ht_bn_colorcarseg_codigo>174</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MISTY BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>174 - MISTY BLUE</name>
+    </instance>
+    <instance scriptid="val_810052_7451241_sb1_246">
+      <custrecord_ht_bn_colorcarseg_codigo>175</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SILVER ME</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>175 - SILVER ME</name>
+    </instance>
+    <instance scriptid="val_810053_7451241_sb1_410">
+      <custrecord_ht_bn_colorcarseg_codigo>176</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>LINEN BEIGE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>176 - LINEN BEIGE</name>
+    </instance>
+    <instance scriptid="val_810054_7451241_sb1_313">
+      <custrecord_ht_bn_colorcarseg_codigo>177</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL BAVARO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>177 - AZUL BAVARO</name>
+    </instance>
+    <instance scriptid="val_810055_7451241_sb1_103">
+      <custrecord_ht_bn_colorcarseg_codigo>178</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO CLASICO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>178 - ROJO CLASICO</name>
+    </instance>
+    <instance scriptid="val_810056_7451241_sb1_371">
+      <custrecord_ht_bn_colorcarseg_codigo>179</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO CEREZO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>179 - ROJO CEREZO</name>
+    </instance>
+    <instance scriptid="val_810057_7451241_sb1_700">
+      <custrecord_ht_bn_colorcarseg_codigo>180</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS OXFORD</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>180 - GRIS OXFORD</name>
+    </instance>
+    <instance scriptid="val_810058_7451241_sb1_901">
+      <custrecord_ht_bn_colorcarseg_codigo>181</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO ARTICO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>181 - BLANCO ARTICO</name>
+    </instance>
+    <instance scriptid="val_810059_7451241_sb1_702">
+      <custrecord_ht_bn_colorcarseg_codigo>182</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLUE RIBBON MET</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>182 - BLUE RIBBON MET</name>
+    </instance>
+    <instance scriptid="val_810060_7451241_sb1_941">
+      <custrecord_ht_bn_colorcarseg_codigo>183</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CELESTE METALICO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>183 - CELESTE METALICO</name>
+    </instance>
+    <instance scriptid="val_810061_7451241_sb1_493">
+      <custrecord_ht_bn_colorcarseg_codigo>184</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MORADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>184 - MORADO</name>
+    </instance>
+    <instance scriptid="val_810062_7451241_sb1_401">
+      <custrecord_ht_bn_colorcarseg_codigo>185</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO ESCUNA (2)</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>185 - BLANCO ESCUNA (2)</name>
+    </instance>
+    <instance scriptid="val_810063_7451241_sb1_616">
+      <custrecord_ht_bn_colorcarseg_codigo>187</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO PLATA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>187 - BLANCO PLATA</name>
+    </instance>
+    <instance scriptid="val_810064_7451241_sb1_858">
+      <custrecord_ht_bn_colorcarseg_codigo>188</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO CANDY</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>188 - BLANCO CANDY</name>
+    </instance>
+    <instance scriptid="val_810065_7451241_sb1_456">
+      <custrecord_ht_bn_colorcarseg_codigo>189</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BURGUNDY</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>189 - BURGUNDY</name>
+    </instance>
+    <instance scriptid="val_810066_7451241_sb1_289">
+      <custrecord_ht_bn_colorcarseg_codigo>190</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PEARL WHITE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>190 - PEARL WHITE</name>
+    </instance>
+    <instance scriptid="val_810067_7451241_sb1_951">
+      <custrecord_ht_bn_colorcarseg_codigo>191</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>KASHMIR BLUE PEARL METALIC</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>191 - KASHMIR BLUE PEARL METALIC</name>
+    </instance>
+    <instance scriptid="val_810068_7451241_sb1_500">
+      <custrecord_ht_bn_colorcarseg_codigo>193</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>KODAI MAUVE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>193 - KODAI MAUVE</name>
+    </instance>
+    <instance scriptid="val_810069_7451241_sb1_497">
+      <custrecord_ht_bn_colorcarseg_codigo>194</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRAFHITE GRAY PEARL METALLIC</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>194 - GRAFHITE GRAY PEARL METALLIC</name>
+    </instance>
+    <instance scriptid="val_810070_7451241_sb1_426">
+      <custrecord_ht_bn_colorcarseg_codigo>195</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>YELLOW HIGHWAY</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>195 - YELLOW HIGHWAY</name>
+    </instance>
+    <instance scriptid="val_810071_7451241_sb1_474">
+      <custrecord_ht_bn_colorcarseg_codigo>197</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MIGHTY BLU</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>197 - MIGHTY BLU</name>
+    </instance>
+    <instance scriptid="val_810072_7451241_sb1_993">
+      <custrecord_ht_bn_colorcarseg_codigo>198</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS NEPTUNO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>198 - GRIS NEPTUNO</name>
+    </instance>
+    <instance scriptid="val_810073_7451241_sb1_198">
+      <custrecord_ht_bn_colorcarseg_codigo>199</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PURPURA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>199 - PURPURA</name>
+    </instance>
+    <instance scriptid="val_810074_7451241_sb1_619">
+      <custrecord_ht_bn_colorcarseg_codigo>200</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS CAMBURI</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>200 - GRIS CAMBURI</name>
+    </instance>
+    <instance scriptid="val_810075_7451241_sb1_139">
+      <custrecord_ht_bn_colorcarseg_codigo>201</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS PLATINA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>201 - GRIS PLATINA</name>
+    </instance>
+    <instance scriptid="val_810076_7451241_sb1_996">
+      <custrecord_ht_bn_colorcarseg_codigo>202</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE RIVIERA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>202 - BEIGE RIVIERA</name>
+    </instance>
+    <instance scriptid="val_810077_7451241_sb1_113">
+      <custrecord_ht_bn_colorcarseg_codigo>203</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA REFLEJO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>203 - PLATA REFLEJO</name>
+    </instance>
+    <instance scriptid="val_810078_7451241_sb1_493">
+      <custrecord_ht_bn_colorcarseg_codigo>204</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA ARIANNE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>204 - PLATA ARIANNE</name>
+    </instance>
+    <instance scriptid="val_810079_7451241_sb1_356">
+      <custrecord_ht_bn_colorcarseg_codigo>205</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NOCCIOLA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>205 - NOCCIOLA</name>
+    </instance>
+    <instance scriptid="val_810080_7451241_sb1_929">
+      <custrecord_ht_bn_colorcarseg_codigo>206</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATINGRAU</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>206 - PLATINGRAU</name>
+    </instance>
+    <instance scriptid="val_810081_7451241_sb1_539">
+      <custrecord_ht_bn_colorcarseg_codigo>207</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO SANGRIA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>207 - ROJO SANGRIA</name>
+    </instance>
+    <instance scriptid="val_810082_7451241_sb1_658">
+      <custrecord_ht_bn_colorcarseg_codigo>208</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NAZCA SAND</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>208 - NAZCA SAND</name>
+    </instance>
+    <instance scriptid="val_810083_7451241_sb1_879">
+      <custrecord_ht_bn_colorcarseg_codigo>209</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ARTIC SILVER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>209 - ARTIC SILVER</name>
+    </instance>
+    <instance scriptid="val_810084_7451241_sb1_966">
+      <custrecord_ht_bn_colorcarseg_codigo>210</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ALASKA WHITE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>210 - ALASKA WHITE</name>
+    </instance>
+    <instance scriptid="val_810085_7451241_sb1_147">
+      <custrecord_ht_bn_colorcarseg_codigo>211</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>MIGHTY BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>211 - MIGHTY BLUE</name>
+    </instance>
+    <instance scriptid="val_810086_7451241_sb1_317">
+      <custrecord_ht_bn_colorcarseg_codigo>212</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>OLYMPIC WHITE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>212 - OLYMPIC WHITE</name>
+    </instance>
+    <instance scriptid="val_810087_7451241_sb1_427">
+      <custrecord_ht_bn_colorcarseg_codigo>213</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO CARRERA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>213 - ROJO CARRERA</name>
+    </instance>
+    <instance scriptid="val_810088_7451241_sb1_682">
+      <custrecord_ht_bn_colorcarseg_codigo>214</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>DEEP BLACK PERL</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>214 - DEEP BLACK PERL</name>
+    </instance>
+    <instance scriptid="val_810089_7451241_sb1_205">
+      <custrecord_ht_bn_colorcarseg_codigo>215</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BEIGE METALICO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>215 - BEIGE METALICO</name>
+    </instance>
+    <instance scriptid="val_810090_7451241_sb1_493">
+      <custrecord_ht_bn_colorcarseg_codigo>216</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SWITHBLADE SILV</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>216 - SWITHBLADE SILV</name>
+    </instance>
+    <instance scriptid="val_810091_7451241_sb1_249">
+      <custrecord_ht_bn_colorcarseg_codigo>217</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO LUCIFER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>217 - ROJO LUCIFER</name>
+    </instance>
+    <instance scriptid="val_810092_7451241_sb1_750">
+      <custrecord_ht_bn_colorcarseg_codigo>218</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CYPRESS GREEN</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>218 - CYPRESS GREEN</name>
+    </instance>
+    <instance scriptid="val_810093_7451241_sb1_379">
+      <custrecord_ht_bn_colorcarseg_codigo>220</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL VERDOSO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>220 - AZUL VERDOSO</name>
+    </instance>
+    <instance scriptid="val_810094_7451241_sb1_136">
+      <custrecord_ht_bn_colorcarseg_codigo>221</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>UVA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>221 - UVA</name>
+    </instance>
+    <instance scriptid="val_810095_7451241_sb1_161">
+      <custrecord_ht_bn_colorcarseg_codigo>222</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ZERMATT SILVER</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>222 - ZERMATT SILVER</name>
+    </instance>
+    <instance scriptid="val_810096_7451241_sb1_811">
+      <custrecord_ht_bn_colorcarseg_codigo>223</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA METALICO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>223 - PLATA METALICO</name>
+    </instance>
+    <instance scriptid="val_810097_7451241_sb1_653">
+      <custrecord_ht_bn_colorcarseg_codigo>224</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BUCKINGHAM BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>224 - BUCKINGHAM BLUE</name>
+    </instance>
+    <instance scriptid="val_810098_7451241_sb1_361">
+      <custrecord_ht_bn_colorcarseg_codigo>225</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL GRIS</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>225 - AZUL GRIS</name>
+    </instance>
+    <instance scriptid="val_810099_7451241_sb1_148">
+      <custrecord_ht_bn_colorcarseg_codigo>226</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>POLAR WHITE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>226 - POLAR WHITE</name>
+    </instance>
+    <instance scriptid="val_810100_7451241_sb1_606">
+      <custrecord_ht_bn_colorcarseg_codigo>227</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO NEVADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>227 - BLANCO NEVADO</name>
+    </instance>
+    <instance scriptid="val_810101_7451241_sb1_252">
+      <custrecord_ht_bn_colorcarseg_codigo>228</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZURE GRAY PEARL METALLIC</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>228 - AZURE GRAY PEARL METALLIC</name>
+    </instance>
+    <instance scriptid="val_810102_7451241_sb1_140">
+      <custrecord_ht_bn_colorcarseg_codigo>229</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SKY BLUE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>229 - SKY BLUE</name>
+    </instance>
+    <instance scriptid="val_810103_7451241_sb1_346">
+      <custrecord_ht_bn_colorcarseg_codigo>230</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>khaki</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>230 - khaki</name>
+    </instance>
+    <instance scriptid="val_810104_7451241_sb1_165">
+      <custrecord_ht_bn_colorcarseg_codigo>231</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>OAK GREEN</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>231 - OAK GREEN</name>
+    </instance>
+    <instance scriptid="val_810105_7451241_sb1_802">
+      <custrecord_ht_bn_colorcarseg_codigo>232</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLUISH BLACK PEARL 3</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>232 - BLUISH BLACK PEARL 3</name>
+    </instance>
+    <instance scriptid="val_810106_7451241_sb1_945">
+      <custrecord_ht_bn_colorcarseg_codigo>233</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SILKY SILVER METALLIC</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>233 - SILKY SILVER METALLIC</name>
+    </instance>
+    <instance scriptid="val_810107_7451241_sb1_347">
+      <custrecord_ht_bn_colorcarseg_codigo>234</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ORO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>234 - ORO</name>
+    </instance>
+    <instance scriptid="val_810108_7451241_sb1_803">
+      <custrecord_ht_bn_colorcarseg_codigo>235</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CLEAR BEIGE METALLIC</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>235 - CLEAR BEIGE METALLIC</name>
+    </instance>
+    <instance scriptid="val_810109_7451241_sb1_447">
+      <custrecord_ht_bn_colorcarseg_codigo>236</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA ESTRELLA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>236 - PLATA ESTRELLA</name>
+    </instance>
+    <instance scriptid="val_810110_7451241_sb1_175">
+      <custrecord_ht_bn_colorcarseg_codigo>237</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO VERONA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>237 - ROJO VERONA</name>
+    </instance>
+    <instance scriptid="val_810111_7451241_sb1_222">
+      <custrecord_ht_bn_colorcarseg_codigo>238</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GRIS TORMENTA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>238 - GRIS TORMENTA</name>
+    </instance>
+    <instance scriptid="val_810112_7451241_sb1_113">
+      <custrecord_ht_bn_colorcarseg_codigo>239</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>SHINING RED PEARL</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>239 - SHINING RED PEARL</name>
+    </instance>
+    <instance scriptid="val_810113_7451241_sb1_449">
+      <custrecord_ht_bn_colorcarseg_codigo>240</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CANDY PURPLE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>240 - CANDY PURPLE</name>
+    </instance>
+    <instance scriptid="val_810114_7451241_sb1_891">
+      <custrecord_ht_bn_colorcarseg_codigo>241</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL MARINO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>241 - AZUL MARINO</name>
+    </instance>
+    <instance scriptid="val_810115_7451241_sb1_392">
+      <custrecord_ht_bn_colorcarseg_codigo>242</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CHAMPANGNE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>242 - CHAMPANGNE</name>
+    </instance>
+    <instance scriptid="val_810116_7451241_sb1_560">
+      <custrecord_ht_bn_colorcarseg_codigo>243</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROSADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>243 - ROSADO</name>
+    </instance>
+    <instance scriptid="val_810117_7451241_sb1_297">
+      <custrecord_ht_bn_colorcarseg_codigo>244</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL/ROJO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>244 - AZUL/ROJO</name>
+    </instance>
+    <instance scriptid="val_810118_7451241_sb1_238">
+      <custrecord_ht_bn_colorcarseg_codigo>245</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO FLAMA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>245 - ROJO FLAMA</name>
+    </instance>
+    <instance scriptid="val_810119_7451241_sb1_796">
+      <custrecord_ht_bn_colorcarseg_codigo>246</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO ARDIENTE</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>246 - ROJO ARDIENTE</name>
+    </instance>
+    <instance scriptid="val_810120_7451241_sb1_102">
+      <custrecord_ht_bn_colorcarseg_codigo>247</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO A.B.</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>247 - BLANCO A.B.</name>
+    </instance>
+    <instance scriptid="val_810121_7451241_sb1_940">
+      <custrecord_ht_bn_colorcarseg_codigo>248</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATA ESC.</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>248 - PLATA ESC.</name>
+    </instance>
+    <instance scriptid="val_810122_7451241_sb1_733">
+      <custrecord_ht_bn_colorcarseg_codigo>249</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL/BLAN</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>249 - AZUL/BLAN</name>
+    </instance>
+    <instance scriptid="val_810123_7451241_sb1_593">
+      <custrecord_ht_bn_colorcarseg_codigo>250</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>NEGRAS</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>250 - NEGRAS</name>
+    </instance>
+    <instance scriptid="val_810124_7451241_sb1_471">
+      <custrecord_ht_bn_colorcarseg_codigo>251</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>N/D</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>251 - N/D</name>
+    </instance>
+    <instance scriptid="val_810125_7451241_sb1_695">
+      <custrecord_ht_bn_colorcarseg_codigo>252</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>N/A</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>252 - N/A</name>
+    </instance>
+    <instance scriptid="val_810126_7451241_sb1_294">
+      <custrecord_ht_bn_colorcarseg_codigo>253</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VERDE LIMON</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>253 - VERDE LIMON</name>
+    </instance>
+    <instance scriptid="val_810127_7451241_sb1_187">
+      <custrecord_ht_bn_colorcarseg_codigo>254</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCOO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>254 - BLANCOO</name>
+    </instance>
+    <instance scriptid="val_810128_7451241_sb1_304">
+      <custrecord_ht_bn_colorcarseg_codigo>255</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATREADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>255 - PLATREADO</name>
+    </instance>
+    <instance scriptid="val_810129_7451241_sb1_271">
+      <custrecord_ht_bn_colorcarseg_codigo>256</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>VERDE MILITAR</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>256 - VERDE MILITAR</name>
+    </instance>
+    <instance scriptid="val_810130_7451241_sb1_226">
+      <custrecord_ht_bn_colorcarseg_codigo>257</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJO VINO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>257 - ROJO VINO</name>
+    </instance>
+    <instance scriptid="val_810131_7451241_sb1_918">
+      <custrecord_ht_bn_colorcarseg_codigo>258</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CAMUFLADO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>258 - CAMUFLADO</name>
+    </instance>
+    <instance scriptid="val_810132_7451241_sb1_454">
+      <custrecord_ht_bn_colorcarseg_codigo>259</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>259 - BLANCO </name>
+    </instance>
+    <instance scriptid="val_810133_7451241_sb1_978">
+      <custrecord_ht_bn_colorcarseg_codigo>260</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLOMO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>260 - PLOMO </name>
+    </instance>
+    <instance scriptid="val_810134_7451241_sb1_329">
+      <custrecord_ht_bn_colorcarseg_codigo>261</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>CREMA-VINO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>261 - CREMA-VINO</name>
+    </instance>
+    <instance scriptid="val_810135_7451241_sb1_994">
+      <custrecord_ht_bn_colorcarseg_codigo>262</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>BLANCA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>262 - BLANCA</name>
+    </instance>
+    <instance scriptid="val_810136_7451241_sb1_262">
+      <custrecord_ht_bn_colorcarseg_codigo>263</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>AZUL  OCEANO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>263 - AZUL  OCEANO</name>
+    </instance>
+    <instance scriptid="val_810137_7451241_sb1_554">
+      <custrecord_ht_bn_colorcarseg_codigo>264</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>PLATEADA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>264 - PLATEADA</name>
+    </instance>
+    <instance scriptid="val_810138_7451241_sb1_823">
+      <custrecord_ht_bn_colorcarseg_codigo>265</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ALTON ROJO</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>265 - ALTON ROJO</name>
+    </instance>
+    <instance scriptid="val_810139_7451241_sb1_884">
+      <custrecord_ht_bn_colorcarseg_codigo>266</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>ROJA</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>266 - ROJA</name>
+    </instance>
+    <instance scriptid="val_810140_7451241_sb1_592">
+      <custrecord_ht_bn_colorcarseg_codigo>267</custrecord_ht_bn_colorcarseg_codigo>
+      <custrecord_ht_bn_colorcarseg_descripcion>GOLD MIST METALIC</custrecord_ht_bn_colorcarseg_descripcion>
+      <isinactive>F</isinactive>
+      <name>267 - GOLD MIST METALIC</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

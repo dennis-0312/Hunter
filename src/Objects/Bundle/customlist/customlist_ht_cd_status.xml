@@ -1,0 +1,32 @@
+<customlist scriptid="customlist_ht_cd_status">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT CD Status</name>
+  <customvalues>
+    <customvalue scriptid="val_722258_7451241_sb1_916">
+      <isinactive>F</isinactive>
+      <value>Cancelado</value>
+    </customvalue>
+    <customvalue scriptid="val_722259_7451241_sb1_995">
+      <isinactive>F</isinactive>
+      <value>Depositado</value>
+    </customvalue>
+    <customvalue scriptid="val_722260_7451241_sb1_453">
+      <isinactive>F</isinactive>
+      <value>No depositado</value>
+    </customvalue>
+    <customvalue scriptid="val_722261_7451241_sb1_675">
+      <isinactive>F</isinactive>
+      <value>Pago no aprobado</value>
+    </customvalue>
+    <customvalue scriptid="val_722262_7451241_sb1_468">
+      <isinactive>F</isinactive>
+      <value>Totalmente aplicado</value>
+    </customvalue>
+    <customvalue scriptid="val_726639_7451241_sb1_108">
+      <isinactive>F</isinactive>
+      <value>prueba de estado</value>
+    </customvalue>
+  </customvalues>
+</customlist>

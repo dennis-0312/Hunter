@@ -1,0 +1,962 @@
+<customrecordtype scriptid="customrecord_ht_dd_modelodispositivo">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT DD Modelo de dispositivo</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_md_unidad">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT MD Unidad</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_ht_dd_tipodispositivo]</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_dd_mod_disp_id_telematic">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Id Telematic</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_dd_modelodispositivo_codig">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_dd_modelodispositivo_descr">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_811058_7451241_sb1_696">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>001</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8030</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811037_7451241_sb1_934]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>001 - TT8030</name>
+    </instance>
+    <instance scriptid="val_811059_7451241_sb1_640">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>002</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT3026</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811037_7451241_sb1_934]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>002 - TT3026</name>
+    </instance>
+    <instance scriptid="val_811060_7451241_sb1_302">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>004</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8035</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811037_7451241_sb1_934]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>004 - TT8035</name>
+    </instance>
+    <instance scriptid="val_811061_7451241_sb1_813">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>005</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GSM-2228</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811037_7451241_sb1_934]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>005 - GSM-2228</name>
+    </instance>
+    <instance scriptid="val_811062_7451241_sb1_464">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>019</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8950</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811037_7451241_sb1_934]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>019 - TT8950</name>
+    </instance>
+    <instance scriptid="val_811063_7451241_sb1_757">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>023</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8850</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811037_7451241_sb1_934]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>023 - TT8850</name>
+    </instance>
+    <instance scriptid="val_811064_7451241_sb1_913">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>000</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>NO DEFINIDO</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811038_7451241_sb1_114]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>000 - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_811065_7451241_sb1_191">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>010</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>MINI-C</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811038_7451241_sb1_114]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>010 - MINI-C</name>
+    </instance>
+    <instance scriptid="val_811066_7451241_sb1_454">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>001</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>MHUB-846</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811039_7451241_sb1_505]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>001 - MHUB-846</name>
+    </instance>
+    <instance scriptid="val_811067_7451241_sb1_146">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>002</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>MHUB-855</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811039_7451241_sb1_505]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>002 - MHUB-855</name>
+    </instance>
+    <instance scriptid="val_811068_7451241_sb1_984">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>003</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>MHUB-828</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811039_7451241_sb1_505]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>003 - MHUB-828</name>
+    </instance>
+    <instance scriptid="val_811069_7451241_sb1_371">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>000</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>NO DEFINIDO</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811040_7451241_sb1_868]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>000 - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_811070_7451241_sb1_157">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>003</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8540</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811040_7451241_sb1_868]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>003 - TT8540</name>
+    </instance>
+    <instance scriptid="val_811071_7451241_sb1_565">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>012</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8740</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811040_7451241_sb1_868]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>012 - TT8740</name>
+    </instance>
+    <instance scriptid="val_811072_7451241_sb1_241">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>013</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8750</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811040_7451241_sb1_868]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>013 - TT8750</name>
+    </instance>
+    <instance scriptid="val_811073_7451241_sb1_542">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>014</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8760</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811040_7451241_sb1_868]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>014 - TT8760</name>
+    </instance>
+    <instance scriptid="val_811074_7451241_sb1_225">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>020</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8750+</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811040_7451241_sb1_868]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>020 - TT8750+</name>
+    </instance>
+    <instance scriptid="val_811075_7451241_sb1_955">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>046</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TT8750N+</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811040_7451241_sb1_868]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>046 - TT8750N+</name>
+    </instance>
+    <instance scriptid="val_811076_7451241_sb1_413">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>005</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>VEHICULAR</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811041_7451241_sb1_674]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>005 - VEHICULAR</name>
+    </instance>
+    <instance scriptid="val_811077_7451241_sb1_446">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>006</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>PERSONAL</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811041_7451241_sb1_674]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>006 - PERSONAL</name>
+    </instance>
+    <instance scriptid="val_811078_7451241_sb1_646">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>007</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>MOTOS</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811041_7451241_sb1_674]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>007 - MOTOS</name>
+    </instance>
+    <instance scriptid="val_811079_7451241_sb1_985">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>008</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>DMR200D</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811042_7451241_sb1_437]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>008 - DMR200D</name>
+    </instance>
+    <instance scriptid="val_811080_7451241_sb1_715">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>014</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>DMR200L</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811042_7451241_sb1_437]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>014 - DMR200L</name>
+    </instance>
+    <instance scriptid="val_811081_7451241_sb1_738">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>015</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>DMR800D</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811042_7451241_sb1_437]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>015 - DMR800D</name>
+    </instance>
+    <instance scriptid="val_811082_7451241_sb1_824">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>016</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>SURELINX 8100</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811042_7451241_sb1_437]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>016 - SURELINX 8100</name>
+    </instance>
+    <instance scriptid="val_811083_7451241_sb1_951">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>017</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>SURELINX 8100C</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811042_7451241_sb1_437]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>017 - SURELINX 8100C</name>
+    </instance>
+    <instance scriptid="val_811084_7451241_sb1_375">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>018</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>DMR-800D OEM</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811042_7451241_sb1_437]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>018 - DMR-800D OEM</name>
+    </instance>
+    <instance scriptid="val_811085_7451241_sb1_779">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>026</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>IDP800</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811042_7451241_sb1_437]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>026 - IDP800</name>
+    </instance>
+    <instance scriptid="val_811086_7451241_sb1_757">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>047</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>IDP-782</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811042_7451241_sb1_437]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>047 - IDP-782</name>
+    </instance>
+    <instance scriptid="val_811087_7451241_sb1_151">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>014</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>10</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811043_7451241_sb1_857]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>014 - 10</name>
+    </instance>
+    <instance scriptid="val_811088_7451241_sb1_252">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>021</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLOTRACK POWER 3Y</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>021 - CELLOTRACK POWER 3Y</name>
+    </instance>
+    <instance scriptid="val_811089_7451241_sb1_731">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>048</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CR300B 2G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>048 - CR300B 2G</name>
+    </instance>
+    <instance scriptid="val_811090_7451241_sb1_339">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>050</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLO-IQ50</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>050 - CELLO-IQ50</name>
+    </instance>
+    <instance scriptid="val_811091_7451241_sb1_325">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>051</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLO-CANIQ50</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>051 - CELLO-CANIQ50</name>
+    </instance>
+    <instance scriptid="val_811092_7451241_sb1_145">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>052</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLOTRACK NANO 10 (2G)</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>052 - CELLOTRACK NANO 10 (2G)</name>
+    </instance>
+    <instance scriptid="val_811093_7451241_sb1_768">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>053</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLOTRACK-NANO20</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>053 - CELLOTRACK-NANO20</name>
+    </instance>
+    <instance scriptid="val_811094_7451241_sb1_187">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>057</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CelloTrack Power 3Y (3G)</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>057 - CelloTrack Power 3Y (3G)</name>
+    </instance>
+    <instance scriptid="val_811095_7451241_sb1_426">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>058</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CR300B (3G)</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>058 - CR300B (3G)</name>
+    </instance>
+    <instance scriptid="val_811096_7451241_sb1_135">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>062</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLOTRACK 8M</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>062 - CELLOTRACK 8M</name>
+    </instance>
+    <instance scriptid="val_811097_7451241_sb1_193">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>063</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLOTRACK 3Y</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>063 - CELLOTRACK 3Y</name>
+    </instance>
+    <instance scriptid="val_811098_7451241_sb1_678">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>067</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>POINTER MINITRACK2G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>067 - POINTER MINITRACK2G</name>
+    </instance>
+    <instance scriptid="val_811099_7451241_sb1_848">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>068</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLOTRACK NANO 10 3G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>068 - CELLOTRACK NANO 10 3G</name>
+    </instance>
+    <instance scriptid="val_811100_7451241_sb1_400">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>069</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLOTRACK NANO 20 3G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>069 - CELLOTRACK NANO 20 3G</name>
+    </instance>
+    <instance scriptid="val_811101_7451241_sb1_795">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>070</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLO IQ-30 3G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>070 - CELLO IQ-30 3G</name>
+    </instance>
+    <instance scriptid="val_811102_7451241_sb1_414">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>071</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLO IQ50 3G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>071 - CELLO IQ50 3G</name>
+    </instance>
+    <instance scriptid="val_811103_7451241_sb1_736">
+      <custrecord_ht_dd_mod_disp_id_telematic>1</custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>072</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>CELLOTRACK XT LTE C1</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811044_7451241_sb1_659]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>072 - CELLOTRACK XT LTE C1</name>
+    </instance>
+    <instance scriptid="val_811104_7451241_sb1_332">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>022</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GT300</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>022 - GT300</name>
+    </instance>
+    <instance scriptid="val_811105_7451241_sb1_205">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>030</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GV 300</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>030 - GV 300</name>
+    </instance>
+    <instance scriptid="val_811106_7451241_sb1_752">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>033</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GV 55</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>033 - GV 55</name>
+    </instance>
+    <instance scriptid="val_811107_7451241_sb1_157">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>034</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GMT 100</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>034 - GMT 100</name>
+    </instance>
+    <instance scriptid="val_811108_7451241_sb1_556">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>040</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GV55 N</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>040 - GV55 N</name>
+    </instance>
+    <instance scriptid="val_811109_7451241_sb1_753">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>041</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GV200</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>041 - GV200</name>
+    </instance>
+    <instance scriptid="val_811110_7451241_sb1_716">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>042</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GV300 N</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>042 - GV300 N</name>
+    </instance>
+    <instance scriptid="val_811111_7451241_sb1_225">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>043</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GL200</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>043 - GL200</name>
+    </instance>
+    <instance scriptid="val_811112_7451241_sb1_134">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>044</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GL300</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>044 - GL300</name>
+    </instance>
+    <instance scriptid="val_811113_7451241_sb1_198">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>045</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GL300 N</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>045 - GL300 N</name>
+    </instance>
+    <instance scriptid="val_811114_7451241_sb1_907">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>054</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GMT200 N</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>054 - GMT200 N</name>
+    </instance>
+    <instance scriptid="val_811115_7451241_sb1_182">
+      <custrecord_ht_dd_mod_disp_id_telematic>4</custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>075</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GV55W</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>075 - GV55W</name>
+    </instance>
+    <instance scriptid="val_811116_7451241_sb1_612">
+      <custrecord_ht_dd_mod_disp_id_telematic>5</custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>076</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GV75W</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>076 - GV75W</name>
+    </instance>
+    <instance scriptid="val_811117_7451241_sb1_390">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>080</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GV648W</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>080 - GV648W</name>
+    </instance>
+    <instance scriptid="val_811118_7451241_sb1_375">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>082</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GV300W</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811045_7451241_sb1_319]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>082 - GV300W</name>
+    </instance>
+    <instance scriptid="val_811119_7451241_sb1_149">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>024</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU2120</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>024 - LMU2120</name>
+    </instance>
+    <instance scriptid="val_811120_7451241_sb1_507">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>025</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU2720</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>025 - LMU2720</name>
+    </instance>
+    <instance scriptid="val_811121_7451241_sb1_760">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>027</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU2630</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>027 - LMU2630</name>
+    </instance>
+    <instance scriptid="val_811122_7451241_sb1_422">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>028</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU1175</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>028 - LMU1175</name>
+    </instance>
+    <instance scriptid="val_811123_7451241_sb1_865">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>032</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU1175</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>032 - LMU1175</name>
+    </instance>
+    <instance scriptid="val_811124_7451241_sb1_477">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>035</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU2630 2G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>035 - LMU2630 2G</name>
+    </instance>
+    <instance scriptid="val_811125_7451241_sb1_583">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>036</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU2630 3G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>036 - LMU2630 3G</name>
+    </instance>
+    <instance scriptid="val_811126_7451241_sb1_799">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>037</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU2720 2G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>037 - LMU2720 2G</name>
+    </instance>
+    <instance scriptid="val_811127_7451241_sb1_501">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>038</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU2720 3G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>038 - LMU2720 3G</name>
+    </instance>
+    <instance scriptid="val_811128_7451241_sb1_486">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>039</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU325</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>039 - LMU325</name>
+    </instance>
+    <instance scriptid="val_811129_7451241_sb1_969">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>040</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU2640</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>040 - LMU2640</name>
+    </instance>
+    <instance scriptid="val_811130_7451241_sb1_328">
+      <custrecord_ht_dd_mod_disp_id_telematic>2</custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>055</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>LMU2130</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811046_7451241_sb1_795]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>055 - LMU2130</name>
+    </instance>
+    <instance scriptid="val_811131_7451241_sb1_664">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>001</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>HP</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811047_7451241_sb1_662]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>001 - HP</name>
+    </instance>
+    <instance scriptid="val_811132_7451241_sb1_541">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>002</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>MAZTRACK</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811047_7451241_sb1_662]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>002 - MAZTRACK</name>
+    </instance>
+    <instance scriptid="val_811133_7451241_sb1_336">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>001</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>MAZTRACK</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811048_7451241_sb1_498]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>001 - MAZTRACK</name>
+    </instance>
+    <instance scriptid="val_811134_7451241_sb1_331">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>049</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TH-923</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811050_7451241_sb1_336]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>049 - TH-923</name>
+    </instance>
+    <instance scriptid="val_811135_7451241_sb1_599">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>056</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>WeTrack Lite</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811052_7451241_sb1_386]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>056 - WeTrack Lite</name>
+    </instance>
+    <instance scriptid="val_811136_7451241_sb1_441">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>059</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>HVT001</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811052_7451241_sb1_386]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>059 - HVT001</name>
+    </instance>
+    <instance scriptid="val_811137_7451241_sb1_546">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>060</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>ET25</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811052_7451241_sb1_386]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>060 - ET25</name>
+    </instance>
+    <instance scriptid="val_811138_7451241_sb1_537">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>064</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>JC 100</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811052_7451241_sb1_386]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>064 - JC 100</name>
+    </instance>
+    <instance scriptid="val_811139_7451241_sb1_991">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>073</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>JC 400</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811052_7451241_sb1_386]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>073 - JC 400</name>
+    </instance>
+    <instance scriptid="val_811140_7451241_sb1_211">
+      <custrecord_ht_dd_mod_disp_id_telematic>6</custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>079</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>JM_VL01</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811052_7451241_sb1_386]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>079 - JM_VL01</name>
+    </instance>
+    <instance scriptid="val_811141_7451241_sb1_724">
+      <custrecord_ht_dd_mod_disp_id_telematic>3</custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>061</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>FMB120</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_781614_7451241_sb1_982]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>061 - FMB120</name>
+    </instance>
+    <instance scriptid="val_811142_7451241_sb1_526">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>065</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>FMU130 3G</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_781614_7451241_sb1_982]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>065 - FMU130 3G</name>
+    </instance>
+    <instance scriptid="val_811143_7451241_sb1_279">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>066</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>GH520</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_781614_7451241_sb1_982]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>066 - GH520</name>
+    </instance>
+    <instance scriptid="val_811144_7451241_sb1_504">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>074</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>TMT250</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_781614_7451241_sb1_982]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>074 - TMT250</name>
+    </instance>
+    <instance scriptid="val_811145_7451241_sb1_531">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>078</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>FMP100</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_781614_7451241_sb1_982]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>078 - FMP100</name>
+    </instance>
+    <instance scriptid="val_811146_7451241_sb1_622">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>083</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>FMB920</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_781614_7451241_sb1_982]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>083 - FMB920</name>
+    </instance>
+    <instance scriptid="val_811147_7451241_sb1_677">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>084</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>FMB003(2G)</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_781614_7451241_sb1_982]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>084 - FMB003(2G)</name>
+    </instance>
+    <instance scriptid="val_811148_7451241_sb1_373">
+      <custrecord_ht_dd_mod_disp_id_telematic>7</custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>085</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>FMC130</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_781614_7451241_sb1_982]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>085 - FMC130</name>
+    </instance>
+    <instance scriptid="val_811149_7451241_sb1_831">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>077</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>ST9100</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811053_7451241_sb1_337]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>077 - ST9100</name>
+    </instance>
+    <instance scriptid="val_811150_7451241_sb1_308">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>081</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>ST6100</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811053_7451241_sb1_337]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>081 - ST6100</name>
+    </instance>
+    <instance scriptid="val_811151_7451241_sb1_187">
+      <custrecord_ht_dd_mod_disp_id_telematic></custrecord_ht_dd_mod_disp_id_telematic>
+      <custrecord_ht_dd_modelodispositivo_codig>086</custrecord_ht_dd_modelodispositivo_codig>
+      <custrecord_ht_dd_modelodispositivo_descr>DK12</custrecord_ht_dd_modelodispositivo_descr>
+      <custrecord_ht_md_unidad>[scriptid=customrecord_ht_dd_tipodispositivo.val_811054_7451241_sb1_412]</custrecord_ht_md_unidad>
+      <isinactive>F</isinactive>
+      <name>086 - DK12</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

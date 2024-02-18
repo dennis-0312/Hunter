@@ -1,0 +1,123 @@
+<customrecordtype scriptid="customrecordts_ec_tipo_transaccion">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>F</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC - Tipo de transacción</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>F</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecordts_ec_trantype_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Codigo Transacción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_751760_7451241_sb1_767">
+      <custrecordts_ec_trantype_codigo>1</custrecordts_ec_trantype_codigo>
+      <isinactive>F</isinactive>
+      <name>COMPRA</name>
+    </instance>
+    <instance scriptid="val_751761_7451241_sb1_585">
+      <custrecordts_ec_trantype_codigo>2</custrecordts_ec_trantype_codigo>
+      <isinactive>F</isinactive>
+      <name>VENTA</name>
+    </instance>
+    <instance scriptid="val_751762_7451241_sb1_970">
+      <custrecordts_ec_trantype_codigo>4</custrecordts_ec_trantype_codigo>
+      <isinactive>F</isinactive>
+      <name>EXPORTACION</name>
+    </instance>
+    <instance scriptid="val_751763_7451241_sb1_174">
+      <custrecordts_ec_trantype_codigo>5</custrecordts_ec_trantype_codigo>
+      <isinactive>F</isinactive>
+      <name>TARJETA DE CREDITO	</name>
+    </instance>
+    <instance scriptid="val_751764_7451241_sb1_452">
+      <custrecordts_ec_trantype_codigo>6</custrecordts_ec_trantype_codigo>
+      <isinactive>F</isinactive>
+      <name>RENDIMIENTOS FINANCIEROS	</name>
+    </instance>
+    <instance scriptid="val_751765_7451241_sb1_633">
+      <custrecordts_ec_trantype_codigo>7</custrecordts_ec_trantype_codigo>
+      <isinactive>F</isinactive>
+      <name>FONDOS Y FIDEICOMISOS	</name>
+    </instance>
+  </instances>
+  <!-- <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions> -->
+</customrecordtype>

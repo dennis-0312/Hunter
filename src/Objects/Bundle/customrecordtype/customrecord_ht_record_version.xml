@@ -1,0 +1,2706 @@
+<customrecordtype scriptid="customrecord_ht_record_version">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Versión de Bienes</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_record_version_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_record_version_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_810341_7451241_sb1_847">
+      <custrecord_ht_record_version_codigo>000</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>6T - 8T</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>000 - 6T - 8T</name>
+    </instance>
+    <instance scriptid="val_810342_7451241_sb1_761">
+      <custrecord_ht_record_version_codigo>001</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LIMITED</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>001 - LIMITED</name>
+    </instance>
+    <instance scriptid="val_810343_7451241_sb1_669">
+      <custrecord_ht_record_version_codigo>002</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>STD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>002 - STD</name>
+    </instance>
+    <instance scriptid="val_810344_7451241_sb1_980">
+      <custrecord_ht_record_version_codigo>003</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FULL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>003 - FULL</name>
+    </instance>
+    <instance scriptid="val_810345_7451241_sb1_478">
+      <custrecord_ht_record_version_codigo>004</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>UNLIMITED</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>004 - UNLIMITED</name>
+    </instance>
+    <instance scriptid="val_810346_7451241_sb1_606">
+      <custrecord_ht_record_version_codigo>005</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DX</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>005 - DX</name>
+    </instance>
+    <instance scriptid="val_810347_7451241_sb1_160">
+      <custrecord_ht_record_version_codigo>006</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DLX</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>006 - DLX</name>
+    </instance>
+    <instance scriptid="val_810348_7451241_sb1_529">
+      <custrecord_ht_record_version_codigo>007</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>007 - GL</name>
+    </instance>
+    <instance scriptid="val_810349_7451241_sb1_230">
+      <custrecord_ht_record_version_codigo>008</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GLX</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>008 - GLX</name>
+    </instance>
+    <instance scriptid="val_810350_7451241_sb1_997">
+      <custrecord_ht_record_version_codigo>009</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>009 - LE</name>
+    </instance>
+    <instance scriptid="val_810351_7451241_sb1_107">
+      <custrecord_ht_record_version_codigo>010</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GLI</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>010 - GLI</name>
+    </instance>
+    <instance scriptid="val_810352_7451241_sb1_733">
+      <custrecord_ht_record_version_codigo>011</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>XL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>011 - XL</name>
+    </instance>
+    <instance scriptid="val_810353_7451241_sb1_358">
+      <custrecord_ht_record_version_codigo>012</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PREMIUM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>012 - PREMIUM</name>
+    </instance>
+    <instance scriptid="val_810354_7451241_sb1_978">
+      <custrecord_ht_record_version_codigo>013</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BASICO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>013 - BASICO</name>
+    </instance>
+    <instance scriptid="val_810355_7451241_sb1_334">
+      <custrecord_ht_record_version_codigo>014</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LUJO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>014 - LUJO</name>
+    </instance>
+    <instance scriptid="val_810356_7451241_sb1_144">
+      <custrecord_ht_record_version_codigo>015</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>VX</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>015 - VX</name>
+    </instance>
+    <instance scriptid="val_810357_7451241_sb1_437">
+      <custrecord_ht_record_version_codigo>016</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PRADO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>016 - PRADO</name>
+    </instance>
+    <instance scriptid="val_810358_7451241_sb1_175">
+      <custrecord_ht_record_version_codigo>017</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DISCOVERY</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>017 - DISCOVERY</name>
+    </instance>
+    <instance scriptid="val_810359_7451241_sb1_336">
+      <custrecord_ht_record_version_codigo>018</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MINOR CHANGE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>018 - MINOR CHANGE</name>
+    </instance>
+    <instance scriptid="val_810360_7451241_sb1_500">
+      <custrecord_ht_record_version_codigo>020</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ROYAL SALOON</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>020 - ROYAL SALOON</name>
+    </instance>
+    <instance scriptid="val_810361_7451241_sb1_983">
+      <custrecord_ht_record_version_codigo>021</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CONMUTER</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>021 - CONMUTER</name>
+    </instance>
+    <instance scriptid="val_810362_7451241_sb1_164">
+      <custrecord_ht_record_version_codigo>022</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HI RIDER</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>022 - HI RIDER</name>
+    </instance>
+    <instance scriptid="val_810363_7451241_sb1_791">
+      <custrecord_ht_record_version_codigo>024</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CARGA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>024 - CARGA</name>
+    </instance>
+    <instance scriptid="val_810364_7451241_sb1_581">
+      <custrecord_ht_record_version_codigo>025</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CHASIS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>025 - CHASIS</name>
+    </instance>
+    <instance scriptid="val_810365_7451241_sb1_153">
+      <custrecord_ht_record_version_codigo>026</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CHASIS CABINADO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>026 - CHASIS CABINADO</name>
+    </instance>
+    <instance scriptid="val_810366_7451241_sb1_623">
+      <custrecord_ht_record_version_codigo>027</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>AUTANA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>027 - AUTANA</name>
+    </instance>
+    <instance scriptid="val_810367_7451241_sb1_723">
+      <custrecord_ht_record_version_codigo>028</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>NITRO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>028 - NITRO</name>
+    </instance>
+    <instance scriptid="val_810368_7451241_sb1_958">
+      <custrecord_ht_record_version_codigo>030</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>030 - CS</name>
+    </instance>
+    <instance scriptid="val_810369_7451241_sb1_266">
+      <custrecord_ht_record_version_codigo>031</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DC 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>031 - DC 4X2</name>
+    </instance>
+    <instance scriptid="val_810370_7451241_sb1_918">
+      <custrecord_ht_record_version_codigo>032</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DC 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>032 - DC 4X4</name>
+    </instance>
+    <instance scriptid="val_810371_7451241_sb1_307">
+      <custrecord_ht_record_version_codigo>033</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HB 3</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>033 - HB 3</name>
+    </instance>
+    <instance scriptid="val_810372_7451241_sb1_360">
+      <custrecord_ht_record_version_codigo>034</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HB 5</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>034 - HB 5</name>
+    </instance>
+    <instance scriptid="val_810373_7451241_sb1_489">
+      <custrecord_ht_record_version_codigo>035</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HB3</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>035 - HB3</name>
+    </instance>
+    <instance scriptid="val_810374_7451241_sb1_138">
+      <custrecord_ht_record_version_codigo>036</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HB5</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>036 - HB5</name>
+    </instance>
+    <instance scriptid="val_810375_7451241_sb1_634">
+      <custrecord_ht_record_version_codigo>037</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HIG</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>037 - HIG</name>
+    </instance>
+    <instance scriptid="val_810376_7451241_sb1_983">
+      <custrecord_ht_record_version_codigo>038</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HIGH</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>038 - HIGH</name>
+    </instance>
+    <instance scriptid="val_810377_7451241_sb1_547">
+      <custrecord_ht_record_version_codigo>039</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LARGE LUXURY</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>039 - LARGE LUXURY</name>
+    </instance>
+    <instance scriptid="val_810378_7451241_sb1_655">
+      <custrecord_ht_record_version_codigo>040</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LLX</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>040 - LLX</name>
+    </instance>
+    <instance scriptid="val_810379_7451241_sb1_986">
+      <custrecord_ht_record_version_codigo>041</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LOW MEDIUM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>041 - LOW MEDIUM</name>
+    </instance>
+    <instance scriptid="val_810380_7451241_sb1_535">
+      <custrecord_ht_record_version_codigo>042</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MDI</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>042 - MDI</name>
+    </instance>
+    <instance scriptid="val_810381_7451241_sb1_393">
+      <custrecord_ht_record_version_codigo>043</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MEDIUM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>043 - MEDIUM</name>
+    </instance>
+    <instance scriptid="val_810382_7451241_sb1_558">
+      <custrecord_ht_record_version_codigo>044</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PAS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>044 - PAS</name>
+    </instance>
+    <instance scriptid="val_810383_7451241_sb1_509">
+      <custrecord_ht_record_version_codigo>045</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PASAJEROS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>045 - PASAJEROS</name>
+    </instance>
+    <instance scriptid="val_810384_7451241_sb1_484">
+      <custrecord_ht_record_version_codigo>046</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PRIUS C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>046 - PRIUS C</name>
+    </instance>
+    <instance scriptid="val_810385_7451241_sb1_628">
+      <custrecord_ht_record_version_codigo>047</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PRIUS C GOSHI</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>047 - PRIUS C GOSHI</name>
+    </instance>
+    <instance scriptid="val_810386_7451241_sb1_435">
+      <custrecord_ht_record_version_codigo>048</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SC 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>048 - SC 4X2</name>
+    </instance>
+    <instance scriptid="val_810387_7451241_sb1_737">
+      <custrecord_ht_record_version_codigo>049</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SC 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>049 - SC 4X4</name>
+    </instance>
+    <instance scriptid="val_810388_7451241_sb1_595">
+      <custrecord_ht_record_version_codigo>050</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>050 - SD</name>
+    </instance>
+    <instance scriptid="val_810389_7451241_sb1_803">
+      <custrecord_ht_record_version_codigo>051</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SEDAN</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>051 - SEDAN</name>
+    </instance>
+    <instance scriptid="val_810390_7451241_sb1_804">
+      <custrecord_ht_record_version_codigo>052</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SPT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>052 - SPT</name>
+    </instance>
+    <instance scriptid="val_810391_7451241_sb1_798">
+      <custrecord_ht_record_version_codigo>053</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SUV</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>053 - SUV</name>
+    </instance>
+    <instance scriptid="val_810392_7451241_sb1_984">
+      <custrecord_ht_record_version_codigo>054</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MEDIANO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>054 - MEDIANO</name>
+    </instance>
+    <instance scriptid="val_810393_7451241_sb1_410">
+      <custrecord_ht_record_version_codigo>055</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>AMBULANCIA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>055 - AMBULANCIA</name>
+    </instance>
+    <instance scriptid="val_810394_7451241_sb1_521">
+      <custrecord_ht_record_version_codigo>056</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ARTICULADO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>056 - ARTICULADO</name>
+    </instance>
+    <instance scriptid="val_810395_7451241_sb1_307">
+      <custrecord_ht_record_version_codigo>057</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>AUTOMOVIL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>057 - AUTOMOVIL</name>
+    </instance>
+    <instance scriptid="val_810396_7451241_sb1_211">
+      <custrecord_ht_record_version_codigo>058</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BLINDADO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>058 - BLINDADO</name>
+    </instance>
+    <instance scriptid="val_810397_7451241_sb1_696">
+      <custrecord_ht_record_version_codigo>059</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BUS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>059 - BUS</name>
+    </instance>
+    <instance scriptid="val_810398_7451241_sb1_716">
+      <custrecord_ht_record_version_codigo>060</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BUS COSTA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>060 - BUS COSTA</name>
+    </instance>
+    <instance scriptid="val_810399_7451241_sb1_451">
+      <custrecord_ht_record_version_codigo>084</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BUS ESCOLAR</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>084 - BUS ESCOLAR</name>
+    </instance>
+    <instance scriptid="val_810400_7451241_sb1_419">
+      <custrecord_ht_record_version_codigo>085</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BUSETA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>085 - BUSETA</name>
+    </instance>
+    <instance scriptid="val_810401_7451241_sb1_985">
+      <custrecord_ht_record_version_codigo>086</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CABINA SIMPLE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>086 - CABINA SIMPLE</name>
+    </instance>
+    <instance scriptid="val_810402_7451241_sb1_523">
+      <custrecord_ht_record_version_codigo>087</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CAJON-C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>087 - CAJON-C</name>
+    </instance>
+    <instance scriptid="val_810403_7451241_sb1_760">
+      <custrecord_ht_record_version_codigo>088</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>088 - CAMION</name>
+    </instance>
+    <instance scriptid="val_810404_7451241_sb1_611">
+      <custrecord_ht_record_version_codigo>089</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CAMION PEQUEÃ‘O</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>089 - CAMION PEQUEÑO</name>
+    </instance>
+    <instance scriptid="val_810405_7451241_sb1_377">
+      <custrecord_ht_record_version_codigo>090</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CAMIONETA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>090 - CAMIONETA</name>
+    </instance>
+    <instance scriptid="val_810406_7451241_sb1_454">
+      <custrecord_ht_record_version_codigo>091</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CAMPERO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>091 - CAMPERO</name>
+    </instance>
+    <instance scriptid="val_810407_7451241_sb1_135">
+      <custrecord_ht_record_version_codigo>092</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CANASTILLA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>092 - CANASTILLA</name>
+    </instance>
+    <instance scriptid="val_810408_7451241_sb1_986">
+      <custrecord_ht_record_version_codigo>093</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMANDO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>093 - COMANDO</name>
+    </instance>
+    <instance scriptid="val_810409_7451241_sb1_406">
+      <custrecord_ht_record_version_codigo>094</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CONCRETERA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>094 - CONCRETERA</name>
+    </instance>
+    <instance scriptid="val_810410_7451241_sb1_397">
+      <custrecord_ht_record_version_codigo>095</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CONVERTIBLE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>095 - CONVERTIBLE</name>
+    </instance>
+    <instance scriptid="val_810411_7451241_sb1_692">
+      <custrecord_ht_record_version_codigo>096</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COUPE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>096 - COUPE</name>
+    </instance>
+    <instance scriptid="val_810412_7451241_sb1_190">
+      <custrecord_ht_record_version_codigo>097</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CROSS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>097 - CROSS</name>
+    </instance>
+    <instance scriptid="val_810413_7451241_sb1_307">
+      <custrecord_ht_record_version_codigo>098</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CUADRON</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>098 - CUADRON</name>
+    </instance>
+    <instance scriptid="val_810414_7451241_sb1_837">
+      <custrecord_ht_record_version_codigo>099</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DEPORTIVA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>099 - DEPORTIVA</name>
+    </instance>
+    <instance scriptid="val_810415_7451241_sb1_392">
+      <custrecord_ht_record_version_codigo>100</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DOBLE CABINA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>100 - DOBLE CABINA</name>
+    </instance>
+    <instance scriptid="val_810416_7451241_sb1_191">
+      <custrecord_ht_record_version_codigo>101</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DOBLE PISO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>101 - DOBLE PISO</name>
+    </instance>
+    <instance scriptid="val_810417_7451241_sb1_436">
+      <custrecord_ht_record_version_codigo>102</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ELECTRICO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>102 - ELECTRICO</name>
+    </instance>
+    <instance scriptid="val_810418_7451241_sb1_117">
+      <custrecord_ht_record_version_codigo>103</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ELECTRICO - A</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>103 - ELECTRICO - A</name>
+    </instance>
+    <instance scriptid="val_810419_7451241_sb1_375">
+      <custrecord_ht_record_version_codigo>104</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ELECTRICO-C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>104 - ELECTRICO-C</name>
+    </instance>
+    <instance scriptid="val_810420_7451241_sb1_388">
+      <custrecord_ht_record_version_codigo>105</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ELECTRICO-J</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>105 - ELECTRICO-J</name>
+    </instance>
+    <instance scriptid="val_810421_7451241_sb1_851">
+      <custrecord_ht_record_version_codigo>106</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ELECTRICO-M</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>106 - ELECTRICO-M</name>
+    </instance>
+    <instance scriptid="val_810422_7451241_sb1_389">
+      <custrecord_ht_record_version_codigo>107</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ELECTRICO-O</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>107 - ELECTRICO-O</name>
+    </instance>
+    <instance scriptid="val_810423_7451241_sb1_950">
+      <custrecord_ht_record_version_codigo>108</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ESPECIAL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>108 - ESPECIAL</name>
+    </instance>
+    <instance scriptid="val_810424_7451241_sb1_300">
+      <custrecord_ht_record_version_codigo>109</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FUNERARIA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>109 - FUNERARIA</name>
+    </instance>
+    <instance scriptid="val_810425_7451241_sb1_890">
+      <custrecord_ht_record_version_codigo>110</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FURGON</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>110 - FURGON</name>
+    </instance>
+    <instance scriptid="val_810426_7451241_sb1_274">
+      <custrecord_ht_record_version_codigo>111</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FURGON-C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>111 - FURGON-C</name>
+    </instance>
+    <instance scriptid="val_810427_7451241_sb1_194">
+      <custrecord_ht_record_version_codigo>112</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FURGONETA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>112 - FURGONETA</name>
+    </instance>
+    <instance scriptid="val_810428_7451241_sb1_889">
+      <custrecord_ht_record_version_codigo>113</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRUA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>113 - GRUA</name>
+    </instance>
+    <instance scriptid="val_810429_7451241_sb1_286">
+      <custrecord_ht_record_version_codigo>114</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HIBRIDO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>114 - HIBRIDO</name>
+    </instance>
+    <instance scriptid="val_810430_7451241_sb1_681">
+      <custrecord_ht_record_version_codigo>115</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HIBRIDO - A</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>115 - HIBRIDO - A</name>
+    </instance>
+    <instance scriptid="val_810431_7451241_sb1_245">
+      <custrecord_ht_record_version_codigo>116</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HIBRIDO-C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>116 - HIBRIDO-C</name>
+    </instance>
+    <instance scriptid="val_810432_7451241_sb1_219">
+      <custrecord_ht_record_version_codigo>117</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HIBRIDO-J</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>117 - HIBRIDO-J</name>
+    </instance>
+    <instance scriptid="val_810433_7451241_sb1_777">
+      <custrecord_ht_record_version_codigo>118</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HIBRIDO-M</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>118 - HIBRIDO-M</name>
+    </instance>
+    <instance scriptid="val_810434_7451241_sb1_100">
+      <custrecord_ht_record_version_codigo>119</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HIBRIDO-O</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>119 - HIBRIDO-O</name>
+    </instance>
+    <instance scriptid="val_810435_7451241_sb1_518">
+      <custrecord_ht_record_version_codigo>120</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JARDINERA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>120 - JARDINERA</name>
+    </instance>
+    <instance scriptid="val_810436_7451241_sb1_482">
+      <custrecord_ht_record_version_codigo>121</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JEEP</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>121 - JEEP</name>
+    </instance>
+    <instance scriptid="val_810437_7451241_sb1_465">
+      <custrecord_ht_record_version_codigo>122</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JEEP-ORTOPEDICO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>122 - JEEP-ORTOPEDICO</name>
+    </instance>
+    <instance scriptid="val_810438_7451241_sb1_617">
+      <custrecord_ht_record_version_codigo>123</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MINIBUS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>123 - MINIBUS</name>
+    </instance>
+    <instance scriptid="val_810439_7451241_sb1_341">
+      <custrecord_ht_record_version_codigo>124</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MOTOBOMBA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>124 - MOTOBOMBA</name>
+    </instance>
+    <instance scriptid="val_810440_7451241_sb1_594">
+      <custrecord_ht_record_version_codigo>125</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MOTOCICLETA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>125 - MOTOCICLETA</name>
+    </instance>
+    <instance scriptid="val_810441_7451241_sb1_233">
+      <custrecord_ht_record_version_codigo>126</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>OMNIBUS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>126 - OMNIBUS</name>
+    </instance>
+    <instance scriptid="val_810442_7451241_sb1_220">
+      <custrecord_ht_record_version_codigo>127</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>OTROS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>127 - OTROS</name>
+    </instance>
+    <instance scriptid="val_810443_7451241_sb1_404">
+      <custrecord_ht_record_version_codigo>128</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PASEO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>128 - PASEO</name>
+    </instance>
+    <instance scriptid="val_810444_7451241_sb1_526">
+      <custrecord_ht_record_version_codigo>129</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PICK-UP</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>129 - PICK-UP</name>
+    </instance>
+    <instance scriptid="val_810445_7451241_sb1_355">
+      <custrecord_ht_record_version_codigo>130</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PLATAFORMA-C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>130 - PLATAFORMA-C</name>
+    </instance>
+    <instance scriptid="val_810446_7451241_sb1_648">
+      <custrecord_ht_record_version_codigo>131</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RECOLECTOR</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>131 - RECOLECTOR</name>
+    </instance>
+    <instance scriptid="val_810447_7451241_sb1_942">
+      <custrecord_ht_record_version_codigo>132</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>REPARTO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>132 - REPARTO</name>
+    </instance>
+    <instance scriptid="val_810448_7451241_sb1_296">
+      <custrecord_ht_record_version_codigo>133</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SEDAN-ORTOPEDICO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>133 - SEDAN-ORTOPEDICO</name>
+    </instance>
+    <instance scriptid="val_810449_7451241_sb1_373">
+      <custrecord_ht_record_version_codigo>134</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>STATION - ORTOPEDICO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>134 - STATION - ORTOPEDICO</name>
+    </instance>
+    <instance scriptid="val_810450_7451241_sb1_604">
+      <custrecord_ht_record_version_codigo>135</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>STATION WAGON</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>135 - STATION WAGON</name>
+    </instance>
+    <instance scriptid="val_810451_7451241_sb1_758">
+      <custrecord_ht_record_version_codigo>136</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>TRAIL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>136 - TRAIL</name>
+    </instance>
+    <instance scriptid="val_810452_7451241_sb1_713">
+      <custrecord_ht_record_version_codigo>137</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>TRICAR</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>137 - TRICAR</name>
+    </instance>
+    <instance scriptid="val_810453_7451241_sb1_813">
+      <custrecord_ht_record_version_codigo>138</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>UTILITY</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>138 - UTILITY</name>
+    </instance>
+    <instance scriptid="val_810454_7451241_sb1_883">
+      <custrecord_ht_record_version_codigo>139</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>WINCHA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>139 - WINCHA</name>
+    </instance>
+    <instance scriptid="val_810455_7451241_sb1_221">
+      <custrecord_ht_record_version_codigo>140</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 STD CRD 2.5 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>140 - BT-50 CD 4X2 STD CRD 2.5 FL</name>
+    </instance>
+    <instance scriptid="val_810456_7451241_sb1_864">
+      <custrecord_ht_record_version_codigo>141</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 STD CRD 2.5 OUT DOORS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>141 - BT-50 CD 4X4 STD CRD 2.5 OUT DOORS</name>
+    </instance>
+    <instance scriptid="val_810457_7451241_sb1_783">
+      <custrecord_ht_record_version_codigo>142</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 STD CRD 2.5 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>142 - BT-50 CD 4X4 STD CRD 2.5 FL</name>
+    </instance>
+    <instance scriptid="val_810458_7451241_sb1_263">
+      <custrecord_ht_record_version_codigo>143</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 GAS 2.6 STD FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>143 - BT-50 CD 4X2 GAS 2.6 STD FL</name>
+    </instance>
+    <instance scriptid="val_810459_7451241_sb1_705">
+      <custrecord_ht_record_version_codigo>144</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 STD GAS 2.6 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>144 - BT-50 CD 4X4 STD GAS 2.6 FL</name>
+    </instance>
+    <instance scriptid="val_810460_7451241_sb1_790">
+      <custrecord_ht_record_version_codigo>145</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X4 STD GAS 2.6 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>145 - BT-50 CS 4X4 STD GAS 2.6 FL</name>
+    </instance>
+    <instance scriptid="val_810461_7451241_sb1_627">
+      <custrecord_ht_record_version_codigo>146</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 STD GAS 2.6 ACTION FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>146 - BT-50 CD 4X4 STD GAS 2.6 ACTION FL</name>
+    </instance>
+    <instance scriptid="val_810462_7451241_sb1_120">
+      <custrecord_ht_record_version_codigo>147</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-5 4X2 4X2 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>147 - CX-5 4X2 4X2 MT</name>
+    </instance>
+    <instance scriptid="val_810463_7451241_sb1_339">
+      <custrecord_ht_record_version_codigo>148</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 GAS 2.6 ACTION  FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>148 - BT-50 CD 4X2 GAS 2.6 ACTION  FL</name>
+    </instance>
+    <instance scriptid="val_810464_7451241_sb1_713">
+      <custrecord_ht_record_version_codigo>149</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 STD GAS 2.6 RAUDA FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>149 - BT-50 CD 4X4 STD GAS 2.6 RAUDA FL</name>
+    </instance>
+    <instance scriptid="val_810465_7451241_sb1_968">
+      <custrecord_ht_record_version_codigo>150</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X2 STD GAS 2.2 RPA FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>150 - BT-50 CS 4X2 STD GAS 2.2 RPA FL</name>
+    </instance>
+    <instance scriptid="val_810466_7451241_sb1_628">
+      <custrecord_ht_record_version_codigo>151</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER BASE 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>151 - EXPLORER BASE 4X2</name>
+    </instance>
+    <instance scriptid="val_810467_7451241_sb1_401">
+      <custrecord_ht_record_version_codigo>152</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F 150 REGULAR CAB 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>152 - F 150 REGULAR CAB 4X2</name>
+    </instance>
+    <instance scriptid="val_810468_7451241_sb1_547">
+      <custrecord_ht_record_version_codigo>153</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORT 2.0 4X2 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>153 - COMPASS SPORT 2.0 4X2 MT</name>
+    </instance>
+    <instance scriptid="val_810469_7451241_sb1_290">
+      <custrecord_ht_record_version_codigo>154</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-5 4X2 GT AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>154 - CX-5 4X2 GT AT</name>
+    </instance>
+    <instance scriptid="val_810470_7451241_sb1_355">
+      <custrecord_ht_record_version_codigo>155</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>TROOPER UBS16-CLK STD 4X4 T/M</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>155 - TROOPER UBS16-CLK STD 4X4 T/M</name>
+    </instance>
+    <instance scriptid="val_810471_7451241_sb1_547">
+      <custrecord_ht_record_version_codigo>156</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FC4JJUA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>156 - FC4JJUA</name>
+    </instance>
+    <instance scriptid="val_810472_7451241_sb1_234">
+      <custrecord_ht_record_version_codigo>157</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER BASE AC 3.5 4P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>157 - EXPLORER BASE AC 3.5 4P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810473_7451241_sb1_858">
+      <custrecord_ht_record_version_codigo>158</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>UNO WAY FL AC 1.4 5P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>158 - UNO WAY FL AC 1.4 5P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810474_7451241_sb1_763">
+      <custrecord_ht_record_version_codigo>159</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT50 CS 4X2 RAUDA GAS 2.2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>159 - BT50 CS 4X2 RAUDA GAS 2.2</name>
+    </instance>
+    <instance scriptid="val_810475_7451241_sb1_869">
+      <custrecord_ht_record_version_codigo>160</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ESCAPE XLS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>160 - ESCAPE XLS</name>
+    </instance>
+    <instance scriptid="val_810476_7451241_sb1_969">
+      <custrecord_ht_record_version_codigo>161</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150 SC XLT 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>161 - F150 SC XLT 4X2</name>
+    </instance>
+    <instance scriptid="val_810477_7451241_sb1_611">
+      <custrecord_ht_record_version_codigo>162</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>WRANGLER UNLIMITED 4X4 MX3</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>162 - WRANGLER UNLIMITED 4X4 MX3</name>
+    </instance>
+    <instance scriptid="val_810478_7451241_sb1_120">
+      <custrecord_ht_record_version_codigo>163</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ECOSPORT TITANIUM AC 2.0 5P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>163 - ECOSPORT TITANIUM AC 2.0 5P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810479_7451241_sb1_323">
+      <custrecord_ht_record_version_codigo>164</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER BASE FWD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>164 - EXPLORER BASE FWD</name>
+    </instance>
+    <instance scriptid="val_810480_7451241_sb1_878">
+      <custrecord_ht_record_version_codigo>165</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD STD  FL TM 2.6  4P 4X4  GAS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>165 - BT-50 CD STD  FL TM 2.6  4P 4X4  GAS</name>
+    </instance>
+    <instance scriptid="val_810481_7451241_sb1_998">
+      <custrecord_ht_record_version_codigo>166</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JOURNEY EXPRESS 2.4 4X2 SE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>166 - JOURNEY EXPRESS 2.4 4X2 SE</name>
+    </instance>
+    <instance scriptid="val_810482_7451241_sb1_872">
+      <custrecord_ht_record_version_codigo>167</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FIORINO A/C 1.3</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>167 - FIORINO A/C 1.3</name>
+    </instance>
+    <instance scriptid="val_810483_7451241_sb1_633">
+      <custrecord_ht_record_version_codigo>168</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>500 SPORT 16V MULTIAIR AC 1.4 3P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>168 - 500 SPORT 16V MULTIAIR AC 1.4 3P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810484_7451241_sb1_761">
+      <custrecord_ht_record_version_codigo>169</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>NUEVO MAZDA3 2.0L 5HB  6AT CORE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>169 - NUEVO MAZDA3 2.0L 5HB  6AT CORE</name>
+    </instance>
+    <instance scriptid="val_810485_7451241_sb1_387">
+      <custrecord_ht_record_version_codigo>170</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150 SC FX4 AC 5.0 CD 4X4 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>170 - F150 SC FX4 AC 5.0 CD 4X4 TA</name>
+    </instance>
+    <instance scriptid="val_810486_7451241_sb1_923">
+      <custrecord_ht_record_version_codigo>171</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150 SC FX4 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>171 - F150 SC FX4 4X4</name>
+    </instance>
+    <instance scriptid="val_810487_7451241_sb1_409">
+      <custrecord_ht_record_version_codigo>172</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150 SC XLT AC 3.7 CD 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>172 - F150 SC XLT AC 3.7 CD 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810488_7451241_sb1_776">
+      <custrecord_ht_record_version_codigo>173</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LAREDO  4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>173 - GRAND CHEROKEE LAREDO  4X2</name>
+    </instance>
+    <instance scriptid="val_810489_7451241_sb1_601">
+      <custrecord_ht_record_version_codigo>174</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SANTA FE 5P 4X2 2.4 TM STD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>174 - SANTA FE 5P 4X2 2.4 TM STD</name>
+    </instance>
+    <instance scriptid="val_810490_7451241_sb1_549">
+      <custrecord_ht_record_version_codigo>175</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>WRANGLER RUBICON 4X4 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>175 - WRANGLER RUBICON 4X4 AT</name>
+    </instance>
+    <instance scriptid="val_810491_7451241_sb1_234">
+      <custrecord_ht_record_version_codigo>176</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE  LIMITED 4X4 AHC</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>176 - GRAND CHEROKEE  LIMITED 4X4 AHC</name>
+    </instance>
+    <instance scriptid="val_810492_7451241_sb1_949">
+      <custrecord_ht_record_version_codigo>177</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS AC 2.4 5P 4X4 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>177 - COMPASS AC 2.4 5P 4X4 TA</name>
+    </instance>
+    <instance scriptid="val_810493_7451241_sb1_725">
+      <custrecord_ht_record_version_codigo>178</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50CS STD FL TM 2.18  2P  4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>178 - BT-50CS STD FL TM 2.18  2P  4X2</name>
+    </instance>
+    <instance scriptid="val_810494_7451241_sb1_576">
+      <custrecord_ht_record_version_codigo>179</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PALIO ATTRACTIVE 1.4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>179 - PALIO ATTRACTIVE 1.4</name>
+    </instance>
+    <instance scriptid="val_810495_7451241_sb1_119">
+      <custrecord_ht_record_version_codigo>180</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FIORINO FIORINO A/C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>180 - FIORINO FIORINO A/C</name>
+    </instance>
+    <instance scriptid="val_810496_7451241_sb1_131">
+      <custrecord_ht_record_version_codigo>181</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>STRADA WORKING CE 1.4 A/C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>181 - STRADA WORKING CE 1.4 A/C</name>
+    </instance>
+    <instance scriptid="val_810497_7451241_sb1_540">
+      <custrecord_ht_record_version_codigo>182</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4*2 STD GAS 2.2 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>182 - BT-50 CD 4*2 STD GAS 2.2 FL</name>
+    </instance>
+    <instance scriptid="val_810498_7451241_sb1_259">
+      <custrecord_ht_record_version_codigo>183</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LUV C/D V6 4X4 T/M INYEC</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>183 - LUV C/D V6 4X4 T/M INYEC</name>
+    </instance>
+    <instance scriptid="val_810499_7451241_sb1_684">
+      <custrecord_ht_record_version_codigo>184</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-7 ESTANDAR</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>184 - CX-7 ESTANDAR</name>
+    </instance>
+    <instance scriptid="val_810500_7451241_sb1_996">
+      <custrecord_ht_record_version_codigo>185</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>VOLQUETA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>185 - VOLQUETA</name>
+    </instance>
+    <instance scriptid="val_810501_7451241_sb1_724">
+      <custrecord_ht_record_version_codigo>186</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 STD GAS 2.2 RAUDA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>186 - BT-50 CD 4X2 STD GAS 2.2 RAUDA</name>
+    </instance>
+    <instance scriptid="val_810502_7451241_sb1_762">
+      <custrecord_ht_record_version_codigo>187</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50  CH 4X4 STD COL GAS 2.6</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>187 - BT-50  CH 4X4 STD COL GAS 2.6</name>
+    </instance>
+    <instance scriptid="val_810503_7451241_sb1_315">
+      <custrecord_ht_record_version_codigo>188</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA2 HB 1.5 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>188 - MAZDA2 HB 1.5 MT</name>
+    </instance>
+    <instance scriptid="val_810504_7451241_sb1_677">
+      <custrecord_ht_record_version_codigo>189</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X2 STD GAS 2.2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>189 - BT-50 CS 4X2 STD GAS 2.2</name>
+    </instance>
+    <instance scriptid="val_810505_7451241_sb1_262">
+      <custrecord_ht_record_version_codigo>190</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JOURNEY SXT 3.6</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>190 - JOURNEY SXT 3.6</name>
+    </instance>
+    <instance scriptid="val_810506_7451241_sb1_314">
+      <custrecord_ht_record_version_codigo>191</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ESCOPORT TITANIUN AC 2.0 5P</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>191 - ESCOPORT TITANIUN AC 2.0 5P</name>
+    </instance>
+    <instance scriptid="val_810507_7451241_sb1_654">
+      <custrecord_ht_record_version_codigo>192</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>UNO VIVACE A/C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>192 - UNO VIVACE A/C</name>
+    </instance>
+    <instance scriptid="val_810508_7451241_sb1_944">
+      <custrecord_ht_record_version_codigo>193</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150XL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>193 - F150XL</name>
+    </instance>
+    <instance scriptid="val_810509_7451241_sb1_295">
+      <custrecord_ht_record_version_codigo>194</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 STD FL 2.2 CD 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>194 - BT-50 STD FL 2.2 CD 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810510_7451241_sb1_116">
+      <custrecord_ht_record_version_codigo>195</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JOURNEY SXT 3.6 AGV</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>195 - JOURNEY SXT 3.6 AGV</name>
+    </instance>
+    <instance scriptid="val_810511_7451241_sb1_140">
+      <custrecord_ht_record_version_codigo>196</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-5 AC 2.0 5P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>196 - CX-5 AC 2.0 5P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810512_7451241_sb1_477">
+      <custrecord_ht_record_version_codigo>197</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA3 NUEVO 2.0L SDN 6MT  CORE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>197 - MAZDA3 NUEVO 2.0L SDN 6MT  CORE</name>
+    </instance>
+    <instance scriptid="val_810513_7451241_sb1_707">
+      <custrecord_ht_record_version_codigo>198</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MONTERO IO 5P</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>198 - MONTERO IO 5P</name>
+    </instance>
+    <instance scriptid="val_810514_7451241_sb1_104">
+      <custrecord_ht_record_version_codigo>199</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORT 2.4 4X4 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>199 - COMPASS SPORT 2.4 4X4 AT</name>
+    </instance>
+    <instance scriptid="val_810515_7451241_sb1_563">
+      <custrecord_ht_record_version_codigo>200</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>TRAILBLAZER AC 2.8 5P 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>200 - TRAILBLAZER AC 2.8 5P 4X4</name>
+    </instance>
+    <instance scriptid="val_810516_7451241_sb1_601">
+      <custrecord_ht_record_version_codigo>201</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT50 CD STD FL TM 2.18 4P 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>201 - BT50 CD STD FL TM 2.18 4P 4X2</name>
+    </instance>
+    <instance scriptid="val_810517_7451241_sb1_547">
+      <custrecord_ht_record_version_codigo>202</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FC9JJSA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>202 - FC9JJSA</name>
+    </instance>
+    <instance scriptid="val_810518_7451241_sb1_188">
+      <custrecord_ht_record_version_codigo>203</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE  LIMITED 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>203 - GRAND CHEROKEE  LIMITED 4X4</name>
+    </instance>
+    <instance scriptid="val_810519_7451241_sb1_645">
+      <custrecord_ht_record_version_codigo>204</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA6 2.0 MT  FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>204 - MAZDA6 2.0 MT  FL</name>
+    </instance>
+    <instance scriptid="val_810520_7451241_sb1_561">
+      <custrecord_ht_record_version_codigo>205</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FC9JJSA AC 5.1 2P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>205 - FC9JJSA AC 5.1 2P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810521_7451241_sb1_335">
+      <custrecord_ht_record_version_codigo>206</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 STD GAS 2.2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>206 - BT-50 CD 4X2 STD GAS 2.2</name>
+    </instance>
+    <instance scriptid="val_810522_7451241_sb1_745">
+      <custrecord_ht_record_version_codigo>207</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DT175</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>207 - DT175</name>
+    </instance>
+    <instance scriptid="val_810523_7451241_sb1_665">
+      <custrecord_ht_record_version_codigo>208</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA6 2.0 MT  PREMIUM FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>208 - MAZDA6 2.0 MT  PREMIUM FL</name>
+    </instance>
+    <instance scriptid="val_810524_7451241_sb1_993">
+      <custrecord_ht_record_version_codigo>209</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4*4 ACTION GAS 2.6 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>209 - BT-50 CD 4*4 ACTION GAS 2.6 FL</name>
+    </instance>
+    <instance scriptid="val_810525_7451241_sb1_214">
+      <custrecord_ht_record_version_codigo>210</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SCAPE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>210 - SCAPE</name>
+    </instance>
+    <instance scriptid="val_810526_7451241_sb1_893">
+      <custrecord_ht_record_version_codigo>211</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT 50 CD STD GAS 2.2 FL TM 2.18 4P 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>211 - BT 50 CD STD GAS 2.2 FL TM 2.18 4P 4X2</name>
+    </instance>
+    <instance scriptid="val_810527_7451241_sb1_670">
+      <custrecord_ht_record_version_codigo>212</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SPORTAGE LX 2.0L 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>212 - SPORTAGE LX 2.0L 4X2</name>
+    </instance>
+    <instance scriptid="val_810528_7451241_sb1_887">
+      <custrecord_ht_record_version_codigo>213</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA3 SEDAN 1.6 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>213 - MAZDA3 SEDAN 1.6 MT</name>
+    </instance>
+    <instance scriptid="val_810529_7451241_sb1_385">
+      <custrecord_ht_record_version_codigo>214</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>KODIAK 241E</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>214 - KODIAK 241E</name>
+    </instance>
+    <instance scriptid="val_810530_7451241_sb1_788">
+      <custrecord_ht_record_version_codigo>215</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GH1JGSD / VOLQUETA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>215 - GH1JGSD / VOLQUETA</name>
+    </instance>
+    <instance scriptid="val_810531_7451241_sb1_652">
+      <custrecord_ht_record_version_codigo>216</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HILUX</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>216 - HILUX</name>
+    </instance>
+    <instance scriptid="val_810532_7451241_sb1_842">
+      <custrecord_ht_record_version_codigo>217</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RANGER XLS 2.5 CD 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>217 - RANGER XLS 2.5 CD 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810533_7451241_sb1_382">
+      <custrecord_ht_record_version_codigo>218</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 STD TD 2.5 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>218 - BT-50 CD 4X2 STD TD 2.5 FL</name>
+    </instance>
+    <instance scriptid="val_810534_7451241_sb1_827">
+      <custrecord_ht_record_version_codigo>219</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORT 2.4   4X4 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>219 - COMPASS SPORT 2.4   4X4 AT</name>
+    </instance>
+    <instance scriptid="val_810535_7451241_sb1_396">
+      <custrecord_ht_record_version_codigo>220</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>AA FJ CRUISER TA / JEEP</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>220 - AA FJ CRUISER TA / JEEP</name>
+    </instance>
+    <instance scriptid="val_810536_7451241_sb1_147">
+      <custrecord_ht_record_version_codigo>221</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>QASHQAI SENSE AC 2.0 5P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>221 - QASHQAI SENSE AC 2.0 5P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810537_7451241_sb1_480">
+      <custrecord_ht_record_version_codigo>222</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X4 STD TD 2.5</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>222 - BT-50 CS 4X4 STD TD 2.5</name>
+    </instance>
+    <instance scriptid="val_810538_7451241_sb1_285">
+      <custrecord_ht_record_version_codigo>223</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>XZU4122L 2006/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>223 - XZU4122L 2006/CAMION</name>
+    </instance>
+    <instance scriptid="val_810539_7451241_sb1_425">
+      <custrecord_ht_record_version_codigo>224</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MARCH AC 1.6 4P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>224 - MARCH AC 1.6 4P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810540_7451241_sb1_468">
+      <custrecord_ht_record_version_codigo>225</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CH7142CAC 1.4 5P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>225 - CH7142CAC 1.4 5P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810541_7451241_sb1_711">
+      <custrecord_ht_record_version_codigo>226</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-9 4WD FULL GT FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>226 - CX-9 4WD FULL GT FL</name>
+    </instance>
+    <instance scriptid="val_810542_7451241_sb1_726">
+      <custrecord_ht_record_version_codigo>227</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA6 2.0 MT PREMIUM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>227 - MAZDA6 2.0 MT PREMIUM</name>
+    </instance>
+    <instance scriptid="val_810543_7451241_sb1_342">
+      <custrecord_ht_record_version_codigo>228</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 STD CRD 2.5 ACTION PLUS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>228 - BT-50 CD 4X4 STD CRD 2.5 ACTION PLUS</name>
+    </instance>
+    <instance scriptid="val_810544_7451241_sb1_299">
+      <custrecord_ht_record_version_codigo>229</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EDGE SE AC 3.5 4P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>229 - EDGE SE AC 3.5 4P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810545_7451241_sb1_464">
+      <custrecord_ht_record_version_codigo>230</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORT 2.4 4X4 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>230 - COMPASS SPORT 2.4 4X4 MT</name>
+    </instance>
+    <instance scriptid="val_810546_7451241_sb1_724">
+      <custrecord_ht_record_version_codigo>231</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FOCUS 2.0 4P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>231 - FOCUS 2.0 4P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810547_7451241_sb1_908">
+      <custrecord_ht_record_version_codigo>232</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT 50 CS STD FL TM 2.6 2P 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>232 - BT 50 CS STD FL TM 2.6 2P 4X4</name>
+    </instance>
+    <instance scriptid="val_810548_7451241_sb1_581">
+      <custrecord_ht_record_version_codigo>233</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FUSION HIBRIDO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>233 - FUSION HIBRIDO</name>
+    </instance>
+    <instance scriptid="val_810549_7451241_sb1_229">
+      <custrecord_ht_record_version_codigo>234</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LAREDO 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>234 - GRAND CHEROKEE LAREDO 4X2</name>
+    </instance>
+    <instance scriptid="val_810550_7451241_sb1_698">
+      <custrecord_ht_record_version_codigo>235</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ESCAPE TA 2.5 5P 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>235 - ESCAPE TA 2.5 5P 4X2</name>
+    </instance>
+    <instance scriptid="val_810551_7451241_sb1_672">
+      <custrecord_ht_record_version_codigo>236</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SAIL 1C 1.4  4P  4X2  TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>236 - SAIL 1C 1.4  4P  4X2  TM</name>
+    </instance>
+    <instance scriptid="val_810552_7451241_sb1_826">
+      <custrecord_ht_record_version_codigo>237</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>TRAILER 2007/CABEZAL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>237 - TRAILER 2007/CABEZAL</name>
+    </instance>
+    <instance scriptid="val_810553_7451241_sb1_241">
+      <custrecord_ht_record_version_codigo>238</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X2 STD GAS 2.2 RAUDA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>238 - BT-50 CS 4X2 STD GAS 2.2 RAUDA</name>
+    </instance>
+    <instance scriptid="val_810554_7451241_sb1_471">
+      <custrecord_ht_record_version_codigo>239</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LAREDO AC 3.6 5P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>239 - GRAND CHEROKEE LAREDO AC 3.6 5P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810555_7451241_sb1_460">
+      <custrecord_ht_record_version_codigo>240</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LIMITED 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>240 - GRAND CHEROKEE LIMITED 4X4</name>
+    </instance>
+    <instance scriptid="val_810556_7451241_sb1_735">
+      <custrecord_ht_record_version_codigo>241</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>A3 ATTRACTION 1.8T T/M</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>241 - A3 ATTRACTION 1.8T T/M</name>
+    </instance>
+    <instance scriptid="val_810557_7451241_sb1_956">
+      <custrecord_ht_record_version_codigo>242</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>500  SPORT MULTIAIR AC 1.4 3P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>242 - 500  SPORT MULTIAIR AC 1.4 3P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810558_7451241_sb1_596">
+      <custrecord_ht_record_version_codigo>243</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FM1JRUA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>243 - FM1JRUA</name>
+    </instance>
+    <instance scriptid="val_810559_7451241_sb1_531">
+      <custrecord_ht_record_version_codigo>244</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA5  MT FULL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>244 - MAZDA5  MT FULL</name>
+    </instance>
+    <instance scriptid="val_810560_7451241_sb1_291">
+      <custrecord_ht_record_version_codigo>245</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>VERSA AC 1.6 4P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>245 - VERSA AC 1.6 4P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810561_7451241_sb1_180">
+      <custrecord_ht_record_version_codigo>246</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>WRANGLER SPORT 4X4 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>246 - WRANGLER SPORT 4X4 AT</name>
+    </instance>
+    <instance scriptid="val_810562_7451241_sb1_648">
+      <custrecord_ht_record_version_codigo>247</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150 REGULAR CAB 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>247 - F150 REGULAR CAB 4X4</name>
+    </instance>
+    <instance scriptid="val_810563_7451241_sb1_661">
+      <custrecord_ht_record_version_codigo>248</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>NISSAN X-TRAIL CLASSIC AC 2.5 5P 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>248 - NISSAN X-TRAIL CLASSIC AC 2.5 5P 4X2</name>
+    </instance>
+    <instance scriptid="val_810564_7451241_sb1_685">
+      <custrecord_ht_record_version_codigo>249</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FUSION AC 2.5 4P TA SEDAN</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>249 - FUSION AC 2.5 4P TA SEDAN</name>
+    </instance>
+    <instance scriptid="val_810565_7451241_sb1_883">
+      <custrecord_ht_record_version_codigo>250</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>3201 AC 2.0 4P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>250 - 3201 AC 2.0 4P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810566_7451241_sb1_299">
+      <custrecord_ht_record_version_codigo>251</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150 RC AC 3.7 CS 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>251 - F150 RC AC 3.7 CS 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810567_7451241_sb1_942">
+      <custrecord_ht_record_version_codigo>252</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-7  PREMIUM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>252 - CX-7  PREMIUM</name>
+    </instance>
+    <instance scriptid="val_810568_7451241_sb1_222">
+      <custrecord_ht_record_version_codigo>253</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RANGER XLS 2.5 CD 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>253 - RANGER XLS 2.5 CD 4X2</name>
+    </instance>
+    <instance scriptid="val_810569_7451241_sb1_527">
+      <custrecord_ht_record_version_codigo>254</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SPORTAGE LX DABAC 2.04P 4X2TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>254 - SPORTAGE LX DABAC 2.04P 4X2TM</name>
+    </instance>
+    <instance scriptid="val_810570_7451241_sb1_258">
+      <custrecord_ht_record_version_codigo>255</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA2 SEDAN 1.5 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>255 - MAZDA2 SEDAN 1.5 TM</name>
+    </instance>
+    <instance scriptid="val_810571_7451241_sb1_498">
+      <custrecord_ht_record_version_codigo>256</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND VITARA SZ 2.0L 5P TM 4X2 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>256 - GRAND VITARA SZ 2.0L 5P TM 4X2 FL</name>
+    </instance>
+    <instance scriptid="val_810572_7451241_sb1_883">
+      <custrecord_ht_record_version_codigo>257</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FORD EXPEDITION XLT 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>257 - FORD EXPEDITION XLT 4X4</name>
+    </instance>
+    <instance scriptid="val_810573_7451241_sb1_997">
+      <custrecord_ht_record_version_codigo>258</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LAREDO AC 3.6 5P 4X4 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>258 - GRAND CHEROKEE LAREDO AC 3.6 5P 4X4 TA</name>
+    </instance>
+    <instance scriptid="val_810574_7451241_sb1_644">
+      <custrecord_ht_record_version_codigo>259</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>WRANGLER UNLIMITED RUBICON 4X4 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>259 - WRANGLER UNLIMITED RUBICON 4X4 AT</name>
+    </instance>
+    <instance scriptid="val_810575_7451241_sb1_779">
+      <custrecord_ht_record_version_codigo>260</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORT 2.4 4X2 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>260 - COMPASS SPORT 2.4 4X2 AT</name>
+    </instance>
+    <instance scriptid="val_810576_7451241_sb1_631">
+      <custrecord_ht_record_version_codigo>261</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 STD GAS 2.2 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>261 - BT-50 CD 4X2 STD GAS 2.2 FL</name>
+    </instance>
+    <instance scriptid="val_810577_7451241_sb1_233">
+      <custrecord_ht_record_version_codigo>262</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 ACTION CRD 2.5 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>262 - BT-50 CD 4X4 ACTION CRD 2.5 FL</name>
+    </instance>
+    <instance scriptid="val_810578_7451241_sb1_948">
+      <custrecord_ht_record_version_codigo>263</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ECOSPORT S AC 2.0 5P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>263 - ECOSPORT S AC 2.0 5P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810579_7451241_sb1_187">
+      <custrecord_ht_record_version_codigo>264</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA3 SEDAN 2.0 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>264 - MAZDA3 SEDAN 2.0 MT</name>
+    </instance>
+    <instance scriptid="val_810580_7451241_sb1_496">
+      <custrecord_ht_record_version_codigo>265</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LUV D-MAX C/D DIESEL 4X2 T/M</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>265 - LUV D-MAX C/D DIESEL 4X2 T/M</name>
+    </instance>
+    <instance scriptid="val_810581_7451241_sb1_230">
+      <custrecord_ht_record_version_codigo>266</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>DURANGO P 4X4 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>266 - DURANGO P 4X4 AT</name>
+    </instance>
+    <instance scriptid="val_810582_7451241_sb1_759">
+      <custrecord_ht_record_version_codigo>267</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER TA 3.5 5P 4X2 BASE.</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>267 - EXPLORER TA 3.5 5P 4X2 BASE.</name>
+    </instance>
+    <instance scriptid="val_810583_7451241_sb1_174">
+      <custrecord_ht_record_version_codigo>268</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LAND CRUISER PRADO GX 3PTAS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>268 - LAND CRUISER PRADO GX 3PTAS</name>
+    </instance>
+    <instance scriptid="val_810584_7451241_sb1_827">
+      <custrecord_ht_record_version_codigo>269</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPEDITION EDDIE BAUER 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>269 - EXPEDITION EDDIE BAUER 4X4</name>
+    </instance>
+    <instance scriptid="val_810585_7451241_sb1_802">
+      <custrecord_ht_record_version_codigo>270</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RIO 1.4L LX 4P</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>270 - RIO 1.4L LX 4P</name>
+    </instance>
+    <instance scriptid="val_810586_7451241_sb1_956">
+      <custrecord_ht_record_version_codigo>271</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>XZU423L-HKMRD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>271 - XZU423L-HKMRD</name>
+    </instance>
+    <instance scriptid="val_810587_7451241_sb1_174">
+      <custrecord_ht_record_version_codigo>272</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JOURNEY SXT AC 3.6 5P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>272 - JOURNEY SXT AC 3.6 5P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810588_7451241_sb1_438">
+      <custrecord_ht_record_version_codigo>273</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>T 800 6X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>273 - T 800 6X4</name>
+    </instance>
+    <instance scriptid="val_810589_7451241_sb1_425">
+      <custrecord_ht_record_version_codigo>274</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-9 4X4 TOP GRADE AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>274 - CX-9 4X4 TOP GRADE AT</name>
+    </instance>
+    <instance scriptid="val_810590_7451241_sb1_121">
+      <custrecord_ht_record_version_codigo>275</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FIORINO S/A 1.3</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>275 - FIORINO S/A 1.3</name>
+    </instance>
+    <instance scriptid="val_810591_7451241_sb1_708">
+      <custrecord_ht_record_version_codigo>276</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RANGER XL 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>276 - RANGER XL 4X2</name>
+    </instance>
+    <instance scriptid="val_810592_7451241_sb1_189">
+      <custrecord_ht_record_version_codigo>277</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X2 STD GAS 2.2 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>277 - BT-50 CS 4X2 STD GAS 2.2 FL</name>
+    </instance>
+    <instance scriptid="val_810593_7451241_sb1_494">
+      <custrecord_ht_record_version_codigo>278</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FUSION AC 2.5 4P TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>278 - FUSION AC 2.5 4P TA</name>
+    </instance>
+    <instance scriptid="val_810594_7451241_sb1_493">
+      <custrecord_ht_record_version_codigo>279</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 STD FL 2.6 CS 4X4 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>279 - BT-50 STD FL 2.6 CS 4X4 TM</name>
+    </instance>
+    <instance scriptid="val_810595_7451241_sb1_160">
+      <custrecord_ht_record_version_codigo>280</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SORENTO LX 3.3L GSL AT 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>280 - SORENTO LX 3.3L GSL AT 4X4</name>
+    </instance>
+    <instance scriptid="val_810596_7451241_sb1_784">
+      <custrecord_ht_record_version_codigo>281</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ESCAPE XLS 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>281 - ESCAPE XLS 4X4</name>
+    </instance>
+    <instance scriptid="val_810597_7451241_sb1_786">
+      <custrecord_ht_record_version_codigo>282</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER XLT 4X4 T/A</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>282 - EXPLORER XLT 4X4 T/A</name>
+    </instance>
+    <instance scriptid="val_810598_7451241_sb1_678">
+      <custrecord_ht_record_version_codigo>283</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EDGE LIMITED</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>283 - EDGE LIMITED</name>
+    </instance>
+    <instance scriptid="val_810599_7451241_sb1_397">
+      <custrecord_ht_record_version_codigo>284</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>WRANGLER SPORT 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>284 - WRANGLER SPORT 4X4</name>
+    </instance>
+    <instance scriptid="val_810600_7451241_sb1_743">
+      <custrecord_ht_record_version_codigo>285</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA3 SEDAN 1.6  MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>285 - MAZDA3 SEDAN 1.6  MT</name>
+    </instance>
+    <instance scriptid="val_810601_7451241_sb1_586">
+      <custrecord_ht_record_version_codigo>286</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 STD CRD 2.5 ACC. (ACTION) FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>286 - BT-50 CD 4X4 STD CRD 2.5 ACC. (ACTION) FL</name>
+    </instance>
+    <instance scriptid="val_810602_7451241_sb1_520">
+      <custrecord_ht_record_version_codigo>287</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 ACTION GAS 2.6 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>287 - BT-50 CD 4X4 ACTION GAS 2.6 FL</name>
+    </instance>
+    <instance scriptid="val_810603_7451241_sb1_430">
+      <custrecord_ht_record_version_codigo>288</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA2 SEDAN 1.5  TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>288 - MAZDA2 SEDAN 1.5  TM</name>
+    </instance>
+    <instance scriptid="val_810604_7451241_sb1_480">
+      <custrecord_ht_record_version_codigo>289</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER TA 3.5 5P 4X4 XLT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>289 - EXPLORER TA 3.5 5P 4X4 XLT</name>
+    </instance>
+    <instance scriptid="val_810605_7451241_sb1_551">
+      <custrecord_ht_record_version_codigo>290</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>WRANGLER UNLIMITED 4X4 MX3 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>290 - WRANGLER UNLIMITED 4X4 MX3 AT</name>
+    </instance>
+    <instance scriptid="val_810606_7451241_sb1_354">
+      <custrecord_ht_record_version_codigo>291</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LAREDO 4X4 AHC</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>291 - GRAND CHEROKEE LAREDO 4X4 AHC</name>
+    </instance>
+    <instance scriptid="val_810607_7451241_sb1_475">
+      <custrecord_ht_record_version_codigo>292</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EDGE CVT 3.5 EP 4X2 SE.</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>292 - EDGE CVT 3.5 EP 4X2 SE.</name>
+    </instance>
+    <instance scriptid="val_810608_7451241_sb1_374">
+      <custrecord_ht_record_version_codigo>293</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CERATO STD AC 1.6 4P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>293 - CERATO STD AC 1.6 4P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810609_7451241_sb1_823">
+      <custrecord_ht_record_version_codigo>294</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150XLT CREW CAB 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>294 - F150XLT CREW CAB 4X4</name>
+    </instance>
+    <instance scriptid="val_810610_7451241_sb1_565">
+      <custrecord_ht_record_version_codigo>295</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GH1JGUD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>295 - GH1JGUD</name>
+    </instance>
+    <instance scriptid="val_810611_7451241_sb1_182">
+      <custrecord_ht_record_version_codigo>296</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-7</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>296 - CX-7</name>
+    </instance>
+    <instance scriptid="val_810612_7451241_sb1_248">
+      <custrecord_ht_record_version_codigo>297</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150 RC AC 3.7 CS 4X4 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>297 - F150 RC AC 3.7 CS 4X4 TA</name>
+    </instance>
+    <instance scriptid="val_810613_7451241_sb1_229">
+      <custrecord_ht_record_version_codigo>298</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JOURNEY  EXPRESS 2.4 X2 SE AGV</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>298 - JOURNEY  EXPRESS 2.4 X2 SE AGV</name>
+    </instance>
+    <instance scriptid="val_810614_7451241_sb1_278">
+      <custrecord_ht_record_version_codigo>299</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT/50 CD STD FL 2.18 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>299 - BT/50 CD STD FL 2.18 4X2</name>
+    </instance>
+    <instance scriptid="val_810615_7451241_sb1_974">
+      <custrecord_ht_record_version_codigo>300</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD STD FL TM 2.6 2P 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>300 - BT-50 CD STD FL TM 2.6 2P 4X4</name>
+    </instance>
+    <instance scriptid="val_810616_7451241_sb1_262">
+      <custrecord_ht_record_version_codigo>301</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD STD FL TM 2.6 4P 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>301 - BT-50 CD STD FL TM 2.6 4P 4X4</name>
+    </instance>
+    <instance scriptid="val_810617_7451241_sb1_319">
+      <custrecord_ht_record_version_codigo>302</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>UNO WAY EVO 1.4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>302 - UNO WAY EVO 1.4</name>
+    </instance>
+    <instance scriptid="val_810618_7451241_sb1_365">
+      <custrecord_ht_record_version_codigo>303</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA6 2.5 AT GT FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>303 - MAZDA6 2.5 AT GT FL</name>
+    </instance>
+    <instance scriptid="val_810619_7451241_sb1_816">
+      <custrecord_ht_record_version_codigo>304</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FUSION AC 2.5 4P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>304 - FUSION AC 2.5 4P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810620_7451241_sb1_267">
+      <custrecord_ht_record_version_codigo>305</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RIO 1.6L EX 4P AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>305 - RIO 1.6L EX 4P AT</name>
+    </instance>
+    <instance scriptid="val_810621_7451241_sb1_264">
+      <custrecord_ht_record_version_codigo>306</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>UNO WAY A/C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>306 - UNO WAY A/C</name>
+    </instance>
+    <instance scriptid="val_810622_7451241_sb1_763">
+      <custrecord_ht_record_version_codigo>307</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER XLT AC 3.5 4P 4X4 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>307 - EXPLORER XLT AC 3.5 4P 4X4 TA</name>
+    </instance>
+    <instance scriptid="val_810623_7451241_sb1_649">
+      <custrecord_ht_record_version_codigo>308</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CFT HILUX 4X2 CD DIESEL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>308 - CFT HILUX 4X2 CD DIESEL</name>
+    </instance>
+    <instance scriptid="val_810624_7451241_sb1_124">
+      <custrecord_ht_record_version_codigo>309</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 STD GAS 2.2 RPA FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>309 - BT-50 CD 4X2 STD GAS 2.2 RPA FL</name>
+    </instance>
+    <instance scriptid="val_810625_7451241_sb1_876">
+      <custrecord_ht_record_version_codigo>310</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>310 - EXPLORER 4X4</name>
+    </instance>
+    <instance scriptid="val_810626_7451241_sb1_123">
+      <custrecord_ht_record_version_codigo>311</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FIORINO FIORINO 1.3</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>311 - FIORINO FIORINO 1.3</name>
+    </instance>
+    <instance scriptid="val_810627_7451241_sb1_753">
+      <custrecord_ht_record_version_codigo>312</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X4 STD GAS 2.6</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>312 - BT-50 CS 4X4 STD GAS 2.6</name>
+    </instance>
+    <instance scriptid="val_810628_7451241_sb1_742">
+      <custrecord_ht_record_version_codigo>313</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 TSX OUTDOORS CRDI 2.5  CD 4X4 TM DIESEL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>313 - BT-50 TSX OUTDOORS CRDI 2.5  CD 4X4 TM DIESEL</name>
+    </instance>
+    <instance scriptid="val_810629_7451241_sb1_171">
+      <custrecord_ht_record_version_codigo>314</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 STD GAS 2.2 VERSION ESPECIAL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>314 - BT-50 CD 4X2 STD GAS 2.2 VERSION ESPECIAL</name>
+    </instance>
+    <instance scriptid="val_810630_7451241_sb1_183">
+      <custrecord_ht_record_version_codigo>315</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F150 FX4 CREW CAB 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>315 - F150 FX4 CREW CAB 4X4</name>
+    </instance>
+    <instance scriptid="val_810631_7451241_sb1_591">
+      <custrecord_ht_record_version_codigo>316</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RANGER DC</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>316 - RANGER DC</name>
+    </instance>
+    <instance scriptid="val_810632_7451241_sb1_352">
+      <custrecord_ht_record_version_codigo>317</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JEEP ESCAPE HIBRIDO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>317 - JEEP ESCAPE HIBRIDO</name>
+    </instance>
+    <instance scriptid="val_810633_7451241_sb1_879">
+      <custrecord_ht_record_version_codigo>318</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F 150 XLT CREW CAB 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>318 - F 150 XLT CREW CAB 4X2</name>
+    </instance>
+    <instance scriptid="val_810634_7451241_sb1_939">
+      <custrecord_ht_record_version_codigo>319</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HILUX 4X2 2008/CAMIONETA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>319 - HILUX 4X2 2008/CAMIONETA</name>
+    </instance>
+    <instance scriptid="val_810635_7451241_sb1_470">
+      <custrecord_ht_record_version_codigo>320</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ESCAPE AC 2.5 4P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>320 - ESCAPE AC 2.5 4P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810636_7451241_sb1_836">
+      <custrecord_ht_record_version_codigo>321</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>B2200 C/S</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>321 - B2200 C/S</name>
+    </instance>
+    <instance scriptid="val_810637_7451241_sb1_695">
+      <custrecord_ht_record_version_codigo>322</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD STD CRD FL TM 2.49 4P 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>322 - BT-50 CD STD CRD FL TM 2.49 4P 4X4</name>
+    </instance>
+    <instance scriptid="val_810638_7451241_sb1_171">
+      <custrecord_ht_record_version_codigo>323</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LAREDO 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>323 - GRAND CHEROKEE LAREDO 4X4</name>
+    </instance>
+    <instance scriptid="val_810639_7451241_sb1_801">
+      <custrecord_ht_record_version_codigo>324</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X2 STD TD 2.5 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>324 - BT-50 CS 4X2 STD TD 2.5 FL</name>
+    </instance>
+    <instance scriptid="val_810640_7451241_sb1_579">
+      <custrecord_ht_record_version_codigo>325</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>K2700</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>325 - K2700</name>
+    </instance>
+    <instance scriptid="val_810641_7451241_sb1_561">
+      <custrecord_ht_record_version_codigo>326</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JOURNEY SXT 4X2 2.4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>326 - JOURNEY SXT 4X2 2.4</name>
+    </instance>
+    <instance scriptid="val_810642_7451241_sb1_710">
+      <custrecord_ht_record_version_codigo>327</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SORENTO EX AC 3.5 5P 4X</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>327 - SORENTO EX AC 3.5 5P 4X</name>
+    </instance>
+    <instance scriptid="val_810643_7451241_sb1_425">
+      <custrecord_ht_record_version_codigo>328</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPEDITION XLT AC 5.4 5P 4X4 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>328 - EXPEDITION XLT AC 5.4 5P 4X4 TA</name>
+    </instance>
+    <instance scriptid="val_810644_7451241_sb1_678">
+      <custrecord_ht_record_version_codigo>329</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SANTA FE GL DAA TM W52D856GG635</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>329 - SANTA FE GL DAA TM W52D856GG635</name>
+    </instance>
+    <instance scriptid="val_810645_7451241_sb1_433">
+      <custrecord_ht_record_version_codigo>330</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ESCAPE XLS 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>330 - ESCAPE XLS 4X2</name>
+    </instance>
+    <instance scriptid="val_810646_7451241_sb1_357">
+      <custrecord_ht_record_version_codigo>331</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA 3 SEDAN 2.0 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>331 - MAZDA 3 SEDAN 2.0 MT</name>
+    </instance>
+    <instance scriptid="val_810647_7451241_sb1_445">
+      <custrecord_ht_record_version_codigo>332</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CH 4X2 STD GAS 2.2 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>332 - BT-50 CH 4X2 STD GAS 2.2 FL</name>
+    </instance>
+    <instance scriptid="val_810648_7451241_sb1_439">
+      <custrecord_ht_record_version_codigo>333</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>NQR 85L</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>333 - NQR 85L</name>
+    </instance>
+    <instance scriptid="val_810649_7451241_sb1_723">
+      <custrecord_ht_record_version_codigo>334</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LAND CRUISER 2008/4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>334 - LAND CRUISER 2008/4X4</name>
+    </instance>
+    <instance scriptid="val_810650_7451241_sb1_178">
+      <custrecord_ht_record_version_codigo>335</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LUV 2003/4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>335 - LUV 2003/4X4</name>
+    </instance>
+    <instance scriptid="val_810651_7451241_sb1_804">
+      <custrecord_ht_record_version_codigo>336</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>X-TRAIL CLASSIC 4X2 2.5 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>336 - X-TRAIL CLASSIC 4X2 2.5 AT</name>
+    </instance>
+    <instance scriptid="val_810652_7451241_sb1_248">
+      <custrecord_ht_record_version_codigo>337</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>206 2008/SEDAN</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>337 - 206 2008/SEDAN</name>
+    </instance>
+    <instance scriptid="val_810653_7451241_sb1_834">
+      <custrecord_ht_record_version_codigo>338</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CAMIONETA ZN1021U2S</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>338 - CAMIONETA ZN1021U2S</name>
+    </instance>
+    <instance scriptid="val_810654_7451241_sb1_634">
+      <custrecord_ht_record_version_codigo>339</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>X-TRAIL CLASSIC 4X4 2.5 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>339 - X-TRAIL CLASSIC 4X4 2.5 MT</name>
+    </instance>
+    <instance scriptid="val_810655_7451241_sb1_813">
+      <custrecord_ht_record_version_codigo>340</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RX450H</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>340 - RX450H</name>
+    </instance>
+    <instance scriptid="val_810656_7451241_sb1_534">
+      <custrecord_ht_record_version_codigo>341</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAN VITARA 3P DLX T/M</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>341 - GRAN VITARA 3P DLX T/M</name>
+    </instance>
+    <instance scriptid="val_810657_7451241_sb1_865">
+      <custrecord_ht_record_version_codigo>342</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>TRAILER 1995/CABEZAL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>342 - TRAILER 1995/CABEZAL</name>
+    </instance>
+    <instance scriptid="val_810658_7451241_sb1_132">
+      <custrecord_ht_record_version_codigo>343</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA 3 SPORT MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>343 - MAZDA 3 SPORT MT</name>
+    </instance>
+    <instance scriptid="val_810659_7451241_sb1_910">
+      <custrecord_ht_record_version_codigo>344</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CHEROKEE SPORT AWD 4DR</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>344 - CHEROKEE SPORT AWD 4DR</name>
+    </instance>
+    <instance scriptid="val_810660_7451241_sb1_567">
+      <custrecord_ht_record_version_codigo>345</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RX 330</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>345 - RX 330</name>
+    </instance>
+    <instance scriptid="val_810661_7451241_sb1_529">
+      <custrecord_ht_record_version_codigo>346</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>TUCSON GL GAA 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>346 - TUCSON GL GAA 4X2</name>
+    </instance>
+    <instance scriptid="val_810662_7451241_sb1_732">
+      <custrecord_ht_record_version_codigo>347</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA3 HATCHBACK 2.0 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>347 - MAZDA3 HATCHBACK 2.0 MT</name>
+    </instance>
+    <instance scriptid="val_810663_7451241_sb1_994">
+      <custrecord_ht_record_version_codigo>348</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>XZUA423L 2009/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>348 - XZUA423L 2009/CAMION</name>
+    </instance>
+    <instance scriptid="val_810664_7451241_sb1_788">
+      <custrecord_ht_record_version_codigo>349</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GH1JMUA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>349 - GH1JMUA</name>
+    </instance>
+    <instance scriptid="val_810665_7451241_sb1_967">
+      <custrecord_ht_record_version_codigo>350</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND VITARA SZ NEXT AC 2.4 5P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>350 - GRAND VITARA SZ NEXT AC 2.4 5P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810666_7451241_sb1_109">
+      <custrecord_ht_record_version_codigo>351</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORT AC 2.0 5P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>351 - COMPASS SPORT AC 2.0 5P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810667_7451241_sb1_769">
+      <custrecord_ht_record_version_codigo>352</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SPORTAGE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>352 - SPORTAGE</name>
+    </instance>
+    <instance scriptid="val_810668_7451241_sb1_368">
+      <custrecord_ht_record_version_codigo>353</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND VITARA XL7</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>353 - GRAND VITARA XL7</name>
+    </instance>
+    <instance scriptid="val_810669_7451241_sb1_156">
+      <custrecord_ht_record_version_codigo>354</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HILUX 2.7 CS 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>354 - HILUX 2.7 CS 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810670_7451241_sb1_220">
+      <custrecord_ht_record_version_codigo>355</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LUV DMAX</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>355 - LUV DMAX</name>
+    </instance>
+    <instance scriptid="val_810671_7451241_sb1_510">
+      <custrecord_ht_record_version_codigo>356</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>NUEVO PALIO ESSENCE AC</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>356 - NUEVO PALIO ESSENCE AC</name>
+    </instance>
+    <instance scriptid="val_810672_7451241_sb1_127">
+      <custrecord_ht_record_version_codigo>357</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SIN VERSION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>357 - SIN VERSION</name>
+    </instance>
+    <instance scriptid="val_810673_7451241_sb1_893">
+      <custrecord_ht_record_version_codigo>358</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LAREDO  4X2 (WKTH74-23E)</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>358 - GRAND CHEROKEE LAREDO  4X2 (WKTH74-23E)</name>
+    </instance>
+    <instance scriptid="val_810674_7451241_sb1_611">
+      <custrecord_ht_record_version_codigo>359</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FORD - EXPLORER XLT AWD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>359 - FORD - EXPLORER XLT AWD</name>
+    </instance>
+    <instance scriptid="val_810675_7451241_sb1_764">
+      <custrecord_ht_record_version_codigo>360</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND VITARA 5P 4X2 T/M DLX</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>360 - GRAND VITARA 5P 4X2 T/M DLX</name>
+    </instance>
+    <instance scriptid="val_810676_7451241_sb1_522">
+      <custrecord_ht_record_version_codigo>361</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>VITARA SZ 2.7L V6 5P TM 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>361 - VITARA SZ 2.7L V6 5P TM 4X4</name>
+    </instance>
+    <instance scriptid="val_810677_7451241_sb1_332">
+      <custrecord_ht_record_version_codigo>362</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND VITARA SZÂ  2.7 L</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>362 - GRAND VITARA SZ  2.7 L </name>
+    </instance>
+    <instance scriptid="val_810678_7451241_sb1_564">
+      <custrecord_ht_record_version_codigo>363</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>TOYOTA FORTUNER</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>363 - TOYOTA FORTUNER</name>
+    </instance>
+    <instance scriptid="val_810679_7451241_sb1_635">
+      <custrecord_ht_record_version_codigo>364</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 ACTION FL AC 2.6 CD 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>364 - BT-50 ACTION FL AC 2.6 CD 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810680_7451241_sb1_410">
+      <custrecord_ht_record_version_codigo>365</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>UNIDAD MOVIL HINO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>365 - UNIDAD MOVIL HINO</name>
+    </instance>
+    <instance scriptid="val_810681_7451241_sb1_436">
+      <custrecord_ht_record_version_codigo>366</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 STD TD 2.5 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>366 - BT-50 CD 4X4 STD TD 2.5 FL</name>
+    </instance>
+    <instance scriptid="val_810682_7451241_sb1_619">
+      <custrecord_ht_record_version_codigo>367</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD RAUDA TM 2.18 4P 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>367 - BT-50 CD RAUDA TM 2.18 4P 4X2</name>
+    </instance>
+    <instance scriptid="val_810683_7451241_sb1_734">
+      <custrecord_ht_record_version_codigo>368</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CH 4X2 STD GAS 2.2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>368 - BT-50 CH 4X2 STD GAS 2.2</name>
+    </instance>
+    <instance scriptid="val_810684_7451241_sb1_665">
+      <custrecord_ht_record_version_codigo>369</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CH STD FL TM 2.18 2P 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>369 - BT-50 CH STD FL TM 2.18 2P 4X2</name>
+    </instance>
+    <instance scriptid="val_810685_7451241_sb1_123">
+      <custrecord_ht_record_version_codigo>370</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50CD42 RAUDA GAS 2.2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>370 - BT-50CD42 RAUDA GAS 2.2</name>
+    </instance>
+    <instance scriptid="val_810686_7451241_sb1_142">
+      <custrecord_ht_record_version_codigo>371</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CAMRY HYBRID</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>371 - CAMRY HYBRID</name>
+    </instance>
+    <instance scriptid="val_810687_7451241_sb1_182">
+      <custrecord_ht_record_version_codigo>372</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-5 4X2 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>372 - CX-5 4X2 MT</name>
+    </instance>
+    <instance scriptid="val_810688_7451241_sb1_912">
+      <custrecord_ht_record_version_codigo>373</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-5 TA  1.9  5P 4X2 GT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>373 - CX-5 TA  1.9  5P 4X2 GT</name>
+    </instance>
+    <instance scriptid="val_810689_7451241_sb1_603">
+      <custrecord_ht_record_version_codigo>374</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-9 2WD FULL GT FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>374 - CX-9 2WD FULL GT FL</name>
+    </instance>
+    <instance scriptid="val_810690_7451241_sb1_999">
+      <custrecord_ht_record_version_codigo>375</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ESTRADA WORKIN CS TM 1.4 2P 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>375 - ESTRADA WORKIN CS TM 1.4 2P 4X2</name>
+    </instance>
+    <instance scriptid="val_810691_7451241_sb1_305">
+      <custrecord_ht_record_version_codigo>376</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER XLT 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>376 - EXPLORER XLT 4X2</name>
+    </instance>
+    <instance scriptid="val_810692_7451241_sb1_450">
+      <custrecord_ht_record_version_codigo>377</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FIAT 500 SPORT 16V MULTIAIR AC 1.6 3P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>377 - FIAT 500 SPORT 16V MULTIAIR AC 1.6 3P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810693_7451241_sb1_517">
+      <custrecord_ht_record_version_codigo>378</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LAREDO  4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>378 - GRAND CHEROKEE LAREDO  4X4</name>
+    </instance>
+    <instance scriptid="val_810694_7451241_sb1_728">
+      <custrecord_ht_record_version_codigo>379</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>H1 2.5 DSL TM 12 PASAJEROS</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>379 - H1 2.5 DSL TM 12 PASAJEROS</name>
+    </instance>
+    <instance scriptid="val_810695_7451241_sb1_329">
+      <custrecord_ht_record_version_codigo>380</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JOURNEY SXT AC 3.6 5P 4X2 TA AGV</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>380 - JOURNEY SXT AC 3.6 5P 4X2 TA AGV</name>
+    </instance>
+    <instance scriptid="val_810696_7451241_sb1_926">
+      <custrecord_ht_record_version_codigo>381</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA 3 SP 1.6 MT F/L</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>381 - MAZDA 3 SP 1.6 MT F/L</name>
+    </instance>
+    <instance scriptid="val_810697_7451241_sb1_711">
+      <custrecord_ht_record_version_codigo>382</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA BT-50 CD 44 STD CRD 2.5 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>382 - MAZDA BT-50 CD 44 STD CRD 2.5 FL</name>
+    </instance>
+    <instance scriptid="val_810698_7451241_sb1_572">
+      <custrecord_ht_record_version_codigo>383</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA3 SDN 1.6 TM F/L</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>383 - MAZDA3 SDN 1.6 TM F/L</name>
+    </instance>
+    <instance scriptid="val_810699_7451241_sb1_380">
+      <custrecord_ht_record_version_codigo>384</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA3 SEDAN 2.0 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>384 - MAZDA3 SEDAN 2.0 AT</name>
+    </instance>
+    <instance scriptid="val_810700_7451241_sb1_551">
+      <custrecord_ht_record_version_codigo>385</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA3 SEDAN 2.0 MTP</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>385 - MAZDA3 SEDAN 2.0 MTP</name>
+    </instance>
+    <instance scriptid="val_810701_7451241_sb1_457">
+      <custrecord_ht_record_version_codigo>386</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA5  AT F/L</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>386 - MAZDA5  AT F/L</name>
+    </instance>
+    <instance scriptid="val_810702_7451241_sb1_994">
+      <custrecord_ht_record_version_codigo>387</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>NAVARA DC 4X4 2.5 MT DIESEL LIMITED</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>387 - NAVARA DC 4X4 2.5 MT DIESEL LIMITED</name>
+    </instance>
+    <instance scriptid="val_810703_7451241_sb1_495">
+      <custrecord_ht_record_version_codigo>388</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>OUTLANDER AC 2.4 5P 44 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>388 - OUTLANDER AC 2.4 5P 44 TA</name>
+    </instance>
+    <instance scriptid="val_810704_7451241_sb1_733">
+      <custrecord_ht_record_version_codigo>389</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>PALIO FIRE TM 1.4 5P 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>389 - PALIO FIRE TM 1.4 5P 4X2</name>
+    </instance>
+    <instance scriptid="val_810705_7451241_sb1_120">
+      <custrecord_ht_record_version_codigo>390</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SANTA FE CM GLS GAA 4X2 7P TM 15DA991</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>390 - SANTA FE CM GLS GAA 4X2 7P TM 15DA991</name>
+    </instance>
+    <instance scriptid="val_810706_7451241_sb1_798">
+      <custrecord_ht_record_version_codigo>391</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>TUCSON IX 5P 4X2 2.0 TM STD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>391 - TUCSON IX 5P 4X2 2.0 TM STD</name>
+    </instance>
+    <instance scriptid="val_810707_7451241_sb1_548">
+      <custrecord_ht_record_version_codigo>392</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>WRANGLER SPORT 4X4 MX3</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>392 - WRANGLER SPORT 4X4 MX3</name>
+    </instance>
+    <instance scriptid="val_810708_7451241_sb1_462">
+      <custrecord_ht_record_version_codigo>393</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ASTROS 3340 2001/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>393 - ASTROS 3340 2001/CAMION</name>
+    </instance>
+    <instance scriptid="val_810709_7451241_sb1_941">
+      <custrecord_ht_record_version_codigo>394</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GD1JLUA 2006/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>394 - GD1JLUA 2006/CAMION</name>
+    </instance>
+    <instance scriptid="val_810710_7451241_sb1_232">
+      <custrecord_ht_record_version_codigo>395</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>STRADA WORKING CE F/L</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>395 - STRADA WORKING CE F/L</name>
+    </instance>
+    <instance scriptid="val_810711_7451241_sb1_961">
+      <custrecord_ht_record_version_codigo>396</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FB 2003/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>396 - FB 2003/CAMION</name>
+    </instance>
+    <instance scriptid="val_810712_7451241_sb1_645">
+      <custrecord_ht_record_version_codigo>397</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SIENA ESSENCE 1.6</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>397 - SIENA ESSENCE 1.6</name>
+    </instance>
+    <instance scriptid="val_810713_7451241_sb1_642">
+      <custrecord_ht_record_version_codigo>398</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER XLT 4X2 T/A /JEEP</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>398 - EXPLORER XLT 4X2 T/A /JEEP</name>
+    </instance>
+    <instance scriptid="val_810714_7451241_sb1_113">
+      <custrecord_ht_record_version_codigo>399</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SANTA FE GAA 4X2 TM 5P BMW5F1615 DD095</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>399 - SANTA FE GAA 4X2 TM 5P BMW5F1615 DD095</name>
+    </instance>
+    <instance scriptid="val_810715_7451241_sb1_528">
+      <custrecord_ht_record_version_codigo>400</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FF1JMTA 2001/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>400 - FF1JMTA 2001/CAMION</name>
+    </instance>
+    <instance scriptid="val_810716_7451241_sb1_154">
+      <custrecord_ht_record_version_codigo>401</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GD1JLUA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>401 - GD1JLUA</name>
+    </instance>
+    <instance scriptid="val_810717_7451241_sb1_371">
+      <custrecord_ht_record_version_codigo>402</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LUV C/D 4X2 T/M INYEC</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>402 - LUV C/D 4X2 T/M INYEC</name>
+    </instance>
+    <instance scriptid="val_810718_7451241_sb1_414">
+      <custrecord_ht_record_version_codigo>403</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>159 BERLINA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>403 - 159 BERLINA</name>
+    </instance>
+    <instance scriptid="val_810719_7451241_sb1_447">
+      <custrecord_ht_record_version_codigo>404</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CERATO 1.6 MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>404 - CERATO 1.6 MT</name>
+    </instance>
+    <instance scriptid="val_810720_7451241_sb1_477">
+      <custrecord_ht_record_version_codigo>405</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X4 ACTION CRD 2.5</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>405 - BT-50 CD 4X4 ACTION CRD 2.5</name>
+    </instance>
+    <instance scriptid="val_810721_7451241_sb1_835">
+      <custrecord_ht_record_version_codigo>406</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GH1JGUD 2006/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>406 - GH1JGUD 2006/CAMION</name>
+    </instance>
+    <instance scriptid="val_810722_7451241_sb1_388">
+      <custrecord_ht_record_version_codigo>407</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FB45GSA 1999/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>407 - FB45GSA 1999/CAMION</name>
+    </instance>
+    <instance scriptid="val_810723_7451241_sb1_949">
+      <custrecord_ht_record_version_codigo>408</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CERATO FORTE 1.6L EX</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>408 - CERATO FORTE 1.6L EX</name>
+    </instance>
+    <instance scriptid="val_810724_7451241_sb1_154">
+      <custrecord_ht_record_version_codigo>409</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FF1JMSA 1999/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>409 - FF1JMSA 1999/CAMION</name>
+    </instance>
+    <instance scriptid="val_810725_7451241_sb1_571">
+      <custrecord_ht_record_version_codigo>410</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>XC90</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>410 - XC90</name>
+    </instance>
+    <instance scriptid="val_810726_7451241_sb1_110">
+      <custrecord_ht_record_version_codigo>411</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>SIENA ESSENCE STD 1.6</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>411 - SIENA ESSENCE STD 1.6</name>
+    </instance>
+    <instance scriptid="val_810727_7451241_sb1_310">
+      <custrecord_ht_record_version_codigo>412</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GH8JMSA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>412 - GH8JMSA</name>
+    </instance>
+    <instance scriptid="val_810728_7451241_sb1_694">
+      <custrecord_ht_record_version_codigo>413</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>F 150 DOBLE CABINA 4X2 W1C</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>413 - F 150 DOBLE CABINA 4X2 W1C</name>
+    </instance>
+    <instance scriptid="val_810729_7451241_sb1_338">
+      <custrecord_ht_record_version_codigo>414</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>STRADA WORKING CE  F/L SA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>414 - STRADA WORKING CE  F/L SA</name>
+    </instance>
+    <instance scriptid="val_810730_7451241_sb1_793">
+      <custrecord_ht_record_version_codigo>415</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CHEVROLET GRAND VITARA SZÂ  2.7 L</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>415 - CHEVROLET GRAND VITARA SZ  2.7 L </name>
+    </instance>
+    <instance scriptid="val_810731_7451241_sb1_988">
+      <custrecord_ht_record_version_codigo>416</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDAÂ  BT-50 ACTION FL AC 2.6 CD 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>416 - MAZDA  BT-50 ACTION FL AC 2.6 CD 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810732_7451241_sb1_498">
+      <custrecord_ht_record_version_codigo>417</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ACTROS 3348 6X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>417 - ACTROS 3348 6X4</name>
+    </instance>
+    <instance scriptid="val_810733_7451241_sb1_849">
+      <custrecord_ht_record_version_codigo>418</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ACTROS 3353S</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>418 - ACTROS 3353S</name>
+    </instance>
+    <instance scriptid="val_810734_7451241_sb1_831">
+      <custrecord_ht_record_version_codigo>419</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X2 SEMIFULL GAS 2.6 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>419 - BT-50 CS 4X2 SEMIFULL GAS 2.6 FL</name>
+    </instance>
+    <instance scriptid="val_810735_7451241_sb1_216">
+      <custrecord_ht_record_version_codigo>420</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FC 4JJUA 2008/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>420 - FC 4JJUA 2008/CAMION</name>
+    </instance>
+    <instance scriptid="val_810736_7451241_sb1_790">
+      <custrecord_ht_record_version_codigo>421</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GD1JLUA 2007/CAMION</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>421 - GD1JLUA 2007/CAMION</name>
+    </instance>
+    <instance scriptid="val_810737_7451241_sb1_127">
+      <custrecord_ht_record_version_codigo>422</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GH1JMSA 2001</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>422 - GH1JMSA 2001</name>
+    </instance>
+    <instance scriptid="val_810738_7451241_sb1_562">
+      <custrecord_ht_record_version_codigo>423</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HILUX 2.7 CD 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>423 - HILUX 2.7 CD 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810739_7451241_sb1_972">
+      <custrecord_ht_record_version_codigo>424</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>HILUX 4X2 CD DIESEL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>424 - HILUX 4X2 CD DIESEL</name>
+    </instance>
+    <instance scriptid="val_810740_7451241_sb1_816">
+      <custrecord_ht_record_version_codigo>425</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MURANO A/T</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>425 - MURANO A/T</name>
+    </instance>
+    <instance scriptid="val_810741_7451241_sb1_753">
+      <custrecord_ht_record_version_codigo>426</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>NP 300 FRONTIER CD 4X2 2.4 MT 16V</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>426 - NP 300 FRONTIER CD 4X2 2.4 MT 16V</name>
+    </instance>
+    <instance scriptid="val_810742_7451241_sb1_632">
+      <custrecord_ht_record_version_codigo>427</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>ZZ LAND CRUISER 200</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>427 - ZZ LAND CRUISER 200</name>
+    </instance>
+    <instance scriptid="val_810743_7451241_sb1_946">
+      <custrecord_ht_record_version_codigo>428</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EXPLORER XLT 4WD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>428 - EXPLORER XLT 4WD</name>
+    </instance>
+    <instance scriptid="val_810744_7451241_sb1_624">
+      <custrecord_ht_record_version_codigo>429</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>LEXUS RX450H</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>429 - LEXUS RX450H</name>
+    </instance>
+    <instance scriptid="val_810745_7451241_sb1_927">
+      <custrecord_ht_record_version_codigo>430</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 VERSION ESPECIAL 2.2 CD 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>430 - BT-50 VERSION ESPECIAL 2.2 CD 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810746_7451241_sb1_536">
+      <custrecord_ht_record_version_codigo>431</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>MAZDA3 AC 2.0 4P 4X2 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>431 - MAZDA3 AC 2.0 4P 4X2 TA</name>
+    </instance>
+    <instance scriptid="val_810747_7451241_sb1_676">
+      <custrecord_ht_record_version_codigo>432</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 STD GAS FL 2.6 CD 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>432 - BT-50 STD GAS FL 2.6 CD 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810748_7451241_sb1_579">
+      <custrecord_ht_record_version_codigo>433</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORT 2.0 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>433 - COMPASS SPORT 2.0 4X2</name>
+    </instance>
+    <instance scriptid="val_810749_7451241_sb1_873">
+      <custrecord_ht_record_version_codigo>434</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>RZR-14 1000XP</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>434 - RZR-14 1000XP</name>
+    </instance>
+    <instance scriptid="val_810750_7451241_sb1_970">
+      <custrecord_ht_record_version_codigo>435</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LIMITED AC 3.6 5P 4X4 TA</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>435 - GRAND CHEROKEE LIMITED AC 3.6 5P 4X4 TA</name>
+    </instance>
+    <instance scriptid="val_810751_7451241_sb1_999">
+      <custrecord_ht_record_version_codigo>436</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 4X2 2.6 DC STD</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>436 - BT-50 4X2 2.6 DC STD</name>
+    </instance>
+    <instance scriptid="val_810752_7451241_sb1_728">
+      <custrecord_ht_record_version_codigo>437</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 ACTION GAS 2.6 FL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>437 - BT-50 CD 4X2 ACTION GAS 2.6 FL</name>
+    </instance>
+    <instance scriptid="val_810753_7451241_sb1_171">
+      <custrecord_ht_record_version_codigo>438</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORT 2.4 4X4</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>438 - COMPASS SPORT 2.4 4X4</name>
+    </instance>
+    <instance scriptid="val_810754_7451241_sb1_666">
+      <custrecord_ht_record_version_codigo>439</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORT 2.4 4X4 75TH ANNIV</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>439 - COMPASS SPORT 2.4 4X4 75TH ANNIV</name>
+    </instance>
+    <instance scriptid="val_810755_7451241_sb1_964">
+      <custrecord_ht_record_version_codigo>440</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORTÂ  2.0 4X2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>440 - COMPASS SPORT  2.0 4X2</name>
+    </instance>
+    <instance scriptid="val_810756_7451241_sb1_327">
+      <custrecord_ht_record_version_codigo>441</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>COMPASS SPORTÂ  2.4 4X2 AT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>441 - COMPASS SPORT  2.4 4X2 AT</name>
+    </instance>
+    <instance scriptid="val_810757_7451241_sb1_595">
+      <custrecord_ht_record_version_codigo>442</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FIAT 500 LOUNGE 1.4L. MT</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>442 - FIAT 500 LOUNGE 1.4L. MT</name>
+    </instance>
+    <instance scriptid="val_810758_7451241_sb1_420">
+      <custrecord_ht_record_version_codigo>443</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>FIORINO C/A</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>443 - FIORINO C/A</name>
+    </instance>
+    <instance scriptid="val_810759_7451241_sb1_221">
+      <custrecord_ht_record_version_codigo>444</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>GRAND CHEROKEE LIMITED 4X4 75TH ANNIV</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>444 - GRAND CHEROKEE LIMITED 4X4 75TH ANNIV</name>
+    </instance>
+    <instance scriptid="val_810760_7451241_sb1_772">
+      <custrecord_ht_record_version_codigo>445</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>JOURNEY EXPRESS 2.4 4X2 SE AGV</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>445 - JOURNEY EXPRESS 2.4 4X2 SE AGV</name>
+    </instance>
+    <instance scriptid="val_810761_7451241_sb1_614">
+      <custrecord_ht_record_version_codigo>446</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>NUEVO MAZDA3 2.0L SDN 6MT CORE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>446 - NUEVO MAZDA3 2.0L SDN 6MT CORE</name>
+    </instance>
+    <instance scriptid="val_810762_7451241_sb1_644">
+      <custrecord_ht_record_version_codigo>447</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 STD CRD FL 2.5 CD 4X2 TM DIESEL</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>447 - BT-50 STD CRD FL 2.5 CD 4X2 TM DIESEL</name>
+    </instance>
+    <instance scriptid="val_810763_7451241_sb1_756">
+      <custrecord_ht_record_version_codigo>448</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>CX-5 AC 2.0 5P 4X2 TM</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>448 - CX-5 AC 2.0 5P 4X2 TM</name>
+    </instance>
+    <instance scriptid="val_810764_7451241_sb1_657">
+      <custrecord_ht_record_version_codigo>449</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CD 4X2 STD GAS 2.2 FL (UW3C-M31)</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>449 - BT-50 CD 4X2 STD GAS 2.2 FL (UW3C-M31)</name>
+    </instance>
+    <instance scriptid="val_810765_7451241_sb1_480">
+      <custrecord_ht_record_version_codigo>450</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>BT-50 CS 4X2 STD GAS 2.2 FL (UW2W-M31)</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>450 - BT-50 CS 4X2 STD GAS 2.2 FL (UW2W-M31)</name>
+    </instance>
+    <instance scriptid="val_810766_7451241_sb1_888">
+      <custrecord_ht_record_version_codigo>451</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>EDGE CVT 3.5 5P 4X2 SE</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>451 - EDGE CVT 3.5 5P 4X2 SE</name>
+    </instance>
+    <instance scriptid="val_810767_7451241_sb1_659">
+      <custrecord_ht_record_version_codigo>452</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>NO DEFINIDO</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>452 - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_810768_7451241_sb1_970">
+      <custrecord_ht_record_version_codigo>453</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>N/A</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>453 - N/A</name>
+    </instance>
+    <instance scriptid="val_810769_7451241_sb1_828">
+      <custrecord_ht_record_version_codigo>454</custrecord_ht_record_version_codigo>
+      <custrecord_ht_record_version_descrip>2</custrecord_ht_record_version_descrip>
+      <isinactive>F</isinactive>
+      <name>454 - 2</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

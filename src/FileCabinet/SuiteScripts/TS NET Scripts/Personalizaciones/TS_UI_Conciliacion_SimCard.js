@@ -11,7 +11,7 @@ Governance points: N/A
 ========================================================================================================================================================*/
 
 /**
- *@NApiVersion 2.x
+ *@NApiVersion 2.1
  *@NScriptType Suitelet
  */
 define(['N/ui/serverWidget', 'N/redirect', 'N/task', 'N/search', 'N/file', 'N/url', 'N/record', "N/runtime"],

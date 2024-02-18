@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_ht_marca_tarjeta">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT DP Marca de tarjeta</name>
+  <customvalues>
+    <customvalue scriptid="val_779944_7451241_sb1_686">
+      <isinactive>F</isinactive>
+      <value>AMEX</value>
+    </customvalue>
+    <customvalue scriptid="val_779945_7451241_sb1_741">
+      <isinactive>F</isinactive>
+      <value>DINNERS</value>
+    </customvalue>
+    <customvalue scriptid="val_779946_7451241_sb1_283">
+      <isinactive>F</isinactive>
+      <value>MASTERCARD</value>
+    </customvalue>
+    <customvalue scriptid="val_779947_7451241_sb1_442">
+      <isinactive>F</isinactive>
+      <value>VISA</value>
+    </customvalue>
+  </customvalues>
+</customlist>

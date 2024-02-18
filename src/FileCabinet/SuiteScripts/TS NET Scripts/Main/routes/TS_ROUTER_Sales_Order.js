@@ -14,7 +14,7 @@ define(['N/log', 'N/record', 'N/file'],
                     type: scriptContext.newRecord.type,
                     id: scriptContext.newRecord.id,
                     isDynamic: true
-                });
+                })
                 let numLines = objRecord.getLineCount({ sublistId: 'billingschedule' });
                 log.debug('Result', numLines);
 

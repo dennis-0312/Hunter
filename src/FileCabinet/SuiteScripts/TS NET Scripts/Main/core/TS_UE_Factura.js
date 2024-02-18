@@ -26,7 +26,6 @@ define(['N/log', 'N/search', 'N/record', 'N/https'], (log, search, record, https
         //     const serviceOrderType = objRecord.getValue({ fieldId: 'custbody_ht_os_tipoordenservicio' });
         //     try {
         //         if (serviceOrderType == 8) {
-
         //         }
         //     } catch (error) {
         //         log.error('Error-deforeSubmit', error);

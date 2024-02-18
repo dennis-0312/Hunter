@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ht_estado_comision">
+  <description>ESTADO DE LA COMISION</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT ESTADO COMISION</name>
+  <customvalues>
+    <customvalue scriptid="val_874277_7451241_sb1_683">
+      <isinactive>F</isinactive>
+      <value>PAGADO</value>
+    </customvalue>
+    <customvalue scriptid="val_874278_7451241_sb1_621">
+      <isinactive>F</isinactive>
+      <value>PENDIENTE DE APROBRACION</value>
+    </customvalue>
+    <customvalue scriptid="val_874279_7451241_sb1_161">
+      <isinactive>F</isinactive>
+      <value>RECHAZADO</value>
+    </customvalue>
+    <customvalue scriptid="val_881802_7451241_sb1_194">
+      <isinactive>F</isinactive>
+      <value>PAGADO SIN FACTURA</value>
+    </customvalue>
+    <customvalue scriptid="val_881806_7451241_sb1_311">
+      <isinactive>F</isinactive>
+      <value>APROBADO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

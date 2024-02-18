@@ -1,0 +1,12 @@
+<customlist scriptid="customlist_ht_bn_numeropuertas">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT BN Número de puertas</name>
+  <customvalues>
+    <customvalue scriptid="val_811004_7451241_sb1_953">
+      <isinactive>F</isinactive>
+      <value>3 - 5</value>
+    </customvalue>
+  </customvalues>
+</customlist>

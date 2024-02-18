@@ -1,0 +1,32 @@
+<restlet scriptid="customscript_ns_rs_update_service">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_UPDATE_service</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/ErickHunter/NS_RS_UPDATE_service.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_update_servicehunter">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_UPDATE_service</title>
+    </scriptdeployment>
+    <scriptdeployment scriptid="customdeploy_ns_rs_update_service">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_UPDATE_service</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

@@ -1,0 +1,644 @@
+<customrecordtype scriptid="customrecordts_ec_tipo_doc_fiscal">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>T</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>T</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description>Lista de Tipos de Comprobantes por país.</description>
+  <enabledle>F</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>F</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC - Tipo de Comprobante Fiscal</recordname>
+  <showcreationdate>T</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>T</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecordts_ec_iniciales_tip_comprob">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help>Iniciales del comprobante para generar número de documento concatenado y poder buscarlo en la Busqueda Global de NetSuite.&#xd;
+</help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Iniciales Tipo de Comprobante</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecordts_ec_cod_tipo_comprobante">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>T</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Codigo Tipo Comprobante</label>
+      <linktext></linktext>
+      <maxlength>4</maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecordts_ec_des_impresion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Descripción de Impresión</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecordts_ec_num_lineas_impresion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>INTEGER</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Numero Lineas Impresion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecordts_ec_tipo_cliente">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>MULTISELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Tipo de Cliente</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_pe_type_of_person]</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecordts_ec_doc_identidad_cliente">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Tipo de Documento de Identidad Cliente</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_ts_ec_doc_identidad]</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_728011_7451241_sb1_669">
+      <custrecordts_ec_cod_tipo_comprobante>04</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>NC</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Nota de credito</name>
+    </instance>
+    <instance scriptid="val_728012_7451241_sb1_114">
+      <custrecordts_ec_cod_tipo_comprobante>05</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>ND</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Nota de debito</name>
+    </instance>
+    <instance scriptid="val_728017_7451241_sb1_459">
+      <custrecordts_ec_cod_tipo_comprobante>06</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>GR</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Guía de Remisión</name>
+    </instance>
+    <instance scriptid="val_728020_7451241_sb1_601">
+      <custrecordts_ec_cod_tipo_comprobante>01</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>FA</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Factura</name>
+    </instance>
+    <instance scriptid="val_728021_7451241_sb1_707">
+      <custrecordts_ec_cod_tipo_comprobante>02</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>NV</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Nota de Venta - RISE</name>
+    </instance>
+    <instance scriptid="val_728022_7451241_sb1_558">
+      <custrecordts_ec_cod_tipo_comprobante>09</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>TK</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Tiquetes emitidos por máquinas registradoras</name>
+    </instance>
+    <instance scriptid="val_728023_7451241_sb1_561">
+      <custrecordts_ec_cod_tipo_comprobante>00</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>DV</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Otros documentos autorizados</name>
+    </instance>
+    <instance scriptid="val_728024_7451241_sb1_272">
+      <custrecordts_ec_cod_tipo_comprobante>08</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>BE</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Boletos o entradas a espectáculos públicos</name>
+    </instance>
+    <instance scriptid="val_728025_7451241_sb1_209">
+      <custrecordts_ec_cod_tipo_comprobante>02</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>BV</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Nota o boleta de venta</name>
+    </instance>
+    <instance scriptid="val_728026_7451241_sb1_422">
+      <custrecordts_ec_cod_tipo_comprobante>03</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>LC</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Liquidación de compra de Bienes o Prestación de servicios</name>
+    </instance>
+    <instance scriptid="val_728027_7451241_sb1_520">
+      <custrecordts_ec_cod_tipo_comprobante>07</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>CR</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Comprobante de Retención</name>
+    </instance>
+    <instance scriptid="val_728028_7451241_sb1_194">
+      <custrecordts_ec_cod_tipo_comprobante>11</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>PA</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Pasajes expedidos por empresas de aviación</name>
+    </instance>
+    <instance scriptid="val_728029_7451241_sb1_536">
+      <custrecordts_ec_cod_tipo_comprobante>12</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>DF</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Documentos emitidos por instituciones financieras</name>
+    </instance>
+    <instance scriptid="val_728030_7451241_sb1_502">
+      <custrecordts_ec_cod_tipo_comprobante>15</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>CE</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Comprobante de venta emitido en el Exterior</name>
+    </instance>
+    <instance scriptid="val_728031_7451241_sb1_851">
+      <custrecordts_ec_cod_tipo_comprobante>16</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>FUE</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Formulario Único de Exportación (FUE) o Declaración Aduanera Única (DAU) o Declaración Andina de Valor (DAV)</name>
+    </instance>
+    <instance scriptid="val_728032_7451241_sb1_769">
+      <custrecordts_ec_cod_tipo_comprobante>18</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>DAV</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Documentos autorizados utilizados en ventas excepto N/C N/D</name>
+    </instance>
+    <instance scriptid="val_728033_7451241_sb1_687">
+      <custrecordts_ec_cod_tipo_comprobante>19</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>CPC</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Comprobantes de Pago de Cuotas o Aportes</name>
+    </instance>
+    <instance scriptid="val_728034_7451241_sb1_710">
+      <custrecordts_ec_cod_tipo_comprobante>20</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>DS</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Documentos por Servicios Administrativos emitidos por Inst. del Estado</name>
+    </instance>
+    <instance scriptid="val_728035_7451241_sb1_144">
+      <custrecordts_ec_cod_tipo_comprobante>21</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>CPA</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Carta de Porte Aéreo</name>
+    </instance>
+    <instance scriptid="val_728036_7451241_sb1_315">
+      <custrecordts_ec_cod_tipo_comprobante>22</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>RECAP</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>RECAP</name>
+    </instance>
+    <instance scriptid="val_728037_7451241_sb1_293">
+      <custrecordts_ec_cod_tipo_comprobante>23</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>NCTC</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Nota de Crédito TC</name>
+    </instance>
+    <instance scriptid="val_728038_7451241_sb1_512">
+      <custrecordts_ec_cod_tipo_comprobante>24</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>NDTC</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Nota de Débito TC</name>
+    </instance>
+    <instance scriptid="val_728039_7451241_sb1_215">
+      <custrecordts_ec_cod_tipo_comprobante>41</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>CVR</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Comprobante de venta emitido por reembolso</name>
+    </instance>
+    <instance scriptid="val_728040_7451241_sb1_265">
+      <custrecordts_ec_cod_tipo_comprobante>42</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>DAR</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Documento agente de retención Presuntiva</name>
+    </instance>
+    <instance scriptid="val_728041_7451241_sb1_845">
+      <custrecordts_ec_cod_tipo_comprobante>43</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>LH</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Liquidacion para Explotacion y Exploracion de Hidrocarburos</name>
+    </instance>
+    <instance scriptid="val_728042_7451241_sb1_677">
+      <custrecordts_ec_cod_tipo_comprobante>44</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>CCA</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Comprobante de Contribuciones y Aportes</name>
+    </instance>
+    <instance scriptid="val_728043_7451241_sb1_656">
+      <custrecordts_ec_cod_tipo_comprobante>45</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>LRA</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Liquidación por reclamos de aseguradoras</name>
+    </instance>
+    <instance scriptid="val_728044_7451241_sb1_480">
+      <custrecordts_ec_cod_tipo_comprobante>47</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>NCR</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Nota de Crédito por Reembolso Emitida por Intermediario</name>
+    </instance>
+    <instance scriptid="val_728045_7451241_sb1_263">
+      <custrecordts_ec_cod_tipo_comprobante>48</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>NDR</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Nota de Débito por Reembolso Emitida por Intermediario</name>
+    </instance>
+    <instance scriptid="val_728046_7451241_sb1_695">
+      <custrecordts_ec_cod_tipo_comprobante>49</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>PRE</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Proveedor Directo de Exportador Bajo Régimen Especial</name>
+    </instance>
+    <instance scriptid="val_728047_7451241_sb1_602">
+      <custrecordts_ec_cod_tipo_comprobante>50</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>EIR</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>A Inst. Estado y Empr. Públicas que percibe ingreso exento de Imp. Renta</name>
+    </instance>
+    <instance scriptid="val_728048_7451241_sb1_128">
+      <custrecordts_ec_cod_tipo_comprobante>51</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>NCE</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>N/C A Inst. Estado y Empr. Públicas que percibe ingreso exento de Imp. Renta</name>
+    </instance>
+    <instance scriptid="val_728049_7451241_sb1_379">
+      <custrecordts_ec_cod_tipo_comprobante>52</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>NDE</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>N/D A Inst. Estado y Empr. Públicas que percibe ingreso exento de Imp. Renta</name>
+    </instance>
+    <instance scriptid="val_728050_7451241_sb1_171">
+      <custrecordts_ec_cod_tipo_comprobante>294</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>LCB</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Liquidación de compra de Bienes Muebles Usados</name>
+    </instance>
+    <instance scriptid="val_728051_7451241_sb1_261">
+      <custrecordts_ec_cod_tipo_comprobante>344</custrecordts_ec_cod_tipo_comprobante>
+      <custrecordts_ec_des_impresion></custrecordts_ec_des_impresion>
+      <custrecordts_ec_doc_identidad_cliente></custrecordts_ec_doc_identidad_cliente>
+      <custrecordts_ec_iniciales_tip_comprob>LCV</custrecordts_ec_iniciales_tip_comprob>
+      <custrecordts_ec_num_lineas_impresion></custrecordts_ec_num_lineas_impresion>
+      <custrecordts_ec_tipo_cliente></custrecordts_ec_tipo_cliente>
+      <isinactive>F</isinactive>
+      <name>Liquidación de compra de vehículos usados</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>ADMINISTRATOR</permittedrole>
+      <restriction></restriction>
+    </permission>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

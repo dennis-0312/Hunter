@@ -1,0 +1,40 @@
+<customlist scriptid="customlist_ht_modo_contacto">
+  <description>LISTA LOS MODOS DE CONTACTO PARA EL SEGUIMIENTO</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT LIST MODO CONTACTO</name>
+  <customvalues>
+    <customvalue scriptid="val_780882_7451241_sb1_553">
+      <isinactive>F</isinactive>
+      <value>TELEFONO</value>
+    </customvalue>
+    <customvalue scriptid="val_780883_7451241_sb1_617">
+      <isinactive>F</isinactive>
+      <value>CORREO</value>
+    </customvalue>
+    <customvalue scriptid="val_780884_7451241_sb1_428">
+      <isinactive>F</isinactive>
+      <value>OFICINA</value>
+    </customvalue>
+    <customvalue scriptid="val_780885_7451241_sb1_475">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO</value>
+    </customvalue>
+    <customvalue scriptid="val_780886_7451241_sb1_166">
+      <isinactive>F</isinactive>
+      <value>CARSEG</value>
+    </customvalue>
+    <customvalue scriptid="val_780887_7451241_sb1_324">
+      <isinactive>F</isinactive>
+      <value>ENTREGA DOCUMENTACION</value>
+    </customvalue>
+    <customvalue scriptid="val_780888_7451241_sb1_237">
+      <isinactive>F</isinactive>
+      <value>VISITA RECAUDADOR</value>
+    </customvalue>
+    <customvalue scriptid="val_780889_7451241_sb1_877">
+      <isinactive>F</isinactive>
+      <value>MODULO DE ANALISIS TE CARTERA</value>
+    </customvalue>
+  </customvalues>
+</customlist>

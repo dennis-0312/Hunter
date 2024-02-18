@@ -1,0 +1,112 @@
+<customlist scriptid="customlist_ht_tipo_direccion">
+  <description>lista los tipos de direcciones</description>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <name>HT LIST TIPO DIRECCION</name>
+  <customvalues>
+    <customvalue scriptid="val_780866_7451241_sb1_620">
+      <isinactive>F</isinactive>
+      <value>AGENCIA</value>
+    </customvalue>
+    <customvalue scriptid="val_781170_7451241_sb1_995">
+      <isinactive>F</isinactive>
+      <value>CAJERO</value>
+    </customvalue>
+    <customvalue scriptid="val_780868_7451241_sb1_474">
+      <isinactive>F</isinactive>
+      <value>DIR. POR CONFIR</value>
+    </customvalue>
+    <customvalue scriptid="val_781179_7451241_sb1_454">
+      <isinactive>F</isinactive>
+      <value>DIRECCION FACTURACION</value>
+    </customvalue>
+    <customvalue scriptid="val_781174_7451241_sb1_874">
+      <isinactive>F</isinactive>
+      <value>DIRECCION GEA</value>
+    </customvalue>
+    <customvalue scriptid="val_780872_7451241_sb1_841">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO</value>
+    </customvalue>
+    <customvalue scriptid="val_781188_7451241_sb1_310">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO CONVENIO</value>
+    </customvalue>
+    <customvalue scriptid="val_781182_7451241_sb1_912">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO MARES</value>
+    </customvalue>
+    <customvalue scriptid="val_781176_7451241_sb1_830">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO MAVES</value>
+    </customvalue>
+    <customvalue scriptid="val_781171_7451241_sb1_445">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO TDE</value>
+    </customvalue>
+    <customvalue scriptid="val_780869_7451241_sb1_976">
+      <isinactive>F</isinactive>
+      <value>E-MAIL</value>
+    </customvalue>
+    <customvalue scriptid="val_781184_7451241_sb1_630">
+      <isinactive>F</isinactive>
+      <value>E-MAIL AMI</value>
+    </customvalue>
+    <customvalue scriptid="val_781187_7451241_sb1_400">
+      <isinactive>F</isinactive>
+      <value>E-MAIL CONVENIO</value>
+    </customvalue>
+    <customvalue scriptid="val_781181_7451241_sb1_449">
+      <isinactive>F</isinactive>
+      <value>E-MAIL FACT. SECUND.</value>
+    </customvalue>
+    <customvalue scriptid="val_781178_7451241_sb1_385">
+      <isinactive>F</isinactive>
+      <value>E-MAIL FACT.PRI</value>
+    </customvalue>
+    <customvalue scriptid="val_781185_7451241_sb1_617">
+      <isinactive>F</isinactive>
+      <value>E-MAIL MONITOREO</value>
+    </customvalue>
+    <customvalue scriptid="val_781177_7451241_sb1_162">
+      <isinactive>F</isinactive>
+      <value>E-MAIL OFICINA</value>
+    </customvalue>
+    <customvalue scriptid="val_781180_7451241_sb1_809">
+      <isinactive>F</isinactive>
+      <value>E-MAIL REGISTRESE H.O.</value>
+    </customvalue>
+    <customvalue scriptid="val_780870_7451241_sb1_991">
+      <isinactive>F</isinactive>
+      <value>INFO-HUNTER</value>
+    </customvalue>
+    <customvalue scriptid="val_781186_7451241_sb1_349">
+      <isinactive>F</isinactive>
+      <value>INFO-HUNTER CONVENIO</value>
+    </customvalue>
+    <customvalue scriptid="val_781183_7451241_sb1_538">
+      <isinactive>F</isinactive>
+      <value>INFO-HUNTER MAR</value>
+    </customvalue>
+    <customvalue scriptid="val_781175_7451241_sb1_453">
+      <isinactive>F</isinactive>
+      <value>INFO-HUNTER MAV</value>
+    </customvalue>
+    <customvalue scriptid="val_781172_7451241_sb1_245">
+      <isinactive>F</isinactive>
+      <value>INFO-HUNTER TDE</value>
+    </customvalue>
+    <customvalue scriptid="val_780871_7451241_sb1_200">
+      <isinactive>F</isinactive>
+      <value>MATRIZ</value>
+    </customvalue>
+    <customvalue scriptid="val_780867_7451241_sb1_775">
+      <isinactive>F</isinactive>
+      <value>OFICINA</value>
+    </customvalue>
+    <customvalue scriptid="val_781173_7451241_sb1_496">
+      <isinactive>F</isinactive>
+      <value>TRABAJO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

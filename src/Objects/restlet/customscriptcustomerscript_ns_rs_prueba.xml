@@ -1,0 +1,22 @@
+<restlet scriptid="customscriptcustomerscript_ns_rs_prueba">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>pruebaCliente</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/Capacitacion2/pruebaCliente.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_pruebacliente">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>pruebaCliente</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

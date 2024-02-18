@@ -94,9 +94,9 @@ define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode,
     }
 
     const getInstalacionBody = (context) => {
+        log.debug('Type of', typeof context.NombrePropietario);
         let rowXml = "<Ordenes><Orden><NumeroOrden>" + context.NumeroOrden + "</NumeroOrden><UsuarioIngreso>" + context.UsuarioIngreso + "</UsuarioIngreso>" +
             "<OperacionOrden>" + context.OperacionOrden + "</OperacionOrden>" +
-            "<NombreEjecutiva>" + (context.NombreEjecutiva || "") + "</NombreEjecutiva>" +
             "<Vehiculo>" +
             "<Placa>" + (context.Placa || "") + "</Placa>" +
             "<IdMarca>" + (context.IdMarca || "") + "</IdMarca>" +
@@ -126,16 +126,7 @@ define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode,
             "<NumeroCelular>" + (context.NumeroCelular || "") + "</NumeroCelular>" +
             "<Operadora>" + (context.Operadora || "") + "</Operadora>" +
             "<EstadoSim>" + (context.EstadoSim || "") + "</EstadoSim>" +
-            "<ServiciosInstalados>" +
-            /*
-            "<Servicio>" +
-            "<CodServicio>001</CodServicio>" +
-            "<FechaInicioServicio>2023-08-01</FechaInicioServicio>" +
-            "<FechaFinServicio>>2024-09-01</FechaFinServicio>" +
-            "<EstadoServicio>ACTIVO</EstadoServicio>" +
-            "</Servicio>" +
-            */
-            "</ServiciosInstalados>" +
+            "<ServiciosInstalados>" + context.ServiciosInstalados + "</ServiciosInstalados>" +
             "<OperacionDispositivo>" + (context.OperacionDispositivo || "") + "</OperacionDispositivo>" +
             "<VidAnterior>" + (context.VidAnterior || "") + "</VidAnterior>" +
             "</Dispositivo>" +

@@ -19,7 +19,7 @@ define(['N/log', 'N/record', 'N/file'], function(log, record, file) {
 
             let idfile = fileObj.save();
           
-            return "Archivo creado";
+            return "Archivo creado......";
         } catch (error) {
             log.error('Error-GET', error)
           

@@ -135,8 +135,6 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                         rowString
                     }
                 });
-
-
             } catch (error) {
                 log.error("error", error);
             }

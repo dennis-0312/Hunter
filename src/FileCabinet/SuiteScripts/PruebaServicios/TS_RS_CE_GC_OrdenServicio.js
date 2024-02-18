@@ -8,72 +8,40 @@ define(['N/log', 'N/record', 'N/search'], function(log, record, search) {
         try {
            
             let contenedor = new Array();
-          	let fechaIni =context.fechaIni;
-            let fechaFin =context.fechaFin;
-            let tipoCanal =context.tipoCanal;
-          	let codigoCanal =context.codigoCanal;
-          	let codigoEjecutivo =context.ejecutivo;
-          	let tipoOperacion =context.tipoOperacion;
-			 
+          	let fechaIni = context.fechaIni;
+            let fechaFin =context.fechaFin;           
+            //let tipoCanal =context.tipoCanal;
+          	//let codigoCanal =context.codigoCanal;
+          	//let codigoEjecutivo =context.ejecutivo;
+          	//let tipoOperacion =context.tipoOperacion;     
+        
             let mySearch = search.load({ id: 'customsearch_ce_ordenservicio' }); 
            
             //Add Filter to search
+            //var defaultFilters = mySearch.filters;            
+            //var customFilters = {
+            //    name: 'trandate',
+            //    operator: search.Operator.WITHIN,
+            //    values: [fechaIni,fechaFin]  
+            //}
+            //defaultFilters.push(customFilters);
+            //mySearch.filters = defaultFilters; 
+          
             let filter1 = search.createFilter({
                 name: 'trandate',
                 operator: search.Operator.WITHIN,
-                values: [fechaIni,fechaFin]
+                values: [fechaIni,fechaFin]   
             });
+
+            if (typeof context.fechaIni != 'undefined') {
+                mySearch.filters.push(filter1);
+            }
+
+         log.debug({
+    details: 'Operator Used: '
+       + filter1.operator + ' values ' + filter1.values
+    });
           
-          	if (typeof context.fechaIni != 'undefined') {
-            mySearch.filters.push(filter1);
-            }
-            
-            if (typeof context.tipoCanal != 'undefined') {
-              switch (tipoCanal) {
-                  case 'CON':
-                      let filter2 = search.createFilter({
-                          name: 'custbody_ht_os_concesionaria',
-                          operator: search.Operator.IS,
-                          values: [codigoCanal]
-                      });
-                      mySearch.filters.push(filter2);                   
-                      break;
-                  case 'ASE':
-                      let filter3 = search.createFilter({
-                          name: 'custbody_ht_os_companiaseguros',
-                          operator: search.Operator.IS,
-                          values: [codigoCanal]
-                      });
-                      mySearch.filters.push(filter3);   
-                      break;
-                  case 'VEX':
-                      let filter4 = search.createFilter({
-                          name: 'custbody_ht_os_vendcanaldistribucion',
-                          operator: search.Operator.IS,
-                          values: [codigoCanal]
-                      });
-                      mySearch.filters.push(filter4);   
-                      break;
-                  case 'OTR':
-                      let filter5 = search.createFilter({
-                          name: 'custbody_ht_os_bancofinanciera',
-                          operator: search.Operator.IS,
-                          values: [codigoCanal]
-                      });
-                      mySearch.filters.push(filter5);   
-                      break;
-                  default:
-                      log.debug('tipoCanal incorrecto');
-              }
-            }
-            if (codigoEjecutivo !=''){
-                let filter6 = search.createFilter({
-                    name: 'custbody_ht_os_ejecutivareferencia',
-                    operator: search.Operator.IS,
-                    values: [codigoEjecutivo]
-                });
-                mySearch.filters.push(filter6);
-            }
             let searchResultCount = mySearch.runPaged().count;
                                    
             if (searchResultCount != 0) {
@@ -88,9 +56,9 @@ define(['N/log', 'N/record', 'N/search'], function(log, record, search) {
                     var trabajado= results[i].getValue(mySearch.columns[8]);
                     var descuento= results[i].getValue(mySearch.columns[9]);
                     var vendedor= results[i].getValue(mySearch.columns[10]);
-                    var financiera = results[i].getValue(mySearch.columns[11]);
-                    var aseguradora= results[i].getValue(mySearch.columns[12]);
-                    var concesionario = results[i].getValue(mySearch.columns[13]);
+                    //var financiera = results[i].getValue(mySearch.columns[11]);
+                    //var aseguradora= results[i].getValue(mySearch.columns[12]);
+                    //var concesionario = results[i].getValue(mySearch.columns[13]);
 
                     
                     contenedor.push({
@@ -100,14 +68,14 @@ define(['N/log', 'N/record', 'N/search'], function(log, record, search) {
                         estado: estado,
                         oficina_trabajo: oficina_trabajo,
                         ejecutivo_Referencia: ejecutivo_referencia,
-                        financiera: financiera,
-                        aseguradora: aseguradora,
-                        concesionario: concesionario,
+                        //financiera: financiera,
+                        //aseguradora: aseguradora,
+                        //concesionario: concesionario,
                         vendedor: vendedor,
                         trabajado : trabajado,
                         facturado: facturado,
-                        descuento: descuento,
-                        tipoOperacion : tipoOperacion
+                        descuento: descuento
+                        //tipoOperacion : tipoOperacion
                     });
                 }
                 log.debug('Results', contenedor);

@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ec_obligado_contabilidad">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC OBLIGADO A CONTABILIDAD</name>
+  <customvalues>
+    <customvalue scriptid="val_874402_7451241_sb1_312">
+      <isinactive>F</isinactive>
+      <value>SI</value>
+    </customvalue>
+    <customvalue scriptid="val_874403_7451241_sb1_207">
+      <isinactive>F</isinactive>
+      <value>NO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

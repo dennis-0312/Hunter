@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_ns_ui_estados_orden_venta">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_UI_Estados_Orden_Venta</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/Capacitación/NS_UI_Estados_Orden_Venta.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_ui_estado_orden_venta">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>T</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>NS_UI_Estados_Orden_Venta</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

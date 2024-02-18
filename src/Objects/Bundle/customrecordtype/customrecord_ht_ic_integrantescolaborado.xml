@@ -1,0 +1,248 @@
+<customrecordtype scriptid="customrecord_ht_ic_integrantescolaborado">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT INTEGRANTES - COLABORADOR</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <instances>
+    <instance scriptid="val_823505_7451241_sb1_106">
+      <isinactive>F</isinactive>
+      <name>001 ALFREDO CARRION</name>
+    </instance>
+    <instance scriptid="val_823506_7451241_sb1_316">
+      <isinactive>F</isinactive>
+      <name>002 EDISON MOREJON</name>
+    </instance>
+    <instance scriptid="val_823507_7451241_sb1_730">
+      <isinactive>F</isinactive>
+      <name>003 JAIME GARCIA</name>
+    </instance>
+    <instance scriptid="val_823508_7451241_sb1_913">
+      <isinactive>F</isinactive>
+      <name>004 JAVIER RODAS</name>
+    </instance>
+    <instance scriptid="val_823509_7451241_sb1_292">
+      <isinactive>F</isinactive>
+      <name>005 CRISTOBAL VINCES</name>
+    </instance>
+    <instance scriptid="val_823510_7451241_sb1_631">
+      <isinactive>F</isinactive>
+      <name>006 ANTONIO MUÑIZ</name>
+    </instance>
+    <instance scriptid="val_823511_7451241_sb1_527">
+      <isinactive>F</isinactive>
+      <name>007 PATRICIO MENDIETA</name>
+    </instance>
+    <instance scriptid="val_823512_7451241_sb1_506">
+      <isinactive>F</isinactive>
+      <name>008 CARLOS ACOSTA</name>
+    </instance>
+    <instance scriptid="val_823513_7451241_sb1_263">
+      <isinactive>F</isinactive>
+      <name>009 WILSON MENDOZA</name>
+    </instance>
+    <instance scriptid="val_823514_7451241_sb1_584">
+      <isinactive>F</isinactive>
+      <name>010 WILTER TOROMORENO</name>
+    </instance>
+    <instance scriptid="val_823515_7451241_sb1_567">
+      <isinactive>F</isinactive>
+      <name>011 JUVENAL JARAMILLO</name>
+    </instance>
+    <instance scriptid="val_823516_7451241_sb1_674">
+      <isinactive>F</isinactive>
+      <name>012 MARCO SALAZAR</name>
+    </instance>
+    <instance scriptid="val_823517_7451241_sb1_597">
+      <isinactive>F</isinactive>
+      <name>015 SR. MARCELO CEVALLOS</name>
+    </instance>
+    <instance scriptid="val_823518_7451241_sb1_659">
+      <isinactive>F</isinactive>
+      <name>016 SR. JOSE LUIS MARTINEZ</name>
+    </instance>
+    <instance scriptid="val_823519_7451241_sb1_263">
+      <isinactive>F</isinactive>
+      <name>018 SR. JUAN CARLOS GREFA</name>
+    </instance>
+    <instance scriptid="val_823520_7451241_sb1_106">
+      <isinactive>F</isinactive>
+      <name>019 WILSON TAPIA</name>
+    </instance>
+    <instance scriptid="val_823521_7451241_sb1_309">
+      <isinactive>F</isinactive>
+      <name>020 CARLOS BENITEZ</name>
+    </instance>
+    <instance scriptid="val_823522_7451241_sb1_673">
+      <isinactive>F</isinactive>
+      <name>022 CESAR ZAMBRANO</name>
+    </instance>
+    <instance scriptid="val_823523_7451241_sb1_641">
+      <isinactive>F</isinactive>
+      <name>023 CARLOS SALAZAR</name>
+    </instance>
+    <instance scriptid="val_823524_7451241_sb1_272">
+      <isinactive>F</isinactive>
+      <name>024 FEDERICO BAILON</name>
+    </instance>
+    <instance scriptid="val_823525_7451241_sb1_988">
+      <isinactive>F</isinactive>
+      <name>025 JOHNNY YOZA</name>
+    </instance>
+    <instance scriptid="val_823526_7451241_sb1_687">
+      <isinactive>F</isinactive>
+      <name>026 CARLOS VALENCIA</name>
+    </instance>
+    <instance scriptid="val_823527_7451241_sb1_289">
+      <isinactive>F</isinactive>
+      <name>027 JOSE ORTIZ</name>
+    </instance>
+    <instance scriptid="val_823528_7451241_sb1_350">
+      <isinactive>F</isinactive>
+      <name>028 GALO MUÑOZ</name>
+    </instance>
+    <instance scriptid="val_823529_7451241_sb1_462">
+      <isinactive>F</isinactive>
+      <name>029 OMAR ORRALA</name>
+    </instance>
+    <instance scriptid="val_823530_7451241_sb1_503">
+      <isinactive>F</isinactive>
+      <name>030 FRANKLIN REYES</name>
+    </instance>
+    <instance scriptid="val_823531_7451241_sb1_495">
+      <isinactive>F</isinactive>
+      <name>031 CARLOS CUMBE</name>
+    </instance>
+    <instance scriptid="val_823532_7451241_sb1_292">
+      <isinactive>F</isinactive>
+      <name>032 WILSON ORTIZ</name>
+    </instance>
+    <instance scriptid="val_823533_7451241_sb1_918">
+      <isinactive>F</isinactive>
+      <name>033 JOSE LANDETA</name>
+    </instance>
+    <instance scriptid="val_823534_7451241_sb1_660">
+      <isinactive>F</isinactive>
+      <name>035 CARLOS CELORIO</name>
+    </instance>
+    <instance scriptid="val_823535_7451241_sb1_111">
+      <isinactive>F</isinactive>
+      <name>036 CESAR GARCIA</name>
+    </instance>
+    <instance scriptid="val_823536_7451241_sb1_931">
+      <isinactive>F</isinactive>
+      <name>038 VICENTE ERAS</name>
+    </instance>
+    <instance scriptid="val_823537_7451241_sb1_631">
+      <isinactive>F</isinactive>
+      <name>039 LEONEL MOREIRA</name>
+    </instance>
+    <instance scriptid="val_823538_7451241_sb1_497">
+      <isinactive>F</isinactive>
+      <name>040 DIEGO INTRIAGO</name>
+    </instance>
+    <instance scriptid="val_823539_7451241_sb1_587">
+      <isinactive>F</isinactive>
+      <name>041 ALBERTO GAVILANES</name>
+    </instance>
+    <instance scriptid="val_823540_7451241_sb1_858">
+      <isinactive>F</isinactive>
+      <name>043 CARLOS CUMBRE</name>
+    </instance>
+    <instance scriptid="val_823541_7451241_sb1_253">
+      <isinactive>F</isinactive>
+      <name>044 ALEXIS MIRANDA</name>
+    </instance>
+    <instance scriptid="val_823542_7451241_sb1_126">
+      <isinactive>F</isinactive>
+      <name>045 JAIME VIVAR</name>
+    </instance>
+    <instance scriptid="val_823543_7451241_sb1_229">
+      <isinactive>F</isinactive>
+      <name>046 TYRON VERA</name>
+    </instance>
+    <instance scriptid="val_823544_7451241_sb1_111">
+      <isinactive>F</isinactive>
+      <name>047 VELIZ</name>
+    </instance>
+    <instance scriptid="val_823545_7451241_sb1_213">
+      <isinactive>F</isinactive>
+      <name>048 SR. LUIS VELEZ</name>
+    </instance>
+    <instance scriptid="val_823546_7451241_sb1_193">
+      <isinactive>F</isinactive>
+      <name>049 SR. WALTER BORJA</name>
+    </instance>
+    <instance scriptid="val_823547_7451241_sb1_868">
+      <isinactive>F</isinactive>
+      <name>050 SR. TOMAS SANCHEZ</name>
+    </instance>
+    <instance scriptid="val_823548_7451241_sb1_361">
+      <isinactive>F</isinactive>
+      <name>051 SR. FREDDY TERRERO</name>
+    </instance>
+    <instance scriptid="val_823549_7451241_sb1_535">
+      <isinactive>F</isinactive>
+      <name>052 SR. JOSE BAZURTO</name>
+    </instance>
+    <instance scriptid="val_823550_7451241_sb1_406">
+      <isinactive>F</isinactive>
+      <name>053 FREDDY MIÑO</name>
+    </instance>
+    <instance scriptid="val_823551_7451241_sb1_972">
+      <isinactive>F</isinactive>
+      <name>054 WELLINGTON GONZALEZ</name>
+    </instance>
+    <instance scriptid="val_823552_7451241_sb1_512">
+      <isinactive>F</isinactive>
+      <name>055 OSCAR GODOY</name>
+    </instance>
+    <instance scriptid="val_823553_7451241_sb1_514">
+      <isinactive>F</isinactive>
+      <name>056 JUAN AGUILAR</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_rs_estado_orden_trabajo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_Estado_Orden_Trabajo</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Personalizaciones/TS_RS_Estado_Orden_Trabajo.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_rs_estado_orden_trabajo">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>TS_RS_Estado_Orden_Trabajo</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

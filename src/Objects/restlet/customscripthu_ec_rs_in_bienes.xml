@@ -1,0 +1,22 @@
+<restlet scriptid="customscripthu_ec_rs_in_bienes">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>HU_EC_RS_IN_BIENES</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/IntegracionesHunter/HU_EC_RS_IN_BIENES.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeployhu_ec_rs_in_bienes">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>HU_EC_RS_IN_BIENES</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

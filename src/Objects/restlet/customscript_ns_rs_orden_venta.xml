@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_orden_venta">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_Orden_Venta</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/Capacitación/NS_RS_Orden_Venta.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_orden_venta">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_Orden_Venta</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

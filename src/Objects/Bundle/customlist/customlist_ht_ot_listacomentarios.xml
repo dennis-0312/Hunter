@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ht_ot_listacomentarios">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT OT Lista de comentarios</name>
+  <customvalues>
+    <customvalue scriptid="val_781572_7451241_sb1_129">
+      <isinactive>F</isinactive>
+      <value>Finalizado</value>
+    </customvalue>
+    <customvalue scriptid="val_874041_7451241_sb1_761">
+      <isinactive>F</isinactive>
+      <value>Con novedad</value>
+    </customvalue>
+    <customvalue scriptid="val_874042_7451241_sb1_614">
+      <isinactive>F</isinactive>
+      <value>Sin novedad</value>
+    </customvalue>
+  </customvalues>
+</customlist>

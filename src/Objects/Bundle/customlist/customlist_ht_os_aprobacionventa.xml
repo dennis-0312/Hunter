@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ht_os_aprobacionventa">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT OS Aprobación Venta</name>
+  <customvalues>
+    <customvalue scriptid="val_821737_7451241_sb1_265">
+      <isinactive>F</isinactive>
+      <value>APROBADO</value>
+    </customvalue>
+    <customvalue scriptid="val_821792_7451241_sb1_499">
+      <isinactive>F</isinactive>
+      <value>PENDIENTE DE APROBACIÓN</value>
+    </customvalue>
+    <customvalue scriptid="val_901383_7451241_sb1_296">
+      <isinactive>F</isinactive>
+      <value>RECHAZADO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

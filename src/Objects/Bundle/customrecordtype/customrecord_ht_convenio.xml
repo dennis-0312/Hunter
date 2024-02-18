@@ -1,0 +1,140 @@
+<customrecordtype scriptid="customrecord_ht_convenio">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Nombre Convenio</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <instances>
+    <instance scriptid="val_823094_7451241_sb1_729">
+      <isinactive>F</isinactive>
+      <name>001 - TOYOTA DEL ECUADOR</name>
+    </instance>
+    <instance scriptid="val_823095_7451241_sb1_728">
+      <isinactive>F</isinactive>
+      <name>002 - ALQUILER CARSEG</name>
+    </instance>
+    <instance scriptid="val_823096_7451241_sb1_198">
+      <isinactive>F</isinactive>
+      <name>003 - TEOJAMA COMERCIAL</name>
+    </instance>
+    <instance scriptid="val_823097_7451241_sb1_983">
+      <isinactive>F</isinactive>
+      <name>004 - CONECA - ALQUILER</name>
+    </instance>
+    <instance scriptid="val_823098_7451241_sb1_775">
+      <isinactive>F</isinactive>
+      <name>006 - FATOSLA</name>
+    </instance>
+    <instance scriptid="val_823099_7451241_sb1_108">
+      <isinactive>F</isinactive>
+      <name>008 - CONVENIO AYASA</name>
+    </instance>
+    <instance scriptid="val_823100_7451241_sb1_356">
+      <isinactive>F</isinactive>
+      <name>009 - CONVENIO LATINA</name>
+    </instance>
+    <instance scriptid="val_823101_7451241_sb1_416">
+      <isinactive>F</isinactive>
+      <name>010 - CONVENIO MAVESA</name>
+    </instance>
+    <instance scriptid="val_823102_7451241_sb1_303">
+      <isinactive>F</isinactive>
+      <name>011 - CONVENIO CINASCAR</name>
+    </instance>
+    <instance scriptid="val_823103_7451241_sb1_348">
+      <isinactive>F</isinactive>
+      <name>012 - SOS - COOPSEGUROS</name>
+    </instance>
+    <instance scriptid="val_823104_7451241_sb1_220">
+      <isinactive>F</isinactive>
+      <name>014 - MARESA</name>
+    </instance>
+    <instance scriptid="val_823105_7451241_sb1_687">
+      <isinactive>F</isinactive>
+      <name>015 - CONVENIO LATAMAUTOS</name>
+    </instance>
+    <instance scriptid="val_823106_7451241_sb1_772">
+      <isinactive>F</isinactive>
+      <name>016 - CONVENIO MARESA CINASCAR</name>
+    </instance>
+    <instance scriptid="val_823107_7451241_sb1_787">
+      <isinactive>F</isinactive>
+      <name>017 - CONVENIO CORIS</name>
+    </instance>
+    <instance scriptid="val_823108_7451241_sb1_450">
+      <isinactive>F</isinactive>
+      <name>018 - COOP. INDIGENA SAC</name>
+    </instance>
+    <instance scriptid="val_823109_7451241_sb1_582">
+      <isinactive>F</isinactive>
+      <name>019 - CONVENIO VAZ</name>
+    </instance>
+    <instance scriptid="val_823110_7451241_sb1_568">
+      <isinactive>F</isinactive>
+      <name>020 - CONVENIO CSCG</name>
+    </instance>
+    <instance scriptid="val_823111_7451241_sb1_343">
+      <isinactive>F</isinactive>
+      <name>021 - CONVENIO SUZUKI</name>
+    </instance>
+    <instance scriptid="val_823112_7451241_sb1_841">
+      <isinactive>F</isinactive>
+      <name>022 - CONVENIO GALMACK</name>
+    </instance>
+    <instance scriptid="val_823113_7451241_sb1_298">
+      <isinactive>F</isinactive>
+      <name>023 - CONVENIO INDUAUTO</name>
+    </instance>
+    <instance scriptid="val_823114_7451241_sb1_855">
+      <isinactive>F</isinactive>
+      <name>024 - CONVENIO LIDERLINK</name>
+    </instance>
+    <instance scriptid="val_823115_7451241_sb1_414">
+      <isinactive>F</isinactive>
+      <name>025 - CONVENIO ICESA</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

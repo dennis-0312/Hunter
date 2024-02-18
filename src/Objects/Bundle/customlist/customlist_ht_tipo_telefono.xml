@@ -1,0 +1,120 @@
+<customlist scriptid="customlist_ht_tipo_telefono">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT LIST TIPO TELEFONO</name>
+  <customvalues>
+    <customvalue scriptid="val_771270_7451241_sb1_279">
+      <isinactive>F</isinactive>
+      <value>TELEFONO</value>
+    </customvalue>
+    <customvalue scriptid="val_771271_7451241_sb1_668">
+      <isinactive>F</isinactive>
+      <value>FAX</value>
+    </customvalue>
+    <customvalue scriptid="val_771272_7451241_sb1_903">
+      <isinactive>F</isinactive>
+      <value>PBX</value>
+    </customvalue>
+    <customvalue scriptid="val_781097_7451241_sb1_935">
+      <isinactive>F</isinactive>
+      <value>CELULAR</value>
+    </customvalue>
+    <customvalue scriptid="val_781146_7451241_sb1_936">
+      <isinactive>F</isinactive>
+      <value>TELFONO-EXTRA</value>
+    </customvalue>
+    <customvalue scriptid="val_781147_7451241_sb1_166">
+      <isinactive>F</isinactive>
+      <value>CELULAR-EXTRA</value>
+    </customvalue>
+    <customvalue scriptid="val_781148_7451241_sb1_300">
+      <isinactive>F</isinactive>
+      <value>RECEPTOR</value>
+    </customvalue>
+    <customvalue scriptid="val_781149_7451241_sb1_824">
+      <isinactive>F</isinactive>
+      <value>TRABAJO</value>
+    </customvalue>
+    <customvalue scriptid="val_781150_7451241_sb1_635">
+      <isinactive>F</isinactive>
+      <value>CONTACTO CELULAR</value>
+    </customvalue>
+    <customvalue scriptid="val_781151_7451241_sb1_121">
+      <isinactive>F</isinactive>
+      <value>CONTACTO CONVENCIONAL </value>
+    </customvalue>
+    <customvalue scriptid="val_781152_7451241_sb1_586">
+      <isinactive>F</isinactive>
+      <value>TELEFONO TDE</value>
+    </customvalue>
+    <customvalue scriptid="val_781153_7451241_sb1_278">
+      <isinactive>F</isinactive>
+      <value>TELEFONO SOS</value>
+    </customvalue>
+    <customvalue scriptid="val_781154_7451241_sb1_619">
+      <isinactive>F</isinactive>
+      <value>CONTACTO CONVENCIONAL </value>
+    </customvalue>
+    <customvalue scriptid="val_781155_7451241_sb1_980">
+      <isinactive>F</isinactive>
+      <value>VECINO CONVENCIONAL</value>
+    </customvalue>
+    <customvalue scriptid="val_781156_7451241_sb1_336">
+      <isinactive>F</isinactive>
+      <value>TELEFONO MAVESA</value>
+    </customvalue>
+    <customvalue scriptid="val_781157_7451241_sb1_705">
+      <isinactive>F</isinactive>
+      <value>CELULAR TDE</value>
+    </customvalue>
+    <customvalue scriptid="val_781158_7451241_sb1_567">
+      <isinactive>F</isinactive>
+      <value>CELULAR FACTURACION</value>
+    </customvalue>
+    <customvalue scriptid="val_781159_7451241_sb1_192">
+      <isinactive>F</isinactive>
+      <value>REGISTRESE H.O. CONVENCIONAL</value>
+    </customvalue>
+    <customvalue scriptid="val_781160_7451241_sb1_403">
+      <isinactive>F</isinactive>
+      <value>REGISTRESE H.O. CELULAR</value>
+    </customvalue>
+    <customvalue scriptid="val_781161_7451241_sb1_947">
+      <isinactive>F</isinactive>
+      <value>TELEFONO MARESA</value>
+    </customvalue>
+    <customvalue scriptid="val_781162_7451241_sb1_671">
+      <isinactive>F</isinactive>
+      <value>CELULAR MARESA</value>
+    </customvalue>
+    <customvalue scriptid="val_781163_7451241_sb1_439">
+      <isinactive>F</isinactive>
+      <value>ALERTA IMPACT. PRINC.</value>
+    </customvalue>
+    <customvalue scriptid="val_781164_7451241_sb1_267">
+      <isinactive>F</isinactive>
+      <value>ALERTA IMPACT. SECUN.</value>
+    </customvalue>
+    <customvalue scriptid="val_781165_7451241_sb1_361">
+      <isinactive>F</isinactive>
+      <value>ALERTA IMPACT. OTRO</value>
+    </customvalue>
+    <customvalue scriptid="val_781166_7451241_sb1_739">
+      <isinactive>F</isinactive>
+      <value>CONVENIO CELULAR</value>
+    </customvalue>
+    <customvalue scriptid="val_781167_7451241_sb1_869">
+      <isinactive>F</isinactive>
+      <value>CONVENIO CONVENCIONAL</value>
+    </customvalue>
+    <customvalue scriptid="val_781168_7451241_sb1_790">
+      <isinactive>F</isinactive>
+      <value>TELEFONO CONVENIO</value>
+    </customvalue>
+    <customvalue scriptid="val_781169_7451241_sb1_980">
+      <isinactive>F</isinactive>
+      <value>CELULAR CONVENIO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

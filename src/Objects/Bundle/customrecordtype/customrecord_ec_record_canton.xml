@@ -1,0 +1,1476 @@
+<customrecordtype scriptid="customrecord_ec_record_canton">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC Catalogo Cantón</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>T</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ec_cc_codigocanton">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC CC Código Cantón</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ec_cc_nombreprovincia">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC CC Nombre Provincia</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_ec_record_provincia]</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_784370_7451241_sb1_802">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Cuenca</name>
+    </instance>
+    <instance scriptid="val_784371_7451241_sb1_979">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Giron</name>
+    </instance>
+    <instance scriptid="val_784372_7451241_sb1_576">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Gualaceo</name>
+    </instance>
+    <instance scriptid="val_784373_7451241_sb1_841">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Nabon</name>
+    </instance>
+    <instance scriptid="val_784374_7451241_sb1_545">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Paute</name>
+    </instance>
+    <instance scriptid="val_784375_7451241_sb1_668">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pucara</name>
+    </instance>
+    <instance scriptid="val_784376_7451241_sb1_404">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Fernando</name>
+    </instance>
+    <instance scriptid="val_784377_7451241_sb1_851">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santa Isabel</name>
+    </instance>
+    <instance scriptid="val_784378_7451241_sb1_683">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Sigsig</name>
+    </instance>
+    <instance scriptid="val_784379_7451241_sb1_866">
+      <custrecord_ec_cc_codigocanton>10</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Oña</name>
+    </instance>
+    <instance scriptid="val_784380_7451241_sb1_622">
+      <custrecord_ec_cc_codigocanton>11</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Chordeleg</name>
+    </instance>
+    <instance scriptid="val_784381_7451241_sb1_562">
+      <custrecord_ec_cc_codigocanton>12</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>El Pan</name>
+    </instance>
+    <instance scriptid="val_784382_7451241_sb1_659">
+      <custrecord_ec_cc_codigocanton>13</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Sevilla De Oro</name>
+    </instance>
+    <instance scriptid="val_784383_7451241_sb1_327">
+      <custrecord_ec_cc_codigocanton>14</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Guachapala</name>
+    </instance>
+    <instance scriptid="val_784384_7451241_sb1_598">
+      <custrecord_ec_cc_codigocanton>15</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782044_7451241_sb1_823]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Camilo Ponce Enriquez</name>
+    </instance>
+    <instance scriptid="val_784385_7451241_sb1_211">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782045_7451241_sb1_324]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Guaranda</name>
+    </instance>
+    <instance scriptid="val_784386_7451241_sb1_278">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782045_7451241_sb1_324]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Chillanes</name>
+    </instance>
+    <instance scriptid="val_784387_7451241_sb1_845">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782045_7451241_sb1_324]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Chimbo</name>
+    </instance>
+    <instance scriptid="val_784388_7451241_sb1_719">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782045_7451241_sb1_324]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Echeandia</name>
+    </instance>
+    <instance scriptid="val_784389_7451241_sb1_220">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782045_7451241_sb1_324]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Miguel</name>
+    </instance>
+    <instance scriptid="val_784390_7451241_sb1_235">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782045_7451241_sb1_324]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Caluma</name>
+    </instance>
+    <instance scriptid="val_784391_7451241_sb1_128">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782045_7451241_sb1_324]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Las Naves</name>
+    </instance>
+    <instance scriptid="val_784392_7451241_sb1_693">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782046_7451241_sb1_251]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Azogues</name>
+    </instance>
+    <instance scriptid="val_784393_7451241_sb1_786">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782046_7451241_sb1_251]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Biblian</name>
+    </instance>
+    <instance scriptid="val_784394_7451241_sb1_142">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782046_7451241_sb1_251]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Cañar</name>
+    </instance>
+    <instance scriptid="val_784395_7451241_sb1_143">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782046_7451241_sb1_251]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>La Troncal</name>
+    </instance>
+    <instance scriptid="val_784396_7451241_sb1_148">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782046_7451241_sb1_251]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>El Tambo</name>
+    </instance>
+    <instance scriptid="val_784397_7451241_sb1_696">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782046_7451241_sb1_251]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Deleg</name>
+    </instance>
+    <instance scriptid="val_784398_7451241_sb1_937">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782046_7451241_sb1_251]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Suscal</name>
+    </instance>
+    <instance scriptid="val_784399_7451241_sb1_659">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782047_7451241_sb1_531]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Tulcan</name>
+    </instance>
+    <instance scriptid="val_784400_7451241_sb1_892">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782047_7451241_sb1_531]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Bolivar</name>
+    </instance>
+    <instance scriptid="val_784401_7451241_sb1_629">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782047_7451241_sb1_531]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Espejo</name>
+    </instance>
+    <instance scriptid="val_784402_7451241_sb1_630">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782047_7451241_sb1_531]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Mira</name>
+    </instance>
+    <instance scriptid="val_784403_7451241_sb1_789">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782047_7451241_sb1_531]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Montufar</name>
+    </instance>
+    <instance scriptid="val_784404_7451241_sb1_270">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782047_7451241_sb1_531]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Pedro De Huaca</name>
+    </instance>
+    <instance scriptid="val_784405_7451241_sb1_850">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782048_7451241_sb1_187]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Latacunga</name>
+    </instance>
+    <instance scriptid="val_784406_7451241_sb1_173">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782048_7451241_sb1_187]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>La Mana</name>
+    </instance>
+    <instance scriptid="val_784407_7451241_sb1_188">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782048_7451241_sb1_187]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pangua</name>
+    </instance>
+    <instance scriptid="val_784408_7451241_sb1_111">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782048_7451241_sb1_187]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pujili</name>
+    </instance>
+    <instance scriptid="val_784409_7451241_sb1_221">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782048_7451241_sb1_187]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Salcedo</name>
+    </instance>
+    <instance scriptid="val_784410_7451241_sb1_261">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782048_7451241_sb1_187]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Saquisili</name>
+    </instance>
+    <instance scriptid="val_784411_7451241_sb1_827">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782048_7451241_sb1_187]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Sigchos</name>
+    </instance>
+    <instance scriptid="val_784412_7451241_sb1_733">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Riobamba</name>
+    </instance>
+    <instance scriptid="val_784413_7451241_sb1_565">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Alausi</name>
+    </instance>
+    <instance scriptid="val_784414_7451241_sb1_827">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Colta</name>
+    </instance>
+    <instance scriptid="val_784415_7451241_sb1_520">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Chambo</name>
+    </instance>
+    <instance scriptid="val_784416_7451241_sb1_528">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Chunchi</name>
+    </instance>
+    <instance scriptid="val_784417_7451241_sb1_916">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Guamote</name>
+    </instance>
+    <instance scriptid="val_784418_7451241_sb1_541">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Guano</name>
+    </instance>
+    <instance scriptid="val_784419_7451241_sb1_182">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pallatanga</name>
+    </instance>
+    <instance scriptid="val_784420_7451241_sb1_664">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Penipe</name>
+    </instance>
+    <instance scriptid="val_784421_7451241_sb1_583">
+      <custrecord_ec_cc_codigocanton>10</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782049_7451241_sb1_957]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Cumanda</name>
+    </instance>
+    <instance scriptid="val_784422_7451241_sb1_405">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Machala</name>
+    </instance>
+    <instance scriptid="val_784423_7451241_sb1_509">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Arenillas</name>
+    </instance>
+    <instance scriptid="val_784424_7451241_sb1_954">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Atahualpa</name>
+    </instance>
+    <instance scriptid="val_784425_7451241_sb1_572">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Balsas</name>
+    </instance>
+    <instance scriptid="val_784426_7451241_sb1_286">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Chilla</name>
+    </instance>
+    <instance scriptid="val_784427_7451241_sb1_914">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>El Guabo</name>
+    </instance>
+    <instance scriptid="val_784428_7451241_sb1_349">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Huaquillas</name>
+    </instance>
+    <instance scriptid="val_784429_7451241_sb1_557">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Marcabeli</name>
+    </instance>
+    <instance scriptid="val_784430_7451241_sb1_915">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pasaje</name>
+    </instance>
+    <instance scriptid="val_784431_7451241_sb1_136">
+      <custrecord_ec_cc_codigocanton>10</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Piñas</name>
+    </instance>
+    <instance scriptid="val_784432_7451241_sb1_563">
+      <custrecord_ec_cc_codigocanton>11</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Portovelo</name>
+    </instance>
+    <instance scriptid="val_784433_7451241_sb1_415">
+      <custrecord_ec_cc_codigocanton>12</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santa Rosa</name>
+    </instance>
+    <instance scriptid="val_784434_7451241_sb1_463">
+      <custrecord_ec_cc_codigocanton>13</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Zaruma</name>
+    </instance>
+    <instance scriptid="val_784435_7451241_sb1_374">
+      <custrecord_ec_cc_codigocanton>14</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782050_7451241_sb1_177]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Las Lajas</name>
+    </instance>
+    <instance scriptid="val_784436_7451241_sb1_693">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782051_7451241_sb1_811]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Esmeraldas</name>
+    </instance>
+    <instance scriptid="val_784437_7451241_sb1_445">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782051_7451241_sb1_811]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Eloy Alfaro</name>
+    </instance>
+    <instance scriptid="val_784438_7451241_sb1_822">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782051_7451241_sb1_811]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Muisne</name>
+    </instance>
+    <instance scriptid="val_784439_7451241_sb1_514">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782051_7451241_sb1_811]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Quininde</name>
+    </instance>
+    <instance scriptid="val_784440_7451241_sb1_455">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782051_7451241_sb1_811]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Lorenzo</name>
+    </instance>
+    <instance scriptid="val_784441_7451241_sb1_306">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782051_7451241_sb1_811]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Atacames</name>
+    </instance>
+    <instance scriptid="val_784442_7451241_sb1_857">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782051_7451241_sb1_811]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Rioverde</name>
+    </instance>
+    <instance scriptid="val_784443_7451241_sb1_696">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782051_7451241_sb1_811]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>La Concordia</name>
+    </instance>
+    <instance scriptid="val_784444_7451241_sb1_637">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Guayaquil</name>
+    </instance>
+    <instance scriptid="val_784445_7451241_sb1_197">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Alfredo Baquerizo Moreno (Jujan)</name>
+    </instance>
+    <instance scriptid="val_784446_7451241_sb1_189">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Balao</name>
+    </instance>
+    <instance scriptid="val_784447_7451241_sb1_275">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Balzar</name>
+    </instance>
+    <instance scriptid="val_784448_7451241_sb1_350">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Colimes</name>
+    </instance>
+    <instance scriptid="val_784449_7451241_sb1_546">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Daule</name>
+    </instance>
+    <instance scriptid="val_784450_7451241_sb1_405">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Duran</name>
+    </instance>
+    <instance scriptid="val_784451_7451241_sb1_925">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>El Empalme</name>
+    </instance>
+    <instance scriptid="val_784452_7451241_sb1_302">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>El Triunfo</name>
+    </instance>
+    <instance scriptid="val_784453_7451241_sb1_206">
+      <custrecord_ec_cc_codigocanton>10</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Milagro</name>
+    </instance>
+    <instance scriptid="val_784454_7451241_sb1_533">
+      <custrecord_ec_cc_codigocanton>11</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Naranjal</name>
+    </instance>
+    <instance scriptid="val_784455_7451241_sb1_966">
+      <custrecord_ec_cc_codigocanton>12</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Naranjito</name>
+    </instance>
+    <instance scriptid="val_784456_7451241_sb1_930">
+      <custrecord_ec_cc_codigocanton>13</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Palestina</name>
+    </instance>
+    <instance scriptid="val_784457_7451241_sb1_574">
+      <custrecord_ec_cc_codigocanton>14</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pedro Carbo</name>
+    </instance>
+    <instance scriptid="val_784458_7451241_sb1_506">
+      <custrecord_ec_cc_codigocanton>16</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Samborondon</name>
+    </instance>
+    <instance scriptid="val_784459_7451241_sb1_728">
+      <custrecord_ec_cc_codigocanton>18</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santa Lucia</name>
+    </instance>
+    <instance scriptid="val_784460_7451241_sb1_567">
+      <custrecord_ec_cc_codigocanton>19</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Salitre (Urbina Jado)</name>
+    </instance>
+    <instance scriptid="val_784461_7451241_sb1_308">
+      <custrecord_ec_cc_codigocanton>20</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Jacinto De Yaguachi</name>
+    </instance>
+    <instance scriptid="val_784462_7451241_sb1_452">
+      <custrecord_ec_cc_codigocanton>21</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Playas</name>
+    </instance>
+    <instance scriptid="val_784463_7451241_sb1_616">
+      <custrecord_ec_cc_codigocanton>22</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Simon Bolivar</name>
+    </instance>
+    <instance scriptid="val_784464_7451241_sb1_908">
+      <custrecord_ec_cc_codigocanton>23</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Coronel Marcelino Maridueña</name>
+    </instance>
+    <instance scriptid="val_784465_7451241_sb1_185">
+      <custrecord_ec_cc_codigocanton>24</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Lomas De Sargentillo</name>
+    </instance>
+    <instance scriptid="val_784466_7451241_sb1_430">
+      <custrecord_ec_cc_codigocanton>25</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Nobol</name>
+    </instance>
+    <instance scriptid="val_784467_7451241_sb1_502">
+      <custrecord_ec_cc_codigocanton>27</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>General Antonio Elizalde</name>
+    </instance>
+    <instance scriptid="val_784468_7451241_sb1_867">
+      <custrecord_ec_cc_codigocanton>28</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782052_7451241_sb1_389]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Isidro Ayora</name>
+    </instance>
+    <instance scriptid="val_784469_7451241_sb1_139">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782053_7451241_sb1_514]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Ibarra</name>
+    </instance>
+    <instance scriptid="val_784470_7451241_sb1_964">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782053_7451241_sb1_514]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Antonio Ante</name>
+    </instance>
+    <instance scriptid="val_784471_7451241_sb1_329">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782053_7451241_sb1_514]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Cotacachi</name>
+    </instance>
+    <instance scriptid="val_784472_7451241_sb1_616">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782053_7451241_sb1_514]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Otavalo</name>
+    </instance>
+    <instance scriptid="val_784473_7451241_sb1_690">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782053_7451241_sb1_514]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pimampiro</name>
+    </instance>
+    <instance scriptid="val_784474_7451241_sb1_332">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782053_7451241_sb1_514]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Miguel De Urcuqui</name>
+    </instance>
+    <instance scriptid="val_784475_7451241_sb1_934">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Loja</name>
+    </instance>
+    <instance scriptid="val_784476_7451241_sb1_743">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Calvas</name>
+    </instance>
+    <instance scriptid="val_784477_7451241_sb1_348">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Catamayo</name>
+    </instance>
+    <instance scriptid="val_784478_7451241_sb1_334">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Celica</name>
+    </instance>
+    <instance scriptid="val_784479_7451241_sb1_292">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Chaguarpamba</name>
+    </instance>
+    <instance scriptid="val_784480_7451241_sb1_430">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Espindola</name>
+    </instance>
+    <instance scriptid="val_784481_7451241_sb1_247">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Gonzanama</name>
+    </instance>
+    <instance scriptid="val_784482_7451241_sb1_337">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Macara</name>
+    </instance>
+    <instance scriptid="val_784483_7451241_sb1_719">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Paltas</name>
+    </instance>
+    <instance scriptid="val_784484_7451241_sb1_725">
+      <custrecord_ec_cc_codigocanton>10</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Puyango</name>
+    </instance>
+    <instance scriptid="val_784485_7451241_sb1_397">
+      <custrecord_ec_cc_codigocanton>11</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Saraguro</name>
+    </instance>
+    <instance scriptid="val_784486_7451241_sb1_145">
+      <custrecord_ec_cc_codigocanton>12</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Sozoranga</name>
+    </instance>
+    <instance scriptid="val_784487_7451241_sb1_583">
+      <custrecord_ec_cc_codigocanton>13</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Zapotillo</name>
+    </instance>
+    <instance scriptid="val_784488_7451241_sb1_130">
+      <custrecord_ec_cc_codigocanton>14</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pindal</name>
+    </instance>
+    <instance scriptid="val_784489_7451241_sb1_360">
+      <custrecord_ec_cc_codigocanton>15</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Quilanga</name>
+    </instance>
+    <instance scriptid="val_784490_7451241_sb1_312">
+      <custrecord_ec_cc_codigocanton>16</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782054_7451241_sb1_915]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Olmedo</name>
+    </instance>
+    <instance scriptid="val_784491_7451241_sb1_721">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Babahoyo</name>
+    </instance>
+    <instance scriptid="val_784492_7451241_sb1_720">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Baba</name>
+    </instance>
+    <instance scriptid="val_784493_7451241_sb1_540">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Montalvo</name>
+    </instance>
+    <instance scriptid="val_784494_7451241_sb1_185">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Puebloviejo</name>
+    </instance>
+    <instance scriptid="val_784495_7451241_sb1_770">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Quevedo</name>
+    </instance>
+    <instance scriptid="val_784496_7451241_sb1_964">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Urdaneta</name>
+    </instance>
+    <instance scriptid="val_784497_7451241_sb1_775">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Ventanas</name>
+    </instance>
+    <instance scriptid="val_784498_7451241_sb1_779">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Vinces</name>
+    </instance>
+    <instance scriptid="val_784499_7451241_sb1_598">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Palenque</name>
+    </instance>
+    <instance scriptid="val_784500_7451241_sb1_613">
+      <custrecord_ec_cc_codigocanton>10</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Buena Fe</name>
+    </instance>
+    <instance scriptid="val_784501_7451241_sb1_483">
+      <custrecord_ec_cc_codigocanton>11</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Valencia</name>
+    </instance>
+    <instance scriptid="val_784502_7451241_sb1_106">
+      <custrecord_ec_cc_codigocanton>12</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Mocache</name>
+    </instance>
+    <instance scriptid="val_784503_7451241_sb1_825">
+      <custrecord_ec_cc_codigocanton>13</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782055_7451241_sb1_423]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Quinsaloma</name>
+    </instance>
+    <instance scriptid="val_784504_7451241_sb1_884">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Portoviejo</name>
+    </instance>
+    <instance scriptid="val_784505_7451241_sb1_903">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Bolivar</name>
+    </instance>
+    <instance scriptid="val_784506_7451241_sb1_914">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Chone</name>
+    </instance>
+    <instance scriptid="val_784507_7451241_sb1_861">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>El Carmen</name>
+    </instance>
+    <instance scriptid="val_784508_7451241_sb1_737">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Flavio Alfaro</name>
+    </instance>
+    <instance scriptid="val_784509_7451241_sb1_754">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Jipijapa</name>
+    </instance>
+    <instance scriptid="val_784510_7451241_sb1_153">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Junin</name>
+    </instance>
+    <instance scriptid="val_784511_7451241_sb1_222">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Manta</name>
+    </instance>
+    <instance scriptid="val_784512_7451241_sb1_408">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Montecristi</name>
+    </instance>
+    <instance scriptid="val_784513_7451241_sb1_543">
+      <custrecord_ec_cc_codigocanton>10</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pajan</name>
+    </instance>
+    <instance scriptid="val_784514_7451241_sb1_971">
+      <custrecord_ec_cc_codigocanton>11</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pichincha</name>
+    </instance>
+    <instance scriptid="val_784515_7451241_sb1_972">
+      <custrecord_ec_cc_codigocanton>12</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Rocafuerte</name>
+    </instance>
+    <instance scriptid="val_784516_7451241_sb1_436">
+      <custrecord_ec_cc_codigocanton>13</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santa Ana</name>
+    </instance>
+    <instance scriptid="val_784517_7451241_sb1_228">
+      <custrecord_ec_cc_codigocanton>14</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Sucre</name>
+    </instance>
+    <instance scriptid="val_784518_7451241_sb1_969">
+      <custrecord_ec_cc_codigocanton>15</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Tosagua</name>
+    </instance>
+    <instance scriptid="val_784519_7451241_sb1_427">
+      <custrecord_ec_cc_codigocanton>16</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>24 De Mayo</name>
+    </instance>
+    <instance scriptid="val_784520_7451241_sb1_496">
+      <custrecord_ec_cc_codigocanton>17</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pedernales</name>
+    </instance>
+    <instance scriptid="val_784521_7451241_sb1_204">
+      <custrecord_ec_cc_codigocanton>18</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Olmedo</name>
+    </instance>
+    <instance scriptid="val_784522_7451241_sb1_588">
+      <custrecord_ec_cc_codigocanton>19</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Puerto Lopez</name>
+    </instance>
+    <instance scriptid="val_784523_7451241_sb1_565">
+      <custrecord_ec_cc_codigocanton>20</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Jama</name>
+    </instance>
+    <instance scriptid="val_784524_7451241_sb1_825">
+      <custrecord_ec_cc_codigocanton>21</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Jaramijo</name>
+    </instance>
+    <instance scriptid="val_784525_7451241_sb1_966">
+      <custrecord_ec_cc_codigocanton>22</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782056_7451241_sb1_237]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Vicente</name>
+    </instance>
+    <instance scriptid="val_784526_7451241_sb1_247">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Morona</name>
+    </instance>
+    <instance scriptid="val_784527_7451241_sb1_513">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Gualaquiza</name>
+    </instance>
+    <instance scriptid="val_784528_7451241_sb1_587">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Limon Indanza</name>
+    </instance>
+    <instance scriptid="val_784529_7451241_sb1_877">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Palora</name>
+    </instance>
+    <instance scriptid="val_784530_7451241_sb1_706">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santiago</name>
+    </instance>
+    <instance scriptid="val_784531_7451241_sb1_818">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Sucua</name>
+    </instance>
+    <instance scriptid="val_784532_7451241_sb1_548">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Huamboya</name>
+    </instance>
+    <instance scriptid="val_784533_7451241_sb1_190">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Juan Bosco</name>
+    </instance>
+    <instance scriptid="val_784534_7451241_sb1_173">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Taisha</name>
+    </instance>
+    <instance scriptid="val_784535_7451241_sb1_256">
+      <custrecord_ec_cc_codigocanton>10</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Logroño</name>
+    </instance>
+    <instance scriptid="val_784536_7451241_sb1_229">
+      <custrecord_ec_cc_codigocanton>11</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pablo Sexto</name>
+    </instance>
+    <instance scriptid="val_784537_7451241_sb1_699">
+      <custrecord_ec_cc_codigocanton>12</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782057_7451241_sb1_299]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Canton Tiwintza</name>
+    </instance>
+    <instance scriptid="val_784538_7451241_sb1_498">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782058_7451241_sb1_438]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Tena</name>
+    </instance>
+    <instance scriptid="val_784539_7451241_sb1_120">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782058_7451241_sb1_438]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Archidona</name>
+    </instance>
+    <instance scriptid="val_784540_7451241_sb1_217">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782058_7451241_sb1_438]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>El Chaco</name>
+    </instance>
+    <instance scriptid="val_784541_7451241_sb1_262">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782058_7451241_sb1_438]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Quijos</name>
+    </instance>
+    <instance scriptid="val_784542_7451241_sb1_754">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782058_7451241_sb1_438]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Carlos Julio Arosemena Tola</name>
+    </instance>
+    <instance scriptid="val_784543_7451241_sb1_612">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782059_7451241_sb1_175]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pastaza</name>
+    </instance>
+    <instance scriptid="val_784544_7451241_sb1_615">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782059_7451241_sb1_175]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Mera</name>
+    </instance>
+    <instance scriptid="val_784545_7451241_sb1_450">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782059_7451241_sb1_175]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santa Clara</name>
+    </instance>
+    <instance scriptid="val_784546_7451241_sb1_454">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782059_7451241_sb1_175]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Arajuno</name>
+    </instance>
+    <instance scriptid="val_784547_7451241_sb1_259">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782060_7451241_sb1_287]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Quito</name>
+    </instance>
+    <instance scriptid="val_784548_7451241_sb1_673">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782060_7451241_sb1_287]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Cayambe</name>
+    </instance>
+    <instance scriptid="val_784549_7451241_sb1_231">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782060_7451241_sb1_287]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Mejia</name>
+    </instance>
+    <instance scriptid="val_784550_7451241_sb1_302">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782060_7451241_sb1_287]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pedro Moncayo</name>
+    </instance>
+    <instance scriptid="val_784551_7451241_sb1_737">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782060_7451241_sb1_287]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Rumiñahui</name>
+    </instance>
+    <instance scriptid="val_784552_7451241_sb1_830">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782060_7451241_sb1_287]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Miguel De Los Bancos</name>
+    </instance>
+    <instance scriptid="val_784553_7451241_sb1_322">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782060_7451241_sb1_287]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Pedro Vicente Maldonado</name>
+    </instance>
+    <instance scriptid="val_784554_7451241_sb1_993">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782060_7451241_sb1_287]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Puerto Quito</name>
+    </instance>
+    <instance scriptid="val_784555_7451241_sb1_717">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782061_7451241_sb1_316]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Ambato</name>
+    </instance>
+    <instance scriptid="val_784556_7451241_sb1_204">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782061_7451241_sb1_316]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Baños De Agua Santa</name>
+    </instance>
+    <instance scriptid="val_784557_7451241_sb1_504">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782061_7451241_sb1_316]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Cevallos</name>
+    </instance>
+    <instance scriptid="val_784558_7451241_sb1_449">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782061_7451241_sb1_316]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Mocha</name>
+    </instance>
+    <instance scriptid="val_784559_7451241_sb1_603">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782061_7451241_sb1_316]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Patate</name>
+    </instance>
+    <instance scriptid="val_784560_7451241_sb1_649">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782061_7451241_sb1_316]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Quero</name>
+    </instance>
+    <instance scriptid="val_784561_7451241_sb1_392">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782061_7451241_sb1_316]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Pedro De Pelileo</name>
+    </instance>
+    <instance scriptid="val_784562_7451241_sb1_302">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782061_7451241_sb1_316]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santiago De Pillaro</name>
+    </instance>
+    <instance scriptid="val_784563_7451241_sb1_187">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782061_7451241_sb1_316]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Tisaleo</name>
+    </instance>
+    <instance scriptid="val_784564_7451241_sb1_109">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782062_7451241_sb1_534]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Zamora</name>
+    </instance>
+    <instance scriptid="val_784565_7451241_sb1_276">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782062_7451241_sb1_534]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Chinchipe</name>
+    </instance>
+    <instance scriptid="val_784566_7451241_sb1_574">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782062_7451241_sb1_534]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Nangaritza</name>
+    </instance>
+    <instance scriptid="val_784567_7451241_sb1_773">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782062_7451241_sb1_534]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Yacuambi</name>
+    </instance>
+    <instance scriptid="val_784568_7451241_sb1_897">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782062_7451241_sb1_534]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Yantzaza (Yanzatza)</name>
+    </instance>
+    <instance scriptid="val_784569_7451241_sb1_929">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782062_7451241_sb1_534]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>El Pangui</name>
+    </instance>
+    <instance scriptid="val_784570_7451241_sb1_656">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782062_7451241_sb1_534]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Centinela Del Condor</name>
+    </instance>
+    <instance scriptid="val_784571_7451241_sb1_657">
+      <custrecord_ec_cc_codigocanton>8</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782062_7451241_sb1_534]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Palanda</name>
+    </instance>
+    <instance scriptid="val_784572_7451241_sb1_597">
+      <custrecord_ec_cc_codigocanton>9</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782062_7451241_sb1_534]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Paquisha</name>
+    </instance>
+    <instance scriptid="val_784573_7451241_sb1_805">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782063_7451241_sb1_927]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>San Cristobal</name>
+    </instance>
+    <instance scriptid="val_784574_7451241_sb1_378">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782063_7451241_sb1_927]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Isabela</name>
+    </instance>
+    <instance scriptid="val_784575_7451241_sb1_249">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782063_7451241_sb1_927]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santa Cruz</name>
+    </instance>
+    <instance scriptid="val_784576_7451241_sb1_827">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782064_7451241_sb1_850]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Lago Agrio</name>
+    </instance>
+    <instance scriptid="val_784577_7451241_sb1_817">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782064_7451241_sb1_850]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Gonzalo Pizarro</name>
+    </instance>
+    <instance scriptid="val_784578_7451241_sb1_645">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782064_7451241_sb1_850]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Putumayo</name>
+    </instance>
+    <instance scriptid="val_784579_7451241_sb1_249">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782064_7451241_sb1_850]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Shushufindi</name>
+    </instance>
+    <instance scriptid="val_784580_7451241_sb1_206">
+      <custrecord_ec_cc_codigocanton>5</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782064_7451241_sb1_850]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Sucumbios</name>
+    </instance>
+    <instance scriptid="val_784581_7451241_sb1_197">
+      <custrecord_ec_cc_codigocanton>6</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782064_7451241_sb1_850]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Cascales</name>
+    </instance>
+    <instance scriptid="val_784582_7451241_sb1_942">
+      <custrecord_ec_cc_codigocanton>7</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782064_7451241_sb1_850]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Cuyabeno</name>
+    </instance>
+    <instance scriptid="val_784583_7451241_sb1_347">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782065_7451241_sb1_384]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Orellana</name>
+    </instance>
+    <instance scriptid="val_784584_7451241_sb1_380">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782065_7451241_sb1_384]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Aguarico</name>
+    </instance>
+    <instance scriptid="val_784585_7451241_sb1_595">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782065_7451241_sb1_384]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>La Joya De Los Sachas</name>
+    </instance>
+    <instance scriptid="val_784586_7451241_sb1_695">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782065_7451241_sb1_384]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Loreto</name>
+    </instance>
+    <instance scriptid="val_784587_7451241_sb1_181">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782066_7451241_sb1_358]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santo Domingo</name>
+    </instance>
+    <instance scriptid="val_784588_7451241_sb1_494">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782067_7451241_sb1_814]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Santa Elena</name>
+    </instance>
+    <instance scriptid="val_784589_7451241_sb1_356">
+      <custrecord_ec_cc_codigocanton>2</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782067_7451241_sb1_814]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>La Libertad</name>
+    </instance>
+    <instance scriptid="val_784590_7451241_sb1_686">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782067_7451241_sb1_814]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Salinas</name>
+    </instance>
+    <instance scriptid="val_784591_7451241_sb1_832">
+      <custrecord_ec_cc_codigocanton>1</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782068_7451241_sb1_581]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Zonas No Delimitadas</name>
+    </instance>
+    <instance scriptid="val_784592_7451241_sb1_774">
+      <custrecord_ec_cc_codigocanton>3</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782068_7451241_sb1_581]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Zonas No Delimitadas</name>
+    </instance>
+    <instance scriptid="val_784593_7451241_sb1_261">
+      <custrecord_ec_cc_codigocanton>4</custrecord_ec_cc_codigocanton>
+      <custrecord_ec_cc_nombreprovincia>[scriptid=customrecord_ec_record_provincia.val_782068_7451241_sb1_581]</custrecord_ec_cc_nombreprovincia>
+      <isinactive>F</isinactive>
+      <name>Zonas No Delimitadas</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

@@ -1,515 +1,1589 @@
-{
-    "id": "26611",
-    "type": "salesorder",
-    "fields": {
-        "_csrf": "VeHVXd1rpC3gnQm2Y8e4DnvAXplgEU2Kx7qJe7M3FCfqDceZJ1i6Qvn1s8lGkzW7FEJfP8-S6Lj9CrQPL_7rRwOkOcVsFoSrhM3dwBHKQ1k1Na_qNutnR89rUINEO558EimJ_r62Wqe_VWPLSrJ13ErOkWwfI8e-rwiW1hgLa54=",
-        "_eml_nkey_": "7451241_SB1~4~3~N",
-        "_multibtnstate_": "",
-        "address_country_state_map": "[154280:EC]",
-        "allowemptycards": "F",
-        "authcode": "",
-        "authorizedamount": "",
-        "automaticallyapplypromotions": "T",
-        "automaticallyapplypromotionsassociatedmessage": "",
-        "balance": "0.00",
-        "balreadyrefunded": "F",
-        "baserecordtype": "salesorder",
-        "billaddr1": "ALCEDO #227 E/RUMICHACA Y STA ELENA /COMERCIAL \"CARVALLO\" PROPIETARIA (DIAG A LA FARMACIA \"BARCIA\")",
-        "billaddr2": "CENTRO",
-        "billaddr3": "",
-        "billaddress": "C-EC-0100426410\nALCEDO #227 E/RUMICHACA Y STA ELENA /COMERCIAL \"CARVALLO\" PROPIETARIA (DIAG A LA FARMACIA \"BARCIA\")\nCENTRO\nEcuador",
-        "billaddressee": "C-EC-0100426410",
-        "billaddresslist": "154280",
-        "billattention": "",
-        "billcity": "",
-        "billcountry": "EC",
-        "billingaddress2_set": "var subrecord = nlapiViewSubrecord('billingaddress');\nvar addresstext;\nif (subrecord) {\n   addresstext = subrecord.getFieldValue('addrtext');\n} else {\n}\nnlapiSetFieldValue('billingaddress_text', addresstext);\n",
-        "billingaddress_defaultvalue": "",
-        "billingaddress_key": "155043",
-        "billingaddress_text": "C-EC-0100426410\nALCEDO #227 E/RUMICHACA Y STA ELENA /COMERCIAL \"CARVALLO\" PROPIETARIA (DIAG A LA FARMACIA \"BARCIA\")\nCENTRO\nEcuador",
-        "billingaddress_type": "shipaddr",
-        "billisresidential": "F",
-        "billphone": "",
-        "billstate": "",
-        "billzip": "",
-        "bnopostmain": "T",
-        "bulk": "",
-        "canbeunapproved": "T",
-        "cancustomergroupinvoices": "F",
-        "canhavestackable": "T",
-        "carddataprovided": "F",
-        "cardholderauthentication": "",
-        "cardswipe": "",
-        "carrier": "nonups",
-        "ccapproved": "F",
-        "ccavsstreetmatch": "",
-        "ccavszipmatch": "",
-        "cccardid": "",
-        "ccexpiredate": "",
-        "cchold": "F",
-        "ccholdetails": "",
-        "cciavsmatch": "",
-        "ccispurchasecardbin": "F",
-        "ccname": "",
-        "ccnumber": "",
-        "ccpanid": "",
-        "ccprocessaspurchasecard": "F",
-        "ccprocessoraccount": "",
-        "ccstreet": "",
-        "ccwasapproved": "F",
-        "cczipcode": "",
-        "checkcommitted": "F",
-        "checknumber": "",
-        "class": "",
-        "collectedamount": "",
-        "companyid": "502766",
-        "consolidatebalance": "0.00",
-        "couponcode": "",
-        "createddate": "17/03/2023 15:09",
-        "createdfrom": "",
-        "credholdentity": "502766",
-        "credholdoverride": "F",
-        "creditcard": "",
-        "creditcardprocessor": "",
-        "credlim": "",
-        "currency": "1",
-        "currencyname": "US Dollar",
-        "currencyprecision": "2",
-        "currencysymbol": "USD",
-        "custbody_15699_exclude_from_ep_process": "F",
-        "custbody_4110_customregnum": "",
-        "custbody_4601_appliesto": "",
-        "custbody_4601_doc_ref_id": "",
-        "custbody_4601_entitydefaultwitaxcode": "",
-        "custbody_4601_entitytype": "2",
-        "custbody_4601_pymnt_ref_id": "",
-        "custbody_counterparty_vat": "",
-        "custbody_country_of_origin": "",
-        "custbody_date_of_taxable_supply": "",
-        "custbody_delivery_terms": "",
-        "custbody_document_date": "",
-        "custbody_ec_estados_os": "",
-        "custbody_establishment_code": "",
-        "custbody_ht_dev_token": "",
-        "custbody_ht_facturar_a": "502766",
-        "custbody_ht_os_aprobacioncartera": "1",
-        "custbody_ht_os_aprobacionventa": "1",
-        "custbody_ht_os_bancofinanciera": "",
-        "custbody_ht_os_bien_flag": "",
-        "custbody_ht_os_companiaseguros": "",
-        "custbody_ht_os_concesionario": "",
-        "custbody_ht_os_correocliente": "comercialcarvallo@hotmail.com",
-        "custbody_ht_os_direccioncliente": "ALCEDO #227 E/RUMICHACA Y STA ELENA /COMERCIAL \"CARVALLO\" PROPIETARIA (DIAG A LA FARMACIA \"BARCIA\")",
-        "custbody_ht_os_ejecutiva_backoffice": "4",
-        "custbody_ht_os_ejecutivareferencia": "",
-        "custbody_ht_os_empresaejectrabajo": "",
-        "custbody_ht_os_identificacioncliente": "0100426410",
-        "custbody_ht_os_inicioactual": "",
-        "custbody_ht_os_nuevaemision": "",
-        "custbody_ht_os_nuevovencimiento": "",
-        "custbody_ht_os_oficinaejecutatrabajo": "",
-        "custbody_ht_os_permitirentrega": "F",
-        "custbody_ht_os_plazo": "",
-        "custbody_ht_os_plazoactual": "",
-        "custbody_ht_os_telefonocliente": "+593997550010",
-        "custbody_ht_os_tipoordenservicio": "",
-        "custbody_ht_os_trabajado": "N",
-        "custbody_ht_os_usaparalizador": "F",
-        "custbody_ht_os_vencimientoactual": "",
-        "custbody_ht_os_vendcanaldistribucion": "507149",
-        "custbody_ht_so_bien": "1001119721",
-        "custbody_ht_tiempo_servicio": "",
-        "custbody_itr_nexus": "",
-        "custbody_mode_of_transport": "",
-        "custbody_nexus_notc": "",
-        "custbody_notc": "",
-        "custbody_ph4014_wtax_bamt": "",
-        "custbody_ph4014_wtax_code": "",
-        "custbody_ph4014_wtax_rate": "",
-        "custbody_ph4014_wtax_wamt": "",
-        "custbody_ph4185_bstyle": "",
-        "custbody_refno_originvoice": "",
-        "custbody_regime_code": "",
-        "custbody_regime_code_of_supply": "",
-        "custbody_report_timestamp": "17/3/2023 13:4:58",
-        "custbody_sbe_pay_custpayment": "",
-        "custbody_sbe_pay_processfailedreason": "",
-        "custbody_sbe_pay_processstatus": "",
-        "custbody_sbe_pay_result": "",
-        "custbody_sii_article_61d": "F",
-        "custbody_sii_article_72_73": "F",
-        "custbody_sii_correction_type": "",
-        "custbody_sii_exempt_details": "",
-        "custbody_sii_external_reference": "",
-        "custbody_sii_intra_txn_type": "",
-        "custbody_sii_is_third_party": "F",
-        "custbody_sii_issued_inv_type": "",
-        "custbody_sii_land_register": "",
-        "custbody_sii_not_reported_in_time": "F",
-        "custbody_sii_operation_date": "",
-        "custbody_sii_orig_invoice": "",
-        "custbody_sii_property_location": "",
-        "custbody_sii_registration_code": "",
-        "custbody_sii_registration_msg": "",
-        "custbody_sii_registration_status": "",
-        "custbody_sii_spcl_scheme_code_sales": "",
-        "custbody_transaction_region": "",
-        "custbody_ts_ec_folio_fiscal": "",
-        "custbody_ts_ec_folio_fiscal_ref": "",
-        "custbody_ts_ec_identificador_sipecom": "",
-        "custbody_ts_ec_metodo_pago": "",
-        "custbody_ts_ec_monto_letras": "",
-        "custbody_ts_ec_no_refrendo_distrito_ad": "",
-        "custbody_ts_ec_numero_preimpreso": "",
-        "custbody_ts_ec_preimpreso_retencion": "",
-        "custbody_ts_ec_serie_cxc": "",
-        "custbody_ts_ec_subsidiaria_pais": "63",
-        "custbodyts_ec_base_rate0": "",
-        "custbodyts_ec_base_rate12": "",
-        "custbodyts_ec_base_rate14": "",
-        "custbodyts_ec_cod_wht_autorization": "",
-        "custbodyts_ec_doc_fecha_ref": "",
-        "custbodyts_ec_doc_number_ref": "",
-        "custbodyts_ec_doc_serie_ref": "",
-        "custbodyts_ec_doc_type_ref": "",
-        "custbodyts_ec_nro_doc_trans": "",
-        "custbodyts_ec_nro_fue": "",
-        "custbodyts_ec_nro_refrendo_correlativo": "",
-        "custbodyts_ec_nro_refrendo_verificador": "",
-        "custbodyts_ec_nro_refrendo_yyyy": "",
-        "custbodyts_ec_num_autorizacion": "",
-        "custbodyts_ec_refrendo_cod_regimen": "",
-        "custbodyts_ec_tipo_documento_fiscal": "",
-        "custbodyts_ec_tipo_exportacion": "",
-        "custbodyts_ec_tipo_trans": "",
-        "custcurrep": "502299",
-        "customercode": "",
-        "customform": "100",
-        "customwhence": "",
-        "custpage_cs_msgs": "{\"ERR_FIELD_TAXREPORTING_COUNTERPARTYVAT_VALUE\":\"Enter a valid VAT number in the Partner ID field on the Tax Reporting subtab.\",\"ERR_FIELD_COUNTERPARTYVAT_VALUE\":\"Enter a valid VAT number in the Partner ID field.\"}",
-        "custpage_itr_nexus": "EC",
-        "datafromredirect": "",
-        "datedriven": "",
-        "dbstrantype": "SalesOrd",
-        "debitksn": "",
-        "debitpinblock": "",
-        "defaultaddrbook": "",
-        "defaultaddressee": "",
-        "deletionreason": "",
-        "deletionreasonmemo": "",
-        "department": "",
-        "disablepromotionrecalc": "F",
-        "discdays": "",
-        "discountastotal": "",
-        "discountistaxable": "",
-        "discountitem": "",
-        "discountrate": "",
-        "discounttax1amountdata": "[]",
-        "discounttax2amountdata": "",
-        "discounttotal": "0.00",
-        "discpct": "",
-        "disctax1": "",
-        "disctax1amt": "0.0",
-        "doshippingrecalc": "",
-        "duedays": "",
-        "edition": "XX",
-        "email": "comercialcarvallo@hotmail.com",
-        "enddate": "",
-        "entity": "502766",
-        "entity_nexus_country": "EC",
-        "entityfieldname": "entity",
-        "entityname": "C-EC-0100426410 INES VICTORIA TORRES PESANTEZ",
-        "entitynexus": "1",
-        "entryformquerystring": "e=T&id=26611",
-        "errornotificationsfield": "",
-        "estgrossprofit": "661.23",
-        "estgrossprofitpercent": "39.8331%",
-        "exchangerate": "1.00",
-        "expectedpaymentstatus": "",
-        "externalid": "",
-        "extraurlparams": "",
-        "fax": "",
-        "fedexservicename": "",
-        "fob": "",
-        "forinvoicegrouping": "F",
-        "getauth": "F",
-        "handlingmode": "SAVE_ONLY",
-        "hasfedexfreightservice": "F",
-        "haslines": "T",
-        "hasordbilllink": "F",
-        "id": "26611",
-        "ignoreavs": "F",
-        "ignoreavsvis": "F",
-        "ignorecsc": "F",
-        "ignorecscvis": "F",
-        "inputauthcode": "",
-        "inputpnrefnum": "",
-        "inputreferencecode": "",
-        "installmentcount": "0",
-        "instrumentrequireslineleveldata": "F",
-        "integrationid": "",
-        "internalinstrument": "F",
-        "inventorydetailuitype": "LOH_LOOSE_VALIDATION",
-        "isbasecurrency": "T",
-        "isdefaultshippingrequest": "",
-        "iseditbilledtransactionwithpromotion": "F",
-        "iseitf81on": "F",
-        "isinstallment": "",
-        "islegacypromo": "F",
-        "isonlinetransaction": "F",
-        "ispaymethundepfunds": "",
-        "ispurchasecard": "",
-        "isrecurringpayment": "F",
-        "istransformedbill": "F",
-        "istransformedtransaction": "F",
-        "itemshippingcostfxrate": "1",
-        "lastmodifieddate": "17/03/2023 15:10",
-        "leadsource": "",
-        "linked": "F",
-        "linkedclosedperioddiscounts": "F",
-        "linkedrevrecje": "F",
-        "linkedtrackingnumbers": "",
-        "location": "3",
-        "locationusesbins": "T",
-        "manualcredithold": "F",
-        "maskedcard": "",
-        "memo": "",
-        "merchantprintblock": "",
-        "message": "",
-        "messagesel": "",
-        "methodrequireslineleveldata": "F",
-        "mindays": "",
-        "nextbill": "17/03/2023",
-        "nexus": "1",
-        "nexus_country": "EC",
-        "nlapiCC": "F",
-        "nldept": "1",
-        "nlloc": "3",
-        "nlrole": "3",
-        "nlsub": "2",
-        "nluser": "4",
-        "noticenotificationsfield": "",
-        "nsapiCT": "1679083851820",
-        "nsapiFC": "",
-        "nsapiLC": "",
-        "nsapiLI": "",
-        "nsapiPD": "",
-        "nsapiPI": "promotions.pageInit_applyPromo",
-        "nsapiPS": "",
-        "nsapiRC": "promotions.recalc_applyPromo",
-        "nsapiSR": "",
-        "nsapiVD": "",
-        "nsapiVF": "",
-        "nsapiVI": "",
-        "nsapiVL": "",
-        "nsbrowserenv": "",
-        "ntype": "31",
-        "oldrevenuecommitment": "F",
-        "opportunity": "",
-        "orderleveldata": "[]",
-        "orderstatus": "B",
-        "ordrecvd": "F",
-        "origcurrency": "1",
-        "origexchangerate": "1.00",
-        "originalnexus": "1",
-        "originalnexuscountry": "EC",
-        "originator": "",
-        "origstatus": "B",
-        "origtotal": "1859.2",
-        "origtotal2": "1859.2",
-        "otherrefnum": "",
-        "outputauthcode": "",
-        "outputreferencecode": "",
-        "overallbalance": "0.00",
-        "overallunbilledorders": "10169.60",
-        "overridehold": "F",
-        "overrideholdchecked": "F",
-        "overrideshippingcost": "",
-        "partner": "",
-        "partnerid": "",
-        "paymentcancelable": "F",
-        "paymentcardcsc": "",
-        "paymentcustomdata": "",
-        "paymentdeviceid": "",
-        "paymenteventdate": "17/03/2023 13:10",
-        "paymenteventholdreason": "",
-        "paymenteventmagiczeroused": "F",
-        "paymenteventpurchasedatasent": "",
-        "paymenteventresult": "",
-        "paymenteventtype": "AUTHORIZATION",
-        "paymenteventupdatedby": "",
-        "paymentinstrumentlimit": "",
-        "paymentinstrumenttype": "",
-        "paymentmethod": "",
-        "paymentmethodaccount": "",
-        "paymentmethodfrominstrument": "",
-        "paymentmethodtypeid": "",
-        "paymentoperation": "",
-        "paymentoption": "",
-        "paymentprocessingmode": "SAVE_ONLY",
-        "paymentprocessingprofile": "",
-        "paymentrequestid": "",
-        "paymentsession": "4719",
-        "paymentsessionamount": "1859.20",
-        "paymethacct": "",
-        "paymethtype": "",
-        "persistedpromocode": "",
-        "persistedterms": "",
-        "pnrefnum": "",
-        "prevdate": "17/03/2023",
-        "previous_billaddresslist": "",
-        "previous_shipaddresslist": "",
-        "previousopportunity": "",
-        "prevrep": "502299",
-        "primarycurrency": "1.00",
-        "primarycurrencyfxrate": "1.00",
-        "profilesupportslineleveldata": "F",
-        "promocode": "",
-        "promocodepluginimpl": "",
-        "promodiscount": "",
-        "promotionapplied": "F",
-        "promotionids": "",
-        "recordcreatedby": "4",
-        "recordcreateddate": "03/17/2023 13:09:54",
-        "rectype_150_1337_maxnkey": "9104",
-        "rectype_425_2018_maxnkey": "2",
-        "redirecturl": "",
-        "refreshitemsfromproject": "",
-        "reimbursedamount": "",
-        "request": "",
-        "response": "",
-        "returntrackingnumbers": "",
-        "returnurl": "",
-        "saleseffectivedate": "17/03/2023",
-        "salesrep": "502299",
-        "selectedtab": "",
-        "shadow_shipaddress": "",
-        "shipaddr1": "ALCEDO #227 E/RUMICHACA Y STA ELENA /COMERCIAL \"CARVALLO\" PROPIETARIA (DIAG A LA FARMACIA \"BARCIA\")",
-        "shipaddr2": "CENTRO",
-        "shipaddr3": "",
-        "shipaddress": "C-EC-0100426410\nALCEDO #227 E/RUMICHACA Y STA ELENA /COMERCIAL \"CARVALLO\" PROPIETARIA (DIAG A LA FARMACIA \"BARCIA\")\nCENTRO\nEcuador",
-        "shipaddressee": "C-EC-0100426410",
-        "shipaddresslist": "154280",
-        "shipattention": "",
-        "shipcity": "",
-        "shipcomplete": "F",
-        "shipcountry": "EC",
-        "shipcountry_insubrecord": "EC",
-        "shipdate": "17/03/2023",
-        "shipisresidential": "F",
-        "shipmethod": "",
-        "shipoverride": "F",
-        "shipphone": "",
-        "shippingaddress2_set": "var subrecord = nlapiViewSubrecord('shippingaddress');\nvar addresstext;\nif (subrecord) {\n   addresstext = subrecord.getFieldValue('addrtext');\n} else {\n}\nnlapiSetFieldValue('shippingaddress_text', addresstext);\n",
-        "shippingaddress_defaultvalue": "",
-        "shippingaddress_key": "155043",
-        "shippingaddress_text": "C-EC-0100426410\nALCEDO #227 E/RUMICHACA Y STA ELENA /COMERCIAL \"CARVALLO\" PROPIETARIA (DIAG A LA FARMACIA \"BARCIA\")\nCENTRO\nEcuador",
-        "shippingaddress_type": "shipaddr",
-        "shipstate": "",
-        "shipstate_insubrecord": "",
-        "shipzip": "",
-        "shipzip_insubrecord": "",
-        "shopperprintblock": "",
-        "signaturerequired": "F",
-        "source": "",
-        "startdate": "",
-        "status": "Pending Fulfillment",
-        "statusRef": "pendingFulfillment",
-        "subsidiary": "2",
-        "subtotal": "1660.00",
-        "suppressusereventsandemails": "F",
-        "synceventfield": "",
-        "tax_affecting_address_fields_before_recalc": "citystatezipcountryEC",
-        "taxamount2override": "",
-        "taxamountoverride": "",
-        "taxfractionunit": "2",
-        "taxrounding": "OFF",
-        "taxroundinglevel": "LINE",
-        "taxtotal": "199.20",
-        "templatestored": "T",
-        "terms": "",
-        "threedstatuscode": "",
-        "threedstatuscodevis": "F",
-        "tobeemailed": "F",
-        "tobefaxed": "F",
-        "tobeprinted": "F",
-        "total": "1859.20",
-        "totalcostestimate": "998.77",
-        "trandate": "17/03/2023",
-        "tranid": "1200000060",
-        "transactionnumber": "SALESORD323",
-        "trantypepermcheck": "",
-        "type": "salesord",
-        "unbilledorders": "10169.60",
-        "updatecurrency": "",
-        "updatedropshiporderqty": "T",
-        "usepaymentoption": "T",
-        "userevenuearrangement": "T",
-        "vatregnum": "0100426410",
-        "version": "2",
-        "voided": "F",
-        "warningnotificationsfield": "",
-        "warnnexuschange": "F",
-        "webstore": "F",
-        "weekendpreference": "ASIS",
-        "wfFC": "",
-        "wfPI": "",
-        "wfPS": "",
-        "wfSR": "",
-        "wfVF": "",
-        "wfinstances": "",
-        "whence": ""
-    },
-    "linefields": {
-        "recmachcustrecord_deprhistjournal": "",
-        "promotions": "",
-        "paymentevent": "",
-        "recmachcustrecord_2663_transaction": "",
-        "item": {
-            "0": {
-                "item": "37781",
-                "quantity": "1",
-                "location": "2",
-                "units": "1",
-                "price": "1",
-                "rate": "700.00",
-                "amount": "700.00",
-                "taxcode": "26",
-                "tax1amt": "84.00",
-                "grossamt": "784.00",
-                "description": "VENT HM BASICO EQUIPO",
-                "price_display": "PVP",
-                "units_display": "UND",
-                "taxcode_display": "VAT_EC_BB:S-EC",
-                "taxrate1": "12.0%"
-            },
-            "1": {
-                "item": "38217",
-                "quantity": "12",
-                "location": "2",
-                "units": "12",
-                "price": "1",
-                "rate": "80.00",
-                "amount": "960.00",
-                "taxcode": "26",
-                "tax1amt": "115.20",
-                "grossamt": "1075.20",
-                "description": "VENT HM BASICO TRANSMISION ANUAL",
-                "price_display": "PVP",
-                "units_display": "MES",
-                "taxcode_display": "VAT_EC_BB:S-EC",
-                "taxrate1": "12.0%"
+[
+    {
+        "cabecera": [
+            {
+                "clienteid": "431",
+                "ceduleruc": "20381041957",
+                "cliente": "TS NET",
+                "direccion": "LIBERTADORES TEST",
+                "telefono": "+5939875236998",
+                "email": "tsnet.evol@myevol.biz"
             }
-        },
-        "transformations": "",
-        "billingschedule": {
-            "0": {
-                "billamount": "1859.20",
-                "billdate": "17/03/2023",
-                "sys_id": "9184931155865629",
-                "sys_parentid": "9184931155144222"
+        ],
+        "detalle": [
+            {
+                "ordenServicioid": "30952",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000571",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    },
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    },
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    },
+                    {
+                        "producto": "DOMO DIGMER",
+                        "tipoTrabajo": "ACTIVACION DE PRODUCTO"
+                    }
+                ]
             }
-        },
-        "links": ""
+        ]
     }
-}
+],
+
+[
+    {
+        "cabecera": [
+            {
+                "clienteid": "431",
+                "ceduleruc": "20381041957",
+                "cliente": "TS NET",
+                "direccion": "LIBERTADORES TEST",
+                "telefono": "+5939875236998",
+                "email": "tsnet.evol@myevol.biz"
+            }
+        ],
+        "detalle": [
+            {
+                "ordenServicioid": "30952",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000571",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "producto": "MONITOREO",
+                "tipoTrabajo": "VENT HM AMI EQUIPO"
+            },
+            {
+                "ordenServicioid": "31064",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000577",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "producto": "MONITOREO",
+                "tipoTrabajo": "VENT HM AMI EQUIPO"
+            },
+            {
+                "ordenServicioid": "31066",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000578",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "producto": "MONITOREO",
+                "tipoTrabajo": "VENT HM AMI EQUIPO"
+            },
+            {
+                "ordenServicioid": "31066",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000578",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "No se pudo instalar el Paralizador",
+                "producto": "DOMO DIGMER",
+                "tipoTrabajo": "ACTIVACION DE PRODUCTO"
+            }
+        ]
+    }
+],
+
+[
+    {
+        "cabecera": [
+            {
+                "clienteid": "431",
+                "ceduleruc": "20381041957",
+                "cliente": "TS NET",
+                "direccion": "LIBERTADORES TEST",
+                "telefono": "+5939875236998",
+                "email": "tsnet.evol@myevol.biz"
+            }
+        ],
+        "detalle": [
+            {
+                "ordenServicioid": "30952",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000571",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "31064",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000577",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "31066",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000578",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    },
+                    {
+                        "producto": "DOMO DIGMER",
+                        "tipoTrabajo": "ACTIVACION DE PRODUCTO"
+                    }
+                ]
+            }
+        ]
+    }
+]
+
+
+
+
+
+
+
+[
+    {
+        "cabecera": [
+            {
+                "clienteid": "431",
+                "ceduleruc": "20381041957",
+                "cliente": "TS NET",
+                "direccion": "LIBERTADORES TEST",
+                "telefono": "+5939875236998",
+                "email": "tsnet.evol@myevol.biz"
+            }
+        ],
+        "detalle": [
+            {
+                "ordenServicioid": "1424",
+                "vehiculoid": "3",
+                "ordenServicio": "OS-00000002",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "4832",
+                "vehiculoid": "4",
+                "ordenServicio": "OS00000007",
+                "vehiculo": "PLC.:TRD-8951 MOT.:5945114510 CHA.:8LFTNY0247M32700677851 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511451",
+                "chasis": "8LFTNY0247M32700677851",
+                "comentarioTec": "Sin observación",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "4937",
+                "vehiculoid": "4",
+                "ordenServicio": "OS00000009",
+                "vehiculo": "PLC.:TRD-8951 MOT.:5945114510 CHA.:8LFTNY0247M32700677851 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511451",
+                "chasis": "8LFTNY0247M32700677851",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "5055",
+                "vehiculoid": "7",
+                "ordenServicio": "OS00000013",
+                "vehiculo": "PLC.:TRD-2023 MOT.:594513333 CHA.:8LFTNY0247M32700672023 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511452",
+                "chasis": "8LFTNY0247M32700677852",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "DEMO HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "6430",
+                "vehiculoid": "3",
+                "ordenServicio": "OS00000048",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HM BÁSICO- DESINS. C/ENTREGA DIRECTA"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "6859",
+                "vehiculoid": "4",
+                "ordenServicio": "OS00000058",
+                "vehiculo": "PLC.:TRD-8951 MOT.:5945114510 CHA.:8LFTNY0247M32700677851 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:006 - NEGRO",
+                "motor": "5945114510",
+                "chasis": "8LFTNY0247M32700677851",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "6962",
+                "vehiculoid": "4",
+                "ordenServicio": "OS00000059",
+                "vehiculo": "PLC.:TRD-8951 MOT.:5945114510 CHA.:8LFTNY0247M32700677851 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:006 - NEGRO",
+                "motor": "5945114510",
+                "chasis": "8LFTNY0247M32700677851",
+                "comentarioTec": "SE REQUIERE CAMBIO DE REPUESTO",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "SERVICIO DE CHEQUEO EXPRESS LOJACK"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "6963",
+                "vehiculoid": "4",
+                "ordenServicio": "OS00000060",
+                "vehiculo": "PLC.:TRD-8951 MOT.:5945114510 CHA.:8LFTNY0247M32700677851 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:006 - NEGRO",
+                "motor": "5945114510",
+                "chasis": "8LFTNY0247M32700677851",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "6965",
+                "vehiculoid": "26",
+                "ordenServicio": "OS00000061",
+                "vehiculo": "PLC.:TRD-8953 MOT.:594511453 CHA.:8LFTNY0247M32700677853 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO26",
+                "motor": "594511453",
+                "chasis": "8LFTNY0247M32700677853",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "7171",
+                "vehiculoid": "26",
+                "ordenServicio": "OS00000063",
+                "vehiculo": "PLC.:TRD-8953 MOT.:594511453 CHA.:8LFTNY0247M32700677853 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO26",
+                "motor": "594511453",
+                "chasis": "8LFTNY0247M32700677853",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "SERVICIO DE CHEQUEO EXPRESS LOJACK"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "7174",
+                "vehiculoid": "26",
+                "ordenServicio": "OS00000066",
+                "vehiculo": "PLC.:TRD-8953 MOT.:594511453 CHA.:8LFTNY0247M32700677853 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO26",
+                "motor": "594511453",
+                "chasis": "8LFTNY0247M32700677853",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "SERVICIO DE CHEQUEO EXPRESS LOJACK"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "7175",
+                "vehiculoid": "26",
+                "ordenServicio": "OS00000067",
+                "vehiculo": "PLC.:TRD-8953 MOT.:594511453 CHA.:8LFTNY0247M32700677853 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO26",
+                "motor": "594511453",
+                "chasis": "8LFTNY0247M32700677853",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "7620",
+                "vehiculoid": "7",
+                "ordenServicio": "OS00000096",
+                "vehiculo": "PLC.:TRD-2023 MOT.:594513333 CHA.:8LFTNY0247M32700672023 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511452",
+                "chasis": "8LFTNY0247M32700677852",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "7833",
+                "vehiculoid": "7",
+                "ordenServicio": "OS00000105",
+                "vehiculo": "PLC.:TRD-2023 MOT.:594513333 CHA.:8LFTNY0247M32700672023 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511452",
+                "chasis": "8LFTNY0247M32700677852",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "7938",
+                "vehiculoid": "7",
+                "ordenServicio": "OS00000108",
+                "vehiculo": "PLC.:TRD-2023 MOT.:594513333 CHA.:8LFTNY0247M32700672023 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511452",
+                "chasis": "8LFTNY0247M32700677852",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "8041",
+                "vehiculoid": "7",
+                "ordenServicio": "OS00000109",
+                "vehiculo": "PLC.:TRD-2023 MOT.:594513333 CHA.:8LFTNY0247M32700672023 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511452",
+                "chasis": "8LFTNY0247M32700677852",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "8042",
+                "vehiculoid": "7",
+                "ordenServicio": "OS00000110",
+                "vehiculo": "PLC.:TRD-2023 MOT.:594513333 CHA.:8LFTNY0247M32700672023 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511452",
+                "chasis": "8LFTNY0247M32700677852",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "9379",
+                "vehiculoid": "26",
+                "ordenServicio": "OS00000131",
+                "vehiculo": "PLC.:TRD-8953 MOT.:594511453 CHA.:8LFTNY0247M32700677853 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO26",
+                "motor": "594511453",
+                "chasis": "8LFTNY0247M32700677853",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "9680",
+                "vehiculoid": "42",
+                "ordenServicio": "OS00000132",
+                "vehiculo": "PLC.:TRD-9000 MOT.:5945114600 CHA.:8LFTNY0247M32700677900 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO42",
+                "motor": "5945114600",
+                "chasis": "8LFTNY0247M32700677900",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "9681",
+                "vehiculoid": "42",
+                "ordenServicio": "OS00000133",
+                "vehiculo": "PLC.:TRD-9000 MOT.:5945114600 CHA.:8LFTNY0247M32700677900 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO42",
+                "motor": "5945114600",
+                "chasis": "8LFTNY0247M32700677900",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "9782",
+                "vehiculoid": "3",
+                "ordenServicio": "OS00000134",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "9988",
+                "vehiculoid": "42",
+                "ordenServicio": "OS00000136",
+                "vehiculo": "PLC.:TRD-9000 MOT.:5945114600 CHA.:8LFTNY0247M32700677900 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO42",
+                "motor": "5945114600",
+                "chasis": "8LFTNY0247M32700677900",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "15536",
+                "vehiculoid": "76",
+                "ordenServicio": "OS00000221",
+                "vehiculo": "PLC.:TRD-9001 MOT.:5945114601 CHA.:8LFTNY0247M32700677901 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO76",
+                "motor": "5945114601",
+                "chasis": "8LFTNY0247M32700677901",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "15673",
+                "vehiculoid": "76",
+                "ordenServicio": "OS00000225",
+                "vehiculo": "PLC.:TRD-9001 MOT.:5945114601 CHA.:8LFTNY0247M32700677901 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO76",
+                "motor": "5945114601",
+                "chasis": "8LFTNY0247M32700677901",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "CHEQ HM AMI CHEQUEO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "15982",
+                "vehiculoid": "76",
+                "ordenServicio": "OS00000231",
+                "vehiculo": "PLC.:TRD-9001 MOT.:5945114601 CHA.:8LFTNY0247M32700677901 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO76",
+                "motor": "5945114601",
+                "chasis": "8LFTNY0247M32700677901",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "16814",
+                "vehiculoid": "76",
+                "ordenServicio": "OS00000244",
+                "vehiculo": "PLC.:TRD-9001 MOT.:5945114601 CHA.:8LFTNY0247M32700677901 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO76",
+                "motor": "5945114601",
+                "chasis": "8LFTNY0247M32700677901",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "16919",
+                "vehiculoid": "76",
+                "ordenServicio": "OS00000245",
+                "vehiculo": "PLC.:TRD-9001 MOT.:5945114601 CHA.:8LFTNY0247M32700677901 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO76",
+                "motor": "5945114601",
+                "chasis": "8LFTNY0247M32700677901",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "CHEQ HM AMI CHEQUEO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "17335",
+                "vehiculoid": "42",
+                "ordenServicio": "OS00000251",
+                "vehiculo": "PLC.:TRD-9000 MOT.:5945114600 CHA.:8LFTNY0247M32700677900 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO42",
+                "motor": "5945114600",
+                "chasis": "8LFTNY0247M32700677900",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "17336",
+                "vehiculoid": "42",
+                "ordenServicio": "OS00000252",
+                "vehiculo": "PLC.:TRD-9000 MOT.:5945114600 CHA.:8LFTNY0247M32700677900 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO42",
+                "motor": "5945114600",
+                "chasis": "8LFTNY0247M32700677900",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "17439",
+                "vehiculoid": "26",
+                "ordenServicio": "OS00000253",
+                "vehiculo": "PLC.:TRD-8953 MOT.:594511453 CHA.:8LFTNY0247M32700677853 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO26",
+                "motor": "594511453",
+                "chasis": "8LFTNY0247M32700677853",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "17441",
+                "vehiculoid": "26",
+                "ordenServicio": "OS00000254",
+                "vehiculo": "PLC.:TRD-8953 MOT.:594511453 CHA.:8LFTNY0247M32700677853 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO26",
+                "motor": "594511453",
+                "chasis": "8LFTNY0247M32700677853",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "17443",
+                "vehiculoid": "26",
+                "ordenServicio": "OS00000255",
+                "vehiculo": "PLC.:TRD-8953 MOT.:594511453 CHA.:8LFTNY0247M32700677853 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO26",
+                "motor": "594511453",
+                "chasis": "8LFTNY0247M32700677853",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "17448",
+                "vehiculoid": "26",
+                "ordenServicio": "OS00000257",
+                "vehiculo": "PLC.:TRD-8953 MOT.:594511453 CHA.:8LFTNY0247M32700677853 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO26",
+                "motor": "594511453",
+                "chasis": "8LFTNY0247M32700677853",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "17665",
+                "vehiculoid": "87",
+                "ordenServicio": "OS00000274",
+                "vehiculo": "PLC.:TRD-9002 MOT.:5945114602 CHA.:8LFTNY0247M32700677902 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO87",
+                "motor": "5945114602",
+                "chasis": "8LFTNY0247M32700677902",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "17769",
+                "vehiculoid": "87",
+                "ordenServicio": "OS00000275",
+                "vehiculo": "PLC.:TRD-9002 MOT.:5945114602 CHA.:8LFTNY0247M32700677902 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO87",
+                "motor": "5945113333",
+                "chasis": "8LFTNY0247M32700677902",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "DEVO HM AMI DEVOLUCIÓN"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "17773",
+                "vehiculoid": "88",
+                "ordenServicio": "OS00000277",
+                "vehiculo": "PLC.:BYE-2022 MOT.:5945111890 CHA.:8LFTNY0247M32700671988 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "5945111988",
+                "chasis": "8LFTNY0247M32700671988",
+                "comentarioTec": "Sin observación",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "18289",
+                "vehiculoid": "92",
+                "ordenServicio": "OS00000283",
+                "vehiculo": "PLC.:GUI-4528 MOT.:5945114528 CHA.:8LFTNY0247M32700674528 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO92",
+                "motor": "5945114528",
+                "chasis": "8LFTNY0247M32700674528",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "18623",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000289",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "18625",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000290",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "18626",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000291",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "18627",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000292",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "18628",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000293",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "18632",
+                "vehiculoid": "90",
+                "ordenServicio": "OS00000294",
+                "vehiculo": "PLC.:BYE-4526 MOT.:5945114526 CHA.:8LFTNY0247M32700674526 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO90",
+                "motor": "5945114526",
+                "chasis": "8LFTNY0247M32700674526",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "CHEQ HM AMI CHEQUEO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "20594",
+                "vehiculoid": "90",
+                "ordenServicio": "OS00000295",
+                "vehiculo": "PLC.:BYE-4526 MOT.:5945114526 CHA.:8LFTNY0247M32700674526 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO90",
+                "motor": "5945114526",
+                "chasis": "8LFTNY0247M32700674526",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HUNTER PARALIZADOR"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "21017",
+                "vehiculoid": "90",
+                "ordenServicio": "OS00000299",
+                "vehiculo": "PLC.:BYE-4526 MOT.:5945114526 CHA.:8LFTNY0247M32700674526 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO90",
+                "motor": "5945114526",
+                "chasis": "8LFTNY0247M32700674526",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "21370",
+                "vehiculoid": "76",
+                "ordenServicio": "OS00000321",
+                "vehiculo": "PLC.:TRD-9001 MOT.:5945114601 CHA.:8LFTNY0247M32700677901 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO76",
+                "motor": "5945114601",
+                "chasis": "8LFTNY0247M32700677901",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "21779",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000329",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "22829",
+                "vehiculoid": "42",
+                "ordenServicio": "OS00000349",
+                "vehiculo": "PLC.:TRD-9000 MOT.:5945114600 CHA.:8LFTNY0247M32700677900 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO42",
+                "motor": "5945114600",
+                "chasis": "8LFTNY0247M32700677900",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "24433",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000386",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "24537",
+                "vehiculoid": "140",
+                "ordenServicio": "OS00000388",
+                "vehiculo": "PLC.:ABC-4002 MOT.:G3H7E0144002 CHA.:ME1RG4253N2044002 MAR.:042 - KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL140",
+                "motor": "G3H7E0144002",
+                "chasis": "ME1RG4253N2044002",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29927",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000476",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BÁSICO TRANSMISIÓN ANUAL"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29928",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000477",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BÁSICO TRANSMISIÓN ANUAL"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29930",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000478",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BÁSICO TRANSMISIÓN ANUAL"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29933",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000479",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BÁSICO TRANSMISIÓN ANUAL"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29936",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000480",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BÁSICO TRANSMISIÓN ANUAL"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29939",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000481",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BÁSICO TRANSMISIÓN ANUAL"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29942",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000482",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BÁSICO TRANSMISIÓN ANUAL"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29945",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000483",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BÁSICO TRANSMISIÓN ANUAL"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29950",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000484",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": "HUNTER MONITOREO BÁSICO TRANSMISIÓN ANUAL"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29983",
+                "vehiculoid": "3",
+                "ordenServicio": "OS00000499",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "29996",
+                "vehiculoid": "3",
+                "ordenServicio": "OS00000508",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30001",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000509",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30004",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000510",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30007",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000511",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30010",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000512",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30037",
+                "vehiculoid": "3",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30039",
+                "vehiculoid": "190",
+                "ordenServicio": "OS00000519",
+                "vehiculo": "PLC.:ABC-4010 MOT.:G3H7E0144010 CHA.:ME1RG4253N2044010 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL190",
+                "motor": "G3H7E0144010",
+                "chasis": "ME1RG4253N2044010",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30080",
+                "vehiculoid": "3",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30084",
+                "vehiculoid": "3",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30091",
+                "vehiculoid": "93",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30094",
+                "vehiculoid": "93",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30096",
+                "vehiculoid": "93",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30098",
+                "vehiculoid": "93",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30101",
+                "vehiculoid": "93",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30103",
+                "vehiculoid": "93",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30106",
+                "vehiculoid": "93",
+                "ordenServicio": "- None -",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30110",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000526",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30113",
+                "vehiculoid": "93",
+                "ordenServicio": "OS00000527",
+                "vehiculo": "PLC.:BYE-4529 MOT.:5945114529 CHA.:8LFTNY0247M32700674529 MAR.:AUDI TIP.: AUTO MOD.:AUDI 802 COL.:NEGRO93",
+                "motor": "5945114529",
+                "chasis": "8LFTNY0247M32700674529",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "HUNTER MONITOREO BASICO VENTA (DISP)"
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30807",
+                "vehiculoid": "190",
+                "ordenServicio": "OS00000557",
+                "vehiculo": "PLC.:ABC-4010 MOT.:G3H7E0144010 CHA.:ME1RG4253N2044010 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL190",
+                "motor": "G3H7E0144010",
+                "chasis": "ME1RG4253N2044010",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30906",
+                "vehiculoid": "3",
+                "ordenServicio": "OS00000560",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    },
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30909",
+                "vehiculoid": "3",
+                "ordenServicio": "OS00000561",
+                "vehiculo": "PLC.:TRD-8950 MOT.:594511450 CHA.:8LFTNY0247M32700677850 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594511450",
+                "chasis": "8LFTNY0247M32700677850",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "30952",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000571",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "31064",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000577",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "31066",
+                "vehiculoid": "192",
+                "ordenServicio": "OS00000578",
+                "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
+                "motor": "G3H7E0144011",
+                "chasis": "ME1RG4253N2044011",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    },
+                    {
+                        "producto": "DOMO DIGMER",
+                        "tipoTrabajo": "ACTIVACION DE PRODUCTO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "31100",
+                "vehiculoid": "289",
+                "ordenServicio": "OS00000584",
+                "vehiculo": "PLC.:ABC-4012 MOT.:G3H7E0144012 CHA.:ME1RG4253N2044012 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL289",
+                "motor": "G3H7E0144012",
+                "chasis": "ME1RG4253N2044012",
+                "comentarioTec": "No se pudo instalar el servicio APERTURA.",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "31110",
+                "vehiculoid": "289",
+                "ordenServicio": "OS00000588",
+                "vehiculo": "PLC.:ABC-4012 MOT.:G3H7E0144012 CHA.:ME1RG4253N2044012 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL289",
+                "motor": "G3H7E0144012",
+                "chasis": "ME1RG4253N2044012",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "",
+                        "tipoTrabajo": ""
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "34124",
+                "vehiculoid": "289",
+                "ordenServicio": "OS00000753",
+                "vehiculo": "PLC.:ABC-4012 MOT.:G3H7E0144012 CHA.:ME1RG4253N2044012 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL289",
+                "motor": "G3H7E0144012",
+                "chasis": "ME1RG4253N2044012",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "OTROS SERVICIOS",
+                        "tipoTrabajo": "CHEQ HM AMI CHEQUEO"
+                    }
+                ]
+            },
+            {
+                "ordenServicioid": "34530",
+                "vehiculoid": "7",
+                "ordenServicio": "OS00000766",
+                "vehiculo": "PLC.:TRD-2023 MOT.:594513333 CHA.:8LFTNY0247M32700672023 MAR.:005 - AUDI TIP.: AUTO MOD.:010 - AUDI 802 COL.:006 - NEGRO",
+                "motor": "594513333",
+                "chasis": "8LFTNY0247M32700672023",
+                "comentarioTec": "",
+                "data": [
+                    {
+                        "producto": "MONITOREO",
+                        "tipoTrabajo": "VENT HM AMI EQUIPO"
+                    }
+                ]
+            }
+        ]
+    }
+]

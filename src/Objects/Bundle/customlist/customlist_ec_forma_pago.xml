@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ec_forma_pago">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC - Forma de pago</name>
+  <customvalues>
+    <customvalue scriptid="val_929213_7451241_sb1_295">
+      <isinactive>F</isinactive>
+      <value>Crédito a cuenta</value>
+    </customvalue>
+    <customvalue scriptid="val_929214_7451241_sb1_252">
+      <isinactive>F</isinactive>
+      <value>Pago en cheque</value>
+    </customvalue>
+    <customvalue scriptid="val_929215_7451241_sb1_415">
+      <isinactive>F</isinactive>
+      <value>Crédito en otros bancos</value>
+    </customvalue>
+    <customvalue scriptid="val_929216_7451241_sb1_369">
+      <isinactive>F</isinactive>
+      <value>Solo impresión de comprobantes sin el pago</value>
+    </customvalue>
+    <customvalue scriptid="val_929217_7451241_sb1_256">
+      <isinactive>F</isinactive>
+      <value>Pago en efectivo o por ventanilla</value>
+    </customvalue>
+  </customvalues>
+</customlist>

@@ -1,0 +1,1508 @@
+<customrecordtype scriptid="customrecord_ts_ec_wht_reteir_concept">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>F</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>F</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>COL EC - CONCEPTO RETENCION</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_porcentajes_vigentes">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Porcentajes vigentes</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_campo_formulario_103">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Campo Formulario 103</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_codigo_anexo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Codigo de Anexo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_770937_7451241_sb1_502">
+      <custrecord_ts_ec_campo_formulario_103>303</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>303</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>10</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>303 Honorarios profesionales y demás pagos por servicios relacionados con el título profesional</name>
+    </instance>
+    <instance scriptid="val_770938_7451241_sb1_680">
+      <custrecord_ts_ec_campo_formulario_103>304</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>304</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>304 Servicios predomina el intelecto no relacionados con el título profesional</name>
+    </instance>
+    <instance scriptid="val_770939_7451241_sb1_796">
+      <custrecord_ts_ec_campo_formulario_103>304</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>304A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>304A Comisiones y demás pagos por servicios predomina intelecto no relacionados con el título profesional</name>
+    </instance>
+    <instance scriptid="val_770940_7451241_sb1_425">
+      <custrecord_ts_ec_campo_formulario_103>304</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>304B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>304B Pagos a notarios y registradores de la propiedad y mercantil por sus actividades ejercidas como tales</name>
+    </instance>
+    <instance scriptid="val_770941_7451241_sb1_439">
+      <custrecord_ts_ec_campo_formulario_103>304</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>304C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>304C Pagos a deportistas, entrenadores, árbitros, miembros del cuerpo técnico por sus actividades ejercidas como tales</name>
+    </instance>
+    <instance scriptid="val_770942_7451241_sb1_157">
+      <custrecord_ts_ec_campo_formulario_103>304</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>304D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>304D Pagos a artistas por sus actividades ejercidas como tales</name>
+    </instance>
+    <instance scriptid="val_770943_7451241_sb1_911">
+      <custrecord_ts_ec_campo_formulario_103>304</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>304E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>304E Honorarios y demás pagos por servicios de docencia</name>
+    </instance>
+    <instance scriptid="val_770944_7451241_sb1_352">
+      <custrecord_ts_ec_campo_formulario_103>307</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>307</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>307 Servicios predomina la mano de obra</name>
+    </instance>
+    <instance scriptid="val_770945_7451241_sb1_722">
+      <custrecord_ts_ec_campo_formulario_103>308</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>308</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>10</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>308 Utilización o aprovechamiento de la imagen o renombre</name>
+    </instance>
+    <instance scriptid="val_770946_7451241_sb1_783">
+      <custrecord_ts_ec_campo_formulario_103>309</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>309</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1.75</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>309 Servicios prestados por medios de comunicación y agencias de publicidad</name>
+    </instance>
+    <instance scriptid="val_770947_7451241_sb1_168">
+      <custrecord_ts_ec_campo_formulario_103>310</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>310</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>310 Servicio de transporte privado de pasajeros o transporte público o privado de carga</name>
+    </instance>
+    <instance scriptid="val_770948_7451241_sb1_617">
+      <custrecord_ts_ec_campo_formulario_103>311</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>311</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>311 Por pagos a través de liquidación de compra (nivel cultural o rusticidad)</name>
+    </instance>
+    <instance scriptid="val_770949_7451241_sb1_131">
+      <custrecord_ts_ec_campo_formulario_103>312</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>312</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>312 Transferencia de bienes muebles de naturaleza corporal</name>
+    </instance>
+    <instance scriptid="val_770950_7451241_sb1_230">
+      <custrecord_ts_ec_campo_formulario_103>312</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>312A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>312A Compra de bienes de origen agrícola, avícola, pecuario, apícola, cunícula, bioacuático, y forestal</name>
+    </instance>
+    <instance scriptid="val_770951_7451241_sb1_258">
+      <custrecord_ts_ec_campo_formulario_103>314</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>314A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>314A Regalías por concepto de franquicias de acuerdo a Ley de Propiedad Intelectual - pago a personas naturales</name>
+    </instance>
+    <instance scriptid="val_770952_7451241_sb1_556">
+      <custrecord_ts_ec_campo_formulario_103>314</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>314B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>314B Cánones, derechos de autor, marcas, patentes y similares de acuerdo a Ley de Propiedad Intelectual – pago a personas naturales</name>
+    </instance>
+    <instance scriptid="val_770953_7451241_sb1_187">
+      <custrecord_ts_ec_campo_formulario_103>314</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>314C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>314C Regalías por concepto de franquicias de acuerdo a Ley de Propiedad Intelectual - pago a sociedades</name>
+    </instance>
+    <instance scriptid="val_770954_7451241_sb1_626">
+      <custrecord_ts_ec_campo_formulario_103>314</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>314D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>314D Cánones, derechos de autor, marcas, patentes y similares de acuerdo a Ley de Propiedad Intelectual – pago a sociedades</name>
+    </instance>
+    <instance scriptid="val_770955_7451241_sb1_312">
+      <custrecord_ts_ec_campo_formulario_103>319</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>319</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>319 Cuotas de arrendamiento mercantil, inclusive la de opción de compra</name>
+    </instance>
+    <instance scriptid="val_770956_7451241_sb1_648">
+      <custrecord_ts_ec_campo_formulario_103>320</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>320</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>8</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>320 Por arrendamiento bienes inmuebles</name>
+    </instance>
+    <instance scriptid="val_770957_7451241_sb1_205">
+      <custrecord_ts_ec_campo_formulario_103>322</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>322</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>322 Seguros y reaseguros (primas y cesiones)</name>
+    </instance>
+    <instance scriptid="val_770958_7451241_sb1_182">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323 M</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323 M Por RF: Inversiones en títulos valores en renta fija gravados</name>
+    </instance>
+    <instance scriptid="val_770959_7451241_sb1_588">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323 N</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323 N Por RF: Inversiones en títulos valores en renta fija exentos</name>
+    </instance>
+    <instance scriptid="val_770960_7451241_sb1_612">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323 O</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323 O Por RF: Intereses pagados a bancos y otras entidades sometidas al control de la Superintendencia de Bancos y de la Economía Popular y Solidaria</name>
+    </instance>
+    <instance scriptid="val_770961_7451241_sb1_905">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323 P</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323 P Por RF: Intereses pagados por entidades del sector público a favor de sujetos pasivos</name>
+    </instance>
+    <instance scriptid="val_770962_7451241_sb1_217">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323 Por rendimientos financieros pagados a naturales y sociedades (No a IFIs)</name>
+    </instance>
+    <instance scriptid="val_770963_7451241_sb1_839">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323A Por RF: depósitos Cta. Corriente</name>
+    </instance>
+    <instance scriptid="val_770964_7451241_sb1_470">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323B1</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323B1 Por RF: depósitos Cta. Ahorros Sociedades</name>
+    </instance>
+    <instance scriptid="val_770965_7451241_sb1_563">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323E Por RF: depósito a plazo fijo gravados</name>
+    </instance>
+    <instance scriptid="val_770966_7451241_sb1_401">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323F</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323F Por rendimientos financieros: operaciones de reporto - repos</name>
+    </instance>
+    <instance scriptid="val_770967_7451241_sb1_391">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323G</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323G Por RF: inversiones (captaciones) rendimientos distintos de aquellos pagados a IFIs</name>
+    </instance>
+    <instance scriptid="val_770968_7451241_sb1_415">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323H</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323H Por RF: obligaciones</name>
+    </instance>
+    <instance scriptid="val_770969_7451241_sb1_860">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323I</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323I Por RF: bonos convertible en acciones</name>
+    </instance>
+    <instance scriptid="val_770970_7451241_sb1_799">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323Q</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323Q Por RF: Otros intereses y rendimientos financieros gravados</name>
+    </instance>
+    <instance scriptid="val_770971_7451241_sb1_714">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>323R</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>323R Por RF: Otros intereses y rendimientos financieros exentos</name>
+    </instance>
+    <instance scriptid="val_770972_7451241_sb1_363">
+      <custrecord_ts_ec_campo_formulario_103>323</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>32300</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>32300 Por RF: depósito a plazo fijo exentos</name>
+    </instance>
+    <instance scriptid="val_770973_7451241_sb1_230">
+      <custrecord_ts_ec_campo_formulario_103>324</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>324A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>324A Por RF: Intereses en operaciones de crédito entre instituciones del sistema financiero y entidades economía popular y solidaria.</name>
+    </instance>
+    <instance scriptid="val_770974_7451241_sb1_466">
+      <custrecord_ts_ec_campo_formulario_103>324</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>324B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>324B Por RF: Por inversiones entre instituciones del sistema financiero y entidades economía popular y solidaria.</name>
+    </instance>
+    <instance scriptid="val_770975_7451241_sb1_565">
+      <custrecord_ts_ec_campo_formulario_103>325</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>325</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>22</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>325 Anticipo dividendos</name>
+    </instance>
+    <instance scriptid="val_770976_7451241_sb1_518">
+      <custrecord_ts_ec_campo_formulario_103>325</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>325A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>22</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>325A Dividendos anticipados préstamos accionistas, beneficiarios o partìcipes</name>
+    </instance>
+    <instance scriptid="val_770977_7451241_sb1_552">
+      <custrecord_ts_ec_campo_formulario_103>326</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>326</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>326 Dividendos distribuidos que correspondan al impuesto a la renta único establecido en el art. 27 de la lrti</name>
+    </instance>
+    <instance scriptid="val_770978_7451241_sb1_623">
+      <custrecord_ts_ec_campo_formulario_103>327</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>327</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1% al 13%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>327 Dividendos distribuidos a personas naturales residentes</name>
+    </instance>
+    <instance scriptid="val_770979_7451241_sb1_204">
+      <custrecord_ts_ec_campo_formulario_103>328</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>328</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>328 Dividendos distribuidos a sociedades residentes</name>
+    </instance>
+    <instance scriptid="val_770980_7451241_sb1_199">
+      <custrecord_ts_ec_campo_formulario_103>329</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>329</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>329 dividendos distribuidos a fideicomisos residentes</name>
+    </instance>
+    <instance scriptid="val_770981_7451241_sb1_689">
+      <custrecord_ts_ec_campo_formulario_103>330</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>330</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>De acuerdo a la tabla de retenciones del Art. 15 RALRTI</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>330 Dividendos gravados distribuidos en acciones (reinversión de utilidades sin derecho a reducción tarifa IR)</name>
+    </instance>
+    <instance scriptid="val_770982_7451241_sb1_454">
+      <custrecord_ts_ec_campo_formulario_103>331</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>331</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>331 Dividendos exentos distribuidos en acciones (reinversión de utilidades con derecho a reducción tarifa IR)</name>
+    </instance>
+    <instance scriptid="val_770983_7451241_sb1_756">
+      <custrecord_ts_ec_campo_formulario_103>332</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>332</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>332 Otras compras de bienes y servicios no sujetas a retención</name>
+    </instance>
+    <instance scriptid="val_770984_7451241_sb1_659">
+      <custrecord_ts_ec_campo_formulario_103>332</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>332A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>332A Por la enajenación ocasional de acciones o participaciones y títulos valores</name>
+    </instance>
+    <instance scriptid="val_770985_7451241_sb1_756">
+      <custrecord_ts_ec_campo_formulario_103>332</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>332B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>332B Compra de bienes inmuebles</name>
+    </instance>
+    <instance scriptid="val_770986_7451241_sb1_126">
+      <custrecord_ts_ec_campo_formulario_103>332</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>332C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>332C Transporte público de pasajeros</name>
+    </instance>
+    <instance scriptid="val_770987_7451241_sb1_623">
+      <custrecord_ts_ec_campo_formulario_103>332</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>332D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>332D Pagos en el país por transporte de pasajeros o transporte internacional de carga, a compañías nacionales o extranjeras de aviación o marítimas</name>
+    </instance>
+    <instance scriptid="val_770988_7451241_sb1_232">
+      <custrecord_ts_ec_campo_formulario_103>332</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>332E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>332E Valores entregados por las cooperativas de transporte a sus socios</name>
+    </instance>
+    <instance scriptid="val_770989_7451241_sb1_554">
+      <custrecord_ts_ec_campo_formulario_103>332</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>332F</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>332F Compraventa de divisas distintas al dólar de los Estados Unidos de América</name>
+    </instance>
+    <instance scriptid="val_770990_7451241_sb1_679">
+      <custrecord_ts_ec_campo_formulario_103>332</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>332G</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>No aplica retención</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>332G Pagos con tarjeta de crédito</name>
+    </instance>
+    <instance scriptid="val_770991_7451241_sb1_916">
+      <custrecord_ts_ec_campo_formulario_103>332</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>332H</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>332H Pago al exterior tarjeta de crédito reportada por la Emisora de tarjeta de crédito, solo recap</name>
+    </instance>
+    <instance scriptid="val_770992_7451241_sb1_528">
+      <custrecord_ts_ec_campo_formulario_103>333</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>333</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0,20%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>333 Enajenación de derechos representativos de capital y otros derechos cotizados en bolsa ecuatoriana</name>
+    </instance>
+    <instance scriptid="val_770993_7451241_sb1_217">
+      <custrecord_ts_ec_campo_formulario_103>334</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>334</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>334 Enajenación de derechos representativos de capital y otros derechos no cotizados en bolsa ecuatoriana</name>
+    </instance>
+    <instance scriptid="val_770994_7451241_sb1_777">
+      <custrecord_ts_ec_campo_formulario_103>335</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>335</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>15</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>335 Por loterías, rifas, apuestas y similares</name>
+    </instance>
+    <instance scriptid="val_770995_7451241_sb1_498">
+      <custrecord_ts_ec_campo_formulario_103>336</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>336</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2/mil</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>336 Por venta de combustibles a comercializadoras</name>
+    </instance>
+    <instance scriptid="val_770996_7451241_sb1_471">
+      <custrecord_ts_ec_campo_formulario_103>337</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>337</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>3/mil</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>337 Por venta de combustibles a distribuidores</name>
+    </instance>
+    <instance scriptid="val_770997_7451241_sb1_353">
+      <custrecord_ts_ec_campo_formulario_103>338</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>338</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1% -2%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>338 Compra local de banano a productor</name>
+    </instance>
+    <instance scriptid="val_770998_7451241_sb1_766">
+      <custrecord_ts_ec_campo_formulario_103>339</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>339</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>339 Liquidación impuesto único a la venta local de banano de producción propia</name>
+    </instance>
+    <instance scriptid="val_770999_7451241_sb1_909">
+      <custrecord_ts_ec_campo_formulario_103>340</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>340</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1% -2%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>340 Impuesto único a la exportación de banano de producción propia - componente 1</name>
+    </instance>
+    <instance scriptid="val_771000_7451241_sb1_657">
+      <custrecord_ts_ec_campo_formulario_103>341</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>341</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1,25% - 2%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>341 Impuesto único a la exportación de banano de producción propia - componente 2</name>
+    </instance>
+    <instance scriptid="val_771001_7451241_sb1_682">
+      <custrecord_ts_ec_campo_formulario_103>342</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>342</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0,5%-2%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>342 Impuesto único a la exportación de banano producido por terceros</name>
+    </instance>
+    <instance scriptid="val_771002_7451241_sb1_751">
+      <custrecord_ts_ec_campo_formulario_103>343</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>343</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>343 Otras retenciones aplicables el 1%</name>
+    </instance>
+    <instance scriptid="val_771003_7451241_sb1_482">
+      <custrecord_ts_ec_campo_formulario_103>343</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>343A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>343A Por energía eléctrica</name>
+    </instance>
+    <instance scriptid="val_771004_7451241_sb1_551">
+      <custrecord_ts_ec_campo_formulario_103>343</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>343B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>1</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>343B Por actividades de construcción de obra material inmueble, urbanización, lotización o actividades similares</name>
+    </instance>
+    <instance scriptid="val_771005_7451241_sb1_539">
+      <custrecord_ts_ec_campo_formulario_103>344</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>344</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>344 Otras retenciones aplicables el 2%</name>
+    </instance>
+    <instance scriptid="val_771006_7451241_sb1_281">
+      <custrecord_ts_ec_campo_formulario_103>344</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>344A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>344A Pago local tarjeta de crédito reportada por la Emisora de tarjeta de crédito, solo recap</name>
+    </instance>
+    <instance scriptid="val_771007_7451241_sb1_470">
+      <custrecord_ts_ec_campo_formulario_103>3940</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>3440</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2.75</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>3440 Otras retenciones aplicables al 2,75%</name>
+    </instance>
+    <instance scriptid="val_771008_7451241_sb1_288">
+      <custrecord_ts_ec_campo_formulario_103>346</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>346</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>2.75</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>346 Otras retenciones aplicables a otros porcentajes</name>
+    </instance>
+    <instance scriptid="val_771009_7451241_sb1_256">
+      <custrecord_ts_ec_campo_formulario_103>346</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>346A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 10</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>346A Ganancias de capital</name>
+    </instance>
+    <instance scriptid="val_771010_7451241_sb1_689">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>500</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>500 Pago al exterior - Rentas Inmobiliarias Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771011_7451241_sb1_762">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>500</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>500 Pago al exterior - Rentas Inmobiliarias En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771012_7451241_sb1_177">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>500</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>500 Pago al exterior - Rentas Inmobiliarias Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771013_7451241_sb1_136">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>501</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>501 Pago al exterior - Beneficios Empresariales Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771014_7451241_sb1_429">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>501</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>501 Pago al exterior - Beneficios Empresariales En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771015_7451241_sb1_504">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>501</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>501 Pago al exterior - Beneficios Empresariales Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771016_7451241_sb1_552">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>502</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>502 Pago al exterior - Servicios Empresariales Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771017_7451241_sb1_368">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>502</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>502 Pago al exterior - Servicios Empresariales Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771018_7451241_sb1_656">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>503</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>503 Pago al exterior - Navegación Marítima y/o aérea Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771019_7451241_sb1_439">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>503</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>503 Pago al exterior - Navegación Marítima y/o aérea En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771020_7451241_sb1_939">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>503</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>503 Pago al exterior - Navegación Marítima y/o aérea Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771021_7451241_sb1_476">
+      <custrecord_ts_ec_campo_formulario_103>405</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504 Pago al exterior- Dividendos distribuidos a personas naturales</name>
+    </instance>
+    <instance scriptid="val_771022_7451241_sb1_375">
+      <custrecord_ts_ec_campo_formulario_103>416</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504 Pago al exterior- Dividendos distribuidos a personas naturales Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771023_7451241_sb1_556">
+      <custrecord_ts_ec_campo_formulario_103>406</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504A Pago al exterior - Dividendos a sociedades Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771024_7451241_sb1_598">
+      <custrecord_ts_ec_campo_formulario_103>417</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504A Pago al exterior - Dividendos a sociedades Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771025_7451241_sb1_702">
+      <custrecord_ts_ec_campo_formulario_103>404</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>22%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504B Pago al exterior - Anticipo dividendos</name>
+    </instance>
+    <instance scriptid="val_771026_7451241_sb1_290">
+      <custrecord_ts_ec_campo_formulario_103>404</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>22%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504B Pago al exterior - Anticipo dividendos Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771027_7451241_sb1_683">
+      <custrecord_ts_ec_campo_formulario_103>415</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504C Pago al exterior - Dividendos anticipados préstamos accionistas, beneficiarios o partìcipes</name>
+    </instance>
+    <instance scriptid="val_771028_7451241_sb1_573">
+      <custrecord_ts_ec_campo_formulario_103>415</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504C Pago al exterior - Dividendos anticipados préstamos accionistas, beneficiarios o partícipes Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771029_7451241_sb1_947">
+      <custrecord_ts_ec_campo_formulario_103>407</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504D Pago al exterior - Dividendos a fideicomisos Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771030_7451241_sb1_929">
+      <custrecord_ts_ec_campo_formulario_103>418</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504D Pago al exterior - Dividendos a fideicomisos Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771031_7451241_sb1_378">
+      <custrecord_ts_ec_campo_formulario_103>426</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504E Pago al exterior- Dividendos distribuidos a personas naturales (paraísos fiscales)</name>
+    </instance>
+    <instance scriptid="val_771032_7451241_sb1_564">
+      <custrecord_ts_ec_campo_formulario_103>427</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504F</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>13%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504F Pago al exterior - Dividendos a sociedades (paraísos fiscales)</name>
+    </instance>
+    <instance scriptid="val_771033_7451241_sb1_974">
+      <custrecord_ts_ec_campo_formulario_103>425</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504G</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>25%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504G Pago al exterior - Anticipo dividendos (paraísos fiscales)</name>
+    </instance>
+    <instance scriptid="val_771034_7451241_sb1_742">
+      <custrecord_ts_ec_campo_formulario_103>428</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>504H</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>13%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>504H Pago al exterior - Dividendos a fideicomisos (paraísos fiscales)</name>
+    </instance>
+    <instance scriptid="val_771035_7451241_sb1_155">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505 Pago al exterior - Rendimientos financieros Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771036_7451241_sb1_333">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505 Pago al exterior - Rendimientos financieros En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771037_7451241_sb1_121">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505 Pago al exterior - Rendimientos financieros Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771038_7451241_sb1_477">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505A Pago al exterior – Intereses de créditos de Instituciones Financieras del exterior Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771039_7451241_sb1_287">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505A Pago al exterior – Intereses de créditos de Instituciones Financieras del exterior En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771040_7451241_sb1_857">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505A Pago al exterior – Intereses de créditos de Instituciones Financieras del exterior Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771041_7451241_sb1_638">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505B Pago al exterior – Intereses de créditos de gobierno a gobierno Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771042_7451241_sb1_668">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505B Pago al exterior – Intereses de créditos de gobierno a gobierno En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771043_7451241_sb1_892">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505B Pago al exterior – Intereses de créditos de gobierno a gobierno Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771044_7451241_sb1_219">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505C Pago al exterior – Intereses de créditos de organismos multilaterales Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771045_7451241_sb1_376">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505C Pago al exterior – Intereses de créditos de organismos multilaterales En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771046_7451241_sb1_744">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505C Pago al exterior – Intereses de créditos de organismos multilaterales Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771047_7451241_sb1_970">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505D Pago al exterior - Intereses por financiamiento de proveedores externos Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771048_7451241_sb1_941">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505D Pago al exterior - Intereses por financiamiento de proveedores externos En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771049_7451241_sb1_998">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505D Pago al exterior - Intereses por financiamiento de proveedores externos Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771050_7451241_sb1_398">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505E Pago al exterior - Intereses de otros créditos externos Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771051_7451241_sb1_921">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505E Pago al exterior - Intereses de otros créditos externos En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771052_7451241_sb1_439">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505E Pago al exterior - Intereses de otros créditos externos Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771053_7451241_sb1_511">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505F</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 35 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505F Pago al exterior - Otros Intereses y Rendimientos Financieros Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771054_7451241_sb1_512">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505F</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 35 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505F Pago al exterior - Otros Intereses y Rendimientos Financieros En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771055_7451241_sb1_559">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>505F</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 35 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>505F Pago al exterior - Otros Intereses y Rendimientos Financieros Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771056_7451241_sb1_160">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>509</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>509 Pago al exterior - Cánones, derechos de autor, marcas, patentes y similares Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771057_7451241_sb1_895">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>509</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>509 Pago al exterior - Cánones, derechos de autor, marcas, patentes y similares En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771058_7451241_sb1_615">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>509</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>509 Pago al exterior - Cánones, derechos de autor, marcas, patentes y similares Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771059_7451241_sb1_645">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>509A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>509A Pago al exterior - Regalías por concepto de franquicias Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771060_7451241_sb1_729">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>509A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>509A Pago al exterior - Regalías por concepto de franquicias En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771061_7451241_sb1_199">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>509A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>509A Pago al exterior - Regalías por concepto de franquicias Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771062_7451241_sb1_150">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>510</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>510 Pago al exterior - Ganancias de capital Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771063_7451241_sb1_774">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>510</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>510 Pago al exterior - Ganancias de capital En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771064_7451241_sb1_525">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>510</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>510 Pago al exterior - Ganancias de capital Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771065_7451241_sb1_904">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>511</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>511 Pago al exterior - Servicios profesionales independientes Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771066_7451241_sb1_399">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>511</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>511 Pago al exterior - Servicios profesionales independientes En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771067_7451241_sb1_923">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>511</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>511 Pago al exterior - Servicios profesionales independientes Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771068_7451241_sb1_172">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>512</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>512 Pago al exterior - Servicios profesionales dependientes Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771069_7451241_sb1_471">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>512</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>512 Pago al exterior - Servicios profesionales dependientes En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771070_7451241_sb1_118">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>512</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>512 Pago al exterior - Servicios profesionales dependientes Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771071_7451241_sb1_574">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>513</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>513 Pago al exterior - Artistas Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771072_7451241_sb1_859">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>513</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>513 Pago al exterior - Artistas En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771073_7451241_sb1_747">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>513</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>513 Pago al exterior - Artistas Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771074_7451241_sb1_813">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>513A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>513A Pago al exterior - Deportistas Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771075_7451241_sb1_609">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>513A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>513A Pago al exterior - Deportistas En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771076_7451241_sb1_990">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>513A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>513A Pago al exterior - Deportistas Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771077_7451241_sb1_629">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>514</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>514 Pago al exterior - Participación de consejeros Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771078_7451241_sb1_824">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>514</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>514 Pago al exterior - Participación de consejeros En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771079_7451241_sb1_462">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>514</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>514 Pago al exterior - Participación de consejeros Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771080_7451241_sb1_912">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>515</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>515 Pago al exterior - Entretenimiento Público Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771081_7451241_sb1_950">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>515</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>515 Pago al exterior - Entretenimiento Público En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771082_7451241_sb1_145">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>515</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>515 Pago al exterior - Entretenimiento Público Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771083_7451241_sb1_214">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>516</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>516 Pago al exterior - Pensiones Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771084_7451241_sb1_275">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>516</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>516 Pago al exterior - Pensiones En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771085_7451241_sb1_842">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>516</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>516 Pago al exterior - Pensiones Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771086_7451241_sb1_332">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>517</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>517 Pago al exterior - Reembolso de Gastos Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771087_7451241_sb1_520">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>517</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>517 Pago al exterior - Reembolso de Gastos En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771088_7451241_sb1_317">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>517</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>517 Pago al exterior - Reembolso de Gastos Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771089_7451241_sb1_654">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>518</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>518 Pago al exterior - Funciones Públicas Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771090_7451241_sb1_676">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>518</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>518 Pago al exterior - Funciones Públicas En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771091_7451241_sb1_615">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>518</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>518 Pago al exterior - Funciones Públicas Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771092_7451241_sb1_747">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>519</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>519 Pago al exterior - Estudiantes Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771093_7451241_sb1_875">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>519</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>519 Pago al exterior - Estudiantes En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771094_7451241_sb1_600">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>519</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>519 Pago al exterior - Estudiantes Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771095_7451241_sb1_143">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520 Pago al exterior - Otros conceptos de ingresos gravados Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771096_7451241_sb1_148">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520 Pago al exterior - Otros conceptos de ingresos gravados En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771097_7451241_sb1_202">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520 Pago al exterior - Otros conceptos de ingresos gravados Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771098_7451241_sb1_621">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520A Pago al exterior - Pago a proveedores de servicios hoteleros y turísticos en el exterior Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771099_7451241_sb1_648">
+      <custrecord_ts_ec_campo_formulario_103>433</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520A Pago al exterior - Pago a proveedores de servicios hoteleros y turísticos en el exterior En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771100_7451241_sb1_816">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520A Pago al exterior - Pago a proveedores de servicios hoteleros y turísticos en el exterior Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771101_7451241_sb1_112">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520B Pago al exterior - Arrendamientos mercantil internacional Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771102_7451241_sb1_389">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520B Pago al exterior - Arrendamientos mercantil internacional En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771103_7451241_sb1_392">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520B Pago al exterior - Arrendamientos mercantil internacional Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771104_7451241_sb1_660">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520D Pago al exterior - Comisiones por exportaciones y por promoción de turismo receptivo Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771105_7451241_sb1_169">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520D Pago al exterior - Comisiones por exportaciones y por promoción de turismo receptivo En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771106_7451241_sb1_470">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520D</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520D Pago al exterior - Comisiones por exportaciones y por promoción de turismo receptivo Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771107_7451241_sb1_483">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520E Pago al exterior - Por las empresas de transporte marítimo o aéreo y por empresas pesqueras de alta mar, por su actividad Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771108_7451241_sb1_162">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520E Pago al exterior - Por las empresas de transporte marítimo o aéreo y por empresas pesqueras de alta mar, por su actividad En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771109_7451241_sb1_893">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520E</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520E Pago al exterior - Por las empresas de transporte marítimo o aéreo y por empresas pesqueras de alta mar, por su actividad Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771110_7451241_sb1_696">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520F</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520F Pago al exterior - Por las agencias internacionales de prensa Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771111_7451241_sb1_986">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520F</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520F Pago al exterior - Por las agencias internacionales de prensa En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771112_7451241_sb1_530">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520F</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520F Pago al exterior - Por las agencias internacionales de prensa Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771113_7451241_sb1_672">
+      <custrecord_ts_ec_campo_formulario_103>411</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520G</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520G Pago al exterior - Contratos de fletamento de naves para empresas de transporte aéreo o marítimo internacional Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771114_7451241_sb1_938">
+      <custrecord_ts_ec_campo_formulario_103>432</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520G</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520G Pago al exterior - Contratos de fletamento de naves para empresas de transporte aéreo o marítimo internacional En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771115_7451241_sb1_845">
+      <custrecord_ts_ec_campo_formulario_103>422</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>520G</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>entre 0 y 22 *</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>520G Pago al exterior - Contratos de fletamento de naves para empresas de transporte aéreo o marítimo internacional Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771116_7451241_sb1_552">
+      <custrecord_ts_ec_campo_formulario_103>408</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>521</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>5%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>521 Pago al exterior - Enajenación de derechos representativos de capital y otros derechos Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771117_7451241_sb1_586">
+      <custrecord_ts_ec_campo_formulario_103>429</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>521</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>5%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>521 Pago al exterior - Enajenación de derechos representativos de capital y otros derechos En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771118_7451241_sb1_377">
+      <custrecord_ts_ec_campo_formulario_103>419</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>521</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>5%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>521 Pago al exterior - Enajenación de derechos representativos de capital y otros derechos Sin Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771119_7451241_sb1_101">
+      <custrecord_ts_ec_campo_formulario_103>410</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>522A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>522A Pago al exterior - Servicios técnicos, administrativos o de consultoría y regalías con convenio de doble tributación</name>
+    </instance>
+    <instance scriptid="val_771120_7451241_sb1_689">
+      <custrecord_ts_ec_campo_formulario_103>421</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>522B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>22%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>522B Pago al exterior - Servicios técnicos, administrativos o de consultoría y regalías sin convenio de doble tributación</name>
+    </instance>
+    <instance scriptid="val_771121_7451241_sb1_518">
+      <custrecord_ts_ec_campo_formulario_103>431</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>522C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>35%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>522C Pago al exterior - Servicios técnicos, administrativos o de consultoría y regalías en paraísos fiscales</name>
+    </instance>
+    <instance scriptid="val_771122_7451241_sb1_373">
+      <custrecord_ts_ec_campo_formulario_103>409</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>523A</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>hasta el 100%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>523A Pago al exterior - Seguros y reaseguros (primas y cesiones) con convenio de doble tributación</name>
+    </instance>
+    <instance scriptid="val_771123_7451241_sb1_278">
+      <custrecord_ts_ec_campo_formulario_103>420</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>523B</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>22%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>523B Pago al exterior - Seguros y reaseguros (primas y cesiones) sin convenio de doble tributación</name>
+    </instance>
+    <instance scriptid="val_771124_7451241_sb1_334">
+      <custrecord_ts_ec_campo_formulario_103>430</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>523C</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>35%</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>523C Pago al exterior - Seguros y reaseguros (primas y cesiones) en paraísos fiscales</name>
+    </instance>
+    <instance scriptid="val_771125_7451241_sb1_654">
+      <custrecord_ts_ec_campo_formulario_103>412</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>524</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>524 Pago al exterior - Otros pagos al exterior no sujetos a retención Con Convenio De Doble Tributación</name>
+    </instance>
+    <instance scriptid="val_771126_7451241_sb1_691">
+      <custrecord_ts_ec_campo_formulario_103>433</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>524</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>524 Pago al exterior - Otros pagos al exterior no sujetos a retención En Paraísos Fiscales O Regímenes Fiscales Preferentes</name>
+    </instance>
+    <instance scriptid="val_771127_7451241_sb1_449">
+      <custrecord_ts_ec_campo_formulario_103>423</custrecord_ts_ec_campo_formulario_103>
+      <custrecord_ts_ec_codigo_anexo>524</custrecord_ts_ec_codigo_anexo>
+      <custrecord_ts_ec_porcentajes_vigentes>0</custrecord_ts_ec_porcentajes_vigentes>
+      <isinactive>F</isinactive>
+      <name>524 Pago al exterior - Otros pagos al exterior no sujetos a retención Sin Convenio De Doble Tributación</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

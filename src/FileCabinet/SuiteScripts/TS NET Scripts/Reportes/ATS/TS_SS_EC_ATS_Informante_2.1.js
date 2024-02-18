@@ -14,7 +14,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
                 //let auxiliaryRecords = getAuxiliaryRecords(environmentFeatures, scriptParameters);
 
                 let atsInformanteString = getATSInformante(scriptParameters, environmentFeatures);
-                log.error("atsInformanteString",atsInformanteString);
+                log.error("atsInformanteString", atsInformanteString);
                 scriptParameters.atsFilesId = saveFile(atsInformanteString, scriptParameters) + '|';
 
                 executeMapReduce(scriptParameters, environmentFeatures);
@@ -214,14 +214,12 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
         }
 
         const createLogRecord = (scriptParameters, hasSubsidiariesFeature) => {
-            let logRecord = record.create({
-                type: "customrecord_ts_ec_rpt_generator_log"
-            });
-    
+            let logRecord = record.create({ type: "customrecord_ts_ec_rpt_generator_log" });
+
             if (hasSubsidiariesFeature) {
                 logRecord.setValue("custrecord_ts_ec_log_rpt_gen_subsidiaria", scriptParameters.subsidiaryId);
             }
-    
+
             logRecord.setValue("custrecord_ts_ec_log_rpt_gen_periodo", scriptParameters.periodId);
             logRecord.setValue("custrecord_ts_ec_log_rpt_gen_estado", "Procesando...");
             logRecord.setValue("custrecord_ts_ec_log_rpt_gen_libro_legal", "Procesando...");

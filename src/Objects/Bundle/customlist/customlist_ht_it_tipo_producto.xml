@@ -1,0 +1,44 @@
+<customlist scriptid="customlist_ht_it_tipo_producto">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Tipo Producto</name>
+  <customvalues>
+    <customvalue scriptid="val_1414881_7451241_sb1_843">
+      <isinactive>F</isinactive>
+      <value>ACCESORIOS</value>
+    </customvalue>
+    <customvalue scriptid="val_1414882_7451241_sb1_747">
+      <isinactive>F</isinactive>
+      <value>ALQUILER</value>
+    </customvalue>
+    <customvalue scriptid="val_1414883_7451241_sb1_644">
+      <isinactive>F</isinactive>
+      <value>ANTICIPADO</value>
+    </customvalue>
+    <customvalue scriptid="val_1414884_7451241_sb1_836">
+      <isinactive>F</isinactive>
+      <value>MANTENIMIENTO</value>
+    </customvalue>
+    <customvalue scriptid="val_1414885_7451241_sb1_854">
+      <isinactive>F</isinactive>
+      <value>OTROS SERVICIOS</value>
+    </customvalue>
+    <customvalue scriptid="val_1414886_7451241_sb1_781">
+      <isinactive>F</isinactive>
+      <value>RENOVACIÓN</value>
+    </customvalue>
+    <customvalue scriptid="val_1414887_7451241_sb1_626">
+      <isinactive>F</isinactive>
+      <value>SERVICIO</value>
+    </customvalue>
+    <customvalue scriptid="val_1414888_7451241_sb1_847">
+      <isinactive>F</isinactive>
+      <value>VENTA</value>
+    </customvalue>
+    <customvalue scriptid="val_1415974_7451241_sb1_389">
+      <isinactive>F</isinactive>
+      <value>TRANSMISIÓN</value>
+    </customvalue>
+  </customvalues>
+</customlist>

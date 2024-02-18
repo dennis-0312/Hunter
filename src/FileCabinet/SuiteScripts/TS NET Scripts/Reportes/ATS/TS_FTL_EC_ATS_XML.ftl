@@ -16,10 +16,13 @@
         <detalleCompras>
             <codSustento>${item.codSustento}</codSustento>
             <tpIdProv>${item.tpIdProv}</tpIdProv>
+            <idProv>${item.idProv}</idProv>
             <tipoComprobante>${item.tipoComprobante}</tipoComprobante>
             <parteRel>${item.parteRel}</parteRel>
+            <#if item.idProv == '03'>
             <tipoProv>${item.tipoProv}</tipoProv>
             <denoProv>${item.denoProv}</denoProv>
+            </#if>
             <fechaRegistro>${item.fechaRegistro}</fechaRegistro>
             <establecimiento>${item.establecimiento}</establecimiento>
             <puntoEmision>${item.puntoEmision}</puntoEmision>
@@ -38,21 +41,43 @@
             <valRetServ50>${item.valRetServ50}</valRetServ50>
             <valorRetServicios>${item.valorRetServicios}</valorRetServicios>
             <valRetServ100>${item.valRetServ100}</valRetServ100>
+            <valorRetencionNc>${item.valorRetencionNc}</valorRetencionNc>
             <totbasesImpReemb>${item.totbasesImpReemb}</totbasesImpReemb>
             <pagoExterior>
                 <pagoLocExt>${item.pagoExterior.pagoLocExt}</pagoLocExt>
+                <#if item.pagoExterior.pagoLocExt == '01'>
+                <paisEfecPago>${item.pagoExterior.paisEfecPago}</paisEfecPago>
+                <aplicConvDobTrib>${item.pagoExterior.aplicConvDobTrib}</aplicConvDobTrib>
+                <pagExtSujRetNorLeg>${item.pagoExterior.pagExtSujRetNorLeg}</pagExtSujRetNorLeg>
+                </#if>
+                <#if item.pagoExterior.pagoLocExt == '02'>
                 <tipoRegi>${item.pagoExterior.tipoRegi}</tipoRegi>
+                    <#if item.pagoExterior.tipoRegi == '01'>
                 <paisEfecPagoGen>${item.pagoExterior.paisEfecPagoGen}</paisEfecPagoGen>
+                <paisEfecPago>${item.pagoExterior.paisEfecPago}</paisEfecPago>
+                <aplicConvDobTrib>${item.pagoExterior.aplicConvDobTrib}</aplicConvDobTrib>
+                <pagExtSujRetNorLeg>${item.pagoExterior.pagExtSujRetNorLeg}</pagExtSujRetNorLeg>
+                    </#if>
+                    <#if item.pagoExterior.tipoRegi == '02'>
                 <paisEfecPagoParFis>${item.pagoExterior.paisEfecPagoParFis}</paisEfecPagoParFis>
+                <paisEfecPago>${item.pagoExterior.paisEfecPago}</paisEfecPago>
+                <aplicConvDobTrib>${item.pagoExterior.aplicConvDobTrib}</aplicConvDobTrib>
+                <pagExtSujRetNorLeg>${item.pagoExterior.pagExtSujRetNorLeg}</pagExtSujRetNorLeg>
+                    </#if>
+                    <#if item.pagoExterior.tipoRegi == '03'>
                 <denopago>${item.pagoExterior.denopago}</denopago>
                 <paisEfecPago>${item.pagoExterior.paisEfecPago}</paisEfecPago>
                 <aplicConvDobTrib>${item.pagoExterior.aplicConvDobTrib}</aplicConvDobTrib>
                 <pagExtSujRetNorLeg>${item.pagoExterior.pagExtSujRetNorLeg}</pagExtSujRetNorLeg>
                 <pagoRegFis>${item.pagoExterior.pagoRegFis}</pagoRegFis>
+                    </#if>
+                </#if>
             </pagoExterior>
+            <#if item.formasDePago.formaPago != ''>
             <formasDePago>
                 <formaPago>${item.formasDePago.formaPago}</formaPago>
             </formasDePago>
+            </#if>
             <air>
             <#list item.air as detalleAir>
             	<detalleAir>
@@ -70,20 +95,24 @@
         <#list json.ventas as detalleVentas>
         <detalleVentas>
             <tpIdCliente>${detalleVentas.tpIdCliente}</tpIdCliente>
-            <idCliente>${detalleVentas.idCliente}</tpIdCliente>
-            <parteRel>${detalleVentas.parteRel}</tpIdCliente>
-            <tipoCliente>${detalleVentas.tipoCliente}</tpIdCliente>
-            <DenoCli>${detalleVentas.DenoCli}</tpIdCliente>
-            <tipoComprobante>${detalleVentas.tipoComprobante}</tpIdCliente>
-            <tipoEm>${detalleVentas.tipoEm}</tpIdCliente>
-            <numeroComprobantes>${detalleVentas.numeroComprobantes}</tpIdCliente>
-            <baseNoGraIva>${detalleVentas.baseNoGraIva}</tpIdCliente>
-            <baseImponible>${detalleVentas.baseImponible}</tpIdCliente>
-            <baseImpGrav>${detalleVentas.baseImpGrav}</tpIdCliente>
-            <montoIva>${detalleVentas.montoIva}</tpIdCliente>
-            <montoIce>${detalleVentas.montoIce}</tpIdCliente>
-            <valorRetIva>${detalleVentas.valorRetIva}</tpIdCliente>
-            <valorRetRenta>${detalleVentas.valorRetRenta}</tpIdCliente>
+            <idCliente>${detalleVentas.idCliente}</idCliente>
+            <#if detalleVentas.tpIdCliente = '04' || detalleVentas.tpIdCliente = '05' || detalleVentas.tpIdCliente = '06' >
+            <parteRel>${detalleVentas.parteRel}</parteRel>
+            </#if>
+            <#if detalleVentas.tpIdCliente = '06'>
+            <tipoCliente>${detalleVentas.tipoCliente}</tipoCliente>
+            <DenoCli>${detalleVentas.DenoCli}</DenoCli>
+            </#if>
+            <tipoComprobante>${detalleVentas.tipoComprobante}</tipoComprobante>
+            <tipoEm>${detalleVentas.tipoEm}</tipoEm>
+            <numeroComprobantes>${detalleVentas.numeroComprobantes}</numeroComprobantes>
+            <baseNoGraIva>${detalleVentas.baseNoGraIva}</baseNoGraIva>
+            <baseImponible>${detalleVentas.baseImponible}</baseImponible>
+            <baseImpGrav>${detalleVentas.baseImpGrav}</baseImpGrav>
+            <montoIva>${detalleVentas.montoIva}</montoIva>
+            <montoIce>${detalleVentas.montoIce}</montoIce>
+            <valorRetIva>${detalleVentas.valorRetIva}</valorRetIva>
+            <valorRetRenta>${detalleVentas.valorRetRenta}</valorRetRenta>
 			<formasDePago>
             <#list detalleVentas.formasDePago as formaPago>
                 <formaPago>${formaPago}</formaPago>
@@ -92,7 +121,6 @@
         </detalleVentas>
         </#list>
     </ventas>
-
     <ventasEstablecimiento>
         <#list json.ventasEstablecimiento as ventaEst>
         <ventaEst>
@@ -117,10 +145,12 @@
             <paisEfecPagoParFis>${detalleExportaciones.paisEfecPagoParFis}</paisEfecPagoParFis>
             <#elseif detalleExportaciones.tipoRegi == '03'>
 		    <denopagoRegFis>${detalleExportaciones.denopagoRegFis}</denopagoRegFis>
+			<pagoRegFis>${detalleExportaciones.pagoRegFis}</pagoRegFis>
             </#if>
 		    <paisEfecExp>${detalleExportaciones.paisEfecExp}</paisEfecExp>
-			<pagoRegFis>${detalleExportaciones.pagoRegFis}</pagoRegFis>
 		    <exportacionDe>${detalleExportaciones.exportacionDe}</exportacionDe>
+            
+            
             <#if detalleExportaciones.exportacionDe == '01'>
 			<impuestootropaís>${detalleExportaciones.impuestootropaís}</impuestootropaís>
 		    <tipoComprobante>${detalleExportaciones.tipoComprobante}</tipoComprobante>
@@ -131,18 +161,22 @@
 		    <verificador>${detalleExportaciones.verificador}</verificador>
 		    <docTransp>${detalleExportaciones.docTransp}</docTransp>
 			<fechaEmbarque>${detalleExportaciones.fechaEmbarque}</fechaEmbarque>
+            
             <#elseif detalleExportaciones.exportacionDe == '02'>
 			<impuestootropaís>${detalleExportaciones.impuestootropaís}</impuestootropaís>
 		    <tipoComprobante>${detalleExportaciones.tipoComprobante}</tipoComprobante>
+            
             <#elseif detalleExportaciones.exportacionDe == '03'>
             <tipIngExt>${detalleExportaciones.tipIngExt}</tipIngExt>
-		    <ingextgravotropaís>${detalleExportaciones.ingextgravotropaís}</ingextgravotropaís>
-			<impuestootropaís>${detalleExportaciones.impuestootropaís}</impuestootropaís>
+		    <ingExtGravOtroPais>${detalleExportaciones.ingExtGravOtroPais}</ingExtGravOtroPais>
+			    <#if detalleExportaciones.ingExtGravOtroPais = 'SI'>
+            <impuestootropaís>${detalleExportaciones.impuestootropaís}</impuestootropaís>
+                </#if> 
 		    <tipoComprobante>${detalleExportaciones.tipoComprobante}</tipoComprobante>
-		    <verificador>${detalleExportaciones.verificador}</verificador>
+		    <fechaEmbarque>${detalleExportaciones.fechaEmbarque}</fechaEmbarque>
             </#if>
             <valorFOB>${detalleExportaciones.valorFOB}</valorFOB>
-           <valorFOBComprobante>${detalleExportaciones.valorFOBComprobante}</valorFOBComprobante>
+            <valorFOBComprobante>${detalleExportaciones.valorFOBComprobante}</valorFOBComprobante>
             <establecimiento>${detalleExportaciones.establecimiento}</establecimiento>
             <puntoEmision>${detalleExportaciones.puntoEmision}</puntoEmision>
             <secuencial>${detalleExportaciones.secuencial}</secuencial>

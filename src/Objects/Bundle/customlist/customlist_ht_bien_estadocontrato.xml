@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ht_bien_estadocontrato">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Estado contrato</name>
+  <customvalues>
+    <customvalue scriptid="val_722098_7451241_sb1_666">
+      <isinactive>F</isinactive>
+      <value>ACTIVO</value>
+    </customvalue>
+    <customvalue scriptid="val_777902_7451241_sb1_628">
+      <isinactive>F</isinactive>
+      <value>CONVERTIDO</value>
+    </customvalue>
+    <customvalue scriptid="val_785662_7451241_sb1_201">
+      <isinactive>F</isinactive>
+      <value>ORDEN DE SERVICIO ANULADA</value>
+    </customvalue>
+    <customvalue scriptid="val_777903_7451241_sb1_267">
+      <isinactive>F</isinactive>
+      <value>SIN DISPOSITIVO</value>
+    </customvalue>
+    <customvalue scriptid="val_777904_7451241_sb1_334">
+      <isinactive>F</isinactive>
+      <value>SUSPENDIDO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

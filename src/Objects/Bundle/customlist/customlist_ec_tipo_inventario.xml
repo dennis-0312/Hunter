@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ec_tipo_inventario">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <name>EC tipo de inventario</name>
+  <customvalues>
+    <customvalue scriptid="val_913834_7451241_sb1_642">
+      <isinactive>F</isinactive>
+      <value>Componentes</value>
+    </customvalue>
+    <customvalue scriptid="val_913835_7451241_sb1_161">
+      <isinactive>F</isinactive>
+      <value>Dispositivos</value>
+    </customvalue>
+    <customvalue scriptid="val_913833_7451241_sb1_574">
+      <isinactive>F</isinactive>
+      <value>Material</value>
+    </customvalue>
+  </customvalues>
+</customlist>

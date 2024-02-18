@@ -1,0 +1,185 @@
+<customrecordtype scriptid="customrecord_ht_cl_banco">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Banco</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>T</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <instances>
+    <instance scriptid="val_822858_7451241_sb1_644">
+      <isinactive>F</isinactive>
+      <name>002 - BANCO BOLIVARIANO</name>
+    </instance>
+    <instance scriptid="val_822859_7451241_sb1_537">
+      <isinactive>F</isinactive>
+      <name>003 - BANCO DE GUAYAQUIL</name>
+    </instance>
+    <instance scriptid="val_822860_7451241_sb1_612">
+      <isinactive>F</isinactive>
+      <name>004 - BANCO DE MACHALA</name>
+    </instance>
+    <instance scriptid="val_822861_7451241_sb1_650">
+      <isinactive>F</isinactive>
+      <name>005 - BANCO DEL AUSTRO</name>
+    </instance>
+    <instance scriptid="val_822862_7451241_sb1_646">
+      <isinactive>F</isinactive>
+      <name>006 - BANCO DEL PACIFICO S.A.</name>
+    </instance>
+    <instance scriptid="val_822863_7451241_sb1_972">
+      <isinactive>F</isinactive>
+      <name>007 - BANCO DEL PICHINCHA</name>
+    </instance>
+    <instance scriptid="val_822864_7451241_sb1_283">
+      <isinactive>F</isinactive>
+      <name>008 - BANCO INTERNACIONAL S.A.</name>
+    </instance>
+    <instance scriptid="val_822865_7451241_sb1_693">
+      <isinactive>F</isinactive>
+      <name>011 - PRODUBANCO</name>
+    </instance>
+    <instance scriptid="val_822866_7451241_sb1_488">
+      <isinactive>F</isinactive>
+      <name>012 - DINERS CLUB</name>
+    </instance>
+    <instance scriptid="val_822867_7451241_sb1_954">
+      <isinactive>F</isinactive>
+      <name>018 - BANCO AMAZONAS</name>
+    </instance>
+    <instance scriptid="val_822868_7451241_sb1_611">
+      <isinactive>F</isinactive>
+      <name>024 - BANCO COMERCIAL DE MANABI</name>
+    </instance>
+    <instance scriptid="val_822869_7451241_sb1_371">
+      <isinactive>F</isinactive>
+      <name>025 - BAN ECUADOR</name>
+    </instance>
+    <instance scriptid="val_822870_7451241_sb1_524">
+      <isinactive>F</isinactive>
+      <name>026 - BANCO DE LOJA</name>
+    </instance>
+    <instance scriptid="val_822871_7451241_sb1_559">
+      <isinactive>F</isinactive>
+      <name>028 - BANCO DEL LITORAL</name>
+    </instance>
+    <instance scriptid="val_822872_7451241_sb1_437">
+      <isinactive>F</isinactive>
+      <name>029 - BANCO GENERAL RUMIÑAHUI</name>
+    </instance>
+    <instance scriptid="val_822873_7451241_sb1_162">
+      <isinactive>F</isinactive>
+      <name>097 - BANCO PROCREDIT</name>
+    </instance>
+    <instance scriptid="val_822874_7451241_sb1_339">
+      <isinactive>F</isinactive>
+      <name>103 - BANCO CAPITAL</name>
+    </instance>
+    <instance scriptid="val_822875_7451241_sb1_420">
+      <isinactive>F</isinactive>
+      <name>111 - BANCO COOP. NACIONAL</name>
+    </instance>
+    <instance scriptid="val_822876_7451241_sb1_114">
+      <isinactive>F</isinactive>
+      <name>113 - COOPERATIVA JEP LTDA</name>
+    </instance>
+    <instance scriptid="val_822877_7451241_sb1_985">
+      <isinactive>F</isinactive>
+      <name>115 - COOPERATIVA DE AHORRO Y CREDITO LA MERCED LTDA.</name>
+    </instance>
+    <instance scriptid="val_822878_7451241_sb1_947">
+      <isinactive>F</isinactive>
+      <name>116 - BANCO DE DESARROLLO DEL ECUADO</name>
+    </instance>
+    <instance scriptid="val_822879_7451241_sb1_909">
+      <isinactive>F</isinactive>
+      <name>123 - WELLS FARGO BANK</name>
+    </instance>
+    <instance scriptid="val_822880_7451241_sb1_470">
+      <isinactive>F</isinactive>
+      <name>260 - VISA BANCO BOLIVARIANO</name>
+    </instance>
+    <instance scriptid="val_822881_7451241_sb1_602">
+      <isinactive>F</isinactive>
+      <name>282 - VISA PICHINCHA</name>
+    </instance>
+    <instance scriptid="val_822882_7451241_sb1_456">
+      <isinactive>F</isinactive>
+      <name>288 - MASTERCARD(PACIFICARD)</name>
+    </instance>
+    <instance scriptid="val_822883_7451241_sb1_798">
+      <isinactive>F</isinactive>
+      <name>292 - MASTERCARD PICHINCHA</name>
+    </instance>
+    <instance scriptid="val_822884_7451241_sb1_929">
+      <isinactive>F</isinactive>
+      <name>294 - MASTERCARD BANKARD</name>
+    </instance>
+    <instance scriptid="val_822885_7451241_sb1_815">
+      <isinactive>F</isinactive>
+      <name>299 - MASTERCARD (BANCO DEL AUSTRO)</name>
+    </instance>
+    <instance scriptid="val_822886_7451241_sb1_871">
+      <isinactive>F</isinactive>
+      <name>300 - VISA  PACIFICARD</name>
+    </instance>
+    <instance scriptid="val_822887_7451241_sb1_617">
+      <isinactive>F</isinactive>
+      <name>312 - PAGO VENTANILLA CARSEG</name>
+    </instance>
+    <instance scriptid="val_822888_7451241_sb1_529">
+      <isinactive>F</isinactive>
+      <name>315 - DINERS CLUB ECUADOR</name>
+    </instance>
+    <instance scriptid="val_822889_7451241_sb1_548">
+      <isinactive>F</isinactive>
+      <name>317 - BANKARD DEB. AUTOMATICO</name>
+    </instance>
+    <instance scriptid="val_822890_7451241_sb1_977">
+      <isinactive>F</isinactive>
+      <name>319 - PACIFICARD DEB. AUTOMATICO</name>
+    </instance>
+    <instance scriptid="val_822891_7451241_sb1_835">
+      <isinactive>F</isinactive>
+      <name>325 - VISA BANK OF AMERICA</name>
+    </instance>
+    <instance scriptid="val_822892_7451241_sb1_838">
+      <isinactive>F</isinactive>
+      <name>326 - BANCO DELBANK</name>
+    </instance>
+  </instances>
+</customrecordtype>

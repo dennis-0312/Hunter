@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ht_si_no">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC - Sí/No</name>
+  <customvalues>
+    <customvalue scriptid="val_723951_7451241_sb1_889">
+      <isinactive>F</isinactive>
+      <value>Sí</value>
+    </customvalue>
+    <customvalue scriptid="val_723952_7451241_sb1_530">
+      <isinactive>F</isinactive>
+      <value>No</value>
+    </customvalue>
+  </customvalues>
+</customlist>

@@ -1,0 +1,22 @@
+<restlet scriptid="customscriptts_rs_ce_gc_ordenservicio">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_CE_GC_OrdenServicio</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/PruebaServicios/TS_RS_CE_GC_OrdenServicio.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeployts_rs_ce_gc_ordenservicio">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>TS_RS_CE_GC_OrdenServicio</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

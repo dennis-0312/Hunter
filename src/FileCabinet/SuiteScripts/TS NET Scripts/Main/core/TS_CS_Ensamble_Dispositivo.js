@@ -11,14 +11,14 @@ define([
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant'
 ], (url, runtime, record, dialog, _controller, _constant) => {
-    const DEVICE_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_warrant_assem_buil_21";
-    const DEVICE_ASSEMBLY_BUILD_SCRIPT_ID_ = "customscript_ts_ui_warrant_assem_buil_21";
-    const RENT_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_warrant_assem_buil_21";
-    const RENT_ASSEMBLY_BUILD_SCRIPT_ID_ = "customscript_ts_ui_warrant_assem_buil_21";
-    const CUSTODY_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_warrant_assem_buil_21";
-    const CUSTODY_ASSEMBLY_BUILD_SCRIPT_ID_ = "customscript_ts_ui_warrant_assem_buil_21";
+    const RENT_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_assembly_build_21";
+    const RENT_ASSEMBLY_BUILD_SCRIPT_ID = "customscript_ts_ui_assembly_build_21";
+    const CUSTODY_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_custody_assem_buil_21";
+    const CUSTODY_ASSEMBLY_BUILD_SCRIPT_ID = "customscript_ts_ui_custody_assem_buil_21";
     const WARRANT_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_warrant_assem_buil_21";
-    const WARRANT_ASSEMBLY_BUILD_SCRIPT_ID_ = "customscript_ts_ui_warrant_assem_buil_21";
+    const WARRANT_ASSEMBLY_BUILD_SCRIPT_ID = "customscript_ts_ui_warrant_assem_buil_21";
+    const IMPRESION_CERTIFICADO_SCRIPT_ID = "customscript_ts_ui_ec_impresion_certi";
+    const IMPRESION_CERTIFICADO_DEPLOYMENT_ID = "customdeploy_ts_ui_ec_impresion_certi"
     const estadoChequeado = 2;
     const estadoDisponible = 5;
 
@@ -38,43 +38,62 @@ define([
     }
 
     const ensambleAlquiler = (item, location, workorder, salesorder, customer) => {
-        try {
-            console.log({ item, location, workorder, salesorder, customer });
-            var host = url.resolveDomain({
-                hostType: url.HostType.APPLICATION,
-                accountId: runtime.accountId
-            });
-            var newUrl = 'https://' + host + '/app/site/hosting/scriptlet.nl?script=980&deploy=1&' +
-                'item=' + item +
-                '&location=' + location +
-                '&workorder=' + workorder +
-                '&salesorder=' + salesorder +
-                '&customer=' + customer;
-            console.log('host', host);
-            window.open(newUrl);
+        /*try {
+          console.log({ item, location, workorder, salesorder, customer });
+          var host = url.resolveDomain({
+            hostType: url.HostType.APPLICATION,
+            accountId: runtime.accountId
+          });
+          var newUrl = 'https://' + host + '/app/site/hosting/scriptlet.nl?script=980&deploy=1&' +
+            'item=' + item +
+            '&location=' + location +
+            '&workorder=' + workorder +
+            '&salesorder=' + salesorder +
+            '&customer=' + customer;
+          console.log('host', host);
+          window.open(newUrl);
         } catch (err) {
-            console.log(err);
+          console.log(err);
+        }*/
+        try {
+            let params = { item, location, workorder, salesorder, customer };
+            let host = getHostDomain();
+            let suiteletUrl = getSuiteletUrl(RENT_ASSEMBLY_BUILD_SCRIPT_ID, RENT_ASSEMBLY_BUILD_DEPLOYMENT_ID);
+            let fullUrl = addParametersToUrl(`https://${host}${suiteletUrl}`, params);
+            window.open(fullUrl, '_blank');
+        } catch (error) {
+            console.log(error);
         }
     }
 
     const ensambleCustodia = (item, relateditem, location, workorder, salesorder, customer) => {
-        try {
-            console.log(item, relateditem, location, workorder, salesorder, customer);
-            var host = url.resolveDomain({
-                hostType: url.HostType.APPLICATION,
-                accountId: runtime.accountId
-            });
-            var newUrl = 'https://' + host + '/app/site/hosting/scriptlet.nl?script=1147&deploy=1&' +
-                'item=' + item +
-                '&relateditem=' + relateditem +
-                '&location=' + location +
-                '&workorder=' + workorder +
-                '&salesorder=' + salesorder +
-                '&customer=' + customer;
-            console.log('host', host);
-            window.open(newUrl);
+        /*try {
+          console.log(item, relateditem, location, workorder, salesorder, customer);
+          var host = url.resolveDomain({
+            hostType: url.HostType.APPLICATION,
+            accountId: runtime.accountId
+          });
+          var newUrl = 'https://' + host + '/app/site/hosting/scriptlet.nl?script=1147&deploy=1&' +
+            'item=' + item +
+            '&relateditem=' + relateditem +
+            '&location=' + location +
+            '&workorder=' + workorder +
+            '&salesorder=' + salesorder +
+            '&customer=' + customer;
+          console.log('host', host);
+          window.open(newUrl);
         } catch (err) {
-            console.log(err);
+          console.log(err);
+        }*/
+
+        try {
+            let params = { item, relateditem, location, workorder, salesorder, customer };
+            let host = getHostDomain();
+            let suiteletUrl = getSuiteletUrl(CUSTODY_ASSEMBLY_BUILD_SCRIPT_ID, CUSTODY_ASSEMBLY_BUILD_DEPLOYMENT_ID);
+            let fullUrl = addParametersToUrl(`https://${host}${suiteletUrl}`, params);
+            window.open(fullUrl, '_blank');
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -82,7 +101,7 @@ define([
         try {
             let params = { item, location, workorder, salesorder, customer };
             let host = getHostDomain();
-            let suiteletUrl = getSuiteletUrl(WARRANT_ASSEMBLY_BUILD_SCRIPT_ID_, WARRANT_ASSEMBLY_BUILD_DEPLOYMENT_ID);
+            let suiteletUrl = getSuiteletUrl(WARRANT_ASSEMBLY_BUILD_SCRIPT_ID, WARRANT_ASSEMBLY_BUILD_DEPLOYMENT_ID);
             let fullUrl = addParametersToUrl(`https://${host}${suiteletUrl}`, params);
             window.open(fullUrl, '_blank');
         } catch (error) {
@@ -118,31 +137,70 @@ define([
         let pideNumberBox = 0;
         try {
             let objRecord = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: internalid });
-            if (objRecord.getValue('custrecord_ht_ot_estadochaser').length > 0) {
-                if (objRecord.getValue('custrecord_ht_ot_estadochaser') != estadoDisponible) {
-                    let parametrosRespo = _controller.parametrizacion(objRecord.getValue({ fieldId: 'custrecord_ht_ot_item' }));
-                    for (let j = 0; j < parametrosRespo.length; j++) {
-                        if (parametrosRespo[j][0] == _constant.Parameter.PNB_PIDE_NUMBER_BOX && parametrosRespo[j][1] == _constant.Valor.SI) {
-                            pideNumberBox = _constant.Valor.SI;
-                            break;
-                        }
-                    }
+            if (objRecord.getValue('custrecord_ht_ot_others_installs') == false) {
+                if (objRecord.getValue('custrecord_ht_ot_estadochaser').length > 0) {
+                    if (objRecord.getValue('custrecord_ht_ot_taller').length > 0) {
+                        if (objRecord.getValue('custrecord_ht_ot_estadochaser') != estadoDisponible) {
+                            let parametrosRespo = _controller.parametrizacion(objRecord.getValue({ fieldId: 'custrecord_ht_ot_item' }));
+                            for (let j = 0; j < parametrosRespo.length; j++) {
+                                if (parametrosRespo[j][0] == _constant.Parameter.PNB_PIDE_NUMBER_BOX && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                    pideNumberBox = _constant.Valor.SI;
+                                    break;
+                                }
+                            }
 
-                    if (pideNumberBox == 0) {
-                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: estadoChequeado });
-                        response = objRecord.save();
-                        location.reload();
+                            if (pideNumberBox == 0) {
+                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: estadoChequeado });
+                                response = objRecord.save();
+                                location.reload();
+                            } else {
+                                if (objRecord.getValue('custrecord_ht_ot_boxserie').length > 0) {
+                                    objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: estadoChequeado });
+                                    response = objRecord.save();
+                                    location.reload();
+                                } else {
+                                    dialog.alert({ title: 'Alerta', message: 'Se debe ingresar un dato para el campo BOX SERIE.' });
+                                }
+
+                                // return true;
+                                //dialog.alert({ title: 'Alerta', message: 'Se debe ingresar un dato para el campo BOX SERIE.' });
+                            }
+                        } else {
+                            dialog.alert({ title: 'Alerta', message: 'El estado de la instalación debe ser diferente a disponible.' });
+                        }
                     } else {
-                        dialog.alert({ title: 'Alerta', message: 'Se debe ingresar un dato para el campo BOX SERIE.' });
+                        dialog.alert({ title: 'Alerta', message: 'Debe tener un taller asignado.' });
                     }
                 } else {
-                    dialog.alert({ title: 'Alerta', message: 'El estado del dispositivo Chaser debe ser diferente a disponible.' });
+                    dialog.alert({ title: 'Alerta', message: 'Debe ingresar un estado para la instalación.' });
                 }
             } else {
-                dialog.alert({ title: 'Alerta', message: 'Debe ingresar un estado para dispositivo Chaser.' });
+                if (objRecord.getValue('custrecord_ht_ot_serieproductoasignacion').length > 0) {
+                    dialog.alert({
+                        title: 'Alerta',
+                        message: 'Está realizando otras instalaciones, el campo SERIE PRODUCTO no debe contener ningun valor.'
+                    });
+                } else {
+                    objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: estadoChequeado });
+                    response = objRecord.save();
+                    location.reload();
+                }
             }
+
         } catch (error) {
             console.log('Error', error);
+        }
+    }
+
+    const printCertificado = (workOrder, type) => {
+        try {
+            let params = { workOrder, type };
+            let host = getHostDomain();
+            let suiteletUrl = getSuiteletUrl(IMPRESION_CERTIFICADO_SCRIPT_ID, IMPRESION_CERTIFICADO_DEPLOYMENT_ID);
+            let fullUrl = addParametersToUrl(`https://${host}${suiteletUrl}`, params);
+            window.open(fullUrl, '_blank');
+        } catch (error) {
+            console.log(error);
         }
     }
 
@@ -152,7 +210,8 @@ define([
         ensambleAlquiler,
         ensambleCustodia,
         ensambleGarantia,
-        chequearOrden
+        chequearOrden,
+        printCertificado
     };
 });
 /********************************************************************************************************************************************************

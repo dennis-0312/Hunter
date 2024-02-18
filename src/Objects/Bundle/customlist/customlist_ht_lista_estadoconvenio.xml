@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ht_lista_estadoconvenio">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Estado Convenio</name>
+  <customvalues>
+    <customvalue scriptid="val_822210_7451241_sb1_335">
+      <isinactive>F</isinactive>
+      <value>ACTIVO</value>
+    </customvalue>
+    <customvalue scriptid="val_822211_7451241_sb1_316">
+      <isinactive>F</isinactive>
+      <value>ELIMINADO</value>
+    </customvalue>
+    <customvalue scriptid="val_822212_7451241_sb1_963">
+      <isinactive>F</isinactive>
+      <value>INACTIVO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

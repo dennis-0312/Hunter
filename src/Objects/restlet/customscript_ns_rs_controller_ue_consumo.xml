@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ns_rs_controller_ue_consumo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_RS_CONTROLLER_UE_CONSUMOS_API</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/NS_RS_PRODUCCION_HUNTER/Controllers/NS_RS_CONTROLLER_UE_CONSUMOS_API.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_rs_controller_ue_consumo">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>NS_RS_CONTROLLER_UE_CONSUMOS_API</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

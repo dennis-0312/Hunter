@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_ec_codigo_tipo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC - Código tipo</name>
+  <customvalues>
+    <customvalue scriptid="val_929207_7451241_sb1_540">
+      <isinactive>F</isinactive>
+      <value>03</value>
+    </customvalue>
+    <customvalue scriptid="val_929208_7451241_sb1_532">
+      <isinactive>F</isinactive>
+      <value>04</value>
+    </customvalue>
+    <customvalue scriptid="val_929209_7451241_sb1_987">
+      <isinactive>F</isinactive>
+      <value>08</value>
+    </customvalue>
+    <customvalue scriptid="val_929210_7451241_sb1_616">
+      <isinactive>F</isinactive>
+      <value>09</value>
+    </customvalue>
+  </customvalues>
+</customlist>

@@ -1,0 +1,183 @@
+<customrecordtype scriptid="customrecord_ht_os_tipoordenservicio">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>Orden de servicio</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_to_actualiza_cobertura">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CHECKBOX</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>HT Actualiza cobertura</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_722219_7451241_sb1_679">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Servicio de alquiler</name>
+    </instance>
+    <instance scriptid="val_722220_7451241_sb1_127">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Servicio cambio de propietario</name>
+    </instance>
+    <instance scriptid="val_722221_7451241_sb1_811">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Servicio chequeo</name>
+    </instance>
+    <instance scriptid="val_722222_7451241_sb1_487">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Servicio demo</name>
+    </instance>
+    <instance scriptid="val_722223_7451241_sb1_947">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Servicio desintalación</name>
+    </instance>
+    <instance scriptid="val_722224_7451241_sb1_664">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Devolución</name>
+    </instance>
+    <instance scriptid="val_722225_7451241_sb1_612">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Garantía</name>
+    </instance>
+    <instance scriptid="val_722226_7451241_sb1_579">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Renovación</name>
+    </instance>
+    <instance scriptid="val_722227_7451241_sb1_149">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Upgrade</name>
+    </instance>
+    <instance scriptid="val_722228_7451241_sb1_158">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Venta</name>
+    </instance>
+    <instance scriptid="val_722229_7451241_sb1_629">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Monitoreo</name>
+    </instance>
+    <instance scriptid="val_781721_7451241_sb1_593">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Convenio</name>
+    </instance>
+    <instance scriptid="val_800061_7451241_sb1_454">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Servicio de instalación</name>
+    </instance>
+    <instance scriptid="val_800217_7451241_sb1_186">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Mantenimiento</name>
+    </instance>
+    <instance scriptid="val_824329_7451241_sb1_445">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Instalación</name>
+    </instance>
+    <instance scriptid="val_881800_7451241_sb1_527">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Activación</name>
+    </instance>
+    <instance scriptid="val_881801_7451241_sb1_863">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Instalación/Activación</name>
+    </instance>
+    <instance scriptid="val_1412042_7451241_sb1_174">
+      <custrecord_ht_to_actualiza_cobertura>F</custrecord_ht_to_actualiza_cobertura>
+      <isinactive>F</isinactive>
+      <name>Desinstalación</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

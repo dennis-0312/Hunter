@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ht_af_origen">
+  <description>Lista de origen de activo fijo</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Origen de activo fijo</name>
+  <customvalues>
+    <customvalue scriptid="val_724180_7451241_sb1_254">
+      <isinactive>F</isinactive>
+      <value>Importación</value>
+    </customvalue>
+    <customvalue scriptid="val_724181_7451241_sb1_238">
+      <isinactive>F</isinactive>
+      <value>Nacional</value>
+    </customvalue>
+    <customvalue scriptid="val_724182_7451241_sb1_972">
+      <isinactive>F</isinactive>
+      <value>Mixto</value>
+    </customvalue>
+  </customvalues>
+</customlist>

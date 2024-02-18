@@ -6,10 +6,11 @@ define([
     'N/currentRecord',
     'N/record',
     'N/ui/dialog',
+    'N/query',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
     '../error/TS_CM_ErrorMessages',
-], (currentRecord, record, dialog, _controller, _constant, _errorMessage) => {
+], (currentRecord, record, dialog, query, _controller, _constant, _errorMessage) => {
     const SENSOR_TEMPERATURA = '75';
     const ESTADO_CHEQUEADO = 2;
     let typeMode;
@@ -18,6 +19,7 @@ define([
         let currentRecord = context.currentRecord;
         typeMode = context.mode;
         console.log('typeMode', typeMode);
+
         let item = currentRecord.getValue({ fieldId: 'custrecord_ht_ot_item' });
         if (item.length > 0) {
             let parametrosRespo = _controller.parametrizacion(item);
@@ -50,6 +52,21 @@ define([
                 currentRecord.getField('custrecord_ht_ot_connovedad').isDisabled = true
                 currentRecord.getField('custrecord_ht_ot_listacomentarios').isDisabled = true
             }
+
+            // console.log(item);
+            // let sql = 'SELECT custrecord_ht_pp_parametrizacion_valor as valor FROM customrecord_ht_pp_main_param_prod ' +
+            //     'WHERE custrecord_ht_pp_parametrizacionid = ? AND custrecord_ht_pp_parametrizacion_rela = ?';
+            // let resultSet = query.runSuiteQL({ query: sql, params: [item, parametro] });
+            // let results = resultSet.asMappedResults();
+            // let valor = results.length > 0 ? results[0]['valor'] : 0;
+            let dsr = _controller.getParameter(item, _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS)
+            console.log(dsr);
+            if (dsr != _constant.Valor.SI) {
+                let field = currentRecord.getField('custrecord_ht_ot_servicios_commands');
+                field.isDisplay = false;
+                let field2 = currentRecord.getField('custrecord_ht_ot_numero_puertas');
+                field2.isDisplay = false;
+            }
         }
     }
 
@@ -71,7 +88,6 @@ define([
     }
 
     const reloadFuncion = (url) => { alert(url) }
-
 
     return {
         pageInit: pageInit,

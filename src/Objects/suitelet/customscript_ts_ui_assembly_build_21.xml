@@ -1,0 +1,25 @@
+<suitelet scriptid="customscript_ts_ui_assembly_build_21">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS UI Assembly Build 2.1</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Construcción de Ensamblaje/suitelet/TS_UI_Assembly_Build_2.1.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_ui_assembly_build_21">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>ERROR</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>TS UI Assembly Build 2.1</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

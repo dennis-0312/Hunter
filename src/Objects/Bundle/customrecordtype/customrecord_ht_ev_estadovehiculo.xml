@@ -1,0 +1,174 @@
+<customrecordtype scriptid="customrecord_ht_ev_estadovehiculo">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT ESTADO VEHICULO</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_ev_estadovehiculo_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_ev_estadovehiculo_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_823583_7451241_sb1_249">
+      <custrecord_ht_ev_estadovehiculo_codigo></custrecord_ht_ev_estadovehiculo_codigo>
+      <custrecord_ht_ev_estadovehiculo_descrip></custrecord_ht_ev_estadovehiculo_descrip>
+      <isinactive>F</isinactive>
+      <name>BES BUEN ESTADO</name>
+    </instance>
+    <instance scriptid="val_823584_7451241_sb1_368">
+      <custrecord_ht_ev_estadovehiculo_codigo></custrecord_ht_ev_estadovehiculo_codigo>
+      <custrecord_ht_ev_estadovehiculo_descrip></custrecord_ht_ev_estadovehiculo_descrip>
+      <isinactive>F</isinactive>
+      <name>CHO CHOCADO (MUCHO DAÑO)</name>
+    </instance>
+    <instance scriptid="val_823585_7451241_sb1_673">
+      <custrecord_ht_ev_estadovehiculo_codigo></custrecord_ht_ev_estadovehiculo_codigo>
+      <custrecord_ht_ev_estadovehiculo_descrip></custrecord_ht_ev_estadovehiculo_descrip>
+      <isinactive>F</isinactive>
+      <name>CHP CHOCADO (POCO DAÑO)</name>
+    </instance>
+    <instance scriptid="val_823586_7451241_sb1_435">
+      <custrecord_ht_ev_estadovehiculo_codigo></custrecord_ht_ev_estadovehiculo_codigo>
+      <custrecord_ht_ev_estadovehiculo_descrip></custrecord_ht_ev_estadovehiculo_descrip>
+      <isinactive>F</isinactive>
+      <name>DEL DESMANTELADO (LEVE)</name>
+    </instance>
+    <instance scriptid="val_823587_7451241_sb1_580">
+      <custrecord_ht_ev_estadovehiculo_codigo></custrecord_ht_ev_estadovehiculo_codigo>
+      <custrecord_ht_ev_estadovehiculo_descrip></custrecord_ht_ev_estadovehiculo_descrip>
+      <isinactive>F</isinactive>
+      <name>DES DESMANTELADO (MUCHO DAÑO)</name>
+    </instance>
+    <instance scriptid="val_823588_7451241_sb1_912">
+      <custrecord_ht_ev_estadovehiculo_codigo></custrecord_ht_ev_estadovehiculo_codigo>
+      <custrecord_ht_ev_estadovehiculo_descrip></custrecord_ht_ev_estadovehiculo_descrip>
+      <isinactive>F</isinactive>
+      <name>FAC FALTAN ACCESORIOS</name>
+    </instance>
+    <instance scriptid="val_823589_7451241_sb1_330">
+      <custrecord_ht_ev_estadovehiculo_codigo></custrecord_ht_ev_estadovehiculo_codigo>
+      <custrecord_ht_ev_estadovehiculo_descrip></custrecord_ht_ev_estadovehiculo_descrip>
+      <isinactive>F</isinactive>
+      <name>IRR IRRECUPERABLE</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

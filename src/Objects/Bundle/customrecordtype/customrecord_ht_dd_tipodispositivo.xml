@@ -1,0 +1,252 @@
+<customrecordtype scriptid="customrecord_ht_dd_tipodispositivo">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT DD Tipo de dispositivo</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_dd_tipodispositivo_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_dd_tipodispositivo_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_781614_7451241_sb1_982">
+      <custrecord_ht_dd_tipodispositivo_codigo>017</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>TELTONIKA</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>017 - TELTONIKA</name>
+    </instance>
+    <instance scriptid="val_811036_7451241_sb1_989">
+      <custrecord_ht_dd_tipodispositivo_codigo>000</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>INDEFINIDO</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>000 - INDEFINIDO</name>
+    </instance>
+    <instance scriptid="val_811037_7451241_sb1_934">
+      <custrecord_ht_dd_tipodispositivo_codigo>001</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>SKY PATROL</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>001 - SKY PATROL</name>
+    </instance>
+    <instance scriptid="val_811038_7451241_sb1_114">
+      <custrecord_ht_dd_tipodispositivo_codigo>002</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>THRANE &amp; THRANE</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>002 - THRANE &amp; THRANE</name>
+    </instance>
+    <instance scriptid="val_811039_7451241_sb1_505">
+      <custrecord_ht_dd_tipodispositivo_codigo>003</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>SCOPE</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>003 - SCOPE</name>
+    </instance>
+    <instance scriptid="val_811040_7451241_sb1_868">
+      <custrecord_ht_dd_tipodispositivo_codigo>004</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>EVOLUTION</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>004 - EVOLUTION</name>
+    </instance>
+    <instance scriptid="val_811041_7451241_sb1_674">
+      <custrecord_ht_dd_tipodispositivo_codigo>005</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>PORTMAN</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>005 - PORTMAN</name>
+    </instance>
+    <instance scriptid="val_811042_7451241_sb1_437">
+      <custrecord_ht_dd_tipodispositivo_codigo>006</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>SKYWAVE</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>006 - SKYWAVE</name>
+    </instance>
+    <instance scriptid="val_811043_7451241_sb1_857">
+      <custrecord_ht_dd_tipodispositivo_codigo>007</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>VIRLOC</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>007 - VIRLOC</name>
+    </instance>
+    <instance scriptid="val_811044_7451241_sb1_659">
+      <custrecord_ht_dd_tipodispositivo_codigo>008</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>CELLOCATOR</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>008 - CELLOCATOR</name>
+    </instance>
+    <instance scriptid="val_811045_7451241_sb1_319">
+      <custrecord_ht_dd_tipodispositivo_codigo>009</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>QUECLINK</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>009 - QUECLINK</name>
+    </instance>
+    <instance scriptid="val_811046_7451241_sb1_795">
+      <custrecord_ht_dd_tipodispositivo_codigo>010</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>CALAMP</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>010 - CALAMP</name>
+    </instance>
+    <instance scriptid="val_811047_7451241_sb1_662">
+      <custrecord_ht_dd_tipodispositivo_codigo>011</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>HUNTER- PRO</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>011 - HUNTER- PRO</name>
+    </instance>
+    <instance scriptid="val_811048_7451241_sb1_498">
+      <custrecord_ht_dd_tipodispositivo_codigo>012</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>HPLOW</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>012 - HPLOW</name>
+    </instance>
+    <instance scriptid="val_811049_7451241_sb1_607">
+      <custrecord_ht_dd_tipodispositivo_codigo>013</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>HUNTER PRO</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>013 - HUNTER PRO</name>
+    </instance>
+    <instance scriptid="val_811050_7451241_sb1_336">
+      <custrecord_ht_dd_tipodispositivo_codigo>014</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>CONDOR SKY SEEKER</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>014 - CONDOR SKY SEEKER</name>
+    </instance>
+    <instance scriptid="val_811051_7451241_sb1_831">
+      <custrecord_ht_dd_tipodispositivo_codigo>015</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>HUNTERPRO</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>015 - HUNTERPRO</name>
+    </instance>
+    <instance scriptid="val_811052_7451241_sb1_386">
+      <custrecord_ht_dd_tipodispositivo_codigo>016</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>JIMI</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>016 - JIMI</name>
+    </instance>
+    <instance scriptid="val_811053_7451241_sb1_337">
+      <custrecord_ht_dd_tipodispositivo_codigo>018</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>ORBCOMM</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>018 - ORBCOMM</name>
+    </instance>
+    <instance scriptid="val_811054_7451241_sb1_412">
+      <custrecord_ht_dd_tipodispositivo_codigo>019</custrecord_ht_dd_tipodispositivo_codigo>
+      <custrecord_ht_dd_tipodispositivo_descrip>TRACKERKING</custrecord_ht_dd_tipodispositivo_descrip>
+      <isinactive>F</isinactive>
+      <name>019 - TRACKERKING</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

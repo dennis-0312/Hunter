@@ -13,7 +13,7 @@ define([
     './lib/TS_LBRY_EC_Report_Generator_2.1.js'
 ], (serverWidget, search, log, query, config, task, redirect, library) => {
 
-    const FOLDER_ID = "1593";
+    const FOLDER_ID = "585";
 
     const onRequest = (context) => {
         try {

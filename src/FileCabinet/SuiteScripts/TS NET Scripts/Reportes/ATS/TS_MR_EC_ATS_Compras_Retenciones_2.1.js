@@ -7,15 +7,14 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
     (search, email, file, runtime, log, format, record, task) => {
 
         const MAX_PAGINATION_SIZE = 1000;
+        const SEARCH_EC_ATS_COMPRAS_RETENCIONES = 'customsearch_ts_ec_ats_compras_retencion' //EC - ATS Compras Retenciones
         var currentScript = runtime.getCurrentScript();
 
         const getInputData = (context) => {
             try {
                 let environmentFeatures = getEnviromentFeatures();
                 let scriptParameters = getScriptParameters(environmentFeatures);
-
                 let transactions = getATSComprasRetenciones(scriptParameters, environmentFeatures);
-
                 return transactions;
             } catch (error) {
                 log.error("error", error);
@@ -26,38 +25,18 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             try {
                 let key = context.key;
                 let result = JSON.parse(context.value);
+                let codigoCompra = result[0];//* 1 Código de Compra
+                let conceptoRetencionIR = result[1].replace('- None -', '');//* 2 Concepto de Retención en la fuente de Impuesto a la Renta
+                let baseImponibleRenta = roundTwoDecimals(result[2]);//* 3 Base Imponible Renta
+                let porcentajeRetencionIR = result[3];//* 4 Porcentaje de Retención en la fuente de Impuesto a la Renta
+                let montoRetencionRenta = roundTwoDecimals(result[4]);//* 5 Monto de retención de Renta
+                let fechaPagoDividendo = result[5].replace('- None -', '');//* 6 Fecha de Pago del Dividendo
+                let impuestoRentaPagado = roundTwoDecimals(result[6]);//* 7 Impuesto a la Renta Pagado por la Sociedad Correspondiente al Dividendo
+                let anioUtilidades = result[7].replace('- None -', '');//* 8 Año en que se generaron las utilidades atribuibles al dividendo
+                let numeroCajasEstandar = result[8].replace('- None -', '');//* 9 Cantidad de cajas estándar de banano
+                let precioCaja = result[9].replace('- None -', '');//* 10 Precio de la caja de banano
 
-                // 1 Código de Compra
-                let codigoCompra = result[0];
-
-                // 2 Concepto de Retención en la fuente de Impuesto a la Renta
-                let conceptoRetencionIR = result[1].replace('- None -', '');
-
-                // 3 Base Imponible Renta
-                let baseImponibleRenta = roundTwoDecimals(result[2]);
-
-                // 4 Porcentaje de Retención en la fuente de Impuesto a la Renta
-                let porcentajeRetencionIR = result[3];
-
-                // 5 Monto de retención de Renta
-                let montoRetencionRenta = roundTwoDecimals(result[4]);
-
-                // 6 Fecha de Pago del Dividendo
-                let fechaPagoDividendo = result[5].replace('- None -', '');
-
-                // 7 Impuesto a la Renta Pagado por la Sociedad Correspondiente al Dividendo
-                let impuestoRentaPagado = roundTwoDecimals(result[6]);
-
-                // 8 Año en que se generaron las utilidades atribuibles al dividendo
-                let anioUtilidades = result[7].replace('- None -', '');
-
-                // 9 Cantidad de cajas estándar de banano
-                let numeroCajasEstandar = result[8].replace('- None -', '');
-
-                // 10 Precio de la caja de banano
-                let precioCaja = result[9].replace('- None -', '');
-
-                let rowString = `${codigoCompra}|${conceptoRetencionIR}${baseImponibleRenta}|${porcentajeRetencionIR}|${montoRetencionRenta}|` +
+                let rowString = `${codigoCompra}|${conceptoRetencionIR}|${baseImponibleRenta}|${porcentajeRetencionIR}|${montoRetencionRenta}|` +
                     `${fechaPagoDividendo}|${impuestoRentaPagado}|${anioUtilidades}|${numeroCajasEstandar}|${precioCaja}\r\n`;
 
                 context.write({
@@ -66,7 +45,6 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                         rowString
                     }
                 });
-
             } catch (error) {
                 log.error("error", error);
             }
@@ -106,9 +84,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
         }
 
         const getATSComprasRetenciones = (scriptParameters, environmentFeatures) => {
-            let atsComprasRetencionesSearch = search.load({
-                id: "customsearch_ts_ec_ats_compras_retencion"
-            });
+            let atsComprasRetencionesSearch = search.load({ id: SEARCH_EC_ATS_COMPRAS_RETENCIONES });
 
             if (scriptParameters.periodId) {
                 let periodFilter = search.createFilter({
@@ -168,7 +144,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ret_folder');
             scriptParameters.atsFilesId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ret_atsfiles');
             scriptParameters.logId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ret_logid');
-            
+
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
         }
@@ -196,19 +172,12 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
         const executeMapReduce = (scriptParameters, environmentFeatures) => {
             let params = {};
-
-            if (environmentFeatures.hasSubsidiaries) {
+            if (environmentFeatures.hasSubsidiaries)
                 params['custscript_ts_mr_ec_ats_formpag_subsidi'] = scriptParameters.subsidiaryId;
-            }
-            
             params['custscript_ts_mr_ec_ats_formpag_period'] = scriptParameters.periodId;
-
             params['custscript_ts_mr_ec_ats_formpag_folder'] = scriptParameters.folderId;
-
             params['custscript_ts_mr_ec_ats_formpag_atsfiles'] = scriptParameters.atsFilesId;
-
             params['custscript_ts_mr_ec_ats_formpag_logid'] = scriptParameters.logId;
-
             log.error("executeMapReduce", params);
             let scriptTask = task.create({
                 taskType: task.TaskType.MAP_REDUCE,

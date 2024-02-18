@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ht_estado_seguimiento">
+  <description>lista los estados para el registro del seguimiento</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT LIST ESTADO SEGUIMIENTO</name>
+  <customvalues>
+    <customvalue scriptid="val_780876_7451241_sb1_288">
+      <isinactive>F</isinactive>
+      <value>PENDIENTE</value>
+    </customvalue>
+    <customvalue scriptid="val_780877_7451241_sb1_813">
+      <isinactive>F</isinactive>
+      <value>EJECUTADA</value>
+    </customvalue>
+    <customvalue scriptid="val_780878_7451241_sb1_250">
+      <isinactive>F</isinactive>
+      <value>ANULADA</value>
+    </customvalue>
+  </customvalues>
+</customlist>

@@ -1,0 +1,24 @@
+<scheduledscript scriptid="customscriptns_ss_vb_ss_tester">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>ns_ss_vb_ss_tester</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteScripts/PruebaServicios/NS_SS_VB_SS_TESTER.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeployns_ss_vb_ss_tester">
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>NOTSCHEDULED</status>
+      <title>ns_ss_vb_ss_tester</title>
+      <recurrence>
+        <single>
+          <repeat></repeat>
+          <startdate>2023-09-23</startdate>
+          <starttime>23:00:00Z</starttime>
+        </single>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</scheduledscript>

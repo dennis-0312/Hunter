@@ -1,0 +1,320 @@
+[
+    {
+        "monitoreo": {
+            "username": "dennis.evol2@myevo.biz",
+            "first_name": "DENNIS",
+            "last_name": "FERNANDEZ",
+            "email": "dennis.evol@myevo.biz",
+            "id": "758",
+            "is_active": true,
+            "account_type": 1,
+            "customer": {
+                "company_code": "0991259546001",
+                "identity_document_number": "1303753618",
+                "identity_document_type": 3,
+                "business_name": "",
+                "phone_number": "0945689785",
+                "emergency_phone_number": "0985454544",
+                "assistance_phone_number": "046004640",
+                "technical_support_email": "soporteami@carsegsa.com"
+            }
+        },
+        "customer": {
+            "username": "tsnet.evol@myevol.biz",
+            "first_name": "TS NET",
+            "email": "",
+            "id": "757",
+            "is_active": true,
+            "account_type": 1,
+            "customer": {
+                "company_code": "0991259546001",
+                "identity_document_number": "20381041957",
+                "identity_document_type": 1,
+                "business_name": "TS NET",
+                "phone_number": "0998530571",
+                "emergency_phone_number": "0985454544",
+                "assistance_phone_number": "046004640",
+                "technical_support_email": "soporteami@carsegsa.com"
+            }
+        },
+        "asset": {
+            "id": "",
+            "product": "CH - H.MONITOREO AMI",
+            "name": "ABC-5013",
+            "description": "426",
+            "custom_name": "ABC-5013",
+            "active": true,
+            "asset_type": "2",
+            "product_expire_date": "2024-02-17T05:00:00-05:00",
+            "contract_code": "",
+            "attributes": [
+                {
+                    "attribute": "10",
+                    "value": "KIA"
+                },
+                {
+                    "attribute": "11",
+                    "value": "SOLUTO LX AC 1.4 4P 4X2 TM"
+                },
+                {
+                    "attribute": "12",
+                    "value": "1.4"
+                },
+                {
+                    "attribute": "16",
+                    "value": "ME1RG4253N2045013"
+                },
+                {
+                    "attribute": "17",
+                    "value": "G3H7E0145013"
+                },
+                {
+                    "attribute": "18",
+                    "value": "ABC-5013"
+                },
+                {
+                    "attribute": "20",
+                    "value": "426"
+                }
+            ],
+            "doors_sensors": "5",
+            "cod_sys": "426",
+            "owner": "757"
+        },
+        "device": {
+            "report_from": "3",
+            "active": true,
+            "model": "1",
+            "company_code": "0991259546001",
+            "id": "CTCR009"
+        },
+        "command": []
+    },
+    "RESPONSE CUSTOMER ||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
+    {
+        "id": 755,
+        "username": "tsnet.evol@myevol.biz",
+        "first_name": "TS NET",
+        "last_name": "test",
+        "email": "",
+        "customer": {
+            "company_code": "0991259546001",
+            "identity_document_type": 1,
+            "identity_document_number": "20381041957",
+            "business_name": "TS NET",
+            "phone_number": "0998530571",
+            "emergency_phone_number": "0985454544",
+            "assistance_phone_number": "046004640",
+            "technical_support_email": "soporteami@carsegsa.com",
+            "account_type": 1,
+            "nick": null,
+            "faceid_enabled": false,
+            "touchid_enabled": false,
+            "agreement_aceptation_date": null,
+            "law_acceptance": true,
+            "law_acceptance_date": "2024-01-16T05:14:48-05:00"
+        },
+        "is_active": true,
+        "last_login": null,
+        "date_joined": "2023-11-22T14:46:49.065291-05:00",
+        "has_usable_password": true,
+        "get_all_permissions": []
+    },
+    "RESPONSE MONITOREO ||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
+    {
+        "id": 758,
+        "username": "dennis.evol2@myevo.biz",
+        "first_name": "DENNIS",
+        "last_name": "FERNANDEZ",
+        "email": "dennis.evol@myevo.biz",
+        "customer": {
+            "company_code": "0991259546001",
+            "identity_document_type": 3,
+            "identity_document_number": "1303753618",
+            "business_name": "",
+            "phone_number": "0945689785",
+            "emergency_phone_number": "0985454544",
+            "assistance_phone_number": "046004640",
+            "technical_support_email": "soporteami@carsegsa.com",
+            "account_type": 1,
+            "nick": null,
+            "faceid_enabled": false,
+            "touchid_enabled": false,
+            "agreement_aceptation_date": null,
+            "law_acceptance": false,
+            "law_acceptance_date": null
+        },
+        "is_active": true,
+        "last_login": null,
+        "date_joined": "2023-12-12T12:19:45.319776-05:00",
+        "has_usable_password": true,
+        "get_all_permissions": []
+    },
+    "RESPONSE ASSET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
+    {
+        "id": 2316,
+        "name": "ABC-5013",
+        "description": "426",
+        "user": [],
+        "custom_name": "ABC-5013",
+        "asset_type": 2,
+        "product": "CH - H.MONITOREO AMI",
+        "product_expire_date": "2024-02-17T05:00:00-05:00",
+        "active": true,
+        "attributes": [
+            {
+                "id": 2380,
+                "attribute": 10,
+                "value": "KIA",
+                "attribute_name": "Brand"
+            },
+            {
+                "id": 2381,
+                "attribute": 11,
+                "value": "SOLUTO LX AC 1.4 4P 4X2 TM",
+                "attribute_name": "Model"
+            },
+            {
+                "id": 2382,
+                "attribute": 12,
+                "value": "1.4",
+                "attribute_name": "Cilinders"
+            },
+            {
+                "id": 2383,
+                "attribute": 16,
+                "value": "ME1RG4253N2045013",
+                "attribute_name": "Chasis"
+            },
+            {
+                "id": 2384,
+                "attribute": 17,
+                "value": "G3H7E0145013",
+                "attribute_name": "Motor"
+            },
+            {
+                "id": 2385,
+                "attribute": 18,
+                "value": "ABC-5013",
+                "attribute_name": "Plate"
+            },
+            {
+                "id": 2386,
+                "attribute": 20,
+                "value": "426",
+                "attribute_name": "COD_SYS"
+            }
+        ],
+        "get_devices": [],
+        "get_last_status": null,
+        "owner": 757,
+        "state": 1,
+        "get_owner": {
+            "id": 757,
+            "username": "bleon@hunter.com.pe",
+            "first_name": "TS NET",
+            "last_name": "",
+            "email": "",
+            "customer": {
+                "company_code": "0991259546001",
+                "identity_document_type": 1,
+                "identity_document_number": "20381041957",
+                "business_name": "TS NET",
+                "phone_number": "+5939875236998",
+                "emergency_phone_number": "0985454544",
+                "assistance_phone_number": "046004640",
+                "technical_support_email": "soporteami@carsegsa.com",
+                "account_type": 1,
+                "nick": null,
+                "faceid_enabled": false,
+                "touchid_enabled": false,
+                "agreement_aceptation_date": null,
+                "law_acceptance": false,
+                "law_acceptance_date": null
+            },
+            "is_active": true,
+            "last_login": null,
+            "date_joined": "2023-12-07T14:30:13.711480-05:00",
+            "has_usable_password": true,
+            "get_all_permissions": []
+        },
+        "watching": false,
+        "doors_sensors": 5,
+        "safe_parking_mode": false,
+        "notify_km_maintenance": false,
+        "km_last_maintenance": null,
+        "km_maintenance": null,
+        "notify_battery_level": false,
+        "aceptation_date": null,
+        "contract_code": "",
+        "is_branded": false
+    },
+    "RESPONSE DEVICE ||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
+    {
+        "id": "CTCR009",
+        "company_code": "0991259546001",
+        "model": 1,
+        "report_from": 3,
+        "active": true,
+        "last_report_ip": null,
+        "last_report_date": null
+    },
+    "ASSET-DEVICE ADD ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
+    "ASSET-USER ADD ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
+    "ASSET-COMMAND |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||",
+    {
+        "count": 6,
+        "next": null,
+        "previous": null,
+        "results": [
+            {
+                "id": 17303,
+                "asset": 2316,
+                "command": "CHANGE_REPORT_PORT",
+                "status": 1,
+                "get_command_description": "Change Report Port",
+                "get_status_description": "Active"
+            },
+            {
+                "id": 17304,
+                "asset": 2316,
+                "command": "CONNECT_MAINTENANCE",
+                "status": 1,
+                "get_command_description": "Connect Maintenance",
+                "get_status_description": "Active"
+            },
+            {
+                "id": 17305,
+                "asset": 2316,
+                "command": "RESET",
+                "status": 1,
+                "get_command_description": "Reset",
+                "get_status_description": "Active"
+            },
+            {
+                "id": 17306,
+                "asset": 2316,
+                "command": "SET_ODOMETER",
+                "status": 1,
+                "get_command_description": "Set Odometer",
+                "get_status_description": "Active"
+            },
+            {
+                "id": 17307,
+                "asset": 2316,
+                "command": "STATUS",
+                "status": 1,
+                "get_command_description": "Request status",
+                "get_status_description": "Active"
+            },
+            {
+                "id": 17308,
+                "asset": 2316,
+                "command": "STOP",
+                "status": 1,
+                "get_command_description": "Gradual stop",
+                "get_status_description": "Active"
+            }
+        ]
+    }
+]

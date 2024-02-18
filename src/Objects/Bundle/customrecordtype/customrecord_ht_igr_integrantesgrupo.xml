@@ -1,0 +1,152 @@
+<customrecordtype scriptid="customrecord_ht_igr_integrantesgrupo">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT INTEGRANTES - GRUPO RASTREO</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <instances>
+    <instance scriptid="val_823556_7451241_sb1_314">
+      <isinactive>F</isinactive>
+      <name>001 ALFA 1</name>
+    </instance>
+    <instance scriptid="val_823557_7451241_sb1_480">
+      <isinactive>F</isinactive>
+      <name>002 ALFA 2</name>
+    </instance>
+    <instance scriptid="val_823558_7451241_sb1_220">
+      <isinactive>F</isinactive>
+      <name>003 ALFA 3</name>
+    </instance>
+    <instance scriptid="val_823559_7451241_sb1_814">
+      <isinactive>F</isinactive>
+      <name>004 ALFA 5</name>
+    </instance>
+    <instance scriptid="val_823560_7451241_sb1_821">
+      <isinactive>F</isinactive>
+      <name>005 ALFA 6</name>
+    </instance>
+    <instance scriptid="val_823561_7451241_sb1_816">
+      <isinactive>F</isinactive>
+      <name>006 ALFA 8</name>
+    </instance>
+    <instance scriptid="val_823562_7451241_sb1_557">
+      <isinactive>F</isinactive>
+      <name>007 PUMA</name>
+    </instance>
+    <instance scriptid="val_823563_7451241_sb1_217">
+      <isinactive>F</isinactive>
+      <name>008 SIERRA 1</name>
+    </instance>
+    <instance scriptid="val_823564_7451241_sb1_877">
+      <isinactive>F</isinactive>
+      <name>009 SIERRA 2</name>
+    </instance>
+    <instance scriptid="val_823565_7451241_sb1_893">
+      <isinactive>F</isinactive>
+      <name>010 SIERRA 3</name>
+    </instance>
+    <instance scriptid="val_823566_7451241_sb1_587">
+      <isinactive>F</isinactive>
+      <name>011 SIERRA 4</name>
+    </instance>
+    <instance scriptid="val_823567_7451241_sb1_973">
+      <isinactive>F</isinactive>
+      <name>013 ALFA 4</name>
+    </instance>
+    <instance scriptid="val_823568_7451241_sb1_272">
+      <isinactive>F</isinactive>
+      <name>014 RASTREO CUENCA</name>
+    </instance>
+    <instance scriptid="val_823569_7451241_sb1_613">
+      <isinactive>F</isinactive>
+      <name>015 PROPIETARIO</name>
+    </instance>
+    <instance scriptid="val_823570_7451241_sb1_336">
+      <isinactive>F</isinactive>
+      <name>016 POLICIA</name>
+    </instance>
+    <instance scriptid="val_823571_7451241_sb1_845">
+      <isinactive>F</isinactive>
+      <name>017 CTG</name>
+    </instance>
+    <instance scriptid="val_823572_7451241_sb1_199">
+      <isinactive>F</isinactive>
+      <name>018 RASTREO QUEVEDO</name>
+    </instance>
+    <instance scriptid="val_823573_7451241_sb1_628">
+      <isinactive>F</isinactive>
+      <name>019 HALCON</name>
+    </instance>
+    <instance scriptid="val_823574_7451241_sb1_118">
+      <isinactive>F</isinactive>
+      <name>020 ALFA 9</name>
+    </instance>
+    <instance scriptid="val_823575_7451241_sb1_825">
+      <isinactive>F</isinactive>
+      <name>021 ALFA 10</name>
+    </instance>
+    <instance scriptid="val_823576_7451241_sb1_433">
+      <isinactive>F</isinactive>
+      <name>022 ALFA 11</name>
+    </instance>
+    <instance scriptid="val_823577_7451241_sb1_980">
+      <isinactive>F</isinactive>
+      <name>023 SIERRA 5</name>
+    </instance>
+    <instance scriptid="val_823578_7451241_sb1_382">
+      <isinactive>F</isinactive>
+      <name>024 SIERRA 6</name>
+    </instance>
+    <instance scriptid="val_823579_7451241_sb1_269">
+      <isinactive>F</isinactive>
+      <name>025 ALFA 12</name>
+    </instance>
+    <instance scriptid="val_823580_7451241_sb1_988">
+      <isinactive>F</isinactive>
+      <name>026 SIERRA 11</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

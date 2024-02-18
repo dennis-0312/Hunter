@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ht_bien_lista">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Seleccionar Bien Lista</name>
+  <customvalues>
+    <customvalue scriptid="val_794446_7451241_sb1_407">
+      <isinactive>F</isinactive>
+      <value>Si</value>
+    </customvalue>
+    <customvalue scriptid="val_794879_7451241_sb1_266">
+      <isinactive>T</isinactive>
+      <value>Ingresar</value>
+    </customvalue>
+  </customvalues>
+</customlist>

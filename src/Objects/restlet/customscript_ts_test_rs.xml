@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_test_rs">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>testRS</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/Test Developer/testRS.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_test_rs">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>TESTING</status>
+      <title>testRS</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

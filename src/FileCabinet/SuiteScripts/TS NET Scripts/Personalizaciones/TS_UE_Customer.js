@@ -40,7 +40,7 @@ define(['N/log', 'N/search', 'N/record', 'N/redirect', 'N/ui/serverWidget', 'N/r
                     label: 'Tipo de direccion',
                     type: serverWidget.FieldType.TEXT,
                 });
-                
+
                 var numLines = objRecord.getLineCount({ sublistId: 'addressbook' });
                 log.debug('numLines', numLines);
                 for (let i = 0; i < numLines; i++) {
@@ -78,15 +78,12 @@ define(['N/log', 'N/search', 'N/record', 'N/redirect', 'N/ui/serverWidget', 'N/r
                         }
                     }
                 }
-
-
-
             }
-
         } catch (e) {
             log.error('Error en beforeLoad', e);
         }
     }
+
     function getCustomer(id) {
         var arrCustomerId = new Array();
         var busqueda = search.create({
@@ -123,8 +120,8 @@ define(['N/log', 'N/search', 'N/record', 'N/redirect', 'N/ui/serverWidget', 'N/r
                         label: "Address Internal ID"
                     })
                 ]
-
         });
+
         var pageData = busqueda.runPaged({
             pageSize: 1000
         });
@@ -166,7 +163,6 @@ define(['N/log', 'N/search', 'N/record', 'N/redirect', 'N/ui/serverWidget', 'N/r
             });
         });
         return arrCustomerId;
-
     }
     return {
         beforeLoad: beforeLoad

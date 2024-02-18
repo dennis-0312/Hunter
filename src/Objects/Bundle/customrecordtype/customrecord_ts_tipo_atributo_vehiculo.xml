@@ -1,0 +1,245 @@
+<customrecordtype scriptid="customrecord_ts_tipo_atributo_vehiculo">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>T</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit>1</numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>TS Tipo de Atributos Vehiculo Telematic</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>T</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_id_atributo_telematic">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Id Atributo Telematic</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_id_tipo_vehiculo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Id Tipo Vehiculo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_1427705_7451241_sb1_748">
+      <altname>Brand</altname>
+      <custrecord_id_atributo_telematic>1</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427706_7451241_sb1_684">
+      <altname>Model</altname>
+      <custrecord_id_atributo_telematic>2</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427707_7451241_sb1_931">
+      <altname>Cilinders</altname>
+      <custrecord_id_atributo_telematic>3</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427708_7451241_sb1_454">
+      <altname>Number Wheels</altname>
+      <custrecord_id_atributo_telematic>4</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427709_7451241_sb1_574">
+      <altname>Max Weight</altname>
+      <custrecord_id_atributo_telematic>5</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427710_7451241_sb1_745">
+      <altname>Length</altname>
+      <custrecord_id_atributo_telematic>6</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427711_7451241_sb1_733">
+      <altname>Chasis</altname>
+      <custrecord_id_atributo_telematic>7</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427712_7451241_sb1_504">
+      <altname>Motor</altname>
+      <custrecord_id_atributo_telematic>8</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427713_7451241_sb1_935">
+      <altname>Plate</altname>
+      <custrecord_id_atributo_telematic>9</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427714_7451241_sb1_436">
+      <altname>Brand</altname>
+      <custrecord_id_atributo_telematic>10</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427715_7451241_sb1_735">
+      <altname>Model</altname>
+      <custrecord_id_atributo_telematic>11</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427716_7451241_sb1_310">
+      <altname>Cilinders</altname>
+      <custrecord_id_atributo_telematic>12</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427717_7451241_sb1_852">
+      <altname>Number Wheels</altname>
+      <custrecord_id_atributo_telematic>13</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427718_7451241_sb1_969">
+      <altname>Max Weight</altname>
+      <custrecord_id_atributo_telematic>14</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427719_7451241_sb1_472">
+      <altname>Length</altname>
+      <custrecord_id_atributo_telematic>15</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427722_7451241_sb1_844">
+      <altname>Chasis</altname>
+      <custrecord_id_atributo_telematic>16</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427723_7451241_sb1_955">
+      <altname>Motor</altname>
+      <custrecord_id_atributo_telematic>17</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427724_7451241_sb1_974">
+      <altname>Plate</altname>
+      <custrecord_id_atributo_telematic>18</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427725_7451241_sb1_520">
+      <altname>COD_SYS</altname>
+      <custrecord_id_atributo_telematic>19</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>1</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427726_7451241_sb1_278">
+      <altname>COD_SYS</altname>
+      <custrecord_id_atributo_telematic>20</custrecord_id_atributo_telematic>
+      <custrecord_id_tipo_vehiculo>2</custrecord_id_tipo_vehiculo>
+      <isinactive>F</isinactive>
+    </instance>
+  </instances>
+</customrecordtype>

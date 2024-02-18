@@ -1,0 +1,210 @@
+<customrecordtype scriptid="customrecord_ht_bn_tipocabina">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Tipo Cabina</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_tipocabina_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_bn_tipocabina_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripcion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_810813_7451241_sb1_514">
+      <custrecord_ht_bn_tipocabina_codigo>000</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>NO DEFINIDO</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>000 - NO DEFINIDO</name>
+    </instance>
+    <instance scriptid="val_810814_7451241_sb1_492">
+      <custrecord_ht_bn_tipocabina_codigo>001</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>C/S - CABINA SIMPLE</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>001 - C/S - CABINA SIMPLE</name>
+    </instance>
+    <instance scriptid="val_810815_7451241_sb1_510">
+      <custrecord_ht_bn_tipocabina_codigo>002</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>C/D - CABINA DOBLE</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>002 - C/D - CABINA DOBLE</name>
+    </instance>
+    <instance scriptid="val_810816_7451241_sb1_622">
+      <custrecord_ht_bn_tipocabina_codigo>003</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>CABINA DOBLE</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>003 - CABINA DOBLE</name>
+    </instance>
+    <instance scriptid="val_810817_7451241_sb1_656">
+      <custrecord_ht_bn_tipocabina_codigo>004</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>CABINA SIMPLE</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>004 - CABINA SIMPLE</name>
+    </instance>
+    <instance scriptid="val_810818_7451241_sb1_825">
+      <custrecord_ht_bn_tipocabina_codigo>005</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>DOBLE CABINA</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>005 - DOBLE CABINA</name>
+    </instance>
+    <instance scriptid="val_810819_7451241_sb1_431">
+      <custrecord_ht_bn_tipocabina_codigo>006</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>JEEP</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>006 - JEEP</name>
+    </instance>
+    <instance scriptid="val_810820_7451241_sb1_484">
+      <custrecord_ht_bn_tipocabina_codigo>007</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>COUPE</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>007 - COUPE</name>
+    </instance>
+    <instance scriptid="val_810821_7451241_sb1_782">
+      <custrecord_ht_bn_tipocabina_codigo>008</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>MINI VAN</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>008 - MINI VAN</name>
+    </instance>
+    <instance scriptid="val_810822_7451241_sb1_458">
+      <custrecord_ht_bn_tipocabina_codigo>009</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>SEDAN</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>009 - SEDAN</name>
+    </instance>
+    <instance scriptid="val_810823_7451241_sb1_508">
+      <custrecord_ht_bn_tipocabina_codigo>010</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>CABINA SIMPLE</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>010 - CABINA SIMPLE</name>
+    </instance>
+    <instance scriptid="val_810824_7451241_sb1_429">
+      <custrecord_ht_bn_tipocabina_codigo>011</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>NO DEFINIDO TDE</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>011 - NO DEFINIDO TDE</name>
+    </instance>
+    <instance scriptid="val_810825_7451241_sb1_488">
+      <custrecord_ht_bn_tipocabina_codigo>012</custrecord_ht_bn_tipocabina_codigo>
+      <custrecord_ht_bn_tipocabina_descrip>NULL</custrecord_ht_bn_tipocabina_descrip>
+      <isinactive>F</isinactive>
+      <name>012 - NULL</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

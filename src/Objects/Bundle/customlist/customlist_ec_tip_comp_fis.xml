@@ -1,0 +1,36 @@
+<customlist scriptid="customlist_ec_tip_comp_fis">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC - Tipo Comprobante Fiscal</name>
+  <customvalues>
+    <customvalue scriptid="val_724309_7451241_sb1_626">
+      <isinactive>F</isinactive>
+      <value>Documentos autorizados utilizados en ventas excepto N/C N/D</value>
+    </customvalue>
+    <customvalue scriptid="val_724310_7451241_sb1_249">
+      <isinactive>F</isinactive>
+      <value>Factura</value>
+    </customvalue>
+    <customvalue scriptid="val_724311_7451241_sb1_295">
+      <isinactive>F</isinactive>
+      <value>N/D A inst. Estado y Empr. Públicas que percibe ingreso exento de Imp. Renta</value>
+    </customvalue>
+    <customvalue scriptid="val_724312_7451241_sb1_142">
+      <isinactive>F</isinactive>
+      <value>Nota de Debito</value>
+    </customvalue>
+    <customvalue scriptid="val_724313_7451241_sb1_929">
+      <isinactive>F</isinactive>
+      <value>Nota de Debito por Reembolso Emitida por Intermediario</value>
+    </customvalue>
+    <customvalue scriptid="val_724314_7451241_sb1_187">
+      <isinactive>F</isinactive>
+      <value>Nota de Debito TC</value>
+    </customvalue>
+    <customvalue scriptid="val_724315_7451241_sb1_431">
+      <isinactive>F</isinactive>
+      <value>Nota o Boleta de Venta</value>
+    </customvalue>
+  </customvalues>
+</customlist>

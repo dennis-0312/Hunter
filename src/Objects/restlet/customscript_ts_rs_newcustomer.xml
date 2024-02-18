@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_rs_newcustomer">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_NewCustomer</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/ErickHunter/TS_RS_NewCustomer.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_rs_newcustomer">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>TS_RS_NewCustomer</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

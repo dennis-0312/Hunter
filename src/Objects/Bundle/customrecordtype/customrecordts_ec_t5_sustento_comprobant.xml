@@ -1,0 +1,322 @@
+<customrecordtype scriptid="customrecordts_ec_t5_sustento_comprobant">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description>Esta lista muestra los Tipos de transacción asignados a la subsidiaria seleccionada.</description>
+  <enabledle>F</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>F</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC - T5 Sustento Comprobante</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>T</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>F</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - CODIGO</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecordts_ec_cod_tip_comprobante">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - CODIGO TIPO COMPROBANTE</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_fecha_inicio">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>DATE</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - FECHA INICIO</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecordts_ec_fecha_fin">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>DATE</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - FECHA FIN</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_752817_7451241_sb1_514">
+      <custrecord_ts_ec_codigo>4</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 2, 3, 4, 5, 15, 41, 47, 48, 294,344</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Activo Fijo - Costo o Gasto para declaración de IR</name>
+    </instance>
+    <instance scriptid="val_752818_7451241_sb1_525">
+      <custrecord_ts_ec_codigo>3</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 3, 4, 5, 41, 47, 48, 294,344</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Activo Fijo - Crédito Tributario para declaración de IVA</name>
+    </instance>
+    <instance scriptid="val_752819_7451241_sb1_297">
+      <custrecord_ts_ec_codigo>0</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 2, 4, 5,19, 42</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin>2015-02-28</custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Casos especiales cuyo sustento no aplica en las opciones anteriores</name>
+    </instance>
+    <instance scriptid="val_752820_7451241_sb1_795">
+      <custrecord_ts_ec_codigo>11</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2015-03-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>12</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Convenios de débito o recaudación para IFI´s</name>
+    </instance>
+    <instance scriptid="val_752821_7451241_sb1_864">
+      <custrecord_ts_ec_codigo>2</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 2, 3, 4, 5,9, 11, 12, 15, 19, 20, 21, 41, 43, 47, 48 , 294, 344</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Costo o Gasto para declaración de IR (servicios y bienes distintos de inventarios y activos fijos)</name>
+    </instance>
+    <instance scriptid="val_752822_7451241_sb1_395">
+      <custrecord_ts_ec_codigo>1</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 3, 4, 5, 11, 12, 21, 41, 43, 47, 48, 294, 344</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Crédito Tributario para declaración de IVA (servicios y bienes distintos de inventarios y activos fijos)</name>
+    </instance>
+    <instance scriptid="val_752823_7451241_sb1_497">
+      <custrecord_ts_ec_codigo>10</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>19</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Distribución de Dividendos, Beneficios o Utilidades</name>
+    </instance>
+    <instance scriptid="val_752824_7451241_sb1_995">
+      <custrecord_ts_ec_codigo>12</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2015-03-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>42</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Impuestos y retenciones presuntivos</name>
+    </instance>
+    <instance scriptid="val_752825_7451241_sb1_300">
+      <custrecord_ts_ec_codigo>7</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 2, 3, 4, 5, 15, 41, 43, 47, 48, 294,344</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Inventario - Costo o Gasto para declaración de IR</name>
+    </instance>
+    <instance scriptid="val_752826_7451241_sb1_335">
+      <custrecord_ts_ec_codigo>6</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 3, 4, 5, 41, 43, 47, 48, 294,344</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Inventario - Crédito Tributario para declaración de IVA</name>
+    </instance>
+    <instance scriptid="val_752827_7451241_sb1_135">
+      <custrecord_ts_ec_codigo>5</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 2, 3, 4, 5, 11, 15, 41, 294,344</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Liquidación Gastos de Viaje, hospedaje y alimentación Gastos IR (a nombre de empleados y no de la empresa)</name>
+    </instance>
+    <instance scriptid="val_752828_7451241_sb1_623">
+      <custrecord_ts_ec_codigo>9</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 4, 5, 45</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Reembolso por Siniestros</name>
+    </instance>
+    <instance scriptid="val_752829_7451241_sb1_396">
+      <custrecord_ts_ec_codigo>8</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2000-01-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>1, 2, 3, 4, 5, 21, 294,344</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Valor pagado para solicitar Reembolso de Gasto (intermediario)</name>
+    </instance>
+    <instance scriptid="val_752830_7451241_sb1_500">
+      <custrecord_ts_ec_codigo>13</custrecord_ts_ec_codigo>
+      <custrecord_ts_ec_fecha_inicio>2015-03-01</custrecord_ts_ec_fecha_inicio>
+      <custrecordts_ec_cod_tip_comprobante>19</custrecordts_ec_cod_tip_comprobante>
+      <custrecordts_ec_fecha_fin></custrecordts_ec_fecha_fin>
+      <isinactive>F</isinactive>
+      <name>Valores reconocidos por entidades del sector público a favor de sujetos pasivos</name>
+    </instance>
+  </instances>
+  <!-- <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions> -->
+</customrecordtype>

@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ht_dp_tipo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT DP Tipo</name>
+  <customvalues>
+    <customvalue scriptid="val_779936_7451241_sb1_155">
+      <isinactive>F</isinactive>
+      <value>Tarjeta</value>
+    </customvalue>
+    <customvalue scriptid="val_779937_7451241_sb1_646">
+      <isinactive>F</isinactive>
+      <value>Cheque posfechado</value>
+    </customvalue>
+  </customvalues>
+</customlist>

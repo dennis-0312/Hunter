@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ht_capacitacion2formatos">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>capacitacion2formatos</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/Capacitacion2/capacitacion2formatos.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ht_capacitacion2formatos">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>capacitacion2formatos</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

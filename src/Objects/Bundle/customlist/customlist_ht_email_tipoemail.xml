@@ -1,0 +1,40 @@
+<customlist scriptid="customlist_ht_email_tipoemail">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Tipo de Email</name>
+  <customvalues>
+    <customvalue scriptid="val_722156_7451241_sb1_637">
+      <isinactive>F</isinactive>
+      <value>E-MAIL</value>
+    </customvalue>
+    <customvalue scriptid="val_722157_7451241_sb1_772">
+      <isinactive>F</isinactive>
+      <value>E-MAIL AMI</value>
+    </customvalue>
+    <customvalue scriptid="val_722158_7451241_sb1_711">
+      <isinactive>F</isinactive>
+      <value>E-MAIL CONVENIO</value>
+    </customvalue>
+    <customvalue scriptid="val_722159_7451241_sb1_468">
+      <isinactive>F</isinactive>
+      <value>E-MAIL FACTURACIÓN SECUNDARIA</value>
+    </customvalue>
+    <customvalue scriptid="val_722160_7451241_sb1_316">
+      <isinactive>F</isinactive>
+      <value>E-MAIL FACTURACIÓN PRINCIPAL</value>
+    </customvalue>
+    <customvalue scriptid="val_799923_7451241_sb1_712">
+      <isinactive>F</isinactive>
+      <value>E-MAIL MONITOREO</value>
+    </customvalue>
+    <customvalue scriptid="val_722161_7451241_sb1_893">
+      <isinactive>F</isinactive>
+      <value>E-MAIL OFICINA</value>
+    </customvalue>
+    <customvalue scriptid="val_722162_7451241_sb1_852">
+      <isinactive>F</isinactive>
+      <value>E-MAIL REGISTRESE HUNTER ONLINE</value>
+    </customvalue>
+  </customvalues>
+</customlist>

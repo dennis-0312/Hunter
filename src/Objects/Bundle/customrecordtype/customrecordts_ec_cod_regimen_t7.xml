@@ -1,0 +1,138 @@
+<customrecordtype scriptid="customrecordts_ec_cod_regimen_t7">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>F</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>F</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC - T7 Código Regimen</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>F</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecordts_ec_codigo_t7">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>EC - Codigo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_770790_7451241_sb1_790">
+      <custrecordts_ec_codigo_t7>94</custrecordts_ec_codigo_t7>
+      <isinactive>F</isinactive>
+      <name>Courier exportación</name>
+    </instance>
+    <instance scriptid="val_770791_7451241_sb1_772">
+      <custrecordts_ec_codigo_t7>79</custrecordts_ec_codigo_t7>
+      <isinactive>F</isinactive>
+      <name>Exportación a consumo desde Zona Franca</name>
+    </instance>
+    <instance scriptid="val_770792_7451241_sb1_293">
+      <custrecordts_ec_codigo_t7>40</custrecordts_ec_codigo_t7>
+      <isinactive>F</isinactive>
+      <name>Exportación definitive</name>
+    </instance>
+    <instance scriptid="val_770793_7451241_sb1_292">
+      <custrecordts_ec_codigo_t7>51</custrecordts_ec_codigo_t7>
+      <isinactive>F</isinactive>
+      <name>Exportación temporal para perfeccionamiento pasivo</name>
+    </instance>
+    <instance scriptid="val_770794_7451241_sb1_991">
+      <custrecordts_ec_codigo_t7>50</custrecordts_ec_codigo_t7>
+      <isinactive>F</isinactive>
+      <name>Exportación temporal para reimportación en el mismo estado</name>
+    </instance>
+    <instance scriptid="val_770795_7451241_sb1_866">
+      <custrecordts_ec_codigo_t7>95</custrecordts_ec_codigo_t7>
+      <isinactive>F</isinactive>
+      <name>Exportaciones Correos del Ecuador</name>
+    </instance>
+    <instance scriptid="val_770796_7451241_sb1_912">
+      <custrecordts_ec_codigo_t7>83</custrecordts_ec_codigo_t7>
+      <isinactive>F</isinactive>
+      <name>Reembarque</name>
+    </instance>
+    <instance scriptid="val_770797_7451241_sb1_541">
+      <custrecordts_ec_codigo_t7>60</custrecordts_ec_codigo_t7>
+      <isinactive>F</isinactive>
+      <name>Reexp. de mercancías en el mismo estado</name>
+    </instance>
+    <instance scriptid="val_770798_7451241_sb1_323">
+      <custrecordts_ec_codigo_t7>61</custrecordts_ec_codigo_t7>
+      <isinactive>F</isinactive>
+      <name>Reexportación de mercancías que fueron importadas para perfeccionamiento activo</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

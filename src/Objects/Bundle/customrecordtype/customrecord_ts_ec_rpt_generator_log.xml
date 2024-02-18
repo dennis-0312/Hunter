@@ -1,0 +1,749 @@
+<customrecordtype scriptid="customrecord_ts_ec_rpt_generator_log">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>T</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>F</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit>1</numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>TS EC Log de Reportes Generados</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>T</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_log_rpt_gen_subsidiaria">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Subsidiaria</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-117</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_log_rpt_gen_periodo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Periodo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-105</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_log_rpt_gen_estado">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Estado</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_log_rpt_gen_libro_legal">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Libro Legal</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_log_rpt_gen_report">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Reporte</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_ec_log_rpt_gen_url">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>URL</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_930146_7451241_sb1_675">
+      <custrecord_ts_ec_log_rpt_gen_estado>Procesando...</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>Reporte ATS</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Procesando...</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url></custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930187_7451241_sb1_101">
+      <custrecord_ts_ec_log_rpt_gen_estado>Procesando...</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>Procesando...</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url></custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930201_7451241_sb1_219">
+      <custrecord_ts_ec_log_rpt_gen_estado>Procesando...</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>Procesando...</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url></custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930202_7451241_sb1_796">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkag9ego&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930203_7451241_sb1_938">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkah14x4&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930229_7451241_sb1_886">
+      <custrecord_ts_ec_log_rpt_gen_estado>Procesando...</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>Procesando...</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url></custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930230_7451241_sb1_635">
+      <custrecord_ts_ec_log_rpt_gen_estado>Procesando...</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>Procesando...</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url></custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930231_7451241_sb1_231">
+      <custrecord_ts_ec_log_rpt_gen_estado>Procesando...</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>Procesando...</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url></custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930239_7451241_sb1_992">
+      <custrecord_ts_ec_log_rpt_gen_estado>Procesando...</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>Procesando...</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url></custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930243_7451241_sb1_828">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbcpwtk&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930244_7451241_sb1_486">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbcvz6o&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930245_7451241_sb1_921">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbdj2z4&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930246_7451241_sb1_896">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbe245s&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930247_7451241_sb1_117">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbe245s&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930248_7451241_sb1_949">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbei308&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930249_7451241_sb1_604">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbf29uw&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930250_7451241_sb1_739">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbf29uw&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930251_7451241_sb1_205">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbhsws8&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930254_7451241_sb1_606">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbiawxk&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930258_7451241_sb1_288">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS_TEST.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=28504&amp;c=7451241_SB1&amp;h=cCBrt_KOoFs79QToApZglu8Y9fLjdHCmXUTBWsNMfL6NpbdZ&amp;mv=lkbl8h34&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930286_7451241_sb1_952">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=29428&amp;c=7451241_SB1&amp;h=zw1Gh37WNDXTxayWvwZX8ZgwiA_sxn1UBseHT_98j3Soc5xG&amp;mv=lkbowfuw&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930291_7451241_sb1_806">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=29428&amp;c=7451241_SB1&amp;h=zw1Gh37WNDXTxayWvwZX8ZgwiA_sxn1UBseHT_98j3Soc5xG&amp;mv=lkbqo6m0&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930292_7451241_sb1_287">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>ATS072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=29428&amp;c=7451241_SB1&amp;h=zw1Gh37WNDXTxayWvwZX8ZgwiA_sxn1UBseHT_98j3Soc5xG&amp;mv=lkbqynxc&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_930295_7451241_sb1_865">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=lkbr5iu8&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_971385_7451241_sb1_989">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=lkjxmu7s&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1411946_7451241_sb1_750">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=lkstxn0g&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1415830_7451241_sb1_661">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT082023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=44170&amp;c=7451241_SB1&amp;h=PVp3adp5BbYLbhJC7PRZ9ceT56gl2RnO2UACtiTAmAhy7OhH&amp;mv=lleghads&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1416176_7451241_sb1_510">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT082023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=44170&amp;c=7451241_SB1&amp;h=PVp3adp5BbYLbhJC7PRZ9ceT56gl2RnO2UACtiTAmAhy7OhH&amp;mv=lll3dq4g&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1419064_7451241_sb1_793">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT082023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=44170&amp;c=7451241_SB1&amp;h=PVp3adp5BbYLbhJC7PRZ9ceT56gl2RnO2UACtiTAmAhy7OhH&amp;mv=lm7v6ddc&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1420557_7451241_sb1_748">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT082023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=44170&amp;c=7451241_SB1&amp;h=PVp3adp5BbYLbhJC7PRZ9ceT56gl2RnO2UACtiTAmAhy7OhH&amp;mv=lml53kps&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1425615_7451241_sb1_280">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT092023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=47799&amp;c=7451241_SB1&amp;h=taol3ScJZtssp4TbQzTc9d0WYpFFykQFSb7uZv9jUnDVzH3w&amp;mv=ln1twr6g&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1425616_7451241_sb1_797">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT082023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=44170&amp;c=7451241_SB1&amp;h=PVp3adp5BbYLbhJC7PRZ9ceT56gl2RnO2UACtiTAmAhy7OhH&amp;mv=ln1u56f4&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1425617_7451241_sb1_587">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln1u9p88&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1425659_7451241_sb1_740">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln1u9p88&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1425684_7451241_sb1_927">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln1u9p88&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1425685_7451241_sb1_273">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln2gkx4g&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1425979_7451241_sb1_640">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln3ajilk&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1425989_7451241_sb1_245">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln3aw17s&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1426051_7451241_sb1_649">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln3eap40&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1426054_7451241_sb1_325">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln3fhs1c&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1426055_7451241_sb1_359">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln3fhs1c&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1426062_7451241_sb1_345">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln3guv0g&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1426064_7451241_sb1_133">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT072023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=30043&amp;c=7451241_SB1&amp;h=FnLU_M_-IH8jcel-NScFyGBZ0nf7_BnQyOsisUq-YGTJvVVL&amp;mv=ln3h4mv4&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1426494_7451241_sb1_930">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT082023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=44170&amp;c=7451241_SB1&amp;h=PVp3adp5BbYLbhJC7PRZ9ceT56gl2RnO2UACtiTAmAhy7OhH&amp;mv=lnakrni8&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1426785_7451241_sb1_887">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT092023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=47799&amp;c=7451241_SB1&amp;h=taol3ScJZtssp4TbQzTc9d0WYpFFykQFSb7uZv9jUnDVzH3w&amp;mv=lnf2uq08&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427139_7451241_sb1_698">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT102023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=48788&amp;c=7451241_SB1&amp;h=LIGSyQnTLBORNUQcCDyYlhdGeRpcX9LGaJTwyG3qQdEZVEcH&amp;mv=lnjeil7c&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427189_7451241_sb1_364">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT102023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=48788&amp;c=7451241_SB1&amp;h=LIGSyQnTLBORNUQcCDyYlhdGeRpcX9LGaJTwyG3qQdEZVEcH&amp;mv=lnkfe10g&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427443_7451241_sb1_416">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT102023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=48788&amp;c=7451241_SB1&amp;h=LIGSyQnTLBORNUQcCDyYlhdGeRpcX9LGaJTwyG3qQdEZVEcH&amp;mv=lnnnjki8&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427457_7451241_sb1_566">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT102023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=48788&amp;c=7451241_SB1&amp;h=LIGSyQnTLBORNUQcCDyYlhdGeRpcX9LGaJTwyG3qQdEZVEcH&amp;mv=lnnxiauw&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427562_7451241_sb1_548">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT102023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=48788&amp;c=7451241_SB1&amp;h=LIGSyQnTLBORNUQcCDyYlhdGeRpcX9LGaJTwyG3qQdEZVEcH&amp;mv=lnp11rgg&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1427566_7451241_sb1_421">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT102023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=48788&amp;c=7451241_SB1&amp;h=LIGSyQnTLBORNUQcCDyYlhdGeRpcX9LGaJTwyG3qQdEZVEcH&amp;mv=lnp42k4g&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+    <instance scriptid="val_1428556_7451241_sb1_522">
+      <custrecord_ts_ec_log_rpt_gen_estado>Generado</custrecord_ts_ec_log_rpt_gen_estado>
+      <custrecord_ts_ec_log_rpt_gen_libro_legal>AT102023.xml</custrecord_ts_ec_log_rpt_gen_libro_legal>
+      <custrecord_ts_ec_log_rpt_gen_periodo></custrecord_ts_ec_log_rpt_gen_periodo>
+      <custrecord_ts_ec_log_rpt_gen_report>Reporte ATS</custrecord_ts_ec_log_rpt_gen_report>
+      <custrecord_ts_ec_log_rpt_gen_subsidiaria></custrecord_ts_ec_log_rpt_gen_subsidiaria>
+      <custrecord_ts_ec_log_rpt_gen_url>/core/media/media.nl?id=48788&amp;c=7451241_SB1&amp;h=LIGSyQnTLBORNUQcCDyYlhdGeRpcX9LGaJTwyG3qQdEZVEcH&amp;mv=lnwbt3q0&amp;_xt=.xml</custrecord_ts_ec_log_rpt_gen_url>
+      <isinactive>F</isinactive>
+    </instance>
+  </instances>
+</customrecordtype>

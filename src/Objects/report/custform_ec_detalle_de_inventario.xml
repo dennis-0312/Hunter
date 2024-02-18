@@ -1,0 +1,61 @@
+<entryForm scriptid="custform_ec_detalle_de_inventario" standard="STANDARDINVENTORYDETAILFORM">
+  <name>Custom Inventory Detail Form</name>
+  <recordType>ASSEMBLYUNBUILDINVENTORYDETAIL</recordType>
+  <inactive>F</inactive>
+  <preferred>T</preferred>
+  <mainFields>
+    <defaultFieldGroup>
+      <fields position="MIDDLE">
+        <field>
+          <id>CUSTOMFORM</id>
+          <label>Custom Form</label>
+          <visible>T</visible>
+          <mandatory>F</mandatory>
+          <displayType>NORMAL</displayType>
+          <columnBreak>F</columnBreak>
+          <sameRowAsPrevious>F</sameRowAsPrevious>
+        </field>
+        <field>
+          <id>ITEM</id>
+          <label>Item</label>
+          <visible>T</visible>
+          <mandatory>F</mandatory>
+          <displayType>INLINETEXT</displayType>
+          <columnBreak>F</columnBreak>
+          <sameRowAsPrevious>F</sameRowAsPrevious>
+        </field>
+        <field>
+          <id>ITEMDESCRIPTION</id>
+          <label>Description</label>
+          <visible>T</visible>
+          <mandatory>F</mandatory>
+          <displayType>INLINETEXT</displayType>
+          <columnBreak>F</columnBreak>
+          <sameRowAsPrevious>F</sameRowAsPrevious>
+        </field>
+        <field>
+          <id>QUANTITY</id>
+          <label>Quantity</label>
+          <visible>T</visible>
+          <mandatory>F</mandatory>
+          <displayType>INLINETEXT</displayType>
+          <columnBreak>F</columnBreak>
+          <sameRowAsPrevious>F</sameRowAsPrevious>
+        </field>
+        <field>
+          <id>UNIT</id>
+          <label>Units</label>
+          <visible>T</visible>
+          <mandatory>F</mandatory>
+          <displayType>INLINETEXT</displayType>
+          <columnBreak>F</columnBreak>
+          <sameRowAsPrevious>F</sameRowAsPrevious>
+        </field>
+      </fields>
+    </defaultFieldGroup>
+  </mainFields>
+  <customCode>
+    <scriptFile>[/SuiteScripts/ErickHunter/NC_CS_Custom_Inventory.js]</scriptFile>
+  </customCode>
+  <editingInList>T</editingInList>
+</entryForm>

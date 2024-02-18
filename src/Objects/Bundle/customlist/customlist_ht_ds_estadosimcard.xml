@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ht_ds_estadosimcard">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Estado Sim Card</name>
+  <customvalues>
+    <customvalue scriptid="val_818900_7451241_sb1_242">
+      <isinactive>F</isinactive>
+      <value>EN PROCESO DE ACTIVACIÓN</value>
+    </customvalue>
+    <customvalue scriptid="val_818896_7451241_sb1_253">
+      <isinactive>F</isinactive>
+      <value>ACTIVO</value>
+    </customvalue>
+    <customvalue scriptid="val_818897_7451241_sb1_418">
+      <isinactive>F</isinactive>
+      <value>EN PROCESO DE CORTE</value>
+    </customvalue>
+    <customvalue scriptid="val_818898_7451241_sb1_699">
+      <isinactive>F</isinactive>
+      <value>CORTE</value>
+    </customvalue>
+    <customvalue scriptid="val_971322_7451241_sb1_266">
+      <isinactive>F</isinactive>
+      <value>INACTIVO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

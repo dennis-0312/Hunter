@@ -1,0 +1,22 @@
+<restlet scriptid="customscriptts_rs_integration_3s_turnos">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_Integration_3S_Turnos</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/api/TS_RS_Integration_3S_Turnos.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeployts_rs_integration_3s_turnos">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>TS_RS_Integration_3S_Turnos</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

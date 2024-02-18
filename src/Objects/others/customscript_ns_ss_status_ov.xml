@@ -1,0 +1,24 @@
+<scheduledscript scriptid="customscript_ns_ss_status_ov">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>NS_SS_Status_ov</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <scriptfile>[/SuiteApps/Pruebas/NS_SS_Status_ov.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ns_ss_status_ov">
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>NOTSCHEDULED</status>
+      <title>NS_SS_Status_ov</title>
+      <recurrence>
+        <single>
+          <repeat>PT15M</repeat>
+          <startdate>2022-07-06</startdate>
+          <starttime>12:00:00Z</starttime>
+        </single>
+      </recurrence>
+    </scriptdeployment>
+  </scriptdeployments>
+</scheduledscript>

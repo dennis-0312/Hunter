@@ -49,7 +49,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 let codigoDocumento = result[6];
 
                 let rowString = `${codigoTipoComprobante}|${establecimiento}|${puntoEmision}|${sencuencialInicial}|` +
-                    `${secuencialFin}|${autorizacion}|${codigoDocumento}`;
+                    `${secuencialFin}|${autorizacion}|${codigoDocumento}\r\n`;
 
                 context.write({
                     key: context.key,

@@ -2,7 +2,7 @@
  *@NApiVersion 2.1
  *@NScriptType ClientScript
  */
-define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime'], (search, currentRecord, message, url, runtime) => {
+define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/https'], (search, currentRecord, message, url, runtime, https) => {
     let typeMode = '';
     const pageInit = (context) => {
         typeMode = context.mode; //!Importante, no borrar.
@@ -42,12 +42,13 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime'], (s
             const objRecord = currentRecord.get();
             var isperson = objRecord.getText('isperson');
             var vatregnumber = objRecord.getText('vatregnumber');
+            var tipoDoc = objRecord.getValue('custentity_ec_document_type');
             var nombre = objRecord.getValue('custentity_ht_cl_primernombre');
             var segundonombre = objRecord.getValue('custentity_ht_cl_segundonombre');
             var apellido = objRecord.getText('custentity_ht_cl_apellidopaterno');
             var segundoapellido = objRecord.getText('custentity_ht_cl_apellidomaterno');
             var companyName = objRecord.getText('companyname');
-            
+
             if (typeMode == 'create' || typeMode == 'copy') {
                 var id = '';
                 var flag = false;
@@ -102,7 +103,6 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime'], (s
                         }
                     }
                 }
-                return true;
             } else if (typeMode == 'edit') {
                 var id = objRecord.id;
                 var flag = true;
@@ -157,8 +157,19 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime'], (s
                         }
                     }
                 }
-                return true;
             }
+            if (tipoDoc == '1' || tipoDoc == '2') {
+                if (typeMode != 'delete') {
+                    let numeroDocumento = objRecord.getValue('vatregnumber');
+                    var digitoVerificador = getDigitoVerificador(numeroDocumento);
+                    const regex = /^\d$/;
+                    if (!regex.test(digitoVerificador)) {
+                        alert('El número de cédula es incorrecto');
+                        return false;
+                    }
+                }
+            }
+            return true;
         } catch (e) {
             log.error('Error en el saveRecord', e);
             return false;
@@ -230,6 +241,7 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime'], (s
             }
         }
     }
+
     function getCustomer(internalId, flag) {
         try {
             var arrCustomerId = new Array();
@@ -281,6 +293,7 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime'], (s
             log.error('Error en getCustomer', e);
         }
     }
+
     function getGlobalLabels() {
         var labels = {
             "Alerta1": {
@@ -295,6 +308,30 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime'], (s
 
         return labels;
     }
+
+    function getDigitoVerificador(numeroDocumento) {
+        try {
+            if (!numeroDocumento) return;
+            var headers = new Array();
+            headers['Content-type'] = 'application/json';
+
+            var restUrl = url.resolveScript({
+                scriptId: 'customscript_ts_rs_verification_code',
+                deploymentId: 'customdeploy_ts_rs_verification_code'
+            });
+
+            restUrl += `&numero=${numeroDocumento}`;
+            var response = https.get({
+                url: restUrl,
+                headers: headers
+            })
+
+            return response.body
+        } catch (error) {
+            return null;
+        }
+    }
+
     return {
         pageInit: pageInit,
         saveRecord: saveRecord,

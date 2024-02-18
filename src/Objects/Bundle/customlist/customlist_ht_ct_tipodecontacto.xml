@@ -1,0 +1,108 @@
+<customlist scriptid="customlist_ht_ct_tipodecontacto">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Tipo de Contacto</name>
+  <customvalues>
+    <customvalue scriptid="val_722112_7451241_sb1_311">
+      <isinactive>F</isinactive>
+      <value>000 NO DEFINIDO</value>
+    </customvalue>
+    <customvalue scriptid="val_722113_7451241_sb1_203">
+      <isinactive>F</isinactive>
+      <value>001 ABUELO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_722114_7451241_sb1_574">
+      <isinactive>F</isinactive>
+      <value>002 PADRE</value>
+    </customvalue>
+    <customvalue scriptid="val_882571_7451241_sb1_930">
+      <isinactive>F</isinactive>
+      <value>003 MADRE</value>
+    </customvalue>
+    <customvalue scriptid="val_882572_7451241_sb1_857">
+      <isinactive>F</isinactive>
+      <value>004 TIO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_882573_7451241_sb1_532">
+      <isinactive>F</isinactive>
+      <value>005 HIJO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_882574_7451241_sb1_530">
+      <isinactive>F</isinactive>
+      <value>006 PRIMO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_882575_7451241_sb1_752">
+      <isinactive>F</isinactive>
+      <value>007 SOBRINO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_882576_7451241_sb1_853">
+      <isinactive>F</isinactive>
+      <value>008 SUEGRO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_882577_7451241_sb1_650">
+      <isinactive>F</isinactive>
+      <value>009 AMIGO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_882578_7451241_sb1_730">
+      <isinactive>F</isinactive>
+      <value>010 ESPOSO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_882579_7451241_sb1_953">
+      <isinactive>F</isinactive>
+      <value>011 HERMANO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_882580_7451241_sb1_466">
+      <isinactive>F</isinactive>
+      <value>012 CUÑADO (A)</value>
+    </customvalue>
+    <customvalue scriptid="val_882581_7451241_sb1_414">
+      <isinactive>F</isinactive>
+      <value>013 REPRESENTANTE</value>
+    </customvalue>
+    <customvalue scriptid="val_882582_7451241_sb1_488">
+      <isinactive>F</isinactive>
+      <value>014 CONTACTO KEEPER</value>
+    </customvalue>
+    <customvalue scriptid="val_882583_7451241_sb1_364">
+      <isinactive>F</isinactive>
+      <value>015 CONTACTO EMERG PRINC</value>
+    </customvalue>
+    <customvalue scriptid="val_882584_7451241_sb1_801">
+      <isinactive>F</isinactive>
+      <value>016 CONTACTO EMERG SECUN</value>
+    </customvalue>
+    <customvalue scriptid="val_882585_7451241_sb1_415">
+      <isinactive>F</isinactive>
+      <value>017 CONTACTO EMERGENCIA MONITOREO</value>
+    </customvalue>
+    <customvalue scriptid="val_882586_7451241_sb1_763">
+      <isinactive>F</isinactive>
+      <value>018 CONTACTO COBRANZAS</value>
+    </customvalue>
+    <customvalue scriptid="val_882587_7451241_sb1_411">
+      <isinactive>F</isinactive>
+      <value>019 CONTACTO ALERTA DE IMPACTO</value>
+    </customvalue>
+    <customvalue scriptid="val_882588_7451241_sb1_930">
+      <isinactive>F</isinactive>
+      <value>020 CONTACTO DE RASTREO</value>
+    </customvalue>
+    <customvalue scriptid="val_882589_7451241_sb1_508">
+      <isinactive>F</isinactive>
+      <value>021 USUARIO LATAM</value>
+    </customvalue>
+    <customvalue scriptid="val_882590_7451241_sb1_850">
+      <isinactive>F</isinactive>
+      <value>022 CONTACTO DE MANTENIMIENTO</value>
+    </customvalue>
+    <customvalue scriptid="val_882591_7451241_sb1_943">
+      <isinactive>F</isinactive>
+      <value>023 CONTACTO COOPERATIVA</value>
+    </customvalue>
+    <customvalue scriptid="val_882592_7451241_sb1_163">
+      <isinactive>F</isinactive>
+      <value>024 CONTACTO HUNTER MED</value>
+    </customvalue>
+  </customvalues>
+</customlist>

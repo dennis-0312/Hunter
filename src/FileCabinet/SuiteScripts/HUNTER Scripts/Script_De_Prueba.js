@@ -39,13 +39,14 @@ define(['N/https', 'N/log', 'N/record', 'N/search'],
             var searchResultCount = customrecord_ht_record_bienesSearchObj.runPaged().count;
             log.debug("customrecord_ht_record_bienesSearchObj result count", searchResultCount);
             customrecord_ht_record_bienesSearchObj.run().each(function (result) {
+                // .run().each has a limit of 4,000 results
                 let cliente = result.getValue({ name: "custentity_ec_vatregnumber", join: "CUSTRECORD_HT_BIEN_PROPIETARIO", label: "CLIENTE" });
-                let username = result.getValue({ name: "email", join: "CUSTRECORD_HT_BIEN_PROPIETARIO", label: "USERNAME" });
+                let userame = result.getValue({ name: "email", join: "CUSTRECORD_HT_BIEN_PROPIETARIO", label: "USERNAME" });
                 let amicliente = result.getValue({ name: "custentity_ht_customer_id_telematic", join: "CUSTRECORD_HT_BIEN_PROPIETARIO", label: "AMICLIENTE" });
                 let codvehiculo = result.getValue({ name: "internalid", label: "CODVEHICULO" });
                 json.push({
                     cliente: cliente,
-                    username: username,
+                    userame: userame,
                     amicliente: amicliente,
                     codvehiculo: codvehiculo
                 });
@@ -53,24 +54,11 @@ define(['N/https', 'N/log', 'N/record', 'N/search'],
             });
 
             log.debug('JSON', json);
-
-            // Add additional code
-
-            var headerObj = {
-                name: 'Accept-Language',
-                value: 'en-us'
-            };
-            var response = https.post({
-                url: 'https://www.testwebsite.com',
-                body: 'My POST Data',
-                headers: headerObj
-            });
-
-            var myresponse_body = response.body; // see https.ClientResponse.body
-            var myresponse_code = response.code; // see https.ClientResponse.code
-            var myresponse_headers = response.headers; // see https.Clientresponse.headers
-
-            // Add additional code
+            /*
+            customrecord_ht_record_bienesSearchObj.id="customsearch1697156099490";
+            customrecord_ht_record_bienesSearchObj.title="Búsqueda de Bienes (copy)";
+            var newSearchId = customrecord_ht_record_bienesSearchObj.save();
+            */
         }
 
         return { beforeLoad, beforeSubmit, afterSubmit }

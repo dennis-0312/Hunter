@@ -20,34 +20,37 @@ define(['N/log',
     'N/redirect',
     'N/url',
     'N/https',
+    'N/task',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
     '../error/TS_CM_ErrorMessages',
     'N/error',
-], (log, search, record, runtime, redirect, url, https, _controller, _constant, _errorMessage, err) => {
+], (log, search, record, runtime, redirect, url, https, task, _controller, _constant, _errorMessage, err) => {
     const INVOICE = 'invoice';
-    const CASH_SALE = 'cashsale';
     const CREDIT_MEMO = 'creditmemo';
     const VENDOR_BILL = 'vendorbill';
     const BILL_CREDIT = 'vendorcredit';
-    const FORM_FACTURA = 125;
-    const FORM_CASH_SALE = 127;
-    const FORM_CREDIT_MEMO = 104;
-    const FORM_DEBIT_MEMO = 129;
-    const DOCUMENT_TYPE_RUC = 4; //Registro Unico De Contribuyentes
-    const DOCUMENT_TYPE_DNI = 2; //Documento Nacional De Identidad
+    const EJECUCION_PEDIDO_ARTICULO = 'itemfulfillment';
+    const SERVICE_ORDER = 'salesorder'
     const DOCUMENT_TYPE_FACTURA = 4; //Factura
-    const DOCUMENT_TYPE_BOLETA = 9; // Boleta
+    const DOCUMENT_TYPE_GUIA_REMISION = 3; //Factura
+    const DOCUMENT_TYPE_LIQUIDACION_COMPRA = 10;
+    const DOCUMENT_TYPE_COMPROBANTE_RETENCION = 11;
     const DOCUMENT_TYPE_CREDIT_MEMO = 1; // Nota de Crédito
-    const DOCUMENT_TYPE_NO_DOMICILIADO = 9 // No domicialiado
-    const DOCUMENT_TYPE_RECIBO_HONORARIOS = 108; // Recibo por honorarios
-    const DOCUMENT_TYPE_DEBIT_MEMO = 2;
-    const PE_FEL_Sending_Method = 5; //SB: 5 / PR: ?
-    const PE_FEL_Sending_Method_nc = 6; //SB: 6 / PR: ?
-    const PE_Cash_Sale_FEL_Template = 1;
-    const PE_Invoice_FEL_Template = 2;
-    const PE_Credit_Memo_FEL_Template = 3;
+    const PE_FEL_Sending_Method = 4; //SB: 5 / PR: 4
+    const PE_FEL_Sending_Method_nc = 4; //SB: 6 / PR: 4
+    const PE_Invoice_FEL_Template = 1;
+    const PE_Credit_Memo_FEL_Template = 1;
+    const PE_Liquidacion_Compra_FEL_Template = 1;
+    const PE_Liquidacion_Compra_FEL_Sending = 4;
+    const PE_Comprobante_Retencion_FEL_Template = 1;
+    const PE_Comprobante_Retencion_FEL_Sending = 4;
+    const PE_Guia_De_Remision_FEL_Template = 2;
+    const PE_Guia_De_Remision_FEL_Sendings = 5;
     const For_Generation_Status = 1;
+    const FORM_NOTA_CREDITO_COMPRA = 104;
+    const ITEM = 'item';
+
     let doctype = 0;
     let prefix = '';
     const PE_CONFIG_IMPRESORA = 'customsearch_pe_config_impresora' //PE Config Impresora - PRODUCCION
@@ -94,20 +97,50 @@ define(['N/log',
                         objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: creditMemoSerie.serieid || "", ignoreFieldChange: true });
                         objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: '', ignoreFieldChange: true });
                     }
+                } else if (objRecord.type == INVOICE) {
+                    let referenceOrdenservicioId = objRecord.getValue('createdfrom');
+                    //log.error('referenceOrdenservicioId', referenceOrdenservicioId);
+                    if (referenceOrdenservicioId) {
+                        let location = objRecord.getValue({ fieldId: 'location' });
+                        let docFiscal = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                        let idSerie = getSerie(docFiscal, location).serieid;
+                        //log.error('idSerie', idSerie);
+                        objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: idSerie, ignoreFieldChange: true });
+                    }
+                } else if (objRecord.type == EJECUCION_PEDIDO_ARTICULO) {
+                    objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: DOCUMENT_TYPE_GUIA_REMISION, ignoreFieldChange: true });
+                    let OServ = objRecord.getValue({ fieldId: 'createdfrom' });
+                    let typeTransaction = search.lookupFields({ type: 'transaction', id: OServ, columns: ['location'] });
+                    let location = typeTransaction.location[0].value;
+                    let idSerie = getSerie(DOCUMENT_TYPE_GUIA_REMISION, location).serieid;
+                    objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: idSerie, ignoreFieldChange: true });
                 }
             } catch (error) {
                 log.error('Error-beforeLoad-General', eventType + '--' + error);
             }
         }
+        if (eventType === context.UserEventType.VIEW) {
+            let objRecord = context.newRecord;
+            let autorizacion = objRecord.getText({ fieldId: 'custbodyts_ec_num_autorizacion' });
+            if (autorizacion) {
+                var form = context.form;
+                //form.removeButton('edit');
+                //form.removeButton('custpage_generate_ei_button');
+            }
+            if (objRecord.type == _constant.Transaction.VENDOR_PAYMENT || objRecord.type == _constant.Transaction.CHECK || objRecord.type == _constant.Transaction.VENDOR_PRE_PAYMENT) {
+                let forms = context.form;
+                imprimirComprobante(forms, objRecord);
+                forms.clientScriptModulePath = './TS_CS_Pago_Factura.js'
+            }
+        }
     }
-
 
     const beforeSubmit = (context) => {
         const eventType = context.type;
         log.error('eventType', eventType);
         //log.error("eventTypebeforeSubmit", eventType);
         let documentref = '';
-        if (eventType === context.UserEventType.CREATE /*|| eventType === context.UserEventType.EDIT*/) {
+        if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY /*|| eventType === context.UserEventType.EDIT*/) {
             const objRecord = context.newRecord;
             try {
                 if (objRecord.type == VENDOR_BILL || objRecord.type == BILL_CREDIT) {
@@ -116,44 +149,37 @@ define(['N/log',
                     const serie_cxp = objRecord.getValue({ fieldId: 'custbody_ts_ec_serie_doc_cxp' });
                     const pe_number = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
                     let total = String(objRecord.getValue({ fieldId: 'usertotal' }));
-                    //log.debug('total', total);
                     let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
                     objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
-                    // log.debug('DOCUMENT_TYPE_FACTURA', DOCUMENT_TYPE_FACTURA);
-                    // log.debug('DOCUMENT_TYPE_NO_DOMICILIADO', DOCUMENT_TYPE_NO_DOMICILIADO);
-                    // log.debug('DOCUMENT_TYPE_RECIBO_HONORARIOS', DOCUMENT_TYPE_RECIBO_HONORARIOS);
-                    // log.debug('docu_type', docu_type);
                     if (docu_type == DOCUMENT_TYPE_FACTURA) {
                         ref_no = 'FA-' + serie_cxp + '-' + pe_number;
                     } else if (docu_type == DOCUMENT_TYPE_CREDIT_MEMO) {
                         ref_no = 'NC-' + serie_cxp + '-' + pe_number;
                     }
-                    //log.debug('TranID', ref_no);
                     objRecord.setValue({ fieldId: 'tranid', value: ref_no });
                 } else {
-                    //log.debug('INVOICE');
                     const customform = objRecord.getValue({ fieldId: 'customform' });
                     const customer = objRecord.getValue({ fieldId: 'entity' }); //^: Activar cuando tipo de documento venga de cliente
-                    const location = objRecord.getValue({ fieldId: 'location' });
                     let total = String(objRecord.getValue({ fieldId: 'total' }));
                     if (objRecord.type == INVOICE) { // NOTA: REVISAR
                         //log.debug('INVOICE');
                         objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Invoice_FEL_Template, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
                         objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_FEL_Sending_Method, ignoreFieldChange: true });
                     } else if (objRecord.type == CREDIT_MEMO) { }
 
                     let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
                     objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
-                    //log.debug('montoLetras', montoLetras);
-                    //doctype = objRecord.getValue({ fieldId: 'custbody_pe_document_type' }); //*Activar cuando venga a demanda para Ibero
                     if (objRecord.type == INVOICE) {
-                        doctype = DOCUMENT_TYPE_FACTURA;//^: Activar cuando tipo de documento venga de cliente
+                        //doctype = DOCUMENT_TYPE_FACTURA;//^: Activar cuando tipo de documento venga de cliente
+                        let location = objRecord.getValue({ fieldId: 'location' });
+                        doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
                         prefix = 'FA-';
                         try {
                             let getserie = getSerie(doctype, location, prefix, documentref);
-                            //log.debug('LOG-getserie', getserie);
-                            let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr);
-                            //log.debug('LOG-correlative1', correlative);
+                            log.error('LOG-getserie', getserie);
+                            let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
+                            log.error('LOG-correlative1', correlative);
                             objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
                             objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
                             //log.debug('LOG-correlative2', correlative.numbering);
@@ -163,13 +189,50 @@ define(['N/log',
                         } catch (error) {
                             log.error('Error-beforeSubmit-Intro', error);
                         }
-                    } else if (objRecord.type == CREDIT_MEMO) { }
+                    } else if (objRecord.type == CREDIT_MEMO) {
+
+                    } else if (objRecord.type == EJECUCION_PEDIDO_ARTICULO) {
+                        var formulario = objRecord.getValue('customform')// 143 Proveduria
+                        if (formulario != 143) {
+                            log.error('beforeSubmit', 'beforeSubmit');
+                            doctype = DOCUMENT_TYPE_GUIA_REMISION;//^: Activar cuando tipo de documento venga de cliente
+                            prefix = 'GDR-';
+                            try {
+                                let OServ = objRecord.getValue({ fieldId: 'createdfrom' });
+                                let typeTransaction = search.lookupFields({ type: 'transaction', id: OServ, columns: ['location'] });
+                                let location_ej = typeTransaction.location[0].value;
+                                let getserie = getSerie(doctype, location_ej, prefix, documentref);
+                                let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
+                                // objRecord.setValue({ fieldId: 'location', value: location_ej });
+                                objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                                objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                                objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                            } catch (error) {
+                                log.error('Error-beforeSubmit-Intro', error);
+                            }
+                        }
+                    } else if (objRecord.type == SERVICE_ORDER) {
+                        let location = objRecord.getValue({ fieldId: 'location' });
+                        doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                        prefix = 'OS-';
+                        try {
+                            let getserie = getSerie(doctype, location, prefix, documentref);
+                            log.error('LOG-getserie', getserie);
+                            let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
+                            log.error('LOG-correlative1', correlative);
+                            objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                            objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                            objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                        } catch (error) {
+                            log.error('Error-beforeSubmit-Intro', error);
+                        }
+                    }
                 }
             } catch (error) {
                 log.error('Error-beforeSubmit-' + objRecord.type, eventType + '--' + error);
             }
         }
-        
+
         if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) {
             if (context.newRecord.type == VENDOR_BILL) {
                 const objRecord = context.newRecord;
@@ -177,7 +240,7 @@ define(['N/log',
                 var customer = objRecord.getValue({ fieldId: 'entity' });
                 var pe_number = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
                 log.error('customer', customer);
-                
+
                 var existe = buscarFacCompra(customer, pe_number);
 
                 if (existe) {
@@ -190,10 +253,15 @@ define(['N/log',
                     throw myCustomError;
                 }
             }
-        } else if(eventType === context.UserEventType.EDIT){
-            if (context.newRecord.type == VENDOR_BILL){
+        } else if (eventType === context.UserEventType.EDIT) {
+            if (context.newRecord.type == VENDOR_BILL) {
                 let objRecord = context.newRecord;
                 let oldRecord = context.oldRecord;
+
+                let total = String(objRecord.getValue({ fieldId: 'usertotal' }));
+                //log.debug('total', total);
+                let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
+                objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
 
                 var customer_new = objRecord.getValue({ fieldId: 'entity' });
                 var pe_number_new = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
@@ -204,7 +272,7 @@ define(['N/log',
                 log.error('customer_old', customer_old);
                 log.error('pe_number_old', pe_number_old);
 
-                if(customer_new != customer_old || pe_number_new != pe_number_old){
+                if (customer_new != customer_old || pe_number_new != pe_number_old) {
                     var existe_new = buscarFacCompra(customer_new, pe_number_new);
                     if (existe_new) {
                         var myCustomError = err.create({
@@ -221,42 +289,235 @@ define(['N/log',
     }
 
     const afterSubmit = (context) => {
-        const objRecord = context.newRecord;
+        let objRecord = context.newRecord;
         const eventType = context.type;
         const recordId = context.newRecord.id;
-        if (eventType === context.UserEventType.CREATE) {
+        log.error("afterSubmit", eventType);
+        log.error("recordId", recordId);
+
+        if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) {
+            //log.error("context.newRecord.type", context.newRecord.type);
             if (context.newRecord.type == CREDIT_MEMO) {
-                const doctype = DOCUMENT_TYPE_CREDIT_MEMO;
-                const palabraBuscada = "Withholding Tax";
-                const prefix = 'NC-';
+                let doctype = DOCUMENT_TYPE_CREDIT_MEMO;
+                let palabraBuscada = "Withholding Tax";
+                let prefix = 'NC-';
                 try {
                     const memo = context.newRecord.getValue({ fieldId: 'memo' });
                     if (memo.includes(palabraBuscada)) {
+                        //log.debug('Nota de Crédito', 'Certificado de Retención');
                     } else {
+                        log.error("start", "flow");
+
                         let objRecord = record.load({ type: CREDIT_MEMO, id: recordId, isDynamic: true });
-                        let location = objRecord.getValue({ fieldId: 'location' });
-                        let total = String(objRecord.getValue({ fieldId: 'total' }));
-                        let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
-                        let documentref = objRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
-                        let getserie = getSerie(doctype, location, prefix, documentref);
-                        let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr);
-                        objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true });
-                        objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
-                        objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
-                        objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
-                        objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
-                        try {
-                            objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Credit_Memo_FEL_Template, ignoreFieldChange: true });
-                            objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
-                            objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_FEL_Sending_Method_nc, ignoreFieldChange: true });
-                        } catch (error) {
-                            log.error("error", error)
+                        let customform = objRecord.getValue({ fieldId: 'customform' });
+                        log.error("customform", customform);
+
+                        if (customform == FORM_NOTA_CREDITO_COMPRA) {
+                            objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: DOCUMENT_TYPE_COMPROBANTE_RETENCION, ignoreFieldChange: true });
+                            try {
+                                objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: "", ignoreFieldChange: true });
+                                objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: "", ignoreFieldChange: true });
+                                objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: "", ignoreFieldChange: true });
+                            } catch (error) {
+                                log.error("error", error)
+                            }
+                            objRecord.save();
+                        } else {
+                            objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: DOCUMENT_TYPE_CREDIT_MEMO, ignoreFieldChange: true });
+                            let location = objRecord.getValue({ fieldId: 'location' });
+                            let total = String(objRecord.getValue({ fieldId: 'total' }));
+                            let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
+                            let documentref = objRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
+                            let getserie = getSerie(doctype, location, prefix, documentref);
+                            //log.debug('LOG-getserie', getserie);
+                            let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
+                            //log.debug('LOG-correlative1', correlative);
+                            //objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true });
+                            objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                            objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                            //log.debug('LOG-correlative2', correlative.numbering);
+                            objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                            //log.debug('LOG-correlative3', objRecord.getValue('tranid'));
+                            objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
+                            //log.debug('montoLetras', montoLetras);
+                            try {
+                                objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Credit_Memo_FEL_Template, ignoreFieldChange: true });
+                                objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
+                                objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_FEL_Sending_Method_nc, ignoreFieldChange: true });
+                            } catch (error) {
+                                log.error("error", error)
+                            }
+                            objRecord.save();
                         }
-                        objRecord.save();
                     }
+                } catch (error) {
+                    log.error('CREDIT MEMO - Error-afterSubmit-Intro ', error);
+                }
+            } else if (context.newRecord.type == INVOICE) {
+                let documentref = '';
+                let location_id = objRecord.getValue({ fieldId: 'location' });
+                //doctype = DOCUMENT_TYPE_FACTURA;//^: Activar cuando tipo de documento venga de cliente
+                doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                prefix = 'FAC-';
+                try {
+                    let getserie = getSerie(doctype, location_id, prefix, documentref);
+                    let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
+                    updateTransaction(objRecord.type, objRecord.id, correlative.numbering);
                 } catch (error) {
                     log.error('Error-afterSubmit-Intro', error);
                 }
+
+                // try {
+                //     let objRecord2 = record.load({ type: INVOICE, id: recordId, isDynamic: true });
+                //     objRecord2.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Credit_Memo_FEL_Template, ignoreFieldChange: true });
+                //     objRecord2.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
+                //     objRecord2.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_FEL_Sending_Method_nc, ignoreFieldChange: true });
+                //     let devoid = objRecord.save();
+                //     log.debug('Devo', devoid);
+                // } catch (error) {
+                //     log.error('Error-Devo', error);
+                // }
+            } else if (context.newRecord.type == EJECUCION_PEDIDO_ARTICULO) {
+                log.error('afterSubmit EJECUCION_PEDIDO_ARTICULO', 'afterSubmit');
+
+                var formulario = objRecord.getValue('customform')// 143 Proveduria
+                log.error('formulario', formulario);
+                if (formulario != 143) {
+                    let documentref = '';
+                    let OServ = objRecord.getValue({ fieldId: 'createdfrom' });
+                    let typeTransaction = search.lookupFields({
+                        type: 'transaction',
+                        id: OServ,
+                        columns: ['location']
+                    });
+                    let location_ej = typeTransaction.location[0].value;
+                    doctype = DOCUMENT_TYPE_GUIA_REMISION;
+                    prefix = 'GDR-';
+                    try {
+                        //let getserie = getSerie(doctype, location_id, prefix, documentref);
+                        let getserie = getSerie(doctype, location_ej, prefix, documentref);
+                        let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
+                        objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                        log.error('afterSubmit objRecord.type', objRecord.type);
+                        log.error('afterSubmit recordId', recordId);
+                        log.error("correlative", correlative);
+                        var recordLoad = record.load({ type: objRecord.type, id: recordId, isDynamic: false });
+                        recordLoad.setValue('tranid', correlative.numbering);
+                        try {
+                            recordLoad.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Guia_De_Remision_FEL_Template, ignoreFieldChange: true });
+                            recordLoad.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
+                            recordLoad.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_Guia_De_Remision_FEL_Sendings, ignoreFieldChange: true });
+                        } catch (error) {
+                            log.error("error", error)
+                        }
+                        recordLoad.save({ ignoreMandatoryFields: true, enableSourcing: false });
+                    } catch (error) {
+                        log.error('Error-beforeSubmit-Intro', error);
+                    }
+                } else {
+                    let OServ = objRecord.getValue({ fieldId: 'createdfrom' });
+                    let typeTransaction = search.lookupFields({
+                        type: 'transaction',
+                        id: OServ,
+                        columns: ['statusRef']
+                    });
+
+                    let estado = typeTransaction.statusRef[0].value;
+                    if (estado == 'pendingBilling') {
+                        var recordLoad = record.load({ type: 'salesorder', id: OServ, isDynamic: false });
+                        let cant_Item = recordLoad.getLineCount(ITEM);
+
+                        for (let i = 0; i < cant_Item; i++) {
+
+                            recordLoad.setSublistValue({ sublistId: ITEM, fieldId: 'isclosed', line: i, value: true });
+
+                        }
+                        recordLoad.save({ ignoreMandatoryFields: true, enableSourcing: false });
+                    }
+                }
+
+
+            } else if (context.newRecord.type == VENDOR_BILL) {
+                let tipoDocumentoFiscal = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                if (tipoDocumentoFiscal == DOCUMENT_TYPE_LIQUIDACION_COMPRA) {
+                    let doctype = DOCUMENT_TYPE_LIQUIDACION_COMPRA;
+                    let prefix = 'LC-';
+                    let objRecord = record.load({ type: VENDOR_BILL, id: recordId, isDynamic: true });
+                    let location = objRecord.getValue({ fieldId: 'location' });
+                    let total = String(objRecord.getValue({ fieldId: 'total' }));
+                    let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
+                    let documentref = objRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
+                    let getserie = getSerie(doctype, location, prefix, documentref);
+                    let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
+
+                    objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true });
+                    objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                    objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                    objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                    objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
+                    try {
+                        if (objRecord.getValue({ fieldId: 'approvalstatus' }) == _constant.Status.APPROVED) {
+                            objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Liquidacion_Compra_FEL_Template, ignoreFieldChange: true });
+                            objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
+                            objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_Liquidacion_Compra_FEL_Sending, ignoreFieldChange: true });
+                        }
+                    } catch (error) {
+                        log.error("error", error)
+                    }
+                    objRecord.save();
+                }
+            } else if (context.newRecord.type == BILL_CREDIT) {
+                // EN DESHUSO, se deja por si llega a cambiar
+                let palabraBuscada = "Withholding Tax";
+                let memo = context.newRecord.getValue({ fieldId: 'memo' });
+                if (memo.includes(palabraBuscada)) {
+
+                    let doctype = DOCUMENT_TYPE_COMPROBANTE_RETENCION;
+                    let prefix = 'CR-';
+                    let objRecord = record.load({ type: BILL_CREDIT, id: recordId, isDynamic: true });
+                    let location = objRecord.getValue({ fieldId: 'location' });
+                    let total = String(objRecord.getValue({ fieldId: 'total' }));
+                    let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
+                    let documentref = objRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
+                    let getserie = getSerie(doctype, location, prefix, documentref);
+                    let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
+
+                    objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true });
+                    objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                    objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                    objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                    objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
+
+                    try {
+                        objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Comprobante_Retencion_FEL_Template, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_Comprobante_Retencion_FEL_Sending, ignoreFieldChange: true });
+                    } catch (error) {
+                        log.error("error", error)
+                    }
+                    objRecord.save();
+                }
+            } else if (context.newRecord.type == SERVICE_ORDER) {
+                let documentref = '';
+                let location_id = objRecord.getValue({ fieldId: 'location' });
+                doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                prefix = 'OS';
+                try {
+                    let getserie = getSerie(doctype, location_id, prefix, documentref);
+                    let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
+                    updateTransaction(objRecord.type, objRecord.id, correlative.numbering);
+                } catch (error) {
+                    log.error('Error-afterSubmit-Intro', error);
+                }
+            }
+            try {
+                let scheduledScript = task.create({ taskType: task.TaskType.SCHEDULED_SCRIPT });
+                scheduledScript.scriptId = 'customscript_ts_ss_actualizacion_correla';
+                scheduledScript.deploymentId = 'customdeploy_ts_ss_actualizacion_correla';
+                scheduledScript.params = { 'custscript_ht_punto_inicio': '0' };
+                //scheduledScript.submit();
+            } catch (error) {
+                log.error('Error-Update', error);
             }
         }
 
@@ -274,7 +535,7 @@ define(['N/log',
                                 "AND",
                                 ["appliedtotransaction", "noneof", "@NONE@"],
                                 "AND",
-                                ["appliedtotransaction.custbody5", "is", "T"]
+                                ["appliedtotransaction.custbody_ht_comision_pago", "is", "T"]
                             ],
                         columns:
                             [
@@ -340,8 +601,541 @@ define(['N/log',
                 }
             }
         }
+
+        if (eventType === context.UserEventType.EDIT || eventType === context.UserEventType.COPY || eventType === context.UserEventType.CREATE) {
+            if (context.newRecord.type == VENDOR_BILL) {
+                let baseItemRateequalto0 = getItemBaseRateequalto0(recordId);
+                let baseItemRatenotequalto0 = getItemBaseRatenotequalto0(recordId)
+                let baseExpenseRateequalto0 = getExpenseBaseRateequalto0(recordId);
+                let baseExpenseRatenotequalto0 = getExpenseBaseRatenotequalto0(recordId)
+                let amountTax = getMontoIVATotal(recordId)
+                setWithholdingVoucherField(objRecord, baseItemRateequalto0, baseItemRatenotequalto0, baseExpenseRateequalto0, baseExpenseRatenotequalto0, amountTax);
+            }
+        }
+
+        if (eventType === context.UserEventType.COPY || eventType === context.UserEventType.CREATE) {
+            if (context.newRecord.type == VENDOR_BILL) {
+                setDocumentValuesWithholdingVoucherField(objRecord);
+            }
+        }
+
+        if (eventType === context.UserEventType.EDIT) {
+            if (context.newRecord.type == INVOICE) {
+                try {
+                    let scheduledScript = task.create({ taskType: task.TaskType.SCHEDULED_SCRIPT });
+                    scheduledScript.scriptId = 'customscript_ts_ss_actualizacion_correla';
+                    scheduledScript.deploymentId = 'customdeploy_ts_ss_actualizacion_correla';
+                    scheduledScript.params = { 'custscript_ht_punto_inicio': '2' };
+                    scheduledScript.submit();
+                } catch (error) {
+                    log.error('Error-Update-Edit', error);
+                }
+            }
+
+            if (context.newRecord.type == VENDOR_BILL && !objRecord.getValue('custbody_ts_ec_preimpreso_retencion')) {
+                setDocumentValuesWithholdingVoucherField(objRecord);
+            }
+        }
     }
 
+    const setDocumentValuesWithholdingVoucherField = (objRecord) => {
+        let item = verifyWithholdingTaxApply(objRecord, "item");
+        let expense = verifyWithholdingTaxApply(objRecord, "expense");
+        if (item || expense) {
+            log.error("setDocumentValuesWithholdingVoucherField", "setDocumentValuesWithholdingVoucherField");
+            let doctype = DOCUMENT_TYPE_COMPROBANTE_RETENCION;
+            let prefix = 'RET-';
+            let location = objRecord.getValue({ fieldId: 'location' });
+            let getserie = getSerie(doctype, location, prefix);
+            let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
+            let fieldsToUpdate = {
+                custbodyec_tipo_de_documento_retencion: doctype,
+                custbody_ec_serie_cxc_retencion: getserie.serieid,
+                custbody_ts_ec_preimpreso_retencion: correlative.correlative
+            }
+            log.error("fieldsToUpdate RETENCION", "fieldsToUpdate");
+            updateMainFieldTransaction(objRecord.type, objRecord.id, fieldsToUpdate);
+        }
+    }
+
+    const setWithholdingVoucherField = (objRecord, baseItemRateequalto0, baseItemRatenotequalto0, baseExpenseRateequalto0, baseExpenseRatenotequalto0, amountTax) => {
+        let fieldsToUpdate = {};
+        let item = verifyWithholdingTaxApply(objRecord, "item");
+        let expense = verifyWithholdingTaxApply(objRecord, "expense");
+
+        if (item) {
+            let withholdingTaxCodeList = {}, withholdingCodeId = {};
+            let lines = objRecord.getLineCount("item");
+            for (let line = 0; line < lines; line++) {
+                let apply = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_4601_witaxapplies', line });
+                if (apply) {
+                    let withholdingTaxCode = objRecord.getSublistValue({ sublistId: "item", fieldId: "custcol_4601_witaxcode", line });
+                    let baseAmount = Number(objRecord.getSublistValue({ sublistId: "item", fieldId: "amount", line }));
+                    let rate = Number(objRecord.getSublistValue({ sublistId: "item", fieldId: "taxrate1", line })) / 100;
+                    let taxAmount = roundTwoDecimal(rate * baseAmount);
+                    if (withholdingTaxCodeList[withholdingTaxCode] !== undefined) {
+                        withholdingTaxCodeList[withholdingTaxCode].baseAmount = roundTwoDecimal(withholdingTaxCodeList[withholdingTaxCode].baseAmount + baseAmount);
+                        withholdingTaxCodeList[withholdingTaxCode].taxAmount = roundTwoDecimal(withholdingTaxCodeList[withholdingTaxCode].taxAmount + taxAmount);
+                    } else {
+                        withholdingTaxCodeList[withholdingTaxCode] = { withholdingTaxCode, baseAmount, taxAmount };
+                    }
+                    withholdingCodeId[withholdingTaxCode] = withholdingTaxCode;
+                }
+            }
+            let withhHoldingTaxList = getWithholdingTaxJson(withholdingTaxCodeList, Object.keys(withholdingCodeId));
+            //log.error('withhHoldingTaxList', withhHoldingTaxList);
+            var updateTransaction = false;
+            let sumaBaseIVA = 0;
+            let retencion = 0;
+
+            for (let key in withhHoldingTaxList.item) {
+                if (withhHoldingTaxList.item.hasOwnProperty(key)) {
+                    let withholdingTax = withhHoldingTaxList.item[key];
+                    if (withholdingTax.type == "RENTA") {
+                        retencion++
+                        if (retencion == 1) {
+                            fieldsToUpdate.custbody_ec_importe_base_ir = withholdingTax.baseAmount;
+                            fieldsToUpdate.custbody_ec_ret_ir = withholdingTax.withholdingTax;
+                            fieldsToUpdate.custbody_ec_monto_de_ret_ir = (parseFloat(withholdingTax.baseAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2);
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_ir = withholdingTax.taxRate;
+                        }
+
+                        if (retencion == 2) {
+                            fieldsToUpdate.custbody_ec_impb_ir2 = withholdingTax.baseAmount;
+                            fieldsToUpdate.custbody_ec_ret_por_ir2 = withholdingTax.withholdingTax;
+                            fieldsToUpdate.custbody_ec_mont_ret_2 = (parseFloat(withholdingTax.baseAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2);
+                            fieldsToUpdate.custbody_ec_ret_ir2 = withholdingTax.taxRate;
+                        }
+
+                        if (retencion == 3) {
+                            fieldsToUpdate.custbody_ec_impb_ir3 = withholdingTax.baseAmount;
+                            fieldsToUpdate.custbody_ec_ret_por_ir3 = withholdingTax.withholdingTax;
+                            fieldsToUpdate.custbody_ec_mont_ret_3 = (parseFloat(withholdingTax.baseAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2);
+                            fieldsToUpdate.custbody_ec_ret_ir3 = withholdingTax.taxRate;
+                        }
+                        updateTransaction = true;
+                    }
+                    if (withholdingTax.type == "IVA") {
+                        sumaBaseIVA += withholdingTax.taxAmount;
+                        fieldsToUpdate.custbody_ec_importe_base_iva = sumaBaseIVA;
+                        if (withholdingTax.taxRate == 10) {
+                            fieldsToUpdate.custbody_cod_ret_iva_10 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_10 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        if (withholdingTax.taxRate == 20) {
+                            fieldsToUpdate.custbody_cod_ret_iva_20 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_20 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        if (withholdingTax.taxRate == 30) {
+                            fieldsToUpdate.custbody_cod_ret_iva_30 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_30 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        if (withholdingTax.taxRate == 70) {
+                            fieldsToUpdate.custbody_cod_ret_iva_70 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_70 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        if (withholdingTax.taxRate == 100) {
+                            fieldsToUpdate.custbody_cod_ret_iva_100 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_100 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        updateTransaction = true;
+                    }
+                }
+            }
+            // for (let line = 0; line < lines; line++) {
+            //     let apply = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_4601_witaxline', line });
+            //     if (apply) {
+            //         let item = objRecord.getSublistValue({ sublistId: "item", fieldId: "item", line });
+            //         let amount = Math.abs(Number(objRecord.getSublistValue({ sublistId: "item", fieldId: "amount", line })));
+            //         var withholdingTax = withhHoldingTaxList["item"][item];
+            //         log.error('Cero', withholdingTax)
+            //         if (withholdingTax) {
+            //             //log.error('First', withholdingTax.withholdingTax)
+            //             if (withholdingTax.type == "RENTA") {
+            //                 retencion++
+            //                 if (retencion == 1) {
+            //                     fieldsToUpdate.custbody_ec_importe_base_ir = withholdingTax.baseAmount;
+            //                     fieldsToUpdate.custbody_ec_ret_ir = withholdingTax.withholdingTax;
+            //                     fieldsToUpdate.custbody_ec_monto_de_ret_ir = amount;
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_ir = withholdingTax.taxRate;
+            //                 }
+
+            //                 if (retencion == 2) {
+            //                     fieldsToUpdate.custbody_ec_impb_ir2 = withholdingTax.baseAmount;
+            //                     fieldsToUpdate.custbody_ec_ret_por_ir2 = withholdingTax.withholdingTax;
+            //                     fieldsToUpdate.custbody_ec_mont_ret_2 = amount;
+            //                     fieldsToUpdate.custbody_ec_ret_ir2 = withholdingTax.taxRate;
+            //                 }
+
+            //                 if (retencion == 3) {
+            //                     fieldsToUpdate.custbody_ec_impb_ir3 = withholdingTax.baseAmount;
+            //                     fieldsToUpdate.custbody_ec_ret_por_ir3 = withholdingTax.withholdingTax;
+            //                     fieldsToUpdate.custbody_ec_mont_ret_3 = amount;
+            //                     fieldsToUpdate.custbody_ec_ret_ir3 = withholdingTax.taxRate;
+            //                 }
+            //                 updateTransaction = true;
+            //             }
+            //             if (withholdingTax.type == "IVA") {
+            //                 sumaBaseIVA += withholdingTax.taxAmount;
+            //                 fieldsToUpdate.custbody_ec_importe_base_iva = sumaBaseIVA;
+            //                 if (withholdingTax.taxRate == 10) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_10 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_10 = amount
+            //                 }
+            //                 if (withholdingTax.taxRate == 20) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_20 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_20 = amount
+            //                 }
+            //                 if (withholdingTax.taxRate == 30) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_30 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_30 = amount
+            //                 }
+            //                 if (withholdingTax.taxRate == 70) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_70 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_70 = amount
+            //                 }
+            //                 if (withholdingTax.taxRate == 100) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_100 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_100 = amount
+            //                 }
+            //                 updateTransaction = true;
+            //             }
+            //         }
+            //     }
+            // }
+            fieldsToUpdate.custbodyts_ec_base_rate0 = baseItemRateequalto0[0].amount ? Math.abs(parseFloat(baseItemRateequalto0[0].amount)) : 0;
+            fieldsToUpdate.custbodyts_ec_base_rate12 = baseItemRatenotequalto0[0].amount ? Math.abs(parseFloat(baseItemRatenotequalto0[0].amount)) : 0;
+            if (objRecord.getValue({ fieldId: 'approvalstatus' }) == _constant.Status.APPROVED && !objRecord.getValue({ fieldId: 'custbody_psg_ei_template' })) {
+                try {
+                    fieldsToUpdate.custbody_psg_ei_template = PE_Liquidacion_Compra_FEL_Template;
+                    fieldsToUpdate.custbody_psg_ei_status = For_Generation_Status;
+                    fieldsToUpdate.custbody_psg_ei_sending_method = PE_Liquidacion_Compra_FEL_Sending;
+                } catch (error) {
+                    log.error("Error-Template", error)
+                }
+            }
+            fieldsToUpdate.custbody_ec_monto_iva = amountTax;
+            if (updateTransaction) updateMainFieldTransaction(objRecord.type, objRecord.id, fieldsToUpdate);
+        } else if (expense) {
+            let withholdingTaxCodeList = {}, withholdingCodeId = {};
+            let lines = objRecord.getLineCount("expense");
+            for (let line = 0; line < lines; line++) {
+                let apply = objRecord.getSublistValue({ sublistId: 'expense', fieldId: 'custcol_4601_witaxapplies', line });
+                if (apply) {
+                    let withholdingTaxCode = objRecord.getSublistValue({ sublistId: "expense", fieldId: "custcol_4601_witaxcode_exp", line });
+                    let baseAmount = Number(objRecord.getSublistValue({ sublistId: "expense", fieldId: "amount", line }));
+                    let rate = Number(objRecord.getSublistValue({ sublistId: "expense", fieldId: "taxrate1", line })) / 100;
+                    let taxAmount = roundTwoDecimal(rate * baseAmount);
+                    if (withholdingTaxCodeList[withholdingTaxCode] !== undefined) {
+                        withholdingTaxCodeList[withholdingTaxCode].baseAmount = roundTwoDecimal(withholdingTaxCodeList[withholdingTaxCode].baseAmount + baseAmount);
+                        withholdingTaxCodeList[withholdingTaxCode].taxAmount = roundTwoDecimal(withholdingTaxCodeList[withholdingTaxCode].taxAmount + taxAmount);
+                    } else {
+                        withholdingTaxCodeList[withholdingTaxCode] = { withholdingTaxCode, baseAmount, taxAmount };
+                    }
+                    withholdingCodeId[withholdingTaxCode] = withholdingTaxCode;
+                }
+            }
+            let withhHoldingTaxList = getWithholdingTaxJson(withholdingTaxCodeList, Object.keys(withholdingCodeId));
+            var updateTransaction = false;
+            let sumaBaseIVA = 0;
+            let retencion = 0;
+
+            for (let key in withhHoldingTaxList.account) {
+                if (withhHoldingTaxList.account.hasOwnProperty(key)) {
+                    let withholdingTax = withhHoldingTaxList.account[key];
+                    if (withholdingTax.type == "RENTA") {
+                        retencion++
+                        if (retencion == 1) {
+                            fieldsToUpdate.custbody_ec_importe_base_ir = withholdingTax.baseAmount;
+                            fieldsToUpdate.custbody_ec_ret_ir = withholdingTax.withholdingTax;
+                            fieldsToUpdate.custbody_ec_monto_de_ret_ir = (parseFloat(withholdingTax.baseAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2);
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_ir = withholdingTax.taxRate;
+                        }
+
+                        if (retencion == 2) {
+                            fieldsToUpdate.custbody_ec_impb_ir2 = withholdingTax.baseAmount;
+                            fieldsToUpdate.custbody_ec_ret_por_ir2 = withholdingTax.withholdingTax;
+                            fieldsToUpdate.custbody_ec_mont_ret_2 = (parseFloat(withholdingTax.baseAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2);
+                            fieldsToUpdate.custbody_ec_ret_ir2 = withholdingTax.taxRate;
+                        }
+
+                        if (retencion == 3) {
+                            fieldsToUpdate.custbody_ec_impb_ir3 = withholdingTax.baseAmount;
+                            fieldsToUpdate.custbody_ec_ret_por_ir3 = withholdingTax.withholdingTax;
+                            fieldsToUpdate.custbody_ec_mont_ret_3 = (parseFloat(withholdingTax.baseAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2);
+                            fieldsToUpdate.custbody_ec_ret_ir3 = withholdingTax.taxRate;
+                        }
+                        updateTransaction = true;
+                    }
+                    if (withholdingTax.type == "IVA") {
+                        sumaBaseIVA += withholdingTax.taxAmount;
+                        fieldsToUpdate.custbody_ec_importe_base_iva = sumaBaseIVA;
+                        if (withholdingTax.taxRate == 10) {
+                            fieldsToUpdate.custbody_cod_ret_iva_10 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_10 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        if (withholdingTax.taxRate == 20) {
+                            fieldsToUpdate.custbody_cod_ret_iva_20 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_20 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        if (withholdingTax.taxRate == 30) {
+                            fieldsToUpdate.custbody_cod_ret_iva_30 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_30 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        if (withholdingTax.taxRate == 70) {
+                            fieldsToUpdate.custbody_cod_ret_iva_70 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_70 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        if (withholdingTax.taxRate == 100) {
+                            fieldsToUpdate.custbody_cod_ret_iva_100 = withholdingTax.withholdingTax
+                            fieldsToUpdate.custbody_ec_porcentaje_ret_100 = (parseFloat(withholdingTax.taxAmount) * (parseFloat(withholdingTax.taxRate) / 100)).toFixed(2)
+                        }
+                        updateTransaction = true;
+                    }
+                }
+            }
+
+            // for (let line = 0; line < lines; line++) {
+            //     let apply = objRecord.getSublistValue({ sublistId: 'expense', fieldId: 'custcol_4601_witaxline_exp', line });
+            //     if (apply) {
+            //         let account = objRecord.getSublistValue({ sublistId: "expense", fieldId: "account", line });
+            //         let amount = Math.abs(Number(objRecord.getSublistValue({ sublistId: "expense", fieldId: "amount", line })));
+            //         var withholdingTax = withhHoldingTaxList["account"][account];
+            //         if (withholdingTax) {
+            //             if (withholdingTax.type == "RENTA") {
+            //                 retencion++
+            //                 // sumaBaseRENTA += withholdingTax.baseAmount;
+            //                 // sumaRetencionBASE += amount
+            //                 // sumaPorcentajeRENTA += parseInt(withholdingTax.taxRate)
+            //                 if (retencion == 1) {
+            //                     fieldsToUpdate.custbody_ec_importe_base_ir = withholdingTax.baseAmount;
+            //                     fieldsToUpdate.custbody_ec_ret_ir = withholdingTax.withholdingTax;
+            //                     fieldsToUpdate.custbody_ec_monto_de_ret_ir = amount;
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_ir = withholdingTax.taxRate;
+            //                 }
+
+            //                 if (retencion == 2) {
+            //                     fieldsToUpdate.custbody_ec_impb_ir2 = withholdingTax.baseAmount;
+            //                     fieldsToUpdate.custbody_ec_ret_por_ir2 = withholdingTax.withholdingTax;
+            //                     fieldsToUpdate.custbody_ec_mont_ret_2 = amount;
+            //                     fieldsToUpdate.custbody_ec_ret_ir2 = withholdingTax.taxRate;
+            //                 }
+
+            //                 if (retencion == 3) {
+            //                     fieldsToUpdate.custbody_ec_impb_ir3 = withholdingTax.baseAmount;
+            //                     fieldsToUpdate.custbody_ec_ret_por_ir3 = withholdingTax.withholdingTax;
+            //                     fieldsToUpdate.custbody_ec_mont_ret_3 = amount;
+            //                     fieldsToUpdate.custbody_ec_ret_ir3 = withholdingTax.taxRate;
+            //                 }
+            //                 updateTransaction = true;
+            //             }
+            //             if (withholdingTax.type == "IVA") {
+            //                 sumaBaseIVA += withholdingTax.taxAmount;
+            //                 fieldsToUpdate.custbody_ec_importe_base_iva = sumaBaseIVA;
+            //                 if (withholdingTax.taxRate == 10) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_10 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_10 = amount
+            //                 }
+            //                 if (withholdingTax.taxRate == 20) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_20 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_20 = amount
+            //                 }
+            //                 if (withholdingTax.taxRate == 30) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_30 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_30 = amount
+            //                 }
+            //                 if (withholdingTax.taxRate == 70) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_70 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_70 = amount
+            //                 }
+            //                 if (withholdingTax.taxRate == 100) {
+            //                     fieldsToUpdate.custbody_cod_ret_iva_100 = withholdingTax.withholdingTax
+            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_100 = amount
+            //                 }
+            //                 updateTransaction = true;
+            //             }
+            //         }
+            //     }
+            // }
+            fieldsToUpdate.custbodyts_ec_base_rate0 = baseExpenseRateequalto0[0].amount ? Math.abs(parseFloat(baseExpenseRateequalto0[0].amount)) : 0;
+            fieldsToUpdate.custbodyts_ec_base_rate12 = baseExpenseRatenotequalto0[0].amount ? Math.abs(parseFloat(baseExpenseRatenotequalto0[0].amount)) : 0;
+            if (objRecord.getValue({ fieldId: 'approvalstatus' }) == _constant.Status.APPROVED && !objRecord.getValue({ fieldId: 'custbody_psg_ei_template' })) {
+                try {
+                    fieldsToUpdate.custbody_psg_ei_template = PE_Liquidacion_Compra_FEL_Template;
+                    fieldsToUpdate.custbody_psg_ei_status = For_Generation_Status;
+                    fieldsToUpdate.custbody_psg_ei_sending_method = PE_Liquidacion_Compra_FEL_Sending;
+                } catch (error) {
+                    log.error("Error-Template", error)
+                }
+            }
+            fieldsToUpdate.custbody_ec_monto_iva = amountTax;
+            if (updateTransaction) updateMainFieldTransaction(objRecord.type, objRecord.id, fieldsToUpdate);
+        }
+    }
+
+    const updateMainFieldTransaction = (type, id, values) => {
+        record.submitFields({ type, id, values });
+    }
+
+    const roundTwoDecimal = (value) => {
+        return Math.round(Number(value) * 100) / 100;
+    }
+
+    const getWithholdingTaxJson = (withholdingTaxCodeList, withholdingTaxCodeIds) => {
+        log.error("withholdingCode", { withholdingTaxCodeList, withholdingTaxCodeIds });
+        let result = { "account": {}, "item": {} };
+        let searchResult = search.create({
+            type: "customrecord_4601_witaxcode",
+            filters: [
+                ["internalid", "anyof", withholdingTaxCodeIds],
+                "AND",
+                [["custrecord_4601_wtc_availableon", "is", "both"], "OR", ["custrecord_4601_wtc_availableon", "is", "onpurcs"]]
+            ],
+            columns: [
+                search.createColumn({ name: "custrecord_4601_wtc_istaxgroup", label: "Grupo de impuestos" }),
+                search.createColumn({ name: "custrecord_4601_wtt_purcitem", join: "CUSTRECORD_4601_WTC_WITAXTYPE" }),
+                search.createColumn({ name: "custrecord_4601_wtt_purcaccount", join: "CUSTRECORD_4601_WTC_WITAXTYPE" }),
+                search.createColumn({ name: "custrecord_4601_gwtc_code", join: "CUSTRECORD_4601_WTC_GROUPEDWITAXCODES" }),
+                search.createColumn({ name: "custrecord_ts_ec_witaxcode_tipo_retencio" }),
+                search.createColumn({ name: "custrecord_4601_wtc_rate" })
+            ]
+        }).run().getRange(0, 1000);
+        for (let i = 0; i < searchResult.length; i++) {
+            let columns = searchResult[i].columns;
+            let id = searchResult[i].id;
+            let isTaxGroup = searchResult[i].getValue(columns[0]);
+            let item = searchResult[i].getValue(columns[1]);
+            let account = searchResult[i].getValue(columns[2]);
+            let individualWithholdingCode = searchResult[i].getValue(columns[3]);
+            let withholdingType = searchResult[i].getText(columns[4]);
+            let taxRate = searchResult[i].getValue(columns[5]).replace('%', '');
+            if (isTaxGroup) {
+                let withholdingRecord = getWithholdingRecord(individualWithholdingCode);
+                item = withholdingRecord.item;
+                account = withholdingRecord.account;
+                withholdingType = withholdingRecord.withholdingType;
+                taxRate = withholdingRecord.taxRate;
+                if (result["account"][account] === undefined) {
+                    result["account"][account] = {
+                        withholdingTax: individualWithholdingCode,
+                        type: withholdingType,
+                        baseAmount: withholdingTaxCodeList[id].baseAmount,
+                        taxAmount: withholdingTaxCodeList[id].taxAmount,
+                        taxRate: taxRate
+                    };
+                } else {
+                    result["account"][account].baseAmount = roundTwoDecimal(result["account"][account].baseAmount + withholdingTaxCodeList[id].baseAmount);
+                    result["account"][account].taxAmount = roundTwoDecimal(result["account"][account].taxAmount + withholdingTaxCodeList[id].taxAmount);
+                }
+                if (result["item"][item] === undefined) {
+                    result["item"][item] = {
+                        withholdingTax: individualWithholdingCode,
+                        type: withholdingType,
+                        baseAmount: withholdingTaxCodeList[id].baseAmount,
+                        taxAmount: withholdingTaxCodeList[id].taxAmount,
+                        taxRate: taxRate
+                    };
+                } else {
+                    result["item"][item].baseAmount = roundTwoDecimal(result["item"][item].baseAmount + withholdingTaxCodeList[id].baseAmount);
+                    result["item"][item].taxAmount = roundTwoDecimal(result["item"][item].taxAmount + withholdingTaxCodeList[id].taxAmount);
+                }
+            } else {
+                if (result["account"][account] === undefined) {
+                    result["account"][account] = {
+                        withholdingTax: id,
+                        type: withholdingType,
+                        baseAmount: withholdingTaxCodeList[id].baseAmount,
+                        taxAmount: withholdingTaxCodeList[id].taxAmount,
+                        taxRate: taxRate
+                    };
+                } else {
+                    result["account"][account].baseAmount = roundTwoDecimal(result["account"][account].baseAmount + withholdingTaxCodeList[id].baseAmount);
+                    result["account"][account].taxAmount = roundTwoDecimal(result["account"][account].taxAmount + withholdingTaxCodeList[id].taxAmount);
+                }
+
+                if (result["item"][item] === undefined) {
+                    result["item"][item] = {
+                        withholdingTax: id,
+                        type: withholdingType,
+                        baseAmount: withholdingTaxCodeList[id].baseAmount,
+                        taxAmount: withholdingTaxCodeList[id].taxAmount,
+                        taxRate: taxRate
+                    };
+                } else {
+                    result["item"][item].baseAmount = roundTwoDecimal(result["item"][item].baseAmount + withholdingTaxCodeList[id].baseAmount);
+                    result["item"][item].taxAmount = roundTwoDecimal(result["item"][item].taxAmount + withholdingTaxCodeList[id].taxAmount);
+                }
+            }
+        }
+        log.error("result", result);
+        return result;
+    }
+
+    const getWithholdingRecord = (withholdingTax) => {
+        let searchResult = search.lookupFields({
+            type: "customrecord_4601_witaxcode",
+            id: withholdingTax,
+            columns: [
+                "custrecord_4601_wtc_witaxtype.custrecord_4601_wtt_purcitem",
+                "custrecord_4601_wtc_witaxtype.custrecord_4601_wtt_purcaccount",
+                "custrecord_ts_ec_witaxcode_tipo_retencio",
+                "custrecord_4601_wtc_rate"
+            ]
+        });
+        let withholdingType = searchResult["custrecord_ts_ec_witaxcode_tipo_retencio"].length ? searchResult["custrecord_ts_ec_witaxcode_tipo_retencio"][0].text : "";
+        let item = searchResult["custrecord_4601_wtc_witaxtype.custrecord_4601_wtt_purcitem"][0].value;
+        let account = searchResult["custrecord_4601_wtc_witaxtype.custrecord_4601_wtt_purcaccount"][0].value;
+        let taxRate = searchResult["custrecord_4601_wtc_rate"].replace('%', '');
+        log.error("getWithholdingRecord", { withholdingType, item, account, taxRate });
+        return { withholdingType, item, account, taxRate };
+    }
+
+    const verifyWithholdingTaxApply = (objRecord, sublistId) => {
+        let lines = objRecord.getLineCount(sublistId);
+
+        for (let line = 0; line < lines; line++) {
+            let apply = objRecord.getSublistValue({ sublistId, fieldId: 'custcol_4601_witaxapplies', line });
+            if (apply) return apply;
+        }
+        return false;
+    }
+
+    const getPrefixByDocumentType = (documentTypeId, recordType) => {
+        let prefix = "";
+        var documentTypeCode = getDocumentTypeCode(documentTypeId);
+        if (documentTypeCode == "01" && recordType == record.Type.INVOICE) {
+            prefix = "FAC-";
+        } else if (documentTypeCode == "06" && recordType == record.Type.ITEM_FULFILLMENT) {
+            prefix = "GDR-";
+        } else if (documentTypeCode == "03" && recordType == record.Type.VENDOR_BILL) {
+            prefix = "LIQ-";
+        } else if (documentTypeCode == "04" && recordType == record.Type.CREDIT_MEMO) {
+            prefix = "NCF-";
+        } else if (documentTypeCode == "05" && recordType == record.Type.INVOICE) {
+            prefix = "NDF-";
+        } else if (documentTypeCode == "07" && recordType == record.Type.VENDOR_CREDIT) {
+            prefix = "RET-";
+        }
+        return prefix;
+    }
+
+    const getDocumentTypeCode = (documentTypeId) => {
+        let searchResult = search.lookupFields({
+            type: "customrecordts_ec_tipo_doc_fiscal",
+            id: documentTypeId,
+            columns: ["custrecordts_ec_cod_tipo_comprobante"]
+        });
+        return searchResult.custrecordts_ec_cod_tipo_comprobante;
+    }
+
+    const updateTransaction = (type, id, tranid) => {
+        let transactionId = record.submitFields({
+            type,
+            id,
+            values: { tranid }
+        });
+        log.error("updateTransaction", { transactionId, tranid });
+    }
 
     const getSerie = (documenttype, location, prefix, documentref = 0) => {
         let searchLoad = '';
@@ -358,6 +1152,46 @@ define(['N/log',
                     ['custrecord_ts_ec_tipo_documento', 'anyof', documenttype],
                     'AND',
                     ['custrecord_ts_ec_localidad_serie', 'anyof', location]
+                ],
+                columns: [
+                    { name: 'internalid', sort: search.Sort.ASC },
+                    'custrecord_ts_ec_rango_inicial',
+                    'custrecord_ts_ec_series_impresion',
+                    search.createColumn({ name: "custrecordts_ec_iniciales_tip_comprob", join: "custrecord_ts_ec_tipo_documento", label: "Status" }),
+                ]
+            });
+            const searchResult = searchLoad.run().getRange({ start: 0, end: 1 });
+            if (searchResult.length) {
+                const column01 = searchResult[0].getValue(searchLoad.columns[0]);
+                let column02 = searchResult[0].getValue(searchLoad.columns[1]);
+                let column03 = searchResult[0].getValue(searchLoad.columns[2]);
+                let column04 = searchResult[0].getValue(searchLoad.columns[3]);
+                column03 = column04 + '-' + column03;
+                column02 = parseInt(column02);
+                return {
+                    'serieid': column01,
+                    'peinicio': column02,
+                    'serieimpr': column03
+                };
+            }
+        } catch (error) {
+            log.error({ title: 'getPeSerie', details: error });
+        }
+        return serieResult;
+    }
+
+    const getSerieID = (id, prefix) => {
+        let searchLoad = '';
+        let serieResult = {
+            'serieid': "",
+            'peinicio': "",
+            'serieimpr': ""
+        }
+        try {
+            searchLoad = search.create({
+                type: 'customrecordts_ec_series_impresion',
+                filters: [
+                    ["internalidnumber", "equalto", id]
                 ],
                 columns: [
                     { name: 'internalid', sort: search.Sort.ASC },
@@ -384,37 +1218,42 @@ define(['N/log',
         return serieResult;
     }
 
-
-    const generateCorrelative = (return_pe_inicio, serieid, serieimpr) => {
+    const generateCorrelative = (return_pe_inicio, serieid, serieimpr, funcion) => {
         let ceros;
         let correlative;
         let numbering;
         let this_number = return_pe_inicio + 1;
 
-        const next_number = this_number
-        record.submitFields({ type: 'customrecordts_ec_series_impresion', id: serieid, values: { 'custrecord_ts_ec_rango_inicial': next_number } });
+        if (funcion == 'afterSubmit') {
+            log.error("generateCorrelative", { return_pe_inicio, serieid, serieimpr });
+            const next_number = this_number
+            log.error('afterSubmit', next_number);
+            record.submitFields({ type: 'customrecordts_ec_series_impresion', id: serieid, values: { 'custrecord_ts_ec_rango_inicial': next_number } });
+        }
 
         if (this_number.toString().length == 1) {
-            ceros = '0000000';
+            ceros = '00000000';
         } else if (this_number.toString().length == 2) {
-            ceros = '000000';
+            ceros = '0000000';
         } else if (this_number.toString().length == 3) {
-            ceros = '00000';
+            ceros = '000000';
         } else if (this_number.toString().length == 4) {
-            ceros = '0000';
+            ceros = '00000';
         } else if (this_number.toString().length == 5) {
-            ceros = '000';
+            ceros = '0000';
         } else if (this_number.toString().length == 6) {
-            ceros = '00';
+            ceros = '000';
         } else if (this_number.toString().length == 7) {
+            ceros = '00';
+        } else if (this_number.toString().length = 8) {
             ceros = '0';
-        } else if (this_number.toString().length >= 8) {
+        } else if (this_number.toString().length >= 9) {
             ceros = '';
         }
 
         correlative = ceros + this_number;
         numbering = serieimpr + '-' + correlative;
-
+        numbering = numbering.replace(/-/gi, "")
         return {
             'correlative': correlative,
             'numbering': numbering
@@ -450,6 +1289,220 @@ define(['N/log',
             return 0;
         }
     }
+
+    const getItemBaseRateequalto0 = (internalid) => {
+        try {
+            let mainLineJson = {};
+            let pushColumn = new Array();
+            const vendorBillSearchFiltersequalto0 = [
+                ['type', 'anyof', 'VendBill'],
+                'AND',
+                ['internalid', 'anyof', internalid],
+                'AND',
+                ['mainline', 'is', 'F'],
+                'AND',
+                ['taxline', 'is', 'F'],
+                'AND',
+                ['itemtype', 'isnot', 'Discount'],
+                'AND',
+                ['taxitem.rate', 'equalto', '0'],
+            ];
+
+            const vendorBillSearch = search.create({
+                type: 'vendorbill',
+                filters: vendorBillSearchFiltersequalto0,
+                columns: [
+                    search.createColumn({ name: 'amount', summary: search.Summary.SUM, label: 'amount' }),
+                    //search.createColumn({ name: 'rate', join: 'taxitem', summary: search.Summary.GROUP, label: 'taxRate' })
+                ],
+            });
+
+            const vendorBillSearchPagedData = vendorBillSearch.runPaged({ pageSize: 1000 });
+            for (let i = 0; i < vendorBillSearchPagedData.pageRanges.length; i++) {
+                const vendorBillSearchPage = vendorBillSearchPagedData.fetch({ index: i });
+                vendorBillSearchPage.data.forEach(result => {
+                    vendorBillSearchPage.pagedData.searchDefinition.columns.forEach(column => {
+                        var column_key = column.label || column.name;
+                        mainLineJson[column_key] = result.getValue(column);
+                    })
+                    pushColumn.push(mainLineJson);
+                });
+            }
+            //log.debug('resultData.getBaseRateequalto0', pushColumn);
+            return pushColumn;
+        } catch (error) {
+            log.error('Error-getBaseRateequalto0', error);
+        }
+    }
+
+    const getItemBaseRatenotequalto0 = (internalid) => {
+        try {
+            let mainLineJson = {};
+            let pushColumn = new Array();
+            const vendorBillSearchFiltersnotequalto0 = [
+                ['type', 'anyof', 'VendBill'],
+                'AND',
+                ['internalid', 'anyof', internalid],
+                'AND',
+                ['mainline', 'is', 'F'],
+                'AND',
+                ['taxline', 'is', 'F'],
+                'AND',
+                ['itemtype', 'isnot', 'Discount'],
+                'AND',
+                ['taxitem.rate', 'notequalto', '0'],
+            ];
+
+            const vendorBillSearch = search.create({
+                type: 'vendorbill',
+                filters: vendorBillSearchFiltersnotequalto0,
+                columns: [
+                    search.createColumn({ name: 'amount', summary: search.Summary.SUM, label: 'amount' }),
+                    //search.createColumn({ name: 'rate', join: 'taxitem', summary: search.Summary.GROUP, label: 'taxRate' })
+                ],
+            });
+
+            const vendorBillSearchPagedData = vendorBillSearch.runPaged({ pageSize: 1000 });
+            for (let i = 0; i < vendorBillSearchPagedData.pageRanges.length; i++) {
+                const vendorBillSearchPage = vendorBillSearchPagedData.fetch({ index: i });
+                vendorBillSearchPage.data.forEach(result => {
+                    vendorBillSearchPage.pagedData.searchDefinition.columns.forEach(column => {
+                        var column_key = column.label || column.name;
+                        mainLineJson[column_key] = result.getValue(column);
+                    })
+                    pushColumn.push(mainLineJson);
+                });
+            }
+            //log.debug('resultData.getBaseRatenotequalto0', pushColumn);
+            return pushColumn;
+        } catch (error) {
+            log.error('Error-getBaseRatenotequalto0', error);
+        }
+    }
+
+    const getExpenseBaseRateequalto0 = (internalid) => {
+        try {
+            let mainLineJson = {};
+            let pushColumn = new Array();
+            const vendorBillSearchFiltersequalto0 = [
+                ['type', 'anyof', 'VendBill'],
+                'AND',
+                ['internalid', 'anyof', internalid],
+                'AND',
+                ['mainline', 'is', 'F'],
+                'AND',
+                ['taxline', 'is', 'F'],
+                'AND',
+                ["accounttype", "noneof", "OthCurrLiab"],
+                'AND',
+                ['taxitem.rate', 'equalto', '0'],
+            ];
+
+            const vendorBillSearch = search.create({
+                type: 'vendorbill',
+                filters: vendorBillSearchFiltersequalto0,
+                columns: [
+                    search.createColumn({ name: 'amount', summary: search.Summary.SUM, label: 'amount' }),
+                    //search.createColumn({ name: 'rate', join: 'taxitem', summary: search.Summary.GROUP, label: 'taxRate' })
+                ],
+            });
+
+            const vendorBillSearchPagedData = vendorBillSearch.runPaged({ pageSize: 1000 });
+            for (let i = 0; i < vendorBillSearchPagedData.pageRanges.length; i++) {
+                const vendorBillSearchPage = vendorBillSearchPagedData.fetch({ index: i });
+                vendorBillSearchPage.data.forEach(result => {
+                    vendorBillSearchPage.pagedData.searchDefinition.columns.forEach(column => {
+                        var column_key = column.label || column.name;
+                        mainLineJson[column_key] = result.getValue(column);
+                    })
+                    pushColumn.push(mainLineJson);
+                });
+            }
+            //log.debug('resultData.getBaseRateequalto0', pushColumn);
+            return pushColumn;
+        } catch (error) {
+            log.error('Error-getBaseRateequalto0', error);
+        }
+    }
+
+    const getExpenseBaseRatenotequalto0 = (internalid) => {
+        try {
+            let mainLineJson = {};
+            let pushColumn = new Array();
+            const vendorBillSearchFiltersnotequalto0 = [
+                ['type', 'anyof', 'VendBill'],
+                'AND',
+                ['internalid', 'anyof', internalid],
+                'AND',
+                ['mainline', 'is', 'F'],
+                'AND',
+                ['taxline', 'is', 'F'],
+                'AND',
+                ["accounttype", "noneof", "OthCurrLiab"],
+                'AND',
+                ['taxitem.rate', 'notequalto', '0'],
+            ];
+
+            const vendorBillSearch = search.create({
+                type: 'vendorbill',
+                filters: vendorBillSearchFiltersnotequalto0,
+                columns: [
+                    search.createColumn({ name: 'amount', summary: search.Summary.SUM, label: 'amount' }),
+                    //search.createColumn({ name: 'rate', join: 'taxitem', summary: search.Summary.GROUP, label: 'taxRate' })
+                ],
+            });
+
+            const vendorBillSearchPagedData = vendorBillSearch.runPaged({ pageSize: 1000 });
+            for (let i = 0; i < vendorBillSearchPagedData.pageRanges.length; i++) {
+                const vendorBillSearchPage = vendorBillSearchPagedData.fetch({ index: i });
+                vendorBillSearchPage.data.forEach(result => {
+                    vendorBillSearchPage.pagedData.searchDefinition.columns.forEach(column => {
+                        var column_key = column.label || column.name;
+                        mainLineJson[column_key] = result.getValue(column);
+                    })
+                    pushColumn.push(mainLineJson);
+                });
+            }
+            //log.debug('resultData.getBaseRatenotequalto0', pushColumn);
+            return pushColumn;
+        } catch (error) {
+            log.error('Error-getBaseRatenotequalto0', error);
+        }
+    }
+
+    const getMontoIVATotal = (internalid) => {
+        let amoutTax = 0;
+        var searchLoad = search.create({
+            type: "vendorbill",
+            filters:
+                [
+                    ["type", "anyof", "VendBill"],
+                    "AND",
+                    ["internalid", "anyof", internalid],
+                    "AND",
+                    ["mainline", "is", "F"],
+                    "AND",
+                    ["taxline", "is", "F"],
+                    "AND",
+                    ["itemtype", "isnot", "Discount"],
+                    "AND",
+                    ["accounttype", "noneof", "OthCurrLiab"]
+                ],
+            columns:
+                [
+                    search.createColumn({ name: "taxamount", summary: "SUM", label: "Amount (Tax)" })
+                ]
+        });
+        let searchResultCount = searchLoad.runPaged().count;
+        if (searchResultCount > 0) {
+            searchLoad.run().each((result) => {
+                amoutTax = Math.abs(result.getValue(searchLoad.columns[0])) == .00 ? "0.00" : Math.abs(result.getValue(searchLoad.columns[0]))
+                return true;
+            });
+        }
+        return amoutTax;
+    }
+
 
 
     //?BLOQUE DE CONVERSIÓN MONTO EN LETRAS================================================================================================================================================================================================
@@ -665,10 +1718,27 @@ define(['N/log',
         return existe
     }
 
+    const imprimirComprobante = (form, objRecord) => {
+        var tipo = '';
+        if (objRecord.type == _constant.Transaction.VENDOR_PAYMENT) {
+            tipo = 'pagoFactura';
+        }
+        if (objRecord.type == _constant.Transaction.CHECK) {
+            tipo = 'cheque';
+        }
+        if (objRecord.type == _constant.Transaction.VENDOR_PRE_PAYMENT) {
+            tipo = 'pagoAnticipo';
+        }
+
+        var id = objRecord.id;
+        const printPago = `printPago('${id}','${tipo}')`;
+        form.addButton({ id: 'custpage_btn_print_pago', label: 'Cheque', functionName: printPago });
+    }
+
     return {
         beforeLoad: beforeLoad,
-        afterSubmit: afterSubmit,
-        beforeSubmit: beforeSubmit
+        beforeSubmit: beforeSubmit,
+        afterSubmit: afterSubmit
     }
 });
 /***************************************************************************************************************
@@ -682,7 +1752,7 @@ Description: Creación del script.
 /***************************************************************************************************************
 /* Commit:02
 Version: 1.0
-Date: 18/06/2022
+Date: 18/06/2022s
 Author: Dennis Fernández
 Description: Se implementa automatización para generación automática de Factura de Compra.
 /***************************************************************************************************************

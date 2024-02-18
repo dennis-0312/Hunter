@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_rs_new_device">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_New_device</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/ErickHunter/TS_RS_New_device.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_rs_new_device">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>TS_RS_New_device</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

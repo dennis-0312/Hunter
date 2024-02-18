@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ht_list_zonaciudadela">
+  <description>Zona / Ciudadela</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Zona / Ciudadela</name>
+  <customvalues>
+    <customvalue scriptid="val_853212_7451241_sb1_630">
+      <isinactive>F</isinactive>
+      <value>NOR - NORTE</value>
+    </customvalue>
+    <customvalue scriptid="val_853213_7451241_sb1_535">
+      <isinactive>F</isinactive>
+      <value>CEN - CENTRO</value>
+    </customvalue>
+    <customvalue scriptid="val_853214_7451241_sb1_528">
+      <isinactive>F</isinactive>
+      <value>SUR - SUR</value>
+    </customvalue>
+    <customvalue scriptid="val_853215_7451241_sb1_269">
+      <isinactive>F</isinactive>
+      <value>EST - ESTE</value>
+    </customvalue>
+    <customvalue scriptid="val_853216_7451241_sb1_552">
+      <isinactive>F</isinactive>
+      <value>OES - OESTE</value>
+    </customvalue>
+  </customvalues>
+</customlist>

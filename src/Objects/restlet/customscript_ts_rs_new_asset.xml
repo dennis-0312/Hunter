@@ -1,0 +1,22 @@
+<restlet scriptid="customscript_ts_rs_new_asset">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>TS_RS_NEW_asset</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/ErickHunter/TS_RS_NEW_asset.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_ts_rs_new_asset">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <isdeployed>T</isdeployed>
+      <loglevel>DEBUG</loglevel>
+      <status>RELEASED</status>
+      <title>TS_RS_NEW_asset</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</restlet>

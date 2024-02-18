@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_ht_os_aprobacioncartera">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT OS Aprobación Cartera</name>
+  <customvalues>
+    <customvalue scriptid="val_821742_7451241_sb1_774">
+      <isinactive>F</isinactive>
+      <value>APROBADO</value>
+    </customvalue>
+    <customvalue scriptid="val_822180_7451241_sb1_969">
+      <isinactive>F</isinactive>
+      <value>PENDIENTE DE APROBACIÓN</value>
+    </customvalue>
+    <customvalue scriptid="val_901382_7451241_sb1_276">
+      <isinactive>F</isinactive>
+      <value>RECHAZADO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

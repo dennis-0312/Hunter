@@ -1,0 +1,1242 @@
+<customrecordtype scriptid="customrecord_ht_cr_pp_valores">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>T</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex>8</iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Parámetros </recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>T</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_pp_codigo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>T</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Código</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_pp_descripcion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>T</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord11">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CLOBTEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Comentario</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_pp_aplicar">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CHECKBOX</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Aplicar</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_822567_7451241_sb1_220">
+      <custrecord11>MONITOREO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>MON</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>MONITOREO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>MON - MONITOREO</name>
+    </instance>
+    <instance scriptid="val_822629_7451241_sb1_480">
+      <custrecord11>SI</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>S</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>SI</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>S - SI</name>
+    </instance>
+    <instance scriptid="val_822777_7451241_sb1_531">
+      <custrecord11>CAMBIO DE PROPIETARIO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>010</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CAMBIO DE PROPIETARIO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>010 - CAMBIO DE PROPIETARIO</name>
+    </instance>
+    <instance scriptid="val_824604_7451241_sb1_496">
+      <custrecord11>RENOVACION DE DISP.</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>004</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>RENOVACION DE DISP.</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>004 - RENOVACION DE DISP.</name>
+    </instance>
+    <instance scriptid="val_824605_7451241_sb1_584">
+      <custrecord11>RENOVACION NORMAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>RENOVACION NORMAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - RENOVACION NORMAL</name>
+    </instance>
+    <instance scriptid="val_830267_7451241_sb1_719">
+      <custrecord11>NO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>N</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>NO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>N - NO</name>
+    </instance>
+    <instance scriptid="val_842500_7451241_sb1_249">
+      <custrecord11>LOJACK</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>LOJ</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>LOJACK</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>LOJ - LOJACK</name>
+    </instance>
+    <instance scriptid="val_858590_7451241_sb1_761">
+      <custrecord11>RENOVACION ANTICIPADA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>002</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>RENOVACION ANTICIPADA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - RENOVACION ANTICIPADA</name>
+    </instance>
+    <instance scriptid="val_859606_7451241_sb1_319">
+      <custrecord11>DESINSTALACION DE DISP.</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>002</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>DESINSTALACION DE DISP.</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - DESINSTALACION DE DISP.</name>
+    </instance>
+    <instance scriptid="val_873697_7451241_sb1_523">
+      <custrecord11>CHEQUEO DE COMPONENTES</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>007</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO DE COMPONENTES</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>007 - CHEQUEO DE COMPONENTES</name>
+    </instance>
+    <instance scriptid="val_873718_7451241_sb1_784">
+      <custrecord11>VENTA SEGUROS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>008</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENTA SEGUROS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>008 - VENTA SEGUROS</name>
+    </instance>
+    <instance scriptid="val_873725_7451241_sb1_943">
+      <custrecord11>VINCULAR DATOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VINCULAR DATOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - VINCULAR DATOS</name>
+    </instance>
+    <instance scriptid="val_873748_7451241_sb1_300">
+      <custrecord11>OTROS SERVICIOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>OTS</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>OTROS SERVICIOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>OTS - OTROS SERVICIOS</name>
+    </instance>
+    <instance scriptid="val_873750_7451241_sb1_356">
+      <custrecord11>REINSTALACION DE DISPOSITIVO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>003</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>REINSTALACION DE DISPOSITIVO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 - REINSTALACION DE DISP</name>
+    </instance>
+    <instance scriptid="val_873751_7451241_sb1_795">
+      <custrecord11>MODIFICACION DATOS DISP.</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>005</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>MODIFICACION DATOS DISP.</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>005 - MODIFICACION DATOS DISP.</name>
+    </instance>
+    <instance scriptid="val_873753_7451241_sb1_696">
+      <custrecord11>GENERA PARAMETRIZACION API</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>GPA</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>GENERA PARAMETRIZACION API</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>GPA - GENERA PARAMETRIZACION API</name>
+    </instance>
+    <instance scriptid="val_873754_7451241_sb1_363">
+      <custrecord11>GENERA PARAMETRIZACION TELEMATIC</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>GPT</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>GENERA PARAMETRIZACION TELEMATIC</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>GPT - GENERA PARAMETRIZACION TELEMATIC</name>
+    </instance>
+    <instance scriptid="val_873755_7451241_sb1_136">
+      <custrecord11>GENERA PARAMETRIZACION WESAFEN AWS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>GPW</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>GENERA PARAMETRIZACION WESAFEN AWS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>GPW - GENERA PARAMETRIZACION WESAFEN AWS</name>
+    </instance>
+    <instance scriptid="val_873756_7451241_sb1_182">
+      <custrecord11>CAMBIOS DE PROPIETARIO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>CAM</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CAMBIOS DE PROPIETARIO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>CAM - CAMBIOS DE PROPIETARIO</name>
+    </instance>
+    <instance scriptid="val_873757_7451241_sb1_926">
+      <custrecord11>RENOV.CARGA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>RCA</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>RENOV.CARGA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>RCA - RENOV.CARGA</name>
+    </instance>
+    <instance scriptid="val_873758_7451241_sb1_120">
+      <custrecord11>RENOVACION MONITOREO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>RHM</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>RENOVACION MONITOREO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>RHM - RENOVACION MONITOREO</name>
+    </instance>
+    <instance scriptid="val_873759_7451241_sb1_637">
+      <custrecord11>RENOVACION LOJACK</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>RLK</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>RENOVACION LOJACK</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>RLK - RENOVACION LOJACK</name>
+    </instance>
+    <instance scriptid="val_873760_7451241_sb1_584">
+      <custrecord11>RENOVACION SERVICIO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>RSE</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>RENOVACION SERVICIO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>RSE - RENOVACION SERVICIO</name>
+    </instance>
+    <instance scriptid="val_873761_7451241_sb1_260">
+      <custrecord11>RENOVACION TDE</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>RTD</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>RENOVACION TDE</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>RTD - RENOVACION TDE</name>
+    </instance>
+    <instance scriptid="val_873762_7451241_sb1_776">
+      <custrecord11>VENTA ACCESORIOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>VAC</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENTA ACCESORIOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>VAC - VENTA ACCESORIOS</name>
+    </instance>
+    <instance scriptid="val_873763_7451241_sb1_953">
+      <custrecord11>VENTA CARGA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>VCA</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENTA CARGA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>VCA - VENTA CARGA</name>
+    </instance>
+    <instance scriptid="val_873764_7451241_sb1_245">
+      <custrecord11>VENTA MONITOREO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>VHM</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENTA MONITOREO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>VHM - VENTA MONITOREO</name>
+    </instance>
+    <instance scriptid="val_873765_7451241_sb1_787">
+      <custrecord11>VENTA LOJACK</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>VLK</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENTA LOJACK</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>VLK - VENTA LOJACK</name>
+    </instance>
+    <instance scriptid="val_873766_7451241_sb1_328">
+      <custrecord11>VENTA OTROS PRODUCTOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>VOT</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENTA OTROS PRODUCTOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>VOT - VENTA OTROS PRODUCTOS</name>
+    </instance>
+    <instance scriptid="val_873767_7451241_sb1_307">
+      <custrecord11>VENTA TDE</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>VTD</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENTA TDE</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>VTD - VENTA TDE</name>
+    </instance>
+    <instance scriptid="val_873768_7451241_sb1_642">
+      <custrecord11>INST. DISPOSITIVO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>INST. DISPOSITIVO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - INST. DISPOSITIVO</name>
+    </instance>
+    <instance scriptid="val_873769_7451241_sb1_265">
+      <custrecord11>MANTENIMIENTO- CHEQUEO DE DISPOSITIVO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>006</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>MANTENIMIENTO- CHEQUEO DE DISPOSITIVO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>006 - MANTENIMIENTO- CHEQUEO DE DISPOSITIVO</name>
+    </instance>
+    <instance scriptid="val_873770_7451241_sb1_317">
+      <custrecord11>RENOVACION  SEGUROS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>009</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>RENOVACION  SEGUROS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>009 - RENOVACION  SEGUROS</name>
+    </instance>
+    <instance scriptid="val_873771_7451241_sb1_287">
+      <custrecord11>INSTALACION OTROS PRODUCTOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>011</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>INSTALACION OTROS PRODUCTOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>011 - INSTALACION OTROS PRODUCTOS</name>
+    </instance>
+    <instance scriptid="val_873772_7451241_sb1_616">
+      <custrecord11>DESINSTALACION OTROS PRODUCTOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>012</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>DESINSTALACION OTROS PRODUCTOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>012 - DESINSTALACION OTROS PRODUCTOS</name>
+    </instance>
+    <instance scriptid="val_873773_7451241_sb1_740">
+      <custrecord11>CHEQUEO OTROS PRODUCTOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>013</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO OTROS PRODUCTOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>013 - CHEQUEO OTROS PRODUCTOS</name>
+    </instance>
+    <instance scriptid="val_873774_7451241_sb1_461">
+      <custrecord11>REINSTALACION OTROS PRODUCTOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>014</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>REINSTALACION OTROS PRODUCTOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>014 - REINSTALACION OTROS PRODUCTOS</name>
+    </instance>
+    <instance scriptid="val_873775_7451241_sb1_673">
+      <custrecord11>VENTA SERVICIOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>015</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENTA SERVICIOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>015 - VENTA SERVICIOS</name>
+    </instance>
+    <instance scriptid="val_873776_7451241_sb1_279">
+      <custrecord11>INSTALACION DE COMPONENTES</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>999</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>INSTALACION DE COMPONENTES</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>999 - INSTALACION DE COMPONENTES</name>
+    </instance>
+    <instance scriptid="val_873777_7451241_sb1_537">
+      <custrecord11>REVERSA ORIGEN EN APROBACION</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>REVERSA ORIGEN EN APROBACION</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - REVERSA ORIGEN EN APROBACION</name>
+    </instance>
+    <instance scriptid="val_873778_7451241_sb1_365">
+      <custrecord11>ACTIVACION DE PRODUCTO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>ACTIVACION DE PRODUCTO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - ACTIVACION DE PRODUCTO</name>
+    </instance>
+    <instance scriptid="val_873779_7451241_sb1_520">
+      <custrecord11>DESVINCULAR DATOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>002</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>DESVINCULAR DATOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - DESVINCULAR DATOS</name>
+    </instance>
+    <instance scriptid="val_873780_7451241_sb1_878">
+      <custrecord11>GENERA CUSTODIAS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>GENERA CUSTODIAS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - GENERA CUSTODIAS</name>
+    </instance>
+    <instance scriptid="val_873781_7451241_sb1_103">
+      <custrecord11>ENTREGA CUSTODIAS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>002</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>ENTREGA CUSTODIAS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - ENTREGA CUSTODIAS</name>
+    </instance>
+    <instance scriptid="val_873782_7451241_sb1_972">
+      <custrecord11>DOMO DIGMER</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>DOMO DIGMER</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - DOMO DIGMER</name>
+    </instance>
+    <instance scriptid="val_873783_7451241_sb1_156">
+      <custrecord11>CARGO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>002</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CARGO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - CARGO</name>
+    </instance>
+    <instance scriptid="val_873784_7451241_sb1_417">
+      <custrecord11>BLOCK</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>003</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>BLOCK</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 - BLOCK</name>
+    </instance>
+    <instance scriptid="val_873785_7451241_sb1_819">
+      <custrecord11>BOX</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>004</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>BOX</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>004 - BOX</name>
+    </instance>
+    <instance scriptid="val_873786_7451241_sb1_321">
+      <custrecord11>PLUS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>005</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>PLUS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>005 - PLUS</name>
+    </instance>
+    <instance scriptid="val_873787_7451241_sb1_742">
+      <custrecord11>CAJA SATELITAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>006</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CAJA SATELITAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>006 - CAJA SATELITAL</name>
+    </instance>
+    <instance scriptid="val_873788_7451241_sb1_612">
+      <custrecord11>REGULADOR DE ALARMA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>007</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>REGULADOR DE ALARMA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>007 - REGULADOR DE ALARMA</name>
+    </instance>
+    <instance scriptid="val_873789_7451241_sb1_464">
+      <custrecord11>CONTROLADOR DE PLATAFORMAS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>008</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CONTROLADOR DE PLATAFORMAS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>008 - CONTROLADOR DE PLATAFORMAS</name>
+    </instance>
+    <instance scriptid="val_873790_7451241_sb1_947">
+      <custrecord11>CONTROLADOR ELECTONICO DE CERRADURA PARA FURGONES</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>009</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CONTROLADOR ELECTONICO DE CERRADURA PARA FURGONES</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>009 - CONTROLADOR ELECTONICO DE CERRADURA PARA FURGONES</name>
+    </instance>
+    <instance scriptid="val_873791_7451241_sb1_769">
+      <custrecord11>CONSOLA DE CONTROL HUNTER BLOCK</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>010</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CONSOLA DE CONTROL HUNTER BLOCK</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>010 - CONSOLA DE CONTROL HUNTER BLOCK</name>
+    </instance>
+    <instance scriptid="val_873792_7451241_sb1_328">
+      <custrecord11>CONTENEDOR</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>011</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CONTENEDOR</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>011 - CONTENEDOR</name>
+    </instance>
+    <instance scriptid="val_873793_7451241_sb1_578">
+      <custrecord11>CAJA BOTONERA SATELITAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>012</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CAJA BOTONERA SATELITAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>012 - CAJA BOTONERA SATELITAL</name>
+    </instance>
+    <instance scriptid="val_873794_7451241_sb1_279">
+      <custrecord11>EBOX PARA INSTALACION FIJA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>013</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>EBOX PARA INSTALACION FIJA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>013 - EBOX PARA INSTALACION FIJA</name>
+    </instance>
+    <instance scriptid="val_873795_7451241_sb1_227">
+      <custrecord11>CAJA DE SEGURIDAD PARA FURGONES</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>014</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CAJA DE SEGURIDAD PARA FURGONES</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>014 - CAJA DE SEGURIDAD PARA FURGONES</name>
+    </instance>
+    <instance scriptid="val_873796_7451241_sb1_590">
+      <custrecord11>HUNTER BLOCK PRECINTO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>015</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>HUNTER BLOCK PRECINTO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>015 - HUNTER BLOCK PRECINTO</name>
+    </instance>
+    <instance scriptid="val_873797_7451241_sb1_207">
+      <custrecord11>HUNTER MONITOREO PESQUERO COMPACTO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>016</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>HUNTER MONITOREO PESQUERO COMPACTO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>016 - HUNTER MONITOREO PESQUERO COMPACTO</name>
+    </instance>
+    <instance scriptid="val_873798_7451241_sb1_373">
+      <custrecord11>TECLADO PARA IDENTIFICADION DE CONDUCTOR</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>017</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>TECLADO PARA IDENTIFICADION DE CONDUCTOR</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>017 - TECLADO PARA IDENTIFICADION DE CONDUCTOR</name>
+    </instance>
+    <instance scriptid="val_873799_7451241_sb1_550">
+      <custrecord11>BLINDAJE CONTENDOR 40</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>018</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>BLINDAJE CONTENDOR 40</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>018 - BLINDAJE CONTENDOR 40</name>
+    </instance>
+    <instance scriptid="val_873800_7451241_sb1_474">
+      <custrecord11>001 - 1-20</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>1-20</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - 1-20</name>
+    </instance>
+    <instance scriptid="val_873801_7451241_sb1_617">
+      <custrecord11>21-50</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>002</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>21-50</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - 21-50</name>
+    </instance>
+    <instance scriptid="val_873802_7451241_sb1_662">
+      <custrecord11>51 EN ADELANTE</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>003</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>51 EN ADELANTE</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 - 51 EN ADELANTE</name>
+    </instance>
+    <instance scriptid="val_873803_7451241_sb1_196">
+      <custrecord11>25%</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>25</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>25%</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>25 - 25%</name>
+    </instance>
+    <instance scriptid="val_873804_7451241_sb1_208">
+      <custrecord11>50%</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>50</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>50%</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>50 - 50%</name>
+    </instance>
+    <instance scriptid="val_873805_7451241_sb1_804">
+      <custrecord11>75%</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>75</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>75%</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>75 - 75%</name>
+    </instance>
+    <instance scriptid="val_873806_7451241_sb1_604">
+      <custrecord11>MODIFICA PERIODO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>005</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>MODIFICA PERIODO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>005 - MODIFICA PERIODO</name>
+    </instance>
+    <instance scriptid="val_873807_7451241_sb1_967">
+      <custrecord11>NO MODIFICA COBERTURA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>006</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>NO MODIFICA COBERTURA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>006 - NO MODIFICA COBERTURA</name>
+    </instance>
+    <instance scriptid="val_873808_7451241_sb1_550">
+      <custrecord11>MODIFICA COBERTURA SIN SOLICITARLO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>007</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>MODIFICA COBERTURA SIN SOLICITARLO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>007 - MODIFICA COBERTURA SIN SOLICITARLO</name>
+    </instance>
+    <instance scriptid="val_873809_7451241_sb1_171">
+      <custrecord11>ACCESORIOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>ACC</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>ACCESORIOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>ACC - ACCESORIOS</name>
+    </instance>
+    <instance scriptid="val_873810_7451241_sb1_404">
+      <custrecord11>ACTIVOS FIJOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>ACF</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>ACTIVOS FIJOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>ACF - ACTIVOS FIJOS</name>
+    </instance>
+    <instance scriptid="val_873811_7451241_sb1_598">
+      <custrecord11>OTROS AJUSTES CONTABLES</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>AJC</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>OTROS AJUSTES CONTABLES</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>AJC - OTROS AJUSTES CONTABLES</name>
+    </instance>
+    <instance scriptid="val_873812_7451241_sb1_721">
+      <custrecord11>CARGA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>CAR</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CARGA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>CAR - CARGA</name>
+    </instance>
+    <instance scriptid="val_873813_7451241_sb1_125">
+      <custrecord11>MONITOREO CELULAR</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>CEL</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>MONITOREO CELULAR</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>CEL - MONITOREO CELULAR</name>
+    </instance>
+    <instance scriptid="val_873814_7451241_sb1_588">
+      <custrecord11>CONVENIO MARESA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>MAR</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CONVENIO MARESA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>MAR - CONVENIO MARESA</name>
+    </instance>
+    <instance scriptid="val_873815_7451241_sb1_463">
+      <custrecord11>CONVENIO MAVESA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>MAV</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CONVENIO MAVESA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>MAV - CONVENIO MAVESA</name>
+    </instance>
+    <instance scriptid="val_873816_7451241_sb1_552">
+      <custrecord11>MANTENIMIENTOS Y CHEQUEOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>MCH</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>MANTENIMIENTOS Y CHEQUEOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>MCH - MANTENIMIENTOS Y CHEQUEOS</name>
+    </instance>
+    <instance scriptid="val_873817_7451241_sb1_764">
+      <custrecord11>OTRAS VENTAS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>OTV</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>OTRAS VENTAS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>OTV - OTRAS VENTAS</name>
+    </instance>
+    <instance scriptid="val_873818_7451241_sb1_743">
+      <custrecord11>PERSONAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>PER</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>PERSONAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>PER - PERSONAL</name>
+    </instance>
+    <instance scriptid="val_873819_7451241_sb1_246">
+      <custrecord11>SATELITAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>SAT</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>SATELITAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>SAT - SATELITAL</name>
+    </instance>
+    <instance scriptid="val_873820_7451241_sb1_888">
+      <custrecord11>LINEA DE SEGUROS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>SER</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>LINEA DE SEGUROS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>SER - LINEA DE SEGUROS</name>
+    </instance>
+    <instance scriptid="val_873821_7451241_sb1_513">
+      <custrecord11>CONVENIO TDE</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>TDE</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CONVENIO TDE</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>TDE - CONVENIO TDE</name>
+    </instance>
+    <instance scriptid="val_873822_7451241_sb1_653">
+      <custrecord11>REUBICACION</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>REUBICACION</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - REUBICACION</name>
+    </instance>
+    <instance scriptid="val_873823_7451241_sb1_825">
+      <custrecord11>CODIGO NARANJA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>002</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CODIGO NARANJA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - CODIGO NARANJA</name>
+    </instance>
+    <instance scriptid="val_873824_7451241_sb1_459">
+      <custrecord11>ACTUALIZACION DE VERSION</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>003</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>ACTUALIZACION DE VERSION</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 - ACTUALIZACION DE VERSION</name>
+    </instance>
+    <instance scriptid="val_873825_7451241_sb1_728">
+      <custrecord11>GARANTIA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>004</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>GARANTIA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>004 - GARANTIA</name>
+    </instance>
+    <instance scriptid="val_873826_7451241_sb1_726">
+      <custrecord11>SIM CARD</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>005</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>SIM CARD</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>005 - SIM CARD</name>
+    </instance>
+    <instance scriptid="val_873827_7451241_sb1_913">
+      <custrecord11>CODIGO AZUL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>006</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CODIGO AZUL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>006 - CODIGO AZUL</name>
+    </instance>
+    <instance scriptid="val_873828_7451241_sb1_227">
+      <custrecord11>PRODUCCION</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>PRODUCCION</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - PRODUCCION</name>
+    </instance>
+    <instance scriptid="val_873829_7451241_sb1_437">
+      <custrecord11>USADOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>002</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>USADOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - USADOS</name>
+    </instance>
+    <instance scriptid="val_873830_7451241_sb1_500">
+      <custrecord11>CHEQUEO H. LOJACK</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>001</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO H. LOJACK</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>001 - CHEQUEO H. LOJACK</name>
+    </instance>
+    <instance scriptid="val_873831_7451241_sb1_499">
+      <custrecord11>CHEQUEO H. MONITOREO VEHICULAR</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>002</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO H. MONITOREO VEHICULAR</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>002 - CHEQUEO H. MONITOREO VEHICULAR</name>
+    </instance>
+    <instance scriptid="val_873832_7451241_sb1_157">
+      <custrecord11>CHEQUEO H. MONITOREO PERSONAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>003</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO H. MONITOREO PERSONAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 - CHEQUEO H. MONITOREO PERSONAL</name>
+    </instance>
+    <instance scriptid="val_873833_7451241_sb1_861">
+      <custrecord11>CHEQUEO H. MONITOREO SATELITAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>004</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO H. MONITOREO SATELITAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>004 - CHEQUEO H. MONITOREO SATELITAL</name>
+    </instance>
+    <instance scriptid="val_873834_7451241_sb1_359">
+      <custrecord11>CHEQUEO H. PRODUCCION</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>005</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO H. PRODUCCION</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>005 - CHEQUEO H. PRODUCCION</name>
+    </instance>
+    <instance scriptid="val_873835_7451241_sb1_965">
+      <custrecord11>CHEQUEO H. OTROS PRODUCTOS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>006</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO H. OTROS PRODUCTOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>006 - CHEQUEO H. OTROS PRODUCTOS</name>
+    </instance>
+    <instance scriptid="val_873836_7451241_sb1_584">
+      <custrecord11>CHEQUEO SOFTWARE VEHICULAR</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>007</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO SOFTWARE VEHICULAR</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>007 - CHEQUEO SOFTWARE VEHICULAR</name>
+    </instance>
+    <instance scriptid="val_873837_7451241_sb1_281">
+      <custrecord11>CHEQUEO SOFTWARE GENERAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>008</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO SOFTWARE GENERAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>008 - CHEQUEO SOFTWARE GENERAL</name>
+    </instance>
+    <instance scriptid="val_873838_7451241_sb1_938">
+      <custrecord11>CHEQUEO ODOMETRO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>009</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO ODOMETRO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>009 - CHEQUEO ODOMETRO</name>
+    </instance>
+    <instance scriptid="val_873839_7451241_sb1_545">
+      <custrecord11>BASICO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>008</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>BASICO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>008 - BASICO</name>
+    </instance>
+    <instance scriptid="val_873840_7451241_sb1_318">
+      <custrecord11>DEMO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>009</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>DEMO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>009 - DEMO</name>
+    </instance>
+    <instance scriptid="val_873841_7451241_sb1_231">
+      <custrecord11>PLUS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>010</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>PLUS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>010 - PLUS</name>
+    </instance>
+    <instance scriptid="val_873842_7451241_sb1_570">
+      <custrecord11>PERSONAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>011</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>PERSONAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>011 - PERSONAL</name>
+    </instance>
+    <instance scriptid="val_873843_7451241_sb1_384">
+      <custrecord11>SOFTWARE VEHICULAR</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>012</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>SOFTWARE VEHICULAR</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>012 - SOFTWARE VEHICULAR</name>
+    </instance>
+    <instance scriptid="val_873844_7451241_sb1_115">
+      <custrecord11>SOFTWARE GENERAL</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>013</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>SOFTWARE GENERAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>013 - SOFTWARE GENERAL</name>
+    </instance>
+    <instance scriptid="val_873845_7451241_sb1_652">
+      <custrecord11>OTROS</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>014</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>OTROS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>014 - OTROS</name>
+    </instance>
+    <instance scriptid="val_873846_7451241_sb1_601">
+      <custrecord11>BOUTIQUE</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>015</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>BOUTIQUE</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>015 - BOUTIQUE</name>
+    </instance>
+    <instance scriptid="val_873847_7451241_sb1_856">
+      <custrecord11>INGRESO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>003</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>INGRESO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>003 - INGRESO</name>
+    </instance>
+    <instance scriptid="val_873848_7451241_sb1_538">
+      <custrecord11>EGRESO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>004</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>EGRESO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>004 - EGRESO</name>
+    </instance>
+    <instance scriptid="val_874711_7451241_sb1_833">
+      <custrecord11></custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>1</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>1</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>1 - 1</name>
+    </instance>
+    <instance scriptid="val_881884_7451241_sb1_501">
+      <custrecord11></custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>SXP</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>SERVICIO DE CHEQUEO EXPRESS LOJACK</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>SXP - SERVICIO DE CHEQUEO EXPRESS LOJACK</name>
+    </instance>
+    <instance scriptid="val_882305_7451241_sb1_641">
+      <custrecord11></custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>CHN</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>CHEQUEO NORMAL</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>CHN - CHEQUEO NORMAL</name>
+    </instance>
+    <instance scriptid="val_930253_7451241_sb1_813">
+      <custrecord11>MOV. CUSTODIA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>CAMB GPS TDE</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>MOV. CUSTODIA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>CAMB GPS TDE - DEALER (MOV. CUSTODIA)</name>
+    </instance>
+    <instance scriptid="val_997567_7451241_sb1_167">
+      <custrecord11>CONVENIO  TOYOTA</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>CTM</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>COMBO TOYOTA DEL ECUADOR GPS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>CTM - COMBO TOYOTA DEL ECUADOR GPS</name>
+    </instance>
+    <instance scriptid="val_1414539_7451241_sb1_307">
+      <custrecord11>MONITOREO CORPORATIVO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>UBC</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>MONITOREO CORPORATIVO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>UBC - CC - MONITOREO CORPORATIVO</name>
+    </instance>
+    <instance scriptid="val_1414540_7451241_sb1_751">
+      <custrecord11>HUNTER MONITOREO BASICO VENTA (DISP)</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>CLO</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>HUNTER MONITOREO BASICO VENTA (DISP)</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>CLO - HUNTER MONITOREO BASICO VENTA (DISP)</name>
+    </instance>
+    <instance scriptid="val_1414547_7451241_sb1_445">
+      <custrecord11>VENT HM AMI EQUIPO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>CEN</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENT HM AMI EQUIPO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>CEN - VENT HM AMI EQUIPO</name>
+    </instance>
+    <instance scriptid="val_1414761_7451241_sb1_134">
+      <custrecord11>ALQU HM BASICO EQUIPO ALQUILER</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>ABE</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>ALQU HM BASICO EQUIPO ALQUILER</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>ABE - ALQU HM BASICO EQUIPO ALQUILER</name>
+    </instance>
+    <instance scriptid="val_1414901_7451241_sb1_822">
+      <custrecord11>HUNTER SATELITAL SERV. DE REINSTALACION</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>RDC</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>HUNTER SATELITAL SERV. DE REINSTALACION</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>RDC - HUNTER SATELITAL SERV. DE REINSTALACION</name>
+    </instance>
+    <instance scriptid="val_1415181_7451241_sb1_481">
+      <custrecord11>ALQU HUNTER LOJACK ALQUILER EQUIPO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>IAL</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>ALQU HUNTER LOJACK ALQUILER EQUIPO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>IAL - ALQU HUNTER LOJACK ALQUILER EQUIPO</name>
+    </instance>
+    <instance scriptid="val_1419186_7451241_sb1_788">
+      <custrecord11>BSV - VENTA HUNTER BLOCK S</custrecord11>
+      <custrecord_ht_pp_aplicar>F</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>BSV</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENTA HUNTER BLOCK S</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>BSV - VENTA HUNTER BLOCK S</name>
+    </instance>
+    <instance scriptid="val_1419289_7451241_sb1_370">
+      <custrecord11>ASE - ALQU HUNTER BLOCK S ALQUILER EQUIPO</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>ASE</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>ALQU HUNTER BLOCK S ALQUILER EQUIPO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>ASE - ALQU HUNTER BLOCK S ALQUILER EQUIPO</name>
+    </instance>
+    <instance scriptid="val_1419695_7451241_sb1_603">
+      <custrecord11>SIA - VENT HUNTER ARCA SERVICIO DE INSTALACION</custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>SIA</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>VENT HUNTER ARCA SERVICIO DE INSTALACION</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>SIA - VENT HUNTER ARCA SERVICIO DE INSTALACION</name>
+    </instance>
+    <instance scriptid="val_1427254_7451241_sb1_767">
+      <custrecord11></custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>EMB</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>HM BÁSICO- DESINS. C/ENTREGA DIRECTA</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>EMB - HM BÁSICO- DESINS. C/ENTREGA DIRECTA</name>
+    </instance>
+    <instance scriptid="val_1429186_7451241_sb1_563">
+      <custrecord11></custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>CC</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>H.M. CORPORATIVO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>CC - H.M. CORPORATIVO</name>
+    </instance>
+    <instance scriptid="val_1429935_7451241_sb1_513">
+      <custrecord11></custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>X</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>USO DE CONVENIOS</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>X - USO DE CONVENIOS</name>
+    </instance>
+    <instance scriptid="val_1430044_7451241_sb1_702">
+      <custrecord11></custrecord11>
+      <custrecord_ht_pp_aplicar>T</custrecord_ht_pp_aplicar>
+      <custrecord_ht_pp_codigo>DEE</custrecord_ht_pp_codigo>
+      <custrecord_ht_pp_descripcion>DEMO HM AMI EQUIPO</custrecord_ht_pp_descripcion>
+      <isinactive>F</isinactive>
+      <name>DEE - DEMO HM AMI EQUIPO</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

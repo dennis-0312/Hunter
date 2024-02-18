@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_ht_bv_tipode_cuenta">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>BV_Tipo de cuenta</name>
+  <customvalues>
+    <customvalue scriptid="val_969062_7451241_sb1_713">
+      <isinactive>F</isinactive>
+      <value>CUE</value>
+    </customvalue>
+    <customvalue scriptid="val_969063_7451241_sb1_172">
+      <isinactive>F</isinactive>
+      <value>COB</value>
+    </customvalue>
+  </customvalues>
+</customlist>

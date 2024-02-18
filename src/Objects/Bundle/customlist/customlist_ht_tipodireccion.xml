@@ -1,0 +1,84 @@
+<customlist scriptid="customlist_ht_tipodireccion">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Tipo de Dirección</name>
+  <customvalues>
+    <customvalue scriptid="val_800196_7451241_sb1_830">
+      <isinactive>F</isinactive>
+      <value>AGENCIA</value>
+    </customvalue>
+    <customvalue scriptid="val_800197_7451241_sb1_279">
+      <isinactive>F</isinactive>
+      <value>CAJERO</value>
+    </customvalue>
+    <customvalue scriptid="val_800198_7451241_sb1_506">
+      <isinactive>F</isinactive>
+      <value>DIRECCIÓN POR CONFIRMAR</value>
+    </customvalue>
+    <customvalue scriptid="val_800199_7451241_sb1_467">
+      <isinactive>F</isinactive>
+      <value>DIRECCIÓN FACTURACIÓN</value>
+    </customvalue>
+    <customvalue scriptid="val_800200_7451241_sb1_551">
+      <isinactive>F</isinactive>
+      <value>DIRECCIÓN GEA</value>
+    </customvalue>
+    <customvalue scriptid="val_800201_7451241_sb1_429">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO</value>
+    </customvalue>
+    <customvalue scriptid="val_800202_7451241_sb1_169">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO CONVENIO</value>
+    </customvalue>
+    <customvalue scriptid="val_800203_7451241_sb1_898">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO MARES</value>
+    </customvalue>
+    <customvalue scriptid="val_800204_7451241_sb1_281">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO MAVES</value>
+    </customvalue>
+    <customvalue scriptid="val_800205_7451241_sb1_836">
+      <isinactive>F</isinactive>
+      <value>DOMICILIO TDE</value>
+    </customvalue>
+    <customvalue scriptid="val_800206_7451241_sb1_881">
+      <isinactive>F</isinactive>
+      <value>INFO - HUNTER</value>
+    </customvalue>
+    <customvalue scriptid="val_800207_7451241_sb1_641">
+      <isinactive>F</isinactive>
+      <value>INFO - HUNTER CONVENIO</value>
+    </customvalue>
+    <customvalue scriptid="val_800208_7451241_sb1_779">
+      <isinactive>F</isinactive>
+      <value>INFO - HUNTER MARES</value>
+    </customvalue>
+    <customvalue scriptid="val_800209_7451241_sb1_618">
+      <isinactive>F</isinactive>
+      <value>INFO - HUNTER MAVES</value>
+    </customvalue>
+    <customvalue scriptid="val_800210_7451241_sb1_911">
+      <isinactive>F</isinactive>
+      <value>INFO - HUNTER TDE</value>
+    </customvalue>
+    <customvalue scriptid="val_800211_7451241_sb1_152">
+      <isinactive>F</isinactive>
+      <value>MATRIZ</value>
+    </customvalue>
+    <customvalue scriptid="val_800212_7451241_sb1_237">
+      <isinactive>F</isinactive>
+      <value>OFICINA</value>
+    </customvalue>
+    <customvalue scriptid="val_800213_7451241_sb1_610">
+      <isinactive>F</isinactive>
+      <value>SUCURSAL</value>
+    </customvalue>
+    <customvalue scriptid="val_800214_7451241_sb1_764">
+      <isinactive>F</isinactive>
+      <value>TRABAJO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

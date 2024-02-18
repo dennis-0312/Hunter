@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_ht_os_estadoordenservicio">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>HT Estado Orden de servicio</name>
+  <customvalues>
+    <customvalue scriptid="val_6264_7451241_sb1_914">
+      <isinactive>F</isinactive>
+      <value>Generado</value>
+    </customvalue>
+    <customvalue scriptid="val_6265_7451241_sb1_753">
+      <isinactive>F</isinactive>
+      <value>Pagado</value>
+    </customvalue>
+    <customvalue scriptid="val_6266_7451241_sb1_379">
+      <isinactive>F</isinactive>
+      <value>Facturado</value>
+    </customvalue>
+    <customvalue scriptid="val_6267_7451241_sb1_310">
+      <isinactive>F</isinactive>
+      <value>Cerrado</value>
+    </customvalue>
+    <customvalue scriptid="val_6268_7451241_sb1_482">
+      <isinactive>F</isinactive>
+      <value>Atendido</value>
+    </customvalue>
+  </customvalues>
+</customlist>

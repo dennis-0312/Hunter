@@ -1,0 +1,891 @@
+<customrecordtype scriptid="customrecord_ht_cr_parametrizacion_produ">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>F</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex>8</iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>HT Parametrización de Productos</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>T</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ht_pp_code">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Código</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_pp_descrip">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ht_pp_proceso">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CLOBTEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Proceso</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_818904_7451241_sb1_767">
+      <custrecord_ht_pp_code>SCK</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>SOLICITA CLIENTE MONITOREO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>SCK - SOLICITA CLIENTE MONITOREO</name>
+    </instance>
+    <instance scriptid="val_818906_7451241_sb1_146">
+      <custrecord_ht_pp_code>ADP</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ACCION DEL PRODUCTO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>ADP - ACCION DEL PRODUCTO</name>
+    </instance>
+    <instance scriptid="val_818917_7451241_sb1_292">
+      <custrecord_ht_pp_code>DSR</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>DEFINICION DE SERVICIOS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso>Debe listar todos los parámetros vinculados en la orden de servicio para selección, parámetros con check aplicado.</custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>DSR - DEFINICION DE SERVICIOS</name>
+    </instance>
+    <instance scriptid="val_818919_7451241_sb1_861">
+      <custrecord_ht_pp_code>CPT</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CONFIGURA PLATAFORMA TELEMATIC</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>CPT - CONFIGURA PLATAFORMA TELEMATIC</name>
+    </instance>
+    <instance scriptid="val_818920_7451241_sb1_132">
+      <custrecord_ht_pp_code>TCH</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>TIPO DE CHEQUEO O/T</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TCH - TIPO DE CHEQUEO O/T</name>
+    </instance>
+    <instance scriptid="val_818922_7451241_sb1_617">
+      <custrecord_ht_pp_code>TTR</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>TIPO TRANSACCION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TTR - TIPO TRANSACCION</name>
+    </instance>
+    <instance scriptid="val_818923_7451241_sb1_216">
+      <custrecord_ht_pp_code>PPS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PEDIR PERIODO DE SERVICIO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PPS - PEDIR PERIODO DE SERVICIO</name>
+    </instance>
+    <instance scriptid="val_819721_7451241_sb1_326">
+      <custrecord_ht_pp_code>TDP</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>TIPO DE PRODUCTO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TDP - TIPO DE PRODUCTO</name>
+    </instance>
+    <instance scriptid="val_821788_7451241_sb1_898">
+      <custrecord_ht_pp_code>APR</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>SOLICITA APROBACIÓN</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso>Artículo requiere aprobación en las Ordenes de Servicio</custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>APR - SOLICITA APROBACIÓN</name>
+    </instance>
+    <instance scriptid="val_822058_7451241_sb1_183">
+      <custrecord_ht_pp_code>3GP</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GRUPOS DE PAGO DE COMISIONES</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>3GP - GRUPOS DE PAGO DE COMISIONES</name>
+    </instance>
+    <instance scriptid="val_822059_7451241_sb1_927">
+      <custrecord_ht_pp_code>ALQ</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PRODUCTO DE ALQUILER</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>ALQ - PRODUCTO DE ALQUILER</name>
+    </instance>
+    <instance scriptid="val_822060_7451241_sb1_486">
+      <custrecord_ht_pp_code>APD</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ACCION O/S ORIGEN</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>APD - ACCION O/S ORIGEN</name>
+    </instance>
+    <instance scriptid="val_822061_7451241_sb1_765">
+      <custrecord_ht_pp_code>API</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ACTUALIZA PRODUCTOS INSTALADOS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>API - ACTUALIZA PRODUCTOS INSTALADOS</name>
+    </instance>
+    <instance scriptid="val_822064_7451241_sb1_638">
+      <custrecord_ht_pp_code>AVO</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ACCION VINCULACION DATOS RASTRACT ODOMETER</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>AVO - ACCION VINCULACION DATOS RASTRACT ODOMETER</name>
+    </instance>
+    <instance scriptid="val_822065_7451241_sb1_884">
+      <custrecord_ht_pp_code>AVS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ACCION VINCULACION DATOS RASTRACT SERVER</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>AVS - ACCION VINCULACION DATOS RASTRACT SERVER</name>
+    </instance>
+    <instance scriptid="val_822066_7451241_sb1_846">
+      <custrecord_ht_pp_code>BPN</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA  BOTON DE PANICO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>BPN - AGREGA  BOTON DE PANICO</name>
+    </instance>
+    <instance scriptid="val_822067_7451241_sb1_988">
+      <custrecord_ht_pp_code>CAC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CONTROL ASOCIACION COOPERATIVA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>CAC - CONTROL ASOCIACION COOPERATIVA</name>
+    </instance>
+    <instance scriptid="val_822068_7451241_sb1_930">
+      <custrecord_ht_pp_code>CAV</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CONTROL DE AVALUO DE VEHICULO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>CAV - CONTROL DE AVALUO DE VEHICULO</name>
+    </instance>
+    <instance scriptid="val_822069_7451241_sb1_475">
+      <custrecord_ht_pp_code>CCD</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CONTROL DE CUSTODIAS DE DISPOSITIVOS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>CCD - CONTROL DE CUSTODIAS DE DISPOSITIVOS</name>
+    </instance>
+    <instance scriptid="val_822070_7451241_sb1_226">
+      <custrecord_ht_pp_code>CFI</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CAMBIA LA FECHA DE INSTALACION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>CFI - CAMBIA LA FECHA DE INSTALACION </name>
+    </instance>
+    <instance scriptid="val_822071_7451241_sb1_812">
+      <custrecord_ht_pp_code>CHX</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CHEQUEO EXPRESS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>CHX - CHEQUEO EXPRESS</name>
+    </instance>
+    <instance scriptid="val_822072_7451241_sb1_204">
+      <custrecord_ht_pp_code>CPC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>H. MONITOREO CAMBIO PROPETARIO CON COBERTURAS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>CPC - H. MONITOREO CAMBIO PROPETARIO CON COBERTURAS</name>
+    </instance>
+    <instance scriptid="val_822073_7451241_sb1_585">
+      <custrecord_ht_pp_code>CPI</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CONTROL DE PRODUCTOS INSTALADOS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>CPI - CONTROL DE PRODUCTOS INSTALADOS</name>
+    </instance>
+    <instance scriptid="val_822074_7451241_sb1_129">
+      <custrecord_ht_pp_code>CPR</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CONVERSION DE PRODUCTO-UPGRADE</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>CPR - CONVERSION DE PRODUCTO-UPGRADE</name>
+    </instance>
+    <instance scriptid="val_822075_7451241_sb1_696">
+      <custrecord_ht_pp_code>ECU</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ENTREGA DE CUSTODIAS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>ECU - ENTREGA DE CUSTODIAS</name>
+    </instance>
+    <instance scriptid="val_822076_7451241_sb1_219">
+      <custrecord_ht_pp_code>EDC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ENTREGA DIRECTA A CLIENTE</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>EDC - ENTREGA DIRECTA A CLIENTE</name>
+    </instance>
+    <instance scriptid="val_822077_7451241_sb1_629">
+      <custrecord_ht_pp_code>EUP</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>EVALUA USO DE PRODUCTO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>EUP - EVALUA USO DE PRODUCTO</name>
+    </instance>
+    <instance scriptid="val_822078_7451241_sb1_538">
+      <custrecord_ht_pp_code>GCS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA OT. CHQ SOFTWARE CLIENTE</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GCS - GENERA OT. CHQ SOFTWARE CLIENTE</name>
+    </instance>
+    <instance scriptid="val_822079_7451241_sb1_545">
+      <custrecord_ht_pp_code>GIF</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA INVENTARIO EN LA FACTURACION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GIF - GENERA INVENTARIO EN LA FACTURACION</name>
+    </instance>
+    <instance scriptid="val_822080_7451241_sb1_546">
+      <custrecord_ht_pp_code>GOC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GERERA SOLICITUD DE PAG. COMISIONES</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GOC - GERERA SOLICITUD DE PAG. COMISIONES </name>
+    </instance>
+    <instance scriptid="val_822081_7451241_sb1_219">
+      <custrecord_ht_pp_code>GOF</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA SOLICITUD DE FACTURACION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GOF - GENERA SOLICITUD DE FACTURACION</name>
+    </instance>
+    <instance scriptid="val_822082_7451241_sb1_158">
+      <custrecord_ht_pp_code>GOT</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA SOLICITUD DE TRABAJO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GOT - GENERA SOLICITUD DE TRABAJO</name>
+    </instance>
+    <instance scriptid="val_822083_7451241_sb1_546">
+      <custrecord_ht_pp_code>GPA</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA PARAMETRIZACION API</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GPA - GENERA PARAMETRIZACION API</name>
+    </instance>
+    <instance scriptid="val_822084_7451241_sb1_901">
+      <custrecord_ht_pp_code>GPG</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA PARAMETRIZACION EN GEOSYS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GPG - GENERA PARAMETRIZACION EN GEOSYS</name>
+    </instance>
+    <instance scriptid="val_822085_7451241_sb1_727">
+      <custrecord_ht_pp_code>GPR</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GRUPO DE PRODUCCION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GPR - GRUPO DE PRODUCCION</name>
+    </instance>
+    <instance scriptid="val_822086_7451241_sb1_435">
+      <custrecord_ht_pp_code>GPT</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA PARAMETRIZACION EN TELEMATICS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GPT - GENERA PARAMETRIZACION EN TELEMATICS</name>
+    </instance>
+    <instance scriptid="val_822087_7451241_sb1_428">
+      <custrecord_ht_pp_code>GPW</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA PARAMETRIZACION WESAFEN AWS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GPW - GENERA PARAMETRIZACION WESAFEN AWS</name>
+    </instance>
+    <instance scriptid="val_822088_7451241_sb1_566">
+      <custrecord_ht_pp_code>GSC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PROD. MONITOREO GEOSYS CONCESIONARIO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GSC - PROD. MONITOREO GEOSYS CONCESIONARIO</name>
+    </instance>
+    <instance scriptid="val_822089_7451241_sb1_627">
+      <custrecord_ht_pp_code>GSF</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PROD. MONITOREO GEOSYS FINANCIERA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>GSF - PROD. MONITOREO GEOSYS FINANCIERA</name>
+    </instance>
+    <instance scriptid="val_822090_7451241_sb1_775">
+      <custrecord_ht_pp_code>ICS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>INCLUYE COMO SERVICIO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>ICS - INCLUYE COMO SERVICIO</name>
+    </instance>
+    <instance scriptid="val_822091_7451241_sb1_995">
+      <custrecord_ht_pp_code>IET</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PEDIR INF. DE EJEC. TRABAJO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>IET - PEDIR INF. DE EJEC. TRABAJO</name>
+    </instance>
+    <instance scriptid="val_822092_7451241_sb1_447">
+      <custrecord_ht_pp_code>IGS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PRODUCTO MONITOREADO POR GEOSYS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>IGS - PRODUCTO MONITOREADO POR GEOSYS</name>
+    </instance>
+    <instance scriptid="val_822093_7451241_sb1_772">
+      <custrecord_ht_pp_code>IOH</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>INST. OTROS DISPOSITIVOS HUNTER MONITOREO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>IOH - INST. OTROS DISPOSITIVOS HUNTER MONITOREO</name>
+    </instance>
+    <instance scriptid="val_822094_7451241_sb1_664">
+      <custrecord_ht_pp_code>IRP</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ITEM DE REPUESTO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>IRP - ITEM DE REPUESTO</name>
+    </instance>
+    <instance scriptid="val_822095_7451241_sb1_711">
+      <custrecord_ht_pp_code>IRS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ITEM DE RECONEXION DE SERVICIO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>IRS - ITEM DE RECONEXION DE SERVICIO</name>
+    </instance>
+    <instance scriptid="val_822096_7451241_sb1_672">
+      <custrecord_ht_pp_code>ISV</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ITEM SOLICITA VEHICULO NUEVO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>ISV - ITEM SOLICITA VEHICULO NUEVO</name>
+    </instance>
+    <instance scriptid="val_822097_7451241_sb1_884">
+      <custrecord_ht_pp_code>MPT</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>MANEJA  PROCESOS DE TALLER</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>MPT - MANEJA  PROCESOS DE TALLER</name>
+    </instance>
+    <instance scriptid="val_822098_7451241_sb1_542">
+      <custrecord_ht_pp_code>ODM</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA ODOMETRO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>ODM - AGREGA ODOMETRO</name>
+    </instance>
+    <instance scriptid="val_822099_7451241_sb1_764">
+      <custrecord_ht_pp_code>PAM</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA RELACION PRODUCTO ANEXO MONITOREO GEOSYS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PAM - AGREGA RELACION PRODUCTO ANEXO MONITOREO GEOSYS</name>
+    </instance>
+    <instance scriptid="val_822100_7451241_sb1_180">
+      <custrecord_ht_pp_code>PAQ</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PAQUETE PERMITIDO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PAQ - PAQUETE PERMITIDO</name>
+    </instance>
+    <instance scriptid="val_822101_7451241_sb1_812">
+      <custrecord_ht_pp_code>PCD</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PIDE CODIGO DE ORIGEN</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PCD - PIDE CODIGO DE ORIGEN</name>
+    </instance>
+    <instance scriptid="val_822102_7451241_sb1_225">
+      <custrecord_ht_pp_code>PCN</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PORCENTAJE COMISION POR CONVENIOS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PCN - PORCENTAJE COMISION POR CONVENIOS</name>
+    </instance>
+    <instance scriptid="val_822103_7451241_sb1_955">
+      <custrecord_ht_pp_code>PCS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PIDE NUEVO CLIENTE DE SERVICIO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PCS - PIDE NUEVO CLIENTE DE SERVICIO</name>
+    </instance>
+    <instance scriptid="val_822104_7451241_sb1_411">
+      <custrecord_ht_pp_code>PED</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PIDE ESTADO DISPOSITIVO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PED - PIDE ESTADO DISPOSITIVO</name>
+    </instance>
+    <instance scriptid="val_822105_7451241_sb1_598">
+      <custrecord_ht_pp_code>PGO</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA GEOCERCAS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PGO - AGREGA GEOCERCAS</name>
+    </instance>
+    <instance scriptid="val_822106_7451241_sb1_686">
+      <custrecord_ht_pp_code>PGR</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PRODUCTO DE GARANTÍA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PGR - PRODUCTO DE GARANTÍA</name>
+    </instance>
+    <instance scriptid="val_822107_7451241_sb1_276">
+      <custrecord_ht_pp_code>PHV</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PRODUCTO HABILITADO PARA LA VENTA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PHV - PRODUCTO HABILITADO PARA LA VENTA</name>
+    </instance>
+    <instance scriptid="val_822108_7451241_sb1_852">
+      <custrecord_ht_pp_code>PIM</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PEDIR INFORMACION MEDICA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PIM - PEDIR INFORMACION MEDICA</name>
+    </instance>
+    <instance scriptid="val_822109_7451241_sb1_320">
+      <custrecord_ht_pp_code>PM1</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA RELACION ODOMETRO-CONCESIONARIO EN RASTRACK</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PM1 - AGREGA RELACION ODOMETRO-CONCESIONARIO EN RASTRACK</name>
+    </instance>
+    <instance scriptid="val_822110_7451241_sb1_657">
+      <custrecord_ht_pp_code>PM2</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA RELACION ODOMETRO-FINANCIERA EN RASTRACK</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PM2 - AGREGA RELACION ODOMETRO-FINANCIERA EN RASTRACK</name>
+    </instance>
+    <instance scriptid="val_822111_7451241_sb1_416">
+      <custrecord_ht_pp_code>PMI</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PRODUCTO PARA MONITOREO DE INMUEBLES</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PMI - PRODUCTO PARA MONITOREO DE INMUEBLES</name>
+    </instance>
+    <instance scriptid="val_822112_7451241_sb1_930">
+      <custrecord_ht_pp_code>PMO</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA RELACION ODOMETRO-CLIENTE EN RASTRACK</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PMO - AGREGA RELACION ODOMETRO-CLIENTE EN RASTRACK</name>
+    </instance>
+    <instance scriptid="val_822113_7451241_sb1_314">
+      <custrecord_ht_pp_code>PMS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PERMITE MODIFICAR SIM CARD</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PMS - PERMITE MODIFICAR SIM CARD</name>
+    </instance>
+    <instance scriptid="val_822114_7451241_sb1_925">
+      <custrecord_ht_pp_code>PNB</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PIDE NUMBER BOX</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PNB - PIDE NUMBER BOX</name>
+    </instance>
+    <instance scriptid="val_822115_7451241_sb1_778">
+      <custrecord_ht_pp_code>PPC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PRODUCTO PERMITIDO COTIZADOR</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PPC - PRODUCTO PERMITIDO COTIZADOR</name>
+    </instance>
+    <instance scriptid="val_822116_7451241_sb1_692">
+      <custrecord_ht_pp_code>PRG</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>VISUALIZA REPORTES GERENCIALES</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PRG - VISUALIZA REPORTES GERENCIALES</name>
+    </instance>
+    <instance scriptid="val_822117_7451241_sb1_423">
+      <custrecord_ht_pp_code>PRI</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PRODUCTO PRINCIPAL</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PRI - PRODUCTO PRINCIPAL</name>
+    </instance>
+    <instance scriptid="val_822118_7451241_sb1_755">
+      <custrecord_ht_pp_code>PRO</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ITEM COMERCIAL DE PRODUCCION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PRO - ITEM COMERCIAL DE PRODUCCION</name>
+    </instance>
+    <instance scriptid="val_822119_7451241_sb1_451">
+      <custrecord_ht_pp_code>PVC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PEDIR VEHICULOS EN CUSTODIA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PVC - PEDIR VEHICULOS EN CUSTODIA</name>
+    </instance>
+    <instance scriptid="val_822120_7451241_sb1_446">
+      <custrecord_ht_pp_code>PXB</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>ITEM SOLICITA CLIENTE NUEVO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PXB - ITEM SOLICITA CLIENTE NUEVO</name>
+    </instance>
+    <instance scriptid="val_822121_7451241_sb1_848">
+      <custrecord_ht_pp_code>RAS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA RASTRACK</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>RAS - AGREGA RASTRACK</name>
+    </instance>
+    <instance scriptid="val_822122_7451241_sb1_740">
+      <custrecord_ht_pp_code>SDE</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>SOLICITA DISPOSITIVOS ENTREGADOS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>SDE - SOLICITA DISPOSITIVOS ENTREGADOS</name>
+    </instance>
+    <instance scriptid="val_822123_7451241_sb1_230">
+      <custrecord_ht_pp_code>SSD</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA SENSOR DE TEMPERATURA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>SSD - AGREGA SENSOR DE TEMPERATURA</name>
+    </instance>
+    <instance scriptid="val_822124_7451241_sb1_774">
+      <custrecord_ht_pp_code>SSI</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA SENSOR DE IMPACTO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>SSI - AGREGA SENSOR DE IMPACTO</name>
+    </instance>
+    <instance scriptid="val_822125_7451241_sb1_836">
+      <custrecord_ht_pp_code>FAM</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>FAMILIA DE PRODUCTOS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>FAM - FAMILIA DE PRODUCTOS</name>
+    </instance>
+    <instance scriptid="val_822126_7451241_sb1_233">
+      <custrecord_ht_pp_code>TAJ</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>TIPO DE AJUSTE</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TAJ - TIPO DE AJUSTE </name>
+    </instance>
+    <instance scriptid="val_822127_7451241_sb1_359">
+      <custrecord_ht_pp_code>TBG</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>TIPO DE BODEGA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TBG - TIPO DE BODEGA</name>
+    </instance>
+    <instance scriptid="val_822128_7451241_sb1_420">
+      <custrecord_ht_pp_code>TDR</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>TIPO DE RENOVACION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TDR - TIPO DE RENOVACION</name>
+    </instance>
+    <instance scriptid="val_822131_7451241_sb1_173">
+      <custrecord_ht_pp_code>TDV</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>RESTRICCIONES PARA TIPO DE VEHICULO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TDV - RESTRICCIONES PARA TIPO DE VEHICULO</name>
+    </instance>
+    <instance scriptid="val_822132_7451241_sb1_604">
+      <custrecord_ht_pp_code>TMI</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>TIPO DE MOVIMIENTO DE INVENTARIO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TMI - TIPO DE MOVIMIENTO DE INVENTARIO</name>
+    </instance>
+    <instance scriptid="val_822133_7451241_sb1_264">
+      <custrecord_ht_pp_code>TRM</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>SERVICIO DE TRANSMISION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TRM - SERVICIO DE TRANSMISION</name>
+    </instance>
+    <instance scriptid="val_822134_7451241_sb1_490">
+      <custrecord_ht_pp_code>TRN</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>TIPO DE RENOVACION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TRN - TIPO DE RENOVACION</name>
+    </instance>
+    <instance scriptid="val_822135_7451241_sb1_530">
+      <custrecord_ht_pp_code>UAM</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CONTROL AGRUPACION UPGRADE CORPORATIVO-MONITOREO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>UAM - CONTROL AGRUPACION UPGRADE CORPORATIVO-MONITOREO</name>
+    </instance>
+    <instance scriptid="val_822136_7451241_sb1_893">
+      <custrecord_ht_pp_code>UCG</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA USUARIO Y CLAVE EN GEOSYS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>UCG - GENERA USUARIO Y CLAVE EN GEOSYS</name>
+    </instance>
+    <instance scriptid="val_822137_7451241_sb1_474">
+      <custrecord_ht_pp_code>UDP</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>UTILIZA PARALIZADOR</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>UDP - UTILIZA PARALIZADOR</name>
+    </instance>
+    <instance scriptid="val_822138_7451241_sb1_332">
+      <custrecord_ht_pp_code>UTT</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>UNIFICA TRABAJOS DE TALLER</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>UTT - UNIFICA TRABAJOS DE TALLER</name>
+    </instance>
+    <instance scriptid="val_822139_7451241_sb1_470">
+      <custrecord_ht_pp_code>VDP</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PRORRATEAR VALORES DE ACUERDO AL PLAZO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>VDP - PRORRATEAR VALORES DE ACUERDO AL PLAZO</name>
+    </instance>
+    <instance scriptid="val_822140_7451241_sb1_843">
+      <custrecord_ht_pp_code>VOT</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>GENERA VARIAS ORDENES DE TRABAJO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>VOT - GENERA VARIAS ORDENES DE TRABAJO</name>
+    </instance>
+    <instance scriptid="val_822141_7451241_sb1_185">
+      <custrecord_ht_pp_code>VPV</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>VISUALIZA PRODUCTO EN VEHICULO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>VPV - VISUALIZA PRODUCTO EN VEHICULO</name>
+    </instance>
+    <instance scriptid="val_873976_7451241_sb1_729">
+      <custrecord_ht_pp_code>THC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>HUNTER CARGO TECNOLOGÍA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>THC - HUNTER CARGO TECNOLOGÍA</name>
+    </instance>
+    <instance scriptid="val_874063_7451241_sb1_853">
+      <custrecord_ht_pp_code>PCI</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>PRODUCTO CONTROL INTERNO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PCI - PRODUCTO CONTROL INTERNO</name>
+    </instance>
+    <instance scriptid="val_874554_7451241_sb1_723">
+      <custrecord_ht_pp_code>IOR</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>IMPRIME OBSERVACION RECEPCION</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso>IMPRIME OBSERVACION RECEPCION</custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>IOR - IMPRIME OBSERVACION RECEPCION</name>
+    </instance>
+    <instance scriptid="val_874555_7451241_sb1_151">
+      <custrecord_ht_pp_code>PWB</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA WEB</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso>AGREGA WEB</custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>PWB - AGREGA WEB</name>
+    </instance>
+    <instance scriptid="val_874556_7451241_sb1_938">
+      <custrecord_ht_pp_code>TPC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>AGREGA  TIPO DE CHEQUEO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso>AGREGA  TIPO DE CHEQUEO</custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>TPC - AGREGA  TIPO DE CHEQUEO</name>
+    </instance>
+    <instance scriptid="val_874557_7451241_sb1_822">
+      <custrecord_ht_pp_code>IMB</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>INF. DE H.M. BASICO SOLICITADA EN LA O/S</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso>INF. DE H.M. BASICO SOLICITADA EN LA O/S</custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>IMB - INF. DE H.M. BASICO SOLICITADA EN LA O/S</name>
+    </instance>
+    <instance scriptid="val_874710_7451241_sb1_697">
+      <custrecord_ht_pp_code>SER</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>NULL</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso>NULL</custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>SER - NULL</name>
+    </instance>
+    <instance scriptid="val_881674_7451241_sb1_791">
+      <custrecord_ht_pp_code>COS</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>CIERRE DE ORDEN DE SERVICIO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>COS - CIERRE DE ORDEN DE SERVICIO</name>
+    </instance>
+    <instance scriptid="val_881717_7451241_sb1_536">
+      <custrecord_ht_pp_code>BOT</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>BUSCAR ORDEN DE TRABAJO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>BOT - BUSCAR ORDEN DE TRABAJO</name>
+    </instance>
+    <instance scriptid="val_1429089_7451241_sb1_459">
+      <custrecord_ht_pp_code>RFC</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>REVISIÓN DE FAMILIA DE CUSTODIA</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso>Revisión de Familia de Custodia</custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>RFC - REVISIÓN DE FAMILIA DE CUSTODIA</name>
+    </instance>
+    <instance scriptid="val_1429185_7451241_sb1_160">
+      <custrecord_ht_pp_code>RFU</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>REVISIÓN DE FAMILIA UPGRADE</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>RFU - REVISIÓN DE FAMILIA UPGRADE</name>
+    </instance>
+    <instance scriptid="val_1429946_7451241_sb1_475">
+      <custrecord_ht_pp_code>RLP</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>REVISION DE NIVEL DE PRECIOS</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>RLP - REVISION DE NIVEL DE PRECIOS</name>
+    </instance>
+    <instance scriptid="val_1429972_7451241_sb1_369">
+      <custrecord_ht_pp_code>VBI</custrecord_ht_pp_code>
+      <custrecord_ht_pp_descrip>VALIDACION DE BIEN INGRESADO</custrecord_ht_pp_descrip>
+      <custrecord_ht_pp_proceso></custrecord_ht_pp_proceso>
+      <isinactive>F</isinactive>
+      <name>VBI - VALIDACION DE BIEN INGRESADO</name>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1212]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+  <subtabs>
+    <subtab scriptid="tab_232_7451241_sb1_203">
+      <tabparent></tabparent>
+      <tabtitle>Parámetros</tabtitle>
+    </subtab>
+  </subtabs>
+</customrecordtype>

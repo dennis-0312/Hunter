@@ -17,7 +17,7 @@ define([
  * @param{record} record
  * @param{search} search
  */
-    (log, query, record, search, _controller, _constant) => {
+    (log, query, record, search, error, _controller, _constant) => {
         /**
          * Defines the function definition that is executed before record is loaded.
          * @param {Object} scriptContext
@@ -27,6 +27,8 @@ define([
          * @param {ServletRequest} scriptContext.request - HTTP request information sent from the browser for a client action only.
          * @since 2015.2
          */
+
+        const ASIENTOS_EVOLUTION = 'customrecord_ht_ae_asientos_evolution';
         const beforeLoad = (scriptContext) => {
             const objRecord = scriptContext.newRecord;
             const eventType = scriptContext.type;
@@ -85,49 +87,31 @@ define([
          * @param {string} scriptContext.type - Trigger type; use values from the context.UserEventType enum
          * @since 2015.2
          */
-        const afterSubmit = (scriptContext) => { }
-
-        // const getSerie = (documenttype, location, prefix, documentref = 0) => {
-        //     let searchLoad = '';
-        //     let serieResult = {
-        //         'serieid': "",
-        //         'peinicio': "",
-        //         'serieimpr': ""
-        //     }
-        //     try {
-        //         searchLoad = search.create({
-        //             type: 'customrecordts_ec_series_impresion',
-        //             filters: [
-        //                 ['custrecord_ts_ec_tipo_documento', 'anyof', documenttype],
-        //                 'AND',
-        //                 ['custrecord_ts_ec_localidad_serie', 'anyof', location]
-        //             ],
-        //             columns: [
-        //                 { name: 'internalid', sort: search.Sort.ASC },
-        //                 'custrecord_ts_ec_rango_inicial',
-        //                 'custrecord_ts_ec_series_impresion',
-        //                 search.createColumn({ name: "custrecordts_ec_iniciales_tip_comprob", join: "custrecord_ts_ec_tipo_documento", label: "Status" }),
-        //             ]
-        //         });
-        //         const searchResult = searchLoad.run().getRange({ start: 0, end: 1 });
-        //         if (searchResult.length) {
-        //             const column01 = searchResult[0].getValue(searchLoad.columns[0]);
-        //             let column02 = searchResult[0].getValue(searchLoad.columns[1]);
-        //             let column03 = searchResult[0].getValue(searchLoad.columns[2]);
-        //             let column04 = searchResult[0].getValue(searchLoad.columns[3]);
-        //             column03 = column04 + '-' + column03;
-        //             column02 = parseInt(column02);
-        //             return {
-        //                 'serieid': column01,
-        //                 'peinicio': column02,
-        //                 'serieimpr': column03
-        //             };
-        //         }
-        //     } catch (error) {
-        //         log.error({ title: 'getPeSerie', details: error });
-        //     }
-        //     return serieResult;
-        // }
+        const afterSubmit = (scriptContext) => {
+            const objRecord = scriptContext.newRecord;
+            const eventType = scriptContext.type;
+            if (eventType === scriptContext.UserEventType.CREATE) {
+                try {
+                    // let sql = 'SELECT * FROM customrecord_ht_ae_asientos_evolution WHERE custrecord_ht_ae_identificador = ?';
+                    // let params = [objRecord.getValue('memo')]
+                    // let results = query.runSuiteQL({ query: sql, params: params }).asMappedResults();
+                    // if (results.length > 0) {
+                    if (objRecord.getValue('custbody_ht_registro_transferencia')) {
+                        record.submitFields({
+                            type: ASIENTOS_EVOLUTION,
+                            id: objRecord.getValue('custbody_ht_registro_transferencia'),
+                            values: {
+                                custrecord_ht_ae_estado: 'Completado',
+                                custrecord_ht_ae_asiento_diario: objRecord.id
+                            }
+                        });
+                    }
+                    // }
+                } catch (error) {
+                    log.error('error', error);
+                }
+            }
+        }
 
         const generateCorrelative = (return_pe_inicio, serieid) => {
             let ceros;
@@ -136,7 +120,7 @@ define([
 
             log.error("generateCorrelative", { return_pe_inicio, serieid });
             const next_number = this_number
-            log.error('afterSubmit', next_number);
+            log.error('beforeSubmit', next_number);
             record.submitFields({ type: 'customrecord_ec_number_er', id: serieid, values: { 'custrecord_ec_correlativo_vale': next_number } });
 
             if (this_number.toString().length == 1) {

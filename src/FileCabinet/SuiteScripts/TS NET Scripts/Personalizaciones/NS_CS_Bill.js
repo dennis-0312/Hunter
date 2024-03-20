@@ -9,6 +9,7 @@ define(['N/url', 'N/record', 'N/currentRecord', 'N/transaction', 'N/email', 'N/s
         const typeMode = context.mode;
         const typeTransaction = currentRecord.type;
         const APPROVED = 2;
+        const DOCUMENT_TYPE_LIQUIDACION_COMPRA = 10;
 
         if (typeTransaction == 'vendorbill') {
             if (objRecord.getValue({ fieldId: 'approvalstatus' }) == APPROVED) {
@@ -21,6 +22,15 @@ define(['N/url', 'N/record', 'N/currentRecord', 'N/transaction', 'N/email', 'N/s
             objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: '' });
             objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: '' });
             objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: '' });
+        }
+
+        if (typeMode == 'edit') {
+            objRecord.setValue({ fieldId: 'custbody_ec_monto_iva', value: '' });
+            if (objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' }) != DOCUMENT_TYPE_LIQUIDACION_COMPRA /*&& (objRecord.getValue('custbody_psg_ei_status') != 1)*/) {
+                // objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: '' });
+                // objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: '' });
+                // objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: '' });
+            }
         }
     }
 
@@ -49,6 +59,19 @@ define(['N/url', 'N/record', 'N/currentRecord', 'N/transaction', 'N/email', 'N/s
         objRecord.setValue({ fieldId: 'custbody_cod_ret_iva_30', value: '' });
         objRecord.setValue({ fieldId: 'custbody_cod_ret_iva_70', value: '' });
         objRecord.setValue({ fieldId: 'custbody_cod_ret_iva_100', value: '' });
+
+        objRecord.setValue({ fieldId: 'custbody_ec_ret_ir', value: '' });
+        objRecord.setValue({ fieldId: 'custbody_ec_porcentaje_ret_ir', value: '' });
+
+        objRecord.setValue({ fieldId: 'custbody_ec_ret_por_ir2', value: '' });
+        objRecord.setValue({ fieldId: 'custbody_ec_ret_ir2', value: '' });
+
+        objRecord.setValue({ fieldId: 'custbody_ec_ret_por_ir3', value: '' });
+        objRecord.setValue({ fieldId: 'custbody_ec_ret_ir3', value: '' });
+
+        objRecord.setValue({ fieldId: 'custbody_ec_monto_iva', value: '' });
+
+
         // for (let j = 0; j < count; j++) {
         //     let taxrate = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'taxrate1', line: j });
         //     let rate = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'amount', line: j });

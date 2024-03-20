@@ -43,7 +43,8 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
         let reportId = currentRecord.getValue('custpage_f_report');
 
         if (reportId == "1") {
-            fieldsId = ['custpage_f_subsidiary', 'custpage_f_period'];
+            // fieldsId = ['custpage_f_subsidiary', 'custpage_f_period'];
+            fieldsId = ['custpage_f_subsidiary', 'custpage_f_period', 'custpage_f_format'];
         }
         fieldsId.forEach(fieldId => {
             let field = currentRecord.getField(fieldId);

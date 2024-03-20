@@ -1,0 +1,63 @@
+<customtransactiontype scriptid="customtransaction_orden_pago">
+  <cancloseorder>F</cancloseorder>
+  <isposting>F</isposting>
+  <isvoidable>F</isvoidable>
+  <name>Orden de Pago</name>
+  <showstatus>T</showstatus>
+  <transactionstyle>HEADER_ONLY</transactionstyle>
+  <segments>
+    <classposition>HEADER</classposition>
+    <departmentposition>HEADER</departmentposition>
+    <isclassmandatory>F</isclassmandatory>
+    <isdepartmentmandatory>F</isdepartmentmandatory>
+    <islocationmandatory>T</islocationmandatory>
+    <locationposition>HEADER</locationposition>
+  </segments>
+  <statuses>
+    <status scriptid="status_10044_7451241_642">
+      <description>GENERADO</description>
+      <id>A</id>
+      <isposting>F</isposting>
+    </status>
+    <status scriptid="status_10045_7451241_387">
+      <description>POR GENERAR</description>
+      <id>B</id>
+      <isposting>F</isposting>
+    </status>
+    <status scriptid="status_10046_7451241_339">
+      <description>COBRADO</description>
+      <id>C</id>
+      <isposting>F</isposting>
+    </status>
+    <status scriptid="status_10047_7451241_929">
+      <description>RECHAZADO</description>
+      <id>D</id>
+      <isposting>F</isposting>
+    </status>
+  </statuses>
+  <permissions>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>ADMINISTRATOR</permittedrole>
+    </permission>
+    <permission>
+      <permittedlevel>FULL</permittedlevel>
+      <permittedrole>[scriptid=customrole1672]</permittedrole>
+    </permission>
+    <permission>
+      <permittedlevel>EDIT</permittedlevel>
+      <permittedrole>[scriptid=customrole1652]</permittedrole>
+    </permission>
+    <permission>
+      <permittedlevel>EDIT</permittedlevel>
+      <permittedrole>[scriptid=customrole1666]</permittedrole>
+    </permission>
+  </permissions>
+  <links>
+    <link>
+      <linkcategory>BASICTRANSACTIONSVENDORS</linkcategory>
+      <linklabel>ORDEN DE PAGO</linklabel>
+      <linktasktype>LIST</linktasktype>
+    </link>
+  </links>
+</customtransactiontype>

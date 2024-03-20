@@ -906,7 +906,7 @@ define(['N/search',
         saveRecord: saveRecord,
         validateField: validateField,
         fieldChanged: fieldChanged,
-        postSourcing: postSourcing,
+        //postSourcing: postSourcing, //*DESCATIVADO POR ROL FACTURACION_LIQUIDACION - REVISAR
         //sublistChanged: sublistChanged
     }
 });

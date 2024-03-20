@@ -21,7 +21,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             }
         }
 
-        const map = (context) => {
+        /*const map = (context) => {
             try {
                 let key = context.key;
                 let result = JSON.parse(context.value);
@@ -39,6 +39,59 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 let rowString = `${codigoCompra}|${conceptoRetencionIR}|${baseImponibleRenta}|${porcentajeRetencionIR}|${montoRetencionRenta}|` +
                     `${fechaPagoDividendo}|${impuestoRentaPagado}|${anioUtilidades}|${numeroCajasEstandar}|${precioCaja}\r\n`;
 
+                context.write({
+                    key: context.key,
+                    value: {
+                        rowString
+                    }
+                });
+            } catch (error) {
+                log.error("error", error);
+            }
+        }*/
+
+        const map = (context) => {
+            try {
+                let key = context.key;
+                let result = JSON.parse(context.value);
+                let codigoCompra = result[0];//* 1 Código de Compra
+                //<I> rhuaccha: 2024-02-22
+                let ecRetIr1 = result[1].replace('- None -', '').trim();
+                let ecRetIr2 = result[2].replace('- None -', '').trim();
+                let ecRetIr3 = result[3].replace('- None -', '').trim();
+                let ecImporteBaseIr1 = roundTwoDecimals(result[4].replace('- None -', ''));
+                let ecImporteBaseIr2 = roundTwoDecimals(result[5].replace('- None -', ''));
+                let ecImporteBaseIr3 = roundTwoDecimals(result[6].replace('- None -', ''));
+                let ecPorcentajeRetIr1 = roundTwoDecimals(result[7].replace('- None -', ''));
+                let ecPorcentajeRetIr2 = roundTwoDecimals(result[8].replace('- None -', ''));
+                let ecPorcentajeRetIr3 = roundTwoDecimals(result[9].replace('- None -', ''));
+                let ecMontoRetIr1 = roundTwoDecimals(result[10].replace('- None -', ''));
+                let ecMontoRetIr2 = roundTwoDecimals(result[11].replace('- None -', ''));
+                let ecMontoRetIr3 = roundTwoDecimals(result[12].replace('- None -', ''));
+                let fechaPagoDividendo = result[13].replace('- None -', '');//* 6 Fecha de Pago del Dividendo
+                let impuestoRentaPagado = roundTwoDecimals(result[14]);//* 7 Impuesto a la Renta Pagado por la Sociedad Correspondiente al Dividendo
+                let anioUtilidades = result[15].replace('- None -', '');//* 8 Año en que se generaron las utilidades atribuibles al dividendo
+                let numeroCajasEstandar = result[16].replace('- None -', '');//* 9 Cantidad de cajas estándar de banano
+                let precioCaja = result[17].replace('- None -', '');//* 10 Precio de la caja de banano
+
+                /*let conceptoRetencionIR = result[1].replace('- None -', '');//* 2 Concepto de Retención en la fuente de Impuesto a la Renta
+                let baseImponibleRenta = roundTwoDecimals(result[2]);//* 3 Base Imponible Renta
+                let porcentajeRetencionIR = result[3];//* 4 Porcentaje de Retención en la fuente de Impuesto a la Renta
+                let montoRetencionRenta = roundTwoDecimals(result[4]);//* 5 Monto de retención de Renta
+                let fechaPagoDividendo = result[5].replace('- None -', '');//* 6 Fecha de Pago del Dividendo
+                let impuestoRentaPagado = roundTwoDecimals(result[6]);//* 7 Impuesto a la Renta Pagado por la Sociedad Correspondiente al Dividendo
+                let anioUtilidades = result[7].replace('- None -', '');//* 8 Año en que se generaron las utilidades atribuibles al dividendo
+                let numeroCajasEstandar = result[8].replace('- None -', '');//* 9 Cantidad de cajas estándar de banano
+                let precioCaja = result[9].replace('- None -', '');// 10 Precio de la caja de banano
+
+                let rowString = `${codigoCompra}|${conceptoRetencionIR}|${baseImponibleRenta}|${porcentajeRetencionIR}|${montoRetencionRenta}|` +
+                    `${fechaPagoDividendo}|${impuestoRentaPagado}|${anioUtilidades}|${numeroCajasEstandar}|${precioCaja}\r\n`;*/
+
+                let rowString = `${codigoCompra}|${ecRetIr1}|${ecImporteBaseIr1}|${ecPorcentajeRetIr1}|${ecMontoRetIr1}| ` +
+                    `${ecRetIr2}|${ecImporteBaseIr2}|${ecPorcentajeRetIr2}|${ecMontoRetIr2}| ` +
+                    `${ecRetIr3}|${ecImporteBaseIr3}|${ecPorcentajeRetIr3}|${ecMontoRetIr3}| ` +
+                    `${fechaPagoDividendo}|${impuestoRentaPagado}|${anioUtilidades}|${numeroCajasEstandar}|${precioCaja}\r\n`;
+                //<F> rhuaccha: 2024-02-22
                 context.write({
                     key: context.key,
                     value: {
@@ -144,6 +197,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ret_folder');
             scriptParameters.atsFilesId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ret_atsfiles');
             scriptParameters.logId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ret_logid');
+            //<I> rhuaccha: 2024-02-26
+            scriptParameters.format = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ret_formato');
+            //<F> rhuaccha: 2024-02-26
 
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
@@ -178,6 +234,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             params['custscript_ts_mr_ec_ats_formpag_folder'] = scriptParameters.folderId;
             params['custscript_ts_mr_ec_ats_formpag_atsfiles'] = scriptParameters.atsFilesId;
             params['custscript_ts_mr_ec_ats_formpag_logid'] = scriptParameters.logId;
+            //<I> rhuaccha: 2024-02-26
+            params['custscript_ts_mr_ec_ats_formpag_formato'] = scriptParameters.format;
+            //<F> rhuaccha: 2024-02-26
             log.error("executeMapReduce", params);
             let scriptTask = task.create({
                 taskType: task.TaskType.MAP_REDUCE,

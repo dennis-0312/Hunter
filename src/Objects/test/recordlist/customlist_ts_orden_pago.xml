@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_ts_orden_pago">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Orden de Pago</name>
+  <customvalues>
+    <customvalue scriptid="val_537668_7451241_sb1_555">
+      <isinactive>F</isinactive>
+      <value>GENERADO</value>
+    </customvalue>
+    <customvalue scriptid="val_537669_7451241_sb1_904">
+      <isinactive>F</isinactive>
+      <value>POR GENERAR</value>
+    </customvalue>
+    <customvalue scriptid="val_537670_7451241_sb1_315">
+      <isinactive>F</isinactive>
+      <value>COBRADO</value>
+    </customvalue>
+    <customvalue scriptid="val_537671_7451241_sb1_625">
+      <isinactive>F</isinactive>
+      <value>RECHAZADO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

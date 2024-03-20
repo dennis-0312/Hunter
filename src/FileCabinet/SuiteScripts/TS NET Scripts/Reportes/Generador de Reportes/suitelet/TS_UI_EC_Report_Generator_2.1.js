@@ -20,7 +20,7 @@ define([
             var method = context.request.method;
             let userInterface = new library.UserInterface(context.request.parameters);
             const FIELDS = userInterface.FIELDS;
-
+            log.error('FIELDS', FIELDS);
             if (method == 'GET') {
 
                 //const PARAMETERS = userInterface.getFormattedParameters();
@@ -41,7 +41,7 @@ define([
 
                 let endDateField = form.addField(FIELDS.field.enddate.id, serverWidget.FieldType.DATE, FIELDS.field.enddate.text, FIELDS.fieldgroup.filters.id);
 
-                let formatField = form.addField(FIELDS.field.format.id, serverWidget.FieldType.SELECT, FIELDS.field.format.text, FIELDS.fieldgroup.filters.id);
+                let formatField = form.addFormatField(FIELDS.field.format.id, serverWidget.FieldType.SELECT, FIELDS.field.format.text, FIELDS.fieldgroup.filters.id);
 
                 let resultSubList = form.addSublist(FIELDS.sublist.results.id, serverWidget.SublistType.STATICLIST, FIELDS.sublist.results.text);
                 resultSubList.addField(FIELDS.sublistfield.id.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.id.text);
@@ -62,8 +62,9 @@ define([
                 let reportId = context.request.parameters.custpage_f_report;
                 let subsidiaryId = context.request.parameters.custpage_f_subsidiary;
                 let periodId = context.request.parameters.custpage_f_period;
+                let format = context.request.parameters.custpage_f_format;
 
-                log.error("params", {reportId, subsidiaryId, periodId});
+                log.error("params", {reportId, subsidiaryId, periodId, format});
 
                 let params = {};
                 if (reportId == "1") {
@@ -71,6 +72,7 @@ define([
                     params.custscript_ts_ss_ec_atsinfo_period = periodId;
                     params.custscript_ts_ss_ec_atsinfo_report = reportId;
                     params.custscript_ts_ss_ec_atsinfo_folder = FOLDER_ID;
+                    params.custscriptts_ss_ec_atsinfo_formato = format;
                     log.error("params", params);
                     let scriptTask = task.create({
                         taskType: task.TaskType.SCHEDULED_SCRIPT,

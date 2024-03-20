@@ -3,11 +3,12 @@
  *@NScriptType ScheduledScript
 */
 
-define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/render', 'N/record'],
-    (log, runtime, task, format, file, search, render, record) => {
+define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/render', 'N/record', 'N/encode'],
+    (log, runtime, task, format, file, search, render, record, encode) => {
         let currentScript = runtime.getCurrentScript();
 
         const FTL_TEMPLATE_NAME = "./TS_FTL_EC_ATS_XML.ftl";
+        const FTL_TEMPLATE_EXCEL = "./TS_FTL_EC_ATS_XLS.ftl";
         const FOLDER_ID = "506"; //Path => SuiteBundles : Bundle 419588 : com.netsuite.psgsbe : src : cs : field_change_handler
         const execute = (context) => {
             try {
@@ -16,13 +17,27 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 let auxiliaryRecords = getAuxiliaryRecords(environmentFeatures, scriptParameters);
 
                 let atsFiles = getAtsFiles(scriptParameters.atsFilesId);
+                let formato = scriptParameters.format;
+                log.debug('Formato', formato);
                 if (atsFiles.length) {
-                    let json = buildJson(atsFiles);
-                    log.error("json", json);
-                    generateXML(json, scriptParameters, auxiliaryRecords);
+                    log.debug('if length', true);
+                    if (formato === 'XLSX') {
+                        try {
+                            let datos = buildJsonForExcel(atsFiles);
+                            generateXls(datos, scriptParameters, auxiliaryRecords);
+                        } catch (error) {
+                            log.error('Error formato XLS', error);
+                        }
+                    }
+
+                    if (formato === 'XML') {
+                        let json = buildJson(atsFiles);
+                        // log.error("json", json);
+                        generateXML(json, scriptParameters, auxiliaryRecords);
+                    }
 
                 } else {
-
+                    log.error('ATSFILES', 'No se encontraron archivos');
                 }
             } catch (error) {
                 log.error("error", error)
@@ -38,6 +53,9 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_ss_ec_ats_int_arc_folder');
             scriptParameters.atsFilesId = currentScript.getParameter('custscript_ts_ss_ec_ats_int_arc_atsfiles');
             scriptParameters.logId = currentScript.getParameter('custscript_ts_ss_ec_ats_int_arc_logid');
+            //<I> rhuaccha: 2024-02-26
+            scriptParameters.format = currentScript.getParameter('custscript_ts_ss_ec_ats_int_arc_formato');
+            //<F> rhuaccha: 2024-02-26
 
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
@@ -138,30 +156,32 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
         const buildJson = (atsFiles) => {
             let jsonBuilded = {};
             let identificacionInformante = getFileContentByName(atsFiles, "IDENTIFICACION DEL INFORMANTE");
-            log.error("identificacionInformante", identificacionInformante);
+            // log.error("identificacionInformante", identificacionInformante);
             setIdentificacionInformante(jsonBuilded, identificacionInformante);
 
             let comprasReembolso = getFileContentByName(atsFiles, "COMPRAS REMBOLSO");
             comprasReembolso.pop();
-            log.error("comprasReembolso", comprasReembolso);
+            // log.error("comprasReembolso", comprasReembolso);
 
             let formasPago = getFileContentByName(atsFiles, "FORMA DE PAGO");
             formasPago.pop();
-            log.error("formasPago", formasPago);
+            // log.error("formasPago", formasPago);
 
             let comprasRetenciones = getFileContentByName(atsFiles, "COMPRAS RETENCIONES");
             comprasRetenciones.pop();
-            log.error("comprasRetenciones", comprasRetenciones);
+            // log.error("comprasRetenciones", comprasRetenciones);
 
             let comprasDetalladas = getFileContentByName(atsFiles, "COMPRAS DETALLADAS");
             comprasDetalladas.pop();
-            log.error("comprasDetalladas", comprasDetalladas);
+            // log.error("comprasDetalladas", comprasDetalladas);
 
             setComprasDetalladas(jsonBuilded, comprasDetalladas, comprasReembolso, formasPago, comprasRetenciones);
+            log.error('jsonBuilded.compras', jsonBuilded.compras)
+            log.error('jsonBuilded', jsonBuilded)
 
             let ventasClientes = getFileContentByName(atsFiles, "VENTAS DE CLIENTES");
             ventasClientes.pop();
-            log.error("ventasClientes", ventasClientes);
+            // log.error("ventasClientes", ventasClientes);
 
             /*
             let formasPagoVenta = getFileContentByName(atsFiles, "FORMA DE PAGO VENTAS");
@@ -172,19 +192,19 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
 
             let ventasEstablecimiento = getFileContentByName(atsFiles, "VENTAS POR ESTABLECIMIENTO");
             ventasEstablecimiento.pop();
-            log.error("ventasEstablecimiento", ventasEstablecimiento);
+            // log.error("ventasEstablecimiento", ventasEstablecimiento);
 
             setVentasPorEstablecimiento(jsonBuilded, ventasEstablecimiento);
 
             let ventasExportaciones = getFileContentByName(atsFiles, "VENTAS DE EXPORTACIONES");
             ventasExportaciones.pop();
-            log.error("ventasExportaciones", ventasExportaciones);
+            // log.error("ventasExportaciones", ventasExportaciones);
 
             setVentasDeExportación(jsonBuilded, ventasExportaciones);
 
             let comprobantesAnulados = getFileContentByName(atsFiles, "ANULADOS");
             comprobantesAnulados.pop();
-            log.error("comprobantesAnulados", comprobantesAnulados);
+            // log.error("comprobantesAnulados", comprobantesAnulados);
 
             setComprobanteAnulados(jsonBuilded, comprobantesAnulados);
 
@@ -205,7 +225,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             });
             let contents = renderer.renderAsString();
 
-            let name = getFileName(auxiliaryRecords);
+            let name = getFileName(auxiliaryRecords, 'XML');
             let fileId = file.create({
                 name,
                 fileType: file.Type.XMLDOC,
@@ -217,7 +237,13 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             updateRecordLog(scriptParameters, xmlFile.url, xmlFile.name);
         }
 
-        const getFileName = (auxiliaryRecords) => {
+        const getFileName = (auxiliaryRecords, format) => {
+            if (format === 'XML') {
+                return `AT${auxiliaryRecords.period.month}${auxiliaryRecords.period.year}.xml`;
+            }
+            if (format === 'XLSX') {
+                return `AT${auxiliaryRecords.period.month}${auxiliaryRecords.period.year}.xls`;
+            }
             return `AT${auxiliaryRecords.period.month}${auxiliaryRecords.period.year}.xml`;
         }
 
@@ -313,14 +339,34 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 formasDePago.formaPago = getFormaPago(codigoCompra, formasPago)
                 detalleCompras.formasDePago = formasDePago;
 
-                let air = getComprasRetenciones(codigoCompra, comprasRetenciones);
-                detalleCompras.air = air;
+                /* Inicio Edwin*****/
+                let reembosloTotal = getFormaReembolso(codigoCompra, comprasReembolso)
+                detalleCompras.reembolsos = reembosloTotal;
+                /* Fin Edwin*****/
+
+
+                // log.debug('CÓDIGO DE COMPRA', codigoCompra);
+                if(detalleCompras.tipoComprobante != '02'){
+                    let air = getComprasRetenciones(codigoCompra, comprasRetenciones);
+                    detalleCompras.air = air;
+                } else {
+                    let air = [
+                        {
+                            codRetAir: '332',
+                            baseImpAir: detalleCompras.baseImpGrav,
+                            porcentajeAir: 0,
+                            valRetAir:  0
+                        }
+                    ];
+                    detalleCompras.air = air;
+                }
 
                 detalleCompras.estabRetencion1 = compraDetallada[36]; //* 37 No. de serie del comprobante de retención - establecimiento
                 detalleCompras.ptoEmiRetencion1 = compraDetallada[37]; //* 38 No. de serie del comprobante de retención - punto de emisión
                 detalleCompras.secRetencion1 = compraDetallada[38]; //* 39 No. secuencial del comprobante de retención
                 detalleCompras.autRetencion1 = compraDetallada[39]; //* 40 No. de autorización del comprobante de retención
                 detalleCompras.fechaEmiRet1 = compraDetallada[40]; //* 41 Fecha de emision del comprobante de retención
+
                 compras.push(detalleCompras);
             }
             jsonBuilded.compras = compras;
@@ -374,7 +420,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 ventas.push(ventaEst);
             }
 
-            log.error("setVentasPorEstablecimiento", ventas);
+            // log.error("setVentasPorEstablecimiento", ventas);
             jsonBuilded.ventasEstablecimiento = ventas;
         }
 
@@ -394,7 +440,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
 
                 anulados.push(detalleAnulados);
             }
-            log.error("setComprobanteAnulados", anulados);
+            // log.error("setComprobanteAnulados", anulados);
             jsonBuilded.anulados = anulados;
         }
 
@@ -439,16 +485,16 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
 
                 exportaciones.push(detalleExportaciones);
             }
-            log.error("exportaciones", exportaciones),
-                jsonBuilded.exportaciones = exportaciones;
+            // log.error("exportaciones", exportaciones),
+            jsonBuilded.exportaciones = exportaciones;
         }
 
         const getTotalBaseImponibleReembolso = (codigoCompra, comprasReembolso) => {
             let totalBaseImponibleReembolso = 0;
             for (let i = 0; i < comprasReembolso.length; i++) {
                 let compraReembolso = comprasReembolso[i].split('|');
-                if (codigoCompra != compraReembolso[0]) continue;
-                totalBaseImponibleReembolso = roundTwoDecimals(totalBaseImponibleReembolso + Number(compraReembolso[13]));
+                if (codigoCompra != compraReembolso[1]) continue;
+                totalBaseImponibleReembolso = roundTwoDecimals(totalBaseImponibleReembolso + Number(compraReembolso[14]));
             }
             return totalBaseImponibleReembolso;
         }
@@ -462,6 +508,34 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             return "";
         }
 
+        const getFormaReembolso = (codigoCompra, formasReembolso) => {
+            let reembolso = [];
+            for (let i = 0; i < formasReembolso.length; i++) {
+                let reemb = formasReembolso[i].split('|');
+                if (Number(reemb[1]) === Number(codigoCompra)) {
+                    let detalleReem = {
+                        tipoComprobanteReemb: reemb[2],
+                        tpIdProvReemb: reemb[3],
+                        idProvReemb: reemb[4],
+                        establecimientoReemb: reemb[5],
+                        puntoEmisionReemb: reemb[6],
+                        secuencialReemb: reemb[7],
+                        fechaEmisionReemb: reemb[8],
+                        autorizacionReemb: reemb[9],
+                        baseImponibleReemb: Number(reemb[10]).toFixed(2),
+                        baseImpGravReemb: Number(reemb[11]).toFixed(2),
+                        baseNoGraIvaReemb: Number(reemb[12]).toFixed(2),
+                        baseImpExeReemb: Number(reemb[13]).toFixed(2),
+                        montoIceRemb: Number(reemb[15]).toFixed(2),
+                        montoIvaRemb: Number(reemb[16]).toFixed(2),
+                    };
+                    //air.push(detalleAir);
+                    reembolso.push(detalleReem);
+                }
+            }
+            return reembolso;
+        }
+
         const getFormasPagoVenta = (formasPago) => {
             let formasDePago = [];
             formasPago = formasPago.split(',');
@@ -471,25 +545,362 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             return formasDePago;
         }
 
-        const getComprasRetenciones = (codigoCompra, comprasRetenciones) => {
+        /*const getComprasRetenciones = (codigoCompra, comprasRetenciones) => {
             let air = [];
             for (let i = 0; i < comprasRetenciones.length; i++) {
                 let compraRetencion = comprasRetenciones[i].split('|');
-                if (compraRetencion[0] == codigoCompra) {
+                if (Number(compraRetencion[0]) == Number(codigoCompra)) {
                     let detalleAir = {};
                     detalleAir.codRetAir = compraRetencion[1]; //& 2 Concepto de Retención en la fuente de Impuesto a la Renta 
                     detalleAir.baseImpAir = Number(compraRetencion[2]) || 0; //& 3 Base Imponible Renta
-                    detalleAir.porcentajeAir = compraRetencion[3]; //& 4 Porcentaje de Retención en la fuente de Impuesto a la Renta
+                    // detalleAir.porcentajeAir = compraRetencion[3].replace('- None -', ''); //& 4 Porcentaje de Retención en la fuente de Impuesto a la Renta
+                    detalleAir.porcentajeAir = nvl(compraRetencion[3]);
                     detalleAir.valRetAir = Number(compraRetencion[4]) || 0; //& 5 Monto de retención de Renta
                     air.push(detalleAir);
                 }
             }
             return air;
+        }*/
+
+        const getComprasRetenciones = (codigoCompra, comprasRetenciones) => {
+            let air = [];
+            let retGroup = 0;
+            log.debug('codigoCompra', codigoCompra)
+            log.debug('comprasRetenciones', comprasRetenciones)
+            log.debug('comprasRetenciones.length', comprasRetenciones.length)
+            for (let i = 0; i < comprasRetenciones.length; i++) {
+                let compraRetencion = comprasRetenciones[i].split('|');
+                if (Number(compraRetencion[0]) === Number(codigoCompra)) {
+                    for (let j = 1; j < compraRetencion.length; j += 4) {
+                        if (retGroup < 3) {
+                            let detalleAir = {
+                                codRetAir: (compraRetencion[j].replace(/[a-zA-Z]/g, "")).trim(),
+                                baseImpAir: Number(compraRetencion[j + 1]) || 0,
+                                porcentajeAir: compraRetencion[j + 2],
+                                valRetAir: Number(compraRetencion[j + 3]) || 0
+                            };
+
+                            if(detalleAir.codRetAir != ''){
+                                air.push(detalleAir);
+                            }
+                            /*
+                            if (validateJson(detalleAir)) {
+                                air.push(detalleAir);
+                            }
+                            */
+                            retGroup++;
+                        } else {
+                            break;
+                        }
+                    }
+                    break;
+                }
+            }
+            return air;
+        }
+
+        const validateJson = (json) => {
+            for (const propiedad in json) {
+                const valor = json[propiedad];
+                if (!valor || (typeof valor === "number" && valor === 0)) {
+                    let row = `El campo "${propiedad}" no puede ser vacío o 0.`;
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        const nvl = (valor) => {
+            valor = valor.replace('- None -', '');
+
+            if (valor === '' || valor === null) {
+                return '0.00';
+            } else {
+                return valor;
+            }
         }
 
         const roundTwoDecimals = (number) => {
             return Math.round(Number(number) * 100) / 100;
         }
+
+        //<I> rhuaccha: 2024-02-26
+        const getListFormaPago = (codigoCompra, formasPago) => {
+            let arr = [];
+            for (let i = 0; i < formasPago.length; i++) {
+                let formaPago = formasPago[i].split('|');
+                if (formaPago[0] != codigoCompra) continue;
+                // return formaPago[1];
+                arr.push(formaPago[1]);
+            }
+            return arr.join(",");
+        }
+
+        const buildJsonForExcel = (atsFiles) => {
+            let json = {};
+            let informante = getFileContentByName(atsFiles, "IDENTIFICACION DEL INFORMANTE");
+            setIdentificacionInformante(json, informante);
+
+            let comprasReembolso = getFileContentByName(atsFiles, "COMPRAS REMBOLSO");
+            comprasReembolso.pop();
+
+            let formasPago = getFileContentByName(atsFiles, "FORMA DE PAGO");
+            formasPago.pop();
+
+            let comprasRetenciones = getFileContentByName(atsFiles, "COMPRAS RETENCIONES");
+            comprasRetenciones.pop();
+
+            let comprasDetalladas = getFileContentByName(atsFiles, "COMPRAS DETALLADAS");
+            comprasDetalladas.pop();
+
+            getCompras(json, comprasDetalladas, comprasReembolso, formasPago, comprasRetenciones);
+
+            return json;
+        }
+
+        const getCompras = (json, comprasDetalladas, comprasReembolso, formasPago, comprasRetenciones) => {
+            //!SS => EC - ATS Compras Detalladas - customsearch_ts_ec_compras_detalladas
+            let compras = [];
+
+            for (let i = 0; i < comprasDetalladas.length; i++) {
+                let detalle = {};
+                let compraDetallada = comprasDetalladas[i].split('|');
+                let codigoCompra = compraDetallada[0]; //* 1 Codigo de compra
+
+                detalle.codSustento = compraDetallada[1] || ""; //* 2 Codigo de sustento
+                detalle.tpIdProv = compraDetallada[2] || ""; //* 3 Tipo de identificacion del proveedor
+                detalle.idProv = compraDetallada[3] || ""; //* 4 Numero de identificacion del proveedor
+                detalle.tipoComprobante = compraDetallada[4] || ""; //* 5 Codigo del tipo de comprobante
+                detalle.parteRel = compraDetallada[5] || ""; //* 6 Parte relacionada
+                detalle.tipoProv = compraDetallada[6] || ""; //* 7 Tipo de proveedor
+                detalle.denoProv = compraDetallada[7] || ""; //* 8 Proveedor razon social
+                detalle.fechaRegistro = compraDetallada[8] || ""; //* 9 CV Fecha de registro
+                detalle.establecimiento = compraDetallada[9] || ""; //* 10 CV Establecimiento
+                detalle.puntoEmision = compraDetallada[10] || ""; //* 11 CV Punto emision
+                detalle.secuencial = compraDetallada[11] || ""; //* 12 CV Secuencial
+                detalle.fechaEmision = compraDetallada[12] || ""; //* 13 CV Fecha de emision
+                detalle.autorizacion = compraDetallada[13] || ""; //* 14 CV Numero de autorizacion
+                detalle.baseNoGraIva = Number(compraDetallada[14]) || 0; //* 15 Base Imponible no objeto de IVA
+                detalle.baseImponible = Number(compraDetallada[15]) || 0; //* 16 Base imponible tarifa 0% de IVA 
+                detalle.baseImpGrav = Number(compraDetallada[16]) || 0; //* 17 Base imponible gravada
+                detalle.baseImpExe = Number(compraDetallada[17]) || 0; //* 18 Base exenta
+                detalle.montoIce = Number(compraDetallada[18]) || 0; //* 19 Monto ICE
+                detalle.montoIva = Number(compraDetallada[19]) || 0; //* 20 Monto IVA
+                detalle.valRetBien10 = Number(compraDetallada[20]) || 0; //* 21 Retencion bienes 10%
+                detalle.valRetServ20 = Number(compraDetallada[21]) || 0; //* 22 Retencion servicios 20%
+                detalle.valorRetBienes = Number(compraDetallada[22]) || 0; //* 23 Retencion de IVA 30% bienes
+                detalle.valRetServ50 = Number(compraDetallada[23]) || 0; //* 24 Retencion de IVA 50% bienes
+                detalle.valorRetServicios = Number(compraDetallada[24]) || 0; //* 25 Retencion de IVA 70% servicios
+                detalle.valRetServ100 = Number(compraDetallada[25]) || 0; //* 26 Retencion de IVA 100%
+
+                let totbasesImpReemb = getTotalBaseImponibleReembolso(codigoCompra, comprasReembolso);
+                detalle.totbasesImpReemb = totbasesImpReemb || 0;
+
+                detalle.pagoLocExt = compraDetallada[27]; //* 28 Pago Local o Extranjero
+                detalle.tipoRegi = compraDetallada[28]; //* 29 Tipos de regimen fiscal del exterior
+                detalle.paisEfecPagoGen = compraDetallada[29]; //* 30 País de residencia o establecimiento permanente a quién se efectúa el pago régimen general
+                detalle.paisEfecPagoParFis = compraDetallada[30]; //* 31 País de residencia o establecimiento permanente a quién se efectúa el pago paraíso fiscal
+                detalle.denopago = compraDetallada[31]; //* 32 Denominación del régimen fiscal preferente o jurisdicción de menor imposición.
+                detalle.paisEfecPago = compraDetallada[32]; //* 33 País al que se efectúa el pago
+                detalle.aplicConvDobTrib = compraDetallada[33]; //* 34 ¿Aplica convenio de doble tributación?
+                detalle.pagExtSujRetNorLeg = compraDetallada[34]; //* 35 ¿Pago al exterior en aplicación a la Normativa Legal?
+                detalle.pagoRegFis = compraDetallada[35]; //* 36 ¿El pago es a un régimen fiscal preferente o de menor imposición?
+
+                detalle.formasDePago = getListFormaPago(codigoCompra, formasPago);
+
+                /* Inicio Edwin*****/
+                let reembosloTotal = getFormaReembolso(codigoCompra, comprasReembolso)
+                detalle.reembolsos = reembosloTotal;
+                /* Fin Edwin*****/
+
+                // log.debug('CÓDIGO DE COMPRA', codigoCompra);
+                log.debug('detalle.tipoComprobante',detalle.tipoComprobante)
+                let air = [];
+                if(detalle.tipoComprobante != '02'){
+                    air = getComprasRetenciones(codigoCompra, comprasRetenciones);
+                } else {
+                    air = [
+                        {
+                            codRetAir: '332',
+                            baseImpAir: detalle.baseImpGrav,
+                            porcentajeAir: 0,
+                            valRetAir:  0
+                        }
+                    ];
+                }
+                log.debug('air',air)
+                // log.debug('SECCIÓN AIR COMPRAS', air);
+                // detalle.air = air;
+                air.forEach((obj, index) => {
+                    let key1 = `codRetAir${index + 1}`;
+                    let key2 = `baseImpAir${index + 1}`;
+                    let key3 = `porcentajeAir${index + 1}`;
+                    let key4 = `valRetAir${index + 1}`;
+
+                    detalle[key1] = obj.codRetAir;
+                    detalle[key2] = obj.baseImpAir;
+                    detalle[key3] = obj.porcentajeAir;
+                    detalle[key4] = obj.valRetAir;
+                });
+
+                detalle.estabRetencion1 = compraDetallada[36]; //* 37 No. de serie del comprobante de retención - establecimiento
+                detalle.ptoEmiRetencion1 = compraDetallada[37]; //* 38 No. de serie del comprobante de retención - punto de emisión
+                detalle.secRetencion1 = compraDetallada[38]; //* 39 No. secuencial del comprobante de retención
+                detalle.autRetencion1 = compraDetallada[39]; //* 40 No. de autorización del comprobante de retención
+                detalle.fechaEmiRet1 = compraDetallada[40]; //* 41 Fecha de emision del comprobante de retención
+                compras.push(detalle);
+            }
+            json.compras = compras;
+        }
+
+        const generateXls = (txtDataJson, scriptParameters, auxiliaryRecords) => {
+            let templateFile = file.load({ id: FTL_TEMPLATE_EXCEL });
+
+            let data = { text: JSON.stringify(txtDataJson) };
+
+            let renderer = render.create();
+            renderer.templateContent = templateFile.getContents();
+            renderer.addCustomDataSource({
+                format: render.DataSource.OBJECT,
+                alias: 'jsonString',
+                data
+            });
+            let contents = renderer.renderAsString();
+            let base64 = encode.convert({
+                string: contents,
+                inputEncoding: encode.Encoding.UTF_8,
+                outputEncoding: encode.Encoding.BASE_64
+            });
+
+            let name = getFileName(auxiliaryRecords, 'XLSX');
+            let fileId = file.create({
+                name,
+                fileType: file.Type.EXCEL,
+                contents: base64,
+                folder: FOLDER_ID
+            }).save();
+            let xlsFile = file.load({ id: fileId });
+            log.debug('DETALLE DEL ARCHIVO', { name: xlsFile.name, ulr: xlsFile.url });
+            updateRecordLog(scriptParameters, xlsFile.url, xlsFile.name);
+        }
+
+        const createXmlExcel = (datos) => {
+            const info = [
+                ["Tipo ID Informante", datos.TipoIDInformante],
+                ["Id Informante", datos.IdInformante],
+                ["Razón Social", datos.razonSocial],
+                ["Año", datos.Anio],
+                ["Mes", datos.Mes],
+                ["Numero Ruc", datos.numEstabRuc],
+                ["Total Ventas", datos.totalVentas],
+                ["Código Operativo", datos.codigoOperativo],
+            ]
+            let xmlString = '<?xml version="1.0" encoding="UTF-8" ?><?mso-application progid="Excel.Sheet"?>';
+            xmlString += '<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"';
+            xmlString += 'xmlns:o="urn:schemas-microsoft-com:office:office"';
+            xmlString += 'xmlns:x="urn:schemas-microsoft-com:office:excel"';
+            xmlString += 'xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"';
+            xmlString += 'xmlns:html="http://www.w3.org/TR/REC-html40">';
+            xmlString += getStyleExcel();
+            xmlString += '<Worksheet ss:Name="Compras">';
+            xmlString += '<Table>';
+
+            info.forEach(item => {
+                let fieldName = item[0];
+                let fieldValue = item[1];
+                xmlString += `<Row><Cell ss:StyleID="chead"><Data ss:Type="String">${fieldName}</Data></Cell>`;
+                xmlString += `<Cell ss:StyleID="cString"><Data ss:Type="${typeof fieldValue === 'number' ? 'Number' : 'String'}">${fieldValue}</Data></Cell></Row>`;
+
+            });
+
+            xmlString += '<Row/>';
+            xmlString += '<Row/>';
+
+            let header = "Identificación del sustento tributario,Tipo de Identificación del Proveedor,No. de Identificación del Proveedor,Código tipo de comprobante,Parte Relacionada,Tipo de Proveedor,Razón o denominación social del proveedor,Fecha de registro contable del comprobante de venta,No. de serie del comprobante de venta - establecimiento,No. de serie del comprobante de  venta - punto de emisión,No. secuencial del comprobante de venta,Fecha  de  emisión  del comprobante de venta,No. de autorización  del comprobante de venta,Base Imponible No objeto de IVA,Base Imponible tarifa 0% IVA,Base Imponible tarifa IVA diferente de 0%,Base imponible exenta de IVA,Monto ICE,Monto IVA,Retención IVA 10%,Retención IVA 20%,Retención IVA 30%,Retención IVA 50%,Retención IVA 70%,Retención IVA 100%,Pago a residente  o no residente,Tipos de régimen fiscal del exterior,País de residencia o establecimiento permanente a quién se efectúa el pago régimen general,País de residencia o establecimiento permanente a quién se efectúa el pago paraíso fiscal,Denominación del régimen fiscal preferente o jurisdicción de menor imposición,País de residencia o establecimiento permanente a quién se efectúa el pago,Aplica Convenio de Doble Tributación en el pago,Pago al exterior sujeto a retención en aplicación a la norma legal,¿El pago es a unrégimen fiscal preferente o de menor imposición?,Forma de pago,No. de serie del comprobante de retención - establecimiento,No. de serie del comprobante de retención - punto de emisión,No. secuencial del comprobante de retención,No. de autorización del comprobante de retención,Fecha de emisión del comprobante de retención,Total Bases Imponibles Reembolso";
+            let arrHeader = header.split(',');
+
+            xmlString += '<Row>';
+            arrHeader.forEach(value => {
+                xmlString += `<Cell ss:StyleID="wrapText"><Data ss:Type="String">${value}</Data></Cell>`;
+            });
+            xmlString += '</Row>';
+
+            /*datos.compras.forEach(compra => {
+                xmlString += '<Row>';
+                Object.entries(compra).forEach(([key, value]) => {
+                    xmlString += `<Cell ss:StyleID="cString"><Data ss:Type="${typeof value === 'number' ? 'Number' : 'String'}">${value}</Data></Cell>`;
+                });
+                xmlString += '</Row>';
+            });*/
+
+            xmlString += '</Table>';
+            xmlString += '</Worksheet>';
+            xmlString += '</Workbook>';
+
+            let base64 = encode.convert({
+                string: xmlString,
+                inputEncoding: encode.Encoding.UTF_8,
+                outputEncoding: encode.Encoding.BASE_64
+            });
+
+            let fileId = file.create({
+                name: 'REPORTE.xls',
+                fileType: file.Type.EXCEL,
+                contents: base64,
+                folder: FOLDER_ID
+            }).save();
+            log.debug('ID DEL ARCHIVO', fileId);
+        }
+
+        const getStyleExcel = () => {
+            let xmlStyle = '';
+            xmlStyle += '<Styles>';
+            xmlStyle += '<Style ss:ID="Default" ss:Name="Normal">';
+            xmlStyle += '<Alignment ss:Vertical="Bottom"/>';
+            xmlStyle += '<Borders/>';
+            xmlStyle += '<Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="11" ss:Color="#000000"/>';
+            xmlStyle += '<Interior/>';
+            xmlStyle += '<NumberFormat/>';
+            xmlStyle += '<Protection/>';
+            xmlStyle += '</Style>';
+            xmlStyle += '<Style ss:ID="chead">';
+            xmlStyle += '<Alignment ss:Horizontal="left" ss:Vertical="Center"/>';
+            xmlStyle += getBorders();
+            xmlStyle += '<Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="10" ss:Color="#000000" ss:Bold="1"/>';
+            xmlStyle += '<Interior ss:Color="#BFBFBF" ss:Pattern="Solid"/>';
+            xmlStyle += '</Style>';
+            xmlStyle += '<Style ss:ID="cString">';
+            xmlStyle += '<Alignment ss:Horizontal="left" ss:Vertical="Center"/>';
+            xmlStyle += getBorders();
+            xmlStyle += '<Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>';
+            xmlStyle += '</Style>';
+            xmlStyle += '<Style ss:ID="cNumber">';
+            xmlStyle += '<Alignment ss:Horizontal="Right" ss:Vertical="Center"/>';
+            xmlStyle += getBorders();
+            xmlStyle += '<Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="9" ss:Color="#000000"/>';
+            xmlStyle += '<NumberFormat ss:Format="#,##0.00"/>'
+            xmlStyle += '</Style>';
+            xmlStyle += '<Style ss:ID="wrapText">';
+            xmlStyle += '<Alignment ss:Vertical="Center" ss:WrapText="1"/>';
+            xmlStyle += getBorders();
+            xmlStyle += '<Font ss:FontName="Calibri" x:Family="Swiss" ss:Size="10" ss:Color="#000000" ss:Bold="1"/>';
+            xmlStyle += '<Interior ss:Color="#BFBFBF" ss:Pattern="Solid"/>';
+            xmlStyle += '</Style>';
+            xmlStyle += '</Styles>';
+            return xmlStyle;
+        }
+
+        const getBorders = () => {
+            let border = '';
+            border += '<Borders>';
+            border += '<Border ss:Position="Top" ss:LineStyle="Continuous" ss:Weight="1"/>';
+            border += '<Border ss:Position="Left" ss:LineStyle="Continuous" ss:Weight="1"/>';
+            border += '<Border ss:Position="Right" ss:LineStyle="Continuous" ss:Weight="1"/>';
+            border += '<Border ss:Position="Bottom" ss:LineStyle="Continuous" ss:Weight="1"/>';
+            border += '</Borders>';
+            return border;
+        }
+        //<F> rhuaccha: 2024-02-26
 
         return {
             execute

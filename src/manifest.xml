@@ -44,7 +44,8 @@
       <feature required="true">SALESORDERS</feature>
       <feature required="true">CUSTOMGLLINES</feature>
       <feature required="true">ESTIMATES</feature>
-
+      <feature required="true">BUSINESS</feature>
+      <feature required="true">PURCHASEORDERS</feature>
     </features>
     <objects>
       <object>customrole1212</object>
@@ -114,7 +115,6 @@
       <object>customrecord_ht_sc_motivo.custrecord_ht_mt_codigo_resulgesiton</object>
       <object>customrole_ht_rol_gerenteinventarios</object>
       <object>customrole_ht_rol_gerenteventas</object>
-      <!-- <object>customrole_ht_gerente_cartera</object> -->
       <object>custbody_ht_os_aprobacioncartera</object>
       <object>customlist_ht_os_aprobacioncartera</object>
       <object>custcol_ht_os_nivelprecio</object>
@@ -192,12 +192,6 @@
       <object>custentity_9572_ddcust_entitybnkformat</object>
       <object>custentity_9572_refcust_entitybnkformat</object>
       <object>custentity_9572_refundcust_entitybnk_sub</object>
-      <object>custentity_ht_cl_apellidomaterno</object>
-      <object>custentity_ht_cl_apellidopaterno</object>
-      <object>custentity_ht_cl_latitud</object>
-      <object>custentity_ht_cl_longitud</object>
-      <object>custentity_ht_cl_primernombre</object>
-      <object>custentity_ht_cl_segundonombre</object>
       <object>custentity_ht_customer_id_telematic</object>
       <object>custentity_my_brn</object>
       <object>custentity_ts_ec_tipo_persona</object>
@@ -211,7 +205,6 @@
       <object>customrecord_ht_registro_telefono.custrecord_ht_campo_txt_telefono</object>
       <object>customrecord_pe_type_of_person</object>
       <object>customrecord_ht_cl_banco</object>
-      <!-- <object>customrecord_cseg2</object> -->
       <object>custbody_ec_estados_os</object>
       <object>custbody_document_date</object>
       <object>custbody_fam_jrn_reversal_date</object>
@@ -278,7 +271,6 @@
       <object>custbody_ht_comref</object>
       <object>custbody_hd_ce_factura</object>
       <object>custbody_ht_ec_est_fa</object>
-      <!-- <object>custbody3</object> -->
       <object>custbody_es_cambio_de_propietario</object>
       <object>custbody_ec_fecha_validez</object>
       <object>custbody_2663_reference_num</object>
@@ -445,7 +437,6 @@
       <object>custbody_sbe_pay_invoiceid</object>
       <object>custbody_sbe_pay_processfailedreason</object>
       <object>custbody_sbe_pay_result</object>
-      <!-- <object>custtab_191_7451241_sb1_680</object> -->
       <object>custtab_2_3838944_108</object>
       <object>custbody_sii_spcl_scheme_code_sales</object>
       <object>custbody_sii_spcl_scheme_code_purchase</object>
@@ -482,19 +473,14 @@
       <object>custbody_establishment_code</object>
       <object>custtab_184_7451241_sb1_783</object>
       <object>custtab_189_7451241_sb1_833</object>
-      <!-- <object>custtab_199_7451241_sb1_309</object> -->
-      <!-- <object>custtab_201_7451241_sb1_976</object> -->
       <object>custtab_202_7451241_sb1_631</object>
       <object>custtab_214_7451241_sb1_564</object>
-      <!-- <object>custtab_218_7451241_sb1_264</object> -->
       <object>custtab_227_7451241_sb1_766</object>
       <object>custbody_ht_dev_token</object>
       <object>custbody_ht_os_bien_flag</object>
       <object>custbodycustbody_ht_os_created_from_sa</object>
       <object>custbody_ht_os_issue_invoice</object>
-      <!-- <object>custtab_243_7451241_sb1_138</object> -->
       <object>custtab_220_7451241_sb1_501</object>
-      <!-- <object>custtab_223_7451241_sb1_409</object> -->
       <object>custtab_7_4346104_208</object>
       <object>custbody_psg_ei_template</object>
       <object>custbody_psg_ei_status</object>
@@ -507,7 +493,6 @@
       <object>custbody_psg_ei_certified_edoc</object>
       <object>custbody_psg_ei_digitalsignature_label</object>
       <object>custbody_psg_ei_edoc_recipient</object>
-      <!-- <object>custbody_qr_code</object> -->
       <object>custbody_ei_network_id</object>
       <object>custbody_ei_network_name</object>
       <object>custbody_ei_network_status</object>
@@ -520,23 +505,453 @@
       <object>custbody_9997_pfa_record</object>
       <object>customrole_ht_rol_ejecutivocomercial</object>
       <object>customrole_ec_cfo</object>
-      <!-- <object>customrole_ht_rol_backoffice</object> -->
-      <!-- <object>customrole_ht_roldeventaejemplo</object> -->
       <object>customrole_ns_taf_cfo</object>
       <object>customrole1002</object>
       <object>customrole_wtax_cfo</object>
       <object>customrecord_4601_groupedwitaxcode</object>
+      <object>custentity_ec_obligado_contabilidad</object>
+      <object>custentity_ec_regimen_rimpe</object>
+      <object>custform_ec_proveedor</object>
+      <object>custentity_ts_ec_entidad_relacionada</object>
+      <object>custentityts_ec_pais_entidad</object>
+      <object>customtransaction_orden_pago</object>
+      <object>customlist_ent_extranjera</object>
+      <object>customrecord_ts_ec_pe_pais</object>
+      <object>customlist_est_op</object>
+      <object>customlist_ht_si_no</object>
+      <object>customlist_est_op.val_540295_7451241_sb1_556</object>
+      <object>customrecord_ht_ae_asientos_evolution</object>
+      <object>customrecord_ts_ec_reg_fis_ext</object>
+      <object>customrecord_2663_bill_eft_details</object>
+      <object>customrecord_2663_bill_eft_payment</object>
+      <object>customrecord_ht_record_chequeposfechado</object>
+      <object>customrecord_registro_cheque</object>
+      <object>customrecord_2663_bank_details</object>
+      <object>customrecord_ts_epmt_payment_file_format</object>
+      <object>customrecord_ts_epmt_payment</object>
+      <object>customrecord_psg_ei_audit_trail</object>
+      <object>customrecord_psg_ei_conversion_batch</object>
+      <object>customrecord_psg_ei_standards</object>
+      <object>customrecord_psg_ei_sending_batch</object>
+      <object>customrecord_ei_sending_method</object>
+      <object>customrecord_psg_ei_template_validator</object>
+      <object>customrecord_psg_ei_template</object>
+      <object>customrecordts_ec_tipo_metodo_pago</object>
+      <object>customrecord_ht_ec_banco</object>
+      <object>customrecord_ec_bank</object>
+      <object>customrecord1068</object>
+      <object>customrecord_ecsl_audit_trail_dtl</object>
+      <object>customrecord_ecsl_audit_trail_hdr</object>
+      <object>customrecord_15906_ep_logs</object>
+      <object>customrecord_ep_preference</object>
+      <object>customrecord_epayment_fpago</object>
+      <object>customrecord_for_bol</object>
+      <object>customrecord_ht_record_origenordenservi</object>
+      <object>customrecord_psg_ei_validation_plugin</object>
+      <object>customrecord_online_filing</object>
+      <object>customrecord_filing_authorization</object>
+      <object>customrecord_filing_config</object>
+      <object>customrecord_ht_os_tipoordenservicio</object>
+      <object>customrecord_2663_payment_aggregation</object>
+      <object>customrecord_2663_batch</object>
+      <object>customrecord_2663_file_admin</object>
+      <object>customrecord_ts_ec_libros_legales</object>
+      <object>customrecord_tax_return_setup_item</object>
+      <object>customrecord_vatonline_submittedperiod</object>
+      <object>customrole1652</object>
+      <object>customrole1666</object>
+      <object>customrole1673</object>
+      <object>customrecord_ht_ae_asientos_evolution</object>
+      <object>customrecord_ts_epmt_payment_file_format</object>
+      <object>customrecord_epayment_fpago</object>
+      <object>customlist_ent_extranjera</object>
+      <object>customlist_est_op</object>
+      <object>customrecord_ts_epmt_payment</object>
+      <object>custtab_ts_epmt_pagos_realizados</object>
+      <object>customrecord_ts_epmt_payment_batch</object>
+      <object>custbody_cuenta_op</object>
+      <object>custbody_ec_monto_de_ret_ir</object>
+      <object>custbody_ec_pais_res_pag</object>
+      <object>custbody_ei_doc_pdf_trans</object>
+      <object>custbody_ei_doc_xml_trans</object>
+      <object>custbody_ei_xml_response_principal</object>
+      <object>custbody_est_emitido</object>
+      <object>custbody_ht_emitido_pago_electronico</object>
+      <object>custbody_ht_es_registro_transferencia</object>
+      <object>custbody_ht_registro_transferencia</object>
+      <object>custbody_ts_ec_ext_aplic_norma_legal</object>
+      <object>custbody_ts_ec_ext_conv_doble_trib</object>
+      <object>custbody_ts_ec_ext_reg_fiscal_preferen</object>
+      <object>custbody_ts_ec_tipo_ext_fis_reg</object>
+      <object>custbody_ts_est_apr_op</object>
+      <object>custbody_ts_estado_fel</object>
+      <object>custbody_ts_forma_pago_op</object>
+      <object>custbody_ts_importe_op</object>
+      <object>custbody_ts_pago_residente</object>
+      <object>custbody_ts_related_transaction</object>
+      <object>custbody_ts_solicitante</object>
+      <object>custbody_ts_op_cuentapago</object>
+      <object>custbodyec_empeado_proveduria</object>
+      <object>custbody_ht_adjuntar</object>
+      <object>custbody_ht_aprobador_proveduria</object>
+      <object>custbody_pag_comision</object>
+      <object>custbody_pag_iva</object>
+      <object>custbody_pag_ir</object>
+      <object>custbody_rec_int</object>
+      <object>custbody_ts_op</object>
+      <object>custbody_ec_desc_tip_iva</object>
+      <object>custbody_ec_monto_iva</object>
+      <object>custbody_ts_ec_bimp_exe</object>
+      <object>custbodyec_tipo_de_documento_retencion</object>
+      <object>custbody_ec_serie_cxc_retencion</object>
+      <object>custbody_ec_fecha_hora_autorizacion</object>
+      <object>custbody_ec_estado_de_autorizaci</object>
+      <object>custbody_ec_ret_ir</object>
+      <object>custbody_ec_importe_base_ir</object>
+      <object>custbody_ec_porcentaje_ret_ir</object>
+      <object>custbody_ec_ret_por_ir2</object>
+      <object>custbody_ec_impb_ir2</object>
+      <object>custbody_ec_ret_ir2</object>
+      <object>custbody_ec_mont_ret_2</object>
+      <object>custbody_ec_ret_por_ir3</object>
+      <object>custbody_ec_impb_ir3</object>
+      <object>custbody_ec_ret_ir3</object>
+      <object>custbody_ec_mont_ret_3</object>
+      <object>custbody_ec_importe_base_iva</object>
+      <object>custbody_ec_porcentaje_ret_10</object>
+      <object>custbody_ec_porcentaje_ret_20</object>
+      <object>custbody_ec_porcentaje_ret_30</object>
+      <object>custbody_ec_porcentaje_ret_70</object>
+      <object>custbody_ec_porcentaje_ret_100</object>
+      <object>custbody_cod_ret_iva_10</object>
+      <object>custbody_cod_ret_iva_20</object>
+      <object>custbody_cod_ret_iva_30</object>
+      <object>custbody_cod_ret_iva_70</object>
+      <object>custbody_cod_ret_iva_100</object>
+      <object>custbody_num_vale</object>
+      <object>custbody_ht_os_servicios</object>
+      <object>custcol_4601_witaxcode</object>
+      <object>custcol_ht_adjuntar</object>
+      <object>custcol_ec_fulfilled</object>
+      <object>custcol_tst_desc_iva</object>
+      <object>custcol_4601_witaxcode</object>
+      <object>custcol_ht_adjuntar</object>
+      <object>custcol_ec_fulfilled</object>
+      <object>custcol_ec_tip_met_pago</object>
+      <object>custcol_ts_pago_res</object>
+      <object>custtab_ht_reembolso_to_expense_report</object>
+      <object>custbody_ec_codigo_termino_pago</object>
+      <object>custbody_ec_num_doc_tra</object>
+      <object>custbody_ht_ir_recepcionado</object>
+      <object>custbody_ht_ir_no_recepcionado</object>
+      <object>custbody_ht_ir_resultado_recepcion</object>
+      <object>custbody_ec_tipo_transaccion_nc</object>
+      <object>custbody_ht_as_datos_tecnicos</object>
+      <object>custbody_psg_ei_qr_code</object>
+      <object>custbody_ts_ec_documento_ectronico</object>
+      <object>custbodyts_ec_documento_ectronic_reten</object>
+      <object>custbody_ei_pdf_response_principal</object>
+      <object>custbody_doc_num_summ_invoice</object>
+      <object>custbody_15889_cust_refund_entity_bank</object>
+      <object>custtab_193_7451241_380</object>
+      <object>custbody_ec_tip_ing_ext</object>
+      <object>custtab_214_7451241_827</object>
+      <object>custtab_215_7451241_168</object>
+      <object>custtab_216_7451241_322</object>
+      <object>custtab_217_7451241_281</object>
+      <object>custtab_218_7451241_960</object>
+      <object>custtab_219_7451241_432</object>
+      <object>custtab_220_7451241_565</object>
+      <object>custtab_227_7451241_145</object>
+      <object>custtab_223_7451241_sb1_409</object>
+      <object>custtmpl_108_7451241_308</object>
+      <object>custtmpl_108_7451241_308</object>
+      <object>customrole_ht_rol_contador_asistente</object>
+      <object>customrole_ns_taf_accountant</object>
+      <object>customrole_wtax_accountant</object>
+      <object>customrole_wtax_accountat_rvwr</object>
+      <object>customrole1002_2</object>
+      <object>customrole_ht_api_integration</object>
+      <object>customrole1662</object>
+      <object>customrole_ec_contador</object>
+      <object>customrole1656</object>
+      <object>customrole1655</object>
+      <object>customrole1659</object>
+      <object>customrole1657</object>
+      <object>customrole1664</object>
+      <object>customrole1669</object>
+      <object>customrole1638</object>
+      <object>customrole_ec_auditoria_fiscal</object>
+      <object>customrole1675</object>
+      <object>customrole1639</object>
+      <object>customrole1674</object>
+      <object>customrole1661</object>
+      <object>customrole_ep_approver</object>
+      <object>customrole_ep_configurator</object>
+      <object>customrole_ep_processor</object>
+      <object>customrole1634</object>
+      <object>customrole_ncfar</object>
+      <object>customrole_ht_rol_compras</object>
+      <object>customrole1651</object>
+      <object>customrole1647</object>
+      <object>customrole1000</object>
+      <object>customrole1001</object>
+      <object>customrole1004</object>
+      <object>customrecordts_ec_tipo_doc_fiscal</object>
+      <object>customrole_wtax_bookkeeper</object>
+      <object>custform_ec_factura_compra</object>
+      <object>customrecord_4601_witaxcode.custrecord_ts_ec_cod_retencion_iva</object>
+      <object>customrecord_ht_reembolso</object>
+      <object>customrecord_ht_reembolso.custrecord_ht_ec_reembolso_doc_proveedor</object>
+      <object>customrecord_ts_ec_doc_identidad</object>
+      <object>customrecordts_ec_series_impresion</object>
+      <object>custform_159_7451241_111</object>
+      <object>customtransaction_fam_leaseproposal</object>
+      <object>customtransaction_fam_transfer_jrn</object>
+      <object>customrecord_ts_ec_identificador_factura</object>
+      <object>customrecord_fam_tpaf_mapping</object>
+      <object>customrecord_repairmaintcategory</object>
+      <object>customrecord_ncfar_transferaccounts</object>
+      <object>customrecord_ncfar_altdeprdef</object>
+      <object>customrecord_ncfar_altdepr_proposal</object>
+      <object>customrecord_ncfar_altdepreciation</object>
+      <object>customrecord_ncfar_deprhistory</object>
+      <object>customrecord_ncfar_altmethods</object>
+      <object>customrecord_ncfar_assetproposal</object>
+      <object>customrecord_repairmaintsubcategory</object>
+      <object>customrecord_repairmaintsubcategoryb</object>
+      <object>customrecord_ncfar_assetusage</object>
+      <object>customrecord_assetlifetimes</object>
+      <object>customrecord_bg_procinstance</object>
+      <object>customrecord_bg_queueinstance</object>
+      <object>customrecord_filing_template</object>
+      <object>customrecord_bg_proclog</object>
+      <object>customrecord_psg_ei_request</object>
+      <object>customtransaction_fam_specialdepr_jrn</object>
+      <object>customrecord_ei_automation_pref</object>
+      <object>customrecord_psg_ei_email_recipient</object>
+      <object>customrecord_ncfar_systemsetup</object>
+      <object>customrecord_fam_assetregisterrep</object>
+      <object>customrecord_fam_assetsummaryrep</object>
+      <object>customrecord_fam_assetsummaryrepline</object>
+      <object>customrecord_fam_assetvalues</object>
+      <object>customrecord_ht_rc_fotos_recepcion</object>
+      <object>customrecord_psg_ei_email_custom</object>
+      <object>customrecord_psg_ei_sub_prefs_data</object>
+      <object>customrecord_ts_ec_wht_reteir_concept</object>
+      <object>customrecord_ht_cuentas_nrocuotas</object>
+      <object>customrecord_ts_ec_codigo_retencion_mapp</object>
+      <object>customrecord_ts_ec_tipo_transaccion</object>
+      <object>customrecordts_ec_tipo_ident_trans</object>
+      <object>customrecordts_ec_t10_exportacion</object>
+      <object>customrecordts_ec_paraiso_fiscal</object>
+      <object>customrecordts_ec_t6_distrito_aduanera</object>
+      <object>customrecordts_ec_cod_regimen_t7</object>
+      <object>customrecord_ec_record_canton</object>
+      <object>customrecord_ht_cc_catalogociudades</object>
+      <object>customrecord_ec_record_parroquia</object>
+      <object>customrecord_ec_record_provincia</object>
+      <object>customrecord_ec_electronic_books</object>
+      <object>customrecord_evol_ts_ec_setup_trans_typ</object>
+      <object>customrecord_excel_conciliacion_gene_log</object>
+      <object>customrecord_ht_grupoproductoscomerciale</object>
+      <object>customrecord_ht_bien_aireacondicionado</object>
+      <object>customrecord_ht_record_cargotecnicos</object>
+      <object>customrecord_ht_catalogo_baja_cartera</object>
+      <object>customrecord_ht_mb_catalogodegestion</object>
+      <object>customrecord_ht_record_catalogozona</object>
+      <object>customrecord_ht_ci_catalogoinstaldores</object>
+      <object>customrecord_ht_record_cilindraje</object>
+      <object>customrecord_ht_cl_clasesujeto</object>
+      <object>customrecord_ht_bn_colorcarseg</object>
+      <object>customrecord_ht_bn_colorfabricante</object>
+      <object>customrecord_ht_bn_colormatricula</object>
+      <object>customrecord_ht_record_convenio</object>
+      <object>customrecord_ht_dd_modelodispositivo</object>
+      <object>customrecord_ht_dd_tipodispositivo</object>
+      <object>customrecord_ht_de_denunciaen</object>
+      <object>customrecord_ht_record_estadoconcilia</object>
+      <object>customrecordht_estado_conciliacion_sim</object>
+      <object>customrecord_ht_record_estadoconductor</object>
+      <object>customrecord_ht_ed_estadodenuncia</object>
+      <object>customrecord_ht_ev_estadovehiculo</object>
+      <object>customrecord_ht_eg_etapagestion</object>
+      <object>customrecord_ht_record_grupoarticulos</object>
+      <object>customrecord_ht_record_gruporastreovehav</object>
+      <object>customrecord_ht_record_historialsegui</object>
+      <object>customrecord_ht_ic_integrantescolaborado</object>
+      <object>customrecord_ht_igr_integrantesgrupo</object>
+      <object>customrecord_ht_bien_marca</object>
+      <object>customrecord_ht_mc_script</object>
+      <object>customrecord_ht_record_mediomonitoreo</object>
+      <object>customrecord_ht_bn_modelo</object>
+      <object>customrecord_ht_motivobaja</object>
+      <object>customrecord_ht_convenio</object>
+      <object>customrecord_ht_cr_parametrizacion_produ</object>
+      <object>customrecord_ht_cr_pp_valores</object>
+      <object>customrecord_ht_record_recorrido</object>
+      <object>customrecord_ht_rpea_recuperadoporentreg</object>
+      <object>customrecord_ht_registro_estado_seguimie</object>
+      <object>customrecord_ht_registro_modo_contacto</object>
+      <object>customrecord_ht_registro_motivo_seguimie</object>
+      <object>customrecord_ht_registro_result_gestion</object>
+      <object>customrecord_ht_registro_tipo_direccion</object>
+      <object>customrecordht_registro_tipo_telefono</object>
+      <object>customrecord_ht_rs_relacionsolicitante</object>
+      <object>customrecord_ht_record_sectoreconomico</object>
+      <object>customrecord_ht_record_robo</object>
+      <object>customrecord_ht_srr_sectorrobosector</object>
+      <object>customrecord_ht_record_seguicliente</object>
+      <object>customrecord_ht_record_situacionvehiculo</object>
+      <object>customrecord_ht_si_supervisor</object>
+      <object>customrecord_ht_tt_tallertablet</object>
+      <object>customrecord_ht_cl_tarjeta</object>
+      <object>customrecord_ht_cl_tipo</object>
+      <object>customrecord_ht_ta_tipoaccion</object>
+      <object>customrecord_ht_bn_tipocabina</object>
+      <object>customrecord_ht_bn_tipocombustible</object>
+      <object>customrecord_ht_bien_tipobien</object>
+      <object>customrecord_ht_record_tipogestion</object>
+      <object>customrecord_ht_record_tipotransporte</object>
+      <object>customrecord_ht_record_tipoflota</object>
+      <object>customrecord_ht_tg_tipogestion</object>
+      <object>customrecord_ht_cl_tipo_identificacion</object>
+      <object>customrecord_ht_cl_tipo_idegarante</object>
+      <object>customrecord_ht_tr_tiporastreo</object>
+      <object>customrecord_ht_bien_tipoterrestre</object>
+      <object>customrecord_ht_tup_tipoubicaparaliza</object>
+      <object>customrecord_ht_bn_traccion</object>
+      <object>customrecord_ht_bn_transmision</object>
+      <object>customrecord_ht_bien_usovehiculo</object>
+      <object>customrecord_ht_record_version</object>
+      <object>customrecord_ht_pp_main_item_relacionado</object>
+      <object>customrecord_reg_adicionales</object>
+      <object>customrecord_8299_client_audit_trail</object>
+      <object>customrecord_ht_record_custodia</object>
+      <object>customrecord_ht_record_correoelectronico</object>
+      <object>customrecord_ht_formulario_detallebienes</object>
+      <object>customrecord_ht_record_configchaser</object>
+      <object>customrecord_ht_record_detallechaslojack</object>
+      <object>customrecord_ht_record_detallechasersim</object>
+      <object>customrecord_ht_record_descriparticulo</object>
+      <object>customrecord_ht_mc_firmware</object>
+      <object>customrecord_caja_pago</object>
+      <object>customrecord_ht_tclistadeformadepago</object>
+      <object>customrecord_ec_motivos_nc</object>
+      <object>customrecord_2663_payment_schedule</object>
+      <object>customrecordts_ec_tipo_transaccion</object>
+      <object>customrecord_ht_sales_territory</object>
+      <object>customrecord_subnav_settings</object>
+      <object>custform_206_7451241_sb1_377</object>
+      <object>customscript_ts_ui_e_payment_2_1.customdeploy_ts_ui_e_payment_first</object>
+      <object>customscript_ts_ui_e_payment_2_1.customdeploy_ts_ui_e_payment_second</object>
+      <!-- <object>customsearch_ts_epmt_generated_payments</object> -->
+      <object>customrecord_ts_epmt_payment.custrecord_ts_epmt_prepaydet_entity</object>
+      <object>customrecord_ts_epmt_payment.custrecord_ts_epmt_prepaydet_gener_trans</object>
+      <object>customrecord_ts_epmt_payment.custrecord_ts_epmt_prepaydet_origin_tran</object>
+      <object>customrecord_ts_epmt_payment.custrecord_ts_epmt_prepaydet_paym_amount</object>
+      <object>custform_ec_formulario_activo</object>
+      <object>customrecord_ncfar_asset.custrecord_assetcaretaker</object>
+      <object>customrecord_ncfar_asset.custrecord_assetclass</object>
+      <object>customrecord_ncfar_asset.custrecord_assetdepartment</object>
+      <object>customrecord_ncfar_asset.custrecord_assetdepracc</object>
+      <object>customrecord_ncfar_asset.custrecord_assetdepractive</object>
+      <object>customrecord_ncfar_asset.custrecord_assetdeprchargeacc</object>
+      <object>customrecord_ncfar_asset.custrecord_assetdeprperiod</object>
+      <object>customrecord_ncfar_asset.custrecord_assetdeprrules</object>
+      <object>customrecord_ncfar_asset.custrecord_assetdeprstartdate</object>
+      <object>customrecord_ncfar_asset.custrecord_assetdisposalacc</object>
+      <object>customrecord_ncfar_asset.custrecord_assetinclreports</object>
+      <object>customrecord_ncfar_asset.custrecord_assetlifeunits</object>
+      <object>customrecord_ncfar_asset.custrecord_assetlocation</object>
+      <object>customrecord_ncfar_asset.custrecord_assetmainacc</object>
+      <object>customrecord_ncfar_asset.custrecord_assetmanufacturedate</object>
+      <object>customrecord_ncfar_asset.custrecord_assetmanufacturer</object>
+      <object>customrecord_ncfar_asset.custrecord_assetphysicallocn</object>
+      <object>customrecord_ncfar_asset.custrecord_assetpurchasedate</object>
+      <object>customrecord_ncfar_asset.custrecord_assetrevisionrules</object>
+      <object>customrecord_ncfar_asset.custrecord_assetsubsidiary</object>
+      <object>customrecord_ncfar_asset.custrecord_assetwritedownacc</object>
+      <object>customrecord_ncfar_asset.custrecord_assetwriteoffacc</object>
+      <object>customrecord_ncfar_asset.custrecord_ht_af_codigobarra</object>
+      <object>customrecord_ncfar_asset.custrecord_ht_af_comentario</object>
+      <object>customrecord_ncfar_asset.custrecord_ht_af_marca</object>
+      <object>customrecord_ncfar_asset.custrecord_ht_af_modelo</object>
+      <object>customrecord_ts_epmt_payment.custrecord_ts_epmt_prepaydet_pre_payment</object>
+      <object>customrecord_ts_epmt_payment.custrecord_ts_epmt_prepaydet_status</object>
+      <object>custform_99_7451241_806</object>
+      <object>customlist_ts_orden_pago</object>
+      <object>customtransaction_orden_pago.status_10045_7451241_387</object>
+      <object>customtransaction_orden_pago.status_10045_7451241_387</object>
+      <object>customtransaction_orden_pago.status_10045_7451241_387</object>
+      <object>customrole1672</object>
+      <object>customscript_ts_wa_pendingapproval_op</object>
+      <object>customrecord_ec_number_er</object>
+      <object>custentity_ht_cl_oficinacliente</object>
+      <object>customlayout_14_7451241_684</object>
+      <object>customreport_405_7451241_641</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_cliente</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_cmotivo</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_empleado</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_estado</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_fechacontacto</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_modocontacto</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_resultadogestion</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_seguimiento</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_tipocliente</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_tiposeguimiento</object>
+      <object>customrecord_ht_record_seguicliente.custrecord_ht_sc_vehiculo</object>
+      <object>customreport_416_7451241_819</object>
+      <object>customreport_491_7451241_sb1_797</object>
+      <object>customsearch1880</object>
+      <object>customreport_497_7451241_sb1_578</object>
+      <object>customreport_493_7451241_sb1_253</object>
+      <object>customsearchtransactiondefaultview_16</object>
+      <object>customsearch1928</object>
+      <object>customsearch2459</object>
+      <object>customreport_496_7451241_sb1_498</object>
+      <object>customreport_501_7451241_sb1_849</object>
+      <object>customreport_404_7451241_889</object>
+      <object>customreport_461_7451241_706</object>
+      <object>customreport_503_7451241_sb1_685</object>
+      <object>customsearch1948</object>
+      <object>customreport_463_7451241_sb1_131</object>
+      <object>customreport_507_7451241_sb1_278</object>
+      <object>customreport_511_7451241_sb1_896</object>
+      <object>customreport_471_7451241_sb1_132</object>
+      <object>custbody_ec_imp_ant</object>
+      <object>customrole1653</object>
+      <object>customrole1663</object>
+      <object>custform_97_7451241_544</object>
+      <object>customrecord_2663_entity_bank_details.custrecord_2663_entity_bank_code</object>
+      <object>customrecord_2663_entity_bank_details.custrecord_2663_entity_bank_type</object>
+      <object>customrecord_2663_entity_bank_details.custrecord_2663_entity_bban</object>
+      <object>customrecord_2663_entity_bank_details.custrecord_2663_entity_ec_tipo_cuentacob</object>
+      <object>customrecord_2663_entity_bank_details.custrecord_2663_entity_file_format</object>
+      <object>customrecord_2663_entity_bank_details.custrecord_2663_entity_processor_code</object>
+      <object>customrecord_2663_entity_bank_details.custrecord_2663_parent_vendor</object>
+      <object>customrecord_2663_entity_bank_details.custrecord_entity_ec_forma_pago</object>
+      <object>customrecord_2663_entity_bank_details.custrecord_ts_epmt_payment_file_format</object>
+      <object>custform_ec_formulario_ordencompra</object>
 
-
-      <!-- <object>cseg2</object> -->
-      <!-- <object>customlist_ht_os_aprobacioncartera.val_901382_7451241_sb1_276</object>
-            <object>customlist_ht_os_aprobacioncartera.val_901382_7451241_sb1_276</object> -->
+      <!-- <object>custform_97_7451241_544</object> -->
     </objects>
     <files>
       <file>/SuiteScripts/TS NET Scripts/Main/core/TS_UE_Asset.js</file>
       <file>/SuiteScripts/ErickHunter/TS_UI_Alquiler.js</file>
       <file>/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_SuiteGLProvision.js</file>
       <file>/SuiteScripts/ErickHunter/NC_CS_Custom_Inventory.js</file>
+      <file>/SuiteScripts/TS NET Scripts/Prueba/TS_WA_PendingApproval_OP.js</file>
+      <!-- <file>/SuiteScripts/Pago Electronico
+      Personalizado/schedule/TS_SS_E_Payment_Create_Payment.js</file>
+      <file>/SuiteScripts/Pago Electronico
+      Personalizado/schedule/TS_SS_E_Payment_PaymentBatch_Generation.js</file>
+      <file>/SuiteScripts/Pago Electronico Personalizado/suitelet/TS_UI_E_Payment_2.1.js</file> -->
+      <!-- <file></file>
+      - /SuiteScripts/TS NET Scripts/Prueba/.attributes/TS_WA_PendingApproval_OP.js.attr.xml Imported.
+            - /SuiteScripts/TS NET Scripts/.attributes/.folder.attr.xml Imported.
+            - /SuiteScripts/TS NET Scripts/Prueba/.attributes/.folder.attr.xml Imported.
+            - /SuiteScripts/TS NET Scripts/Prueba/TS_WA_PendingApproval_OP.js Imported. -->
     </files>
   </dependencies>
 </manifest>

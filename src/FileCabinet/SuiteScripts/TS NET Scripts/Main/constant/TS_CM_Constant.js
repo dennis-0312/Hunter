@@ -43,7 +43,11 @@ define([], () => {
         CODIGO_CAJA_CHICA: 'CC',
         MOVISTAR: '001',
         CLARO: '002',
-        EMAIL_TYPE_AMI: 2
+        EMAIL_TYPE_AMI: 2,
+        FEL: {
+            ELECTRONIC_DOCUMENT_PACKAGE: 2,
+            EC_EI_TEMPLATE_TRANSFER_ORDER: 3
+        }
     }
 
     let Search = {}
@@ -160,7 +164,7 @@ define([], () => {
         SI: 2, //S - SI
         VALOR_X_USO_CONVENIOS: 128, //X - USO DE CONVENIOS
         VALOR_003_CHEQUEO_H_MONITOREO_PERSONAL: 95
-        
+
     }
 
     let Codigo_parametro = {
@@ -246,8 +250,8 @@ define([], () => {
         COMISIONES_EXTERNAS: 'CUSTOMRECORD_RECORD_COMISIONEXTERNA',
         DISPOSITIVO: 'CUSTOMRECORD_HT_RECORD_DETALLECHASERDISP',
         SIM: 'CUSTOMRECORD_HT_RECORD_DETALLECHASERSIM',
-        DATOS_TECNICOS: 'customrecord_ht_record_mantchaser'
-
+        DATOS_TECNICOS: 'customrecord_ht_record_mantchaser',
+        ASIENTOS_EVOLUTION: 'customrecord_ht_ae_asientos_evolution'
     }
 
     let Transaction = {
@@ -258,7 +262,9 @@ define([], () => {
         BIN: 'bin',
         VENDOR_PAYMENT: 'vendorpayment',
         CHECK: 'check',
-        VENDOR_BILL: 'vendorbill'
+        VENDOR_BILL: 'vendorbill',
+        TRANSFER_ORDER: 'transferorder',
+        VENDOR_PRE_PAYMENT: 'vendorprepayment'
     }
 
     let Entity = {

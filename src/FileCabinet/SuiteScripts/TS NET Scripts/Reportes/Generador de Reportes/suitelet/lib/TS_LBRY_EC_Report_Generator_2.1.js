@@ -1,7 +1,7 @@
 /**
  *@NApiVersion 2.1
 */
-define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverWidget, search, url, query, file) => {
+define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file','N/log'], (serverWidget, search, url, query, file, log) => {
 
     class Parameters {
         constructor({ item, workorder, salesorder, customer, location, subsidiary }) {
@@ -104,7 +104,26 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
                 label
             });
         }
-
+        //<I> rhuaccha: 2024-02-24
+        addFormatField = (id, type, label, container = null, source = null) => {
+            if (type === serverWidget.FieldType.SELECT) {
+                const field = new Field(this.form.addField({
+                    id,
+                    type: serverWidget.FieldType.SELECT,
+                    label,
+                    source,
+                    container
+                }));
+                const options = [
+                    { value: "XLSX", text: "EXCEL" },
+                    { value: "XML", text: "XML" }
+                  ];
+                for (const item of options) {
+                    field.addSelectOption(item.value, item.text);
+                }
+            }
+        }
+        //<F> rhuaccha: 2024-02-24
         addSublist = (id, type, label, tab = null) => {
             return new SubList(this.form.addSublist({
                 id,
@@ -202,7 +221,6 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
 
                 ]
             });
-
 
             let line = 0;
             searchResult.run().each(function (result) {

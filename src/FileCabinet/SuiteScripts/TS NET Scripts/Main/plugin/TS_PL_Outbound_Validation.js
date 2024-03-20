@@ -17,7 +17,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
 
     function (file, record, runtime, search, log, error, query) {
 
-        const GENERATED_FILE_FOLDER_ID = "561";
+        const GENERATED_FILE_FOLDER_ID = "561"; //SuiteScripts > TS NET Scripts > Electronic Invoicing
         var transactionId = '';
         var userId = '';
         const SUBSIDIARIA = 2;
@@ -143,7 +143,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var serie = transactionRecord.serie.split('');
                 var ITline = [
                     'IT',
-                    setup.enviromment,
+                    // setup.enviromment,
+                    '2',
                     '1',
                     transactionRecord.subsidiaryLegalName,
                     "CARSEG S.A",
@@ -349,7 +350,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var serie = transactionRecord.serie.split('');
                 var ITline = [
                     'IT',
-                    setup.enviromment,
+                    '2',
                     '1',
                     transactionRecord.subsidiaryLegalName,
                     "CARSEG S.A",
@@ -549,9 +550,24 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var VEline = ['VE', "06", "GuiaRemision", '1.0.0', ''];
                 itemFulfillmentLines.push(VEline);
 
-                var serie = transactionRecord.serie.split('-');
+                var serie = transactionRecord.serie.split('');
                 //IT
-                var ITline = ['IT', setup.enviromment, '1', transactionRecord.subsidiaryLegalName, transactionRecord.subsidiaryLegalName, transactionRecord.subsidiaryFederalNumber, '', "06", serie[0], serie[1] || "", transactionRecord.preprint, transactionRecord.subsidiaryAddress.replace(/\n/gi, ""), transactionRecord.customerEmail, ''];
+                var ITline = [
+                    'IT',
+                    '2',
+                    '1',
+                    transactionRecord.subsidiaryLegalName,
+                    transactionRecord.subsidiaryLegalName,
+                    transactionRecord.subsidiaryFederalNumber,
+                    '',
+                    "06",
+                    serie[0] + '' + serie[1] + '' + serie[2],
+                    serie[3] + '' + serie[4] + '' + serie[5] || "",
+                    transactionRecord.preprint,
+                    transactionRecord.subsidiaryAddress.replace(/\n/gi, ""),
+                    transactionRecord.customerEmail,
+                    ''
+                ];
                 itemFulfillmentLines.push(ITline);
 
                 var ICline = ['IC', transactionRecord.date, transactionRecord.subsidiaryAddress, transactionRecord.customerSpecialTaxPayer, transactionRecord.customerObligatedToAccountFor, transactionRecord.customerDocumentTypeCode,
@@ -683,9 +699,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 creditNoteLines.push(VEline);
 
                 var serie = transactionRecord.serie.split('-');
-                var ITline = ['IT', setup.enviromment, '1', transactionRecord.subsidiaryLegalName, "CARSEG S.A", transactionRecord.subsidiaryFederalNumber, '', transactionRecord.documentTypeCode, serie[0], serie[1] || "", transactionRecord.preprint, transactionRecord.subsidiaryAddress.toUpperCase(), transactionRecord.customerEmail, ''];
+                var ITline = ['IT', '2', '1', transactionRecord.subsidiaryLegalName, "CARSEG S.A", transactionRecord.subsidiaryFederalNumber, '', transactionRecord.documentTypeCode, serie[0], serie[1] || "", transactionRecord.preprint, transactionRecord.subsidiaryAddress.toUpperCase(), transactionRecord.customerEmail, ''];
                 creditNoteLines.push(ITline);
-
 
                 var detailArray = getCreditNoteTotalAndDetails(transactionRecord);
                 var total = detailArray[0][8] || "0";
@@ -857,7 +872,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 debitNoteLines.push(VEline);
 
                 var serie = transactionRecord.serie.split('-');
-                var ITline = ['IT', setup.enviromment, '1', transactionRecord.subsidiaryLegalName, "CARSEG S.A", transactionRecord.subsidiaryFederalNumber, '', transactionRecord.documentTypeCode, serie[0], serie[1] || "", transactionRecord.preprint, transactionRecord.subsidiaryAddress.toUpperCase(), 'factura@suministro.com', ''];
+                var ITline = ['IT', '2', '1', transactionRecord.subsidiaryLegalName, "CARSEG S.A", transactionRecord.subsidiaryFederalNumber, '', transactionRecord.documentTypeCode, serie[0], serie[1] || "", transactionRecord.preprint, transactionRecord.subsidiaryAddress.toUpperCase(), 'factura@suministro.com', ''];
                 debitNoteLines.push(ITline);
 
                 var ICline = ['IC', transactionRecord.date, transactionRecord.subsidiaryAddress, transactionRecord.customerSpecialTaxPayer, transactionRecord.customerObligatedToAccountFor, transactionRecord.customerDocumentTypeCode,
@@ -986,12 +1001,13 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var serie = transactionRecord.serie.split('');
                 var ITline = [
                     'IT',
-                    setup.enviromment,
+                    '2',
                     '1',
                     transactionRecord.subsidiaryLegalName,
                     "CARSEG S.A",
                     transactionRecord.subsidiaryFederalNumber,
-                    '', transactionRecord.documentTypeCode,
+                    '',
+                    transactionRecord.documentTypeCode,
                     serie[0] + '' + serie[1] + '' + serie[2],
                     serie[3] + '' + serie[4] + '' + serie[5] || "",
                     transactionRecord.preprint,
@@ -1078,7 +1094,6 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         //search.createColumn({ name: "billcity", label: "city" }),
                         search.createColumn({ name: "formulatext", formula: "NVL({billcity},{billingAddress.custrecord_ec_parroquia})", label: "city" }),
 
-
                         search.createColumn({ name: "account", label: "item.account" }),
                         search.createColumn({ name: "itemid", join: "item", label: "item.code" }),
                         search.createColumn({ name: "memo", label: "item.detail" }),
@@ -1114,6 +1129,14 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
 
         function getBillDetailLines(transactionRecord) {
             try {
+                var hash = {};
+                var array = transactionRecord.items;
+                array = array.filter(function (current) {
+                    var exists = !hash[current.account];
+                    hash[current.account] = true;
+                    return exists;
+                });
+                logError('Test', array);
                 var resultArray = [];
                 var lineArray = [];
 
@@ -1121,12 +1144,18 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 //var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, totalAmount, tip, amountToPay, ""];
 
                 var TILineJson = {}
-                for (var i = 0; i < transactionRecord.items.length; i++) {
-                    var item = transactionRecord.items[i];
-                    if (item.isWithholdingLine == "T") continue;
+                for (var i = 0; i < array.length; i++) {
+                    var item = array[i];
+                    if (item.isWithholdingLine == "T" || !item.taxCode) continue;
 
-                    var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
-                    lineArray.push(DEline);
+                    logError('Track', [{ account: item.account }])
+
+                    var DEline = ['DE', item.code.substring(0, 15) ? item.code.substring(0, 15) : item.account.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity ? item.quantity : 1, item.rate ? item.rate : item.amount, 0, item.amount, ""];
+                    //var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
+                    if (item.taxCode)
+                        lineArray.push(DEline);
+
+
                     if (item.taxRateCode == '2') {
                         subtotal12 += Number(item.amount);
                         IVA12 += Number(item.taxAmount);
@@ -1136,9 +1165,18 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     subtotalWithoutTaxation += Number(item.amount);
                     totalAmount += Number(item.grossAmount);
 
-                    var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, item.amount, item.taxAmount, item.taxName, ""];
-                    lineArray.push(IMline);
+                    var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, item.amount, parseFloat(item.taxAmount), item.taxName, ""];
+                    if (item.taxCode)
+                        lineArray.push(IMline);
 
+                    amountToPay += Number(item.grossAmount);
+                }
+
+                for (var i = 0; i < array.length; i++) {
+                    var item = array[i];
+                    if (item.isWithholdingLine == "T" || !item.taxCode) continue;
+                    //if (item.taxName == "IVA") continue;
+                    logError('Track3', [{ account: item.account }])
                     // TI LINE
                     var TIKey = item.taxCode + "|" + item.taxRateCode;
                     if (TILineJson[TIKey] === undefined) {
@@ -1147,12 +1185,12 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         TILineJson[TIKey][0] = TILineJson[TIKey][0] + Number(item.amount);
                         TILineJson[TIKey][2] = TILineJson[TIKey][2] + Number(item.taxAmount);
                     }
-                    amountToPay += Number(item.grossAmount);
                 }
 
                 //var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, (totalAmount + IVA12), tip, transactionRecord.total, ""];
-                var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, (totalAmount + IVA12), tip, (totalAmount + IVA12), ""];
+                var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation.toFixed(2), totalDescuento, ICE, IVA12, (totalAmount + IVA12).toFixed(2), tip, (totalAmount + IVA12).toFixed(2), ""];
                 resultArray.push(TLine);
+                logError('Track2', TILineJson)
                 for (var key in TILineJson) {
                     var invoicingTax = key.split("|");
                     var TILine = ["TI", invoicingTax[0], invoicingTax[1], TILineJson[key][0], TILineJson[key][1], TILineJson[key][2], TILineJson[key][3], ""];
@@ -1163,6 +1201,69 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 logError('Error-getBillDetailLines', e);
             }
         }
+
+        // function getBillDetailLines(transactionRecord) {
+        //     try {
+        //         var hash = {};
+        //         var array =  transactionRecord.items;
+        //         array = array.filter(function (current) {
+        //             var exists = !hash[current.account];
+        //             hash[current.account] = true;
+        //             return exists;
+        //         });
+        //         logError('Test', array);
+        //         var resultArray = [];
+        //         var lineArray = [];
+
+        //         var subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
+        //         //var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, totalAmount, tip, amountToPay, ""];
+
+        //         var TILineJson = {}
+        //         for (var i = 0; i < transactionRecord.items.length; i++) {
+        //             var item = transactionRecord.items[i];
+        //             if (item.isWithholdingLine == "T") continue;
+        //             //if (item.taxName == "IVA") continue;
+        //             logError('Track', [{ account: item.account }])
+
+        //             //var DEline = ['DE', item.code.substring(0, 15) ? item.code.substring(0, 15) : item.account.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity ? item.quantity : 1, item.rate ? item.rate : item.amount, 0, item.amount, ""];
+        //             var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
+        //             lineArray.push(DEline);
+        //             if (item.taxRateCode == '2') {
+        //                 subtotal12 += Number(item.amount);
+        //                 IVA12 += Number(item.taxAmount);
+        //             }
+        //             if (item.taxRateCode == '0') subtotal0 += Number(item.amount);
+        //             if (item.taxRateCode == '6') subtotalNotSubject += Number(item.amount);
+        //             subtotalWithoutTaxation += Number(item.amount);
+        //             totalAmount += Number(item.grossAmount);
+
+        //             var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, item.amount, item.taxAmount, item.taxName, ""];
+        //             lineArray.push(IMline);
+
+        //             // TI LINE
+        //             var TIKey = item.taxCode + "|" + item.taxRateCode;
+        //             if (TILineJson[TIKey] === undefined) {
+        //                 TILineJson[TIKey] = [Number(item.amount), item.taxRate, Number(item.taxAmount), item.taxName];
+        //             } else {
+        //                 TILineJson[TIKey][0] = TILineJson[TIKey][0] + Number(item.amount);
+        //                 TILineJson[TIKey][2] = TILineJson[TIKey][2] + Number(item.taxAmount);
+        //             }
+        //             amountToPay += Number(item.grossAmount);
+        //         }
+
+        //         //var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, (totalAmount + IVA12), tip, transactionRecord.total, ""];
+        //         var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, (totalAmount + IVA12), tip, (totalAmount + IVA12), ""];
+        //         resultArray.push(TLine);
+        //         for (var key in TILineJson) {
+        //             var invoicingTax = key.split("|");
+        //             var TILine = ["TI", invoicingTax[0], invoicingTax[1], TILineJson[key][0], TILineJson[key][1], TILineJson[key][2], TILineJson[key][3], ""];
+        //             resultArray.push(TILine);
+        //         }
+        //         return resultArray.concat(lineArray);
+        //     } catch (e) {
+        //         logError('Error-getBillDetailLines', e);
+        //     }
+        // }
 
         function generateBillWitholdingLines(transactionId, setup) {
             try {
@@ -1176,9 +1277,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var serie = transactionRecord.serie.split("");
                 var ITline = [
                     "IT",
-                    setup.enviromment,
-                    // "2",
-                    "1",
+                    '2',
+                    '1',
                     transactionRecord.subsidiaryLegalName,
                     "CARSEG S.A",
                     transactionRecord.subsidiaryFederalNumber,
@@ -1198,7 +1298,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     "IC",
                     transactionRecord.date,
                     transactionRecord.subsidiaryAddress,
-                    transactionRecord.vendorSpecialTaxPayer,
+                    "",
+                    // transactionRecord.vendorSpecialTaxPayer,
                     transactionRecord.vendorObligatedToAccountFor,
                     transactionRecord.vendorDocumentTypeCode,
                     "",
@@ -1257,7 +1358,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 billLines.push(ICline);
 
                 var codigoPais = getCodigoPais(transactionRecord.codPais);
-                var importes = getImportes(transactionRecord.typeDocFis, transactionRecord.serieCxC, transactionRecord.numberPreImp, transactionRecord.form)
+                var pagoLocExt = getPagoLocExto(transactionId); //*CAMBIO ====================
+                var serieCX = transactionRecord.form == FORM_LIQUIDACION ? transactionRecord.serieCxC : transactionRecord.serieCxP
+                var importes = getImportes(transactionRecord.typeDocFis, serieCX, transactionRecord.numberPreImp, transactionRecord.form)
+                log.debug('IMPORTES', importes);
                 var DSline = [
                     "DS",//<docSustento>
                     transactionRecord.codSustento,//<codSustento>
@@ -1266,12 +1370,12 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     transactionRecord.fechaEmisionDocSustento,//<fechaEmisionDocSustento>
                     transactionRecord.fechaEmisionDocSustento,// <fechaRegistroContable>
                     "",//<numAutDocSustento>
-                    transactionRecord.pagoLocExt,//<pagoLocExt>
-                    transactionRecord.pagoLocExt == "02" ? "01" : "",//</tipoRegi>
-                    transactionRecord.pagoLocExt == "02" ? codigoPais : "",//<paisEfecPago>
-                    transactionRecord.pagoLocExt == "02" ? "NO" : "",//<aplicConvDobTrib
-                    transactionRecord.pagoLocExt == "02" ? "SI" : "",//<pagExtSujRetNorLeg>
-                    transactionRecord.pagoLocExt == "02" ? "NO" : "",//<pagoRegFis>
+                    pagoLocExt,//<pagoLocExt> 
+                    pagoLocExt == "02" ? "01" : "",//</tipoRegi>
+                    pagoLocExt == "02" ? codigoPais : "",//<paisEfecPago>
+                    pagoLocExt == "02" ? "NO" : "",//<aplicConvDobTrib
+                    pagoLocExt == "02" ? "SI" : "",//<pagExtSujRetNorLeg>
+                    pagoLocExt == "02" ? "NO" : "",//<pagoRegFis>
                     transactionRecord.codDocSustento == 41 ? importes.importeTotal : "0",//<totalComprobantesReembolso>
                     transactionRecord.codDocSustento == 41 ? importes.totalSinImpuestos : "0",//<totalBaseImponibleReembolso>
                     transactionRecord.codDocSustento == 41 ? (parseFloat(importes.importeTotal) - parseFloat(importes.totalSinImpuestos)).toFixed(2) : "0",//<totalImpuestoReembolso>
@@ -1329,6 +1433,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "mainline", label: "mainline" }),
                         search.createColumn({ name: "mainname", label: "vendor" }),
                         search.createColumn({ name: "customform", label: "form" }),
+                        search.createColumn({ name: "entity", label: "entity" }),
 
 
                         search.createColumn({ name: "custrecordts_ec_cod_tipo_comprobante", join: "custbodyec_tipo_de_documento_retencion", label: "documentTypeCode" }),
@@ -1395,10 +1500,11 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "custrecordts_ec_cod_tipo_comprobante", join: "custbodyts_ec_tipo_documento_fiscal", label: "codDocSustento" }),
                         search.createColumn({ name: "formulatext", formula: "CONCAT({custbody_ts_ec_serie_cxc.custrecord_ts_ec_series_impresion},CONCAT('-',{custbody_ts_ec_numero_preimpreso}))", label: "numDocSustento" }),
                         search.createColumn({ name: "formulatext", formula: "to_char({trandate},'DD/MM/YYYY')", label: "fechaEmisionDocSustento" }),
-                        search.createColumn({ name: "custentityts_ec_nombre_ext_reg_fis_pref", join: "vendor", label: "pagoLocExt" }),
+                        search.createColumn({ name: "custentityts_ec_entidad_extranjera", join: "vendor", label: "pagoLocExt" }),
                         search.createColumn({ name: "custentityts_ec_pais_entidad", join: "vendor", label: "codPais" }),
                         search.createColumn({ name: "custbodyts_ec_tipo_documento_fiscal", label: "typeDocFis" }),
                         search.createColumn({ name: "custbody_ts_ec_serie_cxc", label: "serieCxC" }),
+                        search.createColumn({ name: "custbody_ts_ec_serie_doc_cxp", label: "serieCxP" }),
                         search.createColumn({ name: "custbody_ts_ec_numero_preimpreso", label: "numberPreImp" }),
                         search.createColumn({ name: "total", label: "total", function: "absoluteValue" }),
                         search.createColumn({ name: "formulatext", formula: "{custbody_ts_ec_metodo_pago.custrecord_ts_ec_clave}", label: "paymentMethod" }),
@@ -1544,7 +1650,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     (parseFloat(transactionRecord.periva10) / (10 / 100)).toFixed(2),
                     "10",
-                    transactionRecord.periva10,
+                    parseFloat(transactionRecord.periva10),
                     "",
                     "",
                     "",
@@ -1566,7 +1672,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     (parseFloat(transactionRecord.periva20) / (20 / 100)).toFixed(2),
                     "20",
-                    transactionRecord.periva20,
+                    parseFloat(transactionRecord.periva20),
                     "",
                     "",
                     "",
@@ -1588,7 +1694,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     (parseFloat(transactionRecord.periva30) / (30 / 100)).toFixed(2),
                     "30",
-                    transactionRecord.periva30,
+                    parseFloat(transactionRecord.periva30),
                     "",
                     "",
                     "",
@@ -1610,7 +1716,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     (parseFloat(transactionRecord.periva70) / (70 / 100)).toFixed(2),
                     "70",
-                    transactionRecord.periva70,
+                    parseFloat(transactionRecord.periva70),
                     "",
                     "",
                     "",
@@ -1632,7 +1738,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     (parseFloat(transactionRecord.periva100) / (100 / 100)).toFixed(2),
                     "100",
-                    transactionRecord.periva100,
+                    parseFloat(transactionRecord.periva100),
                     "",
                     "",
                     "",
@@ -1654,7 +1760,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     transactionRecord.imprenta1,
                     transactionRecord.perrenta1.replace('%', ''),
-                    transactionRecord.monrenta1,
+                    parseFloat(transactionRecord.monrenta1),
                     "",
                     "",
                     "",
@@ -1676,7 +1782,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     transactionRecord.imprenta2,
                     transactionRecord.perrenta2.replace('%', ''),
-                    transactionRecord.monrenta2,
+                    parseFloat(transactionRecord.monrenta2),
                     "",
                     "",
                     "",
@@ -1698,7 +1804,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     transactionRecord.imprenta3,
                     transactionRecord.perrenta3.replace('%', ''),
-                    transactionRecord.monrenta3,
+                    parseFloat(transactionRecord.monrenta3),
                     "",
                     "",
                     "",
@@ -1849,7 +1955,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
 
         function getMainLineFields(transactionResult) {
             try {
-                var mainLineJson = {};
+                var mainLineJson = new Object();
+                var mainLineJsonText = new Object();
                 var columns = transactionResult.columns;
                 mainLineJson.internalid = transactionResult.id;
                 mainLineJson.type = transactionResult.recordtype;
@@ -1860,6 +1967,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         mainLineJson[column_key] = transactionResult.getValue(column);
                     }
                 });
+
                 return mainLineJson;
             } catch (e) {
                 logError('Error-getMainLineFields', e);
@@ -1890,19 +1998,15 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
         function getIALines(transactionRecord) {
             try {
                 var IALines = [];
-                if (transactionRecord.recordtype == "invoice" && (transactionRecord.documentTypeCode == "01" || transactionRecord.documentTypeCode == "18")) {//& FACTURA Y DOCUMENTO 18
+                if (transactionRecord.recordtype == "invoice" && (transactionRecord.documentTypeCode == "01" || transactionRecord.documentTypeCode == "18")) { //& FACTURA Y DOCUMENTO 18
                     var emails = getEmails(transactionRecord.customer);
                     var addr = getAddress(transactionRecord.customer);
                     IALines.push(['IA', 'DIRECCION', addr.direccion, '']);
                     IALines.push(['IA', 'CIUDAD', addr.ciudad, '']);
                     IALines.push(['IA', 'TELEFONO', transactionRecord.phone, '']);
                     IALines.push(['IA', 'VENCIMIENTO', transactionRecord.duedate, '']);
-                    //IA | PLAZO | 0 dias |
                     IALines.push(['IA', 'EMISION', transactionRecord.location, '']);
-                    //IA|OBSERVACION|GTU-5082|
                     if (emails.length) IALines.push(['IA', 'CORREO', emails.join(','), '']);
-                    //IA | TELSUCURSAL | (04) 6011450 |
-                    //IA | INFOACTIVACION | EL USUARIO YA HA SIDO ACTIVADO POR tarmas7 @solum.com.ec|
                 } else if (transactionRecord.recordtype == "itemfulfillment") { //& GUIA DE REMISIÓN
                     var emails = getEmails(transactionRecord.customer);
                     var addr = getAddress(transactionRecord.customer);
@@ -1910,9 +2014,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     IALines.push(['IA', 'CIUDAD', addr.ciudad, '']);
                     IALines.push(['IA', 'TELEFONO', transactionRecord.phone, '']);
                     IALines.push(['IA', 'VENCIMIENTO', transactionRecord.duedate, '']);
-                    //IA | PLAZO | 0 dias |
                     IALines.push(['IA', 'EMISION', transactionRecord.location, '']);
-                    //IA|OBSERVACION|GTU-5082|
                     if (emails.length) IALines.push(['IA', 'CORREO', emails.join(','), '']);
                 } else if (transactionRecord.recordtype == "creditmemo") { //& NOTA DE CREDITO
                     var emails = getEmails(transactionRecord.customer);
@@ -1921,12 +2023,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     IALines.push(['IA', 'CIUDAD', addr.ciudad, '']);
                     IALines.push(['IA', 'TELEFONO', transactionRecord.phone, '']);
                     IALines.push(['IA', 'EMISION', transactionRecord.location, '']);
-                    //IA|OBSERVACION|GTU-5082|
                     if (emails.length) IALines.push(['IA', 'CORREO', emails.join(','), '']);
-                    //IA | TELSUCURSAL | (04) 6011450 |
-                    //IA | USUARIO | 20504292968 |
-                    //IA | CLAVE | 12345678 |
-                    //IA | DESCUENTO | 0.00 |
                 } else if (transactionRecord.recordtype == "invoice" && transactionRecord.documentTypeCode == "05") { //& NOTA DE DEBITO
                     var emails = getEmails(transactionRecord.customer);
                     var addr = getAddress(transactionRecord.customer);
@@ -2081,7 +2178,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var logError = record.create({ type: 'customrecord_ec_ei_log_documents' });
                 logError.setValue('custrecord_pe_ei_log_related_transaction', transactionId);
                 logError.setValue('custrecord_pe_ei_log_subsidiary', SUBSIDIARIA);
-                logError.setValue('custrecord_pe_ei_log_employee', userId);
+                logError.setValue('custrecord_pe_ei_log_employee', /*userId*/ 4);
                 logError.setValue('custrecord_ec_ei_log_status', docstatus);
                 logError.setValue('custrecord_pe_ei_log_response', JSON.stringify(response));
                 logError.save();
@@ -2105,7 +2202,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
             var nkey = 0;
             var ciudad = '';
             var direccion = '';
-            var sql = "SELECT addressbookaddress FROM customeraddressbook WHERE entity = ?"
+            var sql = "SELECT addressbookaddress FROM customeraddressbook WHERE defaultbilling = 'T' AND entity = ?"
             var resultSet = query.runSuiteQL({ query: sql, params: [entity] });
             var results = resultSet.asMappedResults();
             if (results.length > 0) {
@@ -2166,16 +2263,16 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     filterSerie = ["custbody_ts_ec_serie_doc_cxp", "startswith", serie]
                 }
 
-                var vendorbillSearchObj = search.create({
+                var vendorbillSearchObj = search.create({ //customsearch1834
                     type: "vendorbill",
                     filters:
                         [
                             ["type", "anyof", "VendBill"],
                             "AND",
-                            ["itemtype", "isnot", "Discount"],
-                            "AND",
-                            ["accounttype", "noneof", "OthCurrLiab"],
-                            "AND",
+                            // ["itemtype", "isnot", "Discount"],
+                            // "AND",
+                            // ["accounttype", "noneof", "OthCurrLiab"],
+                            // "AND",
                             ["taxline", "is", "F"],
                             "AND",
                             ["mainline", "is", "F"],
@@ -2184,7 +2281,9 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                             "AND",
                             filterSerie,
                             "AND",
-                            ["custbody_ts_ec_numero_preimpreso", "startswith", numImpreso]
+                            ["custbody_ts_ec_numero_preimpreso", "is", numImpreso],
+                            "AND",
+                            ["taxitem", "noneof", "5"]
                         ],
                     columns:
                         [
@@ -2195,14 +2294,14 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
 
                 //var searchResultCount = vendorbillSearchObj.runPaged().count;
                 vendorbillSearchObj.run().each(function (result) {
-                    totalSinImpuestos = result.getValue({ name: "amount", summary: "SUM", label: "Amount" });
-                    importeTotal = Math.abs(parseFloat(result.getValue({ name: "taxamount", summary: "SUM", label: "Amount (Tax)" }))) + parseFloat(totalSinImpuestos);
+                    totalSinImpuestos = Math.abs(result.getValue({ name: "amount", summary: "SUM", label: "Amount" }));
+                    importeTotal = parseFloat(Math.abs(result.getValue({ name: "taxamount", summary: "SUM", label: "Amount (Tax)" }))) + parseFloat(totalSinImpuestos);
                     return true;
                 });
 
                 return {
-                    totalSinImpuestos: totalSinImpuestos,
-                    importeTotal: importeTotal
+                    totalSinImpuestos: parseFloat(totalSinImpuestos).toFixed(2),
+                    importeTotal: parseFloat(importeTotal).toFixed(2)
                 }
             } catch (error) {
                 logError('Error.getImportes', error);
@@ -2242,7 +2341,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                             search.createColumn({ name: "formulatext", summary: "GROUP", formula: "SUBSTR({custrecord_ht_ec_reembolso_doc_serie}, 4, 3)", label: "6 ptoEmiDocReembolso" }),
                             search.createColumn({ name: "custrecord_ht_ec_reembolso_num_doc", summary: "GROUP", label: "7 secuencialDocReembolso" }),
                             search.createColumn({ name: "custrecord_fecha", summary: "GROUP", label: "8 fechaEmisionDocReembolso" }),
-                            search.createColumn({ name: "custbodyts_ec_num_autorizacion", join: "CUSTRECORD_HT_REEMBOLSO_INFORME_GASTOS", summary: "GROUP", label: "9 numeroAutorizacionDocReemb" }),
+                            // search.createColumn({ name: "custbodyts_ec_num_autorizacion", join: "CUSTRECORD_HT_REEMBOLSO_INFORME_GASTOS", summary: "GROUP", label: "9 numeroAutorizacionDocReemb" }),
+                            search.createColumn({ name: "custrecord_ht_ec_reembolso_num_folio_fis", summary: "GROUP", label: "9 numeroAutorizacionDocReemb" }),
                             search.createColumn({ name: "formulatext", summary: "GROUP", formula: "'2'", label: "10 codigo" }),
                             search.createColumn({ name: "custrecord_ts_ec_tar_imp_codigo", join: "CUSTRECORD_HT_REEMBOLSO_COD_IMPUESTO", summary: "GROUP", label: "11 codigoPorcentaje" }),
                             search.createColumn({ name: "custrecord_ht_reembolso_tasa_impuesto", summary: "GROUP", label: "12 tarifa" }),
@@ -2282,18 +2382,20 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     array.push(IRBLine);
                     return true;
                 });
-
-                // const myPagedData = mySearch.runPaged({ pageSize: 1000 });
-                // for (let i = 0; i < myPagedData.pageRanges.length; i++) {
-                //     const mySearchPage = myPagedData.fetch({ index: i });
-                //     mySearchPage.data.forEach(function (result) {
-
-                //     });
-                // }
                 return array;
             } catch (error) {
                 return new Array();
             }
+        }
+
+        function getPagoLocExto(id) {
+            try {
+                //var pagoLocExto = search.lookupFields({ type: 'vendor', id: id, columns: ['custentityts_ec_entidad_extranjera'] });
+                var pagoLocExto = search.lookupFields({ type: 'vendorbill', id: id, columns: ['custbody_ts_pago_residente'] });
+                pagoLocExto = pagoLocExto.custbody_ts_pago_residente[0].text;
+                return pagoLocExto.substr(0, 2);
+            } catch (error) { }
+
         }
 
         return {

@@ -18,7 +18,7 @@ define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode,
     
         };
         let mapReduceTaskId = mapReduceScript.submit();
-       return true;*/
+        return true;*/
         let headers1 = [];
         headers1['Content-Type'] = 'text/xml';
         headers1['SOAPAction'] = 'http://tempuri.org/AutenticacionUsuarioPx';

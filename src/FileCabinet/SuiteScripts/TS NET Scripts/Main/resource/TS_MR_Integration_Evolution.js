@@ -15,17 +15,16 @@ Governance points: N/A
  */
 define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/runtime', 'N/https'], (log, search, record, task, file, runtime, https) => {
     const scriptObj = runtime.getCurrentScript();
-    const HEADER = 'External ID|Subsidiary|Date|Account|Debit|Credit|Memo|Class|Department|Location\n';
-    const FOLDER = 1118;
+    const HEADER = 'Moneda|CheckTransferencia|RegistroTranferencia|External ID|Subsidiary|Date|Account|Debit|Credit|Memo|Class|Department|Location|MemoLinea|Name\n';
+    const FOLDER = 546;
     const RECORD_ASIENTOS_EVOLUTION = 'customrecord_ht_ae_asientos_evolution'; //HT Asientos EVOLUTION
     let recordId = '';
     let fileId = '';
     let registro = '';
 
     const getInputData = () => {
-        // recordId = scriptObj.getParameter({ name: 'custscript_ae_param_recordid' });
+        recordId = scriptObj.getParameter({ name: 'custscript_ae_param_recordid' });
         fileId = scriptObj.getParameter({ name: 'custscript_ae_param_fileid' });
-        //log.debug('Params', fileId);
 
         try {
             const fileLoad = file.load({ id: fileId });
@@ -38,23 +37,19 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/runtime', 'N/htt
 
     const map = (context) => {
         registro = scriptObj.getParameter({ name: 'custscript_ae_param_registro' });
+        recordId = scriptObj.getParameter({ name: 'custscript_ae_param_recordid' });
         let contentJournal = '';
         try {
             let obj = JSON.parse(context.value);
-            //log.debug('Context-map-Length', obj);
-            //log.debug('Context-map', typeof obj);
 
             for (let i in obj) {
                 contentJournal =
-                    contentJournal + registro + '|' + obj[i].subsidiary + '|' + obj[i].date + '|' +
+                    contentJournal + obj[i].moneda + '|' + 'T' + '|' + recordId + '|' +
+                    obj[i].externalid + '|' + obj[i].subsidiary + '|' + obj[i].date + '|' +
                     obj[i].account + '|' + obj[i].debit + '|' + obj[i].credit + '|' + obj[i].memo + '|' +
-                    obj[i].class + '|' + obj[i].department + '|' + obj[i].location + '\n';
+                    obj[i].clase + '|' + obj[i].department + '|' + obj[i].location + '|' + obj[i].memolinea + '|' + obj[i].name + '\n';
             }
-
-            context.write({
-                key: context.key,
-                value: contentJournal
-            });
+            context.write({ key: context.key, value: contentJournal });
         } catch (error) {
             log.error('Error-map', error);
         }
@@ -63,8 +58,6 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/runtime', 'N/htt
     const reduce = (context) => {
         registro = scriptObj.getParameter({ name: 'custscript_ae_param_registro' });
         try {
-            //log.debug('Context-reduce', context.values);
-            //log.debug('Context-reduce-typeof', typeof context.values);
             let contentJournal = context.values[0];
             contentJournal = HEADER + contentJournal;
             contentJournal = contentJournal.replace(/[,]/gi, ' ');
@@ -79,12 +72,9 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/runtime', 'N/htt
                 isOnline: true
             });
             let csvId = fileObj.save();
-            log.debug('csvId', csvId);
+            log.error('csvId', csvId);
 
-            context.write({
-                key: context.key,
-                value: csvId
-            });
+            context.write({ key: context.key, value: csvId });
         } catch (error) {
             log.error('Error-reduce', error);
         }
@@ -94,11 +84,7 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/runtime', 'N/htt
         let csvId = '';
         try {
             recordId = scriptObj.getParameter({ name: 'custscript_ae_param_recordid' });
-
-            context.output.iterator().each((key, value) => {
-                csvId = value;
-                return true;
-            });
+            context.output.iterator().each((key, value) => { csvId = value; return true; });
 
             let myRestletHeaders = new Array();
             myRestletHeaders['Accept'] = '*/*';
@@ -106,11 +92,10 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/runtime', 'N/htt
 
             let myUrlParameters = {
                 csvfile: csvId,
-                //mySecondParameter: 'secondparam'
+                recordId: recordId
             }
-
+            //asiento_04_03_2024_10_27_36
             let myRestletResponse = https.requestRestlet({
-                //body: 'My Restlet body',
                 deploymentId: 'customdeploy_ts_rs_integration_evolution',
                 scriptId: 'customscript_ts_rs_integration_evolution',
                 headers: myRestletHeaders,
@@ -119,8 +104,7 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/runtime', 'N/htt
             });
 
             let response = myRestletResponse.body;
-            log.debug('Response-RESTlet', response);
-            //log.debug('Params-summarize', recordId);
+            log.error('Response-RESTlet', response);
             const updateRecord = record.submitFields({
                 type: RECORD_ASIENTOS_EVOLUTION,
                 id: recordId,
@@ -129,7 +113,7 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/runtime', 'N/htt
                     custrecord_ht_ae_csv_archivo: csvId
                 }
             });
-            log.debug('updateRecord', updateRecord);
+            log.error('UpdateRecordProccesing', updateRecord);
         } catch (error) {
             log.error('Error-summarize', error);
         }

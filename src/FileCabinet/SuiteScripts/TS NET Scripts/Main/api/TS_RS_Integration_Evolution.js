@@ -18,39 +18,43 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/format'], (log, 
     const SUBSIDIARY = 2;
     const FECHA = new Date();
     const RECORD_ASIENTOS_EVOLUTION = 'customrecord_ht_ae_asientos_evolution'; //HT Asientos EVOLUTION
-    const FOLDER = 1118;
+    const FOLDER = 546;
     const LIMITE_TAMANIO_ARCHIVO = 10485760;
-    const SAVED_CSV_IMPORTS = 9;
+    const SAVED_CSV_IMPORTS = 156;
 
     const _get = (context) => {
+        let csv = file.load({ id: context.csvfile });
         const scriptTask = task.create({ taskType: task.TaskType.CSV_IMPORT });
         scriptTask.mappingId = SAVED_CSV_IMPORTS;
-        let csv = file.load({ id: context.csvfile });
         scriptTask.importFile = csv;
+        scriptTask.queueId = 5;
         let csvImportTaskId = scriptTask.submit();
-        log.debug('csvImportTaskId', csvImportTaskId);
-
+        //log.error('csvImportTaskIdGET', csvImportTaskId);
         let csvTaskStatus = task.checkStatus({ taskId: csvImportTaskId });
-        
-        log.debug('csvTaskStatus', csvTaskStatus);
+        log.error('csvTaskStatus', csvTaskStatus);
         return { 'ConextGet': csvTaskStatus.status };
-        //return 'Oracle Netsuite Connected - Release 2023.1';
+        //return 'Oracle Netsuite Connected - Release 2024.1';
     }
 
     const _post = (context) => {
-        //log.debug('Request', context);
         let estado = 'Procesando';
         try {
             //const journal = createRecord(context);
+            log.error('context', context);
+            for (let index = 0; index < context.lines.length; index++) {
+                if (typeof context.lines[index].externalid != 'undefined') {
+                    if (!context.lines[index].externalid) {
+                        return 'Se debe ingresar el ID Exteno en la línea ' + index;
+                    }
+                } else {
+                    return 'El ID Externo no está definido en la línea ' + index;
+                }
+            }
             let cadenaFecha = format.format({ value: FECHA, type: format.Type.DATETIME });
             cadenaFecha = cadenaFecha.replace(/[/]/gi, '_').replace(/ /gi, '_').replace(/:/gi, '_');
-            let registro = 'nomina_' + cadenaFecha;
+            let registro = 'asiento_' + cadenaFecha;
 
-            const fileObj = file.create({
-                name: registro + '.json',
-                fileType: file.Type.JSON,
-                contents: JSON.stringify(context)
-            });
+            const fileObj = file.create({ name: registro + '.json', fileType: file.Type.JSON, contents: JSON.stringify(context) });
             fileObj.folder = FOLDER;
             let fileId = fileObj.save();
 
@@ -58,12 +62,12 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/format'], (log, 
             recordObj.setValue({ fieldId: 'custrecord_ht_ae_identificador', value: registro });
             recordObj.setValue({ fieldId: 'custrecord_ht_ae_estado', value: estado });
             recordObj.setValue({ fieldId: 'custrecord_ht_ae_json_solicitud', value: fileId });
+            recordObj.setValue({ fieldId: 'custrecord_ht_ae_externalid', value: context.lines[0].externalid });
             let recordId = recordObj.save({ ignoreMandatoryFields: true });
 
             const fileLoad = file.load({ id: fileId });
             if (fileLoad.size < LIMITE_TAMANIO_ARCHIVO) {
-                let data = JSON.parse(fileLoad.getContents());
-                //log.debug('Rows', data.lines.length);
+                //let data = JSON.parse(fileLoad.getContents());
                 try {
                     let mapReduceScript = task.create({ taskType: task.TaskType.MAP_REDUCE });
                     mapReduceScript.scriptId = 'customscript_ts_mr_integration_evolution';
@@ -74,7 +78,7 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/format'], (log, 
                         'custscript_ae_param_registro': registro
                     };
                     let mapReduceTaskId = mapReduceScript.submit();
-                    log.debug('mapReduceTaskId', mapReduceTaskId);
+                    log.error('mapReduceTaskId', mapReduceTaskId);
                 } catch (error) {
                     log.error('Error-Task', error);
                     estado = 'Pendiente';
@@ -85,23 +89,12 @@ define(['N/log', 'N/search', 'N/record', 'N/task', 'N/file', 'N/format'], (log, 
                             custrecord_ht_ae_estado: estado
                         }
                     });
-                    log.debug('updateRecord', updateRecord);
+                    log.error('Pending Proccess', updateRecord);
                 }
-                return { registro: recordId, estado: estado };
+                return { registro: recordId, proceso: registro, estado: estado };
             } else {
                 return 'El archivo supera los 10M';
             }
-
-
-
-            // const fileObj = file.load({ id: 12465 });
-            // fileObj.appendLine({
-            //     value: 'Nomina_diciembre_3_2022;2;28/12/2022;1010;200;0;Nota CSV 4;Venta;Caja;Guayaquil Matriz\n' +
-            //         'Nomina_diciembre_3_2022;2;28/12/2022;1180;0;200;Nota CSV 4;Venta;Caja;Guayaquil Matriz'
-            // });
-            // //log.debug('JOURNAL', fileObj);
-            // let fileId = fileObj.save();
-            //return fileId;
         } catch (error) {
             log.error('Error-POST', error);
             return error;

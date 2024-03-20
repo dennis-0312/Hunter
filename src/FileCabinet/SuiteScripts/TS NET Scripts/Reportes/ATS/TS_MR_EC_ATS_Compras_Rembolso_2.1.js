@@ -27,55 +27,58 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 let key = context.key;
                 let result = JSON.parse(context.value);
 
+                // 0 ID
+                let IDTras = result[0];
+
                 // 1 Codigo de compra
-                let codigoCompra = result[0];
+                let codigoCompra = result[1];
 
                 // 2 Código Tipo de comprobante reembolso
-                let codigoTipoComprobante = result[1].replace('- None -', '');
+                let codigoTipoComprobante = result[2].replace('- None -', '');
 
                 // 3 No. de Identificación del Proveedor Reembolso
-                let tipoIdentificacionProveedor = result[2].replace('- None -', '');
+                let tipoIdentificacionProveedor = result[3].replace('- None -', '');
 
                 // 4 Numero de Identificación del Proveedor
-                let numeroIdentificacionProveedor = result[3].replace('- None -', '');
+                let numeroIdentificacionProveedor = result[4].replace('- None -', '');
 
                 // 5 No. de serie del comprobante de venta Reembolso - establecimiento
-                let establecimientoCVR = result[4].replace('- None -', '');
+                let establecimientoCVR = result[5].replace('- None -', '');
 
                 // 6 No. de serie del comprobante de venta Reembolso - punto de emisión
-                let puntoEmisionCVR = result[5].replace('- None -', '');
+                let puntoEmisionCVR = result[6].replace('- None -', '');
 
                 // 7 No. secuencial del comprobante de venta Reembolso
-                let numeroSencuencialCVR = result[6].replace('- None -', '')
+                let numeroSencuencialCVR = result[7].replace('- None -', '')
 
                 // 8 Fecha de emisión del comprobante de venta Reembolso
-                let fechaEmisionCVR = result[7].replace('- None -', '');
+                let fechaEmisionCVR = result[8].replace('- None -', '');
 
                 // 9 No. de autorización del comprobante de venta Reembolso
-                let autorizacionCVR = result[8].replace('- None -', '');
+                let autorizacionCVR = result[9].replace('- None -', '');
 
                 // 10 Base Imponible tarifa 0% IVA Reembolso
-                let baseImponible0Iva = roundTwoDecimals(result[9]);
+                let baseImponible0Iva = roundTwoDecimals(result[10]);
 
                 // 11 Base Imponible tarifa IVA diferente de 0% Reembolso
-                let baseImponibleGravada = roundTwoDecimals(result[10]);
+                let baseImponibleGravada = roundTwoDecimals(result[11]);
 
                 // 12 Base Imponible no objeto de IVA - REEMBOLSO
-                let baseImponibleNoIva = roundTwoDecimals(result[11]);
+                let baseImponibleNoIva = roundTwoDecimals(result[12]);
 
                 // 13 Base imponible exenta de IVA Reembolso
-                let baseImponibleExenta = roundTwoDecimals(result[12]);
+                let baseImponibleExenta = roundTwoDecimals(result[13]);
 
                 // 14 Total Bases Imponibles Reembolso
-                let totalBasesImponibles = roundTwoDecimals(result[13]);
+                let totalBasesImponibles = roundTwoDecimals(result[14]);
 
                 // 15 Monto ICE Reembolso
-                let montoIce = roundTwoDecimals(result[14]);
+                let montoIce = roundTwoDecimals(result[15]);
 
                 // 16 Monto IVA Reembolso
-                let montoIva = roundTwoDecimals(result[15]);
+                let montoIva = roundTwoDecimals(result[16]);
 
-                let rowString = `${codigoCompra}|${codigoTipoComprobante}|${tipoIdentificacionProveedor}|${numeroIdentificacionProveedor}|${establecimientoCVR}|` +
+                let rowString = `${IDTras}|${codigoCompra}|${codigoTipoComprobante}|${tipoIdentificacionProveedor}|${numeroIdentificacionProveedor}|${establecimientoCVR}|` +
                     `${puntoEmisionCVR}|${numeroSencuencialCVR}|${fechaEmisionCVR}|${autorizacionCVR}|${baseImponible0Iva}|${baseImponibleGravada}|${baseImponibleNoIva}|` +
                     `${baseImponibleExenta}|${totalBasesImponibles}|${montoIce}|${montoIva}\r\n`;
 
@@ -130,7 +133,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             if (environmentFeatures.hasSubsidiaries) {
                 params['custscript_ts_mr_ec_ats_com_ret_subsia'] = scriptParameters.subsidiaryId;
             }
-            
+
             params['custscript_ts_mr_ec_ats_com_ret_period'] = scriptParameters.periodId;
 
             params['custscript_ts_mr_ec_ats_com_ret_folder'] = scriptParameters.folderId;
@@ -138,6 +141,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             params['custscript_ts_mr_ec_ats_com_ret_atsfiles'] = scriptParameters.atsFilesId;
 
             params['custscript_ts_mr_ec_ats_com_ret_logid'] = scriptParameters.logId;
+            //<I> rhuaccha: 2024-02-26
+            params['custscript_ts_mr_ec_ats_com_ret_formato'] = scriptParameters.format;
+            //<F> rhuaccha: 2024-02-26
             log.error("executeMapReduce", params);
             let scriptTask = task.create({
                 taskType: task.TaskType.MAP_REDUCE,
@@ -165,6 +171,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ree_folder');
             scriptParameters.atsFilesId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ree_atsfiles');
             scriptParameters.logId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ree_logid');
+            //<I> rhuaccha: 2024-02-26
+            scriptParameters.format = currentScript.getParameter('custscript_ts_mr_ec_ats_com_ree_formato');
+            //<F> rhuaccha: 2024-02-26
 
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
@@ -176,21 +185,21 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             });
 
             if (scriptParameters.periodId) {
+
+                var periodSearch = search.lookupFields({
+                    type: search.Type.ACCOUNTING_PERIOD,
+                    id: scriptParameters.periodId,
+                    columns: ['startdate', 'enddate']
+                });
+                let periodoInicio = periodSearch.startdate;
+                let periodoFinal = periodSearch.enddate;
+
                 let periodFilter = search.createFilter({
-                    name: 'postingperiod',
-                    operator: search.Operator.ANYOF,
-                    values: scriptParameters.periodId
+                    name: "custrecord_fecha",
+                    operator: search.Operator.WITHIN,
+                    values: [periodoInicio, periodoFinal],
                 });
                 atsComprasReembolsoSearch.filters.push(periodFilter);
-            }
-
-            if (environmentFeatures.hasSubsidiaries) {
-                let subsidiaryFilter = search.createFilter({
-                    name: 'subsidiary',
-                    operator: search.Operator.ANYOF,
-                    values: scriptParameters.subsidiaryId
-                });
-                atsComprasReembolsoSearch.filters.push(subsidiaryFilter);
             }
 
             let pagedData = atsComprasReembolsoSearch.runPaged({ pageSize: MAX_PAGINATION_SIZE });
@@ -213,6 +222,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                     resultArray.push(rowArray);
                 }
             }
+            log.error("resultArray", resultArray);
             return resultArray;
 
         }

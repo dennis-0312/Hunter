@@ -44,6 +44,8 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                         rowString
                     }
                 });
+
+
             } catch (error) {
                 log.error("error", error);
             }
@@ -145,6 +147,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_mr_ec_ats_ven_est_folder');
             scriptParameters.atsFilesId = currentScript.getParameter('custscript_ts_mr_ec_ats_ven_est_atsfiles');
             scriptParameters.logId = currentScript.getParameter('custscript_ts_mr_ec_ats_ven_est_logid');
+            //<I> rhuaccha: 2024-02-26
+            scriptParameters.format = currentScript.getParameter('custscript_ts_mr_ec_ats_ven_est_formato');
+            //<F> rhuaccha: 2024-02-26
 
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
@@ -181,6 +186,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             params['custscript_ts_mr_ec_ats_form_pv_atsfiles'] = scriptParameters.atsFilesId;
 
             params['custscript_ts_mr_ec_ats_form_pv_logid'] = scriptParameters.logId;
+            //<I> rhuaccha: 2024-02-26
+            params['custscript_ts_mr_ec_ats_form_pv_formato'] = scriptParameters.format;
+            //<F> rhuaccha: 2024-02-26
             log.error("executeMapReduce", params);
             let scriptTask = task.create({
                 taskType: task.TaskType.MAP_REDUCE,

@@ -1,0 +1,437 @@
+<customrecordtype scriptid="customrecord_ts_epmt_payment_file_format">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>T</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>E Payment Formato Archivo Pago</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>T</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ts_epmt_pff_output_file_exten">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Extensión del archivo de salida</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_epmt_pff_free_marker_body">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CLOBTEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Plantilla de archivo bancario</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_epmt_pff_custom_records">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CLOBTEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Registros Personalizados</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_epmt_pff_ref_fields">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CLOBTEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Campos de referencia</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_ts_epmt_pff_entity_ref_fields">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CLOBTEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Campos de referencia de entidad</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_533670_7451241_sb1_470">
+      <altname>Bolivariano</altname>
+      <custrecord_ts_epmt_pff_custom_records></custrecord_ts_epmt_pff_custom_records>
+      <custrecord_ts_epmt_pff_entity_ref_fields></custrecord_ts_epmt_pff_entity_ref_fields>
+      <custrecord_ts_epmt_pff_free_marker_body>&lt;#assign detailType = &quot;BZDET&quot;&gt;&#xd;
+&lt;#assign auxiliarCero = 0&gt;&#xd;
+&lt;#assign auxiliarEspacio = &quot; &quot;&gt;&#xd;
+&lt;#list payments as payment&gt;&#xd;
+&lt;#assign totalAmount = payment.custrecord_ts_epmt_prepaydet_paym_amount&gt;&#xd;
+&lt;#if (payment.ebank)??&gt;&#xd;
+&lt;#assign ebank = payment.ebank&gt;&#xd;
+&lt;#else&gt;&#xd;
+&lt;#assign ebank = {}&gt;&#xd;
+&lt;/#if&gt;&#xd;
+&lt;#if payment[&quot;custrecord_ts_epmt_prepaydet_entity.type&quot;].value == &quot;Employee&quot;&gt;&#xd;
+&lt;#assign entity = employees[payment.custrecord_ts_epmt_prepaydet_entity.value]&gt;&#xd;
+&lt;#assign codigoEmpresa = entity.custentity_ec_cod_banco&gt;&#xd;
+&lt;#assign vatregnumber = entity.custentity_ec_numero_registro&gt;&#xd;
+&lt;#elseif payment[&quot;custrecord_ts_epmt_prepaydet_entity.type&quot;].value == &quot;Vendor&quot;&gt;&#xd;
+&lt;#assign entity = vendors[payment.custrecord_ts_epmt_prepaydet_entity.value]&gt;&#xd;
+&lt;#assign codigoEmpresa = ebank.custrecord_2663_entity_processor_code&gt;&#xd;
+&lt;#assign vatregnumber = entity.vatregnumber&gt;&#xd;
+&lt;#elseif payment[&quot;custrecord_ts_epmt_prepaydet_entity.type&quot;].value == &quot;CustJob&quot;&gt;&#xd;
+&lt;#assign entity = customers[payment.custrecord_ts_epmt_prepaydet_entity.value]&gt;&#xd;
+&lt;#assign codigoEmpresa = entity.custentity_ec_cod_banco&gt;&#xd;
+&lt;#assign vatregnumber = entity.vatregnumber&gt;&#xd;
+&lt;#else&gt;&#xd;
+&lt;#assign entity = {}&gt;&#xd;
+&lt;/#if&gt;&#xd;
+&lt;#assign docTypeEntity = entity.custentityts_ec_cod_tipo_doc_identidad&gt;&#xd;
+&lt;#if docTypeEntity == &quot;04&quot;&gt;&#xd;
+&lt;#assign docType = &quot;R&quot;&gt;&#xd;
+&lt;#elseif docTypeEntity == &quot;05&quot;&gt;&#xd;
+&lt;#assign docType = &quot;C&quot;&gt;&#xd;
+&lt;#else&gt;&#xd;
+&lt;#assign docType = &quot;P&quot;&gt;&#xd;
+&lt;/#if&gt;&#xd;
+&lt;#assign transaction = transactions[payment.custrecord_ts_epmt_prepaydet_origin_tran.value]&gt;&lt;!--&lt;#assign serieCXC = transaction.custbody_ts_ec_serie_cxc&gt;--&gt;&#xd;
+&lt;#assign serieCXC = &quot;&quot;&gt;&lt;!--&lt;#assign serieCXP = transaction.custbody_ts_ec_serie_doc_cxp&gt;--&gt;&#xd;
+&lt;#assign serieCXP = &quot;&quot;&gt;&lt;!--&lt;#assign tipoDocumentiFiscal = transaction.custbodyts_ec_tipo_documento_fiscal&gt;--&gt;&#xd;
+&lt;#assign codTerminoPago = payment.custrecord_ts_epmt_prepaydet_paym_method.text&gt;&lt;!--&lt;#assign comRetencion = transaction.custbody_ec_serie_cxc_retencion + transaction.custbody_ts_ec_preimpreso_retencion&gt;--&gt;&#xd;
+&lt;#assign comRetencion = &quot;&quot;&gt;&lt;!--&lt;#assign fechaAuto = transaction.custbody_ec_fecha_autorizacion&gt;--&gt;&#xd;
+&lt;#assign fechaAuto = &quot;&quot;&gt;&lt;!--&lt;#assign numAutorizacion = transaction.custbodyts_ec_num_autorizacion&gt;--&gt;&#xd;
+&lt;#assign telefono = entity.phone&gt;&#xd;
+&lt;#if codTerminoPago == &quot;CUE&quot;&gt;&#xd;
+&lt;#assign codTermino = ebank.custrecord_2663_entity_ec_tipo_cuentacob.text &gt;&#xd;
+&lt;#assign account = setMaxLength(ebank.custrecord_2663_entity_bban,10) &gt;&#xd;
+&lt;#assign codigoBanco = 34 &gt;&#xd;
+&lt;#elseif codTerminoPago == &quot;IMP&quot;&gt;&#xd;
+&lt;#assign account = setMaxLength(ebank.custrecord_2663_entity_bban,10) &gt;&#xd;
+&lt;#elseif codTerminoPago == &quot;COB&quot;&gt;&#xd;
+&lt;#assign codTermino = ebank.custrecord_2663_entity_ec_tipo_cuentacob.text &gt;&#xd;
+&lt;#assign account = setMaxLength(ebank.custrecord_2663_entity_bban,18) &gt;&#xd;
+&lt;#assign codigoBanco = ebank.custrecord_2663_entity_bank_code.value &gt;&#xd;
+&lt;#else&gt;&#xd;
+&lt;#assign codTermino = &quot; &quot; &gt;&#xd;
+&lt;#assign account = &quot; &quot; &gt;&#xd;
+&lt;#assign codigoBanco = &quot; &quot; &gt;&#xd;
+&lt;/#if &gt;&#xd;
+&lt;#if telefono?length==0&gt;&#xd;
+&lt;#assign telefono = &quot; &quot; &gt;&#xd;
+&lt;/#if&gt;&#xd;
+&lt;#if codigoEmpresa?length==0&gt;&#xd;
+&lt;#assign codigoEmpresa = &quot; &quot; &gt;&#xd;
+&lt;/#if&gt;&#xd;
+&lt;#assign codigoEmpresa = &quot;00363&quot;&gt;&#xd;
+&lt;#--  LOGICA EMITIDO SUSTENTO  --&gt;&#xd;
+&lt;#if transaction.custbody_ht_emitido_pago_electronico??&gt;&lt;#-- si existe este campo puede ser cheque, anticipo o pago  --&gt;&#xd;
+  &lt;#assign emitido=&quot;SI&quot;&gt;&#xd;
+  &lt;#assign codigoBanco = &quot;34&quot; &gt;&#xd;
+  &lt;#assign codTermino = &quot;03&quot; &gt;&#xd;
+  &lt;#assign account = &quot;0005018787&quot;&gt;&#xd;
+  &lt;#assign nrocheque = transaction.tranid&gt;&#xd;
+  &lt;#assign glosa=&quot; &quot;&gt;&#xd;
+  &lt;#if transaction.tipo==&quot;VendPymt&quot;&gt;&#xd;
+      &lt;#assign sustento=transaction.custbody_ts_ec_numero_preimpreso&gt;&#xd;
+      &lt;#assign autorizacion=1115855284&gt;&#xd;
+      &lt;#assign fechaautorizacion=&quot; &quot;&gt;&#xd;
+      &lt;#assign pruebaVar=&quot;pruebaVar1&quot;&gt;&#xd;
+      &lt;#if transaction.custbody_ts_ec_preimpreso_retencion?length==0&gt;&#xd;
+          &lt;#assign rete=&quot;0&quot;&gt;&#xd;
+      &lt;#else&gt;&#xd;
+          &lt;#assign rete = transaction.custbody_ec_serie_cxc_retencion + transaction.custbody_ts_ec_preimpreso_retencion&gt;&#xd;
+      &lt;/#if&gt;&#xd;
+  &lt;#else&gt;&#xd;
+      &lt;#assign pruebaVar = &quot;pruebaVar2&quot;&gt;&#xd;
+  &lt;/#if&gt;&#xd;
+&lt;#else&gt;&#xd;
+  &lt;#assign emitido=&quot;NO&quot;&gt;&#xd;
+  &lt;#assign glosa=transaction.memo&gt;&#xd;
+  &lt;#if transaction.custbody_ts_related_transaction.value?length==0&gt;&#xd;
+      &lt;#assign sustento=&quot;0&quot;&gt;&#xd;
+      &lt;#assign rete=&quot;0&quot;&gt;&#xd;
+      &lt;#assign autorizacion=&quot; &quot;&gt;&#xd;
+      &lt;#assign fechaautorizacion=&quot; &quot;&gt;&#xd;
+      &lt;#assign pruebaVar=&quot;pruebaVar3&quot;&gt;&#xd;
+  &lt;#else&gt;&#xd;
+      &lt;#if transaction.type.value==&quot;PurchOrd&quot;&gt;&#xd;
+          &lt;#assign sustento=&quot;0&quot;&gt;&#xd;
+          &lt;#assign rete=&quot;0&quot;&gt;&#xd;
+          &lt;#assign autorizacion=&quot; &quot;&gt;&#xd;
+          &lt;#assign pruebaVar=&quot;pruebaVar4&quot;&gt;&#xd;
+      &lt;#else&gt;&#xd;
+          &lt;#assign sustento = transaction.relatedTransaction.sustento&gt;&#xd;
+          &lt;#assign autorizacion=1115855284&gt;&#xd;
+          &lt;#assign fechaautorizacion=&quot; &quot;&gt;&#xd;
+          &lt;#assign pruebaVar=&quot;pruebaVar5&quot;&gt;&#xd;
+          &lt;#if transaction.relatedTransaction.retencion?length==0&gt;&#xd;
+              &lt;#assign rete = &quot;0&quot; &gt;&#xd;
+          &lt;#else&gt;&#xd;
+              &lt;#assign rete = transaction.relatedTransaction.retencion &gt;&#xd;
+          &lt;/#if&gt;&#xd;
+      &lt;/#if&gt;&#xd;
+  &lt;/#if&gt;  &#xd;
+&lt;/#if&gt;&#xd;
+&lt;#--  &lt;#if transaction.custbody_ts_related_transaction.value?length==0&gt;&#xd;
+&lt;#assign sustento = &quot;0&quot; &gt;&#xd;
+&lt;#assign rete = &quot;0&quot; &gt;&#xd;
+&lt;#assign autorizacion = &quot; &quot; &gt;&#xd;
+&lt;#assign fechaautorizacion = &quot; &quot; &gt;&#xd;
+&lt;#assign pruebaVar = &quot;pruebaVar1&quot; &gt;&#xd;
+  &lt;#if transaction.custbody_ht_emitido_pago_electronico??&gt;&#xd;
+  &lt;#assign emitido = &quot;SI1&quot; &gt;&#xd;
+  &lt;#else&gt;&#xd;
+  &lt;#assign emitido = transaction.memo &gt;&#xd;
+  &lt;/#if&gt;&#xd;
+&lt;#elseif transaction.tipo==&quot;Custom&quot;&gt;&#xd;
+  &lt;#assign emitido = transaction.memo &gt;&#xd;
+  &lt;#if transaction.type.value==&quot;PurchOrd&quot;&gt;&#xd;
+  &lt;#assign sustento = &quot;0&quot; &gt;&#xd;
+  &lt;#assign rete = &quot;0&quot; &gt;&#xd;
+  &lt;#assign autorizacion = &quot; &quot; &gt;&#xd;
+  &lt;#assign pruebaVar = &quot;pruebaVar2&quot; &gt;&#xd;
+  &lt;#else&gt;&#xd;
+  &lt;#assign sustento = transaction.relatedTransaction.sustento &gt;&#xd;
+      &lt;#if transaction.relatedTransaction.retencion?length==0&gt;&#xd;
+      &lt;#assign rete = &quot;0&quot; &gt;&#xd;
+      &lt;#else&gt;&#xd;
+      &lt;#assign rete = transaction.relatedTransaction.retencion &gt;&#xd;
+      &lt;/#if&gt;&#xd;
+  &lt;#assign autorizacion = 1115855284 &gt;&#xd;
+  &lt;#assign fechaautorizacion = transaction.relatedTransaction.custbody_ec_fecha_autorizacion &gt;&#xd;
+  &lt;#assign pruebaVar = &quot;pruebaVar3&quot; &gt;&#xd;
+  &lt;/#if&gt;&#xd;
+&lt;#elseif transaction.tipo==&quot;VendPymt&quot;&gt;&#xd;
+&lt;#assign emitido = &quot;SI2&quot; &gt;&#xd;
+&lt;#assign sustento = transaction.custbody_ts_ec_numero_preimpreso &gt;&#xd;
+  &lt;#if transaction.custbody_ts_ec_preimpreso_retencion?length==0&gt;&#xd;
+  &lt;#assign rete = &quot;0&quot; &gt;&#xd;
+  &lt;#else&gt;&#xd;
+  &lt;#assign rete = transaction.custbody_ec_serie_cxc_retencion + transaction.custbody_ts_ec_preimpreso_retencion  &gt;&#xd;
+  &lt;/#if&gt;&#xd;
+&lt;#assign autorizacion = 1115855284 &gt;&#xd;
+&lt;#assign fechaautorizacion = &quot; &quot; &gt;&#xd;
+&lt;#assign pruebaVar = &quot;pruebaVar4&quot; &gt;&#xd;
+&lt;#else&gt;&#xd;
+&lt;#assign emitido = &quot;SI3&quot; &gt;&#xd;
+&lt;/#if&gt;  --&gt;&#xd;
+&lt;#--  &lt;#if emitido == &quot;SI&quot;&gt;&#xd;
+${detailType}${setPadding(payment_index + 1,&quot;left&quot;,&quot;0&quot;,6)}${setPadding(vatregnumber,&quot;right&quot;,&quot; &quot;,18)}${docType}${setPadding(vatregnumber,&quot;right&quot;,&quot; &quot;,14)}${setPadding(entity.altname,&quot;right&quot;,&quot; &quot;,60)}${setPadding(codTerminoPago,&quot;right&quot;,&quot; &quot;,3)}001${setPadding(codigoBanco,&quot;right&quot;,&quot; &quot;,2)}${setPadding(codTermino,&quot;right&quot;,&quot; &quot;,2)}${setPadding(account,&quot;right&quot;,&quot; &quot;,20)}1${totalAmount?string[&quot;0000000000000.00&quot;]?replace(&apos;.&apos;,&apos;&apos;)}${setPadding(emitido,&quot;right&quot;,&quot; &quot;,60)}${setPadding(transaction.internalid.value,&quot;left&quot;,&quot;0&quot;,15)}${setPadding(rete,&quot;left&quot;,&quot;0&quot;,15)}${setPadding(rete,&quot;left&quot;,&quot;0&quot;,15)}${setPadding(sustento,&quot;left&quot;,&quot;0&quot;,20)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,10)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,50)}${setPadding(entity.address?replace(&apos;&lt;br /&gt;&apos;,&apos; &apos;)?replace(&apos;\n&apos;,&apos; &apos;),&quot;right&quot;,&quot; &quot;,50)}${setPadding(telefono?replace(&quot;+593&quot;,&quot;&quot;)?replace(&quot;+19&quot;,&quot;&quot;),&quot;right&quot;,&quot; &quot;,20)}PRO${setPadding(autorizacion,&quot;right&quot;,&quot; &quot;,10)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,20)}N${setPadding(codigoEmpresa,&quot;right&quot;,&quot; &quot;,5)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,6)}RPA${setPadding(fechaAutorizacion,&quot;right&quot;,&quot; &quot;,10)}&#xd;
+&lt;#else&gt;&#xd;
+${detailType}${setPadding(payment_index + 1,&quot;left&quot;,&quot;0&quot;,6)}${setPadding(vatregnumber,&quot;right&quot;,&quot; &quot;,18)}${docType}${setPadding(vatregnumber,&quot;right&quot;,&quot; &quot;,14)}${setPadding(entity.altname,&quot;right&quot;,&quot; &quot;,60)}${setPadding(codTerminoPago,&quot;right&quot;,&quot; &quot;,3)}001${setPadding(codigoBanco,&quot;right&quot;,&quot; &quot;,2)}${setPadding(codTermino,&quot;right&quot;,&quot; &quot;,2)}${setPadding(account,&quot;right&quot;,&quot; &quot;,20)}1${totalAmount?string[&quot;0000000000000.00&quot;]?replace(&apos;.&apos;,&apos;&apos;)}${setPadding(emitido,&quot;right&quot;,&quot; &quot;,60)}${setPadding(transaction.internalid.value,&quot;left&quot;,&quot;0&quot;,15)}${setPadding(rete,&quot;left&quot;,&quot;0&quot;,15)}${setPadding(rete,&quot;left&quot;,&quot;0&quot;,15)}${setPadding(sustento,&quot;left&quot;,&quot;0&quot;,20)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,10)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,50)}${setPadding(entity.address?replace(&apos;&lt;br /&gt;&apos;,&apos; &apos;)?replace(&apos;\n&apos;,&apos; &apos;),&quot;right&quot;,&quot; &quot;,50)}${setPadding(telefono?replace(&quot;+593&quot;,&quot;&quot;)?replace(&quot;+19&quot;,&quot;&quot;),&quot;right&quot;,&quot; &quot;,20)}PRO${setPadding(autorizacion,&quot;right&quot;,&quot; &quot;,10)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,20)}N${setPadding(codigoEmpresa,&quot;right&quot;,&quot; &quot;,5)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,6)}RPA${setPadding(fechaAutorizacion,&quot;right&quot;,&quot; &quot;,10)}&#xd;
+&lt;/#if&gt;  --&gt;&#xd;
+&lt;#if emitido == &quot;SI&quot;&gt;&#xd;
+${detailType}${setPadding(payment_index + 1,&quot;left&quot;,&quot;0&quot;,6)}${setPadding(vatregnumber,&quot;right&quot;,&quot; &quot;,18)}${docType}${setPadding(vatregnumber,&quot;right&quot;,&quot; &quot;,14)}${setPadding(entity.altname,&quot;right&quot;,&quot; &quot;,60)}${setPadding(codTerminoPago,&quot;right&quot;,&quot; &quot;,3)}001${setPadding(codigoBanco,&quot;right&quot;,&quot; &quot;,2)}${setPadding(codTermino,&quot;right&quot;,&quot; &quot;,2)}${setPadding(account,&quot;right&quot;,&quot; &quot;,10)}${setPadding(nrocheque,&quot;left&quot;,&quot;0&quot;,10)}1${totalAmount?string[&quot;0000000000000.00&quot;]?replace(&apos;.&apos;,&apos;&apos;)}${setPadding(glosa,&quot;right&quot;,&quot; &quot;,60)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,195)}CCH${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,30)}N${setPadding(codigoEmpresa,&quot;right&quot;,&quot; &quot;,5)}&#xd;
+&lt;#--  ${pruebaVar}&#xd;
+${emitido}  --&gt;&#xd;
+&lt;#else&gt;&#xd;
+${detailType}${setPadding(payment_index + 1,&quot;left&quot;,&quot;0&quot;,6)}${setPadding(vatregnumber,&quot;right&quot;,&quot; &quot;,18)}${docType}${setPadding(vatregnumber,&quot;right&quot;,&quot; &quot;,14)}${setPadding(entity.altname,&quot;right&quot;,&quot; &quot;,60)}${setPadding(codTerminoPago,&quot;right&quot;,&quot; &quot;,3)}001${setPadding(codigoBanco,&quot;right&quot;,&quot; &quot;,2)}${setPadding(codTermino,&quot;right&quot;,&quot; &quot;,2)}${setPadding(account,&quot;right&quot;,&quot; &quot;,20)}1${totalAmount?string[&quot;0000000000000.00&quot;]?replace(&apos;.&apos;,&apos;&apos;)}${setPadding(glosa,&quot;right&quot;,&quot; &quot;,60)}${setPadding(transaction.internalid.value,&quot;left&quot;,&quot;0&quot;,15)}${setPadding(rete,&quot;left&quot;,&quot;0&quot;,15)}${setPadding(rete,&quot;left&quot;,&quot;0&quot;,15)}${setPadding(sustento,&quot;left&quot;,&quot;0&quot;,20)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,10)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,50)}${setPadding(entity.address?replace(&apos;&lt;br /&gt;&apos;,&apos; &apos;)?replace(&apos;\n&apos;,&apos; &apos;),&quot;right&quot;,&quot; &quot;,50)}${setPadding(telefono?replace(&quot;+593&quot;,&quot;&quot;)?replace(&quot;+19&quot;,&quot;&quot;),&quot;right&quot;,&quot; &quot;,20)}PRO${setPadding(autorizacion,&quot;right&quot;,&quot; &quot;,10)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,20)}N${setPadding(codigoEmpresa,&quot;right&quot;,&quot; &quot;,5)}${setPadding(auxiliarEspacio,&quot;right&quot;,&quot; &quot;,6)}RPA${setPadding(fechaAutorizacion,&quot;right&quot;,&quot; &quot;,10)}&#xd;
+&lt;#--  ${pruebaVar}&#xd;
+${emitido}  --&gt;&#xd;
+&lt;/#if&gt;&#xd;
+&lt;#--  ${setPadding(totalAmount,&quot;left&quot;,&quot;0&quot;,15)}  --&gt;&#xd;
+&lt;/#list&gt;</custrecord_ts_epmt_pff_free_marker_body>
+      <custrecord_ts_epmt_pff_output_file_exten>.BIZ</custrecord_ts_epmt_pff_output_file_exten>
+      <custrecord_ts_epmt_pff_ref_fields></custrecord_ts_epmt_pff_ref_fields>
+      <isinactive>F</isinactive>
+    </instance>
+  </instances>
+  <permissions>
+    <permission>
+      <permittedlevel>EDIT</permittedlevel>
+      <permittedrole>[scriptid=customrole1652]</permittedrole>
+      <restriction></restriction>
+    </permission>
+    <permission>
+      <permittedlevel>EDIT</permittedlevel>
+      <permittedrole>[scriptid=customrole1673]</permittedrole>
+      <restriction></restriction>
+    </permission>
+    <permission>
+      <permittedlevel>EDIT</permittedlevel>
+      <permittedrole>[scriptid=customrole_ec_cfo]</permittedrole>
+      <restriction></restriction>
+    </permission>
+  </permissions>
+</customrecordtype>

@@ -1,0 +1,115 @@
+<centercategory scriptid="custcentercategory201">
+  <center>BASIC</center>
+  <centertab>BASICCENTERREPORTS</centertab>
+  <label>EC CHAMPIONS </label>
+  <links>
+    <link>
+      <linklabel>INFORME - Resumen de Anticipo - CB</linklabel>
+      <linkobject>[scriptid=customreport_416_7451241_819]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Saldo de bancos - CB</linklabel>
+      <linkobject>[scriptid=customreport_491_7451241_sb1_797]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Pendientes por facturar - CB</linklabel>
+      <linkobject>[scriptid=customsearch1880]</linkobject>
+      <linktasktype>SRCH_FORM</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Actualización de Placas Concesionarios - MV</linklabel>
+      <linkobject>[scriptid=customreport_497_7451241_sb1_578]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel></linklabel>
+      <linkobject>[scriptid=customreport_493_7451241_sb1_253]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel></linklabel>
+      <linkobject>[scriptid=customsearchtransactiondefaultview_16]</linkobject>
+      <linktasktype>SRCH_RSLT</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel></linklabel>
+      <linkobject>[scriptid=customsearch1928]</linkobject>
+      <linktasktype>SRCH_RSLT</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel></linklabel>
+      <linkobject>[scriptid=customsearch2459]</linkobject>
+      <linktasktype>SRCH_RSLT</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Estado de cuenta de Anticipo - CB</linklabel>
+      <linkobject>[scriptid=customreport_496_7451241_sb1_498]</linkobject>
+      <linktasktype></linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Saldo de deudas - CB</linklabel>
+      <linkobject>[scriptid=customreport_501_7451241_sb1_849]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Fondos de Caja Chica - LZ</linklabel>
+      <linkobject>[scriptid=customreport_404_7451241_889]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Libro Mayor LZ</linklabel>
+      <linkobject>[scriptid=customreport_461_7451241_706]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Antiguedad de Cartera RVCC</linklabel>
+      <linkobject>[scriptid=customreport_503_7451241_sb1_685]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Reporte de seguimientos MS</linklabel>
+      <linkobject>[scriptid=customsearch1948]</linkobject>
+      <linktasktype>SRCH_FORM</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Pendiente por trabajar MS</linklabel>
+      <linkobject>[scriptid=customreport_463_7451241_sb1_131]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Ordenes Pendientes Por Facturar RVCC</linklabel>
+      <linkobject>[scriptid=customreport_507_7451241_sb1_278]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>INFORME - Ordenes de proveeduría pendientes DS</linklabel>
+      <linkobject>[scriptid=customreport_511_7451241_sb1_896]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel></linklabel>
+      <linkobject>[scriptid=customreport_471_7451241_sb1_132]</linkobject>
+      <linktasktype>[NOT_YET_SUPPORTED]</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+  </links>
+</centercategory>

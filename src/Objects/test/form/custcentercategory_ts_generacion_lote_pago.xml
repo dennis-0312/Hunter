@@ -1,0 +1,25 @@
+<centercategory scriptid="custcentercategory_ts_generacion_lote_pago">
+  <center>BASIC</center>
+  <centertab>BASICCENTERTRANSACTIONS</centertab>
+  <label>Generación de Lote de Pago</label>
+  <links>
+    <link>
+      <linklabel>Crear Lote de Pago</linklabel>
+      <linkobject>[scriptid=customscript_ts_ui_e_payment_2_1.customdeploy_ts_ui_e_payment_first]</linkobject>
+      <linktasktype>SCRIPT</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>Procesar Archivo de Retorno</linklabel>
+      <linkobject>[scriptid=customscript_ts_ui_e_payment_2_1.customdeploy_ts_ui_e_payment_second]</linkobject>
+      <linktasktype>SCRIPT</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+    <link>
+      <linklabel>Buscar Pagos Generados</linklabel>
+      <linkobject>[scriptid=customsearch_ts_epmt_generated_payments]</linkobject>
+      <linktasktype>SRCH_RSLT</linktasktype>
+      <shortlist>F</shortlist>
+    </link>
+  </links>
+</centercategory>

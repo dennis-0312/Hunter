@@ -83,7 +83,10 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 // 11 Punto emision del comprobante de venta
                 let puntoEmisionCV = "";
                 if (result[10] != '- None -') {
-                    puntoEmisionCV = result[10].padStart(3, '0');
+                    // puntoEmisionCV = result[10].padStart(3, '0');
+                    //<I> rhuaccha: 2024-02-19
+                    puntoEmisionCV = result[10].replace(/\D/g, '').padStart(3, '0');
+                    //<F> rhuaccha: 2024-02-19
                 } else {
                     if (["11", "12", "19", "20"].indexOf(codigoTipoComprobante) > -1) {
                         puntoEmisionCV = '999';
@@ -93,13 +96,19 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 }
 
                 // 12 CV Secuencial
-                let numeroSecuencialCV = result[11].replace('- None -', '');
+                //<I> rhuaccha: 2024-02-19
+                // let numeroSecuencialCV = result[11].replace('- None -', '');
+                let numeroSecuencialCV = result[11].replace('- None -', '').replace(/\D/g, '');
+                numeroSecuencialCV = validateSecuencial(numeroSecuencialCV);              
+                //<F> rhuaccha: 2024-02-19
 
                 // 13 CV Fecha de emision
                 let fechaEmision = result[12];
 
                 // 14 CV Numero de autorizacion
+                // let numeroAutorizacion = result[13].replace('- None -', '');
                 let numeroAutorizacion = result[13].replace('- None -', '');
+                numeroAutorizacion = extractAuth(numeroAutorizacion);
 
                 // 15 Base Imponible no objeto de IVA
                 let baseImponibleNoIva = Number(result[14]);
@@ -231,7 +240,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                     `${pagoExteriorSujetoRetencionNormativaLegal}|${pagoRegimenFiscalPreferente}|${establecimientoCR}|${puntoEmisionCR}|${numeroSecuencialCR}|${numeroAutorizacionCR}|` +
                     `${fechaEmisionCR}|${codigoTipoCM}|${establecimientoCM}|${puntoEmisionCM}|${secuencialCM}|${numeroAutorizacionCM}\r\n`;
 
-                log.error("rowString", rowString);
+                // log.error("rowString", rowString);
                 context.write({
                     key: context.key,
                     value: {
@@ -290,6 +299,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             params['custscript_ts_mr_ec_ats_com_ree_atsfiles'] = scriptParameters.atsFilesId;
 
             params['custscript_ts_mr_ec_ats_com_ree_logid'] = scriptParameters.logId;
+            //<I> rhuaccha: 2024-02-26
+            params['custscript_ts_mr_ec_ats_com_ree_formato'] = scriptParameters.format;
+            //<F> rhuaccha: 2024-02-26
             log.error("executeMapReduce", params);
             let scriptTask = task.create({
                 taskType: task.TaskType.MAP_REDUCE,
@@ -315,6 +327,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_det_folder');
             scriptParameters.atsFilesId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_det_atsfiles');
             scriptParameters.logId = currentScript.getParameter('custscript_ts_mr_ec_ats_com_det_logid');
+            //<I> rhuaccha: 2024-02-26
+            scriptParameters.format = currentScript.getParameter('custscript_ts_mr_ec_ats_com_det_formato');
+            //<F> rhuaccha: 2024-02-26
 
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
@@ -424,6 +439,27 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
         const roundTwoDecimals = (number) => {
             return Math.round(Number(number) * 100) / 100;
+        }
+
+        const validateSecuencial = (valor) => {
+            if (valor !== null && typeof valor === 'number') {
+                valor = valor.toString();
+            }
+            
+            if (valor !== null && valor.length > 9) {
+                return valor.slice(-9);
+            } else {
+                return valor;
+            }
+        }
+
+        const extractAuth = (valor) => {
+            valor = valor.toString();
+            if (valor.length > 49) {
+                return valor.substring(0, 49);
+            } else {
+                return valor;
+            }
         }
 
         const getRecordPeriod = (periodId) => {

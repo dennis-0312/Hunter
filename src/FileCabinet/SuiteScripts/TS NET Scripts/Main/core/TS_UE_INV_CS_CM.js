@@ -21,22 +21,25 @@ define(['N/log',
     'N/url',
     'N/https',
     'N/task',
+    'N/query',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
     '../error/TS_CM_ErrorMessages',
     'N/error',
-], (log, search, record, runtime, redirect, url, https, task, _controller, _constant, _errorMessage, err) => {
+], (log, search, record, runtime, redirect, url, https, task, query, _controller, _constant, _errorMessage, err) => {
     const INVOICE = 'invoice';
     const CREDIT_MEMO = 'creditmemo';
     const VENDOR_BILL = 'vendorbill';
     const BILL_CREDIT = 'vendorcredit';
     const EJECUCION_PEDIDO_ARTICULO = 'itemfulfillment';
     const SERVICE_ORDER = 'salesorder'
+    const ANTICIPO_PROVEEDOR = 'vendorprepayment';
     const DOCUMENT_TYPE_FACTURA = 4; //Factura
     const DOCUMENT_TYPE_GUIA_REMISION = 3; //Factura
     const DOCUMENT_TYPE_LIQUIDACION_COMPRA = 10;
     const DOCUMENT_TYPE_COMPROBANTE_RETENCION = 11;
     const DOCUMENT_TYPE_CREDIT_MEMO = 1; // Nota de Crédito
+    const DOCUMENT_TYPE_NOTA_VENTA = 9 // Nota o boleta de venta
     const PE_FEL_Sending_Method = 4; //SB: 5 / PR: 4
     const PE_FEL_Sending_Method_nc = 4; //SB: 6 / PR: 4
     const PE_Invoice_FEL_Template = 1;
@@ -50,14 +53,16 @@ define(['N/log',
     const For_Generation_Status = 1;
     const FORM_NOTA_CREDITO_COMPRA = 104;
     const ITEM = 'item';
-
+    const DOCUMENT_TYPE_REEMBOLSO = 23; // Reembolso
+    const DOCUMENT_TYPE_UNICO_EXPORTACION = 15;
+    const DOCUMENT_TYPE_VENTA_EXTERIOR = 14;
+    const DOCUMENT_TYPE_SERVICIOS_ADMIN = 18;
+    const DOCUMENT_TYPE_PASAJES_AEREOS = 12;
     let doctype = 0;
     let prefix = '';
-    const PE_CONFIG_IMPRESORA = 'customsearch_pe_config_impresora' //PE Config Impresora - PRODUCCION
 
     const beforeLoad = (context) => {
         const eventType = context.type;
-        //log.error("eventTypebeforeLoad", eventType);
         if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) {
             const objRecord = context.newRecord;
             try {
@@ -132,137 +137,121 @@ define(['N/log',
                 imprimirComprobante(forms, objRecord);
                 forms.clientScriptModulePath = './TS_CS_Pago_Factura.js'
             }
+
+            try {
+                if (!objRecord.getText({ fieldId: 'tranid' }) && objRecord.type == VENDOR_BILL) {
+                    log.debug('SetTranid', 'Set');
+                    objRecord = record.load({ type: VENDOR_BILL, id: objRecord.id, isDynamic: true });
+                    setTranid(objRecord);
+                    objRecord.save();
+                }
+            } catch (error) { }
         }
     }
 
     const beforeSubmit = (context) => {
         const eventType = context.type;
-        log.error('eventType', eventType);
-        //log.error("eventTypebeforeSubmit", eventType);
         let documentref = '';
-        if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY /*|| eventType === context.UserEventType.EDIT*/) {
+
+        if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) {
             const objRecord = context.newRecord;
             try {
-                if (objRecord.type == VENDOR_BILL || objRecord.type == BILL_CREDIT) {
-                    let ref_no = '';
-                    const docu_type = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
-                    const serie_cxp = objRecord.getValue({ fieldId: 'custbody_ts_ec_serie_doc_cxp' });
-                    const pe_number = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
-                    let total = String(objRecord.getValue({ fieldId: 'usertotal' }));
-                    let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
-                    objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
-                    if (docu_type == DOCUMENT_TYPE_FACTURA) {
-                        ref_no = 'FA-' + serie_cxp + '-' + pe_number;
-                    } else if (docu_type == DOCUMENT_TYPE_CREDIT_MEMO) {
-                        ref_no = 'NC-' + serie_cxp + '-' + pe_number;
-                    }
-                    objRecord.setValue({ fieldId: 'tranid', value: ref_no });
-                } else {
-                    const customform = objRecord.getValue({ fieldId: 'customform' });
-                    const customer = objRecord.getValue({ fieldId: 'entity' }); //^: Activar cuando tipo de documento venga de cliente
-                    let total = String(objRecord.getValue({ fieldId: 'total' }));
-                    if (objRecord.type == INVOICE) { // NOTA: REVISAR
-                        //log.debug('INVOICE');
+                objRecord.type == VENDOR_BILL ? setTranid(objRecord) : log.error('Type', 'Es vendor Prepayment')
+                setMontoLetras(objRecord);
+                if (objRecord.type == INVOICE) {
+                    let location = objRecord.getValue({ fieldId: 'location' });
+                    doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                    prefix = 'FA-';
+                    try {
                         objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Invoice_FEL_Template, ignoreFieldChange: true });
                         objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
                         objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_FEL_Sending_Method, ignoreFieldChange: true });
-                    } else if (objRecord.type == CREDIT_MEMO) { }
-
-                    let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
-                    objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
-                    if (objRecord.type == INVOICE) {
-                        //doctype = DOCUMENT_TYPE_FACTURA;//^: Activar cuando tipo de documento venga de cliente
-                        let location = objRecord.getValue({ fieldId: 'location' });
-                        doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
-                        prefix = 'FA-';
+                        let getserie = getSerie(doctype, location, prefix, documentref);
+                        log.error('LOG-getserie', getserie);
+                        let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
+                        log.error('LOG-correlative1', correlative);
+                        objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                    } catch (error) {
+                        log.error('Error-beforeSubmit-Intro', error);
+                    }
+                } else if (objRecord.type == CREDIT_MEMO) {
+                } else if (objRecord.type == EJECUCION_PEDIDO_ARTICULO) {
+                    var formulario = objRecord.getValue('customform')// 143 Proveduria
+                    if (formulario != 143) {
+                        log.error('beforeSubmit', 'beforeSubmit');
+                        doctype = DOCUMENT_TYPE_GUIA_REMISION;//^: Activar cuando tipo de documento venga de cliente
+                        prefix = 'GDR-';
                         try {
-                            let getserie = getSerie(doctype, location, prefix, documentref);
-                            log.error('LOG-getserie', getserie);
+                            let OServ = objRecord.getValue({ fieldId: 'createdfrom' });
+                            let typeTransaction = search.lookupFields({ type: 'transaction', id: OServ, columns: ['location'] });
+                            let location_ej = typeTransaction.location[0].value;
+                            let getserie = getSerie(doctype, location_ej, prefix, documentref);
+                            log.debug('getserie', getserie);
                             let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
-                            log.error('LOG-correlative1', correlative);
                             objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
-                            objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
-                            //log.debug('LOG-correlative2', correlative.numbering);
-                            objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
-                            //log.debug('LOG-correlative3', objRecord.getValue('tranid'));
-                            /* }*/
-                        } catch (error) {
-                            log.error('Error-beforeSubmit-Intro', error);
-                        }
-                    } else if (objRecord.type == CREDIT_MEMO) {
-
-                    } else if (objRecord.type == EJECUCION_PEDIDO_ARTICULO) {
-                        var formulario = objRecord.getValue('customform')// 143 Proveduria
-                        if (formulario != 143) {
-                            log.error('beforeSubmit', 'beforeSubmit');
-                            doctype = DOCUMENT_TYPE_GUIA_REMISION;//^: Activar cuando tipo de documento venga de cliente
-                            prefix = 'GDR-';
-                            try {
-                                let OServ = objRecord.getValue({ fieldId: 'createdfrom' });
-                                let typeTransaction = search.lookupFields({ type: 'transaction', id: OServ, columns: ['location'] });
-                                let location_ej = typeTransaction.location[0].value;
-                                let getserie = getSerie(doctype, location_ej, prefix, documentref);
-                                let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
-                                // objRecord.setValue({ fieldId: 'location', value: location_ej });
-                                objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
-                                objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
-                                objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
-                            } catch (error) {
-                                log.error('Error-beforeSubmit-Intro', error);
-                            }
-                        }
-                    } else if (objRecord.type == SERVICE_ORDER) {
-                        let location = objRecord.getValue({ fieldId: 'location' });
-                        doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
-                        prefix = 'OS-';
-                        try {
-                            let getserie = getSerie(doctype, location, prefix, documentref);
-                            log.error('LOG-getserie', getserie);
-                            let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
-                            log.error('LOG-correlative1', correlative);
-                            objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
-                            objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                            //objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
                             objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
                         } catch (error) {
                             log.error('Error-beforeSubmit-Intro', error);
                         }
                     }
+                } else if (objRecord.type == SERVICE_ORDER) {
+                    let location = objRecord.getValue({ fieldId: 'location' });
+                    doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                    prefix = 'OS-';
+                    try {
+                        let getserie = getSerie(doctype, location, prefix, documentref);
+                        log.error('LOG-getserie', getserie);
+                        let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
+                        log.error('LOG-correlative1', correlative);
+                        objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                    } catch (error) {
+                        log.error('Error-beforeSubmit-Intro', error);
+                    }
+                } else if (objRecord.type == VENDOR_BILL) {
+                    const objRecord = context.newRecord;
+                    var customer = objRecord.getValue({ fieldId: 'entity' });
+                    var pe_number = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
+                    log.error('customer', customer);
+                    var existe = buscarFacCompra(customer, pe_number);
+                    if (existe) {
+                        var myCustomError = err.create({
+                            name: 'ERROR_NUMERO_DOCUMENTO',
+                            message: 'Ya existe una Factura de Compra con el mismo PROVEEDOR y NUMERO PREIMPRESO',
+                            notifyOff: false
+                        });
+                        log.error('Error: ' + myCustomError.name, myCustomError.message);
+                        throw myCustomError;
+                    }
+                    setTranid(objRecord);
+                } else if (objRecord.type == ANTICIPO_PROVEEDOR) {
+                    var montoPago = objRecord.getValue({ fieldId: 'payment' });
+                    var idOC = objRecord.getValue({ fieldId: 'purchaseorder' });
+                    var OC_montoAnticipo = search.lookupFields({ type: 'transaction', id: idOC, columns: ['custbody_ec_imp_ant'] });
+                    var totalAnticipo = OC_montoAnticipo.custbody_ec_imp_ant;
+                    var nuevoTotal = Number(montoPago) + Number(totalAnticipo);
+                    let comisionid = record.submitFields({
+                        type: record.Type.PURCHASE_ORDER,
+                        id: idOC,
+                        values: {
+                            custbody_ec_imp_ant: nuevoTotal
+                        },
+                        options: { enablesourcing: true }
+                    });
                 }
             } catch (error) {
-                log.error('Error-beforeSubmit-' + objRecord.type, eventType + '--' + error);
+                log.error('Error-beforeSubmit' + objRecord.type, eventType + '--' + error);
             }
         }
 
-        if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) {
+        if (eventType === context.UserEventType.EDIT) {
+            let objRecord = context.newRecord;
             if (context.newRecord.type == VENDOR_BILL) {
-                const objRecord = context.newRecord;
-
-                var customer = objRecord.getValue({ fieldId: 'entity' });
-                var pe_number = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
-                log.error('customer', customer);
-
-                var existe = buscarFacCompra(customer, pe_number);
-
-                if (existe) {
-                    var myCustomError = err.create({
-                        name: 'ERROR_NUMERO_DOCUMENTO',
-                        message: 'Ya existe una Factura de Compra con el mismo PROVEEDOR y NUMERO PREIMPRESO',
-                        notifyOff: false
-                    });
-                    log.error('Error: ' + myCustomError.name, myCustomError.message);
-                    throw myCustomError;
-                }
-            }
-        } else if (eventType === context.UserEventType.EDIT) {
-            if (context.newRecord.type == VENDOR_BILL) {
-                let objRecord = context.newRecord;
                 let oldRecord = context.oldRecord;
-
-                let total = String(objRecord.getValue({ fieldId: 'usertotal' }));
-                //log.debug('total', total);
-                let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
-                objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
-
                 var customer_new = objRecord.getValue({ fieldId: 'entity' });
                 var pe_number_new = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
                 log.error('customer_new', customer_new);
@@ -271,7 +260,6 @@ define(['N/log',
                 var pe_number_old = oldRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
                 log.error('customer_old', customer_old);
                 log.error('pe_number_old', pe_number_old);
-
                 if (customer_new != customer_old || pe_number_new != pe_number_old) {
                     var existe_new = buscarFacCompra(customer_new, pe_number_new);
                     if (existe_new) {
@@ -284,7 +272,50 @@ define(['N/log',
                         throw myCustomError;
                     }
                 }
+            } else if (objRecord.type == ANTICIPO_PROVEEDOR) {
+                try {
+                    let oldRecord = context.oldRecord;
+                    var nuevoMontoPago = objRecord.getValue({ fieldId: 'payment' });
+                    var anteriorMontoPago = oldRecord.getValue({ fieldId: 'payment' });
+                    var montoPago = Number(nuevoMontoPago) - Number(anteriorMontoPago);
+                    var idOC = objRecord.getValue({ fieldId: 'purchaseorder' });
+                    var OC_montoAnticipo = search.lookupFields({ type: 'transaction', id: idOC, columns: ['custbody_ec_imp_ant'] });
+                    var totalAnticipo = OC_montoAnticipo.custbody_ec_imp_ant;
+                    var nuevoTotal = Number(montoPago) + Number(totalAnticipo);
+                    let comisionid = record.submitFields({
+                        type: record.Type.PURCHASE_ORDER,
+                        id: idOC,
+                        values: {
+                            custbody_ec_imp_ant: nuevoTotal
+                        },
+                        options: { enablesourcing: true }
+                    });
+                } catch (error) {
+
+                }
+
             }
+            objRecord.type == VENDOR_BILL ? setTranid(objRecord) : log.error('Type', 'Es vendor Prepayment')
+            setMontoLetras(objRecord);
+        }
+
+        if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY || eventType === context.UserEventType.EDIT) {
+            const objRecord = context.newRecord;
+            let descriptionTaxCode = getDescriptionTaxCode();
+            try {
+                let item = objRecord.getLineCount("item");
+                if (item > 0) {
+                    for (let i = 0; i < item; i++) {
+                        let descTaxCode = descriptionTaxCode.find(element => element.id == objRecord.getSublistValue({ sublistId: "item", fieldId: "taxcode", line: i }))
+                        objRecord.setSublistValue({ sublistId: 'item', fieldId: 'custcol_tst_desc_iva', line: i, value: descTaxCode.description })
+                    }
+                }
+                let expense = objRecord.getLineCount("expense");
+                for (let i = 0; i < expense; i++) {
+                    let descTaxCode = descriptionTaxCode.find(element => element.id == objRecord.getSublistValue({ sublistId: "expense", fieldId: "taxcode", line: i }))
+                    objRecord.setSublistValue({ sublistId: 'expense', fieldId: 'custcol_tst_desc_iva', line: i, value: descTaxCode.description })
+                }
+            } catch (error) { }
         }
     }
 
@@ -296,7 +327,6 @@ define(['N/log',
         log.error("recordId", recordId);
 
         if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) {
-            //log.error("context.newRecord.type", context.newRecord.type);
             if (context.newRecord.type == CREDIT_MEMO) {
                 let doctype = DOCUMENT_TYPE_CREDIT_MEMO;
                 let palabraBuscada = "Withholding Tax";
@@ -304,14 +334,11 @@ define(['N/log',
                 try {
                     const memo = context.newRecord.getValue({ fieldId: 'memo' });
                     if (memo.includes(palabraBuscada)) {
-                        //log.debug('Nota de Crédito', 'Certificado de Retención');
                     } else {
                         log.error("start", "flow");
-
                         let objRecord = record.load({ type: CREDIT_MEMO, id: recordId, isDynamic: true });
                         let customform = objRecord.getValue({ fieldId: 'customform' });
                         log.error("customform", customform);
-
                         if (customform == FORM_NOTA_CREDITO_COMPRA) {
                             objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: DOCUMENT_TYPE_COMPROBANTE_RETENCION, ignoreFieldChange: true });
                             try {
@@ -329,17 +356,11 @@ define(['N/log',
                             let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
                             let documentref = objRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
                             let getserie = getSerie(doctype, location, prefix, documentref);
-                            //log.debug('LOG-getserie', getserie);
                             let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
-                            //log.debug('LOG-correlative1', correlative);
-                            //objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true });
                             objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
                             objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
-                            //log.debug('LOG-correlative2', correlative.numbering);
                             objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
-                            //log.debug('LOG-correlative3', objRecord.getValue('tranid'));
                             objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
-                            //log.debug('montoLetras', montoLetras);
                             try {
                                 objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Credit_Memo_FEL_Template, ignoreFieldChange: true });
                                 objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
@@ -356,7 +377,6 @@ define(['N/log',
             } else if (context.newRecord.type == INVOICE) {
                 let documentref = '';
                 let location_id = objRecord.getValue({ fieldId: 'location' });
-                //doctype = DOCUMENT_TYPE_FACTURA;//^: Activar cuando tipo de documento venga de cliente
                 doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
                 prefix = 'FAC-';
                 try {
@@ -366,20 +386,8 @@ define(['N/log',
                 } catch (error) {
                     log.error('Error-afterSubmit-Intro', error);
                 }
-
-                // try {
-                //     let objRecord2 = record.load({ type: INVOICE, id: recordId, isDynamic: true });
-                //     objRecord2.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Credit_Memo_FEL_Template, ignoreFieldChange: true });
-                //     objRecord2.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
-                //     objRecord2.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_FEL_Sending_Method_nc, ignoreFieldChange: true });
-                //     let devoid = objRecord.save();
-                //     log.debug('Devo', devoid);
-                // } catch (error) {
-                //     log.error('Error-Devo', error);
-                // }
             } else if (context.newRecord.type == EJECUCION_PEDIDO_ARTICULO) {
                 log.error('afterSubmit EJECUCION_PEDIDO_ARTICULO', 'afterSubmit');
-
                 var formulario = objRecord.getValue('customform')// 143 Proveduria
                 log.error('formulario', formulario);
                 if (formulario != 143) {
@@ -394,7 +402,6 @@ define(['N/log',
                     doctype = DOCUMENT_TYPE_GUIA_REMISION;
                     prefix = 'GDR-';
                     try {
-                        //let getserie = getSerie(doctype, location_id, prefix, documentref);
                         let getserie = getSerie(doctype, location_ej, prefix, documentref);
                         let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
                         objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
@@ -426,46 +433,40 @@ define(['N/log',
                     if (estado == 'pendingBilling') {
                         var recordLoad = record.load({ type: 'salesorder', id: OServ, isDynamic: false });
                         let cant_Item = recordLoad.getLineCount(ITEM);
-
                         for (let i = 0; i < cant_Item; i++) {
-
                             recordLoad.setSublistValue({ sublistId: ITEM, fieldId: 'isclosed', line: i, value: true });
-
                         }
                         recordLoad.save({ ignoreMandatoryFields: true, enableSourcing: false });
                     }
                 }
-
-
             } else if (context.newRecord.type == VENDOR_BILL) {
-                let tipoDocumentoFiscal = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                let openRecord = record.load({ type: VENDOR_BILL, id: recordId, isDynamic: true });
+                let tipoDocumentoFiscal = openRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
                 if (tipoDocumentoFiscal == DOCUMENT_TYPE_LIQUIDACION_COMPRA) {
-                    let doctype = DOCUMENT_TYPE_LIQUIDACION_COMPRA;
                     let prefix = 'LC-';
-                    let objRecord = record.load({ type: VENDOR_BILL, id: recordId, isDynamic: true });
-                    let location = objRecord.getValue({ fieldId: 'location' });
-                    let total = String(objRecord.getValue({ fieldId: 'total' }));
-                    let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
-                    let documentref = objRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
-                    let getserie = getSerie(doctype, location, prefix, documentref);
+                    let location = openRecord.getValue({ fieldId: 'location' });
+                    let documentref = openRecord.getValue({ fieldId: 'custbodyts_ec_doc_type_ref' });
+                    let getserie = getSerie(tipoDocumentoFiscal, location, prefix, documentref);
                     let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
-
-                    objRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true });
-                    objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
-                    objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
-                    objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
-                    objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
-                    try {
-                        if (objRecord.getValue({ fieldId: 'approvalstatus' }) == _constant.Status.APPROVED) {
-                            objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Liquidacion_Compra_FEL_Template, ignoreFieldChange: true });
-                            objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
-                            objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_Liquidacion_Compra_FEL_Sending, ignoreFieldChange: true });
-                        }
-                    } catch (error) {
-                        log.error("error", error)
-                    }
-                    objRecord.save();
+                    //openRecord.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: doctype, ignoreFieldChange: true });
+                    openRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                    openRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                    openRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
                 }
+                try {
+                    if (openRecord.getValue({ fieldId: 'approvalstatus' }) == _constant.Status.APPROVED && openRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' }) == DOCUMENT_TYPE_LIQUIDACION_COMPRA) {
+                        openRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: PE_Liquidacion_Compra_FEL_Template, ignoreFieldChange: true });
+                        openRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
+                        openRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: PE_Liquidacion_Compra_FEL_Sending, ignoreFieldChange: true });
+                    } else if (openRecord.getValue({ fieldId: 'approvalstatus' }) == _constant.Status.PENDING_APPROVAL && openRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' }) == DOCUMENT_TYPE_LIQUIDACION_COMPRA) {
+                        openRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: '', ignoreFieldChange: true });
+                        openRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: '', ignoreFieldChange: true });
+                        openRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: '', ignoreFieldChange: true });
+                    }
+                } catch (error) {
+                    log.error("error", error)
+                }
+                openRecord.save();
             } else if (context.newRecord.type == BILL_CREDIT) {
                 // EN DESHUSO, se deja por si llega a cambiar
                 let palabraBuscada = "Withholding Tax";
@@ -508,6 +509,16 @@ define(['N/log',
                     updateTransaction(objRecord.type, objRecord.id, correlative.numbering);
                 } catch (error) {
                     log.error('Error-afterSubmit-Intro', error);
+                }
+            } else if (context.newRecord.type == _constant.Transaction.TRANSFER_ORDER) {
+                try {
+                    let objRecord = record.load({ type: _constant.Transaction.TRANSFER_ORDER, id: recordId, isDynamic: true });
+                    objRecord.setValue({ fieldId: 'custbody_psg_ei_trans_edoc_standard', value: _constant.Constants.FEL.ELECTRONIC_DOCUMENT_PACKAGE, ignoreFieldChange: true });
+                    objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: _constant.Constants.FEL.EC_EI_TEMPLATE_TRANSFER_ORDER, ignoreFieldChange: true });
+                    objRecord.setValue({ fieldId: 'custbody_edoc_gen_trans_pdf', value: true, ignoreFieldChange: true });
+                    objRecord.save();
+                } catch (error) {
+                    log.error("error", error)
                 }
             }
             try {
@@ -605,11 +616,13 @@ define(['N/log',
         if (eventType === context.UserEventType.EDIT || eventType === context.UserEventType.COPY || eventType === context.UserEventType.CREATE) {
             if (context.newRecord.type == VENDOR_BILL) {
                 let baseItemRateequalto0 = getItemBaseRateequalto0(recordId);
-                let baseItemRatenotequalto0 = getItemBaseRatenotequalto0(recordId)
+                let baseItemRatenotequalto0 = getItemBaseRatenotequalto0(recordId);
                 let baseExpenseRateequalto0 = getExpenseBaseRateequalto0(recordId);
-                let baseExpenseRatenotequalto0 = getExpenseBaseRatenotequalto0(recordId)
-                let amountTax = getMontoIVATotal(recordId)
-                setWithholdingVoucherField(objRecord, baseItemRateequalto0, baseItemRatenotequalto0, baseExpenseRateequalto0, baseExpenseRatenotequalto0, amountTax);
+                let baseExpenseRatenotequalto0 = getExpenseBaseRatenotequalto0(recordId);
+                //log.debug('SUMAAAAAAA!!!', baseItemRateequalto0 + ' - ' + baseItemRatenotequalto0 + ' - ' + baseExpenseRateequalto0 + ' - ' + baseExpenseRatenotequalto0)
+                let amountTax = getMontoIVATotal(recordId);
+                let apply = setWithholdingVoucherField(objRecord, baseItemRateequalto0, baseItemRatenotequalto0, baseExpenseRateequalto0, baseExpenseRatenotequalto0, amountTax);
+                apply == 0 ? setFieldsLocalization(objRecord, baseItemRateequalto0, baseItemRatenotequalto0, baseExpenseRateequalto0, baseExpenseRatenotequalto0, amountTax) : log.error("amountTax", amountTax);
             }
         }
 
@@ -635,6 +648,20 @@ define(['N/log',
             if (context.newRecord.type == VENDOR_BILL && !objRecord.getValue('custbody_ts_ec_preimpreso_retencion')) {
                 setDocumentValuesWithholdingVoucherField(objRecord);
             }
+
+            if (context.newRecord.type == _constant.Transaction.TRANSFER_ORDER) {
+                try {
+                    let objRecord = record.load({ type: _constant.Transaction.TRANSFER_ORDER, id: recordId, isDynamic: true });
+                    if (!objRecord.getValue({ fieldId: 'custbody_psg_ei_trans_edoc_standard' })) {
+                        objRecord.setValue({ fieldId: 'custbody_psg_ei_trans_edoc_standard', value: _constant.Constants.FEL.ELECTRONIC_DOCUMENT_PACKAGE, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: _constant.Constants.FEL.EC_EI_TEMPLATE_TRANSFER_ORDER, ignoreFieldChange: true });
+                        objRecord.setValue({ fieldId: 'custbody_edoc_gen_trans_pdf', value: true, ignoreFieldChange: true });
+                        objRecord.save();
+                    }
+                } catch (error) {
+                    log.error("error", error)
+                }
+            }
         }
     }
 
@@ -653,17 +680,34 @@ define(['N/log',
                 custbody_ec_serie_cxc_retencion: getserie.serieid,
                 custbody_ts_ec_preimpreso_retencion: correlative.correlative
             }
+            try {
+                if (objRecord.getValue({ fieldId: 'approvalstatus' }) == _constant.Status.APPROVED) {
+                    fieldsToUpdate.custbody_psg_ei_template = PE_Liquidacion_Compra_FEL_Template;
+                    fieldsToUpdate.custbody_psg_ei_status = For_Generation_Status;
+                    fieldsToUpdate.custbody_psg_ei_sending_method = PE_Liquidacion_Compra_FEL_Sending;
+                } else {
+                    if (objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' }) != DOCUMENT_TYPE_LIQUIDACION_COMPRA) {
+                        fieldsToUpdate.custbody_psg_ei_template = '';
+                        fieldsToUpdate.custbody_psg_ei_status = '';
+                        fieldsToUpdate.custbody_psg_ei_sending_method = '';
+                    }
+                }
+            } catch (error) {
+                log.error("error", error)
+            }
             log.error("fieldsToUpdate RETENCION", "fieldsToUpdate");
             updateMainFieldTransaction(objRecord.type, objRecord.id, fieldsToUpdate);
         }
     }
 
     const setWithholdingVoucherField = (objRecord, baseItemRateequalto0, baseItemRatenotequalto0, baseExpenseRateequalto0, baseExpenseRatenotequalto0, amountTax) => {
-        let fieldsToUpdate = {};
+        let retorno = 0;
+        let fieldsToUpdate = new Object();
         let item = verifyWithholdingTaxApply(objRecord, "item");
         let expense = verifyWithholdingTaxApply(objRecord, "expense");
-
+        let serie = getSerieLocalization(DOCUMENT_TYPE_COMPROBANTE_RETENCION, objRecord.getValue('subsidiary'), objRecord.getValue('location'));
         if (item) {
+            retorno = 1
             let withholdingTaxCodeList = {}, withholdingCodeId = {};
             let lines = objRecord.getLineCount("item");
             for (let line = 0; line < lines; line++) {
@@ -742,67 +786,7 @@ define(['N/log',
                     }
                 }
             }
-            // for (let line = 0; line < lines; line++) {
-            //     let apply = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_4601_witaxline', line });
-            //     if (apply) {
-            //         let item = objRecord.getSublistValue({ sublistId: "item", fieldId: "item", line });
-            //         let amount = Math.abs(Number(objRecord.getSublistValue({ sublistId: "item", fieldId: "amount", line })));
-            //         var withholdingTax = withhHoldingTaxList["item"][item];
-            //         log.error('Cero', withholdingTax)
-            //         if (withholdingTax) {
-            //             //log.error('First', withholdingTax.withholdingTax)
-            //             if (withholdingTax.type == "RENTA") {
-            //                 retencion++
-            //                 if (retencion == 1) {
-            //                     fieldsToUpdate.custbody_ec_importe_base_ir = withholdingTax.baseAmount;
-            //                     fieldsToUpdate.custbody_ec_ret_ir = withholdingTax.withholdingTax;
-            //                     fieldsToUpdate.custbody_ec_monto_de_ret_ir = amount;
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_ir = withholdingTax.taxRate;
-            //                 }
 
-            //                 if (retencion == 2) {
-            //                     fieldsToUpdate.custbody_ec_impb_ir2 = withholdingTax.baseAmount;
-            //                     fieldsToUpdate.custbody_ec_ret_por_ir2 = withholdingTax.withholdingTax;
-            //                     fieldsToUpdate.custbody_ec_mont_ret_2 = amount;
-            //                     fieldsToUpdate.custbody_ec_ret_ir2 = withholdingTax.taxRate;
-            //                 }
-
-            //                 if (retencion == 3) {
-            //                     fieldsToUpdate.custbody_ec_impb_ir3 = withholdingTax.baseAmount;
-            //                     fieldsToUpdate.custbody_ec_ret_por_ir3 = withholdingTax.withholdingTax;
-            //                     fieldsToUpdate.custbody_ec_mont_ret_3 = amount;
-            //                     fieldsToUpdate.custbody_ec_ret_ir3 = withholdingTax.taxRate;
-            //                 }
-            //                 updateTransaction = true;
-            //             }
-            //             if (withholdingTax.type == "IVA") {
-            //                 sumaBaseIVA += withholdingTax.taxAmount;
-            //                 fieldsToUpdate.custbody_ec_importe_base_iva = sumaBaseIVA;
-            //                 if (withholdingTax.taxRate == 10) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_10 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_10 = amount
-            //                 }
-            //                 if (withholdingTax.taxRate == 20) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_20 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_20 = amount
-            //                 }
-            //                 if (withholdingTax.taxRate == 30) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_30 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_30 = amount
-            //                 }
-            //                 if (withholdingTax.taxRate == 70) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_70 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_70 = amount
-            //                 }
-            //                 if (withholdingTax.taxRate == 100) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_100 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_100 = amount
-            //                 }
-            //                 updateTransaction = true;
-            //             }
-            //         }
-            //     }
-            // }
             fieldsToUpdate.custbodyts_ec_base_rate0 = baseItemRateequalto0[0].amount ? Math.abs(parseFloat(baseItemRateequalto0[0].amount)) : 0;
             fieldsToUpdate.custbodyts_ec_base_rate12 = baseItemRatenotequalto0[0].amount ? Math.abs(parseFloat(baseItemRatenotequalto0[0].amount)) : 0;
             if (objRecord.getValue({ fieldId: 'approvalstatus' }) == _constant.Status.APPROVED && !objRecord.getValue({ fieldId: 'custbody_psg_ei_template' })) {
@@ -811,12 +795,15 @@ define(['N/log',
                     fieldsToUpdate.custbody_psg_ei_status = For_Generation_Status;
                     fieldsToUpdate.custbody_psg_ei_sending_method = PE_Liquidacion_Compra_FEL_Sending;
                 } catch (error) {
-                    log.error("Error-Template", error)
+                    log.error("Error-Template", error);
                 }
             }
             fieldsToUpdate.custbody_ec_monto_iva = amountTax;
+            fieldsToUpdate.custbodyec_tipo_de_documento_retencion = DOCUMENT_TYPE_COMPROBANTE_RETENCION;
+            fieldsToUpdate.custbody_ec_serie_cxc_retencion = serie
             if (updateTransaction) updateMainFieldTransaction(objRecord.type, objRecord.id, fieldsToUpdate);
         } else if (expense) {
+            retorno = 1
             let withholdingTaxCodeList = {}, withholdingCodeId = {};
             let lines = objRecord.getLineCount("expense");
             for (let line = 0; line < lines; line++) {
@@ -895,68 +882,6 @@ define(['N/log',
                 }
             }
 
-            // for (let line = 0; line < lines; line++) {
-            //     let apply = objRecord.getSublistValue({ sublistId: 'expense', fieldId: 'custcol_4601_witaxline_exp', line });
-            //     if (apply) {
-            //         let account = objRecord.getSublistValue({ sublistId: "expense", fieldId: "account", line });
-            //         let amount = Math.abs(Number(objRecord.getSublistValue({ sublistId: "expense", fieldId: "amount", line })));
-            //         var withholdingTax = withhHoldingTaxList["account"][account];
-            //         if (withholdingTax) {
-            //             if (withholdingTax.type == "RENTA") {
-            //                 retencion++
-            //                 // sumaBaseRENTA += withholdingTax.baseAmount;
-            //                 // sumaRetencionBASE += amount
-            //                 // sumaPorcentajeRENTA += parseInt(withholdingTax.taxRate)
-            //                 if (retencion == 1) {
-            //                     fieldsToUpdate.custbody_ec_importe_base_ir = withholdingTax.baseAmount;
-            //                     fieldsToUpdate.custbody_ec_ret_ir = withholdingTax.withholdingTax;
-            //                     fieldsToUpdate.custbody_ec_monto_de_ret_ir = amount;
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_ir = withholdingTax.taxRate;
-            //                 }
-
-            //                 if (retencion == 2) {
-            //                     fieldsToUpdate.custbody_ec_impb_ir2 = withholdingTax.baseAmount;
-            //                     fieldsToUpdate.custbody_ec_ret_por_ir2 = withholdingTax.withholdingTax;
-            //                     fieldsToUpdate.custbody_ec_mont_ret_2 = amount;
-            //                     fieldsToUpdate.custbody_ec_ret_ir2 = withholdingTax.taxRate;
-            //                 }
-
-            //                 if (retencion == 3) {
-            //                     fieldsToUpdate.custbody_ec_impb_ir3 = withholdingTax.baseAmount;
-            //                     fieldsToUpdate.custbody_ec_ret_por_ir3 = withholdingTax.withholdingTax;
-            //                     fieldsToUpdate.custbody_ec_mont_ret_3 = amount;
-            //                     fieldsToUpdate.custbody_ec_ret_ir3 = withholdingTax.taxRate;
-            //                 }
-            //                 updateTransaction = true;
-            //             }
-            //             if (withholdingTax.type == "IVA") {
-            //                 sumaBaseIVA += withholdingTax.taxAmount;
-            //                 fieldsToUpdate.custbody_ec_importe_base_iva = sumaBaseIVA;
-            //                 if (withholdingTax.taxRate == 10) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_10 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_10 = amount
-            //                 }
-            //                 if (withholdingTax.taxRate == 20) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_20 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_20 = amount
-            //                 }
-            //                 if (withholdingTax.taxRate == 30) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_30 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_30 = amount
-            //                 }
-            //                 if (withholdingTax.taxRate == 70) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_70 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_70 = amount
-            //                 }
-            //                 if (withholdingTax.taxRate == 100) {
-            //                     fieldsToUpdate.custbody_cod_ret_iva_100 = withholdingTax.withholdingTax
-            //                     fieldsToUpdate.custbody_ec_porcentaje_ret_100 = amount
-            //                 }
-            //                 updateTransaction = true;
-            //             }
-            //         }
-            //     }
-            // }
             fieldsToUpdate.custbodyts_ec_base_rate0 = baseExpenseRateequalto0[0].amount ? Math.abs(parseFloat(baseExpenseRateequalto0[0].amount)) : 0;
             fieldsToUpdate.custbodyts_ec_base_rate12 = baseExpenseRatenotequalto0[0].amount ? Math.abs(parseFloat(baseExpenseRatenotequalto0[0].amount)) : 0;
             if (objRecord.getValue({ fieldId: 'approvalstatus' }) == _constant.Status.APPROVED && !objRecord.getValue({ fieldId: 'custbody_psg_ei_template' })) {
@@ -969,8 +894,11 @@ define(['N/log',
                 }
             }
             fieldsToUpdate.custbody_ec_monto_iva = amountTax;
+            fieldsToUpdate.custbodyec_tipo_de_documento_retencion = DOCUMENT_TYPE_COMPROBANTE_RETENCION;
+            fieldsToUpdate.custbody_ec_serie_cxc_retencion = serie;
             if (updateTransaction) updateMainFieldTransaction(objRecord.type, objRecord.id, fieldsToUpdate);
         }
+        return retorno;
     }
 
     const updateMainFieldTransaction = (type, id, values) => {
@@ -1092,40 +1020,11 @@ define(['N/log',
 
     const verifyWithholdingTaxApply = (objRecord, sublistId) => {
         let lines = objRecord.getLineCount(sublistId);
-
         for (let line = 0; line < lines; line++) {
             let apply = objRecord.getSublistValue({ sublistId, fieldId: 'custcol_4601_witaxapplies', line });
             if (apply) return apply;
         }
         return false;
-    }
-
-    const getPrefixByDocumentType = (documentTypeId, recordType) => {
-        let prefix = "";
-        var documentTypeCode = getDocumentTypeCode(documentTypeId);
-        if (documentTypeCode == "01" && recordType == record.Type.INVOICE) {
-            prefix = "FAC-";
-        } else if (documentTypeCode == "06" && recordType == record.Type.ITEM_FULFILLMENT) {
-            prefix = "GDR-";
-        } else if (documentTypeCode == "03" && recordType == record.Type.VENDOR_BILL) {
-            prefix = "LIQ-";
-        } else if (documentTypeCode == "04" && recordType == record.Type.CREDIT_MEMO) {
-            prefix = "NCF-";
-        } else if (documentTypeCode == "05" && recordType == record.Type.INVOICE) {
-            prefix = "NDF-";
-        } else if (documentTypeCode == "07" && recordType == record.Type.VENDOR_CREDIT) {
-            prefix = "RET-";
-        }
-        return prefix;
-    }
-
-    const getDocumentTypeCode = (documentTypeId) => {
-        let searchResult = search.lookupFields({
-            type: "customrecordts_ec_tipo_doc_fiscal",
-            id: documentTypeId,
-            columns: ["custrecordts_ec_cod_tipo_comprobante"]
-        });
-        return searchResult.custrecordts_ec_cod_tipo_comprobante;
     }
 
     const updateTransaction = (type, id, tranid) => {
@@ -1167,44 +1066,6 @@ define(['N/log',
                 let column03 = searchResult[0].getValue(searchLoad.columns[2]);
                 let column04 = searchResult[0].getValue(searchLoad.columns[3]);
                 column03 = column04 + '-' + column03;
-                column02 = parseInt(column02);
-                return {
-                    'serieid': column01,
-                    'peinicio': column02,
-                    'serieimpr': column03
-                };
-            }
-        } catch (error) {
-            log.error({ title: 'getPeSerie', details: error });
-        }
-        return serieResult;
-    }
-
-    const getSerieID = (id, prefix) => {
-        let searchLoad = '';
-        let serieResult = {
-            'serieid': "",
-            'peinicio': "",
-            'serieimpr': ""
-        }
-        try {
-            searchLoad = search.create({
-                type: 'customrecordts_ec_series_impresion',
-                filters: [
-                    ["internalidnumber", "equalto", id]
-                ],
-                columns: [
-                    { name: 'internalid', sort: search.Sort.ASC },
-                    'custrecord_ts_ec_rango_inicial',
-                    'custrecord_ts_ec_series_impresion'
-                ]
-            });
-            const searchResult = searchLoad.run().getRange({ start: 0, end: 1 });
-            if (searchResult.length) {
-                const column01 = searchResult[0].getValue(searchLoad.columns[0]);
-                let column02 = searchResult[0].getValue(searchLoad.columns[1]);
-                let column03 = searchResult[0].getValue(searchLoad.columns[2]);
-                column03 = prefix + column03;
                 column02 = parseInt(column02);
                 return {
                     'serieid': column01,
@@ -1260,36 +1121,6 @@ define(['N/log',
         }
     }
 
-    const getAddress = (location) => {
-        let address = '';
-        let mySearch = search.load({ id: 'customsearch_pe_location_search' });
-        let filters = mySearch.filters;
-        const filterOne = search.createFilter({ name: 'internalid', operator: search.Operator.ANYOF, values: location });
-        filters.push(filterOne);
-        const searchResult = mySearch.run().getRange({ start: 0, end: 1 });
-        let column01 = searchResult[0].getValue(mySearch.columns[0]);
-        let column02 = searchResult[0].getValue(mySearch.columns[1]);
-        let column03 = searchResult[0].getValue(mySearch.columns[2]);
-        let column04 = searchResult[0].getValue(mySearch.columns[3]);
-        address = column01 + ' ' + column03 + '-' + column04 + '-' + column02;
-        return address;
-    }
-
-    const getPrinter = (location) => {
-        let mySearch = search.load({ id: PE_CONFIG_IMPRESORA });
-        let filters = mySearch.filters;
-        const filterOne = search.createFilter({ name: 'custrecord_pe_config_imp_tienda', operator: search.Operator.ANYOF, values: location });
-        filters.push(filterOne);
-        const resultCount = mySearch.runPaged().count;
-        if (resultCount > 0) {
-            const searchResult = mySearch.run().getRange({ start: 0, end: 1 });
-            let printer = searchResult[0].getValue({ name: "custrecord_pe_config_imp_impresora" });
-            return printer
-        } else {
-            return 0;
-        }
-    }
-
     const getItemBaseRateequalto0 = (internalid) => {
         try {
             let mainLineJson = {};
@@ -1306,6 +1137,8 @@ define(['N/log',
                 ['itemtype', 'isnot', 'Discount'],
                 'AND',
                 ['taxitem.rate', 'equalto', '0'],
+                "AND",
+                ["accounttype", "noneof", "Expense"]
             ];
 
             const vendorBillSearch = search.create({
@@ -1351,6 +1184,8 @@ define(['N/log',
                 ['itemtype', 'isnot', 'Discount'],
                 'AND',
                 ['taxitem.rate', 'notequalto', '0'],
+                "AND",
+                ["accounttype", "noneof", "Expense"]
             ];
 
             const vendorBillSearch = search.create({
@@ -1472,7 +1307,7 @@ define(['N/log',
 
     const getMontoIVATotal = (internalid) => {
         let amoutTax = 0;
-        var searchLoad = search.create({
+        var searchLoad = search.create({//customsearch1913
             type: "vendorbill",
             filters:
                 [
@@ -1486,7 +1321,9 @@ define(['N/log',
                     "AND",
                     ["itemtype", "isnot", "Discount"],
                     "AND",
-                    ["accounttype", "noneof", "OthCurrLiab"]
+                    ["custcol_adjustment_tax_code", "noneof", "5"]
+                    // "AND",
+                    // ["accounttype", "noneof", "OthCurrLiab"]
                 ],
             columns:
                 [
@@ -1502,6 +1339,168 @@ define(['N/log',
         }
         return amoutTax;
     }
+
+    const setFieldsLocalization = (objRecord, baseItemRateequalto0, baseItemRatenotequalto0, baseExpenseRateequalto0, baseExpenseRatenotequalto0, amountTax) => {
+        let baseITRateequalto0 = baseItemRateequalto0[0].amount ? Math.abs(parseFloat(baseItemRateequalto0[0].amount)) : 0;
+        let baseITRatenotequalto0 = baseItemRatenotequalto0[0].amount ? Math.abs(parseFloat(baseItemRatenotequalto0[0].amount)) : 0;
+        let baseEXRateequalto0 = baseExpenseRateequalto0[0].amount ? Math.abs(parseFloat(baseExpenseRateequalto0[0].amount)) : 0;
+        let baseEXRatenotequalto0 = baseExpenseRatenotequalto0[0].amount ? Math.abs(parseFloat(baseExpenseRatenotequalto0[0].amount)) : 0;
+        log.debug('SUMAAA', baseITRateequalto0 + ' + ' + baseEXRateequalto0)
+        record.submitFields({
+            type: objRecord.type,
+            id: objRecord.id,
+            values: {
+                custbody_ec_monto_iva: amountTax,
+                custbodyts_ec_base_rate0: baseITRateequalto0 + baseEXRateequalto0,
+                custbodyts_ec_base_rate12: baseITRatenotequalto0 + baseEXRatenotequalto0,
+            }
+        })
+    }
+
+    const getDescriptionTaxCode = () => {
+        let json = new Array();
+        let objSearch = search.create({
+            type: "salestaxitem",
+            filters: [],
+            columns:
+                [
+                    "internalid",
+                    search.createColumn({ name: "name", sort: search.Sort.DESC, label: "Name" }),
+                    search.createColumn({ name: "description", label: "Description" })
+                ]
+        });
+        //var searchResultCount = salestaxitemSearchObj.runPaged().count;
+        objSearch.run().each((result) => {
+            json.push({ id: result.getValue('internalid'), description: result.getValue('description') })
+            return true;
+        });
+        return json;
+    }
+
+    const setTranid = (objRecord) => {
+        log.debug('Type Record', objRecord.type)
+        let serie_cxc = ''
+        try {
+            let ref_no = '';
+            const docu_type = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+            const serie_cxp = objRecord.getValue({ fieldId: 'custbody_ts_ec_serie_doc_cxp' });
+            const pe_number = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
+            try {
+                serie_cxc = objRecord.getText({ fieldId: 'custbody_ts_ec_serie_cxc' });
+            } catch (error) { }
+
+            if (docu_type == DOCUMENT_TYPE_FACTURA) {
+                ref_no = 'FA' + serie_cxp + pe_number;
+            } else if (docu_type == DOCUMENT_TYPE_CREDIT_MEMO) {
+                ref_no = 'NC' + serie_cxp + pe_number;
+            } else if (docu_type == DOCUMENT_TYPE_REEMBOLSO) {
+                ref_no = 'RB' + serie_cxp + pe_number;
+            } else if (docu_type == DOCUMENT_TYPE_UNICO_EXPORTACION) {
+                ref_no = 'UE' + serie_cxp + pe_number;
+            } else if (docu_type == DOCUMENT_TYPE_VENTA_EXTERIOR) {
+                ref_no = 'VE' + serie_cxp + pe_number;
+            } else if (docu_type == DOCUMENT_TYPE_LIQUIDACION_COMPRA) {
+                ref_no = 'LIQ' + serie_cxc + pe_number;
+            } else if (docu_type == DOCUMENT_TYPE_NOTA_VENTA) {
+                ref_no = 'BV' + serie_cxp + pe_number;
+            } else if (docu_type == DOCUMENT_TYPE_SERVICIOS_ADMIN) {
+                ref_no = 'DS' + serie_cxp + pe_number;
+            } else if (docu_type == DOCUMENT_TYPE_PASAJES_AEREOS) {
+                ref_no = 'PA' + serie_cxp + pe_number;
+            }
+            objRecord.setValue({ fieldId: 'tranid', value: ref_no });
+        } catch (error) {
+            log.error('Error-setTranid', error);
+        }
+    }
+
+    const setMontoLetras = (objRecord) => {
+        try {
+            let total = String(objRecord.getValue({ fieldId: 'usertotal' }));
+            let montoLetras = NumeroALetras(total, { plural: 'DOLARES', singular: 'DOLAR', centPlural: 'CENTAVOS', centSingular: 'CENTAVO' });
+            log.debug('setMontoLetras', montoLetras);
+            objRecord.setValue({ fieldId: 'custbody_ts_ec_monto_letras', value: montoLetras });
+        } catch (error) {
+            log.error('Error-setMontoLetras', error);
+        }
+    }
+
+    const getSerieLocalization = (docType, subsidiary, location) => {
+        let sql = "select id from customrecordts_ec_series_impresion where custrecord_ts_ec_tipo_documento = ? and custrecordts_ec_serie_subsidiaria = ? and custrecord_ts_ec_localidad_serie = ?"
+        var resultSet = query.runSuiteQL({ query: sql, params: [docType, subsidiary, location] }).asMappedResults();
+        var results = resultSet.length > 0 ? resultSet[0].id : 0;
+        return results;
+    }
+
+    function getDateRef(_idDocumentRef) {
+        try {
+
+            if (_idDocumentRef) {
+                var typeTransaction = search.lookupFields({
+                    type: 'transaction',
+                    id: _idDocumentRef,
+                    columns: ['recordtype']
+                });
+
+                var dateDocumentRef = search.lookupFields({
+                    type: typeTransaction['recordtype'],
+                    id: _idDocumentRef,
+                    columns: ['trandate']
+                });
+                return dateDocumentRef['trandate'];
+                //objRecord.setValue({ fieldId: 'custbody_pe_document_date_ref', value: dateDocumentRef['trandate'], ignoreFieldChange: true });
+            }
+
+        } catch (e) {
+            log.error('Error en getDateRef', e);
+        }
+    }
+
+    const buscarFacCompra = (idCustomer, preimpreso) => {
+        var vendorbillSearchObj = search.create({
+            type: "vendorbill",
+            filters:
+                [
+                    ["type", "anyof", "VendBill"],
+                    "AND",
+                    ["name", "anyof", idCustomer],
+                    "AND",
+                    ["custbody_ts_ec_numero_preimpreso", "is", preimpreso],
+                    "AND",
+                    ["mainline", "is", "T"]
+                ],
+            columns:
+                [
+                    search.createColumn({ name: "internalid", label: "ID interno" })
+                ]
+        });
+
+        let objRecord = vendorbillSearchObj.run().getRange(0, 1000);
+        let existe = false;
+        if (objRecord.length > 0) {
+            existe = true;
+        }
+        return existe
+    }
+
+    const imprimirComprobante = (form, objRecord) => {
+        var tipo = '';
+        if (objRecord.type == _constant.Transaction.VENDOR_PAYMENT) {
+            tipo = 'pagoFactura';
+        }
+        if (objRecord.type == _constant.Transaction.CHECK) {
+            tipo = 'cheque';
+        }
+        if (objRecord.type == _constant.Transaction.VENDOR_PRE_PAYMENT) {
+            tipo = 'pagoAnticipo';
+        }
+
+        var id = objRecord.id;
+        const printPago = `printPago('${id}','${tipo}')`;
+        form.addButton({ id: 'custpage_btn_print_pago', label: 'Cheque', functionName: printPago });
+    }
+
+
 
 
 
@@ -1667,73 +1666,7 @@ define(['N/log',
             return Millones(data.enteros) + ' ' + data.letrasMonedaPlural + ' ' + data.letrasCentavos;
     }
 
-    function getDateRef(_idDocumentRef) {
-        try {
 
-            if (_idDocumentRef) {
-                var typeTransaction = search.lookupFields({
-                    type: 'transaction',
-                    id: _idDocumentRef,
-                    columns: ['recordtype']
-                });
-
-                var dateDocumentRef = search.lookupFields({
-                    type: typeTransaction['recordtype'],
-                    id: _idDocumentRef,
-                    columns: ['trandate']
-                });
-                return dateDocumentRef['trandate'];
-                //objRecord.setValue({ fieldId: 'custbody_pe_document_date_ref', value: dateDocumentRef['trandate'], ignoreFieldChange: true });
-            }
-
-        } catch (e) {
-            log.error('Error en getDateRef', e);
-        }
-    }
-
-    const buscarFacCompra = (idCustomer, preimpreso) => {
-        var vendorbillSearchObj = search.create({
-            type: "vendorbill",
-            filters:
-                [
-                    ["type", "anyof", "VendBill"],
-                    "AND",
-                    ["name", "anyof", idCustomer],
-                    "AND",
-                    ["custbody_ts_ec_numero_preimpreso", "is", preimpreso],
-                    "AND",
-                    ["mainline", "is", "T"]
-                ],
-            columns:
-                [
-                    search.createColumn({ name: "internalid", label: "ID interno" })
-                ]
-        });
-
-        let objRecord = vendorbillSearchObj.run().getRange(0, 1000);
-        let existe = false;
-        if (objRecord.length > 0) {
-            existe = true;
-        }
-        return existe
-    }
-
-    const imprimirComprobante = (form, objRecord) => {
-        var tipo = '';
-        if (objRecord.type == _constant.Transaction.VENDOR_PAYMENT) {
-            tipo = 'pagoFactura';
-        }
-        if (objRecord.type == _constant.Transaction.CHECK) {
-            tipo = 'cheque';
-        }
-        if (objRecord.type == _constant.Transaction.VENDOR_PRE_PAYMENT) {
-            tipo = 'pagoAnticipo';
-        }
-
-        var id = objRecord.id;
-        const printPago = `printPago('${id}','${tipo}')`;
-        form.addButton({ id: 'custpage_btn_print_pago', label: 'Cheque', functionName: printPago });
-    }
 
     return {
         beforeLoad: beforeLoad,

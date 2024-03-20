@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_est_op">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>ESTADO OP</name>
+  <customvalues>
+    <customvalue scriptid="val_540295_7451241_sb1_556">
+      <isinactive>F</isinactive>
+      <value>POR GENERAR</value>
+    </customvalue>
+    <customvalue scriptid="val_540296_7451241_sb1_137">
+      <isinactive>F</isinactive>
+      <value>GENERADO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

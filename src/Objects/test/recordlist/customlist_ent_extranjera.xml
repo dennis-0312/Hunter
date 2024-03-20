@@ -1,0 +1,17 @@
+<customlist scriptid="customlist_ent_extranjera">
+  <description>Pago a residente / Establecimiento permanente = 01&#xd;
+Pago a no residente = 02</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>EC - ENTIDAD EXTRANJERA</name>
+  <customvalues>
+    <customvalue scriptid="val_532742_7451241_sb1_911">
+      <isinactive>F</isinactive>
+      <value>01 - Pago a residente / Establecimiento permanente</value>
+    </customvalue>
+    <customvalue scriptid="val_532743_7451241_sb1_435">
+      <isinactive>F</isinactive>
+      <value>02 - Pago a no residente</value>
+    </customvalue>
+  </customvalues>
+</customlist>

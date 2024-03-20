@@ -16,7 +16,8 @@
         <!-- <path>~/Objects/Suitelet/*</path> -->
         <!-- <path>~/Objects/Client/*</path>
         <path>~/Objects/UserEvent/*</path> -->
-        <path>~/Objects/test/*</path>
+        <path>~/Objects/test/desplegado/*</path>
+        <!-- <path>~/Objects/test/despues/customrole1675.xml</path> -->
     </objects>
     <!-- <translationimports>
         <path>~/Translations/*</path>

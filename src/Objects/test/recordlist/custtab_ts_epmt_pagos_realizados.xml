@@ -1,0 +1,5 @@
+<subtab scriptid="custtab_ts_epmt_pagos_realizados">
+  <parent></parent>
+  <tabtype>TRANSACTION</tabtype>
+  <title>Pagos Realizados</title>
+</subtab>

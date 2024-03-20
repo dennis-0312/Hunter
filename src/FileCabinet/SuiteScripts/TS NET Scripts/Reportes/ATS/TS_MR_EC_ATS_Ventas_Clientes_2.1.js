@@ -14,8 +14,10 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 let environmentFeatures = getEnviromentFeatures();
                 let scriptParameters = getScriptParameters(environmentFeatures);
 
-                let transactions = getATSVentasClientes(scriptParameters, environmentFeatures);
-
+                let retencionVentas = getATSRetencionVentasClientes(scriptParameters, environmentFeatures);
+                let transactions = getATSVentasClientes(scriptParameters, environmentFeatures, retencionVentas);
+                log.error("transactions", transactions);
+                transactions = reduceTransactions(transactions);
                 return transactions;
             } catch (error) {
                 log.error("error", error);
@@ -27,57 +29,64 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 let key = context.key;
                 let result = JSON.parse(context.value);
 
+                /*
                 // 1. Código Venta
                 let codigoCompra = result[0];
-
+                */
                 // 2 Tipo de Identificacion del Cliente
-                let tipoIdentificacionCliente = result[1].replace('- None -', '');
+                let tipoIdentificacionCliente = result[0].replace('- None -', '');
 
                 // 3 No. de Identificación del Cliente
-                let numeroIdentificacionCliente = result[2].replace('- None -', '');
+                let numeroIdentificacionCliente = result[1].replace('- None -', '');
 
                 // 4 Es Parte Relacionada
-                let esParteRelacionada = result[3];
+                let esParteRelacionada = result[2];
 
                 // 5 Tipo de Cliente
-                let tipoCliente = result[4].replace('- None -', '');
+                let tipoCliente = result[3].replace('- None -', '');
 
                 // 6 Razon Social de Cliente
-                let razonSocialCliente = result[5].replace('- None -', '');
+                let razonSocialCliente = result[4].replace('- None -', '');
 
                 // 7 Codigo Tipo de Comprobante
-                let codigoTipoComprobante = result[6].replace('- None -', '');
+                let codigoTipoComprobante = result[5].replace('- None -', '');
 
                 // 8 Tipo de Emision
-                let tipoEmision = result[7].replace('- None -', '');
+                let tipoEmision = result[6].replace('- None -', '');
 
                 // 9 No. de Comprobantes Emitidos
-                let numeroComprobantesEmitidos = result[8].replace('- None -', '')
+                let numeroComprobantesEmitidos = result[7];
 
                 // 10 Base Imponible No objeto de IVA
-                let baseImponibleNoIva = roundTwoDecimals(result[9]);
+                let baseImponibleNoIva = roundTwoDecimals(result[8]);
 
                 // 11 Base Imponible Tarifa 0% IVA
-                let baseImponible0Iva = roundTwoDecimals(result[10]);
+                let baseImponible0Iva = roundTwoDecimals(result[9]);
 
                 // 12 Base Imponible tarifa IVA diferente de 0%
-                let baseImponibleGravada = roundTwoDecimals(result[11]);
+                let baseImponibleGravada = roundTwoDecimals(result[10]);
 
                 // 13 Monto IVA
-                let montoIva = roundTwoDecimals(result[12]);
+                let montoIva = roundTwoDecimals(result[11]);
 
                 // 14 Monto ICE
-                let montoIce = roundTwoDecimals(result[13]);
+                let montoIce = roundTwoDecimals(result[12]);
 
                 // 15 Valor de IVA que le han Retenido
-                let montoIvaRetenido = roundTwoDecimals(result[14]);
+                let montoIvaRetenido = roundTwoDecimals(result[13]);
 
                 // 16 Valor de Renta que le han Retenido
-                let montoRentaRetenido = roundTwoDecimals(result[15]);
+                let montoRentaRetenido = roundTwoDecimals(result[14]);
 
-                let rowString = `${codigoCompra}|${tipoIdentificacionCliente}|${numeroIdentificacionCliente}|${esParteRelacionada}|${tipoCliente}|` +
+                // 17 Forma de Pago Venta
+                //<I> rhuaccha: 2024-02-19
+                // let formaPago = result[15];
+                let formaPago = result[15].replace(/,- None -/g, '').replace('- None -', '');
+                //<F> rhuaccha: 2024-02-19
+
+                let rowString = `${tipoIdentificacionCliente}|${numeroIdentificacionCliente}|${esParteRelacionada}|${tipoCliente}|` +
                     `${razonSocialCliente}|${codigoTipoComprobante}|${tipoEmision}|${numeroComprobantesEmitidos}|${baseImponibleNoIva}|${baseImponible0Iva}|` +
-                    `${baseImponibleGravada}|${montoIva}|${montoIce}|${montoIvaRetenido}|${montoRentaRetenido}\r\n`;
+                    `${baseImponibleGravada}|${montoIva}|${montoIce}|${montoIvaRetenido}|${montoRentaRetenido}|${formaPago}\r\n`;
 
                 context.write({
                     key: context.key,
@@ -123,7 +132,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             }
         }
 
-        const getATSVentasClientes = (scriptParameters, environmentFeatures) => {
+        const getATSVentasClientes = (scriptParameters, environmentFeatures, retencionVentasJson) => {
             let atsVentasClientesSearch = search.load({
                 id: "customsearch_ec_ats_ventas_clientes"
             });
@@ -163,10 +172,119 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                     for (let k = 0; k < columns.length; k++) {
                         rowArray.push(result.getValue(columns[k]));
                     }
+                    let tipoDocumentoFiscal = result.getText(columns[17]);
+                    let serie = result.getText(columns[18]);
+                    let numeroPreimpreso = result.getValue(columns[19]);
+                    let key = `${tipoDocumentoFiscal}|${serie}|${numeroPreimpreso}`;
+                    if (retencionVentasJson[key] !== undefined) {
+                        rowArray[14] = Number(retencionVentasJson[key].montoRetencionIVA);
+                        rowArray[15] = Number(retencionVentasJson[key].montoRetencionIR);
+                    } else {
+                        rowArray[14] = 0;
+                        rowArray[15] = 0;
+                    }
                     resultArray.push(rowArray);
                 }
             }
+            
             return resultArray;
+        }
+
+        const getATSRetencionVentasClientes = (scriptParameters, environmentFeatures) => {
+            let atsRetencionVentasClientesSearch = search.load({
+                id: "customsearch_ec_ats_ventas_clientes_rete"
+            });
+
+            if (scriptParameters.periodId) {
+                let periodFilter = search.createFilter({
+                    name: 'postingperiod',
+                    operator: search.Operator.ANYOF,
+                    values: scriptParameters.periodId
+                });
+                atsRetencionVentasClientesSearch.filters.push(periodFilter);
+            }
+
+            if (environmentFeatures.hasSubsidiaries) {
+                let subsidiaryFilter = search.createFilter({
+                    name: 'subsidiary',
+                    operator: search.Operator.ANYOF,
+                    values: scriptParameters.subsidiaryId
+                });
+                atsRetencionVentasClientesSearch.filters.push(subsidiaryFilter);
+            }
+
+            let pagedData = atsRetencionVentasClientesSearch.runPaged({ pageSize: MAX_PAGINATION_SIZE });
+            
+            let retencionVentasJson = {};
+            for (let i = 0; i < pagedData.pageRanges.length; i++) {
+
+                let page = pagedData.fetch({
+                    index: pagedData.pageRanges[i].index
+                });
+
+                for (let j = 0; j < page.data.length; j++) {
+                    let result = page.data[j];
+                    
+                    let columns = result.columns;
+                    
+                    let tipoDocumentoFiscal = result.getText(columns[0]);
+                    let serie = result.getValue(columns[1]);
+                    let numeroPreimpreso = result.getValue(columns[2]);
+                    // let montoRetencionIR = result.getValue(columns[4]);
+                    // let montoRetencionIVA = result.getValue(columns[5]);
+                    //<I> rhuaccha: 2024-02-16 error de posición de columnas
+                    let montoRetencionIR = result.getValue(columns[3]);
+                    let montoRetencionIVA = result.getValue(columns[4]);
+                    //<F> rhuaccha: 2024-02-16
+
+                    let key = `${tipoDocumentoFiscal}|${serie}|${numeroPreimpreso}`;
+                    retencionVentasJson[key] = {
+                        montoRetencionIR,
+                        montoRetencionIVA
+                    }
+                }
+            }
+            return retencionVentasJson;
+        }
+
+        const reduceTransactions = (transactions) => {
+            let reduceTransactionsJson = {}
+            for (var i = 0; i < transactions.length; i++) {
+                let key = `${transactions[i][1]}|${transactions[i][2]}|${transactions[i][1]}${transactions[i][2]}|${transactions[i][3]}${transactions[i][4]}|` +
+                    `${transactions[i][5]}|${transactions[i][6]}|${transactions[i][7]}`;
+                if (reduceTransactionsJson[key] === undefined) {
+                    reduceTransactionsJson[key] = [
+                        transactions[i][1],
+                        transactions[i][2],
+                        transactions[i][3],
+                        transactions[i][4],
+                        transactions[i][5],
+                        transactions[i][6],
+                        transactions[i][7],
+                        Number(transactions[i][8]),
+                        Number(transactions[i][9]),
+                        Number(transactions[i][10]),
+                        Number(transactions[i][11]),
+                        Number(transactions[i][12]),
+                        Number(transactions[i][13]),
+                        Number(transactions[i][14]),
+                        Number(transactions[i][15]),
+                        transactions[i][16]
+                    ];
+                } else {
+                    reduceTransactionsJson[key][7] = roundTwoDecimals(reduceTransactionsJson[key][7] + Number(transactions[i][8]));
+                    reduceTransactionsJson[key][8] = roundTwoDecimals(reduceTransactionsJson[key][8] + Number(transactions[i][9]));
+                    reduceTransactionsJson[key][9] = roundTwoDecimals(reduceTransactionsJson[key][9] + Number(transactions[i][10]));
+                    reduceTransactionsJson[key][10] = roundTwoDecimals(reduceTransactionsJson[key][10] + Number(transactions[i][11]));
+                    reduceTransactionsJson[key][11] = roundTwoDecimals(reduceTransactionsJson[key][11] + Number(transactions[i][12]));
+                    reduceTransactionsJson[key][12] = roundTwoDecimals(reduceTransactionsJson[key][12] + Number(transactions[i][13]));
+                    reduceTransactionsJson[key][13] = roundTwoDecimals(reduceTransactionsJson[key][13] + Number(transactions[i][14]));
+                    reduceTransactionsJson[key][14] = roundTwoDecimals(reduceTransactionsJson[key][14] + Number(transactions[i][15]));
+                    reduceTransactionsJson[key][15] = `${reduceTransactionsJson[key][15]},${transactions[i][16]}`;
+                }
+            }
+            log.error("reduceTransactionsJson", Object.values(reduceTransactionsJson));
+            return Object.values(reduceTransactionsJson);
         }
 
         const getEnviromentFeatures = () => {
@@ -186,6 +304,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_mr_ec_ats_ven_cli_folder');
             scriptParameters.atsFilesId = currentScript.getParameter('custscript_ts_mr_ec_ats_ven_cli_atsfiles');
             scriptParameters.logId = currentScript.getParameter('custscript_ts_mr_ec_ats_ven_cli_logid');
+            //<I> rhuaccha: 2024-02-26
+            scriptParameters.format = currentScript.getParameter('custscript_ts_mr_ec_ats_ven_cli_formato');
+            //<F> rhuaccha: 2024-02-26
 
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
@@ -226,6 +347,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             params['custscript_ts_mr_ec_ats_ven_est_atsfiles'] = scriptParameters.atsFilesId;
 
             params['custscript_ts_mr_ec_ats_ven_est_logid'] = scriptParameters.logId;
+            //<I> rhuaccha: 2024-02-26
+            params['custscript_ts_mr_ec_ats_ven_est_formato'] = scriptParameters.format;
+            //<F> rhuaccha: 2024-02-26
             log.error("executeMapReduce", params);
             let scriptTask = task.create({
                 taskType: task.TaskType.MAP_REDUCE,

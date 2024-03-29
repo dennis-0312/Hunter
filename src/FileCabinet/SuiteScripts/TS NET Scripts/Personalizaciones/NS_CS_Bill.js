@@ -41,6 +41,7 @@ define(['N/url', 'N/record', 'N/currentRecord', 'N/transaction', 'N/email', 'N/s
         objRecord.setValue({ fieldId: 'custbodyts_ec_base_rate0', value: 0 });
         objRecord.setValue({ fieldId: 'custbodyts_ec_base_rate12', value: 0 });
         objRecord.setValue({ fieldId: 'custbodyts_ec_base_rate14', value: 0 });
+        objRecord.setValue({ fieldId: 'custbody_base_niva', value: 0 });
         objRecord.setValue({ fieldId: 'custbody_ec_importe_base_ir', value: 0 });
         objRecord.setValue({ fieldId: 'custbody_ec_impb_ir2', value: 0 });
         objRecord.setValue({ fieldId: 'custbody_ec_impb_ir3', value: 0 });
@@ -70,20 +71,6 @@ define(['N/url', 'N/record', 'N/currentRecord', 'N/transaction', 'N/email', 'N/s
         objRecord.setValue({ fieldId: 'custbody_ec_ret_ir3', value: '' });
 
         objRecord.setValue({ fieldId: 'custbody_ec_monto_iva', value: '' });
-
-
-        // for (let j = 0; j < count; j++) {
-        //     let taxrate = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'taxrate1', line: j });
-        //     let rate = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'amount', line: j });
-        //     let valueImput = objRecord.getValue({ fieldId: 'custbodyts_ec_base_rate' + taxrate });
-        //     objRecord.setValue({ fieldId: 'custbodyts_ec_base_rate' + taxrate, value: valueImput + rate });
-        // }
-        // for (let i = 0; i < expense; i++) {
-        //     let taxrate = objRecord.getSublistValue({ sublistId: 'expense', fieldId: 'taxrate1', line: i });
-        //     let rate = objRecord.getSublistValue({ sublistId: 'expense', fieldId: 'amount', line: i });
-        //     let valueImput = objRecord.getValue({ fieldId: 'custbodyts_ec_base_rate' + taxrate });
-        //     objRecord.setValue({ fieldId: 'custbodyts_ec_base_rate' + taxrate, value: valueImput + rate });
-        // }
         return true;
     }
 

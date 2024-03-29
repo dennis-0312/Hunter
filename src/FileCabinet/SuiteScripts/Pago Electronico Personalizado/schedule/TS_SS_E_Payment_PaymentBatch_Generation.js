@@ -16,6 +16,7 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
 
     const execute = (context) => {
         try {
+            log.error(runtime.getCurrentUser())
             let scriptParameters = getScriptParameters();
             let deploymentId = currentScript.deploymentId;
             log.error("execute", { scriptParameters, deploymentId });
@@ -108,10 +109,6 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
             let ePaymentPaymentJSON = jsonData.paymentBatch[ePaymentPaymentBatchId];
             let templateJSON = jsonData.templates[ePaymentPaymentJSON.custrecord_ts_epmt_prepmt_tef_template.value];
             let subsidiaryJSON = jsonData.subsidiaries[ePaymentPaymentJSON.custrecord_ts_epmt_prepmt_subsidiary.value];
-            // let objetoJSON = jsonData.transactions;
-            // let key = Object.keys(objetoJSON)[0];
-            // let numeroCompleto = key.toString().padStart(15, '0');
-            // objetoJSON[key].id = numeroCompleto;
             let txtDataJson = {
                 paymentBatch: ePaymentPaymentJSON,
                 customers: jsonData.customers,
@@ -120,26 +117,14 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
                 transactions: jsonData.transactions,
                 subsidiary: subsidiaryJSON
             };
-            if (printTXT) generateTXT(txtDataJson, ePaymentPaymentBatchId, templateJSON);
-            if (printPDF) generatePDF(txtDataJson, ePaymentPaymentBatchId);
+            let searchResultCount = getQuanityRec()
+            if (printTXT) generateTXT(txtDataJson, ePaymentPaymentBatchId, templateJSON, searchResultCount);
+            if (printPDF) generatePDF(txtDataJson, ePaymentPaymentBatchId, searchResultCount);
         }
     }
 
-    const getFileName = (txtDataJson, extension) => {
-        var customrecord_ts_epmt_payment_batchSearchObj = search.create({
-            type: "customrecord_ts_epmt_log",
-            filters:
-                [["created", "within", "today"]],
-            columns:
-                ["internalid"]
-        });
-        var searchResultCount = customrecord_ts_epmt_payment_batchSearchObj.runPaged().count;
 
-        // log.debug("customrecord_ts_epmt_payment_batchSearchObj result count", searchResultCount);
-        // customrecord_ts_epmt_payment_batchSearchObj.run().each(function (result) {
-        //     // .run().each has a limit of 4,000 results
-        //     return true;
-        // });
+    const getFileName = (txtDataJson, extension, searchResultCount) => {
         return `${txtDataJson.subsidiary.name}${formatDate(txtDataJson.paymentBatch.custrecord_ts_epmt_prepmt_payment_date)}${searchResultCount + 1}${extension}`;
     }
 
@@ -151,12 +136,10 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
         return `${year}${month}${day}`;
     }
 
-    const generateTXT = (txtDataJson, ePaymentPaymentBatchId, templateJSON) => {
-        let name = getFileName(txtDataJson, templateJSON.custrecord_ts_epmt_pff_output_file_exten);
+    const generateTXT = (txtDataJson, ePaymentPaymentBatchId, templateJSON, searchResultCount) => {
+        let name = getFileName(txtDataJson, templateJSON.custrecord_ts_epmt_pff_output_file_exten, searchResultCount);
         name = name.replace(/\s/g, "").split(":")[1];
         log.error("name", name);
-
-        //log.error("txtDataJson", txtDataJson);
         let outputFileContents = RENDER_TEMPLATE.createFileRender(txtDataJson, templateJSON.custrecord_ts_epmt_pff_free_marker_body);
         log.error("outputFileContents", outputFileContents);
         let fileId = file.create({
@@ -174,13 +157,18 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
         return paymentBatchFile.url;
     }
 
-    const generatePDF = (txtDataJson, ePaymentPaymentBatchId, templateJSON) => {
-        let name = getPDFFileName(txtDataJson);
+    const generatePDF = (txtDataJson, ePaymentPaymentBatchId, searchResultCount) => {
+        log.error('txtDataJson', txtDataJson);
+        let name = getPDFFileName(txtDataJson, searchResultCount);
         log.error("name", name);
         let templateFile = file.load({ id: PDF_TEMPLATE });
-        log.error("templateFile", templateFile);
+        // txtDataJson.name = name.replace('Empresa principal : ', '');
+        txtDataJson['aditional'] = {
+            name: name.replace('Empresa principal : ', '').replace('Parent Company : ', ''),
+            user: runtime.getCurrentUser().email
+        };
         let outputFileContents = RENDER_TEMPLATE.createPDFFileRender(txtDataJson, templateFile.getContents());
-        outputFileContents.name = name;
+        outputFileContents.name = name.replace('Empresa principal : ', '').replace('Parent Company : ', '');
         outputFileContents.folder = PDF_FOLDER_ID;
         let fileId = outputFileContents.save();
         /*let fileId = file.create({
@@ -197,8 +185,20 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
         return
     }
 
-    const getPDFFileName = (txtDataJson) => {
-        return `${txtDataJson.subsidiary.name}${formatDate(txtDataJson.paymentBatch.custrecord_ts_epmt_prepmt_payment_date)}1.pdf`;
+    const getPDFFileName = (txtDataJson, searchResultCount) => {
+        return `${txtDataJson.subsidiary.name}${formatDate(txtDataJson.paymentBatch.custrecord_ts_epmt_prepmt_payment_date)}${searchResultCount + 1}.pdf`;
+    }
+
+    const getQuanityRec = () => {
+        let mySearch = search.create({
+            type: "customrecord_ts_epmt_log",
+            filters:
+                [["created", "within", "today"]],
+            columns:
+                ["internalid"]
+        });
+        let searchResultCount = mySearch.runPaged().count;
+        return searchResultCount
     }
 
     const updateEPaymentPrePayment = (prePaymentId, fileUrl, fileType) => {
@@ -248,9 +248,9 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
                 if (ePaymentLog.detail === undefined || ePaymentLog.detail.length == 0) { }
                 let prePaymentId = createEPaymentPaymentBatch(ePaymentLog);
                 log.error("prePaymentId", prePaymentId);
-                let generatedePaymentPayment = createEPaymentePayment(prePaymentId, ePaymentLog.detail, emitido);
+                createEPaymentePayment(prePaymentId, ePaymentLog.detail, emitido);
                 paymentLotIds.push(prePaymentId);
-                updateEPaymentLog(ePaymentLog.ePaymentLogId, prePaymentId, generatedePaymentPayment);
+                updateEPaymentLog(ePaymentLog.ePaymentLogId, prePaymentId);
             } catch (error) {
                 log.error("Ocurrión un error", error);
                 // Controlar Errores
@@ -293,7 +293,7 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
         return generatedePaymentPayment;
     }
 
-    const updateEPaymentLog = (ePaymentLogId, prePaymentId, generatedePaymentPayment) => {
+    const updateEPaymentLog = (ePaymentLogId, prePaymentId) => {
         log.error('updateEPaymentLog', 'Entry Update');
         record.submitFields({
             type: "customrecord_ts_epmt_log",

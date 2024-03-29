@@ -3,7 +3,7 @@
  * @NModuleScope Public
 */
 
-define ([], function () {
+define([], function () {
 
     const builder = () => {
         let ftlString = "";
@@ -17,7 +17,6 @@ define ([], function () {
 
     const computeTotalAmount = () => {
         let ftlString = "";
-
         return ftlString;
     }
 

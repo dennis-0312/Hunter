@@ -62,7 +62,7 @@ function (log, search, record, config, format){
             type: transaction.recordtype,
             id: transaction.id,
             values: {
-                "custbodyts_ec_num_autorizacion": requestBody.numeroAutorizacion,
+                //"custbodyts_ec_num_autorizacion": requestBody.numeroAutorizacion,
                 //"custbody_ec_fecha_autorizacion": fechaAutorizacion, // Pricipal
                 //"custbody_ec_estado_de_autorizaci": AUTHORIZATION_MESSAGE,
                 //"custbody_ei_pdf_response_principal": requestBody.pdfPrincipal,

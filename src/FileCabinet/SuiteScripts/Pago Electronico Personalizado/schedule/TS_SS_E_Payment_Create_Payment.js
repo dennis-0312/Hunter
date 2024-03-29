@@ -16,10 +16,9 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
             //var data = {
             log.debug('json', json)
             var dataJSON = JSON.parse(json);
-            log.debug('dataJSON', dataJSON);
-
             var DatosLote = BuscarDatosLote(dataJSON.paymentBatchID);
             var DatosPagos = BuscarPagos(dataJSON.payments);
+            let recordType = ''
 
             log.debug('DatosLote', DatosLote)
             log.debug('DatosPagos', DatosPagos)
@@ -34,33 +33,30 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
 
                     if (tipoTransaccion == 'customEmployee') {
                         idCheckAnticipo = crearCheque(DatosLote, DatosPagos[i]);
+                        recordType = ID_CHECK;
                     } else if (tipoTransaccion == 'proveedor') {
+                        log.debug('DatosPagos[i][13]', DatosPagos[i][13]);
                         if (DatosPagos[i][13]) {
+                            log.debug('DatosPagos[i][14][0].value', DatosPagos[i][14][0].value);
                             if (DatosPagos[i][14][0].value == 'VendBill') {
                                 idCheckAnticipo = createVendorPayment(DatosLote, DatosPagos[i]);
+                                recordType = ID_VENDOR_PAYMENT;
                             } else {
+                                log.debug('Anticipo1', DatosPagos[i][14][0].value);
                                 idCheckAnticipo = crearAnticipo(DatosLote, DatosPagos[i], 1);
+                                recordType = ID_VENDOR_PREPAYMENT;
                             }
                         } else {
+                            log.debug('Anticipo2', DatosPagos[i][13]);
                             idCheckAnticipo = crearAnticipo(DatosLote, DatosPagos[i]);
+                            recordType = ID_VENDOR_PREPAYMENT;
                         }
                     }
                     log.debug('Number(DatosPagos[i][12])', Number(DatosPagos[i][12]));
                     log.debug('idCheckAnticipo', idCheckAnticipo);
-                    record.submitFields({
-                        type: 'customrecord_ts_epmt_payment',
-                        id: Number(DatosPagos[i][12]),
-                        values: {
-                            'custrecord_ts_epmt_prepaydet_gener_trans': Number(idCheckAnticipo)
-                        }
-                    });
-                    record.submitFields({
-                        type: 'customtransaction_orden_pago',
-                        id: Number(DatosPagos[i][0]),
-                        values: {
-                            'transtatus': 'C'
-                        }
-                    });
+                    record.submitFields({ type: 'customrecord_ts_epmt_payment', id: Number(DatosPagos[i][12]), values: { 'custrecord_ts_epmt_prepaydet_gener_trans': Number(idCheckAnticipo) } });
+                    record.submitFields({ type: 'customtransaction_orden_pago', id: Number(DatosPagos[i][0]), values: { 'transtatus': 'C' } });
+                    record.submitFields({ type: recordType, id: idCheckAnticipo, values: { 'tranid': DatosPagos[i][15] } });
                 } else if (DatosPagos[i][11] == 'REJECTED') {
                     log.debug('REJECTED', 'REJECTED')
                     record.submitFields({
@@ -193,7 +189,7 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
                 relatedTransaction = op.custbody_ts_related_transaction[0].value;
                 relatedType = relatedT;
             }
-            arrayAuxi = [OrdenPago, beneficiario, impOrigen, impPago, estado, tipoEntidad, cuentaOrdenPago, memo, clase, departamento, ubicacion, Pago.status, Pago.PaymentID, relatedTransaction, relatedType];
+            arrayAuxi = [OrdenPago, beneficiario, impOrigen, impPago, estado, tipoEntidad, cuentaOrdenPago, memo, clase, departamento, ubicacion, Pago.status, Pago.PaymentID, relatedTransaction, relatedType, Pago.llave];
             Pagos.push(arrayAuxi);
         }
         return Pagos;
@@ -201,13 +197,11 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
 
     const crearCheque = (Lote, Pago) => {
         var recordlog = record.create({ type: ID_CHECK, isDynamic: true });
-        //Lote = [cuentaBanco,moneda,estado,subsidiaria,fechaPago,plantillaTEF];
-        //Pago = [OrdenPago,beneficiario,impOrigen,impPago,estado,formaPago,cuentaOrdenPago,memo,clase,departamento,ubicacion];
         recordlog.setValue({ fieldId: 'entity', value: Pago[1] });
         recordlog.setValue({ fieldId: 'subsidiary', value: Lote[3] });
         recordlog.setValue({ fieldId: 'account', value: Lote[0] });
         recordlog.setValue({ fieldId: 'currency', value: Lote[1] });
-        recordlog.setValue({ fieldId: 'trandate', value: Lote[4] });
+        recordlog.setValue({ fieldId: 'trandate', value: new Date() });
         recordlog.setValue({ fieldId: 'department', value: Number(Pago[9]) });
         recordlog.setValue({ fieldId: 'class', value: Number(Pago[8]) });
         recordlog.setValue({ fieldId: 'location', value: Number(Pago[10]) });
@@ -229,36 +223,29 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
 
     const crearAnticipo = (Lote, Pago, purchase = 0) => {
         var recordlog = record.create({ type: ID_VENDOR_PREPAYMENT, isDynamic: true });
-        //Lote = [cuentaBanco,moneda,estado,subsidiaria,fechaPago,plantillaTEF];
-        //Pago [OrdenPago,beneficiario,impOrigen,impPago,estado,formaPago,cuentaOrdenPago,memo,clase,departamento,ubicacion];
         recordlog.setValue({ fieldId: 'entity', value: Number(Pago[1]) });
         recordlog.setValue({ fieldId: 'subsidiary', value: Number(Lote[3]) });
         recordlog.setValue({ fieldId: 'currency', value: Lote[1] });
         recordlog.setValue({ fieldId: 'account', value: Number(Lote[0]) });
-        recordlog.setValue({ fieldId: 'trandate', value: Lote[4] });
+        recordlog.setValue({ fieldId: 'trandate', value: new Date() });
+        if (purchase == 1 && Pago[14][0].value == "PurchOrd")
+            recordlog.setValue({ fieldId: 'purchaseorder', value: Pago[13] });
         recordlog.setValue({ fieldId: 'department', value: Number(Pago[9]) });
         recordlog.setValue({ fieldId: 'class', value: Number(Pago[8]) });
         recordlog.setValue({ fieldId: 'location', value: Number(Pago[10]) });
         recordlog.setValue({ fieldId: 'memo', value: Pago[7] });
         recordlog.setValue({ fieldId: 'payment', value: Pago[3] });
         recordlog.setValue({ fieldId: 'custbody_est_emitido', value: 2 });
-        if (purchase == 1 && Pago[14][0].value == "PurchOrd")
-            recordlog.setValue({ fieldId: 'purchaseorder', value: Pago[13] });
         let IDAnticipo = recordlog.save({ enableSourcing: true, ignoreMandatoryFields: true });
-        //let IDAnticipo = recordlog.save();
         log.error('IDAnticipo', 'Anticipo Proveedor: ' + IDAnticipo);
         return IDAnticipo
     }
 
     const createVendorPayment = (Lote, Pago) => {
         try {
-            let recordlog = record.transform({
-                fromType: record.Type.VENDOR_BILL,
-                fromId: Pago[13],
-                toType: record.Type.VENDOR_PAYMENT,
-                isDynamic: true,
-            });
-            recordlog.setValue({ fieldId: 'trandate', value: Lote[4] });
+            let recordlog = record.transform({ fromType: record.Type.VENDOR_BILL, fromId: Pago[13], toType: record.Type.VENDOR_PAYMENT, isDynamic: true });
+            recordlog.setValue({ fieldId: 'account', value: Number(Lote[0]) });
+            recordlog.setValue({ fieldId: 'trandate', value: new Date() });
             recordlog.setValue({ fieldId: 'department', value: Number(Pago[9]) });
             recordlog.setValue({ fieldId: 'class', value: Number(Pago[8]) });
             recordlog.setValue({ fieldId: 'location', value: Number(Pago[10]) });
@@ -345,11 +332,10 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
     const BuscarFechaActual = () => {
         let date = new Date();
         var day = date.getDate();
-        var month = date.getMonth() + 1; // Los meses en JavaScript empiezan en 0
+        var month = date.getMonth() + 1;
         var year = date.getFullYear();
         var dayString = day.toString();
         var monthString = month.toString();
-        // Añadir ceros a la izquierda si es necesario
         if (dayString.length === 1) {
             dayString = "0" + dayString;
         }

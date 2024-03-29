@@ -1,0 +1,26 @@
+<suitelet scriptid="customscript_hu_ec_st_vale_provisional">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>HU_EC_ST_VALE_PROVISIONAL_CAJA</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/IntegracionesHunter/Plantillas/ValesDeCaja/SuiteletScripts/HU_EC_ST_VALE_PROVISIONAL_CAJA.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_hu_ec_st_vale_provisional">
+      <allemployees>T</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>F</allroles>
+      <audslctrole>ADMINISTRATOR</audslctrole>
+      <audsubsidiary>[ACCOUNT_SPECIFIC_VALUE]</audsubsidiary>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>ERROR</loglevel>
+      <runasrole></runasrole>
+      <status>RELEASED</status>
+      <title>HU_EC_ST_VALE_PROVISIONAL_CAJA</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

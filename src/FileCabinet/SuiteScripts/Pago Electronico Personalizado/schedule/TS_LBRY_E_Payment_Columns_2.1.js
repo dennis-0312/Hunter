@@ -136,7 +136,9 @@ define(['N/record', 'N/cache', 'N/file', 'N/runtime'], function (record, cache, 
 		{ label: 'custbody_ts_ec_numero_preimpreso', join: 'CUSTBODY_TS_RELATED_TRANSACTION', name: 'custbody_ts_ec_numero_preimpreso' },
 		{ label: 'custbody_ec_serie_cxc_retencion', name: 'formulatext', formula: "{CUSTBODY_TS_RELATED_TRANSACTION.custbody_ec_serie_cxc_retencion}" },
 		{ label: 'custbody_ts_ec_preimpreso_retencion', join: 'CUSTBODY_TS_RELATED_TRANSACTION', name: 'custbody_ts_ec_preimpreso_retencion' },
-		{ label: 'custbody_ht_emitido_pago_electronico', name: 'custbody_ht_emitido_pago_electronico' }
+		{ label: 'custbody_ht_emitido_pago_electronico', name: 'custbody_ht_emitido_pago_electronico' },
+		{ label: 'appliedtotransaction', name: 'appliedtotransaction' }
+		
 	]
 
 	const getSubsidiaryColumns = () => {
@@ -175,10 +177,7 @@ define(['N/record', 'N/cache', 'N/file', 'N/runtime'], function (record, cache, 
 	const getEPaymentPaymentBatchColumns = () => {
 		try {
 			let ePaymentPrePaymentColumns = [];
-			let ePaymentPrePaymentRecord = record.create({
-				type: "customrecord_ts_epmt_payment_batch",
-				isDynamic: true
-			});
+			let ePaymentPrePaymentRecord = record.create({ type: "customrecord_ts_epmt_payment_batch", isDynamic: true });
 			ePaymentPrePaymentColumns = getRecordFields(ePaymentPrePaymentRecord);
 			ePaymentPrePaymentColumns = ePaymentPrePaymentColumns.concat(prepayment_columns);
 			return ePaymentPrePaymentColumns;
@@ -190,10 +189,7 @@ define(['N/record', 'N/cache', 'N/file', 'N/runtime'], function (record, cache, 
 	const getEPaymentPaymentColumns = () => {
 		try {
 			let ePaymentPrePaymentDetailColumns = [];
-			let ePaymentPrePaymentDetailRecord = record.create({
-				type: "customrecord_ts_epmt_payment",
-				isDynamic: true
-			});
+			let ePaymentPrePaymentDetailRecord = record.create({ type: "customrecord_ts_epmt_payment", isDynamic: true });
 			ePaymentPrePaymentDetailColumns = getRecordFields(ePaymentPrePaymentDetailRecord);
 			ePaymentPrePaymentDetailColumns = ePaymentPrePaymentDetailColumns.concat(payment_columns);
 
@@ -206,10 +202,7 @@ define(['N/record', 'N/cache', 'N/file', 'N/runtime'], function (record, cache, 
 	const getBankDetailColumns = () => {
 		try {
 			let bankDetailColumns = [];
-			let bankDetailRecord = record.create({
-				type: "customrecord_2663_entity_bank_details",
-				isDynamic: true
-			});
+			let bankDetailRecord = record.create({ type: "customrecord_2663_entity_bank_details", isDynamic: true });
 			bankDetailColumns = getRecordFields(bankDetailRecord);
 			return bankDetailColumns;
 		} catch (e) {

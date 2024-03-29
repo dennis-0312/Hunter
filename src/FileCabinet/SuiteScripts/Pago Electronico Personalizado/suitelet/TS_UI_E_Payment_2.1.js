@@ -117,6 +117,9 @@ define([
         totalSummaryField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
         let transactionsSubList = form.addSublist(FIELDS.sublist.transactions.id, serverWidget.SublistType.LIST, FIELDS.sublist.transactions.text, FIELDS.tab.transactions.id);
+        form.addButton('btnClean', 'Limpiar Filtros', 'cleanFilters');
+        form.addButton('btnSumarImporte', 'Sumar Importe', 'sumImport');
+        form.addButton('btnResetImporte', 'Limpiar Importe', 'resImport');
         transactionsSubList.addSublistField(FIELDS.sublistfield.select.id, serverWidget.FieldType.CHECKBOX, FIELDS.sublistfield.select.text);
         transactionsSubList.addSublistField(FIELDS.sublistfield.transactionid.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.transactionid.text)
             .updateDisplayType(serverWidget.FieldDisplayType.HIDDEN);
@@ -133,7 +136,7 @@ define([
         let amountpayable = transactionsSubList.addSublistField(FIELDS.sublistfield.amountpayable.id, serverWidget.FieldType.CURRENCY, FIELDS.sublistfield.amountpayable.text)
         amountpayable.updateDisplayType(serverWidget.FieldDisplayType.ENTRY);
         amountpayable.updateDisplayType(serverWidget.FieldDisplayType.HIDDEN);
-        transactionsSubList.addMarkAllButtons()
+        transactionsSubList.addMarkAllButtons();
         userInterface.setTransactionSublistData(transactionsSubList);
         //form.addButton(FIELDS.button.cleanfilters.id, FIELDS.button.cleanfilters.text, FIELDS.button.cleanfilters.function);
 
@@ -362,14 +365,15 @@ define([
         form.addTab(FIELDS.tab.payments.id, FIELDS.tab.payments.text);
 
         let paymentsSubList = form.addSublist(FIELDS.sublist.payments.id, serverWidget.SublistType.LIST, FIELDS.sublist.payments.text);
-        paymentsSubList.addSublistField(FIELDS.sublistfield.select.id, serverWidget.FieldType.CHECKBOX, FIELDS.sublistfield.select.text)
-            .updateDisplayType(serverWidget.FieldDisplayType.HIDDEN);
+        paymentsSubList.addSublistField(FIELDS.sublistfield.select.id, serverWidget.FieldType.CHECKBOX, FIELDS.sublistfield.select.text).updateDisplayType(serverWidget.FieldDisplayType.HIDDEN);
         paymentsSubList.addSublistField(FIELDS.sublistfield.paymentid.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.paymentid.text);
         paymentsSubList.addSublistField(FIELDS.sublistfield.documentnumber.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.documentnumber.text);
         paymentsSubList.addSublistField(FIELDS.sublistfield.entity.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.entity.text);
         paymentsSubList.addSublistField(FIELDS.sublistfield.amount.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.amount.text);
         paymentsSubList.addSublistField(FIELDS.sublistfield.paymentmethod.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.paymentmethod.text);
         paymentsSubList.addSublistField(FIELDS.sublistfield.status.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.status.text);
+        log.error('Corte1', 'Corte1')
+        paymentsSubList.addSublistField(FIELDS.sublistfield.nro.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.nro.text);
 
         form.addTab(FIELDS.tab.notfound.id, FIELDS.tab.notfound.text);
         let notFoundSubList = form.addSublist(FIELDS.sublist.notfound.id, serverWidget.SublistType.LIST, FIELDS.sublist.notfound.text);
@@ -440,13 +444,14 @@ define([
                 let line = lines[i].split(breakColumns);
                 let selected = line[0];
                 let paymentId = line[1];
+                let llave = line[7];
                 let status = "";
                 if (line[0] == 'T') {
                     status = "APPROVED";
                 } else {
                     status = "REJECTED";
                 }
-                resultData.push({ PaymentID: paymentId, status });
+                resultData.push({ PaymentID: paymentId, status, llave });
             }
         } catch (error) {
             log.error("An error was found in [getSublistData] function", error);
@@ -472,8 +477,8 @@ define([
     }
 
     const submitCreatePaymentScheduleTask = (paymentBatchId, data) => {
-        log.error('submitCreatePaymentScheduleTask', data);
-        log.error('submitCreatePaymentScheduleTask', paymentBatchId);
+        // log.error('submitCreatePaymentScheduleTask', data);
+        // log.error('submitCreatePaymentScheduleTask', paymentBatchId);
         let scriptTask = task.create({
             taskType: task.TaskType.SCHEDULED_SCRIPT,
             scriptId: 'customscript_ts_ss_e_payment_create_pay',

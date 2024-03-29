@@ -13,10 +13,11 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             try {
                 let environmentFeatures = getEnviromentFeatures();
                 let scriptParameters = getScriptParameters(environmentFeatures);
-
                 let transactions = getATSAnulados(scriptParameters, environmentFeatures);
-
-                return transactions;
+                log.debug('transactions', transactions)
+                let transationsRT = getATSAnuladosRT(scriptParameters, environmentFeatures, transactions);
+                log.debug('transationsRT', transationsRT)
+                return transationsRT;
             } catch (error) {
                 log.error("error", error);
             }
@@ -102,26 +103,17 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             });
 
             if (scriptParameters.periodId) {
-                let periodFilter = search.createFilter({
-                    name: 'postingperiod',
-                    operator: search.Operator.ANYOF,
-                    values: scriptParameters.periodId
-                });
+                let periodFilter = search.createFilter({ name: 'postingperiod', operator: search.Operator.ANYOF, values: scriptParameters.periodId });
                 atsAnuladosSearch.filters.push(periodFilter);
             }
 
             if (environmentFeatures.hasSubsidiaries) {
-                let subsidiaryFilter = search.createFilter({
-                    name: 'subsidiary',
-                    operator: search.Operator.ANYOF,
-                    values: scriptParameters.subsidiaryId
-                });
+                let subsidiaryFilter = search.createFilter({ name: 'subsidiary', operator: search.Operator.ANYOF, values: scriptParameters.subsidiaryId });
                 atsAnuladosSearch.filters.push(subsidiaryFilter);
             }
 
             let pagedData = atsAnuladosSearch.runPaged({ pageSize: MAX_PAGINATION_SIZE });
-
-            let resultArray = [];
+            let resultArray = new Array();
             for (let i = 0; i < pagedData.pageRanges.length; i++) {
 
                 let page = pagedData.fetch({
@@ -142,11 +134,43 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             return resultArray;
         }
 
+        const getATSAnuladosRT = (scriptParameters, environmentFeatures, transactions) => {
+            let atsAnuladosSearch = search.load({ id: "customsearch_ts_ec_ats_anulado_cr" });
+
+            if (scriptParameters.periodId) {
+                let periodFilter = search.createFilter({ name: 'postingperiod', operator: search.Operator.ANYOF, values: scriptParameters.periodId });
+                atsAnuladosSearch.filters.push(periodFilter);
+            }
+
+            if (environmentFeatures.hasSubsidiaries) {
+                let subsidiaryFilter = search.createFilter({ name: 'subsidiary', operator: search.Operator.ANYOF, values: scriptParameters.subsidiaryId });
+                atsAnuladosSearch.filters.push(subsidiaryFilter);
+            }
+            let searchResultCount = atsAnuladosSearch.runPaged().count;
+            log.debug('searchResultCount', searchResultCount)
+            let pagedData = atsAnuladosSearch.runPaged({ pageSize: MAX_PAGINATION_SIZE });
+
+            let resultArray = [];
+            for (let i = 0; i < pagedData.pageRanges.length; i++) {
+                let page = pagedData.fetch({ index: pagedData.pageRanges[i].index });
+                for (let j = 0; j < page.data.length; j++) {
+                    let result = page.data[j];
+                    let columns = result.columns;
+
+                    let rowArray = [];
+                    for (let k = 0; k < columns.length; k++) {
+                        rowArray.push(result.getValue(columns[k]));
+                    }
+                    transactions.push(rowArray);
+                }
+            }
+            return transactions;
+        }
+
+
         const getEnviromentFeatures = () => {
             let features = {};
-            features.hasSubsidiaries = runtime.isFeatureInEffect({
-                feature: "SUBSIDIARIES"
-            });
+            features.hasSubsidiaries = runtime.isFeatureInEffect({ feature: "SUBSIDIARIES" });
             return features;
         }
 
@@ -159,6 +183,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_mr_ec_ats_anulado_folder');
             scriptParameters.atsFilesId = currentScript.getParameter('custscript_ts_mr_ec_ats_anulado_atsfiles');
             scriptParameters.logId = currentScript.getParameter('custscript_ts_mr_ec_ats_anulado_logid');
+            //<I> rhuaccha: 2024-02-26
+            scriptParameters.format = currentScript.getParameter('custscript_ts_mr_ec_ats_anulado_formato');
+            //<F> rhuaccha: 2024-02-26
 
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
@@ -195,6 +222,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             params['custscript_ts_mr_ec_ats_vnt_exp_atsfiles'] = scriptParameters.atsFilesId;
 
             params['custscript_ts_mr_ec_ats_vnt_exp_logid'] = scriptParameters.logId;
+            //<I> rhuaccha: 2024-02-26
+            params['custscript_ts_mr_ec_ats_vnt_exp_formato'] = scriptParameters.format;
+            //<F> rhuaccha: 2024-02-26
             log.error("executeMapReduce", params);
             let scriptTask = task.create({
                 taskType: task.TaskType.MAP_REDUCE,

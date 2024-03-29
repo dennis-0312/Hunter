@@ -40,7 +40,8 @@ define(['N/runtime', 'N/search',], function (runtime, search) {
                 let existe = buscarFacCompra(customer, pe_number);
                 console.log('Usuario', userObj.id);
                 console.log(existe)
-                if (existe || userObj.id == 4 || userObj.id == 13) {
+                if (existe) {
+                    // if (existe || userObj.id == 4 || userObj.id == 13) {
                     alert('Ya existe una Factura de Compra con el mismo Proveedor y Numero Preimpreso');
                     return false;
                 }

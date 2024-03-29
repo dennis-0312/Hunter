@@ -933,6 +933,8 @@
       <object>customrecord_2663_entity_bank_details.custrecord_entity_ec_forma_pago</object>
       <object>customrecord_2663_entity_bank_details.custrecord_ts_epmt_payment_file_format</object>
       <object>custform_ec_formulario_ordencompra</object>
+      <object>custform_ts_orden_pago</object>
+      <object>custform_fam_leaseproposal_entry</object>
 
       <!-- <object>custform_97_7451241_544</object> -->
     </objects>
@@ -942,6 +944,15 @@
       <file>/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_SuiteGLProvision.js</file>
       <file>/SuiteScripts/ErickHunter/NC_CS_Custom_Inventory.js</file>
       <file>/SuiteScripts/TS NET Scripts/Prueba/TS_WA_PendingApproval_OP.js</file>
+      <file>/SuiteScripts/Desarollo/main/UserEvents/Cheques/HT_UE_ELEMENTOS_PERSONALIZADOS.js</file>
+      <file>/SuiteScripts/Desarollo/main/Suitelets/Cheques/HT_SL_IMPRESION_PERSONALIZADA.js</file>
+      <file>/SuiteScripts/IntegracionesHunter/Plantillas/ValesDeCaja/SuiteletScripts/HU_EC_ST_VALE_DEFINITIVO_CAJA.js</file>
+      <file>/SuiteScripts/IntegracionesHunter/Plantillas/ValesDeCaja/SuiteletScripts/HU_EC_ST_VALE_PROVISIONAL_CAJA.js</file>
+      <file>/SuiteScripts/IntegracionesHunter/Plantillas/ValesDeCaja/UserEventScripts/HU_EC_UE_VALE_DEFINITIVO_CAJA.js</file>
+      <file>/SuiteScripts/IntegracionesHunter/Plantillas/ValesDeCaja/UserEventScripts/HU_EC_UE_VALE_PROVISIONAL_CAJA.js</file>
+      <file>/SuiteScripts/Pago Electronico Personalizado/userevent/TS_CS_E_Payment_Reverse.js</file>
+      <file>/SuiteScripts/Pago Electronico Personalizado/schedule/TS_SS_E_Payment_Reverse_Payment.js</file>
+      <file>/SuiteScripts/Pago Electronico Personalizado/userevent/TS_UE_E_Payment_Reverse.js</file>
       <!-- <file>/SuiteScripts/Pago Electronico
       Personalizado/schedule/TS_SS_E_Payment_Create_Payment.js</file>
       <file>/SuiteScripts/Pago Electronico

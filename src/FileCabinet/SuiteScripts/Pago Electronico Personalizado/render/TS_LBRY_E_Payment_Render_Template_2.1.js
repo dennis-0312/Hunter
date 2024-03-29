@@ -41,7 +41,6 @@ define(["N/runtime", 'N/render', 'N/file', './TS_LBRY_E_Payment_Freemarker_Build
                 });
 
                 let outputFile = renderer.renderAsString();
-
                 return outputFile;
 
             } catch (error) {
@@ -54,7 +53,6 @@ define(["N/runtime", 'N/render', 'N/file', './TS_LBRY_E_Payment_Freemarker_Build
             try {
                 let renderer = render.create();
                 let content = FreeMarker.create(ftlTemplateContent);
-
 
                 let fileJson = file.create({
                     name: "Prueba_JSON",
@@ -82,11 +80,9 @@ define(["N/runtime", 'N/render', 'N/file', './TS_LBRY_E_Payment_Freemarker_Build
                     alias: 'jsonString',
                     data: jsonString
                 });
-
+                
                 let outputFile = renderer.renderAsPdf();
-
                 return outputFile;
-
             } catch (error) {
                 log.error('[ RenderTemplate - createPDFFileRender ]', error);
             }

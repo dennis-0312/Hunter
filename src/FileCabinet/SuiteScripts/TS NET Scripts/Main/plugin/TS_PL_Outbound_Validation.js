@@ -21,7 +21,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
         var transactionId = '';
         var userId = '';
         const SUBSIDIARIA = 2;
-        const FORM_LIQUIDACION = 128;
+        const FORM_LIQUIDACION = 154; //SB:128 - PR:154
 
         function validate(pluginContext) {
             log.debug({
@@ -1016,8 +1016,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     ''
                 ];
                 billLines.push(ITline);
-
-                var ICline = ['IC', transactionRecord.date, transactionRecord.subsidiaryAddress, transactionRecord.vendorSpecialTaxPayer, transactionRecord.vendorObligatedToAccountFor, transactionRecord.vendorDocumentTypeCode,
+                //transactionRecord.vendorSpecialTaxPayer,*/ campo que estaba nates en el 3er espacio empezando desde 0
+                var ICline = ['IC', transactionRecord.date, transactionRecord.subsidiaryAddress, "", transactionRecord.vendorObligatedToAccountFor, transactionRecord.vendorDocumentTypeCode,
                     "", transactionRecord.vendorName, transactionRecord.vendorDocumentNumber, transactionRecord.currency, '', '', '', '',
                     '0', '', transactionRecord.period, "", "", "", "", "", "", "", "", "", "", ''];
                 billLines.push(ICline);
@@ -1325,36 +1325,6 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     "NO",
                     ""
                 ]
-                // var ICline = [
-                //     "IC",
-                //     transactionRecord.date,
-                //     transactionRecord.subsidiaryAddress,
-                //     transactionRecord.vendorSpecialTaxPayer,
-                //     transactionRecord.vendorObligatedToAccountFor,
-                //     transactionRecord.vendorDocumentTypeCode,
-                //     "SI",
-                //     transactionRecord.vendorName,
-                //     transactionRecord.vendorDocumentNumber,
-                //     transactionRecord.currency,
-                //     "",
-                //     "",
-                //     "",
-                //     "",
-                //     "0",
-                //     "",
-                //     periodoFiscal,
-                //     "",
-                //     "",
-                //     "",
-                //     "",
-                //     "",
-                //     "",
-                //     "",
-                //     "",
-                //     "",
-                //     "NO",
-                //     ""
-                // ]
                 billLines.push(ICline);
 
                 var codigoPais = getCodigoPais(transactionRecord.codPais);

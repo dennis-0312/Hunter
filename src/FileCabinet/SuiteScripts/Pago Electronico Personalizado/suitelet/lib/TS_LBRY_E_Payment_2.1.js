@@ -284,6 +284,7 @@ define([
                         ["sublistfield", "amount", "Importe de Pago"],
                         ["sublistfield", "paymentmethod", "Método de Pago"],
                         ["sublistfield", "status", "Estado de Banco"],
+                        ["sublistfield", "nro", "Nro Transacción"],
 
                         ["tab", "notfound", "No Encontrados"],
                         ["sublist", "notfound", "No Encontrados"],
@@ -458,7 +459,7 @@ define([
                 }
             } else {
                 let paymentsJson = this.getPayments();
-                log.error('RESULT1', paymentsJson);
+                //log.error('RESULT1', paymentsJson);
                 let savedSearch = search.load({ id: "customsearch_ts_epmt_payment_orders" });//TS E Payment Ordenes de Pago - PRODUCCION
 
                 if (this.PARAMETERS.subsidiary) {
@@ -492,10 +493,9 @@ define([
                     savedSearch.filters.push(paymentMethodFilter);
                 }
                 var searchResultCount = savedSearch.runPaged().count;
-                log.error('RESULT2', searchResultCount);
+                //log.error('RESULT2', searchResultCount);
                 if (searchResultCount) {
                     let pagedData = savedSearch.runPaged({ pageSize: this.CONSTANT.PAGINATION_SIZE });
-                    //pagedData.pageRanges.forEach(function (pageRange) {
                     let page = pagedData.fetch({ index: this.PARAMETERS.page });
                     let i = 0;
                     page.data.forEach(result => {
@@ -514,7 +514,6 @@ define([
                         if (paymentsJson[id] !== undefined) {
                             remainingAmount = Math.round(Number(amount - paymentsJson[id]) * 100) / 100;
                         }
-                        //log.error("remainingAmount", remainingAmount);
                         if (remainingAmount > 0) {
                             transactionSubList.setSublistValue("custpage_slf_transactionid", i, id);
                             if (paymentMethodId) transactionSubList.setSublistValue("custpage_slf_paymentmethodid", i, paymentMethodId);
@@ -529,7 +528,6 @@ define([
                             i++
                         }
                     });
-                    //});
                 }
             }
         }
@@ -537,7 +535,11 @@ define([
         setLogSublistData = (logSubList) => {
             let newSearch = search.create({
                 type: "customrecord_ts_epmt_log",
-                filters: [["isinactive", "is", "false"]],
+                filters: [
+                    ["isinactive", "is", "false"],
+                    "AND",
+                    ["custrecord_ts_epmt_log_status","isnot","Liberado"]
+                ],
                 columns: [
                     search.createColumn({ name: "name", sort: search.Sort.DESC, label: "ID" }),
                     search.createColumn({ name: "custrecord_ts_epmt_log_user", label: "Usuario" }),
@@ -546,16 +548,9 @@ define([
                     search.createColumn({ name: "custrecord_ts_epmt_log_status", label: "Estado" }),
                     search.createColumn({ name: "custrecord_ts_epmt_log_documents", label: "Documentos" }),
                     search.createColumn({ name: "custrecord_ts_epmt_log_result", label: "Resultado" }),
-                    search.createColumn({
-                        name: "custrecord_ts_epmt_prepmt_tef_file_url",
-                        join: "CUSTRECORD_TS_EPMT_LOG_PRE_PAGO",
-                        label: "URL Archivo EFT"
-                    }),
-                    // search.createColumn({
-                    //     name: "custrecord_ts_epmt_prepmt_pdf_file_url",
-                    //     join: "CUSTRECORD_TS_EPMT_LOG_PRE_PAGO",
-                    //     label: "URL PDF"
-                    // })
+                    search.createColumn({ name: "custrecord_ts_epmt_prepmt_tef_file_url", join: "CUSTRECORD_TS_EPMT_LOG_PRE_PAGO", label: "URL Archivo EFT" }),
+                    search.createColumn({ name: "custrecord_ts_epmt_prepmt_pdf_file_url", join: "CUSTRECORD_TS_EPMT_LOG_PRE_PAGO", label: "URL PDF" }),
+                    search.createColumn({ name: "custrecord_ts_epmt_log_pre_pago", label: "loteID" }),
                 ]
             }).run().getRange(0, 1000);
 
@@ -570,7 +565,8 @@ define([
                 let documentos = result.getValue(columns[5]).length > 300 ? result.getValue(columns[5]).substring(0, 297) + '...' : result.getValue(columns[5]);
                 let resultado = result.getValue(columns[6]);
                 let eftUrl = result.getValue(columns[7]);
-                //let pdfUrl = result.getValue(columns[8]);
+                let pdfUrl = result.getValue(columns[8]);
+                let loteID = result.getValue(columns[9]);
 
                 if (id) logSubList.setSublistValue('custpage_slf_logid', j, id);
                 if (usuario) logSubList.setSublistValue('custpage_slf_user', j, usuario);
@@ -578,11 +574,17 @@ define([
                 if (fechaFin) logSubList.setSublistValue('custpage_slf_enddate', j, fechaFin);
                 if (estado) logSubList.setSublistValue('custpage_slf_status', j, estado);
                 if (documentos) logSubList.setSublistValue('custpage_slf_documents', j, documentos);
-                if (resultado) logSubList.setSublistValue('custpage_slf_result', j, resultado);
-                if (eftUrl /*|| pdfUrl*/) {
-                    let html = `<a href="${eftUrl.replace('https://7451241.app.netsuite.com', '')}" download>Descargar</a>`;
-                    // html += '<p> </p>';
-                    // html += `<a href="${pdfUrl.replace('https://7451241-sb1.app.netsuite.com', '')}" download>PDF</a>`;
+                if (resultado) {
+                    let html2 = `<a href="https://7451241.app.netsuite.com/app/common/custom/custrecordentry.nl?rectype=1281&id=${loteID}">${resultado}</a>`;
+                    //let html2 = `<a href="https://7451241-sb1.app.netsuite.com/app/common/custom/custrecordentry.nl?rectype=1184&id=${loteID}">${resultado}</a>`;
+                    logSubList.setSublistValue('custpage_slf_result', j, html2);
+                }
+                if (eftUrl || pdfUrl) {
+                    let html = `<a href="${eftUrl.replace('https://7451241.app.netsuite.com', '')}" download>TXT</a>`; //PR
+                    //let html = `<a href="${eftUrl.replace('https://7451241-sb1.app.netsuite.com', '')}" download>TXT</a>`; //SB
+                    html += '<p> </p>';
+                    html += `<a href="${pdfUrl.replace('https://7451241.app.netsuite.com', '')}" download>PDF</a>`;
+                    //html += `<a href="${pdfUrl.replace('https://7451241-sb1.app.netsuite.com', '')}" download>PDF</a>`;
                     logSubList.setSublistValue('custpage_slf_files', j, html);
                 }
                 j++;
@@ -728,30 +730,10 @@ define([
                     ["isinactive", "is", "F"]
                 ],
                 columns: [
-                    search.createColumn({
-                        name: "custrecord_ts_epmt_prepaydet_pre_payment",
-                        summary: "GROUP",
-                        sort: search.Sort.DESC,
-                        label: "Lote de Pago"
-                    }),
-                    search.createColumn({
-                        name: "custrecord_ts_epmt_prepmt_payment_date",
-                        join: "CUSTRECORD_TS_EPMT_PREPAYDET_PRE_PAYMENT",
-                        summary: "GROUP",
-                        label: "Fecha de Pago"
-                    }),
-                    search.createColumn({
-                        name: "custrecord_ts_epmt_prepmt_bank_account",
-                        join: "CUSTRECORD_TS_EPMT_PREPAYDET_PRE_PAYMENT",
-                        summary: "GROUP",
-                        label: "Cuenta Banco"
-                    }),
-                    search.createColumn({
-                        name: "formulanumeric",
-                        summary: "SUM",
-                        formula: "1",
-                        label: "Fórmula (numérica)"
-                    })
+                    search.createColumn({ name: "custrecord_ts_epmt_prepaydet_pre_payment", summary: "GROUP", sort: search.Sort.DESC, label: "Lote de Pago" }),
+                    search.createColumn({ name: "custrecord_ts_epmt_prepmt_payment_date", join: "CUSTRECORD_TS_EPMT_PREPAYDET_PRE_PAYMENT", summary: "GROUP", label: "Fecha de Pago" }),
+                    search.createColumn({ name: "custrecord_ts_epmt_prepmt_bank_account", join: "CUSTRECORD_TS_EPMT_PREPAYDET_PRE_PAYMENT", summary: "GROUP", label: "Cuenta Banco" }),
+                    search.createColumn({ name: "formulanumeric", summary: "SUM", formula: "1", label: "Fórmula (numérica)" })
                 ]
             });
 
@@ -794,14 +776,16 @@ define([
             let count = 1;
             iterator.each(function (line) {
                 let lineValues = line.value;
-                let llave = parseInt(lineValues.substring(156, 170));
-                let vatregnumber = lineValues.substring(68, 82);
+                let llave = parseInt(lineValues.substring(154, 169));
+                //let vatregnumber = lineValues.substring(68, 82);
+                let vatregnumber = lineValues.substring(68, 78);
                 let amount = lineValues.substring(188, 201);
                 let decimals = lineValues.substring(201, 203);
                 let result = lineValues.substring(369, 409);
+                let nroTransaction = lineValues.substring(309, 319);
                 vatregnumber = vatregnumber.replace(' ', '');
                 log.error("FILA " + llave + "-" + + count, [count, vatregnumber, Number(`${amount}.${decimals}`), result, lineValues]);
-                resultArray.push([count, vatregnumber, Number(`${amount}.${decimals}`), result, lineValues]);
+                resultArray.push([count, vatregnumber, Number(`${amount}.${decimals}`), result, lineValues, nroTransaction, llave]);
                 count++;
                 return true
             });
@@ -866,6 +850,7 @@ define([
                 }
                 let id = result.id;
                 let documentNumber = result.getText(columns[3]);
+                let llaveid = result.getValue(columns[3]);
                 let entityId = result.getValue(columns[4]);
                 let entityType = result.getValue(columns[5]);
                 let entity = result.getValue(columns[6]);
@@ -876,13 +861,18 @@ define([
                 if (entity) paymentsSubList.setSublistValue('custpage_slf_entity', i, entity);
                 if (amount) paymentsSubList.setSublistValue('custpage_slf_amount', i, amount);
                 if (paymentMethod) paymentsSubList.setSublistValue('custpage_slf_paymentmethod', i, paymentMethod);
-
+                paymentsSubList.setSublistValue('custpage_slf_nro', i, ' ');
+                log.error('ID', llaveid);
+                // if (nro) paymentsSubList.setSublistValue('custpage_slf_nro', i, 'nroTran');
                 if (this.PARAMETERS.file) {
-                    let vatregnumber = this.getVatRegNumber(entityType, entityId);
-                    log.error('TRACK1', vatregnumber + ' - ' + amount);
-                    let index = fileContentArray.findIndex(result => { return result[1] == vatregnumber && result[2] == amount });
+                    //let vatregnumber = this.getVatRegNumber(entityType, entityId);
+                    //log.error('TRACK1', vatregnumber + ' - ' + amount);
+                    // let index = fileContentArray.findIndex(result => { return result[1] == vatregnumber && result[2] == amount });
+                    //log.error('TRACK1', vatregnumber + ' - ' + amount);
+                    let index = fileContentArray.findIndex(result => { return result[6] == llaveid });
                     if (index == -1) {
                         paymentsSubList.setSublistValue('custpage_slf_status', i, "No se encontró el pago");
+                        paymentsSubList.setSublistValue('custpage_slf_nro', i, ' ');
                     } else {
                         let fileContentRow = fileContentArray[index];
                         if (fileContentRow[3].indexOf('No existe cuenta') != -1) {
@@ -890,6 +880,7 @@ define([
                         } else {
                             paymentsSubList.setSublistValue('custpage_slf_status', i, "Pago encontrado");
                             paymentsSubList.setSublistValue('custpage_slf_select', i, 'T');
+                            paymentsSubList.setSublistValue('custpage_slf_nro', i, fileContentRow[5]);
                         }
                         fileContentArray.splice(index, 1);
                     }
@@ -898,8 +889,8 @@ define([
                 }
                 i++;
             });
-            log.error("fileContentArray", fileContentArray.length);
-            log.error("fileContentArrayObjects", fileContentArray);
+            // log.error("fileContentArray", fileContentArray.length);
+            // log.error("fileContentArrayObjects", fileContentArray);
             for (let j = 0; j < fileContentArray.length; j++) {
                 let line = fileContentArray[j][0];
                 let value = fileContentArray[j][4].substring(0, 299);

@@ -1,8 +1,8 @@
 {
     "paymentBatch": {
         "internalid": {
-            "value": "1678",
-            "text": "1678"
+            "value": "1976",
+            "text": "1976"
         },
         "custrecord_ts_epmt_prepmt_status": "Registrado",
         "custrecord_ts_epmt_prepmt_currency": {
@@ -13,7 +13,7 @@
             "value": "",
             "text": ""
         },
-        "custrecord_ts_epmt_prepmt_payment_date": "2024-03-12T07:00:00.000Z",
+        "custrecord_ts_epmt_prepmt_payment_date": "2024-03-25T07:00:00.000Z",
         "custrecord_ts_epmt_prepmt_pdf_file_url": "",
         "custrecord_ts_epmt_prepmt_tef_file_url": "",
         "custrecord_ts_epmt_prepmt_tef_template": {
@@ -22,7 +22,7 @@
         },
         "custrecord_ts_epmt_prepmt_subsidiary": {
             "value": "2",
-            "text": "Empresa principal : CARSEG"
+            "text": "Parent Company : CARSEG"
         },
         "custrecord_ts_epmt_prepmt_bank_account": {
             "value": "229",
@@ -34,15 +34,15 @@
         "detail": [
             {
                 "internalid": {
-                    "value": "791",
-                    "text": "791"
+                    "value": "969",
+                    "text": "969"
                 },
                 "custrecord_ts_epmt_prepaydet_origin_tran": {
-                    "value": "81444",
-                    "text": "Pago anticipado al proveedor #2424270"
+                    "value": "86907",
+                    "text": "Vendor Prepayment #2424296"
                 },
-                "custrecord_ts_epmt_prepaydet_tran_amount": 1,
-                "custrecord_ts_epmt_prepaydet_paym_amount": 1,
+                "custrecord_ts_epmt_prepaydet_tran_amount": 36.26,
+                "custrecord_ts_epmt_prepaydet_paym_amount": 36.26,
                 "custrecord_ts_epmt_prepaydet_payord_acc": {
                     "value": "",
                     "text": ""
@@ -57,410 +57,48 @@
                     "text": " "
                 },
                 "custrecord_ts_epmt_prepaydet_entity": {
-                    "value": "562",
-                    "text": "P-EC-0919787309001"
+                    "value": "563",
+                    "text": "P-EC-BC0837519"
                 },
                 "custrecord_ts_epmt_prepaydet_pre_payment": {
-                    "value": "1678",
-                    "text": "1678"
+                    "value": "1976",
+                    "text": "1976"
                 },
                 "memo": "",
                 "custrecord_ts_epmt_prepaydet_entity.type": {
                     "value": "Vendor",
-                    "text": "Proveedor"
-                },
-                "ebank": {
-                    "internalid": {
-                        "value": "7",
-                        "text": "7"
-                    },
-                    "custrecord_2663_entity_acct_no": "",
-                    "custrecord_9572_subsidiary": {
-                        "value": "2",
-                        "text": "Empresa principal : CARSEG"
-                    },
-                    "custrecord_2663_entity_iban": "",
-                    "custrecord_2663_entity_issuer_num": "",
-                    "custrecord_2663_entity_ec_tipo_cuentacob": {
-                        "value": "6",
-                        "text": "03"
-                    },
-                    "custrecord_2663_entity_address3": "",
-                    "custrecord_2663_entity_address2": "",
-                    "custrecord_2663_entity_address1": "",
-                    "custrecord_15152_is_acc_num_encrypted": false,
-                    "custrecord_2663_entity_country": {
-                        "value": "",
-                        "text": ""
-                    },
-                    "custrecord_2663_entity_state": "",
-                    "custrecord_2663_entity_bank_no": "",
-                    "custrecord_2663_parent_customer": {
-                        "value": "",
-                        "text": ""
-                    },
-                    "custrecord_2663_child_id": "",
-                    "custrecord_2663_num_payments": "",
-                    "custrecord_2663_entity_processor_code": "00363",
-                    "custrecord_ts_epmt_payment_file_format": {
-                        "value": "1",
-                        "text": "1"
-                    },
-                    "custrecord_2663_entity_acct_name": "",
-                    "custrecord_2663_reference": "",
-                    "custrecord_2663_entity_iban_check": "",
-                    "custrecord_entity_ec_forma_pago": {
-                        "value": "3",
-                        "text": "COB"
-                    },
-                    "custrecord_2663_entity_bank_code": {
-                        "value": "17",
-                        "text": "17"
-                    },
-                    "custrecord_2663_acct_type": {
-                        "value": "",
-                        "text": ""
-                    },
-                    "custrecord_2663_entity_bic": "",
-                    "custrecord_2663_entity_payment_desc": "",
-                    "custrecord_2663_entity_bban": "1441340",
-                    "custrecord_2663_entity_branch_no": "",
-                    "custrecord_2663_entity_city": "",
-                    "custrecord_2663_edi": false,
-                    "custrecord_2663_parent_partner": {
-                        "value": "",
-                        "text": ""
-                    },
-                    "custrecord_2663_entity_zip": "",
-                    "custrecord_2663_entity_swift": "",
-                    "custrecord_2663_entity_company_id": "",
-                    "custrecord_2663_entity_country_code": "",
-                    "custrecord_2663_entity_signature": "",
-                    "custrecord_2663_entity_bank_acct_type": {
-                        "value": "1",
-                        "text": "Cuenta corriente"
-                    },
-                    "custrecord_2663_entity_billing_seq_type": {
-                        "value": "",
-                        "text": ""
-                    },
-                    "custrecord_2663_parent_vendor": {
-                        "value": "562",
-                        "text": "P-EC-0919787309001 MARTHA MORENO CEDEÑO"
-                    },
-                    "custrecord_2663_entity_ref_amended": {
-                        "value": "",
-                        "text": ""
-                    },
-                    "custrecord_2663_entity_bank_name": "",
-                    "custrecord_2663_parent_employee": {
-                        "value": "",
-                        "text": ""
-                    },
-                    "custrecord_2663_edi_value": "",
-                    "custrecord_2663_customer_code": "",
-                    "custrecord_2663_entity_bank_fee_code": {
-                        "value": "",
-                        "text": ""
-                    },
-                    "custrecord_2663_entity_bank_type": {
-                        "value": "1",
-                        "text": "Principal"
-                    },
-                    "custrecord_2663_entity_acct_suffix": "",
-                    "custrecord_2663_entity_file_format": {
-                        "value": "167",
-                        "text": "Bolivariano"
-                    },
-                    "custrecord_2663_entity_branch_name": "",
-                    "custrecord_2663_baby_bonus": false,
-                    "custrecord_2663_entity_country_check": "",
-                    "custrecord_2663_parent_cust_ref": {
-                        "value": "",
-                        "text": ""
-                    }
-                }
-            },
-            {
-                "internalid": {
-                    "value": "792",
-                    "text": "792"
-                },
-                "custrecord_ts_epmt_prepaydet_origin_tran": {
-                    "value": "81445",
-                    "text": "Pago anticipado al proveedor #2424271"
-                },
-                "custrecord_ts_epmt_prepaydet_tran_amount": 1,
-                "custrecord_ts_epmt_prepaydet_paym_amount": 1,
-                "custrecord_ts_epmt_prepaydet_payord_acc": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_ts_epmt_prepaydet_paym_method": {
-                    "value": "2",
-                    "text": "CHE"
-                },
-                "custrecord_ts_epmt_prepaydet_status": "Registrado",
-                "custrecord_ts_epmt_prepaydet_gener_trans": {
-                    "value": "",
-                    "text": " "
-                },
-                "custrecord_ts_epmt_prepaydet_entity": {
-                    "value": "1283",
-                    "text": "P-EC-0990000530001"
-                },
-                "custrecord_ts_epmt_prepaydet_pre_payment": {
-                    "value": "1678",
-                    "text": "1678"
-                },
-                "memo": "",
-                "custrecord_ts_epmt_prepaydet_entity.type": {
-                    "value": "Vendor",
-                    "text": "Proveedor"
-                }
-            },
-            {
-                "internalid": {
-                    "value": "793",
-                    "text": "793"
-                },
-                "custrecord_ts_epmt_prepaydet_origin_tran": {
-                    "value": "81557",
-                    "text": "Cheque #2424273"
-                },
-                "custrecord_ts_epmt_prepaydet_tran_amount": 1,
-                "custrecord_ts_epmt_prepaydet_paym_amount": 1,
-                "custrecord_ts_epmt_prepaydet_payord_acc": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_ts_epmt_prepaydet_paym_method": {
-                    "value": "2",
-                    "text": "CHE"
-                },
-                "custrecord_ts_epmt_prepaydet_status": "Registrado",
-                "custrecord_ts_epmt_prepaydet_gener_trans": {
-                    "value": "",
-                    "text": " "
-                },
-                "custrecord_ts_epmt_prepaydet_entity": {
-                    "value": "574",
-                    "text": "C-EC-0190381633001"
-                },
-                "custrecord_ts_epmt_prepaydet_pre_payment": {
-                    "value": "1678",
-                    "text": "1678"
-                },
-                "memo": "VAT",
-                "custrecord_ts_epmt_prepaydet_entity.type": {
-                    "value": "CustJob",
-                    "text": "Cliente"
+                    "text": "Vendor"
                 }
             }
         ],
-        "ebanks": [
-            {
-                "internalid": {
-                    "value": "7",
-                    "text": "7"
-                },
-                "custrecord_2663_entity_acct_no": "",
-                "custrecord_9572_subsidiary": {
-                    "value": "2",
-                    "text": "Empresa principal : CARSEG"
-                },
-                "custrecord_2663_entity_iban": "",
-                "custrecord_2663_entity_issuer_num": "",
-                "custrecord_2663_entity_ec_tipo_cuentacob": {
-                    "value": "6",
-                    "text": "03"
-                },
-                "custrecord_2663_entity_address3": "",
-                "custrecord_2663_entity_address2": "",
-                "custrecord_2663_entity_address1": "",
-                "custrecord_15152_is_acc_num_encrypted": false,
-                "custrecord_2663_entity_country": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_2663_entity_state": "",
-                "custrecord_2663_entity_bank_no": "",
-                "custrecord_2663_parent_customer": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_2663_child_id": "",
-                "custrecord_2663_num_payments": "",
-                "custrecord_2663_entity_processor_code": "00363",
-                "custrecord_ts_epmt_payment_file_format": {
-                    "value": "1",
-                    "text": "1"
-                },
-                "custrecord_2663_entity_acct_name": "",
-                "custrecord_2663_reference": "",
-                "custrecord_2663_entity_iban_check": "",
-                "custrecord_entity_ec_forma_pago": {
-                    "value": "3",
-                    "text": "COB"
-                },
-                "custrecord_2663_entity_bank_code": {
-                    "value": "17",
-                    "text": "17"
-                },
-                "custrecord_2663_acct_type": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_2663_entity_bic": "",
-                "custrecord_2663_entity_payment_desc": "",
-                "custrecord_2663_entity_bban": "1441340",
-                "custrecord_2663_entity_branch_no": "",
-                "custrecord_2663_entity_city": "",
-                "custrecord_2663_edi": false,
-                "custrecord_2663_parent_partner": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_2663_entity_zip": "",
-                "custrecord_2663_entity_swift": "",
-                "custrecord_2663_entity_company_id": "",
-                "custrecord_2663_entity_country_code": "",
-                "custrecord_2663_entity_signature": "",
-                "custrecord_2663_entity_bank_acct_type": {
-                    "value": "1",
-                    "text": "Cuenta corriente"
-                },
-                "custrecord_2663_entity_billing_seq_type": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_2663_parent_vendor": {
-                    "value": "562",
-                    "text": "P-EC-0919787309001 MARTHA MORENO CEDEÑO"
-                },
-                "custrecord_2663_entity_ref_amended": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_2663_entity_bank_name": "",
-                "custrecord_2663_parent_employee": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_2663_edi_value": "",
-                "custrecord_2663_customer_code": "",
-                "custrecord_2663_entity_bank_fee_code": {
-                    "value": "",
-                    "text": ""
-                },
-                "custrecord_2663_entity_bank_type": {
-                    "value": "1",
-                    "text": "Principal"
-                },
-                "custrecord_2663_entity_acct_suffix": "",
-                "custrecord_2663_entity_file_format": {
-                    "value": "167",
-                    "text": "Bolivariano"
-                },
-                "custrecord_2663_entity_branch_name": "",
-                "custrecord_2663_baby_bonus": false,
-                "custrecord_2663_entity_country_check": "",
-                "custrecord_2663_parent_cust_ref": {
-                    "value": "",
-                    "text": ""
-                }
-            }
-        ]
+        "ebanks": []
     },
-    "customers": {
-        "574": {
+    "customers": {},
+    "vendors": {
+        "563": {
             "internalid": {
-                "value": "574",
-                "text": "574"
+                "value": "563",
+                "text": "563"
             },
-            "altname": "NOVACREDIT S.A.",
-            "entityid": "C-EC-0190381633001",
-            "companyname": "NOVACREDIT S.A.",
-            "salesrep": {
-                "value": "273",
-                "text": "E-00000144 MISHELL GEOMAYRA VILLOTA VERA"
-            },
+            "altname": "SUNTRANSACTION LTD",
+            "entityid": "P-EC-BC0837519",
+            "companyname": "SUNTRANSACTION LTD",
             "category": {
-                "value": "",
-                "text": ""
+                "value": "1",
+                "text": "Internacionales"
             },
-            "email": "",
-            "phone": "",
+            "comments": "",
+            "email": "EXMY@GMAIL.COM",
+            "phone": "+5936138450114",
             "subsidiary": {
                 "value": "2",
-                "text": "Empresa principal : CARSEG"
+                "text": "Parent Company : CARSEG"
             },
-            "custentityts_ec_cod_tipo_doc_identidad": "04",
-            "vatregnumber": "0190381633001",
-            "address": "NOVACREDIT S.A.\nGRAN COLOMBIA 7-87 Y LUIS CORDERO\nEcuador",
+            "custentityts_ec_cod_tipo_doc_identidad": "06",
+            "vatregnumber": "BC0837519",
+            "address": "SUNTRANSACTION LTD\ncl dioses 123\nLIMA LIMA \nBahamas",
             "address_country": "EC",
             "address1": "",
-            "address2": "GRAN COLOMBIA 7-87 Y LUIS CORDERO",
-            "address3": "",
-            "city": "",
-            "state": "",
-            "custentity_ec_cod_banco": ""
-        }
-    },
-    "vendors": {
-        "562": {
-            "internalid": {
-                "value": "562",
-                "text": "562"
-            },
-            "altname": "MARTHA MORENO CEDEÑO",
-            "entityid": "P-EC-0919787309001",
-            "companyname": "",
-            "category": {
-                "value": "5",
-                "text": "Servicios"
-            },
-            "comments": "",
-            "email": "marthamorenoce@gmail.com",
-            "phone": "+5932320012",
-            "subsidiary": {
-                "value": "2",
-                "text": "Empresa principal : CARSEG"
-            },
-            "custentityts_ec_cod_tipo_doc_identidad": "04",
-            "vatregnumber": "0919787309001",
-            "address": "SRA MARTHA MORENO CEDEÃ‘O\nAV JAVIER PRADO 242\nEcuador",
-            "address_country": "EC",
-            "address1": "AV JAVIER PRADO 242",
-            "address2": "",
-            "address3": "",
-            "city": "",
-            "state": ""
-        },
-        "1283": {
-            "internalid": {
-                "value": "1283",
-                "text": "1283"
-            },
-            "altname": "PYCCA S.A.",
-            "entityid": "P-EC-0990000530001",
-            "companyname": "PYCCA S.A.",
-            "category": {
-                "value": "5",
-                "text": "Servicios"
-            },
-            "comments": "",
-            "email": "",
-            "phone": "+593982228759",
-            "subsidiary": {
-                "value": "2",
-                "text": "Empresa principal : CARSEG"
-            },
-            "custentityts_ec_cod_tipo_doc_identidad": "04",
-            "vatregnumber": "0990000530001",
-            "address": "PYCCA S.A.\nSAN FRANCISCO 245\nEcuador",
-            "address_country": "EC",
-            "address1": "SAN FRANCISCO 245",
             "address2": "",
             "address3": "",
             "city": "",
@@ -469,46 +107,12 @@
     },
     "employees": {},
     "transactions": {
-        "81444": {
+        "86907": {
             "internalid": {
-                "value": "81444",
-                "text": "81444"
+                "value": "86907",
+                "text": "86907"
             },
-            "tranid": "2424270",
-            "memo": "CHE. #2424270 POR ANTICIPO DE FACT ",
-            "currency": {
-                "value": "1",
-                "text": "US Dollar"
-            },
-            "currency_symbol": "USD",
-            "exchangerate": 1,
-            "trandate": "2024-03-11T07:00:00.000Z",
-            "status": "1",
-            "postingperiod": {
-                "value": "141",
-                "text": "mar 2024"
-            },
-            "amount": "-1.00",
-            "account": {
-                "value": "229",
-                "text": "11001030101 BANCO BOLIVARIANO (CTA.CTE. 8787)"
-            },
-            "custbody_ts_related_transaction": {
-                "value": "",
-                "text": " "
-            },
-            "tipo": "VPrep",
-            "custbody_ts_ec_numero_preimpreso": "",
-            "custbody_ec_serie_cxc_retencion": "",
-            "custbody_ts_ec_preimpreso_retencion": "",
-            "custbody_ht_emitido_pago_electronico": true
-        },
-        "81445": {
-            "internalid": {
-                "value": "81445",
-                "text": "81445"
-            },
-            "tranid": "2424271",
+            "tranid": "2424296",
             "memo": "PRUEBA",
             "currency": {
                 "value": "1",
@@ -516,13 +120,13 @@
             },
             "currency_symbol": "USD",
             "exchangerate": 1,
-            "trandate": "2024-03-11T07:00:00.000Z",
+            "trandate": "2024-03-16T07:00:00.000Z",
             "status": "1",
             "postingperiod": {
                 "value": "141",
                 "text": "mar 2024"
             },
-            "amount": "-1.00",
+            "amount": "-36.26",
             "account": {
                 "value": "229",
                 "text": "11001030101 BANCO BOLIVARIANO (CTA.CTE. 8787)"
@@ -535,41 +139,11 @@
             "custbody_ts_ec_numero_preimpreso": "",
             "custbody_ec_serie_cxc_retencion": "",
             "custbody_ts_ec_preimpreso_retencion": "",
-            "custbody_ht_emitido_pago_electronico": true
-        },
-        "81557": {
-            "internalid": {
-                "value": "81557",
-                "text": "81557"
-            },
-            "tranid": "2424273",
-            "memo": "CANCELACION LQ. 000 POR ARRIENDO DE PUNTO",
-            "currency": {
-                "value": "1",
-                "text": "US Dollar"
-            },
-            "currency_symbol": "USD",
-            "exchangerate": 1,
-            "trandate": "2024-03-12T07:00:00.000Z",
-            "status": "1",
-            "postingperiod": {
-                "value": "141",
-                "text": "mar 2024"
-            },
-            "amount": "-1.00",
-            "account": {
-                "value": "229",
-                "text": "11001030101 BANCO BOLIVARIANO (CTA.CTE. 8787)"
-            },
-            "custbody_ts_related_transaction": {
-                "value": "",
-                "text": " "
-            },
-            "tipo": "Check",
-            "custbody_ts_ec_numero_preimpreso": "",
-            "custbody_ec_serie_cxc_retencion": "",
-            "custbody_ts_ec_preimpreso_retencion": "",
-            "custbody_ht_emitido_pago_electronico": true
+            "custbody_ht_emitido_pago_electronico": true,
+            "appliedtotransaction": {
+                "value": "83734",
+                "text": "Purchase Order #OC-00000347"
+            }
         }
     },
     "subsidiary": {
@@ -582,7 +156,7 @@
             "text": "Ecuador"
         },
         "legalname": "Carro Seguro CARSEG S.A.",
-        "name": "Empresa principal : CARSEG",
+        "name": "Parent Company : CARSEG",
         "taxidnum": "0991259546001",
         "address_country": "Ecuador",
         "phone": "",
@@ -592,5 +166,9 @@
         "city": "",
         "state": "",
         "zip": ""
+    },
+    "aditional": {
+        "name": "CARSEG2024032522.pdf",
+        "user": "dennis.fernandez@myevol.biz"
     }
 }

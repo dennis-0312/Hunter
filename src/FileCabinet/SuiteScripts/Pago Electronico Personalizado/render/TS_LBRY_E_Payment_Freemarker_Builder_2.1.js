@@ -17,6 +17,7 @@ define([], function () {
         ftlString += '<#assign employees = jsonContent.employees>\n';
         ftlString += '<#assign subsidiary = jsonContent.subsidiary>\n';
         ftlString += '<#assign transactions = jsonContent.transactions>\n';
+        ftlString += '<#assign aditional = jsonContent.aditional>\n';
         return ftlString;
     }
 

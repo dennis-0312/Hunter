@@ -1,0 +1,281 @@
+<customrecordtype scriptid="customrecord_ec_cod_banco">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description>CODIGO DE BANCO PARA EL EPAYMENT</description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>EC CODIGO DE BANCO</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_ec_nom_ban_sat">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>NOMBRE BANCO</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_581535_7451241_753">
+      <custrecord_ec_nom_ban_sat>COOP. DE AHORRO Y CREDITO 29 DE OCTUBRE LTDA</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>90</name>
+    </instance>
+    <instance scriptid="val_581536_7451241_676">
+      <custrecord_ec_nom_ban_sat>COOP. AHORRO Y CREDITO 15 DE ABRIL LTDA</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>89</name>
+    </instance>
+    <instance scriptid="val_581537_7451241_787">
+      <custrecord_ec_nom_ban_sat>MUTUALISTA AZUAY</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>88</name>
+    </instance>
+    <instance scriptid="val_581538_7451241_868">
+      <custrecord_ec_nom_ban_sat>BANCO PROCREDIT</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>87</name>
+    </instance>
+    <instance scriptid="val_581539_7451241_985">
+      <custrecord_ec_nom_ban_sat>BANCO COOP. NACIONAL</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>86</name>
+    </instance>
+    <instance scriptid="val_581540_7451241_326">
+      <custrecord_ec_nom_ban_sat>BANCO MUTUALISTA PICHINCHA</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>85</name>
+    </instance>
+    <instance scriptid="val_581541_7451241_907">
+      <custrecord_ec_nom_ban_sat>BANCO COOPROGRESO</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>75</name>
+    </instance>
+    <instance scriptid="val_581542_7451241_183">
+      <custrecord_ec_nom_ban_sat>COOP. SAN FRANCISCO</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>73</name>
+    </instance>
+    <instance scriptid="val_581543_7451241_628">
+      <custrecord_ec_nom_ban_sat>COOPERATIVA AHORRO Y CREDITO ANDALUCIA</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>70</name>
+    </instance>
+    <instance scriptid="val_581544_7451241_121">
+      <custrecord_ec_nom_ban_sat>BANCO CAPITAL</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>61</name>
+    </instance>
+    <instance scriptid="val_581545_7451241_214">
+      <custrecord_ec_nom_ban_sat>COOPERATIVA DE AHORRO Y CREDITO JUVENTUD ECUATORIANA PROGRESISTA</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>6</name>
+    </instance>
+    <instance scriptid="val_581546_7451241_447">
+      <custrecord_ec_nom_ban_sat>BANCO SOLIDARIO</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>59</name>
+    </instance>
+    <instance scriptid="val_581547_7451241_900">
+      <custrecord_ec_nom_ban_sat>BANCO CENTRO MUNDO</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>51</name>
+    </instance>
+    <instance scriptid="val_581548_7451241_107">
+      <custrecord_ec_nom_ban_sat>BANCO COFIEC</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>50</name>
+    </instance>
+    <instance scriptid="val_581549_7451241_972">
+      <custrecord_ec_nom_ban_sat>BANCO SUDAMERICANO</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>45</name>
+    </instance>
+    <instance scriptid="val_581550_7451241_405">
+      <custrecord_ec_nom_ban_sat>BANCO DEL LITORAL</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>43</name>
+    </instance>
+    <instance scriptid="val_581551_7451241_139">
+      <custrecord_ec_nom_ban_sat>BANCO GENERAL RUMIÑAHUI</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>42</name>
+    </instance>
+    <instance scriptid="val_581552_7451241_946">
+      <custrecord_ec_nom_ban_sat>BANCO M M JARAMILLO ARTEAGA S.</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>40</name>
+    </instance>
+    <instance scriptid="val_581553_7451241_349">
+      <custrecord_ec_nom_ban_sat>BANCO COMERCIAL DE MANABI</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>39</name>
+    </instance>
+    <instance scriptid="val_581554_7451241_572">
+      <custrecord_ec_nom_ban_sat>BANCO AMAZONAS</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>37</name>
+    </instance>
+    <instance scriptid="val_581555_7451241_209">
+      <custrecord_ec_nom_ban_sat>PRODUBANCO</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>36</name>
+    </instance>
+    <instance scriptid="val_581556_7451241_392">
+      <custrecord_ec_nom_ban_sat>BANCO DEL AUSTRO</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>35</name>
+    </instance>
+    <instance scriptid="val_581557_7451241_420">
+      <custrecord_ec_nom_ban_sat>BANCO BOLIVARIANO</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>34</name>
+    </instance>
+    <instance scriptid="val_581558_7451241_961">
+      <custrecord_ec_nom_ban_sat>BANCO INTERNACIONAL S.A.</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>32</name>
+    </instance>
+    <instance scriptid="val_581559_7451241_624">
+      <custrecord_ec_nom_ban_sat>BANCO DE LOS ANDES</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>31</name>
+    </instance>
+    <instance scriptid="val_581560_7451241_277">
+      <custrecord_ec_nom_ban_sat>BANCO DEL PACIFICO S.A.</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>30</name>
+    </instance>
+    <instance scriptid="val_581561_7451241_468">
+      <custrecord_ec_nom_ban_sat>BANCO DE LOJA</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>29</name>
+    </instance>
+    <instance scriptid="val_581562_7451241_668">
+      <custrecord_ec_nom_ban_sat>BANCO UNIBANCO</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>26</name>
+    </instance>
+    <instance scriptid="val_581563_7451241_369">
+      <custrecord_ec_nom_ban_sat>BANCO DE MACHALA</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>25</name>
+    </instance>
+    <instance scriptid="val_581564_7451241_655">
+      <custrecord_ec_nom_ban_sat>CITY NATIONAL BANK</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>24</name>
+    </instance>
+    <instance scriptid="val_581565_7451241_290">
+      <custrecord_ec_nom_ban_sat>BANCO CITIBANK</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>24</name>
+    </instance>
+    <instance scriptid="val_581566_7451241_352">
+      <custrecord_ec_nom_ban_sat>LLOYDS TSB</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>20</name>
+    </instance>
+    <instance scriptid="val_581567_7451241_400">
+      <custrecord_ec_nom_ban_sat>BANCO LLOYD S BANK</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>20</name>
+    </instance>
+    <instance scriptid="val_581568_7451241_181">
+      <custrecord_ec_nom_ban_sat>BANCO TERRITORIAL</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>19</name>
+    </instance>
+    <instance scriptid="val_581569_7451241_950">
+      <custrecord_ec_nom_ban_sat>BAN ECUADOR</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>19</name>
+    </instance>
+    <instance scriptid="val_581570_7451241_142">
+      <custrecord_ec_nom_ban_sat>BANCO DE GUAYAQUIL</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>17</name>
+    </instance>
+    <instance scriptid="val_581571_7451241_299">
+      <custrecord_ec_nom_ban_sat>COOP.AHORRO Y CREDITO OSCUS</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>13</name>
+    </instance>
+    <instance scriptid="val_581572_7451241_445">
+      <custrecord_ec_nom_ban_sat>COOPERATIVA DE AHORRO Y CREDITO CREA LTDA ( MIES)</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>129</name>
+    </instance>
+    <instance scriptid="val_581573_7451241_477">
+      <custrecord_ec_nom_ban_sat>BANCO DEL PICHINCHA</custrecord_ec_nom_ban_sat>
+      <isinactive>F</isinactive>
+      <name>10</name>
+    </instance>
+  </instances>
+</customrecordtype>

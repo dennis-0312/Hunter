@@ -1,10 +1,10 @@
 <role scriptid="customrole1675">
   <centertype>ACCOUNTCENTER</centertype>
   <coreadminpermission>F</coreadminpermission>
-  <custrecord_permission_certification>T</custrecord_permission_certification>
-  <custrecord_permission_generation>T</custrecord_permission_generation>
+  <custrecord_permission_certification>F</custrecord_permission_certification>
+  <custrecord_permission_generation>F</custrecord_permission_generation>
   <custrecord_permission_network_status>F</custrecord_permission_network_status>
-  <custrecord_permission_sending>T</custrecord_permission_sending>
+  <custrecord_permission_sending>F</custrecord_permission_sending>
   <employeerestriction>NONE</employeerestriction>
   <employeeselectionunrestricted>F</employeeselectionunrestricted>
   <isinactive>F</isinactive>
@@ -21,55 +21,27 @@
   <tfarequired>OFF</tfarequired>
   <permissions>
     <permission>
-      <permkey>TRAN_FIND</permkey>
-      <permlevel>FULL</permlevel>
-    </permission>
-    <permission>
       <permkey>TRAN_WOCLOSE</permkey>
       <permlevel>VIEW</permlevel>
     </permission>
     <permission>
       <permkey>TRAN_VENDBILL</permkey>
-      <permlevel>FULL</permlevel>
-    </permission>
-    <permission>
-      <permkey>TRAN_SALESORD</permkey>
       <permlevel>EDIT</permlevel>
     </permission>
     <permission>
-      <permkey>TRAN_PURCHREQ</permkey>
-      <permlevel>EDIT</permlevel>
+      <permkey>TRAN_TRNFRORD</permkey>
+      <permlevel>VIEW</permlevel>
     </permission>
     <permission>
       <permkey>LIST_FILECABINET</permkey>
       <permlevel>EDIT</permlevel>
     </permission>
     <permission>
-      <permkey>LIST_EMPLOYEE</permkey>
-      <permlevel>FULL</permlevel>
-    </permission>
-    <permission>
-      <permkey>LIST_OTHER_ADDRESS</permkey>
-      <permlevel>FULL</permlevel>
-    </permission>
-    <permission>
       <permkey>LIST_VENDOR</permkey>
       <permlevel>EDIT</permlevel>
     </permission>
     <permission>
-      <permkey>LIST_FIND</permkey>
-      <permlevel>VIEW</permlevel>
-    </permission>
-    <permission>
       <permkey>ADMI_EXPORTIIF</permkey>
-      <permlevel>FULL</permlevel>
-    </permission>
-    <permission>
-      <permkey>ADMI_SS_SCHEDULING</permkey>
-      <permlevel>FULL</permlevel>
-    </permission>
-    <permission>
-      <permkey>ADMI_CUSTOMSCRIPT</permkey>
       <permlevel>FULL</permlevel>
     </permission>
     <permission>

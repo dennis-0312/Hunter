@@ -4,40 +4,42 @@
  */
 define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/https'], (search, currentRecord, message, url, runtime, https) => {
     let typeMode = '';
+    let nombreOld = '';
+    let segundonombreOld = '';
+    let apellidoOld = '';
+    let segundoapellidoOld = '';
+    let companyNameOld = '';
+    let nombreCompletoOld = '';
+    let vatregnumberOld = '';
     const pageInit = (context) => {
         typeMode = context.mode; //!Importante, no borrar.
         const objRecord = currentRecord.get();
         var isperson = objRecord.getText('isperson');
         if (isperson == 'T' || isperson == true) {
-            context.currentRecord.getField({
-                fieldId: 'custentity_ht_cl_primernombre'
-            }).isDisplay = true;
-            context.currentRecord.getField({
-                fieldId: 'custentity_ht_cl_segundonombre'
-            }).isDisplay = true;
-            context.currentRecord.getField({
-                fieldId: 'custentity_ht_cl_apellidopaterno'
-            }).isDisplay = true;
-            context.currentRecord.getField({
-                fieldId: 'custentity_ht_cl_apellidomaterno'
-            }).isDisplay = true;
+            context.currentRecord.getField({ fieldId: 'custentity_ht_cl_primernombre' }).isDisplay = true;
+            context.currentRecord.getField({ fieldId: 'custentity_ht_cl_segundonombre' }).isDisplay = true;
+            context.currentRecord.getField({ fieldId: 'custentity_ht_cl_apellidopaterno' }).isDisplay = true;
+            context.currentRecord.getField({ fieldId: 'custentity_ht_cl_apellidomaterno' }).isDisplay = true;
         } else {
-            context.currentRecord.getField({
-                fieldId: 'custentity_ht_cl_primernombre'
-            }).isDisplay = false;
-            context.currentRecord.getField({
-                fieldId: 'custentity_ht_cl_segundonombre'
-            }).isDisplay = false;
-            context.currentRecord.getField({
-                fieldId: 'custentity_ht_cl_apellidopaterno'
-            }).isDisplay = false;
-            context.currentRecord.getField({
-                fieldId: 'custentity_ht_cl_apellidomaterno'
-            }).isDisplay = false;
+            context.currentRecord.getField({ fieldId: 'custentity_ht_cl_primernombre' }).isDisplay = false;
+            context.currentRecord.getField({ fieldId: 'custentity_ht_cl_segundonombre' }).isDisplay = false;
+            context.currentRecord.getField({ fieldId: 'custentity_ht_cl_apellidopaterno' }).isDisplay = false;
+            context.currentRecord.getField({ fieldId: 'custentity_ht_cl_apellidomaterno' }).isDisplay = false;
+        }
+
+        if (typeMode == 'edit') {
+            nombreOld = objRecord.getValue('custentity_ht_cl_primernombre');
+            segundonombreOld = objRecord.getValue('custentity_ht_cl_segundonombre');
+            apellidoOld = objRecord.getText('custentity_ht_cl_apellidopaterno');
+            segundoapellidoOld = objRecord.getText('custentity_ht_cl_apellidomaterno');
+            companyNameOld = objRecord.getText('companyname');
+            nombreCompletoOld = `${nombreOld} ${segundonombreOld} ${apellidoOld} ${segundoapellidoOld}`
+            vatregnumberOld = objRecord.getText('vatregnumber');
         }
     }
 
     const saveRecord = (context) => {
+        console.log('entra saveRecord');
         try {
             const objRecord = currentRecord.get();
             var isperson = objRecord.getText('isperson');
@@ -48,116 +50,164 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/
             var apellido = objRecord.getText('custentity_ht_cl_apellidopaterno');
             var segundoapellido = objRecord.getText('custentity_ht_cl_apellidomaterno');
             var companyName = objRecord.getText('companyname');
+            let nombreCompleto = `${nombre} ${segundonombre} ${apellido} ${segundoapellido}`
 
             if (typeMode == 'create' || typeMode == 'copy') {
-                var id = '';
-                var flag = false;
-                var idCustomer = getCustomer(id, flag);
                 if (isperson == 'T' || isperson == true) {
-                    if (segundonombre) {
-                        var nombrecompleto = nombre + ' ' + segundonombre;
-                    } else {
-                        var nombrecompleto = nombre;
-                    }
-                    if (segundoapellido) {
-                        var apellidocompleto = apellido + ' ' + segundoapellido;
-                    } else {
-                        var apellidocompleto = apellido;
-                    }
-                    var nombreapellido = nombrecompleto + ' ' + apellidocompleto;
-                    if (nombre == '' || nombre == null) {
-                        alert('Introduzca valores para: Primer Nombre');
+                    if (nombre.length == 0) {
+                        alert('Introduzca valores para: Primer Nombr.');
                         return false;
                     }
-                    if (apellido == '' || apellido == null) {
-                        alert('Introduzca valores para: Apellido Paterno');
+                    if (apellido.length == 0) {
+                        alert('Introduzca valores para: Apellido Paterno.');
                         return false;
                     }
-                    for (let i = 0; i < idCustomer.length; i++) {
-                        if (nombreapellido == idCustomer[i][0]) {
-                            alert(
-                                "El Nombre del Cliente ya se encuentra registrado en otro registro"
-                            );
-                            return false;
-                        }
-                        if (vatregnumber == idCustomer[i][1]) {
-                            alert(
-                                "El Número de documento ya se encuentra registrado en otro registro"
-                            );
+                    let customerNatural = search.create({
+                        type: "customer",
+                        filters:
+                            [
+                                ["custentity_ht_cl_primernombre", "is", nombre],
+                                "AND",
+                                ["custentity_ht_cl_segundonombre", "is", segundonombre],
+                                "AND",
+                                ["custentity_ht_cl_apellidopaterno", "is", apellido],
+                                "AND",
+                                ["custentity_ht_cl_apellidomaterno", "is", segundoapellido]
+                            ],
+                        columns:
+                            [
+                                search.createColumn({ name: "internalid", label: "ID" })
+                            ]
+                    });
+                    let searchResultCountcustomerNatural = customerNatural.runPaged().count;
+                    console.log("searchResultCountcustomerNatural", searchResultCountcustomerNatural);
+                    if (searchResultCountcustomerNatural > 0) {
+                        alert("El Nombre del Cliente ya se encuentra registrado en otro registro.");
+                        return false;
+                    }
+                } else {
+                    let customerCompany = search.create({
+                        type: "customer",
+                        filters:
+                            [
+                                ["companyname", "is", companyName]
+                            ],
+                        columns:
+                            [
+                                search.createColumn({ name: "internalid", label: "ID" })
+                            ]
+                    });
+                    let searchResultCountcustomerCompany = customerCompany.runPaged().count;
+                    console.log("searchResultCountcustomerCompany", searchResultCountcustomerCompany);
+                    if (searchResultCountcustomerCompany > 0) {
+                        alert("El Nombre del Cliente ya se encuentra registrado en otro registro.");
+                        return false;
+                    }
+                }
+
+                //* Nro Documento.
+                let customerDocumento = search.create({
+                    type: "customer",
+                    filters:
+                        [
+                            ["formulatext: {vatregnumber}", "is", vatregnumber]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({ name: "internalid", label: "ID" }),
+                            search.createColumn({ name: "formulatext", formula: "{vatregnumber}", label: "Formula (Text)" })
+                        ]
+                });
+                let searchResultCountcustomerDocumento = customerDocumento.runPaged().count;
+                console.log("searchResultCountcustomerDocumento", searchResultCountcustomerDocumento);
+                if (searchResultCountcustomerDocumento > 0) {
+                    alert("El Número de documento ya se encuentra registrado en otro registro.");
+                    return false;
+                }
+            } else if (typeMode == 'edit') {
+                if (isperson == 'T' || isperson == true) {
+                    if (nombre.length == 0) {
+                        alert('Introduzca valores para: Primer Nombre.');
+                        return false;
+                    }
+                    if (apellido.length == 0) {
+                        alert('Introduzca valores para: Apellido Paterno.');
+                        return false;
+                    }
+                    let customerNatural = search.create({
+                        type: "customer",
+                        filters:
+                            [
+                                ["custentity_ht_cl_primernombre", "is", nombre],
+                                "AND",
+                                ["custentity_ht_cl_segundonombre", "is", segundonombre],
+                                "AND",
+                                ["custentity_ht_cl_apellidopaterno", "is", apellido],
+                                "AND",
+                                ["custentity_ht_cl_apellidomaterno", "is", segundoapellido]
+                            ],
+                        columns:
+                            [
+                                search.createColumn({ name: "internalid", label: "ID" }),
+                            ]
+                    });
+                    let searchResultCountcustomerNatural = customerNatural.runPaged().count;
+                    console.log("searchResultCountcustomerNatural", searchResultCountcustomerNatural);
+                    if (searchResultCountcustomerNatural > 0) {
+                        console.log('validateDuplicateName', `${nombreCompletoOld} - ${nombreCompleto}`)
+                        if (nombreCompleto != nombreCompletoOld) {
+                            alert("El Nombre del Cliente ya se encuentra registrado en otro registro.");
                             return false;
                         }
                     }
                 } else {
-                    for (let i = 0; i < idCustomer.length; i++) {
-                        if (companyName == idCustomer[i][0]) {
-                            alert(
-                                "El Nombre del Cliente ya se encuentra registrado en otro registro"
-                            );
-                            return false;
-                        }
-                        if (vatregnumber == idCustomer[i][1]) {
-                            alert(
-                                "El Número de documento ya se encuentra registrado en otro registro"
-                            );
+                    let customerCompany = search.create({
+                        type: "customer",
+                        filters:
+                            [
+                                ["companyname", "is", companyName]
+                            ],
+                        columns:
+                            [
+                                search.createColumn({ name: "internalid", label: "ID" }),
+                                'companyname'
+                            ]
+                    });
+                    let searchResultCountcustomerCompany = customerCompany.runPaged().count;
+                    console.log("searchResultCountcustomerCompany", searchResultCountcustomerCompany);
+                    if (searchResultCountcustomerCompany > 0) {
+                        console.log('validateDuplicateName', `${companyNameOld} - ${companyName}`)
+                        if (companyNameOld != companyName) {
+                            alert("El Nombre del Cliente ya se encuentra registrado en otro registro.");
                             return false;
                         }
                     }
                 }
-            } else if (typeMode == 'edit') {
-                var id = objRecord.id;
-                var flag = true;
-                var idCustomer = getCustomer(id, flag);
-                if (isperson == 'T' || isperson == true) {
-                    if (segundonombre) {
-                        var nombrecompleto = nombre + ' ' + segundonombre;
-                    } else {
-                        var nombrecompleto = nombre;
-                    }
-                    if (segundoapellido) {
-                        var apellidocompleto = apellido + ' ' + segundoapellido;
-                    } else {
-                        var apellidocompleto = apellido;
-                    }
-                    var nombreapellido = nombrecompleto + ' ' + apellidocompleto;
-                    if (nombre == '' || nombre == null) {
-                        alert('Introduzca valores para: Primer Nombre');
+
+                //* Nro Documento.
+                let customerDocumento = search.create({
+                    type: "customer",
+                    filters:
+                        [
+                            ["formulatext: {vatregnumber}", "is", vatregnumber]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({ name: "internalid", label: "ID" }),
+                            search.createColumn({ name: "formulatext", formula: "{vatregnumber}", label: "Formula (Text)" })
+                        ]
+                });
+                let searchResultCountcustomerDocumento = customerDocumento.runPaged().count;
+                console.log("searchResultCountcustomerDocumento", searchResultCountcustomerDocumento);
+                if (searchResultCountcustomerDocumento > 0) {
+                    console.log('validateDuplicateVatregnumber', `${vatregnumberOld} - ${vatregnumber}`)
+                    if (vatregnumberOld != vatregnumber) {
+                        alert("El Número de documento ya se encuentra registrado en otro registro.");
                         return false;
-                    }
-                    if (apellido == '' || apellido == null) {
-                        alert('Introduzca valores para: Apellido Paterno');
-                        return false;
-                    }
-                    for (let i = 0; i < idCustomer.length; i++) {
-                        if (nombreapellido == idCustomer[i][0]) {
-                            alert(
-                                "El Nombre del Cliente ya se encuentra registrado en otro registro"
-                            );
-                            return false;
-                        }
-                        if (vatregnumber == idCustomer[i][1]) {
-                            alert(
-                                "El Número de documento ya se encuentra registrado en otro registro"
-                            );
-                            return false;
-                        }
-                    }
-                } else {
-                    for (let i = 0; i < idCustomer.length; i++) {
-                        if (companyName == idCustomer[i][0]) {
-                            alert(
-                                "El Nombre del Cliente ya se encuentra registrado en otro registro"
-                            );
-                            return false;
-                        }
-                        if (vatregnumber == idCustomer[i][1]) {
-                            alert(
-                                "El Número de documento ya se encuentra registrado en otro registro"
-                            );
-                            return false;
-                        }
                     }
                 }
             }
+
             if (tipoDoc == '1' || tipoDoc == '2') {
                 if (typeMode != 'delete') {
                     let numeroDocumento = objRecord.getValue('vatregnumber');
@@ -181,25 +231,17 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/
         const objRecord = currentRecord.get();
         console.log('objRecord', objRecord);
         console.log('typeMode', typeMode);
-
+        var isperson = context.fieldId;
         if (typeMode == 'create' || typeMode == 'copy' || typeMode == 'edit') {
             var isperson = objRecord.getText('isperson');
             var altname = objRecord.getText('altname');
             console.log('isperson', isperson);
             console.log('altname', altname);
             if (isperson == 'T' || isperson == true) {
-                context.currentRecord.getField({
-                    fieldId: 'custentity_ht_cl_primernombre'
-                }).isDisplay = true;
-                context.currentRecord.getField({
-                    fieldId: 'custentity_ht_cl_segundonombre'
-                }).isDisplay = true;
-                context.currentRecord.getField({
-                    fieldId: 'custentity_ht_cl_apellidopaterno'
-                }).isDisplay = true;
-                context.currentRecord.getField({
-                    fieldId: 'custentity_ht_cl_apellidomaterno'
-                }).isDisplay = true;
+                context.currentRecord.getField({ fieldId: 'custentity_ht_cl_primernombre' }).isDisplay = true;
+                context.currentRecord.getField({ fieldId: 'custentity_ht_cl_segundonombre' }).isDisplay = true;
+                context.currentRecord.getField({ fieldId: 'custentity_ht_cl_apellidopaterno' }).isDisplay = true;
+                context.currentRecord.getField({ fieldId: 'custentity_ht_cl_apellidomaterno' }).isDisplay = true;
                 var firstname = objRecord.getText('custentity_ht_cl_primernombre');
                 var secondname = objRecord.getText('custentity_ht_cl_segundonombre');
                 if (secondname) {
@@ -214,30 +256,13 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/
                 } else {
                     var completelastname = firstlastname;
                 }
-
-                objRecord.setText({
-                    fieldId: 'firstname',
-                    text: completename,
-                    ignoreFieldChange: true
-                });
-                objRecord.setText({
-                    fieldId: 'lastname',
-                    text: completelastname,
-                    ignoreFieldChange: true
-                });
+                objRecord.setText({ fieldId: 'firstname', text: completename, ignoreFieldChange: true });
+                objRecord.setText({ fieldId: 'lastname', text: completelastname, ignoreFieldChange: true });
             } else {
-                context.currentRecord.getField({
-                    fieldId: 'custentity_ht_cl_primernombre'
-                }).isDisplay = false;
-                context.currentRecord.getField({
-                    fieldId: 'custentity_ht_cl_segundonombre'
-                }).isDisplay = false;
-                context.currentRecord.getField({
-                    fieldId: 'custentity_ht_cl_apellidopaterno'
-                }).isDisplay = false;
-                context.currentRecord.getField({
-                    fieldId: 'custentity_ht_cl_apellidomaterno'
-                }).isDisplay = false;
+                context.currentRecord.getField({ fieldId: 'custentity_ht_cl_primernombre' }).isDisplay = false;
+                context.currentRecord.getField({ fieldId: 'custentity_ht_cl_segundonombre' }).isDisplay = false;
+                context.currentRecord.getField({ fieldId: 'custentity_ht_cl_apellidopaterno' }).isDisplay = false;
+                context.currentRecord.getField({ fieldId: 'custentity_ht_cl_apellidomaterno' }).isDisplay = false;
             }
         }
     }
@@ -247,9 +272,7 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/
             var arrCustomerId = new Array();
             var busqueda = search.create({
                 type: "customer",
-                filters:
-                    [
-                    ],
+                filters: [],
                 columns:
                     [
                         search.createColumn({ name: "altname", label: "Nombre" }),
@@ -262,18 +285,15 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/
                 const filterOne = search.createFilter({ name: 'internalid', operator: search.Operator.NONEOF, values: internalId });
                 filters.push(filterOne);
             }
-            var pageData = busqueda.runPaged({
-                pageSize: 1000
-            });
 
+            var searchResultCount = busqueda.runPaged().count;
+            console.log("customrecord_registro_chequeSearchObj result count", searchResultCount);
+            var pageData = busqueda.runPaged({ pageSize: 1000 });
             pageData.pageRanges.forEach(function (pageRange) {
-                page = pageData.fetch({
-                    index: pageRange.index
-                });
+                page = pageData.fetch({ index: pageRange.index });
                 page.data.forEach(function (result) {
                     var columns = result.columns;
                     var arrCustomer = new Array();
-                    //0. Internal id match
                     if (result.getValue(columns[0]) != null) {
                         arrCustomer[0] = result.getValue(columns[0]);
                     } else {
@@ -289,6 +309,7 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/
 
             });
             return arrCustomerId;
+            //return searchResultCount;
         } catch (e) {
             log.error('Error en getCustomer', e);
         }
@@ -335,7 +356,6 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/
     return {
         pageInit: pageInit,
         saveRecord: saveRecord,
-        fieldChanged: fieldChanged,
-        //sublistChanged: sublistChanged
+        fieldChanged: fieldChanged
     }
 });

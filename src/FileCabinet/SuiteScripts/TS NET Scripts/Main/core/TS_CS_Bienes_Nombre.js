@@ -382,6 +382,7 @@ define([
                         var Bienes = getBien(objRecord.id, flag);
                         console.log('Bienes', Bienes);
                         var tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
+                        let isGenerico = objRecord.getValue("custrecord_ht_bien_generico");
                         if (sublistFieldName === "custrecord_ht_bien_placa") {
                             const bien_placa = objRecord.getText(sublistFieldName);
                             if (bien_placa != "S/P") {
@@ -399,7 +400,7 @@ define([
                                             }
                                         }
                                     }
-                                } 
+                                }
                                 // else if (tipo_terrestre == _constant.Constants.MOTO) {
                                 //     var patron_placa = /^[A-Z]{2}[0-9]{3}[A-Z]{1}$/;
                                 //     if (bien_placa.match(patron_placa) == null) {
@@ -498,6 +499,7 @@ define([
                             }
                         }
                         console.log("txtfinal", txtfinal);
+                        txtfinal = isGenerico ? 'GENERICO.:' + objRecord.id : txtfinal
                         objRecord.setText({ fieldId: "altname", text: txtfinal, ignoreFieldChange: true });
                     }
                 } else if (typeMode == _constant.Constants.EDIT) {
@@ -506,6 +508,7 @@ define([
                         var Bienes = getBien(objRecord.id, flag);
                         console.log('Bienes', Bienes);
                         var tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
+                        let isGenerico = objRecord.getValue("custrecord_ht_bien_generico");
                         if (sublistFieldName === "custrecord_ht_bien_placa") {
                             const bien_placa = objRecord.getText(sublistFieldName);
                             if (bien_placa != "S/P") {
@@ -619,6 +622,7 @@ define([
                             }
                         }
                         console.log("txtfinal", txtfinal);
+                        txtfinal = isGenerico ? 'GENERICO.:' + objRecord.id : txtfinal
                         objRecord.setText({ fieldId: "altname", text: txtfinal, ignoreFieldChange: true });
                     }
                 }

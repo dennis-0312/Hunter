@@ -1,0 +1,24 @@
+<customlist scriptid="customlist_pe_lista_categoria_articulo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>TS Categoría de artículos</name>
+  <customvalues>
+    <customvalue scriptid="val_657792_7451241_sb1_544">
+      <isinactive>F</isinactive>
+      <value>Cat 01</value>
+    </customvalue>
+    <customvalue scriptid="val_657793_7451241_sb1_950">
+      <isinactive>F</isinactive>
+      <value>Cat 02</value>
+    </customvalue>
+    <customvalue scriptid="val_657794_7451241_sb1_311">
+      <isinactive>F</isinactive>
+      <value>Cat 03</value>
+    </customvalue>
+    <customvalue scriptid="val_689515_7451241_sb1_471">
+      <isinactive>F</isinactive>
+      <value>Cat 04</value>
+    </customvalue>
+  </customvalues>
+</customlist>

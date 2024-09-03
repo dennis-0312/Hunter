@@ -26,7 +26,7 @@ define(['N/log', 'N/https', 'N/runtime'], function (log, https, runtime) {
                     fieldId: 'custrecord_ht_co_numerodispositivo'
                 });
 
-
+                
                 if (id != null) {
 
                     log.debug({ 'title': 'fieldValue', 'details': id });
@@ -46,6 +46,8 @@ define(['N/log', 'N/https', 'N/runtime'], function (log, https, runtime) {
                         'Content-Type': 'application/json',
                         'Accept': '*/*'
                     }
+
+
 
                     let resletResponse = https.requestRestlet({
                         body: JSON.stringify(body),

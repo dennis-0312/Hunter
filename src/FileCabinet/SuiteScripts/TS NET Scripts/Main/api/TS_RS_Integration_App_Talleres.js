@@ -40,7 +40,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
         let jsonRecepcion = new Array();
         let jsonOrdenServicio = new Array();
         let jsonProducto = new Array();
-       
+
         log.debug('scriptContext', scriptContext);
         try {
             if (typeof scriptContext.accesorios != 'undefined') {
@@ -168,8 +168,8 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                             let lookupFieldsvatregnumber = '';
                             let clienteid = result.getValue({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
                             try {
-                                 lookupFieldsvatregnumber = search.lookupFields({ type: 'customer', id: clienteid, columns: ['vatregnumber'] });
-                                 lookupFieldsvatregnumber = lookupFieldsvatregnumber.vatregnumber.length ? lookupFieldsvatregnumber.vatregnumber : '';
+                                lookupFieldsvatregnumber = search.lookupFields({ type: 'customer', id: clienteid, columns: ['vatregnumber'] });
+                                lookupFieldsvatregnumber = lookupFieldsvatregnumber.vatregnumber.length ? lookupFieldsvatregnumber.vatregnumber : '';
                             } catch (error) {}
                             
                             let ordenServicioid = result.getValue({ name: "internalid", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OT ID Orden Servicio" })
@@ -195,7 +195,6 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                             let version = result.getText({ name: "custrecord_ht_ot_version", summary: "GROUP", label: "Versión" }) == '- None -' ? '' : result.getText({ name: "custrecord_ht_ot_version", summary: "GROUP", label: "Versión" })
                             let anio = result.getValue({ name: "custrecord_ht_bien_ano", join: "CUSTRECORD_HT_OT_VEHICULO",summary: "GROUP",label: "Anio" })
                             
-                               
                             let sql = 'SELECT assemblycomponent, memo, itemtype FROM TransactionLine WHERE transaction = ?';
                             let params = [ordenServicioid]
                             let array = new Array();
@@ -249,48 +248,49 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                     type: "calendarevent",
                                     filters:
                                     [
-                                       ["transaction.internalid","anyof",ordenServicioid]
+                                        ["transaction.internalid","anyof",ordenServicioid]
                                     ],
                                     columns:
                                     [
-                                       search.createColumn({name: "title",label: "Recepción"}),
-                                       search.createColumn({name: "custevent_ht_rc_radio",}),
-                                       search.createColumn({name: "custevent_ht_rc_perillas",}),
-                                       search.createColumn({name: "custevent_ht_rc_tapacombustible",}),
-                                       search.createColumn({name: "custevent_ht_rc_alfombrapiso",}),
-                                       search.createColumn({name: "custevent_ht_rc_aireacondicionado",}),
-                                       search.createColumn({name: "custevent_ht_rc_brazosplumas",}),
-                                       search.createColumn({name: "custevent_ht_rc_mascarillas",}),
-                                       search.createColumn({name: "custevent_ht_rc_cenicero",}),
-                                       search.createColumn({name: "custevent_ht_rc_chicotes",}),
-                                       search.createColumn({name: "custevent_ht_rc_lucesparqueo",}),
-                                       search.createColumn({name: "custevent_ht_rc_topespuertas",}),
-                                       search.createColumn({name: "custevent_ht_rc_vidriosyseguros",}),
-                                       search.createColumn({name: "custevent_ht_rc_moquetas",}),
-                                       search.createColumn({name: "custevent_ht_rc_manualradio",}),
-                                       search.createColumn({name: "custevent_ht_rc_palanca",}),
-                                       search.createColumn({name: "custevent_ht_rc_encededor",}),
-                                       search.createColumn({name: "custevent_ht_rc_espejointerior",}),
-                                       search.createColumn({name: "custevent_ht_rc_espejoexterior",}),
-                                       search.createColumn({name: "custevent_ht_rc_ventcalef",}),
-                                       search.createColumn({name: "custevent_ht_rc_tapacubos",}),
-                                       search.createColumn({name: "custevent_ht_rc_parlantes",}),
-                                       search.createColumn({name: "custevent_ht_rc_antena",}),
-                                       search.createColumn({name: "custevent_ht_rc_manualcarro",}),
-                                       search.createColumn({name: "custevent_ht_rc_llantaemergencia",}),
-                                       search.createColumn({name: "custevent_ht_rc_lucesyfaros",}),
-                                       search.createColumn({name: "custevent_ht_rc_micasdeluces",}),
-                                       search.createColumn({name: "custevent_ht_rc_cabecera",}),
-                                       search.createColumn({name: "custevent_ht_rc_herramientas",}),
-                                       search.createColumn({name: "custevent_ht_rc_gata",}),
-                                       search.createColumn({name: "custevent_ht_rc_llaverueda",}),
-                                       search.createColumn({ name: "custevent_ht_rc_odometro", label: "Odomoetro" }),
-                                       search.createColumn({ name: "custevent_ht_rc_cantidadllaves", label: "Canticad de Llaves " }),
-                                       search.createColumn({ name: "custevent_ht_rc_fechaentrega", label: "Fecha Entrega" }),
-                                       search.createColumn({ name: "custevent_ht_rc_novedades", label: "Novedades" }),
-                                       search.createColumn({ name: "custevent_ht_rc_combustible", label: "Combustible" }),
-                                       search.createColumn({ name: "custevent_ht_rc_cantidadcontroles", label: "Cantidad de Controlles" }),
-                                       search.createColumn({ name: "custevent_ht_rc_horaentrega", label: "Hora de Entrega" }),
+                                        search.createColumn({name: "title",label: "Recepción"}),
+                                        search.createColumn({name: "custevent_ht_rc_radio",}),
+                                        search.createColumn({name: "custevent_ht_rc_perillas",}),
+                                        search.createColumn({name: "custevent_ht_rc_tapacombustible",}),
+                                        search.createColumn({name: "custevent_ht_rc_alfombrapiso",}),
+                                        search.createColumn({name: "custevent_ht_rc_aireacondicionado",}),
+                                        search.createColumn({name: "custevent_ht_rc_brazosplumas",}),
+                                        search.createColumn({name: "custevent_ht_rc_mascarillas",}),
+                                        search.createColumn({name: "custevent_ht_rc_cenicero",}),
+                                        search.createColumn({name: "custevent_ht_rc_chicotes",}),
+                                        search.createColumn({name: "custevent_ht_rc_lucesparqueo",}),
+                                        search.createColumn({name: "custevent_ht_rc_topespuertas",}),
+                                        search.createColumn({name: "custevent_ht_rc_vidriosyseguros",}),
+                                        search.createColumn({name: "custevent_ht_rc_moquetas",}),
+                                        search.createColumn({name: "custevent_ht_rc_manualradio",}),
+                                        search.createColumn({name: "custevent_ht_rc_palanca",}),
+                                        search.createColumn({name: "custevent_ht_rc_encededor",}),
+                                        search.createColumn({name: "custevent_ht_rc_espejointerior",}),
+                                        search.createColumn({name: "custevent_ht_rc_espejoexterior",}),
+                                        search.createColumn({name: "custevent_ht_rc_ventcalef",}),
+                                        search.createColumn({name: "custevent_ht_rc_tapacubos",}),
+                                        search.createColumn({name: "custevent_ht_rc_parlantes",}),
+                                        search.createColumn({name: "custevent_ht_rc_antena",}),
+                                        search.createColumn({name: "custevent_ht_rc_manualcarro",}),
+                                        search.createColumn({name: "custevent_ht_rc_llantaemergencia",}),
+                                        search.createColumn({name: "custevent_ht_rc_lucesyfaros",}),
+                                        search.createColumn({name: "custevent_ht_rc_micasdeluces",}),
+                                        search.createColumn({name: "custevent_ht_rc_cabecera",}),
+                                        search.createColumn({name: "custevent_ht_rc_herramientas",}),
+                                        search.createColumn({name: "custevent_ht_rc_gata",}),
+                                        search.createColumn({name: "custevent_ht_rc_llaverueda",}),
+                                        search.createColumn({ name: "custevent_ht_rc_odometro", label: "Odomoetro" }),
+                                        search.createColumn({ name: "custevent_ht_rc_cantidadllaves", label: "Canticad de Llaves " }),
+                                        search.createColumn({ name: "custevent_ht_rc_fechaentrega", label: "Fecha Entrega" }),
+                                        search.createColumn({ name: "custevent_ht_rc_novedades", label: "Novedades" }),
+                                        search.createColumn({ name: "custevent_ht_rc_combustible", label: "Combustible" }),
+                                        search.createColumn({ name: "custevent_ht_rc_cantidadcontroles", label: "Cantidad de Controlles" }),
+                                        search.createColumn({ name: "custevent_ht_rc_horaentrega", label: "Hora de Entrega" }),
+                                        search.createColumn({ name: "custevent_ht_rc_novedad_accesorios", label: "Novedad Accesorios" }),
                                     ]
                                 });
                                 let searchResult = RecepcionSearchObj.run().getRange({ start: 0, end: 1 });
@@ -333,6 +333,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                     accesorio[35] = searchResult[0].getValue(RecepcionSearchObj.columns[35]);
                                     accesorio[36] = searchResult[0].getValue(RecepcionSearchObj.columns[36]);
                                     accesorio[37] = searchResult[0].getValue(RecepcionSearchObj.columns[37]);
+                                    accesorio[38] = searchResult[0].getValue(RecepcionSearchObj.columns[38]);
                                 }
 
         
@@ -396,7 +397,8 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                     novedades: typeof accesorio[34] == 'undefined' ? '' : accesorio[34],
                                     combustible: typeof accesorio[35] == 'undefined' ? '' : accesorio[35],
                                     cntidadControles: typeof accesorio[36] == 'undefined' ? '' : accesorio[36],
-                                    horaEntrega: typeof accesorio[37] == 'undefined' ? '' : accesorio[37]
+                                    horaEntrega: typeof accesorio[37] == 'undefined' ? '' : accesorio[37],
+                                    novedadAccesorios: typeof accesorio[38] == 'undefined' ? '' : accesorio[38]
                                 });
                             return true;
                         });
@@ -692,8 +694,8 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                 let lookupFieldsvatregnumber = '';
                                 let clienteid = result.getValue({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
                                 try {
-                                     lookupFieldsvatregnumber = search.lookupFields({ type: 'customer', id: clienteid, columns: ['vatregnumber'] });
-                                     lookupFieldsvatregnumber = lookupFieldsvatregnumber.vatregnumber.length ? lookupFieldsvatregnumber.vatregnumber : '';
+                                    lookupFieldsvatregnumber = search.lookupFields({ type: 'customer', id: clienteid, columns: ['vatregnumber'] });
+                                    lookupFieldsvatregnumber = lookupFieldsvatregnumber.vatregnumber.length ? lookupFieldsvatregnumber.vatregnumber : '';
                                 } catch (error) {}
                                 let ordenTrabajoid = result.getValue({ name: "internalid", summary: "GROUP", label: "Internal ID" })
                                 let ordenServicioid = result.getValue({ name: "internalid", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OT ID Orden Servicio" })
@@ -745,7 +747,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                 let apn = result.getValue({ name: "custrecord_ht_ot_apn", summary: "GROUP", label: "APN" })
                                 let imei = result.getValue({ name: "custrecord_ht_ot_imei", summary: "GROUP", label: "IMEI" })
                                 let ubicacion = result.getValue({ name: "custrecord_ht_ot_ubicacion", summary: "GROUP", label: "Ubicación" })
-                                   
+
                                 let sql = 'SELECT assemblycomponent, memo, itemtype FROM TransactionLine WHERE transaction = ?';
                                 let params = [ordenServicioid]
                                 let array = new Array();
@@ -771,48 +773,48 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                     type: "calendarevent",
                                     filters:
                                     [
-                                       ["transaction.internalid","anyof",ordenServicioid]
+                                        ["transaction.internalid","anyof",ordenServicioid]
                                     ],
                                     columns:
                                     [
-                                       search.createColumn({name: "title",label: "Recepción"}),
-                                       search.createColumn({name: "custevent_ht_rc_radio",}),
-                                       search.createColumn({name: "custevent_ht_rc_perillas",}),
-                                       search.createColumn({name: "custevent_ht_rc_tapacombustible",}),
-                                       search.createColumn({name: "custevent_ht_rc_alfombrapiso",}),
-                                       search.createColumn({name: "custevent_ht_rc_aireacondicionado",}),
-                                       search.createColumn({name: "custevent_ht_rc_brazosplumas",}),
-                                       search.createColumn({name: "custevent_ht_rc_mascarillas",}),
-                                       search.createColumn({name: "custevent_ht_rc_cenicero",}),
-                                       search.createColumn({name: "custevent_ht_rc_chicotes",}),
-                                       search.createColumn({name: "custevent_ht_rc_lucesparqueo",}),
-                                       search.createColumn({name: "custevent_ht_rc_topespuertas",}),
-                                       search.createColumn({name: "custevent_ht_rc_vidriosyseguros",}),
-                                       search.createColumn({name: "custevent_ht_rc_moquetas",}),
-                                       search.createColumn({name: "custevent_ht_rc_manualradio",}),
-                                       search.createColumn({name: "custevent_ht_rc_palanca",}),
-                                       search.createColumn({name: "custevent_ht_rc_encededor",}),
-                                       search.createColumn({name: "custevent_ht_rc_espejointerior",}),
-                                       search.createColumn({name: "custevent_ht_rc_espejoexterior",}),
-                                       search.createColumn({name: "custevent_ht_rc_ventcalef",}),
-                                       search.createColumn({name: "custevent_ht_rc_tapacubos",}),
-                                       search.createColumn({name: "custevent_ht_rc_parlantes",}),
-                                       search.createColumn({name: "custevent_ht_rc_antena",}),
-                                       search.createColumn({name: "custevent_ht_rc_manualcarro",}),
-                                       search.createColumn({name: "custevent_ht_rc_llantaemergencia",}),
-                                       search.createColumn({name: "custevent_ht_rc_lucesyfaros",}),
-                                       search.createColumn({name: "custevent_ht_rc_micasdeluces",}),
-                                       search.createColumn({name: "custevent_ht_rc_cabecera",}),
-                                       search.createColumn({name: "custevent_ht_rc_herramientas",}),
-                                       search.createColumn({name: "custevent_ht_rc_gata",}),
-                                       search.createColumn({name: "custevent_ht_rc_llaverueda",}),
-                                       search.createColumn({ name: "custevent_ht_rc_odometro", label: "Odomoetro" }),
-                                       search.createColumn({ name: "custevent_ht_rc_cantidadllaves", label: "Canticad de Llaves " }),
-                                       search.createColumn({ name: "custevent_ht_rc_fechaentrega", label: "Fecha Entrega" }),
-                                       search.createColumn({ name: "custevent_ht_rc_novedades", label: "Novedades" }),
-                                       search.createColumn({ name: "custevent_ht_rc_combustible", label: "Combustible" }),
-                                       search.createColumn({ name: "custevent_ht_rc_cantidadcontroles", label: "Cantidad de Controlles" }),
-                                       search.createColumn({ name: "custevent_ht_rc_horaentrega", label: "Hora de Entrega" }),
+                                        search.createColumn({name: "title",label: "Recepción"}),
+                                        search.createColumn({name: "custevent_ht_rc_radio",}),
+                                        search.createColumn({name: "custevent_ht_rc_perillas",}),
+                                        search.createColumn({name: "custevent_ht_rc_tapacombustible",}),
+                                        search.createColumn({name: "custevent_ht_rc_alfombrapiso",}),
+                                        search.createColumn({name: "custevent_ht_rc_aireacondicionado",}),
+                                        search.createColumn({name: "custevent_ht_rc_brazosplumas",}),
+                                        search.createColumn({name: "custevent_ht_rc_mascarillas",}),
+                                        search.createColumn({name: "custevent_ht_rc_cenicero",}),
+                                        search.createColumn({name: "custevent_ht_rc_chicotes",}),
+                                        search.createColumn({name: "custevent_ht_rc_lucesparqueo",}),
+                                        search.createColumn({name: "custevent_ht_rc_topespuertas",}),
+                                        search.createColumn({name: "custevent_ht_rc_vidriosyseguros",}),
+                                        search.createColumn({name: "custevent_ht_rc_moquetas",}),
+                                        search.createColumn({name: "custevent_ht_rc_manualradio",}),
+                                        search.createColumn({name: "custevent_ht_rc_palanca",}),
+                                        search.createColumn({name: "custevent_ht_rc_encededor",}),
+                                        search.createColumn({name: "custevent_ht_rc_espejointerior",}),
+                                        search.createColumn({name: "custevent_ht_rc_espejoexterior",}),
+                                        search.createColumn({name: "custevent_ht_rc_ventcalef",}),
+                                        search.createColumn({name: "custevent_ht_rc_tapacubos",}),
+                                        search.createColumn({name: "custevent_ht_rc_parlantes",}),
+                                        search.createColumn({name: "custevent_ht_rc_antena",}),
+                                        search.createColumn({name: "custevent_ht_rc_manualcarro",}),
+                                        search.createColumn({name: "custevent_ht_rc_llantaemergencia",}),
+                                        search.createColumn({name: "custevent_ht_rc_lucesyfaros",}),
+                                        search.createColumn({name: "custevent_ht_rc_micasdeluces",}),
+                                        search.createColumn({name: "custevent_ht_rc_cabecera",}),
+                                        search.createColumn({name: "custevent_ht_rc_herramientas",}),
+                                        search.createColumn({name: "custevent_ht_rc_gata",}),
+                                        search.createColumn({name: "custevent_ht_rc_llaverueda",}),
+                                        search.createColumn({ name: "custevent_ht_rc_odometro", label: "Odomoetro" }),
+                                        search.createColumn({ name: "custevent_ht_rc_cantidadllaves", label: "Canticad de Llaves " }),
+                                        search.createColumn({ name: "custevent_ht_rc_fechaentrega", label: "Fecha Entrega" }),
+                                        search.createColumn({ name: "custevent_ht_rc_novedades", label: "Novedades" }),
+                                        search.createColumn({ name: "custevent_ht_rc_combustible", label: "Combustible" }),
+                                        search.createColumn({ name: "custevent_ht_rc_cantidadcontroles", label: "Cantidad de Controlles" }),
+                                        search.createColumn({ name: "custevent_ht_rc_horaentrega", label: "Hora de Entrega" }),
                                     ]
                                 });
                                 let searchResult = RecepcionSearchObj.run().getRange({ start: 0, end: 1 });
@@ -1033,8 +1035,8 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                 let lookupFieldsvatregnumber = '';
                                 let clienteid = result.getValue({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
                                 try {
-                                     lookupFieldsvatregnumber = search.lookupFields({ type: 'customer', id: clienteid, columns: ['vatregnumber'] });
-                                     lookupFieldsvatregnumber = lookupFieldsvatregnumber.vatregnumber.length ? lookupFieldsvatregnumber.vatregnumber : '';
+                                    lookupFieldsvatregnumber = search.lookupFields({ type: 'customer', id: clienteid, columns: ['vatregnumber'] });
+                                    lookupFieldsvatregnumber = lookupFieldsvatregnumber.vatregnumber.length ? lookupFieldsvatregnumber.vatregnumber : '';
                                 } catch (error) {}
                                 let ordenTrabajoid = result.getValue({ name: "internalid", summary: "GROUP", label: "Internal ID" })
                                 let ordenServicioid = result.getValue({ name: "internalid", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OT ID Orden Servicio" })
@@ -1055,7 +1057,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                 let tipoTrabajo = result.getText({ name: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo Trabajo" }) == '- None -' ? '' : result.getText({ name: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo Trabajo" }).split(' - ')[1]  //^REQUERIDO POR HUNTER
                                 let consideracion = result.getValue({ name: "custbody_ht_os_consideracion", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Consideracion" })
                                 let estadoOT = result.getText({ name: "custrecord_ht_ot_estado", summary: "GROUP", label: "Estado Orden de Trabajo" })
-                                   
+                
                                 let sql = 'SELECT assemblycomponent, memo, itemtype FROM TransactionLine WHERE transaction = ?';
                                 let params = [ordenServicioid]
                                 let array = new Array();
@@ -1081,13 +1083,13 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                     type: "task",
                                     filters:
                                     [
-                                       ["transaction.internalid","anyof",ordenServicioid]
+                                        ["transaction.internalid","anyof",ordenServicioid]
                                     ],
                                     columns:
                                     [
-                                       search.createColumn({name: "title",label: "Turno"}),                    
-                                       search.createColumn({ name: "startdate", label: "Fecha Turno" }),
-                                       search.createColumn({ name: "custevent_ht_tr_hora", label: "Hora Turno" }),
+                                        search.createColumn({name: "title",label: "Turno"}),                    
+                                        search.createColumn({ name: "startdate", label: "Fecha Turno" }),
+                                        search.createColumn({ name: "custevent_ht_tr_hora", label: "Hora Turno" }),
                                     ]
                                 });
                                 let searchResult = RecepcionSearchObj.run().getRange({ start: 0, end: 1 });
@@ -1202,8 +1204,8 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                 let lookupFieldsvatregnumber = '';
                                 let clienteid = result.getValue({ name: "custrecord_ht_ot_cliente_id", summary: "GROUP", label: "Cliente" }) //^REQUERIDO POR HUNTER
                                 try {
-                                     lookupFieldsvatregnumber = search.lookupFields({ type: 'customer', id: clienteid, columns: ['vatregnumber'] });
-                                     lookupFieldsvatregnumber = lookupFieldsvatregnumber.vatregnumber.length ? lookupFieldsvatregnumber.vatregnumber : '';
+                                    lookupFieldsvatregnumber = search.lookupFields({ type: 'customer', id: clienteid, columns: ['vatregnumber'] });
+                                    lookupFieldsvatregnumber = lookupFieldsvatregnumber.vatregnumber.length ? lookupFieldsvatregnumber.vatregnumber : '';
                                 } catch (error) {}
                                 let ordenTrabajoid = result.getValue({ name: "internalid", summary: "GROUP", label: "Internal ID" })
                                 let ordenServicioid = result.getValue({ name: "internalid", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "HT OT ID Orden Servicio" })
@@ -1227,7 +1229,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                 let tipoTrabajo = result.getText({ name: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo Trabajo" }) == '- None -' ? '' : result.getText({ name: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo Trabajo" }).split(' - ')[1]  //^REQUERIDO POR HUNTER
                                 let consideracion = result.getValue({ name: "custbody_ht_os_consideracion", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Consideracion" })
                                 let estadoOT = result.getText({ name: "custrecord_ht_ot_estado", summary: "GROUP", label: "Estado Orden de Trabajo" })
-                                   
+                        
                                 let sql = 'SELECT assemblycomponent, memo, itemtype FROM TransactionLine WHERE transaction = ?';
                                 let params = [ordenServicioid]
                                 let array = new Array();
@@ -1253,13 +1255,13 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                     type: "task",
                                     filters:
                                     [
-                                       ["transaction.internalid","anyof",ordenServicioid]
+                                        ["transaction.internalid","anyof",ordenServicioid]
                                     ],
                                     columns:
                                     [
-                                       search.createColumn({name: "title",label: "Turno"}),                    
-                                       search.createColumn({ name: "startdate", label: "Fecha Turno" }),
-                                       search.createColumn({ name: "custevent_ht_tr_hora", label: "Hora Turno" }),
+                                        search.createColumn({name: "title",label: "Turno"}),                    
+                                        search.createColumn({ name: "startdate", label: "Fecha Turno" }),
+                                        search.createColumn({ name: "custevent_ht_tr_hora", label: "Hora Turno" }),
                                     ]
                                 });
                                 let searchResult = RecepcionSearchObj.run().getRange({ start: 0, end: 1 });
@@ -2294,6 +2296,12 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                     guardar = 1;
                                 }
 
+                                if (typeof scriptContext.novedadAccesorios != 'undefined') {
+                                    openRecord.setValue({ fieldId: 'custevent_ht_rc_novedad_accesorios', value: scriptContext.novedadAccesorios });
+                                    guardar = 1;
+                                }
+                                
+
                                 //Fin accesorio 
 
                                 if (guardar == 1) {
@@ -2434,7 +2442,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                     type: "calendarevent",
                                     filters:
                                     [
-                                       ["transaction.internalid","anyof",idOS]
+                                        ["transaction.internalid","anyof",idOS]
                                     ],
                                     columns:
                                     [
@@ -2668,7 +2676,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                 ],
                 columns:
                 [
-                   search.createColumn({name: "internalid", label: "ID interno"}),
+                    search.createColumn({name: "internalid", label: "ID interno"}),
                 ]
             });
 

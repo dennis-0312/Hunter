@@ -1,0 +1,767 @@
+<!-- Do not modify the contents of the SDF XML definition structure located under "CDATA" section of this XML, as this may corrupt the Workbook/Dataset data when you deploy the modified object to your NetSuite account. !-->
+<dataset scriptid="custdataset63">
+  <name translate="T">[scriptid=custcollectiontranslations_dataset_63_274479e68ebf4b9bbc3c2.dataset_name_360_1]</name>
+  <dependencies>
+    <dependency>[scriptid=custbody_4601_total_amt]</dependency>
+    <dependency>[scriptid=customrecord_ht_record_bienes.custrecord_ht_bien_motor]</dependency>
+    <dependency>[scriptid=customrecord_ht_record_bienes.custrecord_ht_bien_chasis]</dependency>
+    <dependency>[scriptid=custbody_ht_os_concesionario]</dependency>
+    <dependency>[scriptid=customrecord_ht_record_bienes]</dependency>
+    <dependency>[scriptid=customrecord_ht_record_bienes.custrecord_ht_bien_modelo]</dependency>
+    <dependency>[scriptid=custcollectiontranslations_dataset_63_274479e68ebf4b9bbc3c2.dataset_description_360_3]</dependency>
+    <dependency>[scriptid=customrecord_ht_record_bienes.custrecord_ht_bien_placa]</dependency>
+    <dependency>[scriptid=customrecord_ht_record_bienes.custrecord_ht_bien_marca]</dependency>
+    <dependency>[scriptid=custbody_ht_os_companiaseguros]</dependency>
+    <dependency>[scriptid=custcollectiontranslations_dataset_62_90fa7b455857499d9fdcb.dataset_field_341_1]</dependency>
+    <dependency>[scriptid=custbody_ts_importe_op]</dependency>
+    <dependency>[scriptid=custbody_ht_os_bancofinanciera]</dependency>
+  </dependencies>
+  <definition><![CDATA[<root>
+<_T_>dataSet</_T_>
+<id type="null"/>
+<scriptId type="null"/>
+<applicationId type="null"/>
+<version type="string">0.1</version>
+<name>
+  <translationScriptId>custcollectiontranslations_dataset_63_274479e68ebf4b9bbc3c2.dataset_name_360_1</translationScriptId>
+</name>
+<audience>
+  <AudienceItems type="array"/>
+  <isPublic type="boolean">false</isPublic>
+</audience>
+<ownerId>438</ownerId>
+<description>
+  <translationScriptId>custcollectiontranslations_dataset_63_274479e68ebf4b9bbc3c2.dataset_description_360_3</translationScriptId>
+</description>
+<baseRecord>
+  <id>salesinvoiced</id>
+  <label>Ventas (facturadas)</label>
+</baseRecord>
+<columns type="array">
+  <_ITEM_>
+    <columnId>46</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>location</id>
+      <label>Oficina</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>tranline</id>
+            <targetRecordType>transactionline</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>tranline.location</uniqueId>
+    </field>
+    <alias>location</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>55</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>createdby</id>
+      <label>Creado por</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.createdby</uniqueId>
+    </field>
+    <alias>createdby</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>9</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>entity</id>
+      <label>Cliente</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>entity</uniqueId>
+    </field>
+    <alias>entity</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>13</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>category</id>
+      <label>Categoría</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>entity^customer</id>
+            <targetRecordType>customer</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>entity^customer.category</uniqueId>
+    </field>
+    <alias>category</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>7</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>type</id>
+      <label>Tipo de transacción</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>type</uniqueId>
+    </field>
+    <alias>type</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>16</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>transaction</id>
+      <label>Transacción</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>transaction</uniqueId>
+    </field>
+    <alias>transaction</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>4</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>trandate</id>
+      <label>Fecha</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>trandate</uniqueId>
+    </field>
+    <alias>trandate</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>47</columnId>
+    <label>
+      <translationScriptId>custcollectiontranslations_dataset_62_90fa7b455857499d9fdcb.dataset_field_341_1</translationScriptId>
+    </label>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>duedate</id>
+      <label>Fecha de vencimiento</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.duedate</uniqueId>
+    </field>
+    <alias>duedate</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>5</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>memo</id>
+      <label>Nota</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>memo</uniqueId>
+    </field>
+    <alias>memo</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>1</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>item</id>
+      <label>Artículo</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>item</uniqueId>
+    </field>
+    <alias>item</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>6</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>itemcount</id>
+      <label>Cantidad</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>itemcount</uniqueId>
+    </field>
+    <alias>itemcount</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>20</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custrecord_ht_bien_marca</id>
+      <label>HT BN Marca</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+          <_ITEM_>
+            <id>custbody_ht_so_bien</id>
+            <targetRecordType>customrecord_ht_record_bienes</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ht_so_bien.custrecord_ht_bien_marca</uniqueId>
+    </field>
+    <alias>custrecord_ht_bien_marca</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>21</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custrecord_ht_bien_modelo</id>
+      <label>HT BN Modelo</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+          <_ITEM_>
+            <id>custbody_ht_so_bien</id>
+            <targetRecordType>customrecord_ht_record_bienes</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ht_so_bien.custrecord_ht_bien_modelo</uniqueId>
+    </field>
+    <alias>custrecord_ht_bien_modelo</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>23</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custrecord_ht_bien_motor</id>
+      <label>HT BN Motor</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+          <_ITEM_>
+            <id>custbody_ht_so_bien</id>
+            <targetRecordType>customrecord_ht_record_bienes</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ht_so_bien.custrecord_ht_bien_motor</uniqueId>
+    </field>
+    <alias>custrecord_ht_bien_motor</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>19</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custrecord_ht_bien_chasis</id>
+      <label>HT BN Chasis</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+          <_ITEM_>
+            <id>custbody_ht_so_bien</id>
+            <targetRecordType>customrecord_ht_record_bienes</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ht_so_bien.custrecord_ht_bien_chasis</uniqueId>
+    </field>
+    <alias>custrecord_ht_bien_chasis</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>24</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>name</id>
+      <label>ID</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+          <_ITEM_>
+            <id>custbody_ht_so_bien</id>
+            <targetRecordType>customrecord_ht_record_bienes</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ht_so_bien.name</uniqueId>
+    </field>
+    <alias>name</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>22</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custrecord_ht_bien_placa</id>
+      <label>HT BN Placa</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+          <_ITEM_>
+            <id>custbody_ht_so_bien</id>
+            <targetRecordType>customrecord_ht_record_bienes</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ht_so_bien.custrecord_ht_bien_placa</uniqueId>
+    </field>
+    <alias>custrecord_ht_bien_placa</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>31</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>employee</id>
+      <label>Representante de ventas</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>employee</uniqueId>
+    </field>
+    <alias>employee</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>2</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>amount</id>
+      <label>Importe</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>amount</uniqueId>
+    </field>
+    <alias>amount</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>50</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>foreignamountpaid</id>
+      <label>Importe pagado (moneda de transacción)</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.foreignamountpaid</uniqueId>
+    </field>
+    <alias>foreignamountpaid</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>49</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custbody_4601_total_amt</id>
+      <label>Importe total</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_4601_total_amt</uniqueId>
+    </field>
+    <alias>custbody_4601_total_amt</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>35</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custbody_ts_importe_op</id>
+      <label>Importe Pago</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ts_importe_op</uniqueId>
+    </field>
+    <alias>custbody_ts_importe_op</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>37</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>status</id>
+      <label>Estado</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+          <_ITEM_>
+            <id>custbody_ts_related_transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ts_related_transaction^transaction.status</uniqueId>
+    </field>
+    <alias>status</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>3</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>amountnet</id>
+      <label>Importe (neto)</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array"/>
+      </joinTrail>
+      <uniqueId>amountnet</uniqueId>
+    </field>
+    <alias>amountnet</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>38</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>defaultbillingaddress</id>
+      <label>Dirección de facturación predeterminada</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>entity^customer</id>
+            <targetRecordType>customer</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>entity^customer.defaultbillingaddress</uniqueId>
+    </field>
+    <alias>defaultbillingaddress</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>39</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>phone</id>
+      <label>Teléfono</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>entity^customer</id>
+            <targetRecordType>customer</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>entity^customer.phone</uniqueId>
+    </field>
+    <alias>phone</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>40</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>email</id>
+      <label>Correo electrónico de </label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>entity^customer</id>
+            <targetRecordType>customer</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>entity^customer.email</uniqueId>
+    </field>
+    <alias>email</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>25</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custbody_ht_os_concesionario</id>
+      <label>HT Concesionario</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ht_os_concesionario</uniqueId>
+    </field>
+    <alias>custbody_ht_os_concesionario</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>26</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custbody_ht_os_bancofinanciera</id>
+      <label>HT Financiera</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ht_os_bancofinanciera</uniqueId>
+    </field>
+    <alias>custbody_ht_os_bancofinanciera</alias>
+  </_ITEM_>
+  <_ITEM_>
+    <columnId>41</columnId>
+    <label type="null"/>
+    <field>
+      <_T_>fieldReference</_T_>
+      <id>custbody_ht_os_companiaseguros</id>
+      <label>HT Aseguradora</label>
+      <joinTrail>
+        <baseRecord>
+          <id>salesinvoiced</id>
+          <label>Ventas (facturadas)</label>
+        </baseRecord>
+        <joins type="array">
+          <_ITEM_>
+            <id>transaction^transaction</id>
+            <targetRecordType>transaction</targetRecordType>
+          </_ITEM_>
+        </joins>
+      </joinTrail>
+      <uniqueId>transaction^transaction.custbody_ht_os_companiaseguros</uniqueId>
+    </field>
+    <alias>custbody_ht_os_companiaseguros</alias>
+  </_ITEM_>
+</columns>
+<criteria>
+  <_T_>condition</_T_>
+  <operator>
+    <code>AND</code>
+  </operator>
+  <children type="array">
+    <_ITEM_>
+      <_T_>filter</_T_>
+      <operator>
+        <code>ANY_OF</code>
+      </operator>
+      <meta>
+        <subType>values</subType>
+        <selectorType>field-values</selectorType>
+      </meta>
+      <expressions type="array">
+        <_ITEM_>
+          <value>
+            <type>KEY</type>
+            <value>CustInvc</value>
+          </value>
+          <label>Factura de venta</label>
+          <subType type="null"/>
+          <uiData type="array"/>
+        </_ITEM_>
+      </expressions>
+      <field>
+        <_T_>fieldReference</_T_>
+        <id>type</id>
+        <label>Tipo de transacción</label>
+        <joinTrail>
+          <baseRecord>
+            <id>salesinvoiced</id>
+            <label>Ventas (facturadas)</label>
+          </baseRecord>
+          <joins type="array"/>
+        </joinTrail>
+        <uniqueId>type</uniqueId>
+      </field>
+      <targetFieldContext>
+        <name>IDENTIFIER</name>
+      </targetFieldContext>
+      <fieldStateName>display</fieldStateName>
+      <caseSensitive type="boolean">false</caseSensitive>
+    </_ITEM_>
+  </children>
+  <meta type="null"/>
+  <field type="null"/>
+  <targetFieldContext>
+    <name>DEFAULT</name>
+  </targetFieldContext>
+  <fieldStateName type="null"/>
+</criteria>
+<formulas type="array"/>
+</root>]]></definition>
+</dataset>

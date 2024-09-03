@@ -1,0 +1,272 @@
+<customlist scriptid="customlist_pe_codigo_3_1">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>PE Codigos 3.1</name>
+  <customvalues>
+    <customvalue scriptid="val_44740_7460686_sb1_136">
+      <isinactive>F</isinactive>
+      <value>Efectivo y Equivalentes al Efectivo</value>
+    </customvalue>
+    <customvalue scriptid="val_44741_7460686_sb1_194">
+      <isinactive>F</isinactive>
+      <value>Otros Activos Financieros</value>
+    </customvalue>
+    <customvalue scriptid="val_44742_7460686_sb1_980">
+      <isinactive>F</isinactive>
+      <value>Cuentas por cobrar comerciales y otras cuentas por cobrar</value>
+    </customvalue>
+    <customvalue scriptid="val_44743_7460686_sb1_570">
+      <isinactive>F</isinactive>
+      <value>Cuentas por Cobrar Comerciales (neto)</value>
+    </customvalue>
+    <customvalue scriptid="val_44744_7460686_sb1_461">
+      <isinactive>F</isinactive>
+      <value>Otras Cuentas por Cobrar (neto)</value>
+    </customvalue>
+    <customvalue scriptid="val_44745_7460686_sb1_856">
+      <isinactive>F</isinactive>
+      <value>Cuentas por Cobrar a Entidades Relacionadas</value>
+    </customvalue>
+    <customvalue scriptid="val_44746_7460686_sb1_232">
+      <isinactive>F</isinactive>
+      <value>Anticipos</value>
+    </customvalue>
+    <customvalue scriptid="val_44747_7460686_sb1_795">
+      <isinactive>F</isinactive>
+      <value>Inventarios</value>
+    </customvalue>
+    <customvalue scriptid="val_44748_7460686_sb1_911">
+      <isinactive>F</isinactive>
+      <value>Activos Biologicos</value>
+    </customvalue>
+    <customvalue scriptid="val_44749_7460686_sb1_179">
+      <isinactive>F</isinactive>
+      <value>Activos por Impuestos a las Ganancias</value>
+    </customvalue>
+    <customvalue scriptid="val_44750_7460686_sb1_365">
+      <isinactive>F</isinactive>
+      <value>Otros Activos no financieros</value>
+    </customvalue>
+    <customvalue scriptid="val_44751_7460686_sb1_139">
+      <isinactive>F</isinactive>
+      <value>Total Activos Corrientes Distintos de los Activos o Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta o para Distribuir a los Propietarios</value>
+    </customvalue>
+    <customvalue scriptid="val_44752_7460686_sb1_693">
+      <isinactive>F</isinactive>
+      <value>Activos no Corrientes o Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta</value>
+    </customvalue>
+    <customvalue scriptid="val_44753_7460686_sb1_195">
+      <isinactive>F</isinactive>
+      <value>Activos no Corrientes o Grupos de Activos para su Disposicion Clasificados como Mantenidos para Distribuir a los Propietarios</value>
+    </customvalue>
+    <customvalue scriptid="val_44754_7460686_sb1_435">
+      <isinactive>F</isinactive>
+      <value>Activos no Corrientes o Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta o como Mantenidos para Distribuir a los Propietarios</value>
+    </customvalue>
+    <customvalue scriptid="val_44755_7460686_sb1_257">
+      <isinactive>F</isinactive>
+      <value>Total Activos Corrientes</value>
+    </customvalue>
+    <customvalue scriptid="val_44756_7460686_sb1_396">
+      <isinactive>F</isinactive>
+      <value>Otros Activos Financieros</value>
+    </customvalue>
+    <customvalue scriptid="val_44757_7460686_sb1_760">
+      <isinactive>F</isinactive>
+      <value>Inversiones en subsidiarias, negocios conjuntos y asociadas</value>
+    </customvalue>
+    <customvalue scriptid="val_44758_7460686_sb1_956">
+      <isinactive>F</isinactive>
+      <value>Cuentas por cobrar comerciales y otras cuentas por cobrar</value>
+    </customvalue>
+    <customvalue scriptid="val_44759_7460686_sb1_634">
+      <isinactive>F</isinactive>
+      <value>Cuentas por Cobrar Comerciales</value>
+    </customvalue>
+    <customvalue scriptid="val_44760_7460686_sb1_254">
+      <isinactive>F</isinactive>
+      <value>Otras Cuentas por Cobrar</value>
+    </customvalue>
+    <customvalue scriptid="val_44761_7460686_sb1_533">
+      <isinactive>F</isinactive>
+      <value>Cuentas por Cobrar a Entidades Relacionadas</value>
+    </customvalue>
+    <customvalue scriptid="val_44762_7460686_sb1_866">
+      <isinactive>F</isinactive>
+      <value>Anticipos</value>
+    </customvalue>
+    <customvalue scriptid="val_44763_7460686_sb1_194">
+      <isinactive>F</isinactive>
+      <value>Activos Biologicos</value>
+    </customvalue>
+    <customvalue scriptid="val_44764_7460686_sb1_634">
+      <isinactive>F</isinactive>
+      <value>Propiedades de Inversion</value>
+    </customvalue>
+    <customvalue scriptid="val_44765_7460686_sb1_118">
+      <isinactive>F</isinactive>
+      <value>Propiedades, Planta y Equipo (neto)</value>
+    </customvalue>
+    <customvalue scriptid="val_44766_7460686_sb1_347">
+      <isinactive>F</isinactive>
+      <value>Activos  intangibles distintos  de la plusvalia</value>
+    </customvalue>
+    <customvalue scriptid="val_44767_7460686_sb1_315">
+      <isinactive>F</isinactive>
+      <value>Activos por impuestos diferidos</value>
+    </customvalue>
+    <customvalue scriptid="val_44768_7460686_sb1_653">
+      <isinactive>F</isinactive>
+      <value>Plusvaloa</value>
+    </customvalue>
+    <customvalue scriptid="val_44769_7460686_sb1_807">
+      <isinactive>F</isinactive>
+      <value>Otros Activos no financieros</value>
+    </customvalue>
+    <customvalue scriptid="val_44770_7460686_sb1_491">
+      <isinactive>F</isinactive>
+      <value>Total Activos No Corrientes</value>
+    </customvalue>
+    <customvalue scriptid="val_44771_7460686_sb1_863">
+      <isinactive>F</isinactive>
+      <value>TOTAL DE ACTIVOS</value>
+    </customvalue>
+    <customvalue scriptid="val_44772_7460686_sb1_691">
+      <isinactive>F</isinactive>
+      <value>Otros Pasivos Financieros</value>
+    </customvalue>
+    <customvalue scriptid="val_44773_7460686_sb1_812">
+      <isinactive>F</isinactive>
+      <value>Cuentas por pagar comerciales y otras cuentas por pagar</value>
+    </customvalue>
+    <customvalue scriptid="val_44774_7460686_sb1_489">
+      <isinactive>F</isinactive>
+      <value>Cuentas por Pagar Comerciales</value>
+    </customvalue>
+    <customvalue scriptid="val_44775_7460686_sb1_951">
+      <isinactive>F</isinactive>
+      <value>Otras Cuentas por Pagar</value>
+    </customvalue>
+    <customvalue scriptid="val_44776_7460686_sb1_813">
+      <isinactive>F</isinactive>
+      <value>Cuentas por Pagar a Entidades Relacionadas</value>
+    </customvalue>
+    <customvalue scriptid="val_44777_7460686_sb1_218">
+      <isinactive>F</isinactive>
+      <value>Ingresos diferidos</value>
+    </customvalue>
+    <customvalue scriptid="val_44778_7460686_sb1_106">
+      <isinactive>F</isinactive>
+      <value>Provision por Beneficios a los Empleados</value>
+    </customvalue>
+    <customvalue scriptid="val_44779_7460686_sb1_682">
+      <isinactive>F</isinactive>
+      <value>Otras provisiones</value>
+    </customvalue>
+    <customvalue scriptid="val_44780_7460686_sb1_306">
+      <isinactive>F</isinactive>
+      <value>Pasivos por Impuestos a las Ganancias</value>
+    </customvalue>
+    <customvalue scriptid="val_44781_7460686_sb1_416">
+      <isinactive>F</isinactive>
+      <value>Otros Pasivos no financieros</value>
+    </customvalue>
+    <customvalue scriptid="val_44782_7460686_sb1_469">
+      <isinactive>F</isinactive>
+      <value>Total de Pasivos Corrientes distintos de Pasivos incluidos en Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta</value>
+    </customvalue>
+    <customvalue scriptid="val_44783_7460686_sb1_416">
+      <isinactive>F</isinactive>
+      <value>Pasivos incluidos en Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta</value>
+    </customvalue>
+    <customvalue scriptid="val_44784_7460686_sb1_275">
+      <isinactive>F</isinactive>
+      <value>Total Pasivos Corrientes</value>
+    </customvalue>
+    <customvalue scriptid="val_44785_7460686_sb1_252">
+      <isinactive>F</isinactive>
+      <value>Otros Pasivos Financieros</value>
+    </customvalue>
+    <customvalue scriptid="val_44786_7460686_sb1_807">
+      <isinactive>F</isinactive>
+      <value>Cuentas por pagar comerciales y otras cuentas por pagar</value>
+    </customvalue>
+    <customvalue scriptid="val_44787_7460686_sb1_347">
+      <isinactive>F</isinactive>
+      <value>Cuentas por Pagar Comerciales</value>
+    </customvalue>
+    <customvalue scriptid="val_44788_7460686_sb1_805">
+      <isinactive>F</isinactive>
+      <value>Otras Cuentas por Pagar</value>
+    </customvalue>
+    <customvalue scriptid="val_44789_7460686_sb1_916">
+      <isinactive>F</isinactive>
+      <value>Cuentas por Pagar a Entidades Relacionadas</value>
+    </customvalue>
+    <customvalue scriptid="val_44790_7460686_sb1_998">
+      <isinactive>F</isinactive>
+      <value>Ingresos Diferidos</value>
+    </customvalue>
+    <customvalue scriptid="val_44791_7460686_sb1_779">
+      <isinactive>F</isinactive>
+      <value>Provision por Beneficios a los Empleados</value>
+    </customvalue>
+    <customvalue scriptid="val_44792_7460686_sb1_500">
+      <isinactive>F</isinactive>
+      <value>Otras provisiones</value>
+    </customvalue>
+    <customvalue scriptid="val_44793_7460686_sb1_638">
+      <isinactive>F</isinactive>
+      <value>Pasivos por impuestos diferidos</value>
+    </customvalue>
+    <customvalue scriptid="val_44794_7460686_sb1_482">
+      <isinactive>F</isinactive>
+      <value>Otros pasivos no financieros</value>
+    </customvalue>
+    <customvalue scriptid="val_44795_7460686_sb1_957">
+      <isinactive>F</isinactive>
+      <value>Total Pasivos No Corrientes</value>
+    </customvalue>
+    <customvalue scriptid="val_44796_7460686_sb1_403">
+      <isinactive>F</isinactive>
+      <value>Total Pasivos</value>
+    </customvalue>
+    <customvalue scriptid="val_44797_7460686_sb1_998">
+      <isinactive>F</isinactive>
+      <value>Capital Emitido</value>
+    </customvalue>
+    <customvalue scriptid="val_44798_7460686_sb1_201">
+      <isinactive>F</isinactive>
+      <value>Primas de Emision</value>
+    </customvalue>
+    <customvalue scriptid="val_44799_7460686_sb1_707">
+      <isinactive>F</isinactive>
+      <value>Acciones de Inversion</value>
+    </customvalue>
+    <customvalue scriptid="val_44800_7460686_sb1_184">
+      <isinactive>F</isinactive>
+      <value>Acciones Propias en Cartera</value>
+    </customvalue>
+    <customvalue scriptid="val_44801_7460686_sb1_536">
+      <isinactive>F</isinactive>
+      <value>Otras Reservas de Capital</value>
+    </customvalue>
+    <customvalue scriptid="val_44802_7460686_sb1_828">
+      <isinactive>F</isinactive>
+      <value>Resultados Acumulados</value>
+    </customvalue>
+    <customvalue scriptid="val_44803_7460686_sb1_913">
+      <isinactive>F</isinactive>
+      <value>Otras Reservas de Patrimonio</value>
+    </customvalue>
+    <customvalue scriptid="val_44804_7460686_sb1_859">
+      <isinactive>F</isinactive>
+      <value>Total Patrimonio</value>
+    </customvalue>
+    <customvalue scriptid="val_44805_7460686_sb1_488">
+      <isinactive>F</isinactive>
+      <value>TOTAL PASIVO Y PATRIMONIO</value>
+    </customvalue>
+  </customvalues>
+</customlist>

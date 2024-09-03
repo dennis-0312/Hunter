@@ -1,0 +1,28 @@
+<customlist scriptid="customlist_pe_caso_queja_mot">
+  <description>Motivos de quejas</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>PE Motivo Queja</name>
+  <customvalues>
+    <customvalue scriptid="val_693797_7451241_sb1_656">
+      <isinactive>F</isinactive>
+      <value>Información errónea</value>
+    </customvalue>
+    <customvalue scriptid="val_693798_7451241_sb1_979">
+      <isinactive>F</isinactive>
+      <value>Falta de Información</value>
+    </customvalue>
+    <customvalue scriptid="val_693799_7451241_sb1_887">
+      <isinactive>F</isinactive>
+      <value>Mala atención</value>
+    </customvalue>
+    <customvalue scriptid="val_693800_7451241_sb1_764">
+      <isinactive>F</isinactive>
+      <value>Error de pagos en línea</value>
+    </customvalue>
+    <customvalue scriptid="val_693801_7451241_sb1_419">
+      <isinactive>F</isinactive>
+      <value>Disconformidad con servicio </value>
+    </customvalue>
+  </customvalues>
+</customlist>

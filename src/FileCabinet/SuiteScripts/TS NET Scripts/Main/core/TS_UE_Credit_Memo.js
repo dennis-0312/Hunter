@@ -35,7 +35,7 @@ define(['N/log',
                 } else {
                     let i;
                     let idB = objRecord.getValue('custbody_ht_so_bien');
-                    let valor_tipo_agrupacion = -1, idCoberturaItem, envioPX = 0, envioTele = 0, itemid = 0, serieChaser = 0;
+                    let valor_tipo_agrupacion = -1, idCoberturaItem, envioPX = 0, envioTele = 0, itemid = 0, serieChaser = 0, busqueda_cobertura = '';
                     let numLines = objRecord.getLineCount({ sublistId: 'item' });
                     for (i = 0; i < numLines; i++) {
                         let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
@@ -49,7 +49,9 @@ define(['N/log',
                     }
                     log.debug('idB', idB);
                     log.debug('valor_tipo_agrupacion', valor_tipo_agrupacion);
-                    let busqueda_cobertura = getCoberturaItem(idB);
+                    if (idB) {
+                        busqueda_cobertura = getCoberturaItem(idB);
+                    }
                     log.debug('busqueda_cobertura', busqueda_cobertura);
                     if (busqueda_cobertura.length != 0) {
                         itemid = busqueda_cobertura[0][0]
@@ -124,7 +126,7 @@ define(['N/log',
                         let customerid = objRecord.getValue('entity');
                         let productoid = itemid;
                         if (envioPX == _constant.Valor.SI) {
-                            log.debug('DesestimientoPX', 'Función de impulso a PX')
+                            log.debug('DesestimientoPX', 'Función de impulso a PX, no hay desistimiento del servicio en PX')
                         }
 
                         if (envioTele == _constant.Valor.SI) {

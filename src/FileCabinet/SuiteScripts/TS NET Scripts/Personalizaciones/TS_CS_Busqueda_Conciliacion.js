@@ -74,7 +74,7 @@ define(['N/url', 'N/runtime'],
         });
         console.log('host', host);
 
-        window.open('https://7451241.app.netsuite.com/app/common/search/searchresults.nl?searchid=929&whence=');
+        window.open('https://7451241-sb1.app.netsuite.com/app/common/search/searchresults.nl?searchid=929&whence=');
 
 
       } catch (err) {

@@ -11,6 +11,7 @@ define(['N/runtime', 'N/url', 'N/search', 'N/email'], function (runtime, url, se
     const onAction = (context) => {
         const FN = 'onAction';
         try {
+            log.debug('Init', 'Proccess');
             const currentRecord = context.newRecord;
             const transactionId = currentRecord.id;
             const currentUser = runtime.getCurrentUser();
@@ -26,9 +27,7 @@ define(['N/runtime', 'N/url', 'N/search', 'N/email'], function (runtime, url, se
             let body = '<p>Número de Documento: ' + tranID + '<br>Solicitante: ' + ejecutiva_gestion + '<br>Cliente: ' + entity + '<br>Bien: ' + bien + '<br>Estado: Pendiente de Aprobación</p><p><br>Puedes revisarlo ingresando a: http://www.netsuite.com para aprobarlo.<br> </p>';
             const transactionLink = getTransactionLink(transactionId);
             body += '<a href="' + transactionLink + '"><strong>Ver Registro</strong></a>';
-            EMPLOYID.forEach(function (employees) {
-                sendEmail(employees.id, subject, body, '', ejecutiva_gestion);
-            })
+            EMPLOYID.forEach(function (employees) { sendEmail(employees.id, subject, body, '', ejecutiva_gestion) })
         } catch (e) {
             log.error({
                 title: `${FN} error`,
@@ -46,7 +45,6 @@ define(['N/runtime', 'N/url', 'N/search', 'N/email'], function (runtime, url, se
 
     const getUserRoles = (role) => {
         let EMPLOYID = new Array();
-
         let employeeSearch = search.create({
             type: 'employee',
             columns: ['internalid'],

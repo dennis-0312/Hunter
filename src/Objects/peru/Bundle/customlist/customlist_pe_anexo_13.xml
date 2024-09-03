@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_pe_anexo_13">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Anexo 13</name>
+  <customvalues>
+    <customvalue scriptid="val_686232_7451241_sb1_342">
+      <isinactive>F</isinactive>
+      <value>1</value>
+    </customvalue>
+    <customvalue scriptid="val_686233_7451241_sb1_688">
+      <isinactive>F</isinactive>
+      <value>3</value>
+    </customvalue>
+    <customvalue scriptid="val_686234_7451241_sb1_151">
+      <isinactive>F</isinactive>
+      <value>9</value>
+    </customvalue>
+  </customvalues>
+</customlist>

@@ -31,7 +31,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                     }
 
                     if (formato === 'XML') {
-                        let json = buildJson(atsFiles);
+                        let json = buildJson(atsFiles, scriptParameters);
                         // log.error("json", json);
                         generateXML(json, scriptParameters, auxiliaryRecords);
                     }
@@ -153,7 +153,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             return files;
         }
 
-        const buildJson = (atsFiles) => {
+        const buildJson = (atsFiles, scriptParameters) => {
             let jsonBuilded = {};
             let identificacionInformante = getFileContentByName(atsFiles, "IDENTIFICACION DEL INFORMANTE");
             // log.error("identificacionInformante", identificacionInformante);
@@ -188,7 +188,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             formasPagoVenta.pop();
             log.error("formasPagoVenta", formasPagoVenta);*/
 
-            setVentasDetalladas(jsonBuilded, ventasClientes/*, formasPagoVenta*/);
+            setVentasDetalladas(jsonBuilded, ventasClientes, scriptParameters);
 
             let ventasEstablecimiento = getFileContentByName(atsFiles, "VENTAS POR ESTABLECIMIENTO");
             ventasEstablecimiento.pop();
@@ -258,7 +258,6 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 }
             });
         };
-
 
         const getFileContentByName = (atsFiles, fileName) => {
             let fullContent = "";
@@ -346,18 +345,18 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
 
 
                 // log.debug('CÓDIGO DE COMPRA', codigoCompra);
-                if(detalleCompras.tipoComprobante != '02'){
-                    let air = getComprasRetenciones(codigoCompra, comprasRetenciones);
-                    detalleCompras.air = air;
-                } else {
+                if (compraDetallada[46] == 'CompraDetaInformeGasto') {
                     let air = [
                         {
                             codRetAir: '332',
                             baseImpAir: detalleCompras.baseImpGrav,
                             porcentajeAir: 0,
-                            valRetAir:  0
+                            valRetAir: 0
                         }
                     ];
+                    detalleCompras.air = air;
+                } else {
+                    let air = getComprasRetenciones(codigoCompra, comprasRetenciones);
                     detalleCompras.air = air;
                 }
 
@@ -367,17 +366,25 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 detalleCompras.autRetencion1 = compraDetallada[39]; //* 40 No. de autorización del comprobante de retención
                 detalleCompras.fechaEmiRet1 = compraDetallada[40]; //* 41 Fecha de emision del comprobante de retención
 
+                detalleCompras.codigoTipoCM = compraDetallada[41]; //* 42 Código tipo de comprobante modificado por una Nota de Crédito o Débito
+                detalleCompras.establecimientoCM = compraDetallada[42]; //* 43 No. de serie del comprobante modificado - establecimiento
+                detalleCompras.puntoEmisionCM = compraDetallada[43]; //* 44 No. de serie del comprobante modificado - punto de emisión
+                detalleCompras.secuencialCM = compraDetallada[44]; //* 45 No. secuencial del comprobante modificado
+                detalleCompras.numeroAutorizacionCM = compraDetallada[45]; //* 46 No. de autorización del comprobante modificado
+
+
+                detalleCompras.tipoTransac = compraDetallada[46];
                 compras.push(detalleCompras);
             }
             jsonBuilded.compras = compras;
         }
 
-        const setVentasDetalladas = (jsonBuilded, ventasClientes/*, formasPago*/) => {
-            let ventas = [];
+        const setVentasDetalladas = (jsonBuilded, ventasClientes, scriptParameters) => {
+            let ventas = new Array();
 
             for (let i = 0; i < ventasClientes.length; i++) {
                 let detalleVentas = {};
-
+                log.debug('ventasClientes', ventasClientes)
                 let ventaCliente = ventasClientes[i].split('|');
                 //let codigoVenta = ventaCliente[0];
                 detalleVentas.tpIdCliente = ventaCliente[0];
@@ -404,11 +411,13 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 ventas.push(detalleVentas);
             }
 
+            ventas = getATSRetencionesBancarias(ventas, scriptParameters);
+
             jsonBuilded.ventas = ventas;
         }
 
         const setVentasPorEstablecimiento = (jsonBuilded, ventasEstablecimiento) => {
-            let ventas = [];
+            let ventas = new Array();
 
             for (let i = 0; i < ventasEstablecimiento.length; i++) {
                 let ventaEst = {};
@@ -425,7 +434,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
         }
 
         const setComprobanteAnulados = (jsonBuilded, comprobantesAnulados) => {
-            let anulados = []
+            let anulados = new Array();
 
             for (let i = 0; i < comprobantesAnulados.length; i++) {
                 let detalleAnulados = {}
@@ -445,7 +454,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
         }
 
         const setVentasDeExportación = (jsonBuilded, ventasExportaciones) => {
-            let exportaciones = [];
+            let exportaciones = new Array();
 
             for (let i = 0; i < ventasExportaciones.length; i++) {
                 let detalleExportaciones = {};
@@ -509,7 +518,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
         }
 
         const getFormaReembolso = (codigoCompra, formasReembolso) => {
-            let reembolso = [];
+            let reembolso = new Array();
             for (let i = 0; i < formasReembolso.length; i++) {
                 let reemb = formasReembolso[i].split('|');
                 if (Number(reemb[1]) === Number(codigoCompra)) {
@@ -563,7 +572,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
         }*/
 
         const getComprasRetenciones = (codigoCompra, comprasRetenciones) => {
-            let air = [];
+            let air = new Array();
             let retGroup = 0;
             log.debug('codigoCompra', codigoCompra)
             log.debug('comprasRetenciones', comprasRetenciones)
@@ -571,16 +580,18 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             for (let i = 0; i < comprasRetenciones.length; i++) {
                 let compraRetencion = comprasRetenciones[i].split('|');
                 if (Number(compraRetencion[0]) === Number(codigoCompra)) {
+                    log.debug('compraRetencion', compraRetencion)
                     for (let j = 1; j < compraRetencion.length; j += 4) {
                         if (retGroup < 3) {
                             let detalleAir = {
-                                codRetAir: (compraRetencion[j].replace(/[a-zA-Z]/g, "")).trim(),
+                                //codRetAir: (compraRetencion[j].replace(/[a-zA-Z]/g, "")).trim(),
+                                codRetAir: (compraRetencion[j]).trim(),
                                 baseImpAir: Number(compraRetencion[j + 1]) || 0,
                                 porcentajeAir: compraRetencion[j + 2],
                                 valRetAir: Number(compraRetencion[j + 3]) || 0
                             };
 
-                            if(detalleAir.codRetAir != ''){
+                            if (detalleAir.codRetAir != '') {
                                 air.push(detalleAir);
                             }
                             /*
@@ -626,7 +637,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
 
         //<I> rhuaccha: 2024-02-26
         const getListFormaPago = (codigoCompra, formasPago) => {
-            let arr = [];
+            let arr = new Array();
             for (let i = 0; i < formasPago.length; i++) {
                 let formaPago = formasPago[i].split('|');
                 if (formaPago[0] != codigoCompra) continue;
@@ -693,6 +704,8 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 detalle.valorRetServicios = Number(compraDetallada[24]) || 0; //* 25 Retencion de IVA 70% servicios
                 detalle.valRetServ100 = Number(compraDetallada[25]) || 0; //* 26 Retencion de IVA 100%
 
+                log.debug('detalle.tipoProv', detalle.tipoProv)
+                log.debug('detalle.denoProv', detalle.denoProv)
                 let totbasesImpReemb = getTotalBaseImponibleReembolso(codigoCompra, comprasReembolso);
                 detalle.totbasesImpReemb = totbasesImpReemb || 0;
 
@@ -714,21 +727,21 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 /* Fin Edwin*****/
 
                 // log.debug('CÓDIGO DE COMPRA', codigoCompra);
-                log.debug('detalle.tipoComprobante',detalle.tipoComprobante)
+                //log.debug('detalle.tipoComprobante',detalle.tipoComprobante)
                 let air = [];
-                if(detalle.tipoComprobante != '02'){
+                if (detalle.tipoComprobante != '02') {
                     air = getComprasRetenciones(codigoCompra, comprasRetenciones);
-                } else {
+                } else if (compraDetallada[46] == 'CompraDetaInformeGasto') {
                     air = [
                         {
                             codRetAir: '332',
                             baseImpAir: detalle.baseImpGrav,
                             porcentajeAir: 0,
-                            valRetAir:  0
+                            valRetAir: 0
                         }
                     ];
                 }
-                log.debug('air',air)
+                log.debug('air', air)
                 // log.debug('SECCIÓN AIR COMPRAS', air);
                 // detalle.air = air;
                 air.forEach((obj, index) => {
@@ -748,6 +761,8 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
                 detalle.secRetencion1 = compraDetallada[38]; //* 39 No. secuencial del comprobante de retención
                 detalle.autRetencion1 = compraDetallada[39]; //* 40 No. de autorización del comprobante de retención
                 detalle.fechaEmiRet1 = compraDetallada[40]; //* 41 Fecha de emision del comprobante de retención
+
+                detalle.tipoTransac = compraDetallada[46];
                 compras.push(detalle);
             }
             json.compras = compras;
@@ -901,6 +916,54 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/ren
             return border;
         }
         //<F> rhuaccha: 2024-02-26
+
+        // Inicio - dfernandez - 24/08/2024
+        const getATSRetencionesBancarias = (objResults, scriptParameters) => {
+            log.debug('objResults-scriptParameters', scriptParameters);
+            let atsRetencionesBancariasSearch = search.load({ id: 'customsearch_ec_ret_ban' })
+            if (scriptParameters.periodId) {
+                let periodFilter = search.createFilter({ name: 'postingperiod', operator: search.Operator.ANYOF, values: scriptParameters.periodId });
+                atsRetencionesBancariasSearch.filters.push(periodFilter);
+            }
+            let searchResultCount = atsRetencionesBancariasSearch.runPaged().count;
+            if (searchResultCount > 0) {
+                let detalleVentas = new Object();
+                let pagedDataRetenciones = atsRetencionesBancariasSearch.runPaged({ pageSize: 1000 });
+                for (let i = 0; i < pagedDataRetenciones.pageRanges.length; i++) {
+                    let page = pagedDataRetenciones.fetch({ index: pagedDataRetenciones.pageRanges[i].index });
+                    for (let j = 0; j < page.data.length; j++) {
+                        let result = page.data[j];
+                        let columns = result.columns;
+
+                        detalleVentas.tpIdCliente = result.getValue(columns[0]) == '- None -' ? '' : result.getValue(columns[0]);
+                        detalleVentas.idCliente = result.getValue(columns[1]) == '- None -' ? '' : result.getValue(columns[1]);
+                        detalleVentas.parteRelVtas = '';
+                        detalleVentas.tipoCliente = '';
+                        detalleVentas.DenoCli = '';
+
+                        detalleVentas.tipoComprobante = result.getValue(columns[2]);
+                        detalleVentas.tipoEmision = result.getValue(columns[3]) == '- None -' ? '' : result.getValue(columns[3]);
+
+                        detalleVentas.numeroComprobantes = result.getValue(columns[4]);
+                        detalleVentas.baseNoGraIva = Number(result.getValue(columns[5])) || 0;
+                        detalleVentas.baseImponible = Number(result.getValue(columns[6])) || 0;
+                        detalleVentas.baseImpGrav = Number(result.getValue(columns[7])) || 0;
+                        detalleVentas.montoIva = Number(result.getValue(columns[8])) || 0;
+
+                        detalleVentas.montoIce = Number(result.getValue(columns[9])) || 0;
+                        detalleVentas.valorRetIva = Number(result.getValue(columns[10])) || 0;
+                        detalleVentas.valorRetRenta = Number(result.getValue(columns[11])) || 0;
+                        detalleVentas.formasDePago = result.getValue(columns[12]) == '- None -' ? '' : [result.getValue(columns[12])];
+
+                        objResults.push(detalleVentas);
+                    }
+                }
+            }
+            log.debug('objResults', objResults)
+            return objResults;
+        }
+        // Fin - dfernandez - 24/08/2024
+
 
         return {
             execute

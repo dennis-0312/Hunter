@@ -22,6 +22,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
         var userId = '';
         const SUBSIDIARIA = 2;
         const FORM_LIQUIDACION = 154; //SB:128 - PR:154
+        const AMBIENTE_SIPECOM = '1'; //SB:1 - PR:2
+        const AMBIENTE_SIPECOM_VENTAS = '1'; //SB:1 - PR:2
 
         function validate(pluginContext) {
             log.debug({
@@ -133,10 +135,11 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
         }
 
         function generateInvoiceLines(transactionId, setup) {
+            //*Activo
             try {
                 var invoiceLines = [];
                 var transactionRecord = getInvoiceTransaction(transactionId);
-
+                logError('transactionRecordObject', JSON.stringify(transactionRecord));
                 var VEline = ['VE', transactionRecord.documentTypeCode, "FACTURA", '1.0.0', ''];
                 invoiceLines.push(VEline);
 
@@ -144,7 +147,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var ITline = [
                     'IT',
                     // setup.enviromment,
-                    '2',
+                    AMBIENTE_SIPECOM_VENTAS,
                     '1',
                     transactionRecord.subsidiaryLegalName,
                     "CARSEG S.A",
@@ -165,20 +168,76 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     '0', "", "", "", "", "", "", "", "", "", "", "", transactionRecord.address, ''];
                 invoiceLines.push(ICline);
 
-                var detailArray = getInvoiceTotalAndDetails(transactionRecord);
+                var detailArray = getInvoiceTotalAndDetails(transactionRecord); getBillDetailLines
                 invoiceLines = invoiceLines.concat(detailArray);
 
                 var IALines = getIALines(transactionRecord);
                 invoiceLines = invoiceLines.concat(IALines);
 
-                var PALines = getPALines(transactionRecord);
-                invoiceLines.push(PALines);
+
+                //cambio JCEC 05-08-2024
+                /* var PALines = getPALines(transactionRecord);
+                invoiceLines.push(PALines); */
 
                 return invoiceLines;
             } catch (e) {
                 logError('Error-generateInvoiceLines', e);
             }
         }
+
+        // function generateInvoiceLines(transactionId, setup) {
+        //     try {
+        //         var invoiceLines = [];
+        //         var transactionRecord = getInvoiceTransaction(transactionId);
+
+        //         var document = {};
+        //         if (transactionRecord.itemFulfillmentCarrierDocumentType) {
+        //             document = getLookupFieldsSearch("customrecord_ts_ec_doc_identidad", transactionRecord.itemFulfillmentCarrierDocumentType, ["custrecordts_ec_identity_code_ei"]);
+        //         }
+
+        //         var VEline = ['VE', transactionRecord.documentTypeCode, "FACTURA", '1.0.0', ''];
+        //         invoiceLines.push(VEline);
+
+        //         var serie = transactionRecord.serie.split('');
+        //         var ITline = [
+        //             'IT',
+        //             AMBIENTE_SIPECOM_VENTAS,
+        //             '1',
+        //             transactionRecord.subsidiaryLegalName,
+        //             "CARSEG S.A",
+        //             transactionRecord.subsidiaryFederalNumber,
+        //             '',
+        //             transactionRecord.documentTypeCode,
+        //             serie[0] + '' + serie[1] + '' + serie[2],
+        //             serie[3] + '' + serie[4] + '' + serie[5] || "",
+        //             transactionRecord.preprint,
+        //             transactionRecord.subsidiaryAddress.toUpperCase(),
+        //             transactionRecord.customerEmail,
+        //             ''
+        //         ];
+        //         invoiceLines.push(ITline);
+
+        //         var ICline = ['IC', transactionRecord.date, transactionRecord.subsidiaryAddress, transactionRecord.customerSpecialTaxPayer, transactionRecord.customerObligatedToAccountFor, transactionRecord.customerDocumentTypeCode,
+        //             "", transactionRecord.customerName, transactionRecord.customerDocumentNumber, transactionRecord.currency, '', '', '', '',
+        //             '0', "", "", "", "", "", "", "", "", "", "", "", transactionRecord.address, ''];
+        //         invoiceLines.push(ICline);
+
+        //         var detailArray = getInvoiceTotalAndDetails(transactionRecord);
+        //         invoiceLines = invoiceLines.concat(detailArray);
+
+        //         var IALines = getIALines(transactionRecord);
+        //         invoiceLines = invoiceLines.concat(IALines);
+
+        //         //cambio JCEC 05-08-2024
+        //         /* var PALines = getPALines(transactionRecord);
+        //         invoiceLines.push(PALines); */
+
+        //         return invoiceLines;
+        //     } catch (e) {
+        //         logError('Error-generateInvoiceLines', e);
+        //     }
+
+        // }
 
         function getInvoiceTransaction(transactionId) {
             try {
@@ -202,7 +261,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "tranid", label: "tranid" }),
                         search.createColumn({ name: "mainname", label: "customer" }),
                         search.createColumn({ name: "name", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentType" }),
-                        search.createColumn({ name: "custrecordts_ec_cod_tipo_comprobante", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentTypeCode" }),
+                        search.createColumn({ name: "custrecord_ec_cod_tipo_comprobante_fel", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentTypeCode" }),
                         search.createColumn({ name: "formulatext", formula: "{custbody_ts_ec_serie_cxc.custrecord_ts_ec_series_impresion}", label: "serie" }),
                         search.createColumn({ name: "custbody_ts_ec_numero_preimpreso", label: "preprint" }),
                         search.createColumn({ name: "total", label: "total", function: "absoluteValue" }),
@@ -212,213 +271,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "formulatext", formula: "to_char({trandate},'DD/MM/YYYY')", label: "date" }),
                         search.createColumn({ name: "formulatext", formula: "to_char({duedate},'DD/MM/YYYY')", label: "duedate" }),
                         search.createColumn({ name: "terms", label: "terms" }),
-
-                        search.createColumn({ name: "formulatext", formula: "CASE WHEN {currency.symbol} = 'USD' THEN 'DOLAR' END", label: "currency" }),
-                        search.createColumn({ name: "formulatext", formula: "to_char({accountingperiod.startdate},'MM/YYYY')", label: "period" }),
-
-                        search.createColumn({ name: "name", join: "subsidiary", label: "subsidiaryName" }),
-                        search.createColumn({ name: "legalname", join: "subsidiary", label: "subsidiaryLegalName" }),
-                        search.createColumn({ name: "address1", join: "subsidiary", label: "subsidiaryAddress" }),
-                        search.createColumn({ name: "taxidnum", join: "subsidiary", label: "subsidiaryFederalNumber" }),
-                        search.createColumn({ name: "email", join: "subsidiary", label: "subsidiaryEmail" }),
-
-                        search.createColumn({ name: "custentityec_contribuyente_especial", join: "customerMain", label: "customerSpecialTaxPayer" }),
-                        search.createColumn({ name: "formulatext", formula: "{customerMain.custentity_ec_obligado_contabilidad}", label: "customerObligatedToAccountFor" }),
-                        search.createColumn({ name: "custentityts_ec_cod_tipo_doc_identidad", join: "customerMain", label: "customerDocumentTypeCode" }),
-                        search.createColumn({ name: "altname", join: "customerMain", label: "customerName" }),
-                        search.createColumn({ name: "vatregnumber", join: "customerMain", label: "customerDocumentNumber" }),
-                        search.createColumn({ name: "email", join: "customerMain", label: "customerEmail" }),
-                        search.createColumn({ name: "phone", join: "customerMain", label: "phone" }),
-                        search.createColumn({ name: "address1", join: "customerMain", label: "address1" }),
-
-                        search.createColumn({ name: "billaddress1", label: "address" }),
-                        //search.createColumn({ name: "billcity", label: "city" }),
-                        search.createColumn({ name: "formulatext", formula: "NVL({billcity},{billingAddress.custrecord_ec_parroquia})", label: "city" }),
-                        search.createColumn({ name: "custbody_ec_direccion_partida", join: "custbody_ht_guia_remision", label: "itemFulfillmentStartAddress" }),
-                        search.createColumn({ name: "custbody_ec_numero_ide_destinatario", join: "custbody_ht_guia_remision", label: "itemFulfillmentAddresseDocumentNumber" }),
-                        search.createColumn({ name: "custbody_ec_gr_identificaciontranspor", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierDocumentType" }),
-                        search.createColumn({ name: "custbody_ec_direccion_partida", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierAddress" }),
-                        search.createColumn({ name: "custbody_ec_gr_razonsocialtranspor", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierLegalName" }),
-                        search.createColumn({ name: "custbody_ec_ruc_transportista", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierRuc" }),
-                        search.createColumn({ name: "custbody_ec_gr_placatranspor", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierPlate" }),
-                        search.createColumn({ name: "tranid", join: "custbody_ht_guia_remision", label: "itemFulfillment" }),
-                        search.createColumn({ name: "formulatext", formula: "to_char({custbody_ht_guia_remision.custbody_ec_gr_fechainiciotransporte}, 'DD/MM/YYYY')", label: "itemFulfillmentTransportStartDate" }),
-                        search.createColumn({ name: "formulatext", formula: "to_char({custbody_ht_guia_remision.custbody_ec_gr_fechafintransporte}, 'DD/MM/YYYY')", label: "itemFulfillmentTransportEndDate" }),
-
-                        search.createColumn({ name: "itemid", join: "item", label: "item.code" }),
-                        search.createColumn({ name: "memo", label: "item.detail" }),
-                        search.createColumn({ name: "quantity", label: "item.quantity" }),
-                        search.createColumn({ name: "rate", label: "item.rate" }),
-                        search.createColumn({ name: "amount", label: "item.amount", function: "absoluteValue" }),
-                        search.createColumn({ name: "taxamount", label: "item.taxAmount", function: "absoluteValue" }),
-                        search.createColumn({ name: "grossamount", label: "item.grossAmount", function: "absoluteValue" }),
-                        search.createColumn({ name: "type", join: 'item', label: "item.type" }),
-                        search.createColumn({ name: "taxcode", label: "item.taxItem" }),
-                        search.createColumn({ name: "formulanumeric", formula: "{taxitem.rate}", label: "item.taxRate" }),
-                        search.createColumn({ name: "custcol_ts_ec_cod_id_facturacion", label: "item.identifierCode" }),
-                        search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tipo_impuesto}", label: "item.taxName" }),
-                        search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tipo_impuesto_cod}", label: "item.taxCode" }),
-                        search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tar_imp_codigo}", label: "item.taxRateCode" }),
-                        search.createColumn({ name: "formulatext", formula: "NVL({custcol_4601_witaxline},{custcol_4601_witaxline_exp})", label: "item.isWithholdingLine" })
-
-                        /*search.createColumn({ name: "discountitem", label: "discountItem"}),
-                        search.createColumn({ name: "discountrate", label: "discountRate"})*/
-                    ]
-                }).run().getRange(0, 1000);
-                var transactionJson = {};
-                for (var i = 0; i < transactionResult.length; i++) {
-                    if (i == 0) {
-                        transactionJson = getMainLineFields(transactionResult[i]);
-                        transactionJson.items = [];
-                    } else {
-                        var item = getLineFields(transactionResult[i]);
-                        transactionJson.items.push(item);
-                    }
-
-                }
-                return transactionJson;
-            } catch (e) {
-                logError('Error-getInvoiceTransaction', e);
-            }
-        }
-
-        function getInvoiceTotalAndDetails(transactionRecord) {
-            try {
-                var resultArray = [];
-                var lineArray = [];
-
-                // T LINE
-                var subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
-                var TILineJson = {}
-
-                for (var i = 0; i < transactionRecord.items.length; i++) {
-                    var item = transactionRecord.items[i];
-                    if (item.isWithholdingLine == "T") continue;
-
-                    var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
-                    lineArray.push(DEline);
-
-                    if (item.taxRateCode == '2') {
-                        subtotal12 += Number(item.amount);
-                        IVA12 += Number(item.taxAmount);
-                    }
-                    if (item.taxRateCode == '0') subtotal0 += Number(item.amount);
-                    if (item.taxRateCode == '6') subtotalNotSubject += Number(item.amount);
-                    subtotalWithoutTaxation += Number(item.amount);
-                    totalAmount += Number(item.grossAmount);
-
-                    var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, item.amount, item.taxAmount, item.taxName, ""];
-                    lineArray.push(IMline);
-
-                    // TI LINE
-                    var TIKey = item.taxCode + "|" + item.taxRateCode;
-                    if (TILineJson[TIKey] === undefined) {
-                        TILineJson[TIKey] = [Number(item.amount), item.taxRate, Number(item.taxAmount), item.taxName];
-                    } else {
-                        TILineJson[TIKey][0] = TILineJson[TIKey][0] + Number(item.amount);
-                        TILineJson[TIKey][2] = TILineJson[TIKey][2] + Number(item.taxAmount);
-                    }
-                    amountToPay += Number(item.grossAmount);
-                }
-
-                var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, transactionRecord.total, tip, transactionRecord.total, ""];
-                resultArray.push(TLine);
-                for (var key in TILineJson) {
-                    var invoicingTax = key.split("|");
-                    var TILine = ["TI", invoicingTax[0], invoicingTax[1], TILineJson[key][0], TILineJson[key][1], TILineJson[key][2], TILineJson[key][3], ""];
-                    resultArray.push(TILine);
-                }
-                return resultArray.concat(lineArray);
-            } catch (e) {
-                logError('Error-getInvoiceTotalAndDetails', e);
-            }
-        }
-
-        function generateInvoiceLines(transactionId, setup) {
-            try {
-                var invoiceLines = [];
-                var transactionRecord = getInvoiceTransaction(transactionId);
-
-                var document = {};
-                if (transactionRecord.itemFulfillmentCarrierDocumentType) {
-                    document = getLookupFieldsSearch("customrecord_ts_ec_doc_identidad", transactionRecord.itemFulfillmentCarrierDocumentType, ["custrecordts_ec_identity_code_ei"]);
-                }
-
-                var VEline = ['VE', transactionRecord.documentTypeCode, "FACTURA", '1.0.0', ''];
-                invoiceLines.push(VEline);
-
-                var serie = transactionRecord.serie.split('');
-                var ITline = [
-                    'IT',
-                    '2',
-                    '1',
-                    transactionRecord.subsidiaryLegalName,
-                    "CARSEG S.A",
-                    transactionRecord.subsidiaryFederalNumber,
-                    '',
-                    transactionRecord.documentTypeCode,
-                    serie[0] + '' + serie[1] + '' + serie[2],
-                    serie[3] + '' + serie[4] + '' + serie[5] || "",
-                    transactionRecord.preprint,
-                    transactionRecord.subsidiaryAddress.toUpperCase(),
-                    transactionRecord.customerEmail,
-                    ''
-                ];
-                invoiceLines.push(ITline);
-
-                var ICline = ['IC', transactionRecord.date, transactionRecord.subsidiaryAddress, transactionRecord.customerSpecialTaxPayer, transactionRecord.customerObligatedToAccountFor, transactionRecord.customerDocumentTypeCode,
-                    "", transactionRecord.customerName, transactionRecord.customerDocumentNumber, transactionRecord.currency, '', '', '', '',
-                    '0', "", "", "", "", "", "", "", "", "", "", "", transactionRecord.address, ''];
-                invoiceLines.push(ICline);
-
-                var detailArray = getInvoiceTotalAndDetails(transactionRecord);
-                invoiceLines = invoiceLines.concat(detailArray);
-
-                var IALines = getIALines(transactionRecord);
-                invoiceLines = invoiceLines.concat(IALines);
-
-                var PALines = getPALines(transactionRecord);
-                invoiceLines.push(PALines);
-
-                return invoiceLines;
-            } catch (e) {
-                logError('Error-generateInvoiceLines', e);
-            }
-
-        }
-
-        function getInvoiceTransaction(transactionId) {
-            try {
-                var transactionResult = search.create({
-                    type: search.Type.TRANSACTION,
-                    filters: [
-                        ["type", "anyof", "CustInvc"],
-                        "AND",
-                        ["internalidnumber", "equalto", transactionId],
-                        "AND",
-                        [["custbody_ht_guia_remision", "anyof", "@NONE@"], "OR", ["custbody_ht_guia_remision.mainline", "is", "T"]],
-                        "AND",
-                        ["formulanumeric: NVL({debitamount},0) - NVL({creditamount},0)", "notequalto", "0"],
-                        "AND",
-                        ["taxline", "is", "F"]
-                    ],
-                    columns: [
-                        search.createColumn({ name: "recordtype", label: "recordtype" }),
-                        search.createColumn({ name: "line", sort: search.Sort.ASC, label: "Line ID" }),
-                        search.createColumn({ name: "mainline", label: "mainline" }),
-                        search.createColumn({ name: "tranid", label: "tranid" }),
-                        search.createColumn({ name: "mainname", label: "customer" }),
-                        search.createColumn({ name: "name", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentType" }),
-                        search.createColumn({ name: "custrecordts_ec_cod_tipo_comprobante", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentTypeCode" }),
-                        search.createColumn({ name: "formulatext", formula: "{custbody_ts_ec_serie_cxc.custrecord_ts_ec_series_impresion}", label: "serie" }),
-                        search.createColumn({ name: "custbody_ts_ec_numero_preimpreso", label: "preprint" }),
-                        search.createColumn({ name: "total", label: "total", function: "absoluteValue" }),
-                        search.createColumn({ name: "formulatext", formula: "{location}", label: "location" }),
-                        search.createColumn({ name: "formulatext", formula: "{custbody_ts_ec_metodo_pago.custrecord_ts_ec_clave}", label: "paymentMethod" }),
-
-                        search.createColumn({ name: "formulatext", formula: "to_char({trandate},'DD/MM/YYYY')", label: "date" }),
-                        search.createColumn({ name: "formulatext", formula: "to_char({duedate},'DD/MM/YYYY')", label: "duedate" }),
-                        search.createColumn({ name: "terms", label: "terms" }),
+                        //Inicio - dfernandez 28/08/2024
+                        search.createColumn({ name: "custbody_ht_ec_nro_cuotas", label: "checkNroCuotas" }),
+                        search.createColumn({ name: "formulatext", formula: "to_char({custbody_ht_ec_fech_ven_fin},'DD/MM/YYYY')", label: "duedateforcuote" }),
+                        //Fin - dfernandez 28/08/2024
 
                         search.createColumn({ name: "formulatext", formula: "CASE WHEN {currency.symbol} = 'USD' THEN 'DOLAR' END", label: "currency" }),
                         search.createColumn({ name: "formulatext", formula: "to_char({accountingperiod.startdate},'MM/YYYY')", label: "period" }),
@@ -453,10 +309,12 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
 
                         search.createColumn({ name: "itemid", join: "item", label: "item.code" }),
                         search.createColumn({ name: "memo", label: "item.detail" }),
-                        search.createColumn({ name: "quantity", label: "item.quantity" }),
-                        search.createColumn({ name: "rate", label: "item.rate" }),
-                        search.createColumn({ name: "amount", label: "item.amount", function: "absoluteValue" }),
-                        search.createColumn({ name: "taxamount", label: "item.taxAmount", function: "absoluteValue" }),
+                        //search.createColumn({ name: "quantity", label: "item.quantity" }),
+                        search.createColumn({ name: "quantityuom", label: "item.quantity" }),
+                        //search.createColumn({ name: "rate", label: "item.rate" }),
+                        search.createColumn({ name: "formulacurrency", formula: "{amount}/{quantityuom}", label: "item.rate" }),
+                        search.createColumn({ name: "amount", label: "item.amount"/*, function: "absoluteValue"*/ }),
+                        search.createColumn({ name: "taxamount", label: "item.taxAmount"/*, function: "absoluteValue" */ }),
                         search.createColumn({ name: "grossamount", label: "item.grossAmount", function: "absoluteValue" }),
                         search.createColumn({ name: "type", join: 'item', label: "item.type" }),
                         search.createColumn({ name: "taxcode", label: "item.taxItem" }),
@@ -466,7 +324,6 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tipo_impuesto_cod}", label: "item.taxCode" }),
                         search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tar_imp_codigo}", label: "item.taxRateCode" }),
                         search.createColumn({ name: "formulatext", formula: "NVL({custcol_4601_witaxline},{custcol_4601_witaxline_exp})", label: "item.isWithholdingLine" })
-
                         /*search.createColumn({ name: "discountitem", label: "discountItem"}),
                         search.createColumn({ name: "discountrate", label: "discountRate"})*/
                     ]
@@ -488,58 +345,269 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
             }
         }
 
+        // function getInvoiceTransaction(transactionId) {
+        //     try {
+        //         var transactionResult = search.create({
+        //             type: search.Type.TRANSACTION,
+        //             filters: [
+        //                 ["type", "anyof", "CustInvc"],
+        //                 "AND",
+        //                 ["internalidnumber", "equalto", transactionId],
+        //                 "AND",
+        //                 [["custbody_ht_guia_remision", "anyof", "@NONE@"], "OR", ["custbody_ht_guia_remision.mainline", "is", "T"]],
+        //                 "AND",
+        //                 ["formulanumeric: NVL({debitamount},0) - NVL({creditamount},0)", "notequalto", "0"],
+        //                 "AND",
+        //                 ["taxline", "is", "F"]
+        //             ],
+        //             columns: [
+        //                 search.createColumn({ name: "recordtype", label: "recordtype" }),
+        //                 search.createColumn({ name: "line", sort: search.Sort.ASC, label: "Line ID" }),
+        //                 search.createColumn({ name: "mainline", label: "mainline" }),
+        //                 search.createColumn({ name: "tranid", label: "tranid" }),
+        //                 search.createColumn({ name: "mainname", label: "customer" }),
+        //                 search.createColumn({ name: "name", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentType" }),
+        //                 search.createColumn({ name: "custrecord_ec_cod_tipo_comprobante_fel", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentTypeCode" }),
+        //                 search.createColumn({ name: "formulatext", formula: "{custbody_ts_ec_serie_cxc.custrecord_ts_ec_series_impresion}", label: "serie" }),
+        //                 search.createColumn({ name: "custbody_ts_ec_numero_preimpreso", label: "preprint" }),
+        //                 search.createColumn({ name: "total", label: "total", function: "absoluteValue" }),
+        //                 search.createColumn({ name: "formulatext", formula: "{location}", label: "location" }),
+        //                 search.createColumn({ name: "formulatext", formula: "{custbody_ts_ec_metodo_pago.custrecord_ts_ec_clave}", label: "paymentMethod" }),
+
+        //                 search.createColumn({ name: "formulatext", formula: "to_char({trandate},'DD/MM/YYYY')", label: "date" }),
+        //                 search.createColumn({ name: "formulatext", formula: "to_char({duedate},'DD/MM/YYYY')", label: "duedate" }),
+        //                 search.createColumn({ name: "terms", label: "terms" }),
+        //                 //Inicio - dfernandez 28/08/2024
+        //                 search.createColumn({ name: "custbody_ht_ec_nro_cuotas", label: "checkNroCuotas" }),
+        //                 search.createColumn({ name: "formulatext", formula: "to_char({custbody_ht_ec_fech_ven_fin},'DD/MM/YYYY')", label: "duedateforcuote" }),
+        //                 //Fin - dfernandez 28/08/2024
+
+        //                 search.createColumn({ name: "formulatext", formula: "CASE WHEN {currency.symbol} = 'USD' THEN 'DOLAR' END", label: "currency" }),
+        //                 search.createColumn({ name: "formulatext", formula: "to_char({accountingperiod.startdate},'MM/YYYY')", label: "period" }),
+
+        //                 search.createColumn({ name: "name", join: "subsidiary", label: "subsidiaryName" }),
+        //                 search.createColumn({ name: "legalname", join: "subsidiary", label: "subsidiaryLegalName" }),
+        //                 search.createColumn({ name: "address1", join: "subsidiary", label: "subsidiaryAddress" }),
+        //                 search.createColumn({ name: "taxidnum", join: "subsidiary", label: "subsidiaryFederalNumber" }),
+        //                 search.createColumn({ name: "email", join: "subsidiary", label: "subsidiaryEmail" }),
+
+        //                 search.createColumn({ name: "custentityec_contribuyente_especial", join: "customerMain", label: "customerSpecialTaxPayer" }),
+        //                 search.createColumn({ name: "formulatext", formula: "{customerMain.custentity_ec_obligado_contabilidad}", label: "customerObligatedToAccountFor" }),
+        //                 search.createColumn({ name: "custentityts_ec_cod_tipo_doc_identidad", join: "customerMain", label: "customerDocumentTypeCode" }),
+        //                 search.createColumn({ name: "altname", join: "customerMain", label: "customerName" }),
+        //                 search.createColumn({ name: "vatregnumber", join: "customerMain", label: "customerDocumentNumber" }),
+        //                 search.createColumn({ name: "email", join: "customerMain", label: "customerEmail" }),
+        //                 search.createColumn({ name: "phone", join: "customerMain", label: "phone" }),
+        //                 search.createColumn({ name: "address1", join: "customerMain", label: "address1" }),
+
+        //                 search.createColumn({ name: "billaddress1", label: "address" }),
+        //                 //search.createColumn({ name: "billcity", label: "city" }),
+        //                 search.createColumn({ name: "formulatext", formula: "NVL({billcity},{billingAddress.custrecord_ec_parroquia})", label: "city" }),
+        //                 search.createColumn({ name: "custbody_ec_direccion_partida", join: "custbody_ht_guia_remision", label: "itemFulfillmentStartAddress" }),
+        //                 search.createColumn({ name: "custbody_ec_numero_ide_destinatario", join: "custbody_ht_guia_remision", label: "itemFulfillmentAddresseDocumentNumber" }),
+        //                 search.createColumn({ name: "custbody_ec_gr_identificaciontranspor", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierDocumentType" }),
+        //                 search.createColumn({ name: "custbody_ec_direccion_partida", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierAddress" }),
+        //                 search.createColumn({ name: "custbody_ec_gr_razonsocialtranspor", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierLegalName" }),
+        //                 search.createColumn({ name: "custbody_ec_ruc_transportista", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierRuc" }),
+        //                 search.createColumn({ name: "custbody_ec_gr_placatranspor", join: "custbody_ht_guia_remision", label: "itemFulfillmentCarrierPlate" }),
+        //                 search.createColumn({ name: "tranid", join: "custbody_ht_guia_remision", label: "itemFulfillment" }),
+        //                 search.createColumn({ name: "formulatext", formula: "to_char({custbody_ht_guia_remision.custbody_ec_gr_fechainiciotransporte}, 'DD/MM/YYYY')", label: "itemFulfillmentTransportStartDate" }),
+        //                 search.createColumn({ name: "formulatext", formula: "to_char({custbody_ht_guia_remision.custbody_ec_gr_fechafintransporte}, 'DD/MM/YYYY')", label: "itemFulfillmentTransportEndDate" }),
+
+        //                 search.createColumn({ name: "itemid", join: "item", label: "item.code" }),
+        //                 search.createColumn({ name: "memo", label: "item.detail" }),
+        //                 //search.createColumn({ name: "quantity", label: "item.quantity" }),
+        //                 search.createColumn({ name: "quantityuom", label: "item.quantity" }),
+        //                 search.createColumn({ name: "rate", label: "item.rate" }),
+        //                 search.createColumn({ name: "amount", label: "item.amount" /*, function: "absoluteValue" */ }),
+        //                 search.createColumn({ name: "taxamount", label: "item.taxAmount"/*, function: "absoluteValue"*/ }),
+        //                 search.createColumn({ name: "grossamount", label: "item.grossAmount", function: "absoluteValue" }),
+
+        //                 search.createColumn({ name: "type", join: 'item', label: "item.type" }),
+        //                 search.createColumn({ name: "taxcode", label: "item.taxItem" }),
+        //                 search.createColumn({ name: "formulanumeric", formula: "{taxitem.rate}", label: "item.taxRate" }),
+        //                 search.createColumn({ name: "custcol_ts_ec_cod_id_facturacion", label: "item.identifierCode" }),
+        //                 search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tipo_impuesto}", label: "item.taxName" }),
+        //                 search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tipo_impuesto_cod}", label: "item.taxCode" }),
+        //                 search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tar_imp_codigo}", label: "item.taxRateCode" }),
+        //                 search.createColumn({ name: "formulatext", formula: "NVL({custcol_4601_witaxline},{custcol_4601_witaxline_exp})", label: "item.isWithholdingLine" })
+
+        //                 /*search.createColumn({ name: "discountitem", label: "discountItem"}),
+        //                 search.createColumn({ name: "discountrate", label: "discountRate"})*/
+        //             ]
+        //         }).run().getRange(0, 1000);
+        //         var transactionJson = {};
+        //         for (var i = 0; i < transactionResult.length; i++) {
+        //             if (i == 0) {
+        //                 transactionJson = getMainLineFields(transactionResult[i]);
+        //                 transactionJson.items = [];
+        //             } else {
+        //                 var item = getLineFields(transactionResult[i]);
+        //                 transactionJson.items.push(item);
+        //             }
+
+        //         }
+        //         return transactionJson;
+        //     } catch (e) {
+        //         logError('Error-getInvoiceTransaction', e);
+        //     }
+        // }
+
         function getInvoiceTotalAndDetails(transactionRecord) {
             try {
                 var resultArray = [];
                 var lineArray = [];
+                var lineTIline = new Array();
+                const groupedData = new Object();
+                var finalResult = new Array();
 
-                // T LINE
-                var subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
-                var TILineJson = {}
+                // Inicializar totales
+                var total15 = 0, descuentototal = 0, impuestototal = 0, totalposicion4 = 0, subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
 
+                // Procesar cada ítem en la transacción
                 for (var i = 0; i < transactionRecord.items.length; i++) {
                     var item = transactionRecord.items[i];
                     if (item.isWithholdingLine == "T") continue;
+                    if (!item.taxCode || !item.taxRateCode) continue;
 
-                    var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
-                    lineArray.push(DEline);
-
+                    // Crear array DE line y agregar a lineArray
+                    if (Number(item.amount) > 0) {
+                        var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
+                        lineArray.push(DEline);
+                    }
+                    // Calcular subtotales e impuestos
                     if (item.taxRateCode == '2') {
                         subtotal12 += Number(item.amount);
                         IVA12 += Number(item.taxAmount);
                     }
                     if (item.taxRateCode == '0') subtotal0 += Number(item.amount);
                     if (item.taxRateCode == '6') subtotalNotSubject += Number(item.amount);
-                    subtotalWithoutTaxation += Number(item.amount);
+                    if (item.taxRate == '0') {
+                        descuentototal += Number(item.amount);
+                    }
+                    if (item.taxRateCode == '4' && Number(item.amount) > 0) {
+                        subtotalWithoutTaxation += Number(item.amount);
+                        total15 += Number(item.taxAmount);
+                    }
+                    if (Number(item.amount) < 0) {
+                        totalposicion4 += Number(item.amount) * (-1) + Number(item.taxAmount) * (-1);
+                    }
+                    impuestototal += Number(item.taxAmount);
                     totalAmount += Number(item.grossAmount);
 
-                    var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, item.amount, item.taxAmount, item.taxName, ""];
-                    lineArray.push(IMline);
-
-                    // TI LINE
-                    var TIKey = item.taxCode + "|" + item.taxRateCode;
-                    if (TILineJson[TIKey] === undefined) {
-                        TILineJson[TIKey] = [Number(item.amount), item.taxRate, Number(item.taxAmount), item.taxName];
-                    } else {
-                        TILineJson[TIKey][0] = TILineJson[TIKey][0] + Number(item.amount);
-                        TILineJson[TIKey][2] = TILineJson[TIKey][2] + Number(item.taxAmount);
+                    // Crear array IM line y agregar a lineArray
+                    if (Number(item.amount) > 0) {
+                        var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, item.amount, Number(item.taxAmount).toFixed(2), item.taxName, "",];
+                        lineArray.push(IMline);
+                    }
+                    // Crear una línea TI para cada ítem directamente
+                    if (Number(item.amount) > 0) {
+                        var TILine = ["TI", item.taxCode, item.taxRateCode, item.amount, item.taxRate, Number(item.taxAmount).toFixed(2), item.taxName, ""];
+                        lineTIline.push(TILine)
                     }
                     amountToPay += Number(item.grossAmount);
                 }
-
-                var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, transactionRecord.total, tip, transactionRecord.total, ""];
-                resultArray.push(TLine);
-                for (var key in TILineJson) {
-                    var invoicingTax = key.split("|");
-                    var TILine = ["TI", invoicingTax[0], invoicingTax[1], TILineJson[key][0], TILineJson[key][1], TILineJson[key][2], TILineJson[key][3], ""];
-                    resultArray.push(TILine);
+                // Procesamos cada línea
+                lineTIline.forEach(function (line) {
+                    const key = line[4];
+                    if (!groupedData[key]) {
+                        groupedData[key] = {
+                            prefix: line[0],
+                            field1: parseInt(line[1], 10),
+                            field2: parseInt(line[2], 10),
+                            total: parseFloat(line[3]),
+                            field4: key,
+                            field5: parseFloat(line[5]),
+                            suffix: line[6]
+                        };
+                    } else {
+                        groupedData[key].field1 = parseInt(line[1], 10);
+                        groupedData[key].field2 = parseInt(line[2], 10);
+                        groupedData[key].total += parseFloat(line[3]);
+                        groupedData[key].field5 += parseFloat(line[5]);
+                    }
+                });
+                for (var key in groupedData) {
+                    var item = groupedData[key];
+                    finalResult.push(item.prefix + "|" + item.field1 + "|" + item.field2 + "|" + item.total.toFixed(2) + "|" + item.field4 + "|" + item.field5.toFixed(2) + "|" + item.suffix + "|");
                 }
+                resultArray.push(finalResult);
 
+                // Crear array T line y agregar a resultArray
+                var TLine = ["T", subtotalWithoutTaxation.toFixed(2), descuentototal.toFixed(2), subtotalNotSubject, (subtotalWithoutTaxation + descuentototal).toFixed(2)/*subtotalWithoutTaxation*/, totalposicion4.toFixed(2), ICE, total15.toFixed(2), transactionRecord.total, tip, transactionRecord.total, ""];
+                resultArray.unshift(TLine);
+
+                // Combinar y retornar el array de resultados
                 return resultArray.concat(lineArray);
             } catch (e) {
                 logError('Error-getInvoiceTotalAndDetails', e);
             }
         }
+
+        // function getInvoiceTotalAndDetails(transactionRecord) {
+        //     try {
+        //         var resultArray = [];
+        //         var lineArray = [];
+
+        //         // Inicializar totales
+        //         var total15 = 0, descuentototal = 0, impuestototal = 0, totalposicion4 = 0, subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
+
+        //         // Procesar cada ítem en la transacción
+        //         for (var i = 0; i < transactionRecord.items.length; i++) {
+        //             var item = transactionRecord.items[i];
+        //             if (item.isWithholdingLine == "T") continue;
+        //             if (!item.taxCode || !item.taxRateCode) continue;
+
+        //             // Crear array DE line y agregar a lineArray
+        //             if (Number(item.amount) > 0) {
+        //                 var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
+        //                 lineArray.push(DEline);
+        //             }
+        //             // Calcular subtotales e impuestos
+        //             if (item.taxRateCode == '2') {
+        //                 subtotal12 += Number(item.amount);
+        //                 IVA12 += Number(item.taxAmount);
+        //             }
+        //             if (item.taxRate == '0') {
+        //                 descuentototal += Number(item.amount);
+        //             }
+        //             if (item.taxRateCode == '0') subtotal0 += Number(item.amount);
+        //             if (item.taxRateCode == '6') subtotalNotSubject += Number(item.amount);
+        //             if (item.taxRateCode == '4' && Number(item.amount) > 0) {
+        //                 subtotalWithoutTaxation += Number(item.amount);
+        //                 total15 += Number(item.taxAmount);
+        //             }
+
+        //             if (Number(item.amount) < 0) {
+        //                 totalposicion4 += Number(item.amount) * (-1) + Number(item.taxAmount) * (-1);
+        //             }
+        //             impuestototal += Number(item.taxAmount);
+
+        //             totalAmount += Number(item.grossAmount);
+
+        //             // Crear array IM line y agregar a lineArray
+        //             if (Number(item.amount) > 0) {
+        //                 var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, item.amount, Number(item.taxAmount).toFixed(2), item.taxName, "",];
+        //                 lineArray.push(IMline);
+        //             }
+        //             // Crear una línea TI para cada ítem directamente
+        //             if (Number(item.amount) > 0) {
+        //                 var TILine = ["TI", item.taxCode, item.taxRateCode, item.amount, item.taxRate, Number(item.taxAmount).toFixed(2), item.taxName, ""];
+        //                 resultArray.push(TILine);
+        //             }
+        //             amountToPay += Number(item.grossAmount);
+        //         }
+
+        //         // Crear array T line y agregar a resultArray
+        //         var TLine = ["T", subtotalWithoutTaxation.toFixed(2), descuentototal.toFixed(2), subtotalNotSubject, (subtotalWithoutTaxation + descuentototal).toFixed(2)/*subtotalWithoutTaxation*/, totalposicion4.toFixed(2), ICE, total15.toFixed(2), transactionRecord.total, tip, transactionRecord.total, ""];
+        //         resultArray.unshift(TLine);
+
+        //         // Combinar y retornar el array de resultados
+        //         return resultArray.concat(lineArray);
+        //     } catch (e) {
+        //         logError('Error-getInvoiceTotalAndDetails', e);
+        //     }
+        // }
 
         function generateItemFulfillmentLines(transactionId, setup) {
             try {
@@ -554,7 +622,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 //IT
                 var ITline = [
                     'IT',
-                    '2',
+                    AMBIENTE_SIPECOM_VENTAS,
                     '1',
                     transactionRecord.subsidiaryLegalName,
                     transactionRecord.subsidiaryLegalName,
@@ -698,8 +766,12 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var VEline = ['VE', transactionRecord.documentTypeCode, "notaCredito", '1.0.0', ''];
                 creditNoteLines.push(VEline);
 
-                var serie = transactionRecord.serie.split('-');
-                var ITline = ['IT', '2', '1', transactionRecord.subsidiaryLegalName, "CARSEG S.A", transactionRecord.subsidiaryFederalNumber, '', transactionRecord.documentTypeCode, serie[0], serie[1] || "", transactionRecord.preprint, transactionRecord.subsidiaryAddress.toUpperCase(), transactionRecord.customerEmail, ''];
+                // var serie = transactionRecord.serie.split('-');
+                var serie = transactionRecord.serie
+                var serie0 = serie.substring(0, 3);
+                var serie1 = serie.substring(3);
+
+                var ITline = ['IT', AMBIENTE_SIPECOM_VENTAS, '1', transactionRecord.subsidiaryLegalName, "CARSEG S.A", transactionRecord.subsidiaryFederalNumber, '', transactionRecord.documentTypeCode, serie0, serie1 || "", transactionRecord.preprint, transactionRecord.subsidiaryAddress.toUpperCase(), transactionRecord.customerEmail, ''];
                 creditNoteLines.push(ITline);
 
                 var detailArray = getCreditNoteTotalAndDetails(transactionRecord);
@@ -744,7 +816,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "tranid", label: "tranid" }),
                         search.createColumn({ name: "mainname", label: "customer" }),
                         search.createColumn({ name: "name", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentType" }),
-                        search.createColumn({ name: "custrecordts_ec_cod_tipo_comprobante", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentTypeCode" }),
+                        search.createColumn({ name: "custrecord_ec_cod_tipo_comprobante_fel", join: "CUSTBODYTS_EC_TIPO_DOCUMENTO_FISCAL", label: "documentTypeCode" }),
                         search.createColumn({ name: "formulatext", formula: "{custbody_ts_ec_serie_cxc}", label: "serie" }),
                         search.createColumn({ name: "custbody_ts_ec_numero_preimpreso", label: "preprint" }),
                         search.createColumn({ name: "formulatext", formula: "CASE WHEN {currency.symbol} = 'USD' THEN 'DOLAR' END", label: "currency" }),
@@ -760,7 +832,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "billaddress1", label: "address" }),
                         //search.createColumn({ name: "billcity", label: "city" }),
                         search.createColumn({ name: "formulatext", formula: "NVL({billcity},{billingAddress.custrecord_ec_parroquia})", label: "city" }),
-                        search.createColumn({ name: "custrecordts_ec_cod_tipo_comprobante", join: "custbodyts_ec_doc_type_ref", label: "documentTypeCodeRef" }),
+                        search.createColumn({ name: "custrecord_ec_cod_tipo_comprobante_fel", join: "custbodyts_ec_doc_type_ref", label: "documentTypeCodeRef" }),
                         search.createColumn({ name: "formulatext", formula: "CONCAT({custbodyts_ec_doc_serie_ref},CONCAT('-',{custbodyts_ec_doc_number_ref}))", label: "numeroDocRef" }),
                         search.createColumn({ name: "formulatext", formula: "to_char({custbodyts_ec_doc_fecha_ref},'DD/MM/YYYY')", label: "dateRef" }),
 
@@ -775,11 +847,11 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "city", join: "customerMain", label: "city1" }),
                         //search.createColumn({ name: "custrecord_ec_parroquia", join: "customerMain", label: "city" }),
 
-                        search.createColumn({ name: "itemid", join: "item", label: "item.code" }),
+                        search.createColumn({ name: "itemid", join: "custcol_ht_so_item_agrupado", label: "item.code" }),
                         search.createColumn({ name: "memo", label: "item.detail" }),
                         search.createColumn({ name: "quantity", label: "item.quantity", function: "absoluteValue" }),
                         search.createColumn({ name: "rate", label: "item.rate" }),
-                        search.createColumn({ name: "amount", label: "item.amount", function: "absoluteValue" }),
+                        search.createColumn({ name: "amount", label: "item.amount" }),
                         search.createColumn({ name: "taxamount", label: "item.taxAmount", function: "absoluteValue" }),
                         search.createColumn({ name: "grossamount", label: "item.grossAmount", function: "absoluteValue" }),
                         search.createColumn({ name: "type", join: 'item', label: "item.type" }),
@@ -789,8 +861,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tipo_impuesto}", label: "item.taxName" }),
                         search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tipo_impuesto_cod}", label: "item.taxCode" }),
                         search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tar_imp_codigo}", label: "item.taxRateCode" }),
-                        search.createColumn({ name: "formulatext", formula: "NVL({custcol_4601_witaxline},{custcol_4601_witaxline_exp})", label: "item.isWithholdingLine" })
-
+                        search.createColumn({ name: "formulatext", formula: "NVL({custcol_4601_witaxline},{custcol_4601_witaxline_exp})", label: "item.isWithholdingLine" }),
+                        search.createColumn({ name: "formulatext", formula: "{custcol_ht_so_item_agrupado.salesdescription}", label: "item.description" }),
                     ]
                 }).run().getRange(0, 1000);
                 var transactionJson = {};
@@ -814,50 +886,73 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
             try {
                 var resultArray = [];
                 var lineArray = [];
+                var processedItems = {};
 
                 // T LINE
-                var subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
-                var TILineJson = {}
+                var total15 = 0, descuentototal = 0, impuestototal = 0, totalposicion4 = 0, subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
 
+                // Procesar cada ítem en la transacción
                 for (var i = 0; i < transactionRecord.items.length; i++) {
                     var item = transactionRecord.items[i];
+
+                    // Check if the item has already been processed
+                    if (processedItems[item.code]) continue;
+
                     if (item.isWithholdingLine == "T") continue;
+                    if (!item.taxCode || !item.taxRateCode) continue;
 
-                    var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
-                    //lineArray.push(DEline);
+                    // Mark item as processed
+                    processedItems[item.code] = true;
 
+                    // Crear array DE line y agregar a lineArray
+                    if (Number(item.amount) < 0) {
+                        var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.description/*item.code.substring(0, 15)*/, item.quantity, item.rate, 0, Number(item.amount * (-1)).toFixed(2), ""];
+                        lineArray.push(DEline);
+                    }
+
+                    // Calcular subtotales e impuestos
                     if (item.taxRateCode == '2') {
                         subtotal12 += Number(item.amount);
                         IVA12 += Number(item.taxAmount);
                     }
+                    if (item.taxRate == '0') {
+                        descuentototal += Number(item.amount) * (-1);
+                    }
                     if (item.taxRateCode == '0') subtotal0 += Number(item.amount);
-                    if (item.taxRateCode == '6') subtotalNotSubject += Number(item.amount);
-                    subtotalWithoutTaxation += Number(item.amount);
+                    if (item.taxRateCode == '6') subtotalNotSubject += Number(item.amount) * (-1);
+                    if (item.taxRateCode == '4' && Number(item.amount) < 0) {
+                        subtotalWithoutTaxation += Number(item.amount) * (-1);
+                        total15 += Number(item.taxAmount);
+                    }
+
+                    if (Number(item.amount) > 0) {
+                        totalposicion4 += Number(item.amount) + Number(item.taxAmount);
+                    }
+                    impuestototal += Number(item.taxAmount);
+
                     totalAmount += Number(item.grossAmount);
 
-                    var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, item.amount, item.taxAmount, item.taxName, ""];
-                    //lineArray.push(IMline);
-
-                    // TI LINE
-                    var TIKey = item.taxCode + "|" + item.taxRateCode;
-                    if (TILineJson[TIKey] === undefined) {
-                        TILineJson[TIKey] = [Number(item.amount), item.taxRate, Number(item.taxAmount), item.taxName];
-                    } else {
-                        TILineJson[TIKey][0] = TILineJson[TIKey][0] + Number(item.amount);
-                        TILineJson[TIKey][2] = TILineJson[TIKey][2] + Number(item.taxAmount);
+                    // Crear array IM line y agregar a lineArray
+                    if (Number(item.amount) < 0) {
+                        var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, Number(item.amount * (-1)).toFixed(2), Number(item.taxAmount).toFixed(2), item.taxName, ""];
+                        lineArray.push(IMline);
                     }
+
+                    // Crear una línea TI para cada ítem directamente
+                    if (Number(item.amount) < 0) {
+                        var TILine = ["TI", item.taxCode, item.taxRateCode, item.taxRate, Number(item.amount * (-1)).toFixed(2), Number(item.taxAmount).toFixed(2), item.taxName, ""];
+                        resultArray.push(TILine);
+                    }
+
                     amountToPay += Number(item.grossAmount);
                 }
 
-                var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, transactionRecord.total, tip, transactionRecord.total, ""];
-                resultArray.push(TLine);
-                for (var key in TILineJson) {
-                    var invoicingTax = key.split("|");
-                    var TILine = ["TI", invoicingTax[0], invoicingTax[1], TILineJson[key][1], TILineJson[key][0], TILineJson[key][2], TILineJson[key][3], ""];
-                    resultArray.push(TILine);
-                }
+                // Crear array T line y agregar a resultArray
+                var TLine = ["T", subtotalWithoutTaxation.toFixed(2), descuentototal.toFixed(2), subtotalNotSubject, (subtotalWithoutTaxation + descuentototal).toFixed(2), totalposicion4, ICE, total15.toFixed(2), transactionRecord.total, tip, transactionRecord.total, ""];
+                resultArray.unshift(TLine);
 
                 return resultArray.concat(lineArray);
+
             } catch (e) {
                 logError('Error-getInvoiceTotalAndDetails', e);
             }
@@ -872,21 +967,26 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 debitNoteLines.push(VEline);
 
                 var serie = transactionRecord.serie.split('-');
-                var ITline = ['IT', '2', '1', transactionRecord.subsidiaryLegalName, "CARSEG S.A", transactionRecord.subsidiaryFederalNumber, '', transactionRecord.documentTypeCode, serie[0], serie[1] || "", transactionRecord.preprint, transactionRecord.subsidiaryAddress.toUpperCase(), 'factura@suministro.com', ''];
+                var ITline = ['IT', AMBIENTE_SIPECOM_VENTAS, '1', transactionRecord.subsidiaryLegalName, "CARSEG S.A", transactionRecord.subsidiaryFederalNumber, '', transactionRecord.documentTypeCode, serie[0], serie[1] || "", transactionRecord.preprint, transactionRecord.subsidiaryAddress.toUpperCase(), 'factura@suministro.com', ''];
                 debitNoteLines.push(ITline);
 
+
+                //cambio JCEC 05-08-2024
+                /* var ICline = ['IC', transactionRecord.date, transactionRecord.subsidiaryAddress, transactionRecord.customerSpecialTaxPayer, transactionRecord.customerObligatedToAccountFor, transactionRecord.customerDocumentTypeCode,
+                    "", transactionRecord.customerName, transactionRecord.customerDocumentNumber, transactionRecord.currency, '', transactionRecord.transactionReferenceDocumentType,
+                    transactionRecord.transactionReferenceSerie + "-" + transactionRecord.transactionReferenceNumber, transactionRecord.transactionReferenceDate,
+                    '0', '', "", "", "", "", "", "", "", "",
+                    "", "", transactionRecord.address, '']; */
                 var ICline = ['IC', transactionRecord.date, transactionRecord.subsidiaryAddress, transactionRecord.customerSpecialTaxPayer, transactionRecord.customerObligatedToAccountFor, transactionRecord.customerDocumentTypeCode,
                     "", transactionRecord.customerName, transactionRecord.customerDocumentNumber, transactionRecord.currency, '', transactionRecord.transactionReferenceDocumentType,
                     transactionRecord.transactionReferenceSerie + "-" + transactionRecord.transactionReferenceNumber, transactionRecord.transactionReferenceDate,
                     '0', '', "", "", "", "", "", "", "", "",
-                    "", "", transactionRecord.address, ''];
+                    "", "", ''];
                 debitNoteLines.push(ICline);
 
-                var detailArray = getCreditNoteTotalAndDetails(transactionRecord);
+                var detailArray = getDebitNoteTotalAndDetails(transactionRecord);
                 debitNoteLines = debitNoteLines.concat(detailArray);
 
-                var PALines = getPALines(transactionRecord);
-                debitNoteLines.push(PALines);
 
                 var MOLine = ['MO', transactionRecord.memo, transactionRecord.total, ''];
                 debitNoteLines.push(MOLine);
@@ -936,7 +1036,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "formulatext", formula: "to_char({custbodyts_ec_doc_fecha_ref},'DD/MM/YYYY')", label: "transactionReferenceDate" }),
                         search.createColumn({ name: "custbodyts_ec_doc_number_ref", label: "transactionReferenceNumber" }),
                         search.createColumn({ name: "custbodyts_ec_doc_serie_ref", label: "transactionReferenceSerie" }),
-                        search.createColumn({ name: "formulatext", formula: "{custbodyts_ec_doc_type_ref.custrecordts_ec_cod_tipo_comprobante}", label: "transactionReferenceDocumentType" }),
+                        search.createColumn({ name: "formulatext", formula: "{custbodyts_ec_doc_type_ref.custrecord_ec_cod_tipo_comprobante_fel}", label: "transactionReferenceDocumentType" }),
 
                         search.createColumn({ name: "formulatext", formula: "CASE WHEN {currency.symbol} = 'USD' THEN 'DOLAR' END", label: "currency" }),
                         search.createColumn({ name: "formulatext", formula: "to_char({accountingperiod.startdate},'MM/YYYY')", label: "period" }),
@@ -958,6 +1058,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "billaddress1", label: "address" }),
                         //search.createColumn({ name: "billcity", label: "city" }),
                         search.createColumn({ name: "formulatext", formula: "NVL({billcity},{billingAddress.custrecord_ec_parroquia})", label: "city" }),
+                        search.createColumn({ name: "line", label: "item.line" }),
                         search.createColumn({ name: "itemid", join: "item", label: "item.code" }),
                         search.createColumn({ name: "memo", label: "item.detail" }),
                         search.createColumn({ name: "quantity", label: "item.quantity" }),
@@ -972,7 +1073,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tipo_impuesto}", label: "item.taxName" }),
                         search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tipo_impuesto_cod}", label: "item.taxCode" }),
                         search.createColumn({ name: "formulatext", formula: "{taxitem.custrecord_ts_ec_tar_imp_codigo}", label: "item.taxRateCode" }),
-                        search.createColumn({ name: "formulatext", formula: "NVL({custcol_4601_witaxline},{custcol_4601_witaxline_exp})", label: "item.isWithholdingLine" })
+                        search.createColumn({ name: "formulatext", formula: "NVL({custcol_4601_witaxline},{custcol_4601_witaxline_exp})", label: "item.isWithholdingLine" }),
                     ]
                 }).run().getRange(0, 1000);
                 var transactionJson = {};
@@ -991,9 +1092,78 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
             }
         }
 
+        function getDebitNoteTotalAndDetails(transactionRecord) {
+            try {
+                var resultArray = [];
+                var lineArray = [];
+                var processedItems = {};
+
+                // T LINE
+                var total15 = 0, descuentototal = 0, impuestototal = 0, totalposicion4 = 0, subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
+
+                // Procesar cada ítem en la transacción
+                for (var i = 0; i < transactionRecord.items.length; i++) {
+                    var item = transactionRecord.items[i];
+
+                    // Check if the item has already been processed
+                    if (processedItems[item.code]) continue;
+
+                    if (item.isWithholdingLine == "T") continue;
+                    if (!item.taxCode || !item.taxRateCode) continue;
+
+                    // Mark item as processed
+                    processedItems[item.code] = true;
+
+                    // Crear array DE line y agregar a lineArray
+
+                    // Calcular subtotales e impuestos
+                    if (item.taxRateCode == '2') {
+                        subtotal12 += Number(item.amount);
+                        IVA12 += Number(item.taxAmount);
+                    }
+                    if (item.taxRate == '0') {
+                        descuentototal += Number(item.amount);
+                    }
+                    if (item.taxRateCode == '0') subtotal0 += Number(item.amount);
+                    if (item.taxRateCode == '6') subtotalNotSubject += Number(item.amount);
+                    if (item.taxRateCode == '4' && Number(item.amount) > 0) {
+                        subtotalWithoutTaxation += Number(item.amount);
+                        total15 += Number(item.taxAmount);
+                    }
+
+                    if (Number(item.amount) < 0) {
+                        totalposicion4 += Number(item.amount) * (-1) + Number(item.taxAmount) * (-1);
+                    }
+                    impuestototal += Number(item.taxAmount);
+
+                    totalAmount += Number(item.grossAmount);
+
+
+
+                    // Crear una línea TI para cada ítem directamente
+                    if (Number(item.amount) > 0) {
+                        var TILine = ["TI", item.taxCode, item.taxRateCode, item.taxRate, item.amount, Number(item.taxAmount).toFixed(2), item.taxName, ""];
+                        resultArray.push(TILine);
+                    }
+
+                    amountToPay += Number(item.grossAmount);
+                }
+
+                // Crear array T line y agregar a resultArray
+                var TLine = ["T", subtotalWithoutTaxation.toFixed(2), descuentototal.toFixed(2), subtotalNotSubject, (subtotalWithoutTaxation + descuentototal).toFixed(2), totalposicion4, ICE, total15.toFixed(2), transactionRecord.total, tip, transactionRecord.total, ""];
+                resultArray.unshift(TLine);
+
+                return resultArray.concat(lineArray);
+
+            } catch (e) {
+                logError('Error-getInvoiceTotalAndDetails', e);
+            }
+        }
+
         function generateBillLines(transactionId, setup) {
             try {
                 var transactionRecord = getBillTransaction(transactionId);
+                logError('transactionRecord', transactionRecord);
                 var billLines = [];
                 var VEline = ['VE', transactionRecord.documentTypeCode, "LIQUIDACIONDECOMPRA", '1.0.0', ''];
                 billLines.push(VEline);
@@ -1001,7 +1171,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var serie = transactionRecord.serie.split('');
                 var ITline = [
                     'IT',
-                    '2',
+                    AMBIENTE_SIPECOM,
                     '1',
                     transactionRecord.subsidiaryLegalName,
                     "CARSEG S.A",
@@ -1028,13 +1198,13 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var IALines = getIALines(transactionRecord);
                 billLines = billLines.concat(IALines);
 
-                var PALines = getPALines(transactionRecord);
-                billLines.push(PALines);
+                //cambio JCEC 05-08-2024
+                /* var PALines = getPALines(transactionRecord);
+                billLines.push(PALines); */
 
                 return billLines;
-
             } catch (e) {
-                logError('Error-generateDebitNoteLines', e);
+                logError('Error-generateLiquidaciónLines', e);
             }
         }
 
@@ -1093,7 +1263,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         search.createColumn({ name: "billaddress1", label: "address" }),
                         //search.createColumn({ name: "billcity", label: "city" }),
                         search.createColumn({ name: "formulatext", formula: "NVL({billcity},{billingAddress.custrecord_ec_parroquia})", label: "city" }),
-
+                        search.createColumn({ name: "line", label: "item.line" }),
                         search.createColumn({ name: "account", label: "item.account" }),
                         search.createColumn({ name: "itemid", join: "item", label: "item.code" }),
                         search.createColumn({ name: "memo", label: "item.detail" }),
@@ -1129,14 +1299,15 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
 
         function getBillDetailLines(transactionRecord) {
             try {
+                logError('Track0', transactionRecord.items)
                 var hash = {};
                 var array = transactionRecord.items;
                 array = array.filter(function (current) {
-                    var exists = !hash[current.account];
-                    hash[current.account] = true;
+                    var exists = !hash[current.line];
+                    hash[current.line] = true;
                     return exists;
                 });
-                logError('Test', array);
+
                 var resultArray = [];
                 var lineArray = [];
 
@@ -1144,17 +1315,18 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 //var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, totalAmount, tip, amountToPay, ""];
 
                 var TILineJson = {}
+                logError('Track4', array)
                 for (var i = 0; i < array.length; i++) {
                     var item = array[i];
-                    if (item.isWithholdingLine == "T" || !item.taxCode) continue;
 
+                    if (item.isWithholdingLine == "T" || !item.taxCode) continue;
+                    logError('Track1', item)
                     logError('Track', [{ account: item.account }])
 
                     var DEline = ['DE', item.code.substring(0, 15) ? item.code.substring(0, 15) : item.account.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity ? item.quantity : 1, item.rate ? item.rate : item.amount, 0, item.amount, ""];
                     //var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
                     if (item.taxCode)
                         lineArray.push(DEline);
-
 
                     if (item.taxRateCode == '2') {
                         subtotal12 += Number(item.amount);
@@ -1188,7 +1360,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 }
 
                 //var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation, totalDescuento, ICE, IVA12, (totalAmount + IVA12), tip, transactionRecord.total, ""];
-                var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation.toFixed(2), totalDescuento, ICE, IVA12, (totalAmount + IVA12).toFixed(2), tip, (totalAmount + IVA12).toFixed(2), ""];
+                var TLine = ["T", subtotal12, subtotal0, subtotalNotSubject, subtotalWithoutTaxation.toFixed(2), totalDescuento, ICE, IVA12, Math.abs(Number((totalAmount + IVA12).toFixed(2))), tip, Math.abs(Number((totalAmount + IVA12).toFixed(2))), ""];
                 resultArray.push(TLine);
                 logError('Track2', TILineJson)
                 for (var key in TILineJson) {
@@ -1260,7 +1432,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
         //             resultArray.push(TILine);
         //         }
         //         return resultArray.concat(lineArray);
-        //     } catch (e) {
+        //     } catch (e) {001001000088342  001001000003352
         //         logError('Error-getBillDetailLines', e);
         //     }
         // }
@@ -1277,7 +1449,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 var serie = transactionRecord.serie.split("");
                 var ITline = [
                     "IT",
-                    '2',
+                    AMBIENTE_SIPECOM,
                     '1',
                     transactionRecord.subsidiaryLegalName,
                     "CARSEG S.A",
@@ -1481,26 +1653,31 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
 
                         search.createColumn({ name: "custbody_ec_porcentaje_ret_10", label: "periva10" }),
                         search.createColumn({ name: "custbody_cod_ret_iva_10", label: "retiva10" }),
+                        search.createColumn({ name: "custbody_baseiva_10", label: "iva10" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_iva_retencion", join: "custbody_cod_ret_iva_10", label: "codSustentoIVA10" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_tipo_retencio", join: "custbody_cod_ret_iva_10", label: "typeretiva10" }),
 
                         search.createColumn({ name: "custbody_ec_porcentaje_ret_20", label: "periva20" }),
                         search.createColumn({ name: "custbody_cod_ret_iva_20", label: "retiva20" }),
+                        search.createColumn({ name: "custbody_baseiva_20", label: "iva20" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_iva_retencion", join: "custbody_cod_ret_iva_20", label: "codSustentoIVA20" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_tipo_retencio", join: "custbody_cod_ret_iva_20", label: "typeretiva20" }),
 
                         search.createColumn({ name: "custbody_ec_porcentaje_ret_30", label: "periva30" }),
                         search.createColumn({ name: "custbody_cod_ret_iva_30", label: "retiva30" }),
+                        search.createColumn({ name: "custbody_baseiva_30", label: "iva30" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_iva_retencion", join: "custbody_cod_ret_iva_30", label: "codSustentoIVA30" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_tipo_retencio", join: "custbody_cod_ret_iva_30", label: "typeretiva30" }),
 
                         search.createColumn({ name: "custbody_ec_porcentaje_ret_70", label: "periva70" }),
                         search.createColumn({ name: "custbody_cod_ret_iva_70", label: "retiva70" }),
+                        search.createColumn({ name: "custbody_baseiva_70", label: "iva70" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_iva_retencion", join: "custbody_cod_ret_iva_70", label: "codSustentoIVA70" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_tipo_retencio", join: "custbody_cod_ret_iva_70", label: "typeretiva70" }),
 
                         search.createColumn({ name: "custbody_ec_porcentaje_ret_100", label: "periva100" }),
                         search.createColumn({ name: "custbody_cod_ret_iva_100", label: "retiva100" }),
+                        search.createColumn({ name: "custbody_baseiva_100", label: "iva100" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_iva_retencion", join: "custbody_cod_ret_iva_100", label: "codSustentoIVA100" }),
                         search.createColumn({ name: "custrecord_ts_ec_witaxcode_tipo_retencio", join: "custbody_cod_ret_iva_100", label: "typeretiva100" }),
 
@@ -1618,9 +1795,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     "TIRS",
                     transactionRecord.typeretiva10,
                     codSustento,
-                    (parseFloat(transactionRecord.periva10) / (10 / 100)).toFixed(2),
+                    //(parseFloat(transactionRecord.periva10) / (10 / 100)).toFixed(2),
+                    roundTwoDecimal(transactionRecord.iva10),
                     "10",
-                    parseFloat(transactionRecord.periva10),
+                    roundTwoDecimal(transactionRecord.periva10),
                     "",
                     "",
                     "",
@@ -1640,9 +1818,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     "TIRS",
                     transactionRecord.typeretiva20,
                     codSustento,
-                    (parseFloat(transactionRecord.periva20) / (20 / 100)).toFixed(2),
+                    // (parseFloat(transactionRecord.periva20) / (20 / 100)).toFixed(2),
+                    roundTwoDecimal(transactionRecord.iva20),
                     "20",
-                    parseFloat(transactionRecord.periva20),
+                    roundTwoDecimal(transactionRecord.periva20),
                     "",
                     "",
                     "",
@@ -1662,9 +1841,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     "TIRS",
                     transactionRecord.typeretiva30,
                     codSustento,
-                    (parseFloat(transactionRecord.periva30) / (30 / 100)).toFixed(2),
+                    // (parseFloat(transactionRecord.periva30) / (30 / 100)).toFixed(2),
+                    roundTwoDecimal(transactionRecord.iva30),
                     "30",
-                    parseFloat(transactionRecord.periva30),
+                    roundTwoDecimal(transactionRecord.periva30),
                     "",
                     "",
                     "",
@@ -1684,9 +1864,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     "TIRS",
                     transactionRecord.typeretiva70,
                     codSustento,
-                    (parseFloat(transactionRecord.periva70) / (70 / 100)).toFixed(2),
+                    // (parseFloat(transactionRecord.periva70) / (70 / 100)).toFixed(2),
+                    roundTwoDecimal(transactionRecord.iva70),
                     "70",
-                    parseFloat(transactionRecord.periva70),
+                    roundTwoDecimal(transactionRecord.periva70),
                     "",
                     "",
                     "",
@@ -1706,9 +1887,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     "TIRS",
                     transactionRecord.typeretiva100,
                     codSustento,
-                    (parseFloat(transactionRecord.periva100) / (100 / 100)).toFixed(2),
+                    // (parseFloat(transactionRecord.periva100) / (100 / 100)).toFixed(2),
+                    roundTwoDecimal(transactionRecord.iva100),
                     "100",
-                    parseFloat(transactionRecord.periva100),
+                    roundTwoDecimal(transactionRecord.periva100),
                     "",
                     "",
                     "",
@@ -1730,7 +1912,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     transactionRecord.imprenta1,
                     transactionRecord.perrenta1.replace('%', ''),
-                    parseFloat(transactionRecord.monrenta1),
+                    roundTwoDecimal(transactionRecord.monrenta1),
                     "",
                     "",
                     "",
@@ -1752,7 +1934,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     transactionRecord.imprenta2,
                     transactionRecord.perrenta2.replace('%', ''),
-                    parseFloat(transactionRecord.monrenta2),
+                    roundTwoDecimal(transactionRecord.monrenta2),
                     "",
                     "",
                     "",
@@ -1774,7 +1956,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     codSustento,
                     transactionRecord.imprenta3,
                     transactionRecord.perrenta3.replace('%', ''),
-                    parseFloat(transactionRecord.monrenta3),
+                    roundTwoDecimal(transactionRecord.monrenta3),
                     "",
                     "",
                     "",
@@ -1829,15 +2011,17 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         "AND",
                         ["taxline", "is", "F"],
                         "AND",
-                        ["itemtype", "isnot", "Discount"],
-                        "AND",
-                        ["accounttype", "noneof", "OthCurrLiab"]
+                        ["taxitem", "noneof", "5"]
+                        // "AND",
+                        // ["itemtype", "isnot", "Discount"],
+                        // "AND",
+                        // ["accounttype", "noneof", "OthCurrLiab"]
                     ],
                 columns:
                     [
                         search.createColumn({ name: "formulatext", summary: "GROUP", formula: "'2'", label: "codImpuestoDocSustento" }),
                         search.createColumn({ name: "formulatext", summary: "GROUP", formula: "CASE WHEN {taxItem.rate} = 0.00 THEN '0' ELSE '2' END", label: "codigoPorcentaje" }),
-                        search.createColumn({ name: "formulacurrency", summary: "GROUP", formula: "CASE WHEN {taxItem.rate} = 0.00 THEN 0.00 ELSE 12.00 END", label: "tarifa" }),
+                        search.createColumn({ name: "formulacurrency", summary: "GROUP", formula: "CASE WHEN {taxItem.rate} = 0.00 THEN 0.00 ELSE {taxItem.rate} END", label: "tarifa" }),
                         search.createColumn({ name: "amount", summary: "SUM", label: "baseImponible" }),
                         search.createColumn({ name: "taxamount", summary: "SUM", label: "valorImpuesto" }),
                         search.createColumn({ name: "formulatext", summary: "GROUP", formula: "'IVA'", label: "impuestos" })
@@ -1846,13 +2030,13 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
             var searchResultCount = searchLoad.runPaged().count;
             if (searchResultCount > 0) {
                 searchLoad.run().each(function (result) {
-                    if (result.getValue({ name: "amount", summary: "SUM", label: "baseImponible" }) > 0) {
+                    if (Math.abs(result.getValue({ name: "amount", summary: "SUM", label: "baseImponible" })) > 0) {
                         IMSLine = [
                             "IMS",
                             result.getValue(searchLoad.columns[0]),
                             result.getValue(searchLoad.columns[1]),
                             result.getValue(searchLoad.columns[2]) == .00 ? "0.00" : result.getValue(searchLoad.columns[2]),
-                            result.getValue(searchLoad.columns[3]),
+                            Math.abs(result.getValue(searchLoad.columns[3])),
                             Math.abs(result.getValue(searchLoad.columns[4])) == .00 ? "0.00" : Math.abs(result.getValue(searchLoad.columns[4])),
                             result.getValue(searchLoad.columns[5]),
                             ""
@@ -1974,7 +2158,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     IALines.push(['IA', 'DIRECCION', addr.direccion, '']);
                     IALines.push(['IA', 'CIUDAD', addr.ciudad, '']);
                     IALines.push(['IA', 'TELEFONO', transactionRecord.phone, '']);
-                    IALines.push(['IA', 'VENCIMIENTO', transactionRecord.duedate, '']);
+                    //Inicio - dfernandez 28/08/2024
+                    //logError('transactionRecordObject', JSON.stringify(transactionRecord));
+                    transactionRecord.checkNroCuotas == true ? IALines.push(['IA', 'VENCIMIENTO', transactionRecord.duedateforcuote, '']) : IALines.push(['IA', 'VENCIMIENTO', transactionRecord.duedate, '']);
+                    //Fin - dfernandez 28/08/2024
                     IALines.push(['IA', 'EMISION', transactionRecord.location, '']);
                     if (emails.length) IALines.push(['IA', 'CORREO', emails.join(','), '']);
                 } else if (transactionRecord.recordtype == "itemfulfillment") { //& GUIA DE REMISIÓN
@@ -2366,6 +2553,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 return pagoLocExto.substr(0, 2);
             } catch (error) { }
 
+        }
+
+        function roundTwoDecimal(value) {
+            return Math.round(Number(value) * 100) / 100;
         }
 
         return {

@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_pe_af_bodegaactivo">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>PE Bodega Activo</name>
+  <customvalues>
+    <customvalue scriptid="val_692200_7451241_sb1_176">
+      <isinactive>F</isinactive>
+      <value>ACTIVOS FIJOS</value>
+    </customvalue>
+    <customvalue scriptid="val_692201_7451241_sb1_309">
+      <isinactive>F</isinactive>
+      <value>BIENES DE CONTROL</value>
+    </customvalue>
+  </customvalues>
+</customlist>

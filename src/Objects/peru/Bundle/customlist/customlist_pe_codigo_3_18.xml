@@ -1,0 +1,268 @@
+<customlist scriptid="customlist_pe_codigo_3_18">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>PE Codigos 3.18</name>
+  <customvalues>
+    <customvalue scriptid="val_637545_7451241_sb1_973">
+      <isinactive>F</isinactive>
+      <value>Venta de Bienes y Prestación de Servicios</value>
+    </customvalue>
+    <customvalue scriptid="val_637546_7451241_sb1_725">
+      <isinactive>F</isinactive>
+      <value>Regalí­as, cuotas,  comisiones, otros ingresos de actividades ordinarias</value>
+    </customvalue>
+    <customvalue scriptid="val_637547_7451241_sb1_822">
+      <isinactive>F</isinactive>
+      <value>Contratos mantenidos con propósito de intermediación o para negociar</value>
+    </customvalue>
+    <customvalue scriptid="val_637548_7451241_sb1_314">
+      <isinactive>F</isinactive>
+      <value>Arredamiento y posterior venta de esos activos</value>
+    </customvalue>
+    <customvalue scriptid="val_637549_7451241_sb1_835">
+      <isinactive>F</isinactive>
+      <value>Otros cobros de efectivo relativos a la actividad de operación</value>
+    </customvalue>
+    <customvalue scriptid="val_637550_7451241_sb1_812">
+      <isinactive>F</isinactive>
+      <value>Proveedores de Bienes y Servicios</value>
+    </customvalue>
+    <customvalue scriptid="val_637551_7451241_sb1_808">
+      <isinactive>F</isinactive>
+      <value>Contratos mantenidos con propósito de intermediación o para negociar</value>
+    </customvalue>
+    <customvalue scriptid="val_637552_7451241_sb1_130">
+      <isinactive>F</isinactive>
+      <value>Pagos a y por cuenta de los empleados</value>
+    </customvalue>
+    <customvalue scriptid="val_637553_7451241_sb1_673">
+      <isinactive>F</isinactive>
+      <value>Elaboración o adquisición de activos para arrendar y otros mantenidos para la venta</value>
+    </customvalue>
+    <customvalue scriptid="val_637554_7451241_sb1_418">
+      <isinactive>F</isinactive>
+      <value>Otros Pagos de Efectivo Relativos a la Actividad  de Operación</value>
+    </customvalue>
+    <customvalue scriptid="val_637555_7451241_sb1_893">
+      <isinactive>F</isinactive>
+      <value>Flujos de efectivo y equivalente al efectivo procedente de (utilizados en) operaciones</value>
+    </customvalue>
+    <customvalue scriptid="val_637556_7451241_sb1_854">
+      <isinactive>F</isinactive>
+      <value>Intereses recibidos (no incluidos en la Actividad de Inversión)</value>
+    </customvalue>
+    <customvalue scriptid="val_637557_7451241_sb1_689">
+      <isinactive>F</isinactive>
+      <value>Intereses pagados (no incluidos en la Actividad de Financiación)</value>
+    </customvalue>
+    <customvalue scriptid="val_637558_7451241_sb1_461">
+      <isinactive>F</isinactive>
+      <value>Dividendos Recibidos (no incluidos en la Actividad de Inversión)</value>
+    </customvalue>
+    <customvalue scriptid="val_637559_7451241_sb1_555">
+      <isinactive>F</isinactive>
+      <value>Dividendos pagados(no incluidos en la Actividad de Financiación)</value>
+    </customvalue>
+    <customvalue scriptid="val_637560_7451241_sb1_168">
+      <isinactive>F</isinactive>
+      <value>Impuestos a las ganancias (pagados) reembolsados</value>
+    </customvalue>
+    <customvalue scriptid="val_637561_7451241_sb1_626">
+      <isinactive>F</isinactive>
+      <value>Otros cobros (pagos) de efectivo</value>
+    </customvalue>
+    <customvalue scriptid="val_637562_7451241_sb1_734">
+      <isinactive>F</isinactive>
+      <value>Flujos de Efectivo y Equivalente al Efectivo Procedente de (Utilizados en) Actividades de Operación</value>
+    </customvalue>
+    <customvalue scriptid="val_637563_7451241_sb1_332">
+      <isinactive>F</isinactive>
+      <value>Reembolso de Adelantos de Prestamos y Préstamos Concedidos a Terceros</value>
+    </customvalue>
+    <customvalue scriptid="val_637564_7451241_sb1_667">
+      <isinactive>F</isinactive>
+      <value>Pérdida de control de subsidiarias u otros negocios</value>
+    </customvalue>
+    <customvalue scriptid="val_637565_7451241_sb1_504">
+      <isinactive>F</isinactive>
+      <value>Reembolsos recibidos de préstamos a entidades relacionadas</value>
+    </customvalue>
+    <customvalue scriptid="val_637566_7451241_sb1_819">
+      <isinactive>F</isinactive>
+      <value>Venta de  Instrumentos Financieros de Patrimonio o Deuda de Otras Entidades</value>
+    </customvalue>
+    <customvalue scriptid="val_637567_7451241_sb1_449">
+      <isinactive>F</isinactive>
+      <value>Contratos Derivados (futuro, a término, opciones)</value>
+    </customvalue>
+    <customvalue scriptid="val_637568_7451241_sb1_274">
+      <isinactive>F</isinactive>
+      <value>Venta  de Participaciones en Negocios Conjuntos, Neto del Efectivo Desapropiado</value>
+    </customvalue>
+    <customvalue scriptid="val_637569_7451241_sb1_992">
+      <isinactive>F</isinactive>
+      <value>Venta de Propiedades, Planta y Equipo</value>
+    </customvalue>
+    <customvalue scriptid="val_637570_7451241_sb1_730">
+      <isinactive>F</isinactive>
+      <value>Venta de Activos Intangibles</value>
+    </customvalue>
+    <customvalue scriptid="val_637571_7451241_sb1_417">
+      <isinactive>F</isinactive>
+      <value>Venta de Otros Activos de largo plazo</value>
+    </customvalue>
+    <customvalue scriptid="val_637572_7451241_sb1_358">
+      <isinactive>F</isinactive>
+      <value>Subvenciones del gobierno</value>
+    </customvalue>
+    <customvalue scriptid="val_637573_7451241_sb1_377">
+      <isinactive>F</isinactive>
+      <value>Intereses Recibidos</value>
+    </customvalue>
+    <customvalue scriptid="val_637574_7451241_sb1_741">
+      <isinactive>F</isinactive>
+      <value>Dividendos Recibidos</value>
+    </customvalue>
+    <customvalue scriptid="val_637575_7451241_sb1_263">
+      <isinactive>F</isinactive>
+      <value>Anticipos y Prestamos Concedidos a Terceros</value>
+    </customvalue>
+    <customvalue scriptid="val_637576_7451241_sb1_382">
+      <isinactive>F</isinactive>
+      <value>Obtener el control de subsidiarias u otros negocios</value>
+    </customvalue>
+    <customvalue scriptid="val_637577_7451241_sb1_190">
+      <isinactive>F</isinactive>
+      <value>Prestamos concedidos a entidades relacionadas</value>
+    </customvalue>
+    <customvalue scriptid="val_637578_7451241_sb1_962">
+      <isinactive>F</isinactive>
+      <value>Compra de Instrumentos Financieros de Patrimonio o Deuda de Otras Entidades</value>
+    </customvalue>
+    <customvalue scriptid="val_637579_7451241_sb1_128">
+      <isinactive>F</isinactive>
+      <value>Contratos Derivados (futuro, a término, opciones)</value>
+    </customvalue>
+    <customvalue scriptid="val_637580_7451241_sb1_202">
+      <isinactive>F</isinactive>
+      <value>Compra de Subsidiarias, Neto del Efectivo Adquirido</value>
+    </customvalue>
+    <customvalue scriptid="val_637581_7451241_sb1_469">
+      <isinactive>F</isinactive>
+      <value>Compra de Participaciones en Negocios Conjuntos,  Neto del Efectivo Adquirido</value>
+    </customvalue>
+    <customvalue scriptid="val_637582_7451241_sb1_633">
+      <isinactive>F</isinactive>
+      <value>Compra de Propiedades, Planta  y Equipo</value>
+    </customvalue>
+    <customvalue scriptid="val_637583_7451241_sb1_872">
+      <isinactive>F</isinactive>
+      <value>Compra de Activos Intangibles</value>
+    </customvalue>
+    <customvalue scriptid="val_637584_7451241_sb1_400">
+      <isinactive>F</isinactive>
+      <value>Compra de Otros Activos de largo plazo</value>
+    </customvalue>
+    <customvalue scriptid="val_637585_7451241_sb1_196">
+      <isinactive>F</isinactive>
+      <value>Impuestos a las ganancias (pagados) reembolsados</value>
+    </customvalue>
+    <customvalue scriptid="val_637586_7451241_sb1_911">
+      <isinactive>F</isinactive>
+      <value>Otros cobros (pagos) de efectivo relativos a la actividad de inversión    </value>
+    </customvalue>
+    <customvalue scriptid="val_637587_7451241_sb1_660">
+      <isinactive>F</isinactive>
+      <value>Flujos de Efectivo y Equivalente al Efectivo Procedente de (Utilizados en) Actividades de Inversión</value>
+    </customvalue>
+    <customvalue scriptid="val_637588_7451241_sb1_377">
+      <isinactive>F</isinactive>
+      <value>Obtención de Préstamos </value>
+    </customvalue>
+    <customvalue scriptid="val_637589_7451241_sb1_148">
+      <isinactive>F</isinactive>
+      <value>Préstamos de entidades relacionadas</value>
+    </customvalue>
+    <customvalue scriptid="val_637590_7451241_sb1_253">
+      <isinactive>F</isinactive>
+      <value>Cambios en las participaciones en la propiedad de subsidiarias que no resultan en pérdida de control</value>
+    </customvalue>
+    <customvalue scriptid="val_637591_7451241_sb1_672">
+      <isinactive>F</isinactive>
+      <value>Emisión de Acciones </value>
+    </customvalue>
+    <customvalue scriptid="val_637592_7451241_sb1_517">
+      <isinactive>F</isinactive>
+      <value>Emisión de  Otros Instrumentos de Patrimonio </value>
+    </customvalue>
+    <customvalue scriptid="val_637593_7451241_sb1_869">
+      <isinactive>F</isinactive>
+      <value>Subvenciones del gobierno</value>
+    </customvalue>
+    <customvalue scriptid="val_637594_7451241_sb1_907">
+      <isinactive>F</isinactive>
+      <value>Amortización o pago de Préstamos </value>
+    </customvalue>
+    <customvalue scriptid="val_637595_7451241_sb1_372">
+      <isinactive>F</isinactive>
+      <value>Pasivos por Arrendamiento Financiero</value>
+    </customvalue>
+    <customvalue scriptid="val_637596_7451241_sb1_625">
+      <isinactive>F</isinactive>
+      <value>Préstamos de entidades relacionadas</value>
+    </customvalue>
+    <customvalue scriptid="val_637597_7451241_sb1_932">
+      <isinactive>F</isinactive>
+      <value>Cambios en las participaciones en la propiedad de subsidiarias que no resultan en pérdida de control</value>
+    </customvalue>
+    <customvalue scriptid="val_637598_7451241_sb1_845">
+      <isinactive>F</isinactive>
+      <value>Recompra o Rescate de Acciones de la Entidad (Acciones en Cartera)</value>
+    </customvalue>
+    <customvalue scriptid="val_637599_7451241_sb1_502">
+      <isinactive>F</isinactive>
+      <value>Adquisición de Otras Participaciones en el Patrimonio</value>
+    </customvalue>
+    <customvalue scriptid="val_637600_7451241_sb1_346">
+      <isinactive>F</isinactive>
+      <value>Intereses pagados</value>
+    </customvalue>
+    <customvalue scriptid="val_637601_7451241_sb1_279">
+      <isinactive>F</isinactive>
+      <value>Dividendos pagados</value>
+    </customvalue>
+    <customvalue scriptid="val_637602_7451241_sb1_251">
+      <isinactive>F</isinactive>
+      <value>Impuestos a las ganancias (pagados) reembolsados</value>
+    </customvalue>
+    <customvalue scriptid="val_637603_7451241_sb1_709">
+      <isinactive>F</isinactive>
+      <value>Otros cobros (pagos) de efectivo relativos a la actividad de financiación  </value>
+    </customvalue>
+    <customvalue scriptid="val_637604_7451241_sb1_364">
+      <isinactive>F</isinactive>
+      <value>Flujos de Efectivo y Equivalente al Efectivo Procedente de (Utilizados en) Actividades de Financiación</value>
+    </customvalue>
+    <customvalue scriptid="val_637605_7451241_sb1_922">
+      <isinactive>F</isinactive>
+      <value>Aumento (Disminución) Neto de Efectivo y Equivalente al Efectivo, antes de las Variaciones en las Tasas de Cambio</value>
+    </customvalue>
+    <customvalue scriptid="val_637606_7451241_sb1_537">
+      <isinactive>F</isinactive>
+      <value>Efectos de las Variaciones en las Tasas de Cambio sobre el Efectivo y Equivalentes al Efectivo</value>
+    </customvalue>
+    <customvalue scriptid="val_637607_7451241_sb1_648">
+      <isinactive>F</isinactive>
+      <value>Aumento (Disminución) Neto de Efectivo y Equivalente al Efectivo</value>
+    </customvalue>
+    <customvalue scriptid="val_637608_7451241_sb1_673">
+      <isinactive>F</isinactive>
+      <value>Efectivo y Equivalente al Efectivo al Inicio del Ejercicio</value>
+    </customvalue>
+    <customvalue scriptid="val_637609_7451241_sb1_919">
+      <isinactive>F</isinactive>
+      <value>Efectivo y Equivalente al Efectivo al Finalizar el Ejercicio</value>
+    </customvalue>
+  </customvalues>
+</customlist>

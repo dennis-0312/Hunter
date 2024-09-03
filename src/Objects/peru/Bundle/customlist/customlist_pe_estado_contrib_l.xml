@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_pe_estado_contrib_l">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>PE Lista Estado Contrib</name>
+  <customvalues>
+    <customvalue scriptid="val_634975_7451241_sb1_667">
+      <isinactive>F</isinactive>
+      <value>Activo</value>
+    </customvalue>
+    <customvalue scriptid="val_634976_7451241_sb1_304">
+      <isinactive>F</isinactive>
+      <value>No Activo</value>
+    </customvalue>
+  </customvalues>
+</customlist>

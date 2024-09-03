@@ -1,0 +1,65 @@
+{
+    monitoreo: {
+       username: "tsnet.evol@myevol.biz",
+       first_name: "TS NET",
+       email: "evol.tsnet5@myevol.biz",
+       id: "755",
+       is_active: true,
+       account_type: 1,
+       customer: {
+          company_code: "0991259546001",
+          identity_document_number: "20381041957",
+          identity_document_type: 1,
+          business_name: "TS NET",
+          phone_number: "0998530571",
+          emergency_phone_number: "0985454544",
+          assistance_phone_number: "046004640",
+          technical_support_email: "soporteami@carsegsa.com"
+        }
+    },
+    customer: {
+       username: "dtacunan@ami.ec",
+       first_name: "EVOL(Tsnet)",
+       email: "",
+       id: "",
+       is_active: true,
+       account_type: 1,
+       customer: {
+          company_code: "0991259546001",
+          identity_document_number: "100001825",
+          identity_document_type: 1,
+          business_name: "EVOL(Tsnet)",
+          phone_number: "",
+          emergency_phone_number: "0985454544",
+          assistance_phone_number: "046004640",
+          technical_support_email: "soporteami@carsegsa.com"
+        }
+    },
+    asset: {
+       id: "",
+       product: "CH - H.MONITOREO AMI",
+       name: "ABC-1237",
+       description: "11053",
+       custom_name: "ABC-1237",
+       active: true,
+       asset_type: "0",
+       product_expire_date: "2024-09-01T05:00:00-05:00",
+       contract_code: "",
+        "attributes": [],
+       doors_sensors: "4",
+       cod_sys: "11053",
+       owner: ""
+    },
+    device: {
+       report_from: "3",
+       active: true,
+       model: "1",
+       company_code: "0991259546001",
+       id: "DIS00000001"
+    },
+    command: [
+        "OPEN_DOOR_LOCKS",
+        "CAR_LOCK",
+        "CAR_UNLOCK"
+    ]
+}

@@ -1,0 +1,36 @@
+<customlist scriptid="customlist_pe_caso_recl_mot">
+  <description>Motivos de reclamos</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>PE Motivos Reclamos</name>
+  <customvalues>
+    <customvalue scriptid="val_692248_7451241_sb1_496">
+      <isinactive>F</isinactive>
+      <value>Vehiculo no recuperado </value>
+    </customvalue>
+    <customvalue scriptid="val_692249_7451241_sb1_419">
+      <isinactive>F</isinactive>
+      <value>Dispositivo no instalado</value>
+    </customvalue>
+    <customvalue scriptid="val_689766_7451241_sb1_506">
+      <isinactive>F</isinactive>
+      <value>Instalación de dispositivo Incorrecto</value>
+    </customvalue>
+    <customvalue scriptid="val_689765_7451241_sb1_163">
+      <isinactive>F</isinactive>
+      <value>Sin servicio de monitoreo</value>
+    </customvalue>
+    <customvalue scriptid="val_689767_7451241_sb1_229">
+      <isinactive>F</isinactive>
+      <value>Fallas mecánicas a causa del dispositivo</value>
+    </customvalue>
+    <customvalue scriptid="val_689768_7451241_sb1_674">
+      <isinactive>F</isinactive>
+      <value>Cobro Indebido</value>
+    </customvalue>
+    <customvalue scriptid="val_692250_7451241_sb1_996">
+      <isinactive>F</isinactive>
+      <value>Devolución de dinero</value>
+    </customvalue>
+  </customvalues>
+</customlist>

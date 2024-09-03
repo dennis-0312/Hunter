@@ -2,6 +2,7 @@
 <#setting locale = "computer">
 <#setting number_format = "computer">
 <#assign json = jsonString.text?eval>
+<#assign conta = 0>
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <iva>
     <TipoIDInformante>${json.TipoIDInformante}</TipoIDInformante>
@@ -75,6 +76,13 @@
                     </#if>
                 </#if>
             </pagoExterior>
+            <#if item.tipoComprobante == '05'>
+            <docModificado>${item.codigoTipoCM}</docModificado>
+            <estabModificado>${item.establecimientoCM}</estabModificado>
+            <ptoEmiModificado>${item.puntoEmisionCM}</ptoEmiModificado>
+            <secModificado>${item.secuencialCM}</secModificado>
+            <autModificado>${item.numeroAutorizacionCM}</autModificado>
+            </#if>
             <#if item.tipoComprobante != '04'>
             <#if item.formasDePago.formaPago != ''>
             <formasDePago>
@@ -85,6 +93,7 @@
             <#if item.air?has_content>
             <air>
             <#list item.air as detalleAir>
+                <#assign conta = 1>
             	<detalleAir>
 					<codRetAir>${detalleAir.codRetAir}</codRetAir>
 					<baseImpAir>${detalleAir.baseImpAir?abs?string["###0.00"]}</baseImpAir>
@@ -94,6 +103,16 @@
             </#list>
 			</air>
 			</#if>
+            <#if conta == 1>
+            <#if item.estabRetencion1 != ''>
+            <estabRetencion1>${item.estabRetencion1}</estabRetencion1>
+            <ptoEmiRetencion1>${item.ptoEmiRetencion1}</ptoEmiRetencion1>
+            <secRetencion1>${item.secRetencion1}</secRetencion1>
+            <autRetencion1>${item.autRetencion1}</autRetencion1>
+            <fechaEmiRet1>${item.fechaEmiRet1}</fechaEmiRet1>
+			</#if>
+			</#if>
+            <#assign conta = 0>
             <#if item.reembolsos?has_content>
             <reembolsos>
             <#list item.reembolsos as detallereembolso>
@@ -190,14 +209,18 @@
             <tipIngExt>${detalleExportaciones.tipIngExt}</tipIngExt>
             <ingExtGravOtroPais>${detalleExportaciones.ingExtGravOtroPais}</ingExtGravOtroPais>
             <#if detalleExportaciones.exportacionDe == '01'>
-            <impuestootropais>${detalleExportaciones.impuestootropais?abs?string["###0.00"]}</impuestootropais>
+				<#if detalleExportaciones.ingExtGravOtroPais == 'SI'>
+					<impuestootropais>${detalleExportaciones.impuestootropais?abs?string["###0.00"]}</impuestootropais>
+				</#if>
             <tipoComprobante>${detalleExportaciones.tipoComprobante}</tipoComprobante>
+			<#if '02' == '01'>
             <distAduanero>${detalleExportaciones.distAduanero}</distAduanero>
             <anio>${detalleExportaciones.anio}</anio>
             <regimen>${detalleExportaciones.regimen}</regimen>
             <correlativo>${detalleExportaciones.correlativo}</correlativo>
             <verificador>${detalleExportaciones.verificador}</verificador>
             <docTransp>${detalleExportaciones.docTransp}</docTransp>
+			</#if>
             <fechaEmbarque>${detalleExportaciones.fechaEmbarque}</fechaEmbarque>
             <#elseif detalleExportaciones.exportacionDe == '02'>
             <#-- <impuestootropais>${detalleExportaciones.impuestootropais?abs?string["###0.00"]}</impuestootropais> -->

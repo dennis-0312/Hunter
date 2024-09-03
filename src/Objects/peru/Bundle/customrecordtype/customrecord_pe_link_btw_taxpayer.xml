@@ -1,0 +1,203 @@
+<customrecordtype scriptid="customrecord_pe_link_btw_taxpayer">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>T</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Link btw Taxpayer/Foreign Resident</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_code_link">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Code Link</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_description">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CLOBTEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Description</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_637811_7451241_sb1_483">
+      <custrecord_pe_code_link>01</custrecord_pe_code_link>
+      <custrecord_pe_description>Una persona natural o juridica posea mas de treinta por ciento (30%) del capital de otra persona juridica, directamente o por intermedio de un tercero</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 1</name>
+    </instance>
+    <instance scriptid="val_637812_7451241_sb1_796">
+      <custrecord_pe_code_link>10</custrecord_pe_code_link>
+      <custrecord_pe_description>Una empresa no domiciliada tenga uno o mas establecimientos permanentes en el pais, en cuyo caso existira vinculacion entre la empresa no domiciliada y cada uno de sus establecimientos permanentes y entre todos ellos entre si</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 10</name>
+    </instance>
+    <instance scriptid="val_637813_7451241_sb1_791">
+      <custrecord_pe_code_link>11</custrecord_pe_code_link>
+      <custrecord_pe_description>Una empresa domiciliada en territorio peruano tenga uno o mas establecimientos permanentes en el extranjero, en cuyo caso existira vinculacion entre la empresa domiciliada y cada uno de sus establecimientos permanentes</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 11</name>
+    </instance>
+    <instance scriptid="val_637814_7451241_sb1_967">
+      <custrecord_pe_code_link>12</custrecord_pe_code_link>
+      <custrecord_pe_description>Una persona natural o juridica ejerza influencia dominante en las decisiones de los organos de administracion de una o mas personas juridicas o entidades. En tal situacion, se considerara que las personas juridicas o entidades influidas estan vinculadas entre si y con la persona natural o juridica que ejerce dicha influencia. Se entiende que una persona natural o juridica ejerce influencia  dominante cuando, en la adopcion del acuerdo, ejerce o controla la mayoria absoluta de votos para la toma de decisiones en los organos de administracion de la persona juridica o entidad. En el caso de decisiones relacionadas con los asuntos mencionados en el articulo 126° de la Ley General de Sociedades, existira influencia dominante de la persona natural o juridica que, participando en la adopcion del acuerdo, por si misma o con la intervencion de votos de terceros, tiene en el acto de votacion el mayor numero de acciones suscritas con derecho a voto, siempre y cuando cuente con, al menos, el diez por ciento (10%) de las acciones suscritas con derecho a voto. Tambien se otorgara el tratamiento de partes vinculadas cuando una persona, empresa o entidad domiciliada en el pais realice, en el ejercicio gravable anterior, el ochenta por ciento (80%) o mas de sus ventas de bienes, prestacion de servicios u otro tipo de operaciones, con una persona, empresa o entidad domiciliada en el pais o con personas, empresas o entidades vinculadas entre si, domiciliadas en el pais, siempre que tales operaciones, a su vez, representen por lo menos el treinta por ciento (30%) de las compras o adquisiciones de la otra parte en el mismo periodo. Tratandose de empresas que tengan actividades por periodos mayores a tres ejercicios gravables, tales porcentajes se calcularan teniendo en cuenta el porcentaje promedio de ventas o compras, segun sea el caso, realizadas en los tres ejercicios gravables inmediatos anteriores. Lo dispuesto en este parrafo no sera de aplicacion a las operaciones que realicen las empresas que conforman la Actividad Empresarial del Estado, en las cuales la participacion del Estado sea mayor al cincuenta por ciento (50%) del capital. La vinculacion, de acuerdo a alguno de los criterios establecidos en este articulo, tambien operara cuando la transaccion sea realizada utilizando personas o entidades interpuestas, domiciliadas o no en el pais con el proposito de encubrir una transaccion entre partes vinculadas</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 12</name>
+    </instance>
+    <instance scriptid="val_637815_7451241_sb1_952">
+      <custrecord_pe_code_link>02</custrecord_pe_code_link>
+      <custrecord_pe_description>Mas del treinta por ciento (30%) del capital de dos (2) o mas personas juridicas pertenezca a una misma persona natural o juridica, directamente o por intermedio de un tercero</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 2</name>
+    </instance>
+    <instance scriptid="val_637816_7451241_sb1_787">
+      <custrecord_pe_code_link>03</custrecord_pe_code_link>
+      <custrecord_pe_description>En cualesquiera de los casos anteriores, cuando la indicada proporcion del capital pertenezca a conyuges entre si o a personas naturales vinculadas hasta el segundo grado de consanguinidad o afinidad</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 3</name>
+    </instance>
+    <instance scriptid="val_637817_7451241_sb1_536">
+      <custrecord_pe_code_link>04</custrecord_pe_code_link>
+      <custrecord_pe_description>El capital de dos (2) o mas personas juridicas pertenezca en mas del treinta por ciento (30%) a socios comunes a estas</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 4</name>
+    </instance>
+    <instance scriptid="val_637818_7451241_sb1_722">
+      <custrecord_pe_code_link>05</custrecord_pe_code_link>
+      <custrecord_pe_description>Las personas juridicas o entidades cuenten con una o mas directores, gerentes, administradores u otros directivos comunes, que tengan poder de decision en los acuerdos financieros, operativos y/o comerciales que se adopten</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 5</name>
+    </instance>
+    <instance scriptid="val_637819_7451241_sb1_974">
+      <custrecord_pe_code_link>06</custrecord_pe_code_link>
+      <custrecord_pe_description>Dos o mas personas naturales o juridicas consoliden Estados Financieros</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 6</name>
+    </instance>
+    <instance scriptid="val_637820_7451241_sb1_881">
+      <custrecord_pe_code_link>07</custrecord_pe_code_link>
+      <custrecord_pe_description>Exista un contrato de colaboracion empresarial con contabilidad independiente, en cuyo caso el contrato se considerara vinculado con aquellas partes contratantes que participen, directamente o por intermedio de un tercero, en mas del treinta por ciento (30%) en el patrimonio del contrato o cuando alguna de las partes contratantes tengan poder de decision en los acuerdos financieros, comerciales u operativos que se adopten para el desarrollo del contrato, caso en el cual la parte contratante que ejerza el poder de decision se encontrara vinculado con el contrato</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 7</name>
+    </instance>
+    <instance scriptid="val_637821_7451241_sb1_575">
+      <custrecord_pe_code_link>08</custrecord_pe_code_link>
+      <custrecord_pe_description>En el caso de un contrato de colaboracion empresarial sin contabilidad independiente, la vinculacion entre cada una de las partes integrantes del contrato y la contraparte debera verificarse individualmente, aplicando algunos de los criterios de vinculacion establecidos en este articulo (articulo 24° del reglamento del Impuesto a la Renta). Se entiende por contraparte a la persona natural o juridica con las que las partes integrantes celebren alguna operacion con el fin de alcanzar el objeto del contrato</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 8</name>
+    </instance>
+    <instance scriptid="val_637822_7451241_sb1_123">
+      <custrecord_pe_code_link>09</custrecord_pe_code_link>
+      <custrecord_pe_description>Exista un contrato de asociacion en participacion, en el que alguno de los asociados, directa o indirectamente, participe en mas del treinta por ciento (30%) en los resultados o en las utilidades de uno o varios negocios del asociante, en cuyo caso se considerara que existe vinculacion entre el asociante y cada uno de sus asociados. Tambien se considerara que existe vinculacion cuando alguno de los asociados tenga poder de decision en los aspectos financieros, comerciales u operativos en uno o varios negocios del asociante</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Articulo 24° numeral 9</name>
+    </instance>
+    <instance scriptid="val_637823_7451241_sb1_314">
+      <custrecord_pe_code_link>00</custrecord_pe_code_link>
+      <custrecord_pe_description>Sin vinculacion</custrecord_pe_description>
+      <isinactive>F</isinactive>
+      <name>Sin vinculacion</name>
+    </instance>
+  </instances>
+</customrecordtype>

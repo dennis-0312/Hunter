@@ -11,7 +11,7 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
     let currentScript = runtime.getCurrentScript();
     const PAYMENT_ORDER_RECORD_ID = 'customrecord_ts_epmt_payment_batch';
     const PAYMENT_ORDER_DETAIL_RECORD_ID = 'customrecord_ts_epmt_payment';
-    const PDF_FOLDER_ID = "6503"; //SB: 6322 - PR 6503 /Path: SuiteScripts > Pago Electronico Personalizado
+    const PDF_FOLDER_ID = "6322"; //SB: 6322 - PR 6503 /Path: SuiteScripts > Pago Electronico Personalizado
     const PDF_TEMPLATE = "../templates/TS_FTL_E_Payment_PDF.ftl";
 
     const execute = (context) => {
@@ -30,6 +30,7 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
                 } else {
                     let paymentLotIds = scriptParameters.paymentLotIds.split(',');
                     let jsonData = buildJsonData(paymentLotIds, scriptParameters.emitido);
+
                     generateFiles(jsonData, true, true);
                 }
             } else if (deploymentId == "") { }
@@ -51,7 +52,7 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
         if (!paymentLotIds.length) return;
         let transactionsJSON = new Object();
         let columns = EPMT_COLUMNS.getColumns(["customrecord_ts_epmt_payment_file_format"]);
-        let paymentBatchJSON = EPMT_ACCES_DATA.getEPaymentPaymentBatchRecord(columns.epayment_payment_batch_columns, paymentLotIds);
+        let paymentBatchJSON = EPMT_ACCES_DATA.getEPaymentPaymentBatchRecord(columns.epayment_payment_batch_columns, paymentLotIds);     
         paymentBatchJSON = EPMT_ACCES_DATA.getEPaymentPaymentRecord(paymentBatchJSON, columns.epayment_payment_columns, paymentLotIds);
         let { customerIds, vendorIds, employeeIds, transactionsIds } = getRecordIdValues(paymentBatchJSON);
         let customersJSON = EPMT_ACCES_DATA.getCustomers(columns.customer_columns, customerIds);
@@ -140,6 +141,7 @@ define(['N/record', 'N/runtime', 'N/task', 'N/render', 'N/format', 'N/file', 'N/
         let name = getFileName(txtDataJson, templateJSON.custrecord_ts_epmt_pff_output_file_exten, searchResultCount);
         name = name.replace(/\s/g, "").split(":")[1];
         log.error("name", name);
+        //log.error("txtDataJson", txtDataJson);
         let outputFileContents = RENDER_TEMPLATE.createFileRender(txtDataJson, templateJSON.custrecord_ts_epmt_pff_free_marker_body);
         log.error("outputFileContents", outputFileContents);
         let fileId = file.create({

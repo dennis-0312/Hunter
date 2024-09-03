@@ -192,11 +192,10 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
                     quantity
                 };
             }
-
             return true;
         });
 
-        log.error("cantidad", Object.keys(inventoryBalanceResult).length);
+        console.log("cantidad", Object.keys(inventoryBalanceResult).length);
         return inventoryBalanceResult;
     }
 
@@ -306,7 +305,7 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
 
     const validateFieldConfiguration = (serial) => {
         let itemType = getParamFromUrl("type");
-        if (itemType == "4") return false;
+        if (itemType == "4" || itemType == "5") return false;
         let { columns, customRecord, typeName, estadoColumna, filterBy } = getDataForSerchByType(itemType);
         console.log("validateFieldConfiguration", { columns, customRecord, typeName, estadoColumna });
         let resultSearch = createSearchByType(customRecord, columns, serial, filterBy);

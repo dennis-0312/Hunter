@@ -1,0 +1,311 @@
+<customrecordtype scriptid="customrecord_pe_dua_code">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>T</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE DUA Code</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_code_cua">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Code CUA</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_description_dua">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Description DUA</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_637296_7451241_sb1_990">
+      <custrecord_pe_code_cua>000</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>000 Sin DUA</name>
+    </instance>
+    <instance scriptid="val_637297_7451241_sb1_330">
+      <custrecord_pe_code_cua>019</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>019 Tumbes</name>
+    </instance>
+    <instance scriptid="val_637298_7451241_sb1_215">
+      <custrecord_pe_code_cua>028</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>028 Talara</name>
+    </instance>
+    <instance scriptid="val_637299_7451241_sb1_914">
+      <custrecord_pe_code_cua>046</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>046 Paita</name>
+    </instance>
+    <instance scriptid="val_637300_7451241_sb1_262">
+      <custrecord_pe_code_cua>055</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>055 Chiclayo</name>
+    </instance>
+    <instance scriptid="val_637301_7451241_sb1_492">
+      <custrecord_pe_code_cua>082</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>082 Salaverry</name>
+    </instance>
+    <instance scriptid="val_637302_7451241_sb1_981">
+      <custrecord_pe_code_cua>091</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>091 Chimbote</name>
+    </instance>
+    <instance scriptid="val_637303_7451241_sb1_233">
+      <custrecord_pe_code_cua>118</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>118 Marítima Del Callao</name>
+    </instance>
+    <instance scriptid="val_637304_7451241_sb1_144">
+      <custrecord_pe_code_cua>127</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>127 Pisco</name>
+    </instance>
+    <instance scriptid="val_637305_7451241_sb1_838">
+      <custrecord_pe_code_cua>145</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>145 Mollendo Matarani</name>
+    </instance>
+    <instance scriptid="val_637306_7451241_sb1_357">
+      <custrecord_pe_code_cua>154</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>154 Arequipa</name>
+    </instance>
+    <instance scriptid="val_637307_7451241_sb1_373">
+      <custrecord_pe_code_cua>163</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>163 Ilo</name>
+    </instance>
+    <instance scriptid="val_637308_7451241_sb1_991">
+      <custrecord_pe_code_cua>172</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>172 Tacna</name>
+    </instance>
+    <instance scriptid="val_637309_7451241_sb1_386">
+      <custrecord_pe_code_cua>181</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>181 Puno</name>
+    </instance>
+    <instance scriptid="val_637310_7451241_sb1_448">
+      <custrecord_pe_code_cua>190</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>190 Cuzco</name>
+    </instance>
+    <instance scriptid="val_637311_7451241_sb1_271">
+      <custrecord_pe_code_cua>217</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>217 Pucallpa</name>
+    </instance>
+    <instance scriptid="val_637312_7451241_sb1_172">
+      <custrecord_pe_code_cua>226</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>226 Iquitos</name>
+    </instance>
+    <instance scriptid="val_637313_7451241_sb1_445">
+      <custrecord_pe_code_cua>235</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>235 Aérea Del Callao</name>
+    </instance>
+    <instance scriptid="val_637314_7451241_sb1_145">
+      <custrecord_pe_code_cua>244</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>244 Postal De Lima</name>
+    </instance>
+    <instance scriptid="val_637315_7451241_sb1_519">
+      <custrecord_pe_code_cua>262</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>262 Desaguadero</name>
+    </instance>
+    <instance scriptid="val_637316_7451241_sb1_939">
+      <custrecord_pe_code_cua>271</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>271 Tarapoto</name>
+    </instance>
+    <instance scriptid="val_637317_7451241_sb1_784">
+      <custrecord_pe_code_cua>280</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>280 Puerto Maldonado</name>
+    </instance>
+    <instance scriptid="val_637318_7451241_sb1_562">
+      <custrecord_pe_code_cua>299</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>299 La Tina</name>
+    </instance>
+    <instance scriptid="val_637319_7451241_sb1_327">
+      <custrecord_pe_code_cua>884</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>884 Dependencia Ferroviaria Tacna</name>
+    </instance>
+    <instance scriptid="val_637320_7451241_sb1_668">
+      <custrecord_pe_code_cua>893</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>893 Dependencia Postal Tacna</name>
+    </instance>
+    <instance scriptid="val_637321_7451241_sb1_582">
+      <custrecord_pe_code_cua>910</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>910 Dependencia Postal Arequipa</name>
+    </instance>
+    <instance scriptid="val_637322_7451241_sb1_197">
+      <custrecord_pe_code_cua>929</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>929 Complejo Fronterizo Sta Rosa Tacna</name>
+    </instance>
+    <instance scriptid="val_637323_7451241_sb1_864">
+      <custrecord_pe_code_cua>938</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>938 Terminal Terrestre Tacna</name>
+    </instance>
+    <instance scriptid="val_637324_7451241_sb1_649">
+      <custrecord_pe_code_cua>947</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>947 Aeropuerto Tacna</name>
+    </instance>
+    <instance scriptid="val_637325_7451241_sb1_487">
+      <custrecord_pe_code_cua>956</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>956 Ceticos Tacna</name>
+    </instance>
+    <instance scriptid="val_637326_7451241_sb1_411">
+      <custrecord_pe_code_cua>965</custrecord_pe_code_cua>
+      <custrecord_pe_description_dua></custrecord_pe_description_dua>
+      <isinactive>F</isinactive>
+      <name>965 Dependencia Postal De Salaverry</name>
+    </instance>
+  </instances>
+</customrecordtype>

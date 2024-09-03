@@ -3,8 +3,16 @@
  * @NScriptType MapReduceScript
  * @NModuleScope Public
 */
-define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/record'], function (search, email, file, runtime, log, format, record) {
-
+define([
+    'N/search',
+    'N/email',
+    'N/file',
+    'N/runtime',
+    'N/log',
+    'N/format',
+    'N/record',
+    '../Main/constant/TS_CM_Constant'
+], function (search, email, file, runtime, log, format, record, _constant) {
     let currentScript = runtime.getCurrentScript();
     let currentUser = runtime.getCurrentUser();
 
@@ -23,18 +31,20 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             log.error("journalValues.length", journalValues.length);
             if (!journalValues.length) return [];
             let journalId = createJournal(journalValues, startDate);
-            return journalValues.map(value => { value.journalId = journalId; return value; });
+            log.error("journalValues.map(value => { value.journalId = journalId; return value; })", journalValues.map(value => { value.journalId = journalId; return value; }))
+            let retorno = journalValues.map(value => { value.journalId = journalId; return value; });
+            return retorno;
         } catch (error) {
             log.error("error", error);
         }
     }
 
     const map = (context) => {
-        log.error("map", "map");
+        log.error("map", context);
         let key = context.key;
         let value = JSON.parse(context.value);
         log.error("key", key);
-        log.error("valaue", value);
+        log.error("value", value);
         try {
             let detalleProvisionId = createDetalleProvision(value);
             log.error("detalleProvisionId", detalleProvisionId);
@@ -44,71 +54,71 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
     }
 
     const getItemsToSkip = () => {
-        let itemToSkip = {};
+        let itemToSkip = new Object();
         let paramsSearch = search.create({
             type: "customrecord_ht_pp_main_param_prod",
             filters: [
                 [
                     [
-                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", "19"],
+                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS],
                         "AND",
-                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", "43"],
-                        "AND",
-                        ["custrecord_ht_pp_aplicacion", "is", "T"]
-                    ],
-                    "OR",
-                    [
-                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", "11"],
-                        "AND",
-                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", "2"],
+                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.VALOR_001_GENERA_CUSTODIAS],
                         "AND",
                         ["custrecord_ht_pp_aplicacion", "is", "T"]
                     ],
                     "OR",
                     [
-                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", "56"],
+                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER],
                         "AND",
-                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", "2"],
-                        "AND",
-                        ["custrecord_ht_pp_aplicacion", "is", "T"]
-                    ],
-                    "OR",
-                    [
-                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", "8"],
-                        "AND",
-                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", "103"],
+                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.SI],
                         "AND",
                         ["custrecord_ht_pp_aplicacion", "is", "T"]
                     ],
                     "OR",
                     [
-                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", "8"],
+                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.PGR_PRODUCTO_DE_GARANTÍA],
                         "AND",
-                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", "107"],
-                        "AND",
-                        ["custrecord_ht_pp_aplicacion", "is", "T"]
-                    ],
-                    "OR",
-                    [
-                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", "44"],
-                        "AND",
-                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", "2"],
+                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.SI],
                         "AND",
                         ["custrecord_ht_pp_aplicacion", "is", "T"]
                     ],
                     "OR",
                     [
-                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", "45"],
+                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.TDP_TIPO_DE_PRODUCTO],
                         "AND",
-                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", "2"],
+                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.VALOR_009_DEMO],
                         "AND",
                         ["custrecord_ht_pp_aplicacion", "is", "T"]
                     ],
                     "OR",
                     [
-                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", "5"],
+                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.TDP_TIPO_DE_PRODUCTO],
                         "AND",
-                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", "95"],
+                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.VALOR_013_SOFTWARE_GENERAL],
+                        "AND",
+                        ["custrecord_ht_pp_aplicacion", "is", "T"]
+                    ],
+                    "OR",
+                    [
+                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.IRP_ITEM_DE_REPUESTO],
+                        "AND",
+                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.SI],
+                        "AND",
+                        ["custrecord_ht_pp_aplicacion", "is", "T"]
+                    ],
+                    "OR",
+                    [
+                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.IRS_ITEM_DE_RECONEXION_DE_SERVICIO],
+                        "AND",
+                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.SI],
+                        "AND",
+                        ["custrecord_ht_pp_aplicacion", "is", "T"]
+                    ],
+                    "OR",
+                    [
+                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.TCH_TIPO_CHEQUEO_OT],
+                        "AND",
+                        ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.VALOR_003_CHEQUEO_H_MONITOREO_PERSONAL],
                         "AND",
                         ["custrecord_ht_pp_aplicacion", "is", "T"]
                     ]
@@ -123,7 +133,6 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
         paramsSearch.run().each(result => {
             let item = result.getValue('custrecord_ht_pp_parametrizacionid');
-
             itemToSkip[item] = item;
             return true;
         });
@@ -131,33 +140,32 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
     }
 
     const getItemsToConsider = () => {
-        let itemToConsider = {};
+        let itemToConsider = new Object();
         let paramsSearch = search.create({
             type: "customrecord_ht_pp_main_param_prod",
             filters:
                 [
                     [
                         [
-
-                            ["custrecord_ht_pp_parametrizacion_rela", "anyof", "80"],
+                            ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.TMI_TIPO_DE_MOVIMIENTO_DE_INVENTARIO],
                             "AND",
-                            ["custrecord_ht_pp_parametrizacion_valor", "anyof", "111"],
-                            "AND",
-                            ["custrecord_ht_pp_aplicacion", "is", "T"]
-                        ],
-                        "OR",
-                        [
-                            ["custrecord_ht_pp_parametrizacion_rela", "anyof", "2"],
-                            "AND",
-                            ["custrecord_ht_pp_parametrizacion_valor", "anyof", "31"],
+                            ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.VALOR_004_EGRESO],
                             "AND",
                             ["custrecord_ht_pp_aplicacion", "is", "T"]
                         ],
                         "OR",
                         [
-                            ["custrecord_ht_pp_parametrizacion_rela", "anyof", "32"],
+                            ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.ADP_ACCION_DEL_PRODUCTO],
                             "AND",
-                            ["custrecord_ht_pp_parametrizacion_valor", "anyof", "2"],
+                            ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.VALOR_001_INST_DISPOSITIVO],
+                            "AND",
+                            ["custrecord_ht_pp_aplicacion", "is", "T"]
+                        ],
+                        "OR",
+                        [
+                            ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO],
+                            "AND",
+                            ["custrecord_ht_pp_parametrizacion_valor", "anyof", _constant.Valor.SI],
                             "AND",
                             ["custrecord_ht_pp_aplicacion", "is", "T"]
                         ]
@@ -175,7 +183,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
         paramsSearch.run().each(result => {
             let item = result.getValue('custrecord_ht_pp_parametrizacionid');
             let parametrizacion = result.getValue('custrecord_ht_pp_parametrizacion_rela');
-            if (itemToConsider[item] === undefined) itemToConsider[item] = [];
+            if (itemToConsider[item] === undefined) itemToConsider[item] = new Array();
             itemToConsider[item].push(parametrizacion);
             return true;
         });
@@ -199,7 +207,9 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 "AND",
                 ["item.isserialitem", "is", "T"],
                 "AND",
-                ["amount", "greaterthan", "0.00"]
+                ["amount", "greaterthan", "0.00"],
+                "AND",
+                ["subsidiary", "anyof", ECUADOR_SUBSIDIARY]
             ],
             columns: [
                 // search.createColumn({ name: "department", summary: "GROUP" }),
@@ -313,6 +323,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
         let trandate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
         trandate = startDate.getFullYear() + "/" + (startDate.getMonth() + 1) + "/" + trandate.getDate()
         let journalRecord = record.create({ type: record.Type.JOURNAL_ENTRY, isDynamic: true });
+        journalRecord.setValue('form', 131);
         journalRecord.setValue('trandate', new Date(trandate));
         journalRecord.setValue('subsidiary', ECUADOR_SUBSIDIARY);
         journalRecord.setValue('currency', DOLAR_CURRENCY);
@@ -415,7 +426,8 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
     }
 
     return {
-        getInputData,
-        map
+        getInputData: getInputData,
+        map: map,
+        //summarize: summarize
     }
 })

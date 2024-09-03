@@ -10,6 +10,8 @@ define([
     'N/runtime'
 ], (serverWidget, search, url, query, file, runtime) => {
     const currentScript = runtime.getCurrentScript();
+    const enviroment = "7451241-sb1" //7451241-sb1 - 7451241
+    const custom_record_lote = 1184 //SB:1184 - PR:1281
 
     class Parameters {
         constructor({ custpage_f_subsidiary, custpage_f_datefrom, custpage_f_dateto, custpage_f_location, custpage_f_entity,
@@ -285,6 +287,7 @@ define([
                         ["sublistfield", "paymentmethod", "Método de Pago"],
                         ["sublistfield", "status", "Estado de Banco"],
                         ["sublistfield", "nro", "Nro Transacción"],
+                        ["sublistfield", "memo", "Nro. de Orden"],
 
                         ["tab", "notfound", "No Encontrados"],
                         ["sublist", "notfound", "No Encontrados"],
@@ -538,7 +541,7 @@ define([
                 filters: [
                     ["isinactive", "is", "false"],
                     "AND",
-                    ["custrecord_ts_epmt_log_status","isnot","Liberado"]
+                    ["custrecord_ts_epmt_log_status", "isnot", "Liberado"]
                 ],
                 columns: [
                     search.createColumn({ name: "name", sort: search.Sort.DESC, label: "ID" }),
@@ -575,16 +578,13 @@ define([
                 if (estado) logSubList.setSublistValue('custpage_slf_status', j, estado);
                 if (documentos) logSubList.setSublistValue('custpage_slf_documents', j, documentos);
                 if (resultado) {
-                    let html2 = `<a href="https://7451241.app.netsuite.com/app/common/custom/custrecordentry.nl?rectype=1281&id=${loteID}">${resultado}</a>`;
-                    //let html2 = `<a href="https://7451241-sb1.app.netsuite.com/app/common/custom/custrecordentry.nl?rectype=1184&id=${loteID}">${resultado}</a>`;
+                    let html2 = `<a href="https://${enviroment}.app.netsuite.com/app/common/custom/custrecordentry.nl?rectype=${custom_record_lote}&id=${loteID}">${resultado}</a>`;
                     logSubList.setSublistValue('custpage_slf_result', j, html2);
                 }
                 if (eftUrl || pdfUrl) {
-                    let html = `<a href="${eftUrl.replace('https://7451241.app.netsuite.com', '')}" download>TXT</a>`; //PR
-                    //let html = `<a href="${eftUrl.replace('https://7451241-sb1.app.netsuite.com', '')}" download>TXT</a>`; //SB
+                    let html = `<a href="${eftUrl.replace('https://' + enviroment + '.app.netsuite.com', '')}" download>TXT</a>`; //PR
                     html += '<p> </p>';
-                    html += `<a href="${pdfUrl.replace('https://7451241.app.netsuite.com', '')}" download>PDF</a>`;
-                    //html += `<a href="${pdfUrl.replace('https://7451241-sb1.app.netsuite.com', '')}" download>PDF</a>`;
+                    html += `<a href="${pdfUrl.replace('https://' + enviroment + '.app.netsuite.com', '')}" download>PDF</a>`;
                     logSubList.setSublistValue('custpage_slf_files', j, html);
                 }
                 j++;
@@ -782,10 +782,12 @@ define([
                 let amount = lineValues.substring(188, 201);
                 let decimals = lineValues.substring(201, 203);
                 let result = lineValues.substring(369, 409);
+                let exception = lineValues.substring(364, 369);
                 let nroTransaction = lineValues.substring(309, 319);
+                let memo = parseInt(lineValues.substring(409, 419));
                 vatregnumber = vatregnumber.replace(' ', '');
                 log.error("FILA " + llave + "-" + + count, [count, vatregnumber, Number(`${amount}.${decimals}`), result, lineValues]);
-                resultArray.push([count, vatregnumber, Number(`${amount}.${decimals}`), result, lineValues, nroTransaction, llave]);
+                resultArray.push([count, vatregnumber, Number(`${amount}.${decimals}`), result, lineValues, nroTransaction, llave, exception, memo]);
                 count++;
                 return true
             });
@@ -863,24 +865,23 @@ define([
                 if (paymentMethod) paymentsSubList.setSublistValue('custpage_slf_paymentmethod', i, paymentMethod);
                 paymentsSubList.setSublistValue('custpage_slf_nro', i, ' ');
                 log.error('ID', llaveid);
-                // if (nro) paymentsSubList.setSublistValue('custpage_slf_nro', i, 'nroTran');
                 if (this.PARAMETERS.file) {
-                    //let vatregnumber = this.getVatRegNumber(entityType, entityId);
-                    //log.error('TRACK1', vatregnumber + ' - ' + amount);
-                    // let index = fileContentArray.findIndex(result => { return result[1] == vatregnumber && result[2] == amount });
-                    //log.error('TRACK1', vatregnumber + ' - ' + amount);
                     let index = fileContentArray.findIndex(result => { return result[6] == llaveid });
                     if (index == -1) {
                         paymentsSubList.setSublistValue('custpage_slf_status', i, "No se encontró el pago");
                         paymentsSubList.setSublistValue('custpage_slf_nro', i, ' ');
+                        paymentsSubList.setSublistValue('custpage_slf_memo', i, ' ');
                     } else {
                         let fileContentRow = fileContentArray[index];
-                        if (fileContentRow[3].indexOf('No existe cuenta') != -1) {
+                        //log.error('fileContentRow[7]', fileContentRow[7]);
+                        // if (fileContentRow[3].indexOf('No existe cuenta') != -1) {
+                        if (fileContentRow[7] != '00000') {
                             paymentsSubList.setSublistValue('custpage_slf_status', i, fileContentRow[3]);
                         } else {
                             paymentsSubList.setSublistValue('custpage_slf_status', i, "Pago encontrado");
                             paymentsSubList.setSublistValue('custpage_slf_select', i, 'T');
                             paymentsSubList.setSublistValue('custpage_slf_nro', i, fileContentRow[5]);
+                            paymentsSubList.setSublistValue('custpage_slf_memo', i, fileContentRow[8]);
                         }
                         fileContentArray.splice(index, 1);
                     }
@@ -889,8 +890,6 @@ define([
                 }
                 i++;
             });
-            // log.error("fileContentArray", fileContentArray.length);
-            // log.error("fileContentArrayObjects", fileContentArray);
             for (let j = 0; j < fileContentArray.length; j++) {
                 let line = fileContentArray[j][0];
                 let value = fileContentArray[j][4].substring(0, 299);

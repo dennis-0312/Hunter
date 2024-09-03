@@ -15,6 +15,25 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 let environmentFeatures = getEnviromentFeatures();
                 let scriptParameters = getScriptParameters(environmentFeatures);
                 let transactions = getATSComprasRetenciones(scriptParameters, environmentFeatures);
+                log.error('transactions', transactions);
+                //Validacion para desde Abril 2024
+                let periodoInicioActual = getRecordPeriod(scriptParameters.periodId); // [inicio,final]
+                log.error('periodoInicioActual', periodoInicioActual.startdate);
+                let fechaActual = periodoInicioActual.startdate.split('/');
+                var f1 = new Date(2024, 3, 1); //Abril 2024
+                var f2 = new Date(fechaActual[2], fechaActual[1] - 1, fechaActual[0]);
+
+                let transacReten = [];
+                if (f2 >= f1) {
+                    log.error('entro', 'entro');
+                    transacReten = getATSComprasDetalladasReten(scriptParameters, environmentFeatures)
+                    log.error('transacReten', transacReten);
+
+                    transactions = juntarReten(transactions, transacReten)
+                    log.error('transactions', transactions);
+                }
+
+
                 return transactions;
             } catch (error) {
                 log.error("error", error);
@@ -245,6 +264,191 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 params
             });
             let scriptTaskId = scriptTask.submit();
+        }
+
+        const getRecordPeriod = (periodId) => {
+            let periodRecord = search.lookupFields({
+                type: search.Type.ACCOUNTING_PERIOD,
+                id: periodId,
+                columns: ['startdate', 'enddate']
+            });
+
+            return periodRecord;
+        }
+
+        const getATSComprasDetalladasReten = (scriptParameters, environmentFeatures) => {
+            let aTSComprasDetalladasReten = '';
+            if (environmentFeatures.hasSubsidiaries) {
+                aTSComprasDetalladasReten = search.create({
+                    type: "vendorbill",
+                    filters:
+                        [
+                            ["type", "anyof", "VendBill"],
+                            "AND",
+                            ["mainline", "is", "F"],
+                            "AND",
+                            ["taxitem", "noneof", "5"],
+                            "AND",
+                            ["voided", "is", "F"],
+                            "AND",
+                            ["formulatext: SUBSTR({custcol_ts_ec_col_ec_concepto_retenci},1,3)", "is", "332"],
+                            "AND",
+                            ["subsidiary", "anyof", scriptParameters.subsidiaryId],
+                            "AND",
+                            ["postingperiod", "abs", scriptParameters.periodId],
+                            "AND",
+                            ["formulatext: CASE WHEN {custcol_4601_witaxapplies} = 'T' THEN 0 ELSE 1 END", "is", "1"]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({
+                                name: "internalid",
+                                summary: "GROUP",
+                                label: "ID interno"
+                            }),
+                            search.createColumn({
+                                name: "custrecord_ts_ec_codigo_anexo",
+                                join: "CUSTCOL_TS_EC_COL_EC_CONCEPTO_RETENCI",
+                                summary: "GROUP",
+                                label: "EC - Codigo de Anexo"
+                            }),
+                            search.createColumn({
+                                name: "amount",
+                                summary: "SUM",
+                                label: "Monto"
+                            }),
+                            search.createColumn({
+                                name: "formulatext",
+                                summary: "GROUP",
+                                formula: "'0%'",
+                                label: "TIPO DE RETENCIÓN DE IMPUESTOS"
+                            }),
+                            search.createColumn({
+                                name: "formulatext",
+                                summary: "GROUP",
+                                formula: "'0'",
+                                label: "IMPORTE DE RETENCIÓN DE IMPUESTOS"
+                            })
+                        ]
+                });
+            } else {
+                aTSComprasDetalladasReten = search.create({
+                    type: "vendorbill",
+                    filters:
+                        [
+                            ["type", "anyof", "VendBill"],
+                            "AND",
+                            ["mainline", "is", "F"],
+                            "AND",
+                            ["taxitem", "noneof", "5"],
+                            "AND",
+                            ["voided", "is", "F"],
+                            "AND",
+                            ["formulatext: SUBSTR({custcol_ts_ec_col_ec_concepto_retenci},1,3)", "is", "332"],
+                            "AND",
+                            ["postingperiod", "abs", scriptParameters.periodId]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({
+                                name: "internalid",
+                                summary: "GROUP",
+                                label: "ID interno"
+                            }),
+                            search.createColumn({
+                                name: "custrecord_ts_ec_codigo_anexo",
+                                join: "CUSTCOL_TS_EC_COL_EC_CONCEPTO_RETENCI",
+                                summary: "GROUP",
+                                label: "EC - Codigo de Anexo"
+                            }),
+                            search.createColumn({
+                                name: "amount",
+                                summary: "SUM",
+                                label: "Monto"
+                            }),
+                            search.createColumn({
+                                name: "formulatext",
+                                summary: "GROUP",
+                                formula: "'0%'",
+                                label: "TIPO DE RETENCIÓN DE IMPUESTOS"
+                            }),
+                            search.createColumn({
+                                name: "formulatext",
+                                summary: "GROUP",
+                                formula: "'0'",
+                                label: "IMPORTE DE RETENCIÓN DE IMPUESTOS"
+                            })
+                        ]
+                });
+            }
+
+
+            let pagedData = aTSComprasDetalladasReten.runPaged({ pageSize: MAX_PAGINATION_SIZE });
+            let resultArray = [];
+            for (let i = 0; i < pagedData.pageRanges.length; i++) {
+                let page = pagedData.fetch({
+                    index: pagedData.pageRanges[i].index
+                });
+                for (let j = 0; j < page.data.length; j++) {
+                    let result = page.data[j];
+                    let columns = result.columns;
+
+                    let rowArray = [];
+                    for (let k = 0; k < columns.length; k++) {
+                        rowArray.push(result.getValue(columns[k]));
+                    }
+                    resultArray.push(rowArray);
+                }
+            }
+
+            return resultArray;
+        }
+
+        const juntarReten = (transactions, transacReten) => {
+            var newArray = [];
+
+            for (let j = 0; j < transacReten.length; j++) {
+                let idTransaccRetencion = transacReten[j][0];
+                let existe = false;
+                for (let i = 0; i < transactions.length; i++) {
+                    let idTransacc = transactions[i][0];
+                    if (idTransacc == idTransaccRetencion) {
+                        if (transactions[i][2] == '- None -') {
+                            transactions[i][2] = transacReten[j][1];
+                            transactions[i][5] = transacReten[j][2];
+                        } else if (transactions[i][3] == '- None -') {
+                            transactions[i][3] = transacReten[j][1];
+                            transactions[i][6] = transacReten[j][2];
+                        }
+                        existe = true;
+                    }
+                }
+
+                if (existe == false) {
+                    var arrNoexiste = [idTransaccRetencion, transacReten[j][1], "- None -", "- None -", transacReten[j][2], ".00", ".00", "0", "0", "0", ".00", ".00", ".00", "- None -", "", "- None -", "- None -", "- None -"]
+                    let existe2 = false
+                    for (let x = 0; x < newArray.length; x++) {
+                        if (idTransaccRetencion == newArray[x][0]) {
+                            if (newArray[x][2] == '- None -') {
+                                newArray[x][2] = transacReten[j][1];
+                                newArray[x][5] = transacReten[j][2];
+                            } else if (newArray[x][3] == '- None -') {
+                                newArray[x][3] = transacReten[j][1];
+                                newArray[x][6] = transacReten[j][2];
+                            }
+                        }
+                    }
+                    if (existe2 == false) {
+                        newArray.push(arrNoexiste);
+                    }
+                }
+            }
+
+            for (let x = 0; x < newArray.length; x++) {
+                transactions.push(newArray[x]);
+            }
+
+            return transactions;
         }
 
         return {

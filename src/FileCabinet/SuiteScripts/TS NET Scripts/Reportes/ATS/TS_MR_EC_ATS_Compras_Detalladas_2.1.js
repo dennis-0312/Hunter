@@ -148,7 +148,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
                 // 24 Retencion de IVA 50% bienes
                 let retencionIva50 = Number(result[23]);
-                retencionIva30 = roundTwoDecimals(Math.abs(retencionIva50));
+                retencionIva50 = roundTwoDecimals(Math.abs(retencionIva50));
 
                 // 25 Retencion de IVA 70% servicios
                 let retencionIva70 = Number(result[24]);
@@ -232,13 +232,16 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 // 46 No. de autorización del comprobante modificado
                 let numeroAutorizacionCM = result[45].replace('- None -', '');
 
+                // 47 No. de autorización del comprobante modificado
+                let tipoTransac = result[46];
+
                 let rowString = `${codigoCompra}|${codigoSustento}|${tipoIdentificacionProveedor}|${numeroIdentificacionProveedor}|${codigoTipoComprobante}|` +
                     `${parteRelacionada}|${tipoProveedor}|${razonSocialProveedor}|${fechaRegistro}|${establecimientoCV}|${puntoEmisionCV}|${numeroSecuencialCV}|` +
                     `${fechaEmision}|${numeroAutorizacion}|${baseImponibleNoIva}|${baseImponible0Iva}|${baseImponibleGravada}|${baseImponibleExenta}|${montoIce}|` +
                     `${montoIva}|${retencionIva10}|${retencionIva20}|${retencionIva30}|${retencionIva50}|${retencionIva70}|${retencionIva100}|${totalBasesImponibles}|` +
                     `${pagoLocalExtranjero}|${tipoRegimen}|${paisEfectuaPagoRegimen}|${paisEfectuaPagoParaiso}|${denominacionPago}|${paisEfectuaPago}|${aplicaConvenioDobleTributacion}|` +
                     `${pagoExteriorSujetoRetencionNormativaLegal}|${pagoRegimenFiscalPreferente}|${establecimientoCR}|${puntoEmisionCR}|${numeroSecuencialCR}|${numeroAutorizacionCR}|` +
-                    `${fechaEmisionCR}|${codigoTipoCM}|${establecimientoCM}|${puntoEmisionCM}|${secuencialCM}|${numeroAutorizacionCM}\r\n`;
+                    `${fechaEmisionCR}|${codigoTipoCM}|${establecimientoCM}|${puntoEmisionCM}|${secuencialCM}|${numeroAutorizacionCM}|${tipoTransac}\r\n`;
 
                 // log.error("rowString", rowString);
                 context.write({
@@ -371,6 +374,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                     for (let k = 0; k < columns.length; k++) {
                         rowArray.push(result.getValue(columns[k]));
                     }
+                    rowArray.push('CompraDeta');
                     resultArray.push(rowArray);
                 }
             }
@@ -414,6 +418,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                     for (let k = 0; k < columns.length; k++) {
                         rowArray.push(result.getValue(columns[k]));
                     }
+                    rowArray.push('CompraDetaInformeGasto');
                     resultArray.push(rowArray);
                 }
             }

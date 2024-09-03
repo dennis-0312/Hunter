@@ -1,0 +1,191 @@
+<customrecordtype scriptid="customrecord_pe_codigo_3_24">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Codigos 3.24</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_descripcion_codigo_3_24">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_637685_7451241_sb1_230">
+      <custrecord_pe_descripcion_codigo_3_24>Ganancia (Perdida) Neta del Ejercicio</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0101</name>
+    </instance>
+    <instance scriptid="val_637686_7451241_sb1_416">
+      <custrecord_pe_descripcion_codigo_3_24>Variacion Neta por Coberturas del Flujo de Efectivo</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0103</name>
+    </instance>
+    <instance scriptid="val_637687_7451241_sb1_525">
+      <custrecord_pe_descripcion_codigo_3_24>Coberturas de inversion neta de negocios en el extranjero</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0109</name>
+    </instance>
+    <instance scriptid="val_637688_7451241_sb1_913">
+      <custrecord_pe_descripcion_codigo_3_24>Ganancias (Perdidas) de Inversiones en Instrumentos de Patrimonio al valor razonable</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0104</name>
+    </instance>
+    <instance scriptid="val_637689_7451241_sb1_877">
+      <custrecord_pe_descripcion_codigo_3_24>Diferencia de Cambio por Conversion de Operaciones en el Extranjero</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0105</name>
+    </instance>
+    <instance scriptid="val_637693_7451241_sb1_138">
+      <custrecord_pe_descripcion_codigo_3_24>Variacion neta de activos no corrientes o grupos de activos mantenidos para la venta</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0110</name>
+    </instance>
+    <instance scriptid="val_637695_7451241_sb1_130">
+      <custrecord_pe_descripcion_codigo_3_24>Superövit de Revaluacion</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0107</name>
+    </instance>
+    <instance scriptid="val_637696_7451241_sb1_275">
+      <custrecord_pe_descripcion_codigo_3_24>Ganancia (perdida) actuariales en plan de beneficios definidos</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0111</name>
+    </instance>
+    <instance scriptid="val_637697_7451241_sb1_284">
+      <custrecord_pe_descripcion_codigo_3_24>Cambios en el valor razonable de pasivos financieros atribuibles a cambios en el riesgo de credito del pasivo</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0112</name>
+    </instance>
+    <instance scriptid="val_637698_7451241_sb1_711">
+      <custrecord_pe_descripcion_codigo_3_24>Otro Resultado Integral antes de Impuestos</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D01ST</name>
+    </instance>
+    <instance scriptid="val_637699_7451241_sb1_177">
+      <custrecord_pe_descripcion_codigo_3_24>Variacion Neta por Coberturas del Flujo de Efectivo</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0202</name>
+    </instance>
+    <instance scriptid="val_637700_7451241_sb1_370">
+      <custrecord_pe_descripcion_codigo_3_24>Coberturas de inversion neta de negocios en el extranjero</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0208</name>
+    </instance>
+    <instance scriptid="val_637701_7451241_sb1_634">
+      <custrecord_pe_descripcion_codigo_3_24>Ganancias (Perdidas) de Inversiones en Instrumentos de Patrimonio al valor razonable</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0203</name>
+    </instance>
+    <instance scriptid="val_637702_7451241_sb1_954">
+      <custrecord_pe_descripcion_codigo_3_24>Diferencia de Cambio por Conversion de Operaciones en el Extranjero</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0204</name>
+    </instance>
+    <instance scriptid="val_637703_7451241_sb1_694">
+      <custrecord_pe_descripcion_codigo_3_24>Variacion neta de activos no corrientes o grupos de activos mantenidos para la venta</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0209</name>
+    </instance>
+    <instance scriptid="val_637704_7451241_sb1_571">
+      <custrecord_pe_descripcion_codigo_3_24>Superövit de Revaluacion</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0206</name>
+    </instance>
+    <instance scriptid="val_637705_7451241_sb1_937">
+      <custrecord_pe_descripcion_codigo_3_24>Ganancia (perdida) actuariales en plan de beneficios definidos</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0210</name>
+    </instance>
+    <instance scriptid="val_637706_7451241_sb1_518">
+      <custrecord_pe_descripcion_codigo_3_24>Cambios en el valor razonable de pasivos financieros atribuibles a cambios en el riesgo de credito del pasivo</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D0211</name>
+    </instance>
+    <instance scriptid="val_637707_7451241_sb1_593">
+      <custrecord_pe_descripcion_codigo_3_24>Suma de Impuestos a las Ganancias Relacionados con Componentes de Otro Resultado Integral</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D02ST</name>
+    </instance>
+    <instance scriptid="val_637708_7451241_sb1_769">
+      <custrecord_pe_descripcion_codigo_3_24>Otros Resultado Integral</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D03ST</name>
+    </instance>
+    <instance scriptid="val_637709_7451241_sb1_323">
+      <custrecord_pe_descripcion_codigo_3_24>Resultado Integral Total del Ejercicio, neto del Impuesto a las Ganancias</custrecord_pe_descripcion_codigo_3_24>
+      <isinactive>F</isinactive>
+      <name>5D04ST</name>
+    </instance>
+  </instances>
+</customrecordtype>

@@ -1,0 +1,403 @@
+<customrecordtype scriptid="customrecord_pe_concept_detraction">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Concept Detraction</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_code_detraccion">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Code Detraccion</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_percentage_detraction">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>T</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>PERCENT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Percentage Detraction</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_tax_codes_pen">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Tax Code Soles</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_4601_witaxcode]</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_tax_codes_dol">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Tax Code Dolares</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_4601_witaxcode]</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_637271_7451241_sb1_612">
+      <custrecord_pe_code_detraccion>000</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>0.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>000 Sin Detraccion</name>
+    </instance>
+    <instance scriptid="val_637272_7451241_sb1_968">
+      <custrecord_pe_code_detraccion>004</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>4.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>004 Recursos hidrobiológicos</name>
+    </instance>
+    <instance scriptid="val_637273_7451241_sb1_445">
+      <custrecord_pe_code_detraccion>005</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>4.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>005 Maíz amarillo duro</name>
+    </instance>
+    <instance scriptid="val_637274_7451241_sb1_505">
+      <custrecord_pe_code_detraccion>008</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>4.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>008 Madera</name>
+    </instance>
+    <instance scriptid="val_637275_7451241_sb1_315">
+      <custrecord_pe_code_detraccion>009</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>009 Arena y Piedra</name>
+    </instance>
+    <instance scriptid="val_637276_7451241_sb1_886">
+      <custrecord_pe_code_detraccion>010</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>15.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>010 Residuos, subproductos, desechos, recortes, desperdicios y formas primarias derivadas de los   mismos</name>
+    </instance>
+    <instance scriptid="val_637277_7451241_sb1_860">
+      <custrecord_pe_code_detraccion>012</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>12.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>012 Intermediación Laboral y Tercerización</name>
+    </instance>
+    <instance scriptid="val_637278_7451241_sb1_619">
+      <custrecord_pe_code_detraccion>014</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>4.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>014 Carnes y despojos comestibles</name>
+    </instance>
+    <instance scriptid="val_637279_7451241_sb1_828">
+      <custrecord_pe_code_detraccion>017</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>4.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>017 Harina, polvo y &quot;pellets&quot; de pescado,crustáceos, moluscos y demás invertebrados acuáticos</name>
+    </instance>
+    <instance scriptid="val_637280_7451241_sb1_827">
+      <custrecord_pe_code_detraccion>019</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>019 Arrendamiento de Bienes</name>
+    </instance>
+    <instance scriptid="val_637281_7451241_sb1_729">
+      <custrecord_pe_code_detraccion>020</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>12.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>020 Mantenimiento y Reparación de Bienes Muebles</name>
+    </instance>
+    <instance scriptid="val_637282_7451241_sb1_822">
+      <custrecord_pe_code_detraccion>021</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>021 Movimiento de Carga</name>
+    </instance>
+    <instance scriptid="val_637283_7451241_sb1_626">
+      <custrecord_pe_code_detraccion>022</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>12.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>022 Otros Servicios Empresariales</name>
+    </instance>
+    <instance scriptid="val_637284_7451241_sb1_197">
+      <custrecord_pe_code_detraccion>024</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>024 Comisión Mercantil</name>
+    </instance>
+    <instance scriptid="val_637285_7451241_sb1_814">
+      <custrecord_pe_code_detraccion>025</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>025 Fabricación de Bienes Por Encargo</name>
+    </instance>
+    <instance scriptid="val_637286_7451241_sb1_759">
+      <custrecord_pe_code_detraccion>026</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>026 Servicio de Transporte de Personas</name>
+    </instance>
+    <instance scriptid="val_637287_7451241_sb1_714">
+      <custrecord_pe_code_detraccion>027</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>4.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>027 Transporte de bienes realizado por vía terrestre</name>
+    </instance>
+    <instance scriptid="val_637288_7451241_sb1_560">
+      <custrecord_pe_code_detraccion>030</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>4.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>030 Contratos de Construcción</name>
+    </instance>
+    <instance scriptid="val_637289_7451241_sb1_638">
+      <custrecord_pe_code_detraccion>031</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>031 Oro gravado con el IGV</name>
+    </instance>
+    <instance scriptid="val_637290_7451241_sb1_970">
+      <custrecord_pe_code_detraccion>034</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>034 Minerales metálicos no auríferos</name>
+    </instance>
+    <instance scriptid="val_637291_7451241_sb1_972">
+      <custrecord_pe_code_detraccion>035</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>1.5%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>035 Bienes exonerados del IGV</name>
+    </instance>
+    <instance scriptid="val_637292_7451241_sb1_516">
+      <custrecord_pe_code_detraccion>036</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>1.5%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>036 Oro y demás minerales metálicos exonerados del IGV</name>
+    </instance>
+    <instance scriptid="val_637293_7451241_sb1_333">
+      <custrecord_pe_code_detraccion>037</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>12.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>037 Demas servicios gravados IGV</name>
+    </instance>
+    <instance scriptid="val_637294_7451241_sb1_703">
+      <custrecord_pe_code_detraccion>039</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>039 Minerales no metálicos</name>
+    </instance>
+    <instance scriptid="val_637295_7451241_sb1_366">
+      <custrecord_pe_code_detraccion>040</custrecord_pe_code_detraccion>
+      <custrecord_pe_percentage_detraction>10.0%</custrecord_pe_percentage_detraction>
+      <custrecord_pe_tax_codes_dol></custrecord_pe_tax_codes_dol>
+      <custrecord_pe_tax_codes_pen></custrecord_pe_tax_codes_pen>
+      <isinactive>F</isinactive>
+      <name>040 Bien inmueble gravado con el IGV</name>
+    </instance>
+  </instances>
+</customrecordtype>

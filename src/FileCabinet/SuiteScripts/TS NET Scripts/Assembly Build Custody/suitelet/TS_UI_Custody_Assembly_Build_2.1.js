@@ -77,7 +77,7 @@ define([
                 inventoryDetailField.setDefaultValue("{}");
                 inventoryDetailField.updateDisplayType(serverWidget.FieldDisplayType.NODISPLAY);
 
-                userInterface.setInventoryNumberId(inventoryNumberIdField, locationField.getDefaultValue(), salesItemField.getDefaultValue(), inventoryNumberField.getDefaultValue());
+                userInterface.setInventoryNumberId(inventoryNumberIdField, locationField.getDefaultValue(), deviceItemField.getDefaultValue(), inventoryNumberField.getDefaultValue());
                 inventoryNumberField.updateDisplayType(serverWidget.FieldDisplayType.NODISPLAY);
 
                 form.addSubtab(FIELDS.subtab.components.id, FIELDS.subtab.components.text);

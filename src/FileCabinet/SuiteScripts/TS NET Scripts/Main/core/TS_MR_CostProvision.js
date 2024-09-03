@@ -21,16 +21,16 @@ define(['N/log',
     'N/runtime',
     'N/query'
 ], (log, search, record, task, runtime, query) => {
-   
-    function getInputData () {
+
+    function getInputData() {
         try {
             //var myArray = context.parameters.custscript_my_map_reduce_array;
             var objContext = runtime.getCurrentScript();
             var itemID = objContext.getParameter({
                 name: 'custscript_my_map_reduce_array'
-              });
-              var arrTempID = JSON.parse(itemID);
-              log.debug('arrTempID',arrTempID);
+            });
+            var arrTempID = JSON.parse(itemID);
+            log.debug('arrTempID', arrTempID);
             return arrTempID;
         } catch (error) {
             log.error('Error-getInputData', error);
@@ -41,7 +41,7 @@ define(['N/log',
         try {
             var key = context.key;
             var value = context.value;
-            log.debug('value',value);
+            log.debug('value', value);
             let idInventoryNumber = getInventoryNumber(value);
             /* var myArray = context.parameters.custscript_my_map_reduce_array;
             log.debug('myArray',myArray); */
@@ -52,7 +52,7 @@ define(['N/log',
 
     const reduce = (context) => {
         try {
-        
+
         } catch (error) {
             log.error('Error-reduce', error);
         }
@@ -61,8 +61,8 @@ define(['N/log',
     const summarize = (context) => {
         let records = '';
         try {
-            
-            
+
+
         } catch (error) {
             log.error('Error-summarize', error);
         }

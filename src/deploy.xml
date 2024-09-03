@@ -1,24 +1,16 @@
 <deploy>
     <!-- <configuration>
         <path>~/AccountConfiguration/*</path>
-    </configuration>
-    <files>
-        <path>~/FileCabinet/SuiteScripts/*</path>
-    </files>  -->
+    </configuration> -->
+    <!-- <files>
+        <path>~/FileCabinet/SuiteScripts/TS NET Scripts/Peru/*</path>
+    </files>   -->
     <objects>
-        <!-- <path>~/Objects/Bundle/*</path> -->
-        <!-- <path>~/Objects/SavedSearch/*</path>
-        <path>~/Objects/WorkFlow/*</path> -->
-        <!-- <path>~/Objects/Role/*</path> -->
-        <!-- <path>~/Objects/Restlet/*</path> -->
-        <!-- <path>~/Objects/Scheduled/*</path> -->
-        <!-- <path>~/Objects/MapReduce/*</path> -->
-        <!-- <path>~/Objects/Suitelet/*</path> -->
-        <!-- <path>~/Objects/Client/*</path>
-        <path>~/Objects/UserEvent/*</path> -->
-        <path>~/Objects/test/desplegado/*</path>
-        <!-- <path>~/Objects/test/despues/customrole1675.xml</path> -->
-    </objects>
+        <!-- <path>~/Objects/ecuador/test/desplegado/*</path> -->
+        <!-- <path>~/Objects/peru/Bundle/subtab/*</path> -->
+        <!-- <path>~/Objects/peru/form/*</path> -->
+        <path>~/Objects/ecuador/workbooks/pendiente/*</path>
+    </objects>|
     <!-- <translationimports>
         <path>~/Translations/*</path>
     </translationimports> -->

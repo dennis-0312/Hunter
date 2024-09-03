@@ -1,0 +1,116 @@
+<customrecordtype scriptid="customrecord_pe_valuation_method">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>T</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Valuation Method</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_code_valuation_method">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Code Valuation Method</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_643104_7451241_sb1_887">
+      <custrecord_pe_code_valuation_method>4</custrecord_pe_code_valuation_method>
+      <isinactive>F</isinactive>
+      <name>Detallista</name>
+    </instance>
+    <instance scriptid="val_643105_7451241_sb1_970">
+      <custrecord_pe_code_valuation_method>3</custrecord_pe_code_valuation_method>
+      <isinactive>F</isinactive>
+      <name>Existencias Básicas</name>
+    </instance>
+    <instance scriptid="val_643106_7451241_sb1_152">
+      <custrecord_pe_code_valuation_method>5</custrecord_pe_code_valuation_method>
+      <isinactive>F</isinactive>
+      <name>Identificacion Especifica</name>
+    </instance>
+    <instance scriptid="val_643109_7451241_sb1_573">
+      <custrecord_pe_code_valuation_method>9</custrecord_pe_code_valuation_method>
+      <isinactive>F</isinactive>
+      <name>Otros</name>
+    </instance>
+    <instance scriptid="val_643110_7451241_sb1_285">
+      <custrecord_pe_code_valuation_method>2</custrecord_pe_code_valuation_method>
+      <isinactive>F</isinactive>
+      <name>Primeras entradas, Primeras salidas</name>
+    </instance>
+    <instance scriptid="val_643111_7451241_sb1_623">
+      <custrecord_pe_code_valuation_method>1</custrecord_pe_code_valuation_method>
+      <isinactive>F</isinactive>
+      <name>Promedio Ponderado</name>
+    </instance>
+  </instances>
+</customrecordtype>

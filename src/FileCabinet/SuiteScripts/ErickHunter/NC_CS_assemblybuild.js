@@ -17,7 +17,8 @@ define([
       let currentRecord = scriptContext.currentRecord;
       if (currentRecord.getValue('custbody_ht_ce_ordentrabajo').length > 0) {
          let pro = _controller.getParameter(currentRecord.getValue('item'), _constant.Parameter.PRO_ITEM_COMERCIAL_DE_PRODUCCION);
-         if (pro == _constant.Valor.SI) {
+         let avp = _controller.getParameter(currentRecord.getValue('item'), _constant.Parameter.AVP_ARTICULO_DE_VENTA_PRODUCCION);
+         if (pro == _constant.Valor.SI && (avp == 0 || avp == _constant.Valor.NO)) {
             if (currentRecord.getValue('custbody_ht_as_datos_tecnicos').length == 0) {
                dialog.alert({ title: 'Alerta', message: 'El producto es un item comercial de producción, requiere ingresar los Datos Técnicos' });
                return false;

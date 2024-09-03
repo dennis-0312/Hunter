@@ -1,0 +1,416 @@
+<customrecordtype scriptid="customrecord_pe_codigo_3_1">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>T</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Codigos 3.1</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_descripcion_codigo_3_1">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_44740_7460686_sb1_136">
+      <custrecord_pe_descripcion_codigo_3_1>Efectivo y Equivalentes al Efectivo</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Efectivo y Equivalentes al Efectivo</name>
+    </instance>
+    <instance scriptid="val_44741_7460686_sb1_194">
+      <custrecord_pe_descripcion_codigo_3_1>Otros Activos Financieros</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otros Activos Financieros</name>
+    </instance>
+    <instance scriptid="val_44742_7460686_sb1_980">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por cobrar comerciales y otras cuentas por cobrar</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por cobrar comerciales y otras cuentas por cobrar</name>
+    </instance>
+    <instance scriptid="val_44743_7460686_sb1_570">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por Cobrar Comerciales (neto)</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por Cobrar Comerciales (neto)</name>
+    </instance>
+    <instance scriptid="val_44744_7460686_sb1_461">
+      <custrecord_pe_descripcion_codigo_3_1>Otras Cuentas por Cobrar (neto)</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otras Cuentas por Cobrar (neto)</name>
+    </instance>
+    <instance scriptid="val_44745_7460686_sb1_856">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por Cobrar a Entidades Relacionadas</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por Cobrar a Entidades Relacionadas</name>
+    </instance>
+    <instance scriptid="val_44746_7460686_sb1_232">
+      <custrecord_pe_descripcion_codigo_3_1>Anticipos</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Anticipos</name>
+    </instance>
+    <instance scriptid="val_44747_7460686_sb1_795">
+      <custrecord_pe_descripcion_codigo_3_1>Inventarios</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Inventarios</name>
+    </instance>
+    <instance scriptid="val_44748_7460686_sb1_911">
+      <custrecord_pe_descripcion_codigo_3_1>Activos Biologicos</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Activos Biologicos</name>
+    </instance>
+    <instance scriptid="val_44749_7460686_sb1_179">
+      <custrecord_pe_descripcion_codigo_3_1>Activos por Impuestos a las Ganancias</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Activos por Impuestos a las Ganancias</name>
+    </instance>
+    <instance scriptid="val_44750_7460686_sb1_365">
+      <custrecord_pe_descripcion_codigo_3_1>Otros Activos no financieros</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otros Activos no financieros</name>
+    </instance>
+    <instance scriptid="val_44751_7460686_sb1_139">
+      <custrecord_pe_descripcion_codigo_3_1>Total Activos Corrientes Distintos de los Activos o Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta o para Distribuir a los Propietarios</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Total Activos Corrientes Distintos de los Activos o Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta o para Distribuir a los Propietarios</name>
+    </instance>
+    <instance scriptid="val_44752_7460686_sb1_693">
+      <custrecord_pe_descripcion_codigo_3_1>Activos no Corrientes o Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Activos no Corrientes o Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta</name>
+    </instance>
+    <instance scriptid="val_44753_7460686_sb1_195">
+      <custrecord_pe_descripcion_codigo_3_1>Activos no Corrientes o Grupos de Activos para su Disposicion Clasificados como Mantenidos para Distribuir a los Propietarios</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Activos no Corrientes o Grupos de Activos para su Disposicion Clasificados como Mantenidos para Distribuir a los Propietarios</name>
+    </instance>
+    <instance scriptid="val_44754_7460686_sb1_435">
+      <custrecord_pe_descripcion_codigo_3_1>Activos no Corrientes o Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta o como Mantenidos para Distribuir a los Propietarios</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Activos no Corrientes o Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta o como Mantenidos para Distribuir a los Propietarios</name>
+    </instance>
+    <instance scriptid="val_44755_7460686_sb1_257">
+      <custrecord_pe_descripcion_codigo_3_1>Total Activos Corrientes</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Total Activos Corrientes</name>
+    </instance>
+    <instance scriptid="val_44756_7460686_sb1_396">
+      <custrecord_pe_descripcion_codigo_3_1>Otros Activos Financieros</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otros Activos Financieros</name>
+    </instance>
+    <instance scriptid="val_44757_7460686_sb1_760">
+      <custrecord_pe_descripcion_codigo_3_1>Inversiones en subsidiarias, negocios conjuntos y asociadas</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Inversiones en subsidiarias, negocios conjuntos y asociadas</name>
+    </instance>
+    <instance scriptid="val_44758_7460686_sb1_956">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por cobrar comerciales y otras cuentas por cobrar</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por cobrar comerciales y otras cuentas por cobrar</name>
+    </instance>
+    <instance scriptid="val_44759_7460686_sb1_634">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por Cobrar Comerciales</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por Cobrar Comerciales</name>
+    </instance>
+    <instance scriptid="val_44760_7460686_sb1_254">
+      <custrecord_pe_descripcion_codigo_3_1>Otras Cuentas por Cobrar</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otras Cuentas por Cobrar</name>
+    </instance>
+    <instance scriptid="val_44761_7460686_sb1_533">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por Cobrar a Entidades Relacionadas</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por Cobrar a Entidades Relacionadas</name>
+    </instance>
+    <instance scriptid="val_44762_7460686_sb1_866">
+      <custrecord_pe_descripcion_codigo_3_1>Anticipos</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Anticipos</name>
+    </instance>
+    <instance scriptid="val_44763_7460686_sb1_194">
+      <custrecord_pe_descripcion_codigo_3_1>Activos Biologicos</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Activos Biologicos</name>
+    </instance>
+    <instance scriptid="val_44764_7460686_sb1_634">
+      <custrecord_pe_descripcion_codigo_3_1>Propiedades de Inversion</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Propiedades de Inversion</name>
+    </instance>
+    <instance scriptid="val_44765_7460686_sb1_118">
+      <custrecord_pe_descripcion_codigo_3_1>Propiedades, Planta y Equipo (neto)</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Propiedades, Planta y Equipo (neto)</name>
+    </instance>
+    <instance scriptid="val_44766_7460686_sb1_347">
+      <custrecord_pe_descripcion_codigo_3_1>Activos intangibles distintos de la plusvalia</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Activos  intangibles distintos  de la plusvalia</name>
+    </instance>
+    <instance scriptid="val_44767_7460686_sb1_315">
+      <custrecord_pe_descripcion_codigo_3_1>Activos por impuestos diferidos</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Activos por impuestos diferidos</name>
+    </instance>
+    <instance scriptid="val_44768_7460686_sb1_653">
+      <custrecord_pe_descripcion_codigo_3_1>Plusvaloa</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Plusvaloa</name>
+    </instance>
+    <instance scriptid="val_44769_7460686_sb1_807">
+      <custrecord_pe_descripcion_codigo_3_1>Otros Activos no financieros</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otros Activos no financieros</name>
+    </instance>
+    <instance scriptid="val_44770_7460686_sb1_491">
+      <custrecord_pe_descripcion_codigo_3_1>Total Activos No Corrientes</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Total Activos No Corrientes</name>
+    </instance>
+    <instance scriptid="val_44771_7460686_sb1_863">
+      <custrecord_pe_descripcion_codigo_3_1>TOTAL DE ACTIVOS</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>TOTAL DE ACTIVOS</name>
+    </instance>
+    <instance scriptid="val_44772_7460686_sb1_691">
+      <custrecord_pe_descripcion_codigo_3_1>Otros Pasivos Financieros</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otros Pasivos Financieros</name>
+    </instance>
+    <instance scriptid="val_44773_7460686_sb1_812">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por pagar comerciales y otras cuentas por pagar</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por pagar comerciales y otras cuentas por pagar</name>
+    </instance>
+    <instance scriptid="val_44774_7460686_sb1_489">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por Pagar Comerciales</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por Pagar Comerciales</name>
+    </instance>
+    <instance scriptid="val_44775_7460686_sb1_951">
+      <custrecord_pe_descripcion_codigo_3_1>Otras Cuentas por Pagar</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otras Cuentas por Pagar</name>
+    </instance>
+    <instance scriptid="val_44776_7460686_sb1_813">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por Pagar a Entidades Relacionadas</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por Pagar a Entidades Relacionadas</name>
+    </instance>
+    <instance scriptid="val_44777_7460686_sb1_218">
+      <custrecord_pe_descripcion_codigo_3_1>Ingresos diferidos</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Ingresos diferidos</name>
+    </instance>
+    <instance scriptid="val_44778_7460686_sb1_106">
+      <custrecord_pe_descripcion_codigo_3_1>Provision por Beneficios a los Empleados</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Provision por Beneficios a los Empleados</name>
+    </instance>
+    <instance scriptid="val_44779_7460686_sb1_682">
+      <custrecord_pe_descripcion_codigo_3_1>Otras provisiones</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otras provisiones</name>
+    </instance>
+    <instance scriptid="val_44780_7460686_sb1_306">
+      <custrecord_pe_descripcion_codigo_3_1>Pasivos por Impuestos a las Ganancias</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Pasivos por Impuestos a las Ganancias</name>
+    </instance>
+    <instance scriptid="val_44781_7460686_sb1_416">
+      <custrecord_pe_descripcion_codigo_3_1>Otros Pasivos no financieros</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otros Pasivos no financieros</name>
+    </instance>
+    <instance scriptid="val_44782_7460686_sb1_469">
+      <custrecord_pe_descripcion_codigo_3_1>Total de Pasivos Corrientes distintos de Pasivos incluidos en Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Total de Pasivos Corrientes distintos de Pasivos incluidos en Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta</name>
+    </instance>
+    <instance scriptid="val_44783_7460686_sb1_416">
+      <custrecord_pe_descripcion_codigo_3_1>Pasivos incluidos en Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Pasivos incluidos en Grupos de Activos para su Disposicion Clasificados como Mantenidos para la Venta</name>
+    </instance>
+    <instance scriptid="val_44784_7460686_sb1_275">
+      <custrecord_pe_descripcion_codigo_3_1>Total Pasivos Corrientes</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Total Pasivos Corrientes</name>
+    </instance>
+    <instance scriptid="val_44785_7460686_sb1_252">
+      <custrecord_pe_descripcion_codigo_3_1>Otros Pasivos Financieros</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otros Pasivos Financieros</name>
+    </instance>
+    <instance scriptid="val_44786_7460686_sb1_807">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por pagar comerciales y otras cuentas por pagar</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por pagar comerciales y otras cuentas por pagar</name>
+    </instance>
+    <instance scriptid="val_44787_7460686_sb1_347">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por Pagar Comerciales</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por Pagar Comerciales</name>
+    </instance>
+    <instance scriptid="val_44788_7460686_sb1_805">
+      <custrecord_pe_descripcion_codigo_3_1>Otras Cuentas por Pagar</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otras Cuentas por Pagar</name>
+    </instance>
+    <instance scriptid="val_44789_7460686_sb1_916">
+      <custrecord_pe_descripcion_codigo_3_1>Cuentas por Pagar a Entidades Relacionadas</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Cuentas por Pagar a Entidades Relacionadas</name>
+    </instance>
+    <instance scriptid="val_44790_7460686_sb1_998">
+      <custrecord_pe_descripcion_codigo_3_1>Ingresos Diferidos</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Ingresos Diferidos</name>
+    </instance>
+    <instance scriptid="val_44791_7460686_sb1_779">
+      <custrecord_pe_descripcion_codigo_3_1>Provision por Beneficios a los Empleados</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Provision por Beneficios a los Empleados</name>
+    </instance>
+    <instance scriptid="val_44792_7460686_sb1_500">
+      <custrecord_pe_descripcion_codigo_3_1>Otras provisiones</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otras provisiones</name>
+    </instance>
+    <instance scriptid="val_44793_7460686_sb1_638">
+      <custrecord_pe_descripcion_codigo_3_1>Pasivos por impuestos diferidos</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Pasivos por impuestos diferidos</name>
+    </instance>
+    <instance scriptid="val_44794_7460686_sb1_482">
+      <custrecord_pe_descripcion_codigo_3_1>Otros pasivos no financieros</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otros pasivos no financieros</name>
+    </instance>
+    <instance scriptid="val_44795_7460686_sb1_957">
+      <custrecord_pe_descripcion_codigo_3_1>Total Pasivos No Corrientes</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Total Pasivos No Corrientes</name>
+    </instance>
+    <instance scriptid="val_44796_7460686_sb1_403">
+      <custrecord_pe_descripcion_codigo_3_1>Total Pasivos</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Total Pasivos</name>
+    </instance>
+    <instance scriptid="val_44797_7460686_sb1_998">
+      <custrecord_pe_descripcion_codigo_3_1>Capital Emitido</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Capital Emitido</name>
+    </instance>
+    <instance scriptid="val_44798_7460686_sb1_201">
+      <custrecord_pe_descripcion_codigo_3_1>Primas de Emision</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Primas de Emision</name>
+    </instance>
+    <instance scriptid="val_44799_7460686_sb1_707">
+      <custrecord_pe_descripcion_codigo_3_1>Acciones de Inversion</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Acciones de Inversion</name>
+    </instance>
+    <instance scriptid="val_44800_7460686_sb1_184">
+      <custrecord_pe_descripcion_codigo_3_1>Acciones Propias en Cartera</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Acciones Propias en Cartera</name>
+    </instance>
+    <instance scriptid="val_44801_7460686_sb1_536">
+      <custrecord_pe_descripcion_codigo_3_1>Otras Reservas de Capital</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otras Reservas de Capital</name>
+    </instance>
+    <instance scriptid="val_44802_7460686_sb1_828">
+      <custrecord_pe_descripcion_codigo_3_1>Resultados Acumulados</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Resultados Acumulados</name>
+    </instance>
+    <instance scriptid="val_44803_7460686_sb1_913">
+      <custrecord_pe_descripcion_codigo_3_1>Otras Reservas de Patrimonio</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Otras Reservas de Patrimonio</name>
+    </instance>
+    <instance scriptid="val_44804_7460686_sb1_859">
+      <custrecord_pe_descripcion_codigo_3_1>Total Patrimonio</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>Total Patrimonio</name>
+    </instance>
+    <instance scriptid="val_44805_7460686_sb1_488">
+      <custrecord_pe_descripcion_codigo_3_1>TOTAL PASIVO Y PATRIMONIO</custrecord_pe_descripcion_codigo_3_1>
+      <isinactive>F</isinactive>
+      <name>TOTAL PASIVO Y PATRIMONIO</name>
+    </instance>
+  </instances>
+</customrecordtype>

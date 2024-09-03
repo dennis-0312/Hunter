@@ -1,0 +1,26 @@
+<suitelet scriptid="customscript_pe_sl_detraccion">
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>PE SL Detracciones</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Peru/Peru Localizaciones/PE_SL_Detracciones.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_pe_sl_detraccion">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>F</allroles>
+      <audslctrole></audslctrole>
+      <audsubsidiary></audsubsidiary>
+      <eventtype></eventtype>
+      <isdeployed>F</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>ERROR</loglevel>
+      <runasrole></runasrole>
+      <status>RELEASED</status>
+      <title>PE SL Detracciones</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

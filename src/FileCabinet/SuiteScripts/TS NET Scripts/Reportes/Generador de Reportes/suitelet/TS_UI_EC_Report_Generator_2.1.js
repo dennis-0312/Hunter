@@ -64,23 +64,59 @@ define([
                 let periodId = context.request.parameters.custpage_f_period;
                 let format = context.request.parameters.custpage_f_format;
 
-                log.error("params", {reportId, subsidiaryId, periodId, format});
+                log.error("params", { reportId, subsidiaryId, periodId, format });
+                log.error("format", format);
 
                 let params = {};
-                if (reportId == "1") {
+
+                if (format == 'XLSX') {
+                    params.custscript_ts_ss_ec_ats_xls_subsidiary = subsidiaryId;
+                    params.custscript_ts_ss_ec_ats_xls_period = periodId;
+                    params.custscript_ts_ss_ec_ats_xls_report = reportId;
+                    params.custscript_ts_ss_ec_ats_xls_folder = FOLDER_ID;
+                    params.custscript_ts_ss_ec_ats_xls_formato = format;
+                    log.error("params", params);
+                    if (reportId == "1") {
+                        let scriptTask = task.create({
+                            taskType: task.TaskType.SCHEDULED_SCRIPT,
+                            scriptId: 'customscript_ts_ss_ec_ats_xls',
+                            deploymentId: 'customdeploy_ts_ss_ec_ats_xls',
+                            params
+                        });
+                        var scriptTaskId = scriptTask.submit();
+                    }
+                } else if (format == 'XLSX_V') {
+                    params.custscript_ts_ss_ec_ats_xls_v_subsidiary = subsidiaryId;
+                    params.custscript_ts_ss_ec_ats_xls_v_period = periodId;
+                    params.custscript_ts_ss_ec_ats_xls_v_report = reportId;
+                    params.custscript_ts_ss_ec_ats_xls_v_folder = FOLDER_ID;
+                    params.custscript_ts_ss_ec_ats_xls_v_formato = format;
+                    log.error("params", params);
+                    if (reportId == "1") {
+                        let scriptTask = task.create({
+                            taskType: task.TaskType.SCHEDULED_SCRIPT,
+                            scriptId: 'customscript_ts_ss_ec_ats_xls_v',
+                            deploymentId: 'customdeploy_ts_ss_ec_ats_xls_v',
+                            params
+                        });
+                        var scriptTaskId = scriptTask.submit();
+                    }
+                } else {
                     params.custscript_ts_ss_ec_atsinfo_subsidiary = subsidiaryId;
                     params.custscript_ts_ss_ec_atsinfo_period = periodId;
                     params.custscript_ts_ss_ec_atsinfo_report = reportId;
                     params.custscript_ts_ss_ec_atsinfo_folder = FOLDER_ID;
                     params.custscriptts_ss_ec_atsinfo_formato = format;
                     log.error("params", params);
-                    let scriptTask = task.create({
-                        taskType: task.TaskType.SCHEDULED_SCRIPT,
-                        scriptId: 'customscript_ts_ss_ats_informante',
-                        deploymentId: 'customdeploy_ts_ss_ec_ats_informante',
-                        params
-                    });
-                    var scriptTaskId = scriptTask.submit();
+                    if (reportId == "1") {
+                        let scriptTask = task.create({
+                            taskType: task.TaskType.SCHEDULED_SCRIPT,
+                            scriptId: 'customscript_ts_ss_ats_informante',
+                            deploymentId: 'customdeploy_ts_ss_ec_ats_informante',
+                            params
+                        });
+                        var scriptTaskId = scriptTask.submit();
+                    }
                 }
 
                 redirect.toSuitelet({

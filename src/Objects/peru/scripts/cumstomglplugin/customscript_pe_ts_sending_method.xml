@@ -1,0 +1,13 @@
+<pluginimplementation scriptid="customscript_pe_ts_sending_method">
+  <customplugintype>[scriptid=customscript_ei_pl_sending_plugin]</customplugintype>
+  <description></description>
+  <isinactive>F</isinactive>
+  <loglevel>ERROR</loglevel>
+  <name>PE_TS_Sending_Method</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/plugin/PE_TS_Sending_Method.js]</scriptfile>
+  <status>RELEASED</status>
+</pluginimplementation>

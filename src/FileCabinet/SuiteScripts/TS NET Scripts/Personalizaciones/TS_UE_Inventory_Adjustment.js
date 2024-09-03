@@ -9,7 +9,6 @@ define(['N/log', 'N/record', 'N/search'], (log, record, search) => {
 
     const afterSubmit = (context) => {
         if (context.type === context.UserEventType.EDIT || context.type === context.UserEventType.CREATE) {
-
             try {
                 let objRecord = context.newRecord;
                 let id = objRecord.id

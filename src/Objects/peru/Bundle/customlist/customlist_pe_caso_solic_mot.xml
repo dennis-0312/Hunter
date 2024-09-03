@@ -1,0 +1,92 @@
+<customlist scriptid="customlist_pe_caso_solic_mot">
+  <description>Lista de motivos de solicitudes servicios comerciales.</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>PE Solicitud</name>
+  <customvalues>
+    <customvalue scriptid="val_693810_7451241_sb1_637">
+      <isinactive>F</isinactive>
+      <value>Informe de Operativo</value>
+    </customvalue>
+    <customvalue scriptid="val_693811_7451241_sb1_497">
+      <isinactive>F</isinactive>
+      <value>Reporte de recorrido</value>
+    </customvalue>
+    <customvalue scriptid="val_693812_7451241_sb1_772">
+      <isinactive>F</isinactive>
+      <value>Devolución de dinero</value>
+    </customvalue>
+    <customvalue scriptid="val_693813_7451241_sb1_446">
+      <isinactive>F</isinactive>
+      <value>Solicita NC por saldo a favor </value>
+    </customvalue>
+    <customvalue scriptid="val_693814_7451241_sb1_295">
+      <isinactive>F</isinactive>
+      <value>Cambio de comprobante</value>
+    </customvalue>
+    <customvalue scriptid="val_693815_7451241_sb1_781">
+      <isinactive>F</isinactive>
+      <value>Contrato para trámite con el MTC</value>
+    </customvalue>
+    <customvalue scriptid="val_693816_7451241_sb1_180">
+      <isinactive>F</isinactive>
+      <value>Desinstalación de dispositivo</value>
+    </customvalue>
+    <customvalue scriptid="val_693817_7451241_sb1_862">
+      <isinactive>F</isinactive>
+      <value>Chequeo </value>
+    </customvalue>
+    <customvalue scriptid="val_693818_7451241_sb1_339">
+      <isinactive>F</isinactive>
+      <value>Nota de Crédito</value>
+    </customvalue>
+    <customvalue scriptid="val_693819_7451241_sb1_576">
+      <isinactive>F</isinactive>
+      <value>Cambio de Titularidad </value>
+    </customvalue>
+    <customvalue scriptid="val_693820_7451241_sb1_248">
+      <isinactive>F</isinactive>
+      <value>Instalación </value>
+    </customvalue>
+    <customvalue scriptid="val_693821_7451241_sb1_284">
+      <isinactive>F</isinactive>
+      <value>Retransmisión</value>
+    </customvalue>
+    <customvalue scriptid="val_693822_7451241_sb1_183">
+      <isinactive>F</isinactive>
+      <value>Migración de servicio </value>
+    </customvalue>
+    <customvalue scriptid="val_693823_7451241_sb1_551">
+      <isinactive>F</isinactive>
+      <value>Homologación </value>
+    </customvalue>
+    <customvalue scriptid="val_693824_7451241_sb1_229">
+      <isinactive>F</isinactive>
+      <value>Activación de opciones </value>
+    </customvalue>
+    <customvalue scriptid="val_693825_7451241_sb1_524">
+      <isinactive>F</isinactive>
+      <value>Modificación de Datos </value>
+    </customvalue>
+    <customvalue scriptid="val_693826_7451241_sb1_361">
+      <isinactive>F</isinactive>
+      <value>Envío de Credenciales </value>
+    </customvalue>
+    <customvalue scriptid="val_693827_7451241_sb1_414">
+      <isinactive>F</isinactive>
+      <value>Envío de documentos</value>
+    </customvalue>
+    <customvalue scriptid="val_693828_7451241_sb1_764">
+      <isinactive>F</isinactive>
+      <value>Ampliación de Cobertura </value>
+    </customvalue>
+    <customvalue scriptid="val_693829_7451241_sb1_650">
+      <isinactive>F</isinactive>
+      <value>Traslado de Cobertura </value>
+    </customvalue>
+    <customvalue scriptid="val_693830_7451241_sb1_393">
+      <isinactive>F</isinactive>
+      <value>Upgrade </value>
+    </customvalue>
+  </customvalues>
+</customlist>

@@ -1,0 +1,40 @@
+<customlist scriptid="customlist_pe_caso_sopor_can">
+  <description>Canales de atencion de plantilla</description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>PE Canal de atencion</name>
+  <customvalues>
+    <customvalue scriptid="val_692439_7451241_sb1_917">
+      <isinactive>F</isinactive>
+      <value>Correo</value>
+    </customvalue>
+    <customvalue scriptid="val_692440_7451241_sb1_936">
+      <isinactive>F</isinactive>
+      <value>Teléfono</value>
+    </customvalue>
+    <customvalue scriptid="val_692441_7451241_sb1_627">
+      <isinactive>F</isinactive>
+      <value>Presencial</value>
+    </customvalue>
+    <customvalue scriptid="val_692442_7451241_sb1_654">
+      <isinactive>F</isinactive>
+      <value>Whatsapp</value>
+    </customvalue>
+    <customvalue scriptid="val_692443_7451241_sb1_505">
+      <isinactive>F</isinactive>
+      <value>Carta</value>
+    </customvalue>
+    <customvalue scriptid="val_692444_7451241_sb1_927">
+      <isinactive>F</isinactive>
+      <value>Adicional</value>
+    </customvalue>
+    <customvalue scriptid="val_692445_7451241_sb1_771">
+      <isinactive>F</isinactive>
+      <value>Celular</value>
+    </customvalue>
+    <customvalue scriptid="val_693794_7451241_sb1_243">
+      <isinactive>F</isinactive>
+      <value>Libro de Reclamacion</value>
+    </customvalue>
+  </customvalues>
+</customlist>

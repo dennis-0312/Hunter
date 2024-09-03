@@ -1,0 +1,991 @@
+<customrecordtype scriptid="customrecord_pe_fiscal_document_type">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>T</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>F</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>F</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>F</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>F</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Fiscal Document Type</recordname>
+  <showcreationdate>T</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>T</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_code_document_type">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Code Document Type</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_apply_to">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>MULTISELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Apply to</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-100</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_prefix">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Prefix</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_detraction">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Detraction</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_pe_concept_detraction]</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_dua">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE DUA</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_pe_dua_code]</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_expense_report">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>CHECKBOX</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Expense Report</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_nombre_tipo_comp_fiscal">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Nombre</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_637267_7451241_sb1_568">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>50</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua></custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Declaracion unica de Aduanas - Importacion definitiva</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DUA</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Declaracion unica de Aduanas - Importacion definitiva</name>
+    </instance>
+    <instance scriptid="val_637268_7451241_sb1_426">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>52</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua></custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Despacho Simplificado - Importacion Simplificada</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DS</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Despacho Simplificado - Importacion Simplificada</name>
+    </instance>
+    <instance scriptid="val_637269_7451241_sb1_659">
+      <custrecord_pe_apply_to></custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type></custrecord_pe_code_document_type>
+      <custrecord_pe_detraction></custrecord_pe_detraction>
+      <custrecord_pe_dua></custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>NOTA DE CREDITO</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix></custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>NOTA DE CREDITO</name>
+    </instance>
+    <instance scriptid="val_637270_7451241_sb1_861">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>44</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Billetes de loteria, rifas y apuestas.</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>BL</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Billetes de loteria, rifas y apuestas.</name>
+    </instance>
+    <instance scriptid="val_637327_7451241_sb1_551">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>19</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Boleto o entrada por atracciones y espectaculos publicos</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>BAP</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Boleto o entrada por atracciones y espectaculos publicos</name>
+    </instance>
+    <instance scriptid="val_637328_7451241_sb1_389">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>05</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Boletos de Transporte Aereo que emiten las Compañias de Aviacion Comercial por el servicio de transporte aereo regular de pasajeros, emitido de manera manual, mecanizada o por medios electronicos (BME)</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>BA</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Boletos de Transporte Aereo que emiten las Compañias de Aviacion Comercial por el servicio de transporte aereo regular de pasajeros, emitido de manera manual, mecanizada o por medios electronicos (BME)	</name>
+    </instance>
+    <instance scriptid="val_637329_7451241_sb1_760">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>15</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Boletos emitidos por el servicio de transporte terrestre regular urbano de pasajeros</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>BT</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Boletos emitidos por el servicio de transporte terrestre regular urbano de pasajeros</name>
+    </instance>
+    <instance scriptid="val_637330_7451241_sb1_607">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>43</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Boletos emitidos por las Compañias de Aviacion Comercial que prestan servicios de transporte aereo no regular de pasajeros y transporte aereo especial de pasajeros.</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>BAC</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Boletos emitidos por las Compañias de Aviacion Comercial que prestan servicios de transporte aereo no regular de pasajeros y transporte aereo especial de pasajeros.</name>
+    </instance>
+    <instance scriptid="val_637331_7451241_sb1_155">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>55</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>BVME para transporte ferroviario de pasajeros</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>BVM</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>BVME para transporte ferroviario de pasajeros</name>
+    </instance>
+    <instance scriptid="val_637332_7451241_sb1_726">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>06</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Carta de porte aereo por el servicio de transporte de carga aerea</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CA</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Carta de porte aereo por el servicio de transporte de carga aerea</name>
+    </instance>
+    <instance scriptid="val_637333_7451241_sb1_108">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>24</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Certificado de pago de regalias emitidas por PERUPETRO S.A</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CPR</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Certificado de pago de regalias emitidas por PERUPETRO S.A</name>
+    </instance>
+    <instance scriptid="val_637334_7451241_sb1_529">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>91</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Comprobante de No Domiciliado</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CND</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Comprobante de No Domiciliado</name>
+    </instance>
+    <instance scriptid="val_637335_7451241_sb1_953">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>48</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Comprobante de Operaciones - Ley N° 29972</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CO</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Comprobante de Operaciones - Ley N° 29972</name>
+    </instance>
+    <instance scriptid="val_637336_7451241_sb1_188">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>56</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Comprobante de pago SEAE</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CPS</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Comprobante de pago SEAE</name>
+    </instance>
+    <instance scriptid="val_637337_7451241_sb1_818">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>40</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Comprobante de Percepcion</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CP</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Comprobante de Percepcion</name>
+    </instance>
+    <instance scriptid="val_637338_7451241_sb1_938">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>41</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Comprobante de Percepcion - Venta interna</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CPV</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Comprobante de Percepcion - Venta interna</name>
+    </instance>
+    <instance scriptid="val_637339_7451241_sb1_503">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>22</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Comprobante por Operaciones No Habituales</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>COH</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Comprobante por Operaciones No Habituales</name>
+    </instance>
+    <instance scriptid="val_637340_7451241_sb1_990">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>21</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Conocimiento de embarque por el servicio de transporte de carga maritima</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CE</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Conocimiento de embarque por el servicio de transporte de carga maritima</name>
+    </instance>
+    <instance scriptid="val_637341_7451241_sb1_242">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>49</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Constancia de Deposito - IVAP (Ley 28211)</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CD</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Constancia de Deposito - IVAP (Ley 28211)</name>
+    </instance>
+    <instance scriptid="val_637342_7451241_sb1_649">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>53</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Declaracion de Mensajeria o Courier</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DM</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Declaracion de Mensajeria o Courier</name>
+    </instance>
+    <instance scriptid="val_637343_7451241_sb1_271">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>25</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documento de Atribucion (Ley del Impuesto General a las Ventas e Impuesto Selectivo al Consumo, Art. 19º, ultimo parrafo, R.S. N° 022-98-SUNAT).</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DA</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documento de Atribucion (Ley del Impuesto General a las Ventas e Impuesto Selectivo al Consumo, Art. 19º, ultimo parrafo, R.S. N° 022-98-SUNAT).</name>
+    </instance>
+    <instance scriptid="val_637344_7451241_sb1_356">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>34</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documento del Operador</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DO</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documento del Operador</name>
+    </instance>
+    <instance scriptid="val_637345_7451241_sb1_332">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>35</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documento del Participe</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DP</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documento del Participe</name>
+    </instance>
+    <instance scriptid="val_637346_7451241_sb1_110">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>17</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documento emitido por la Iglesia Catolica por el arrendamiento de bienes inmuebles</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DIC</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documento emitido por la Iglesia Catolica por el arrendamiento de bienes inmuebles</name>
+    </instance>
+    <instance scriptid="val_637347_7451241_sb1_308">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>18</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documento emitido por las Administradoras Privadas de Fondo de Pensiones que se encuentran bajo la supervision de la Superintendencia de Banca, Seguros y AFP</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DAF</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documento emitido por las Administradoras Privadas de Fondo de Pensiones que se encuentran bajo la supervision de la Superintendencia de Banca, Seguros y AFP</name>
+    </instance>
+    <instance scriptid="val_637348_7451241_sb1_413">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>45</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documentos emitidos por centros educativos y culturales, universidades, asociaciones y fundaciones, en lo referente a actividades no gravadas con tributos administrados por la SUNAT.</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DE</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documentos emitidos por centros educativos y culturales, universidades, asociaciones y fundaciones, en lo referente a actividades no gravadas con tributos administrados por la SUNAT.</name>
+    </instance>
+    <instance scriptid="val_637349_7451241_sb1_227">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>29</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documentos emitidos por la COFOPRI en calidad de oferta de venta de terrenos, los correspondientes a las subastas publicas y a la retribucion de los servicios que presta</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DCO</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documentos emitidos por la COFOPRI en calidad de oferta de venta de terrenos, los correspondientes a las subastas publicas y a la retribucion de los servicios que presta</name>
+    </instance>
+    <instance scriptid="val_637350_7451241_sb1_854">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>13</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documentos emitidos por las empresas del sistema financiero y de seguros, y por las cooperativas de ahorro y credito no autorizadas a captar recursos del publico, que se encuentren bajo el control de la Superintendencia de Banca, Seguros y AFP.</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DF</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documentos emitidos por las empresas del sistema financiero y de seguros, y por las cooperativas de ahorro y credito no autorizadas a captar recursos del publico, que se encuentren bajo el control de la Superintendencia de Banca, Seguros y AFP.</name>
+    </instance>
+    <instance scriptid="val_637351_7451241_sb1_312">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>30</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documentos emitidos por las empresas que desempeñan el rol adquirente en los sistemas de pago mediante tarjetas de credito y debito, emitidas por bancos e instituciones financieras o crediticias, domiciliados o no en el pais.</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DAT</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documentos emitidos por las empresas que desempeñan el rol adquirente en los sistemas de pago mediante tarjetas de credito y debito, emitidas por bancos e instituciones financieras o crediticias, domiciliados o no en el pais.</name>
+    </instance>
+    <instance scriptid="val_637352_7451241_sb1_756">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>42</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documentos emitidos por las empresas que desempeñan el rol adquiriente en los sistemas de pago mediante tarjetas de credito emitidas por ellas mismas</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>BTC</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documentos emitidos por las empresas que desempeñan el rol adquiriente en los sistemas de pago mediante tarjetas de credito emitidas por ellas mismas</name>
+    </instance>
+    <instance scriptid="val_637353_7451241_sb1_794">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>32</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documentos emitidos por las empresas recaudadoras de la denominada Garantia de Red Principal a la que hace referencia el numeral 7.6 del articulo 7° de la Ley N° 27133 – Ley de Promocion del Desarrollo de la Industria del Gas Natural</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DR</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documentos emitidos por las empresas recaudadoras de la denominada Garantia de Red Principal a la que hace referencia el numeral 7.6 del articulo 7° de la Ley N° 27133 – Ley de Promocion del Desarrollo de la Industria del Gas Natural</name>
+    </instance>
+    <instance scriptid="val_637354_7451241_sb1_604">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>28</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documentos emitidos por los servicios aeroportuarios prestados a favor de los pasajeros, mediante mecanismo de etiquetas autoadhesivas.</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DAP</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documentos emitidos por los servicios aeroportuarios prestados a favor de los pasajeros, mediante mecanismo de etiquetas autoadhesivas.</name>
+    </instance>
+    <instance scriptid="val_637355_7451241_sb1_773">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>37</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Documentos que emitan los concesionarios del servicio de revisiones tecnicas vehiculares, por la prestacion de dicho servicio</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>DCS</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Documentos que emitan los concesionarios del servicio de revisiones tecnicas vehiculares, por la prestacion de dicho servicio</name>
+    </instance>
+    <instance scriptid="val_637356_7451241_sb1_602">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>96</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Exceso de credito fiscal por retiro de bienes</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>ECF</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Exceso de credito fiscal por retiro de bienes</name>
+    </instance>
+    <instance scriptid="val_637357_7451241_sb1_731">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>46</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Formulario de Declaracion - pago o Boleta de pago de tributos Internos</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>FDP</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Formulario de Declaracion - pago o Boleta de pago de tributos Internos</name>
+    </instance>
+    <instance scriptid="val_637358_7451241_sb1_338">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>00</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Letras Canje</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>LT</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Letras Canje</name>
+    </instance>
+    <instance scriptid="val_637359_7451241_sb1_823">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>54</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Liquidacion de Cobranza</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>LCO</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Liquidacion de Cobranza</name>
+    </instance>
+    <instance scriptid="val_637360_7451241_sb1_610">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>04</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Liquidacion de compra</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>LC</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Liquidacion de compra</name>
+    </instance>
+    <instance scriptid="val_637361_7451241_sb1_987">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>33</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Manifiesto de Pasajeros</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>MP</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Manifiesto de Pasajeros</name>
+    </instance>
+    <instance scriptid="val_637362_7451241_sb1_436">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>89</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Nota de Ajuste de Operaciones - Ley N° 29972</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>NAO</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Nota de Ajuste de Operaciones - Ley N° 29972</name>
+    </instance>
+    <instance scriptid="val_637363_7451241_sb1_806">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>98</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Nota de Debito - No Domiciliado</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>NDN</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Nota de Debito - No Domiciliado</name>
+    </instance>
+    <instance scriptid="val_637364_7451241_sb1_922">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>00</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Otros</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>OT</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Otros</name>
+    </instance>
+    <instance scriptid="val_637365_7451241_sb1_299">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>11</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Poliza emitida por las Bolsas de Valores, Bolsas de Productos o Agentes de Intermediacion por operaciones realizadas en las Bolsas de Valores o Productos o fuera de las mismas, autorizadas por SMV</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>PO</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Poliza emitida por las Bolsas de Valores, Bolsas de Productos o Agentes de Intermediacion por operaciones realizadas en las Bolsas de Valores o Productos o fuera de las mismas, autorizadas por SMV</name>
+    </instance>
+    <instance scriptid="val_637366_7451241_sb1_307">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>51</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Poliza o DUI Fraccionada</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>PF</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Poliza o DUI Fraccionada</name>
+    </instance>
+    <instance scriptid="val_637367_7451241_sb1_244">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>23</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Polizas de Adjudicacion emitidas con ocasion del remate o adjudicacion de bienes por venta forzada, por los martilleros o las entidades que rematen o subasten bienes por cuenta de terceros</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>PA</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Polizas de Adjudicacion emitidas con ocasion del remate o adjudicacion de bienes por venta forzada, por los martilleros o las entidades que rematen o subasten bienes por cuenta de terceros</name>
+    </instance>
+    <instance scriptid="val_637368_7451241_sb1_970">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>36</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Recibo de Distribucion de Gas Natural</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>RDG</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Recibo de Distribucion de Gas Natural</name>
+    </instance>
+    <instance scriptid="val_637369_7451241_sb1_215">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>10</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Recibo por Arrendamiento</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>RA</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Recibo por Arrendamiento</name>
+    </instance>
+    <instance scriptid="val_637370_7451241_sb1_518">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>26</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Recibo por el Pago de la Tarifa por Uso de Agua Superficial con fines agrarios y por el pago de la Cuota para la ejecucion de una determinada obra o actividad acordada por la Asamblea General de la Comision de Regantes o Resolucion expedida por el Jefe de la Unidad de Aguas y de Riego</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>RPT</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Recibo por el Pago de la Tarifa por Uso de Agua Superficial con fines agrarios y por el pago de la Cuota para la ejecucion de una determinada obra o actividad acordada por la Asamblea General de la Comision de Regantes o Resolucion expedida por el Jefe de la Unidad de Aguas y de Riego</name>
+    </instance>
+    <instance scriptid="val_637371_7451241_sb1_273">
+      <custrecord_pe_apply_to>VENDORBILL</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>27</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Seguro Complementario de Trabajo de Riesgo</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>STR</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Seguro Complementario de Trabajo de Riesgo</name>
+    </instance>
+    <instance scriptid="val_637375_7451241_sb1_967">
+      <custrecord_pe_apply_to>VENDORBILL|INVOICE|ITEMRECEIPT</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>01</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Factura</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>FA</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Factura</name>
+    </instance>
+    <instance scriptid="val_637376_7451241_sb1_792">
+      <custrecord_pe_apply_to>VENDORBILL|EXPENSEREPORT</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>02</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Recibo por Honorarios</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>RH</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Recibo por Honorarios</name>
+    </instance>
+    <instance scriptid="val_637377_7451241_sb1_310">
+      <custrecord_pe_apply_to>VENDORBILL|CASHSALE|INVOICE</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>03</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Boleta de Venta</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>BV</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Boleta de Venta</name>
+    </instance>
+    <instance scriptid="val_637378_7451241_sb1_647">
+      <custrecord_pe_apply_to>VENDORCREDIT|CREDITMEMO</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>07</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Nota de Credito</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>NC</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Nota de Credito</name>
+    </instance>
+    <instance scriptid="val_637379_7451241_sb1_723">
+      <custrecord_pe_apply_to>VENDORBILL|INVOICE</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>08</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Nota de Debito</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>ND</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Nota de Debito</name>
+    </instance>
+    <instance scriptid="val_637380_7451241_sb1_948">
+      <custrecord_pe_apply_to>INVENTORYADJUSTMENT|INVENTORYTRANSFER|ITEMFULFILLMENT|ITEMRECEIPT</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>09</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Guia de remision - Remitente</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>GR</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Guia de remision - Remitente</name>
+    </instance>
+    <instance scriptid="val_637381_7451241_sb1_181">
+      <custrecord_pe_apply_to>VENDORBILL|EXPENSEREPORT</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>12</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Ticket o cinta emitido por maquina registradora</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>TK</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Ticket o cinta emitido por maquina registradora</name>
+    </instance>
+    <instance scriptid="val_637382_7451241_sb1_856">
+      <custrecord_pe_apply_to>VENDORBILL|EXPENSEREPORT|INVOICE</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>14</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Recibo por servicios publicos de suministro de energia electrica, agua, telefono, telex y telegraficos y otros servicios complementarios que se incluyan en el recibo de servicio publico</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>RS</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Recibo por servicios publicos de suministro de energia electrica, agua, telefono, telex y telegraficos y otros servicios complementarios que se incluyan en el recibo de servicio publico</name>
+    </instance>
+    <instance scriptid="val_637383_7451241_sb1_533">
+      <custrecord_pe_apply_to>VENDORBILL|INVOICE</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>16</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>T</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Boletos de viaje emitidos por las empresas de transporte nacional de pasajeros</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>BO</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Boletos de viaje emitidos por las empresas de transporte nacional de pasajeros</name>
+    </instance>
+    <instance scriptid="val_637384_7451241_sb1_747">
+      <custrecord_pe_apply_to>VENDORBILL|VENDORCREDIT</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>20</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Comprobante de Retencion</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>CR</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Comprobante de Retencion</name>
+    </instance>
+    <instance scriptid="val_637385_7451241_sb1_704">
+      <custrecord_pe_apply_to>INVENTORYADJUSTMENT|INVENTORYTRANSFER|ITEMFULFILLMENT|ITEMRECEIPT</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>31</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Guia de Remision - Transportista</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>GRT</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Guia de Remision - Transportista</name>
+    </instance>
+    <instance scriptid="val_637386_7451241_sb1_996">
+      <custrecord_pe_apply_to>VENDORCREDIT</custrecord_pe_apply_to>
+      <custrecord_pe_code_document_type>97</custrecord_pe_code_document_type>
+      <custrecord_pe_detraction>[scriptid=customrecord_pe_concept_detraction.val_637271_7451241_sb1_612]</custrecord_pe_detraction>
+      <custrecord_pe_dua>[scriptid=customrecord_pe_dua_code.val_637296_7451241_sb1_990]</custrecord_pe_dua>
+      <custrecord_pe_expense_report>F</custrecord_pe_expense_report>
+      <custrecord_pe_nombre_tipo_comp_fiscal>Nota de Credito - No Domiciliado</custrecord_pe_nombre_tipo_comp_fiscal>
+      <custrecord_pe_prefix>NCN</custrecord_pe_prefix>
+      <isinactive>F</isinactive>
+      <name>Nota de Credito - No Domiciliado</name>
+    </instance>
+  </instances>
+</customrecordtype>

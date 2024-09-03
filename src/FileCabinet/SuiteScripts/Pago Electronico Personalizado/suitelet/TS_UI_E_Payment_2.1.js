@@ -9,13 +9,14 @@ define([
     'N/runtime',
     'N/search',
     'N/task',
+    'N/file',
     './lib/TS_LBRY_E_Payment_2.1.js'
-], (serverWidget, redirect, record, runtime, search, task, library) => {
+], (serverWidget, redirect, record, runtime, search, task, file, library) => {
     const userRecord = runtime.getCurrentUser();
     const currentScript = runtime.getCurrentScript();
     //log.error('currentScript', currentScript);
     //cheque anticipo y pago
-    const INPUT_FILES_FOLDER_ID = "6504"; //*SB:6327 EN PROD: 6504
+    const INPUT_FILES_FOLDER_ID = "6327"; //*SB:6327 EN PROD: 6504
 
     const onRequest = (context) => {
         try {
@@ -372,8 +373,9 @@ define([
         paymentsSubList.addSublistField(FIELDS.sublistfield.amount.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.amount.text);
         paymentsSubList.addSublistField(FIELDS.sublistfield.paymentmethod.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.paymentmethod.text);
         paymentsSubList.addSublistField(FIELDS.sublistfield.status.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.status.text);
-        log.error('Corte1', 'Corte1')
         paymentsSubList.addSublistField(FIELDS.sublistfield.nro.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.nro.text);
+        paymentsSubList.addSublistField(FIELDS.sublistfield.memo.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.memo.text);
+
 
         form.addTab(FIELDS.tab.notfound.id, FIELDS.tab.notfound.text);
         let notFoundSubList = form.addSublist(FIELDS.sublist.notfound.id, serverWidget.SublistType.LIST, FIELDS.sublist.notfound.text);
@@ -445,13 +447,14 @@ define([
                 let selected = line[0];
                 let paymentId = line[1];
                 let llave = line[7];
+                let memo = line[8];
                 let status = "";
                 if (line[0] == 'T') {
                     status = "APPROVED";
                 } else {
                     status = "REJECTED";
                 }
-                resultData.push({ PaymentID: paymentId, status, llave });
+                resultData.push({ PaymentID: paymentId, status, llave, memo });
             }
         } catch (error) {
             log.error("An error was found in [getSublistData] function", error);
@@ -478,6 +481,7 @@ define([
 
     const submitCreatePaymentScheduleTask = (paymentBatchId, data) => {
         // log.error('submitCreatePaymentScheduleTask', data);
+        // saveJson(data, 'submitCreatePaymentScheduleTask')
         // log.error('submitCreatePaymentScheduleTask', paymentBatchId);
         let scriptTask = task.create({
             taskType: task.TaskType.SCHEDULED_SCRIPT,
@@ -489,6 +493,19 @@ define([
             }
         });
         scriptTask.submit();
+    }
+
+    const saveJson = (contents, nombre) => {
+        let name = new Date();
+        let fileObj = file.create({
+            name: `${nombre}_${name}.json`,
+            fileType: file.Type.JSON,
+            contents: JSON.stringify(contents),
+            folder: 6322,
+            isOnline: false
+        });
+        // Save the file
+        let id = fileObj.save();
     }
 
     return {

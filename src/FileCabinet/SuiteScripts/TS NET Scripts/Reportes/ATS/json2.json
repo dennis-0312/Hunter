@@ -1,0 +1,408 @@
+            "GROUP(internalid)": [{"value": "249599","text": "249599" }],
+            "GROUP(accountingPeriod.periodname)": "sep 2024",
+            "GROUP(formulatext)": "0991259546001",
+            "GROUP(formulatext)_1": "09",
+            "GROUP(formulatext)_2": "2024",
+            "GROUP(CUSTBODY_EC_EMISOR.custentityts_ec_cod_tipo_doc_identidad)": "04",
+            "GROUP(CUSTBODY_EC_EMISOR.vatregnumber)": "0990379017001",
+            "GROUP(custbody_ec_emisor)": [ { "value": "39657","text": "C-EC-0990379017001 BANCO BOLIVARIANO C.A."}],
+            "GROUP(formulatext)_3": "- None -",
+            "GROUP(formulatext)_4": "- None -",
+            "GROUP(CUSTBODYEC_TIPO_DE_DOCUMENTO_RETENCION.custrecordts_ec_cod_tipo_comprobante)": "07",
+            "GROUP(custbody_ec_ncomprobantes)": "1",
+            "GROUP(internalid)_1": [{ "value": "249599","text": "249599"} ],
+            "GROUP(formulatext)_5": "AD-00001082",
+            "SUM(formulanumeric)": "0",
+            "SUM(custbodyts_ec_base_rate0)": "",
+            "SUM(custbodyts_ec_base_rate12)": "",
+            "SUM(custbody_ec_monto_iva)": "",
+            "GROUP(formulatext)_6": " ",
+            "SUM(formulanumeric)_1": "2",
+            "SUM(formulanumeric)_2": "0",
+            "SUM(formulanumeric)_3": "0",
+            "SUM(formulanumeric)_4": "0",
+            "SUM(formulanumeric)_5": "0",
+            "SUM(formulanumeric)_6": "0",
+            "GROUP(formulatext)_7": " ",
+            "SUM(formulanumeric)_7": "2.5",
+            "GROUP(trandate)": "04/09/2024",
+            "GROUP(custbody_ec_serie_cxc_retencion)": [{ "value": "", "text": "- None -"}],
+            "GROUP(custbody_ts_ec_preimpreso_retencion)": "00000148",
+            "GROUP(custbodyts_ec_cod_wht_autorization)": "- None -",
+            "GROUP(formulatext)_8": "01",
+            "GROUP(CUSTBODY_EC_EMISOR.custentity_ts_ec_entidad_relacionada)": [ { "value": "2", "text": "NO"}]
+        }
+    },
+    {
+        "values": {
+            "GROUP(internalid)": [
+                {
+                    "value": "239057",
+                    "text": "239057"
+                }
+            ],
+            "GROUP(accountingPeriod.periodname)": "sep 2024",
+            "GROUP(formulatext)": "0991259546001",
+            "GROUP(formulatext)_1": "09",
+            "GROUP(formulatext)_2": "2024",
+            "GROUP(CUSTBODY_EC_EMISOR.custentityts_ec_cod_tipo_doc_identidad)": "04",
+            "GROUP(CUSTBODY_EC_EMISOR.vatregnumber)": "0990379017001",
+            "GROUP(custbody_ec_emisor)": [
+                {
+                    "value": "39657",
+                    "text": "C-EC-0990379017001 BANCO BOLIVARIANO C.A."
+                }
+            ],
+            "GROUP(formulatext)_3": "- None -",
+            "GROUP(formulatext)_4": "- None -",
+            "GROUP(CUSTBODYEC_TIPO_DE_DOCUMENTO_RETENCION.custrecordts_ec_cod_tipo_comprobante)": "07",
+            "GROUP(custbody_ec_ncomprobantes)": "1",
+            "GROUP(internalid)_1": [
+                {
+                    "value": "239057",
+                    "text": "239057"
+                }
+            ],
+            "GROUP(formulatext)_5": "DP-EC-00000082",
+            "SUM(formulanumeric)": "0",
+            "SUM(custbodyts_ec_base_rate0)": "",
+            "SUM(custbodyts_ec_base_rate12)": "",
+            "SUM(custbody_ec_monto_iva)": "",
+            "GROUP(formulatext)_6": " ",
+            "SUM(formulanumeric)_1": "3.2",
+            "SUM(formulanumeric)_2": "0",
+            "SUM(formulanumeric)_3": "0",
+            "SUM(formulanumeric)_4": "0",
+            "SUM(formulanumeric)_5": "0",
+            "SUM(formulanumeric)_6": "0",
+            "GROUP(formulatext)_7": " ",
+            "SUM(formulanumeric)_7": "2.5",
+            "GROUP(trandate)": "04/09/2024",
+            "GROUP(custbody_ec_serie_cxc_retencion)": [
+                {
+                    "value": "",
+                    "text": "- None -"
+                }
+            ],
+            "GROUP(custbody_ts_ec_preimpreso_retencion)": "0000785693",
+            "GROUP(custbodyts_ec_cod_wht_autorization)": "515626530263896520320263",
+            "GROUP(formulatext)_8": "01",
+            "GROUP(CUSTBODY_EC_EMISOR.custentity_ts_ec_entidad_relacionada)": [
+                {
+                    "value": "2",
+                    "text": "NO"
+                }
+            ]
+        }
+    },
+    {
+        "values": {
+            "GROUP(internalid)": [
+                {
+                    "value": "249606",
+                    "text": "249606"
+                }
+            ],
+            "GROUP(accountingPeriod.periodname)": "sep 2024",
+            "GROUP(formulatext)": "0991259546001",
+            "GROUP(formulatext)_1": "09",
+            "GROUP(formulatext)_2": "2024",
+            "GROUP(CUSTBODY_EC_EMISOR.custentityts_ec_cod_tipo_doc_identidad)": "04",
+            "GROUP(CUSTBODY_EC_EMISOR.vatregnumber)": "0990379017001",
+            "GROUP(custbody_ec_emisor)": [
+                {
+                    "value": "39657",
+                    "text": "C-EC-0990379017001 BANCO BOLIVARIANO C.A."
+                }
+            ],
+            "GROUP(formulatext)_3": "- None -",
+            "GROUP(formulatext)_4": "- None -",
+            "GROUP(CUSTBODYEC_TIPO_DE_DOCUMENTO_RETENCION.custrecordts_ec_cod_tipo_comprobante)": "07",
+            "GROUP(custbody_ec_ncomprobantes)": "1",
+            "GROUP(internalid)_1": [
+                {
+                    "value": "249606",
+                    "text": "249606"
+                }
+            ],
+            "GROUP(formulatext)_5": "AD-00001083",
+            "SUM(formulanumeric)": "0",
+            "SUM(custbodyts_ec_base_rate0)": "",
+            "SUM(custbodyts_ec_base_rate12)": "",
+            "SUM(custbody_ec_monto_iva)": "",
+            "GROUP(formulatext)_6": " ",
+            "SUM(formulanumeric)_1": "0",
+            "SUM(formulanumeric)_2": "0",
+            "SUM(formulanumeric)_3": "0",
+            "SUM(formulanumeric)_4": "0",
+            "SUM(formulanumeric)_5": "0",
+            "SUM(formulanumeric)_6": "0",
+            "GROUP(formulatext)_7": " ",
+            "SUM(formulanumeric)_7": "0",
+            "GROUP(trandate)": "07/09/2024",
+            "GROUP(custbody_ec_serie_cxc_retencion)": [
+                {
+                    "value": "",
+                    "text": "- None -"
+                }
+            ],
+            "GROUP(custbody_ts_ec_preimpreso_retencion)": "00000149",
+            "GROUP(custbodyts_ec_cod_wht_autorization)": "455669888888888",
+            "GROUP(formulatext)_8": "01",
+            "GROUP(CUSTBODY_EC_EMISOR.custentity_ts_ec_entidad_relacionada)": [
+                {
+                    "value": "2",
+                    "text": "NO"
+                }
+            ]
+        }
+    },
+    {
+        "values": {
+            "GROUP(internalid)": [
+                {
+                    "value": "249607",
+                    "text": "249607"
+                }
+            ],
+            "GROUP(accountingPeriod.periodname)": "sep 2024",
+            "GROUP(formulatext)": "0991259546001",
+            "GROUP(formulatext)_1": "09",
+            "GROUP(formulatext)_2": "2024",
+            "GROUP(CUSTBODY_EC_EMISOR.custentityts_ec_cod_tipo_doc_identidad)": "04",
+            "GROUP(CUSTBODY_EC_EMISOR.vatregnumber)": "0990379017001",
+            "GROUP(custbody_ec_emisor)": [
+                {
+                    "value": "39657",
+                    "text": "C-EC-0990379017001 BANCO BOLIVARIANO C.A."
+                }
+            ],
+            "GROUP(formulatext)_3": "- None -",
+            "GROUP(formulatext)_4": "- None -",
+            "GROUP(CUSTBODYEC_TIPO_DE_DOCUMENTO_RETENCION.custrecordts_ec_cod_tipo_comprobante)": "07",
+            "GROUP(custbody_ec_ncomprobantes)": "1",
+            "GROUP(internalid)_1": [
+                {
+                    "value": "249607",
+                    "text": "249607"
+                }
+            ],
+            "GROUP(formulatext)_5": "DP-EC-00000091",
+            "SUM(formulanumeric)": "0",
+            "SUM(custbodyts_ec_base_rate0)": "",
+            "SUM(custbodyts_ec_base_rate12)": "",
+            "SUM(custbody_ec_monto_iva)": "",
+            "GROUP(formulatext)_6": " ",
+            "SUM(formulanumeric)_1": "0",
+            "SUM(formulanumeric)_2": "0",
+            "SUM(formulanumeric)_3": "0",
+            "SUM(formulanumeric)_4": "0",
+            "SUM(formulanumeric)_5": "0",
+            "SUM(formulanumeric)_6": "0",
+            "GROUP(formulatext)_7": " ",
+            "SUM(formulanumeric)_7": "0",
+            "GROUP(trandate)": "07/09/2024",
+            "GROUP(custbody_ec_serie_cxc_retencion)": [
+                {
+                    "value": "",
+                    "text": "- None -"
+                }
+            ],
+            "GROUP(custbody_ts_ec_preimpreso_retencion)": "00000029",
+            "GROUP(custbodyts_ec_cod_wht_autorization)": "4552336987222",
+            "GROUP(formulatext)_8": "01",
+            "GROUP(CUSTBODY_EC_EMISOR.custentity_ts_ec_entidad_relacionada)": [
+                {
+                    "value": "2",
+                    "text": "NO"
+                }
+            ]
+        }
+    },
+    {
+        "values": {
+            "GROUP(internalid)": [
+                {
+                    "value": "249608",
+                    "text": "249608"
+                }
+            ],
+            "GROUP(accountingPeriod.periodname)": "sep 2024",
+            "GROUP(formulatext)": "0991259546001",
+            "GROUP(formulatext)_1": "09",
+            "GROUP(formulatext)_2": "2024",
+            "GROUP(CUSTBODY_EC_EMISOR.custentityts_ec_cod_tipo_doc_identidad)": "04",
+            "GROUP(CUSTBODY_EC_EMISOR.vatregnumber)": "0990379017001",
+            "GROUP(custbody_ec_emisor)": [
+                {
+                    "value": "39657",
+                    "text": "C-EC-0990379017001 BANCO BOLIVARIANO C.A."
+                }
+            ],
+            "GROUP(formulatext)_3": "- None -",
+            "GROUP(formulatext)_4": "- None -",
+            "GROUP(CUSTBODYEC_TIPO_DE_DOCUMENTO_RETENCION.custrecordts_ec_cod_tipo_comprobante)": "07",
+            "GROUP(custbody_ec_ncomprobantes)": "1",
+            "GROUP(internalid)_1": [
+                {
+                    "value": "249608",
+                    "text": "249608"
+                }
+            ],
+            "GROUP(formulatext)_5": "DP-EC-00000092",
+            "SUM(formulanumeric)": "0",
+            "SUM(custbodyts_ec_base_rate0)": "",
+            "SUM(custbodyts_ec_base_rate12)": "",
+            "SUM(custbody_ec_monto_iva)": "",
+            "GROUP(formulatext)_6": " ",
+            "SUM(formulanumeric)_1": "0",
+            "SUM(formulanumeric)_2": "0",
+            "SUM(formulanumeric)_3": "0",
+            "SUM(formulanumeric)_4": "0",
+            "SUM(formulanumeric)_5": "0",
+            "SUM(formulanumeric)_6": "0",
+            "GROUP(formulatext)_7": " ",
+            "SUM(formulanumeric)_7": "0",
+            "GROUP(trandate)": "07/09/2024",
+            "GROUP(custbody_ec_serie_cxc_retencion)": [
+                {
+                    "value": "",
+                    "text": "- None -"
+                }
+            ],
+            "GROUP(custbody_ts_ec_preimpreso_retencion)": "000004589",
+            "GROUP(custbodyts_ec_cod_wht_autorization)": "2589631574236902584123650014789652345691874123025",
+            "GROUP(formulatext)_8": "01",
+            "GROUP(CUSTBODY_EC_EMISOR.custentity_ts_ec_entidad_relacionada)": [
+                {
+                    "value": "2",
+                    "text": "NO"
+                }
+            ]
+        }
+    },
+    {
+        "values": {
+            "GROUP(internalid)": [
+                {
+                    "value": "181666",
+                    "text": "181666"
+                }
+            ],
+            "GROUP(accountingPeriod.periodname)": "sep 2024",
+            "GROUP(formulatext)": "0991259546001",
+            "GROUP(formulatext)_1": "09",
+            "GROUP(formulatext)_2": "2024",
+            "GROUP(CUSTBODY_EC_EMISOR.custentityts_ec_cod_tipo_doc_identidad)": "04",
+            "GROUP(CUSTBODY_EC_EMISOR.vatregnumber)": "0990379017001",
+            "GROUP(custbody_ec_emisor)": [
+                {
+                    "value": "39657",
+                    "text": "C-EC-0990379017001 BANCO BOLIVARIANO C.A."
+                }
+            ],
+            "GROUP(formulatext)_3": "- None -",
+            "GROUP(formulatext)_4": "- None -",
+            "GROUP(CUSTBODYEC_TIPO_DE_DOCUMENTO_RETENCION.custrecordts_ec_cod_tipo_comprobante)": "07",
+            "GROUP(custbody_ec_ncomprobantes)": "1",
+            "GROUP(internalid)_1": [
+                {
+                    "value": "181666",
+                    "text": "181666"
+                }
+            ],
+            "GROUP(formulatext)_5": "AD-00001014",
+            "SUM(formulanumeric)": "0",
+            "SUM(custbodyts_ec_base_rate0)": "",
+            "SUM(custbodyts_ec_base_rate12)": "",
+            "SUM(custbody_ec_monto_iva)": "",
+            "GROUP(formulatext)_6": " ",
+            "SUM(formulanumeric)_1": "8",
+            "SUM(formulanumeric)_2": "0",
+            "SUM(formulanumeric)_3": "0",
+            "SUM(formulanumeric)_4": "0",
+            "SUM(formulanumeric)_5": "0",
+            "SUM(formulanumeric)_6": "0",
+            "GROUP(formulatext)_7": " ",
+            "SUM(formulanumeric)_7": "12",
+            "GROUP(trandate)": "10/09/2024",
+            "GROUP(custbody_ec_serie_cxc_retencion)": [
+                {
+                    "value": "",
+                    "text": "- None -"
+                }
+            ],
+            "GROUP(custbody_ts_ec_preimpreso_retencion)": "0000000157",
+            "GROUP(custbodyts_ec_cod_wht_autorization)": "1245555566669",
+            "GROUP(formulatext)_8": "01",
+            "GROUP(CUSTBODY_EC_EMISOR.custentity_ts_ec_entidad_relacionada)": [
+                {
+                    "value": "2",
+                    "text": "NO"
+                }
+            ]
+        }
+    },
+    {
+        "values": {
+            "GROUP(internalid)": [
+                {
+                    "value": "154433",
+                    "text": "154433"
+                }
+            ],
+            "GROUP(accountingPeriod.periodname)": "sep 2024",
+            "GROUP(formulatext)": "0991259546001",
+            "GROUP(formulatext)_1": "09",
+            "GROUP(formulatext)_2": "2024",
+            "GROUP(CUSTBODY_EC_EMISOR.custentityts_ec_cod_tipo_doc_identidad)": "04",
+            "GROUP(CUSTBODY_EC_EMISOR.vatregnumber)": "0990379017001",
+            "GROUP(custbody_ec_emisor)": [
+                {
+                    "value": "39657",
+                    "text": "C-EC-0990379017001 BANCO BOLIVARIANO C.A."
+                }
+            ],
+            "GROUP(formulatext)_3": "- None -",
+            "GROUP(formulatext)_4": "- None -",
+            "GROUP(CUSTBODYEC_TIPO_DE_DOCUMENTO_RETENCION.custrecordts_ec_cod_tipo_comprobante)": "07",
+            "GROUP(custbody_ec_ncomprobantes)": "1",
+            "GROUP(internalid)_1": [
+                {
+                    "value": "154433",
+                    "text": "154433"
+                }
+            ],
+            "GROUP(formulatext)_5": "DP-EC-00000064",
+            "SUM(formulanumeric)": "0",
+            "SUM(custbodyts_ec_base_rate0)": "",
+            "SUM(custbodyts_ec_base_rate12)": "",
+            "SUM(custbody_ec_monto_iva)": "",
+            "GROUP(formulatext)_6": " ",
+            "SUM(formulanumeric)_1": "6.74",
+            "SUM(formulanumeric)_2": "0",
+            "SUM(formulanumeric)_3": "0",
+            "SUM(formulanumeric)_4": "0",
+            "SUM(formulanumeric)_5": "0",
+            "SUM(formulanumeric)_6": "0",
+            "GROUP(formulatext)_7": " ",
+            "SUM(formulanumeric)_7": "35.92",
+            "GROUP(trandate)": "10/09/2024",
+            "GROUP(custbody_ec_serie_cxc_retencion)": [
+                {
+                    "value": "",
+                    "text": "- None -"
+                }
+            ],
+            "GROUP(custbody_ts_ec_preimpreso_retencion)": "00000028",
+            "GROUP(custbodyts_ec_cod_wht_autorization)": "- None -",
+            "GROUP(formulatext)_8": "01",
+            "GROUP(CUSTBODY_EC_EMISOR.custentity_ts_ec_entidad_relacionada)": [
+                {
+                    "value": "2",
+                    "text": "NO"
+                }
+            ]
+        }
+    }
+]

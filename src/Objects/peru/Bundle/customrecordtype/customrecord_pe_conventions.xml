@@ -1,0 +1,136 @@
+<customrecordtype scriptid="customrecord_pe_conventions">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>T</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Conventions avoid double taxation</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_code_convention">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Código Convención</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_636866_7451241_sb1_824">
+      <custrecord_pe_code_convention>00</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>00 Ninguno</name>
+    </instance>
+    <instance scriptid="val_636867_7451241_sb1_147">
+      <custrecord_pe_code_convention>01</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>01 Canada</name>
+    </instance>
+    <instance scriptid="val_636868_7451241_sb1_810">
+      <custrecord_pe_code_convention>02</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>02 Chile</name>
+    </instance>
+    <instance scriptid="val_636869_7451241_sb1_107">
+      <custrecord_pe_code_convention>03</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>03 Comunidad Andina De Naciones (CAN)</name>
+    </instance>
+    <instance scriptid="val_636870_7451241_sb1_698">
+      <custrecord_pe_code_convention>04</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>04 Brasil</name>
+    </instance>
+    <instance scriptid="val_636871_7451241_sb1_710">
+      <custrecord_pe_code_convention>05</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>05 Estados Unidos Mexicanos</name>
+    </instance>
+    <instance scriptid="val_636872_7451241_sb1_555">
+      <custrecord_pe_code_convention>06</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>06 Republica De Corea</name>
+    </instance>
+    <instance scriptid="val_636873_7451241_sb1_108">
+      <custrecord_pe_code_convention>07</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>07 Confederacion Suiza</name>
+    </instance>
+    <instance scriptid="val_636874_7451241_sb1_443">
+      <custrecord_pe_code_convention>08</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>08 Portugal</name>
+    </instance>
+    <instance scriptid="val_636875_7451241_sb1_222">
+      <custrecord_pe_code_convention>09</custrecord_pe_code_convention>
+      <isinactive>F</isinactive>
+      <name>09 Otros</name>
+    </instance>
+  </instances>
+</customrecordtype>

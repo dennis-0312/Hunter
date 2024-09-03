@@ -1,0 +1,196 @@
+<customrecordtype scriptid="customrecord_pe_payment_method">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>F</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>T</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Payment Method</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_cod_payment_method">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Code</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_640306_7451241_sb1_337">
+      <custrecord_pe_cod_payment_method>001</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Deposito en cuenta</name>
+    </instance>
+    <instance scriptid="val_640307_7451241_sb1_829">
+      <custrecord_pe_cod_payment_method>002</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Giro</name>
+    </instance>
+    <instance scriptid="val_640308_7451241_sb1_480">
+      <custrecord_pe_cod_payment_method>003</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Transferencia de fondos</name>
+    </instance>
+    <instance scriptid="val_640309_7451241_sb1_515">
+      <custrecord_pe_cod_payment_method>004</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Orden de pago</name>
+    </instance>
+    <instance scriptid="val_640310_7451241_sb1_950">
+      <custrecord_pe_cod_payment_method>005</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Tarjeta de debito</name>
+    </instance>
+    <instance scriptid="val_640311_7451241_sb1_396">
+      <custrecord_pe_cod_payment_method>006</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Tarjeta de credito emitida en el pais por una empresa del sistema financiero</name>
+    </instance>
+    <instance scriptid="val_640312_7451241_sb1_254">
+      <custrecord_pe_cod_payment_method>007</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Cheques con la clausula de &quot;no negociable&quot;, &quot;intransferibles&quot;, &quot;no a la orden&quot; u otra equivalente, a que se refiere el inciso g) del articulo 5° de la ley</name>
+    </instance>
+    <instance scriptid="val_640313_7451241_sb1_686">
+      <custrecord_pe_cod_payment_method>008</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Efectivo, por operaciones en las que no existe obligacion de utilizar medio de pago</name>
+    </instance>
+    <instance scriptid="val_640314_7451241_sb1_902">
+      <custrecord_pe_cod_payment_method>009</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Efectivo, en los demas casos</name>
+    </instance>
+    <instance scriptid="val_640315_7451241_sb1_264">
+      <custrecord_pe_cod_payment_method>010</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Medios de pago usados en comercio exterior</name>
+    </instance>
+    <instance scriptid="val_640316_7451241_sb1_997">
+      <custrecord_pe_cod_payment_method>011</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Documentos emitidos por las edpymes y las cooperativas de ahorro y credito no autorizadas a captar depositos del publico</name>
+    </instance>
+    <instance scriptid="val_640317_7451241_sb1_422">
+      <custrecord_pe_cod_payment_method>012</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Tarjeta de credito emitida en el pais o en el exterior por una empresa no perteneciente al sistema financiero, cuyo objeto principal sea la emision y administracion de tarjetas de credito</name>
+    </instance>
+    <instance scriptid="val_640318_7451241_sb1_818">
+      <custrecord_pe_cod_payment_method>013</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Tarjetas de credito emitidas en el exterior por empresas bancarias o financieras no domiciliadas</name>
+    </instance>
+    <instance scriptid="val_640319_7451241_sb1_772">
+      <custrecord_pe_cod_payment_method>101</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Transferencias - comercio exterior</name>
+    </instance>
+    <instance scriptid="val_640320_7451241_sb1_337">
+      <custrecord_pe_cod_payment_method>102</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Cheques bancarios  - comercio exterior</name>
+    </instance>
+    <instance scriptid="val_640321_7451241_sb1_175">
+      <custrecord_pe_cod_payment_method>103</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Orden de pago simple  - comercio exterior</name>
+    </instance>
+    <instance scriptid="val_640322_7451241_sb1_591">
+      <custrecord_pe_cod_payment_method>104</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Orden de pago documentario  - comercio exterior</name>
+    </instance>
+    <instance scriptid="val_640323_7451241_sb1_259">
+      <custrecord_pe_cod_payment_method>105</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Remesa simple  - comercio exterior</name>
+    </instance>
+    <instance scriptid="val_640324_7451241_sb1_192">
+      <custrecord_pe_cod_payment_method>106</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Remesa documentaria  - comercio exterior</name>
+    </instance>
+    <instance scriptid="val_640325_7451241_sb1_712">
+      <custrecord_pe_cod_payment_method>107</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Carta de credito simple  - comercio exterior</name>
+    </instance>
+    <instance scriptid="val_640326_7451241_sb1_733">
+      <custrecord_pe_cod_payment_method>108</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Carta de credito documentario  - comercio exterior</name>
+    </instance>
+    <instance scriptid="val_640327_7451241_sb1_601">
+      <custrecord_pe_cod_payment_method>999</custrecord_pe_cod_payment_method>
+      <isinactive>F</isinactive>
+      <name>Otros medios de pago</name>
+    </instance>
+  </instances>
+</customrecordtype>

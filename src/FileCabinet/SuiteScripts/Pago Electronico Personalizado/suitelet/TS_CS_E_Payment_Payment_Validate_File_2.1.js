@@ -7,7 +7,6 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search', 'N/format'], (url
     var rowSelected = "";
 
     const pageInit = (scriptContext) => {
-        console.log('START PAGEINIT');
         currentRecord = currentRecord.get();
     }
 
@@ -59,12 +58,12 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search', 'N/format'], (url
     const saveRecord = (scriptContext) => {
         let currentRecord = scriptContext.currentRecord;
         if (!currentRecord.getValue('custpage_f_file')) {
-            alert('Por favor seleccione un archivo de retorno a procesar');
+            dialog.alert({ title: 'Información', message: 'Por favor seleccione un archivo de retorno a procesar.' });
             return false;
         }
 
         if (verifySelectedSublist(currentRecord, 'custpage_sl_payments', 'custpage_slf_select')) {
-            alert('No se encontró ningúna orden de pago en el archivo de retorno');
+            dialog.alert({ title: 'Información', message: 'No se encontró ningúna orden de pago en el archivo de retorno.' });
             return false;
         }
         return true;

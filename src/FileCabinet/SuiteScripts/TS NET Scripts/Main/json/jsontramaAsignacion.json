@@ -1,16 +1,37 @@
 {
-    "accion": "actualizar",
-    "idordentrabajo": "273",
-    "tecnico": "153",
-    "codigodispositivo": "1099",
-    "ubicacion": "19",
-    "horatrabajoasignacion": "23:00",
-    "fechatrabajoasignacion": "2023/12/06",
-    "estadoordendeservicio": "S",
-    "supervisor": "13",
-    "novedad": false,
-    "observacion": "Sin observación",
-    "fueraciudad": false,
-    "fuerataller": false,
-    "estadoChequeo": 1
+    "type": "error.SuiteScriptError",
+    "name": "SSS_INVALID_SRCH_COL",
+    "message": "Una columna de búsqueda nlobj contiene una columna no válida o la sintaxis no es correcta: custrecord_ec_cod_tipo_comprobante_fel.",
+    "id": "",
+    "stack": [
+        "getRange(N/searchObject)",
+        "getInvoiceTransaction(/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_Outbound_Validation.js:244)",
+        "generateInvoiceLines(/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_Outbound_Validation.js:141)",
+        "validate(/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_Outbound_Validation.js:46)",
+        "anonymous(N/plugin)",
+        "runPlugin(/SuiteBundles/Bundle 436209/com.netsuite.electronicinvoicing/src/app/einvoice/app_ei_outbound_validation_plugin_manager.js:25)",
+        "generateEDocument(/SuiteBundles/Bundle 436209/com.netsuite.electronicinvoicing/src/app/einvoice/app_einvoice_manager.js:473)",
+        "generate(/SuiteBundles/Bundle 436209/com.netsuite.electronicinvoicing/src/comp/su/su_ei_generation_service.js:231)",
+        "onRequest(/SuiteBundles/Bundle 436209/com.netsuite.electronicinvoicing/src/comp/su/su_ei_generation_service.js:162)"
+    ],
+    "cause": {
+        "type": "internal error",
+        "code": "SSS_INVALID_SRCH_COL",
+        "details": "Una columna de búsqueda nlobj contiene una columna no válida o la sintaxis no es correcta: custrecord_ec_cod_tipo_comprobante_fel.",
+        "userEvent": null,
+        "stackTrace": [
+            "getRange(N/searchObject)",
+            "getInvoiceTransaction(/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_Outbound_Validation.js:244)",
+            "generateInvoiceLines(/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_Outbound_Validation.js:141)",
+            "validate(/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_Outbound_Validation.js:46)",
+            "anonymous(N/plugin)",
+            "runPlugin(/SuiteBundles/Bundle 436209/com.netsuite.electronicinvoicing/src/app/einvoice/app_ei_outbound_validation_plugin_manager.js:25)",
+            "generateEDocument(/SuiteBundles/Bundle 436209/com.netsuite.electronicinvoicing/src/app/einvoice/app_einvoice_manager.js:473)",
+            "generate(/SuiteBundles/Bundle 436209/com.netsuite.electronicinvoicing/src/comp/su/su_ei_generation_service.js:231)",
+            "onRequest(/SuiteBundles/Bundle 436209/com.netsuite.electronicinvoicing/src/comp/su/su_ei_generation_service.js:162)"
+        ],
+        "notifyOff": false
+    },
+    "notifyOff": false,
+    "userFacing": false
 }

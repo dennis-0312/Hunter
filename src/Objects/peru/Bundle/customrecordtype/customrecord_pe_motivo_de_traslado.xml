@@ -1,0 +1,179 @@
+<customrecordtype scriptid="customrecord_pe_motivo_de_traslado">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description>PE MOTIVO DE TRASLADO</description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE MOTIVO DE TRASLADO</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_motivo_de_traslado">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description>PE MOTIVO DE TRASLADO</description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE MOTIVO DE TRASLADO</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_nombre_del_motivo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description>PE NOMBRE DEL MOTIVO</description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE NOMBRE DEL MOTIVO</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_641343_7451241_sb1_799">
+      <custrecord_pe_motivo_de_traslado>01</custrecord_pe_motivo_de_traslado>
+      <custrecord_pe_nombre_del_motivo>VENTA</custrecord_pe_nombre_del_motivo>
+      <isinactive>F</isinactive>
+      <name>01 VENTA</name>
+    </instance>
+    <instance scriptid="val_641344_7451241_sb1_848">
+      <custrecord_pe_motivo_de_traslado>02</custrecord_pe_motivo_de_traslado>
+      <custrecord_pe_nombre_del_motivo>COMPRA</custrecord_pe_nombre_del_motivo>
+      <isinactive>F</isinactive>
+      <name>02 COMPRA</name>
+    </instance>
+    <instance scriptid="val_641345_7451241_sb1_170">
+      <custrecord_pe_motivo_de_traslado>04</custrecord_pe_motivo_de_traslado>
+      <custrecord_pe_nombre_del_motivo>TRASLADO ENTRE ESTABLECIMIENTOS DE LA MISMA EMPRESA</custrecord_pe_nombre_del_motivo>
+      <isinactive>F</isinactive>
+      <name>04 TRASLADO ENTRE ESTABLECIMIENTOS DE LA MISMA EMPRESA</name>
+    </instance>
+    <instance scriptid="val_641346_7451241_sb1_166">
+      <custrecord_pe_motivo_de_traslado>08</custrecord_pe_motivo_de_traslado>
+      <custrecord_pe_nombre_del_motivo>IMPORTACION</custrecord_pe_nombre_del_motivo>
+      <isinactive>F</isinactive>
+      <name>08 IMPORTACION</name>
+    </instance>
+    <instance scriptid="val_641347_7451241_sb1_200">
+      <custrecord_pe_motivo_de_traslado>09</custrecord_pe_motivo_de_traslado>
+      <custrecord_pe_nombre_del_motivo>EXPORTACION</custrecord_pe_nombre_del_motivo>
+      <isinactive>F</isinactive>
+      <name>09 EXPORTACION</name>
+    </instance>
+    <instance scriptid="val_641348_7451241_sb1_661">
+      <custrecord_pe_motivo_de_traslado>13</custrecord_pe_motivo_de_traslado>
+      <custrecord_pe_nombre_del_motivo>OTROS</custrecord_pe_nombre_del_motivo>
+      <isinactive>F</isinactive>
+      <name>13 OTROS</name>
+    </instance>
+    <instance scriptid="val_641349_7451241_sb1_535">
+      <custrecord_pe_motivo_de_traslado>14</custrecord_pe_motivo_de_traslado>
+      <custrecord_pe_nombre_del_motivo>VENTA SUJETA A CONFIRMACION DEL COMPRADOR</custrecord_pe_nombre_del_motivo>
+      <isinactive>F</isinactive>
+      <name>14 VENTA SUJETA A CONFIRMACION DEL COMPRADOR</name>
+    </instance>
+    <instance scriptid="val_641350_7451241_sb1_820">
+      <custrecord_pe_motivo_de_traslado>18</custrecord_pe_motivo_de_traslado>
+      <custrecord_pe_nombre_del_motivo>TRASLADO EMISOR ITINERANTE CP</custrecord_pe_nombre_del_motivo>
+      <isinactive>F</isinactive>
+      <name>18 TRASLADO EMISOR ITINERANTE CP</name>
+    </instance>
+    <instance scriptid="val_641351_7451241_sb1_167">
+      <custrecord_pe_motivo_de_traslado>19</custrecord_pe_motivo_de_traslado>
+      <custrecord_pe_nombre_del_motivo>TRASLADO A ZONA PRIMARIA</custrecord_pe_nombre_del_motivo>
+      <isinactive>F</isinactive>
+      <name>19 TRASLADO A ZONA PRIMARIA</name>
+    </instance>
+  </instances>
+</customrecordtype>

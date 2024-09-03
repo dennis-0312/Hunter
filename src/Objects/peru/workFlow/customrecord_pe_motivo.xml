@@ -1,0 +1,209 @@
+<customrecordtype scriptid="customrecord_pe_motivo">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Motivo</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_codigo_motivo">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Codigo Motivo</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_tipo_documento">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Tipo Documento</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>[scriptid=customrecord_pe_fiscal_document_type]</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_689660_7451241_sb1_774">
+      <custrecord_pe_codigo_motivo>13</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Ajustes – montos y/o fechas de pago</name>
+    </instance>
+    <instance scriptid="val_689661_7451241_sb1_712">
+      <custrecord_pe_codigo_motivo>01</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Anulacion de la operacion</name>
+    </instance>
+    <instance scriptid="val_689662_7451241_sb1_926">
+      <custrecord_pe_codigo_motivo>02</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Anulacion por error en el RUC</name>
+    </instance>
+    <instance scriptid="val_689663_7451241_sb1_836">
+      <custrecord_pe_codigo_motivo>02</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Aumento en el valor</name>
+    </instance>
+    <instance scriptid="val_689664_7451241_sb1_131">
+      <custrecord_pe_codigo_motivo>08</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Bonificacion</name>
+    </instance>
+    <instance scriptid="val_689665_7451241_sb1_796">
+      <custrecord_pe_codigo_motivo>03</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Correccion por error en la descripcion</name>
+    </instance>
+    <instance scriptid="val_689666_7451241_sb1_958">
+      <custrecord_pe_codigo_motivo>04</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Descuento global</name>
+    </instance>
+    <instance scriptid="val_689667_7451241_sb1_359">
+      <custrecord_pe_codigo_motivo>05</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Descuento por item</name>
+    </instance>
+    <instance scriptid="val_689668_7451241_sb1_313">
+      <custrecord_pe_codigo_motivo>07</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Devolucion por item</name>
+    </instance>
+    <instance scriptid="val_689669_7451241_sb1_863">
+      <custrecord_pe_codigo_motivo>06</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Devolucion total</name>
+    </instance>
+    <instance scriptid="val_689670_7451241_sb1_380">
+      <custrecord_pe_codigo_motivo>09</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Disminucion en el valor</name>
+    </instance>
+    <instance scriptid="val_689671_7451241_sb1_244">
+      <custrecord_pe_codigo_motivo>01</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Intereses por mora</name>
+    </instance>
+    <instance scriptid="val_689672_7451241_sb1_282">
+      <custrecord_pe_codigo_motivo>10</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Otros Conceptos</name>
+    </instance>
+    <instance scriptid="val_689673_7451241_sb1_220">
+      <custrecord_pe_codigo_motivo>03</custrecord_pe_codigo_motivo>
+      <custrecord_pe_tipo_documento></custrecord_pe_tipo_documento>
+      <isinactive>F</isinactive>
+      <name>Penalidades/otros conceptos</name>
+    </instance>
+  </instances>
+</customrecordtype>

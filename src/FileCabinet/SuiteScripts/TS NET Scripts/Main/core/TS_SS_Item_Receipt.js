@@ -22,19 +22,20 @@ define(['N/https', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/task', 'N/for
          */
         const execute = (scriptContext) => {
             const objContext = runtime.getCurrentScript();
+            let itemID = objContext.getParameter({ name: 'custscript_ht_param_itemreceiptid' });
+            log.debug('itemID', itemID);
+            let arrTempID = JSON.parse(itemID);
             try {
-                let itemID = objContext.getParameter({ name: 'custscript_ht_param_itemreceiptid' });
-                let arrTempID = JSON.parse(itemID);
                 log.debug('arrTempID', arrTempID + ' - ' + 'Procesando...');
-                let objRecord_item = record.load({ type: 'itemreceipt', id: arrTempID, isDynamic: false });
+                let objRecord_item = record.load({ type: 'itemreceipt', id: arrTempID, isDynamic: true });
                 let linecount = objRecord_item.getLineCount({ sublistId: 'item' })
-                //log.debug('linecount', linecount);
+                log.debug('linecount', linecount);
                 let tranDate = objRecord_item.getValue('trandate');
                 tranDate = format.parse({ value: tranDate, type: format.Type.DATE });
                 let arrayInventoryNumber = [];
                 let continuar = true;
                 let status = 0;
-                for (let i = 0; i < linecount; i++) {
+                for (let i = 0; i < 200; i++) {
                     if (continuar == true) {
                         let item = objRecord_item.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
                         let typeItem = objRecord_item.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_ai_componentechaser', line: i });
@@ -129,7 +130,7 @@ define(['N/https', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/task', 'N/for
                     }
                 });
 
-                let sql = 'SELECT id FROM transaction WHERE custbody_ht_ir_no_recepcionado = 0 AND custbody_ht_ir_recepcionado = 0 ORDER BY id ASC FETCH FIRST 1 ROWS ONLY';
+                let sql = 'SELECT id FROM transaction WHERE custbody_ht_ir_no_recepcionado = 0 AND custbody_ht_ir_recepcionado = 0 AND custbody_ec_cre_aut IS NOT NULL ORDER BY id ASC FETCH FIRST 1 ROWS ONLY';
                 let resultSet = query.runSuiteQL({ query: sql });
                 let results = resultSet.asMappedResults();
                 if (results.length > 0) {
@@ -156,6 +157,7 @@ define(['N/https', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/task', 'N/for
                 }
             } catch (error) {
                 log.error('Error-getInputData', error);
+                log.error('Error-arrTempID', arrTempID);
                 record.submitFields({
                     type: 'itemreceipt',
                     id: arrTempID,

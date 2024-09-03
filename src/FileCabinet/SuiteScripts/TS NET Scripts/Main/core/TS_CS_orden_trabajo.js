@@ -67,6 +67,11 @@ define([
                 let field2 = currentRecord.getField('custrecord_ht_ot_numero_puertas');
                 field2.isDisplay = false;
             }
+
+            // if (typeMode == 'edit' && currentRecord.getValue('custrecord_flujo_de_convenio')) {
+            let myFieldEstadoOT = currentRecord.getField('custrecord_ht_ot_estado');
+            myFieldEstadoOT.isDisabled = true;
+            // }
         }
     }
 

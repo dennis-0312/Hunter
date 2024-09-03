@@ -3,6 +3,8 @@
  *@NScriptType Restlet
  */
 define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode, task) {
+    const URLPX = 'https://apipx.24hm.net/API_PX/WSPX.asmx'; // -> reemplezar https://www2.huntermonitoreo.com/API_PX/WSPX.asmx
+
     function _post(context) {
         log.error("context-sendPXServer", context);
         /*let mapReduceScript = task.create({ taskType: task.TaskType.MAP_REDUCE });
@@ -31,7 +33,7 @@ define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode,
 
         log.debug('raw', raw);
         const resp = https.post({
-            url: "https://www2.huntermonitoreo.com/API_PX/WSPX.asmx?op=AutenticacionUsuarioPx",
+            url: `${URLPX}?op=AutenticacionUsuarioPx`,
             headers: headers1,
             body: raw
         });
@@ -67,7 +69,7 @@ define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode,
             "</soap:Body>\r\n" +
             "</soap:Envelope>";
         const resp2 = https.post({
-            url: "https://www2.huntermonitoreo.com/API_PX/WSPX.asmx?op=InsertaOrden",
+            url: `${URLPX}?op=InsertaOrden`,
             headers: headers2,
             body: rawInsert
         });
@@ -86,9 +88,9 @@ define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode,
         rowXml = getInstalacionBody(context);
         /*
         if (context.OperacionOrden == "002") {
-          rowXml = getDesinstalacionBody(context);
+            rowXml = getDesinstalacionBody(context);
         } else {
-          rowXml = getInstalacionBody(context);
+            rowXml = getInstalacionBody(context);
         }*/
         return rowXml;
     }

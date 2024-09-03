@@ -1,0 +1,251 @@
+<customrecordtype scriptid="customrecord_pe_tipo_facturacion">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Tipo Facturacion</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_cod_fact">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Cod Fact</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_op_type_subsidiary">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>MULTISELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE OP Type Subsidiary</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-117</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_652222_7451241_sb1_226">
+      <custrecord_pe_cod_fact>0200</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Exportación de Bienes</name>
+    </instance>
+    <instance scriptid="val_652223_7451241_sb1_589">
+      <custrecord_pe_cod_fact>0205</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Exportación de Servicios - Servicios que conformen un Paquete Turístico</name>
+    </instance>
+    <instance scriptid="val_652224_7451241_sb1_304">
+      <custrecord_pe_cod_fact>0202</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Exportación de Servicios – Prestación de servicios de hospedaje No Domiciliado</name>
+    </instance>
+    <instance scriptid="val_652225_7451241_sb1_596">
+      <custrecord_pe_cod_fact>0201</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Exportación de Servicios – Prestación servicios realizados</name>
+    </instance>
+    <instance scriptid="val_652226_7451241_sb1_802">
+      <custrecord_pe_cod_fact>0208</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Exportación de Servicios – Prestación servicios realizados parcialmente en el extranjero</name>
+    </instance>
+    <instance scriptid="val_652227_7451241_sb1_818">
+      <custrecord_pe_cod_fact>0204</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Exportación de Servicios – Servicios a naves y aeronaves de bandera extranjera</name>
+    </instance>
+    <instance scriptid="val_652228_7451241_sb1_574">
+      <custrecord_pe_cod_fact>0206</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Exportación de Servicios – Servicios complementarios al transporte de carga</name>
+    </instance>
+    <instance scriptid="val_652229_7451241_sb1_921">
+      <custrecord_pe_cod_fact>0207</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Exportación de Servicios – Suministro de energía eléctrica a favor de sujetos domiciliados en ZED</name>
+    </instance>
+    <instance scriptid="val_652230_7451241_sb1_129">
+      <custrecord_pe_cod_fact>0203</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Exportación de Servicios – Transporte de navieras</name>
+    </instance>
+    <instance scriptid="val_652231_7451241_sb1_717">
+      <custrecord_pe_cod_fact>0301</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Operaciones con Carta de porte aéreo (emitidas en el ámbito nacional)</name>
+    </instance>
+    <instance scriptid="val_652232_7451241_sb1_863">
+      <custrecord_pe_cod_fact>0303</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Operaciones de Pago de regalía petrolera</name>
+    </instance>
+    <instance scriptid="val_652233_7451241_sb1_643">
+      <custrecord_pe_cod_fact>0302</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Operaciones de Transporte ferroviario de pasajeros</name>
+    </instance>
+    <instance scriptid="val_652234_7451241_sb1_927">
+      <custrecord_pe_cod_fact>1001</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Operación Sujeta a Detracción</name>
+    </instance>
+    <instance scriptid="val_652235_7451241_sb1_718">
+      <custrecord_pe_cod_fact>1002</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Operación Sujeta a Detracción- Recursos Hidrobiologicos</name>
+    </instance>
+    <instance scriptid="val_652236_7451241_sb1_480">
+      <custrecord_pe_cod_fact>1004</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Operación Sujeta a Detracción- Servicios de Transporte Carga</name>
+    </instance>
+    <instance scriptid="val_652237_7451241_sb1_221">
+      <custrecord_pe_cod_fact>1003</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Operación Sujeta a Detracción- Servicios de Transporte Pasajeros</name>
+    </instance>
+    <instance scriptid="val_652238_7451241_sb1_763">
+      <custrecord_pe_cod_fact>2001</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Operación Sujeta a Percepción</name>
+    </instance>
+    <instance scriptid="val_652239_7451241_sb1_602">
+      <custrecord_pe_cod_fact>0112</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Venta Interna - Sustenta Gastos Deducibles Persona Natural</name>
+    </instance>
+    <instance scriptid="val_652240_7451241_sb1_864">
+      <custrecord_pe_cod_fact>0113</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Venta Interna-NRUS</name>
+    </instance>
+    <instance scriptid="val_652241_7451241_sb1_641">
+      <custrecord_pe_cod_fact>0401</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Ventas no domiciliados que no califican como exportación</name>
+    </instance>
+    <instance scriptid="val_652242_7451241_sb1_468">
+      <custrecord_pe_cod_fact>0101</custrecord_pe_cod_fact>
+      <custrecord_pe_op_type_subsidiary></custrecord_pe_op_type_subsidiary>
+      <isinactive>F</isinactive>
+      <name>Venta interna</name>
+    </instance>
+  </instances>
+</customrecordtype>

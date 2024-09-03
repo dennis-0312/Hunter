@@ -1,0 +1,132 @@
+<savedcsvimport scriptid="custimport_266_7451241_sb1_810">
+  <charencoding>UTF_8</charencoding>
+  <columndelimiter>SEMICOLON</columndelimiter>
+  <datahandling>ADD</datahandling>
+  <decimaldelimiter>PERIOD</decimaldelimiter>
+  <ignorereadonly>T</ignorereadonly>
+  <importname>ARTICULOS CARGA MASIVA</importname>
+  <logsystemnotescustfields>F</logsystemnotescustfields>
+  <multiselectdelimiter>|</multiselectdelimiter>
+  <overwritemissingfields>F</overwritemissingfields>
+  <overwritesublists>F</overwritesublists>
+  <recordtype>SERVICEPURCHASEITEM</recordtype>
+  <runserversuitescript>F</runserversuitescript>
+  <usemultithread>F</usemultithread>
+  <validatemandatorycustfields>T</validatemandatorycustfields>
+  <audience>
+    <allemployees>F</allemployees>
+    <allpartners>F</allpartners>
+    <allroles>F</allroles>
+    <globaledit>F</globaledit>
+    <ispublic>F</ispublic>
+    <roles></roles>
+  </audience>
+  <filemappings>
+    <filemapping>
+      <file>SERVICEPURCHASEITEM</file>
+    </filemapping>
+  </filemappings>
+  <recordmappings>
+    <recordmapping>
+      <record>SERVICEPURCHASEITEM</record>
+      <fieldmappings>
+        <fieldmapping>
+          <field>COSTCATEGORY</field>
+          <value>1</value>
+        </fieldmapping>
+        <fieldmapping>
+          <field>[scriptid=custitem_pe_is_anticipo]</field>
+          <columnreference>
+            <column>PE ES ANTICIPO</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>[scriptid=custitem_pe_measurement_unit]</field>
+          <columnreference>
+            <column>PE UNIDADES DE MEDIDA</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>DISPLAYNAME</field>
+          <columnreference>
+            <column>NOMBRE/CÓDIGO PARA MOSTRAR</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>EXPENSEACCOUNT</field>
+          <columnreference>
+            <column>CUENTA DE GASTOS</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>EXTERNALID</field>
+          <columnreference>
+            <column>ID Externo</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>ISFULFILLABLE</field>
+          <columnreference>
+            <column>PUEDE SER EJECUTADO/RECIBIDO</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>ITEMID</field>
+          <columnreference>
+            <column>NOMBRE/NÚMERO DEL ARTÍCULO</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>PURCHASEDESCRIPTION</field>
+          <columnreference>
+            <column>DESCRIPCIÓN DE LA COMPRA</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>PURCHASEUNIT</field>
+          <columnreference>
+            <column>UNIDAD DE COMPRA PRINCIPAL</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>SUBSIDIARY</field>
+          <value>3</value>
+        </fieldmapping>
+        <fieldmapping>
+          <field>TAXSCHEDULE</field>
+          <columnreference>
+            <column>PROGRAMA FISCAL</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>UNITSTYPE</field>
+          <columnreference>
+            <column>TIPO DE UNIDADES PRINCIPALES</column>
+            <file>SERVICEPURCHASEITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+      </fieldmappings>
+    </recordmapping>
+  </recordmappings>
+</savedcsvimport>

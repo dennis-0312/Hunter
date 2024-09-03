@@ -1,190 +1,180 @@
-[
-    {
-        "ordenServicioid": "30952",
-        "ordenTrabajoid": "522",
-        "clienteid": "431",
-        "vehiculoid": "192",
-        "tallerid": "",
-        "consecionarioid": "2",
-        "tecnicoid": "",
-        "ordenServicio": "OS00000571",
-        "ordenTrabajo": "OT0000000522",
-        "ceduleruc": "20381041957",
-        "cliente": "TS NET",
-        "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
-        "taller": "SIN ASIGNAR",
-        "consecionario": "SIN CONCESIONARIO",
-        "fechaTrabajo": "",
-        "horaTrabajo": "",
-        "comentario": "",
-        "comentarioTec": "",
-        "tecnico": "SIN ASIGNAR",
-        "fueraCuidad": false,
-        "fueraTaller": false,
-        "producto": "MONITOREO",
-        "direccion": "LIBERTADORES TEST",
-        "email": "tsnet.evol@myevol.biz",
-        "telefono": "+5939875236998",
-        "motor": "G3H7E0144011",
-        "chasis": "ME1RG4253N2044011",
-        "tipoTrabajo": "VENT HM AMI EQUIPO",
-        "nota": "",
-        "consideracionTrabajoTecnico": "",
-        "placaColor": "ABC-4011/AZUL",
-        "marcaModeloVersion": "KIA/SOLUTO LX AC 1.4 4P 4X2 TM/FORD - EXPLORER XLT AWD",
-        "trabajo": "VENT HM AMI EQUIPO;VENT HM AMI TRANSMISIÓN;",
-        "serie": "",
-        "modelo": "",
-        "unidad": "",
-        "vid": "",
-        "ip": "",
-        "simcard": "",
-        "servidor": "",
-        "fimware": "",
-        "script": "",
-        "apn": "",
-        "imei": "",
-        "ubicacion": ""
+{
+    "paymentBatch": {
+        "internalid": {
+            "value": "2020",
+            "text": "2020"
+        },
+        "custrecord_ts_epmt_prepmt_status": "Registrado",
+        "custrecord_ts_epmt_prepmt_currency": {
+            "value": "1",
+            "text": "US Dollar"
+        },
+        "custrecord_ts_epmt_prepmt_pay_file_forma": {
+            "value": "",
+            "text": ""
+        },
+        "custrecord_ts_epmt_prepmt_payment_date": "2024-05-22T07:00:00.000Z",
+        "custrecord_ts_epmt_prepmt_pdf_file_url": "",
+        "custrecord_ts_epmt_prepmt_tef_file_url": "",
+        "custrecord_ts_epmt_prepmt_tef_template": {
+            "value": "1",
+            "text": "1"
+        },
+        "custrecord_ts_epmt_prepmt_subsidiary": {
+            "value": "2",
+            "text": "Empresa principal : CARSEG"
+        },
+        "custrecord_ts_epmt_prepmt_bank_account": {
+            "value": "1422",
+            "text": "11001030110 BANCO BOLIVARIANO (CTA.CTE. 8939)"
+        },
+        "custrecord_ts_epmt_prepmt_currency_symbol": "USD",
+        "custrecord_ts_epmt_prepmt_bank_account_number": "11001030110",
+        "custrecord_ts_epmt_prepmt_bank_account_name": "ACTIVO : ACTIVO CORRIENTE : CAJA Y BANCOS : BANCOS NACIONALES : CUENTAS CORRIENTES : BANCO BOLIVARIANO (CTA.CTE. 8939)",
+        "detail": [
+            {
+                "internalid": {
+                    "value": "1266",
+                    "text": "1266"
+                },
+                "custrecord_ts_epmt_prepaydet_origin_tran": {
+                    "value": "109648",
+                    "text": "Cheque #7897991"
+                },
+                "custrecord_ts_epmt_prepaydet_tran_amount": 150,
+                "custrecord_ts_epmt_prepaydet_paym_amount": 150,
+                "custrecord_ts_epmt_prepaydet_payord_acc": {
+                    "value": "",
+                    "text": ""
+                },
+                "custrecord_ts_epmt_prepaydet_paym_method": {
+                    "value": "2",
+                    "text": "CHE"
+                },
+                "custrecord_ts_epmt_prepaydet_status": "Registrado",
+                "custrecord_ts_epmt_prepaydet_gener_trans": {
+                    "value": "",
+                    "text": " "
+                },
+                "custrecord_ts_epmt_prepaydet_entity": {
+                    "value": "548",
+                    "text": "C-EC-12345678"
+                },
+                "custrecord_ts_epmt_prepaydet_pre_payment": {
+                    "value": "2020",
+                    "text": "2020"
+                },
+                "memo": "",
+                "custrecord_ts_epmt_prepaydet_entity.type": {
+                    "value": "CustJob",
+                    "text": "Cliente"
+                }
+            }
+        ],
+        "ebanks": []
     },
-    {
-        "ordenServicioid": "31064",
-        "ordenTrabajoid": "524",
-        "clienteid": "431",
-        "vehiculoid": "192",
-        "tallerid": "",
-        "consecionarioid": "2",
-        "tecnicoid": "",
-        "ordenServicio": "OS00000577",
-        "ordenTrabajo": "OT0000000524",
-        "ceduleruc": "20381041957",
-        "cliente": "TS NET",
-        "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
-        "taller": "SIN ASIGNAR",
-        "consecionario": "SIN CONCESIONARIO",
-        "fechaTrabajo": "",
-        "horaTrabajo": "",
-        "comentario": "",
-        "comentarioTec": "",
-        "tecnico": "SIN ASIGNAR",
-        "fueraCuidad": false,
-        "fueraTaller": false,
-        "producto": "MONITOREO",
-        "direccion": "LIBERTADORES TEST",
-        "email": "tsnet.evol@myevol.biz",
-        "telefono": "+5939875236998",
-        "motor": "G3H7E0144011",
-        "chasis": "ME1RG4253N2044011",
-        "tipoTrabajo": "VENT HM AMI EQUIPO",
-        "nota": "",
-        "consideracionTrabajoTecnico": "",
-        "placaColor": "ABC-4011/AZUL",
-        "marcaModeloVersion": "KIA/SOLUTO LX AC 1.4 4P 4X2 TM/FORD - EXPLORER XLT AWD",
-        "trabajo": "VENT HM AMI EQUIPO;VENT HM AMI TRANSMISIÓN;",
-        "serie": "",
-        "modelo": "",
-        "unidad": "",
-        "vid": "",
-        "ip": "",
-        "simcard": "",
-        "servidor": "",
-        "fimware": "",
-        "script": "",
-        "apn": "",
-        "imei": "",
-        "ubicacion": ""
+    "customers": {
+        "548": {
+            "internalid": {
+                "value": "548",
+                "text": "548"
+            },
+            "altname": "Cesar Guillermo Coronado Guardia",
+            "entityid": "C-EC-12345678",
+            "companyname": "Cesar Coronado",
+            "salesrep": {
+                "value": "10",
+                "text": "Bruno Acosta"
+            },
+            "category": {
+                "value": "10",
+                "text": "012 Pymes"
+            },
+            "email": "ccoronado@hotmail.com",
+            "phone": "(05) 399-6654",
+            "subsidiary": {
+                "value": "2",
+                "text": "Empresa principal : CARSEG"
+            },
+            "custentityts_ec_cod_tipo_doc_identidad": "06",
+            "vatregnumber": "12345678",
+            "address": "Cesar Guillermo Coronado Guardia\nAv Las Americas 952\nVilla\nEcuador",
+            "address_country": "EC",
+            "address1": "",
+            "address2": "",
+            "address3": "",
+            "city": "",
+            "state": "",
+            "custentity_ec_cod_banco": "00363"
+        }
     },
-    {
-        "ordenServicioid": "31066",
-        "ordenTrabajoid": "525",
-        "clienteid": "431",
-        "vehiculoid": "192",
-        "tallerid": "10",
-        "consecionarioid": "2",
-        "tecnicoid": "36",
-        "ordenServicio": "OS00000578",
-        "ordenTrabajo": "OT0000000525",
-        "ceduleruc": "20381041957",
-        "cliente": "TS NET",
-        "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
-        "taller": "VERNAZA",
-        "consecionario": "SIN CONCESIONARIO",
-        "fechaTrabajo": "20/12/2023",
-        "horaTrabajo": "10:00",
-        "comentario": "",
-        "comentarioTec": "",
-        "tecnico": "E-00000019 DIEGO SEBASTIAN LOZADA LOPEZ",
-        "fueraCuidad": false,
-        "fueraTaller": false,
-        "producto": "MONITOREO",
-        "direccion": "LIBERTADORES TEST",
-        "email": "tsnet.evol@myevol.biz",
-        "telefono": "+5939875236998",
-        "motor": "G3H7E0144011",
-        "chasis": "ME1RG4253N2044011",
-        "tipoTrabajo": "VENT HM AMI EQUIPO",
-        "nota": "",
-        "consideracionTrabajoTecnico": "",
-        "placaColor": "ABC-4011/AZUL",
-        "marcaModeloVersion": "KIA/SOLUTO LX AC 1.4 4P 4X2 TM/FORD - EXPLORER XLT AWD",
-        "trabajo": "VENT HM AMI EQUIPO;VENT HM AMI TRANSMISIÓN;RELAY;",
-        "serie": "CTCR0093",
-        "modelo": "CR300B (3G)",
-        "unidad": "CELLOCATOR",
-        "vid": "192",
-        "ip": "10.60.167.195",
-        "simcard": "12101",
-        "servidor": "ARES",
-        "fimware": "1.19",
-        "script": "V5.0.0",
-        "apn": "mtm.movistar.ec",
-        "imei": "860897061584207",
-        "ubicacion": "10"
+    "vendors": {},
+    "employees": {},
+    "transactions": {
+        "109648": {
+            "internalid": {
+                "value": "109648",
+                "text": "109648"
+            },
+            "tranid": "7897991",
+            "memo": "PRUEBA",
+            "currency": {
+                "value": "1",
+                "text": "US Dollar"
+            },
+            "currency_symbol": "USD",
+            "exchangerate": 1,
+            "trandate": "2024-05-22T07:00:00.000Z",
+            "status": "2",
+            "postingperiod": {
+                "value": "144",
+                "text": "may 2024"
+            },
+            "amount": "-150.00",
+            "account": {
+                "value": "1422",
+                "text": "11001030110 BANCO BOLIVARIANO (CTA.CTE. 8939)"
+            },
+            "custbody_ts_related_transaction": {
+                "value": "",
+                "text": " "
+            },
+            "tipo": "Check",
+            "custbody_ts_ec_numero_preimpreso": "",
+            "custbody_ec_serie_cxc_retencion": "",
+            "custbody_ts_ec_preimpreso_retencion": "",
+            "custbody_ht_emitido_pago_electronico": false,
+            "appliedtotransaction": {
+                "value": "",
+                "text": " "
+            },
+            "custrecord_ht_ec_cuentabancaria": "0005178939",
+            "custrecord_ht_cuenta_nombrenetsuite": "02137"
+        }
     },
-    {
-        "ordenServicioid": "31066",
-        "ordenTrabajoid": "526",
-        "clienteid": "431",
-        "vehiculoid": "192",
-        "tallerid": "10",
-        "consecionarioid": "2",
-        "tecnicoid": "",
-        "ordenServicio": "OS00000578",
-        "ordenTrabajo": "OT0000000526",
-        "ceduleruc": "20381041957",
-        "cliente": "TS NET",
-        "vehiculo": "PLC.:ABC-4011 MOT.:G3H7E0144011 CHA.:ME1RG4253N2044011 MAR.:KIA TIP.:SEDAN MOD.:SOLUTO LX AC 1.4 4P 4X2 TM COL.:AZUL192",
-        "taller": "VERNAZA",
-        "consecionario": "SIN CONCESIONARIO",
-        "fechaTrabajo": "",
-        "horaTrabajo": "",
-        "comentario": "",
-        "comentarioTec": "No se pudo instalar el Paralizador",
-        "tecnico": "SIN ASIGNAR",
-        "fueraCuidad": false,
-        "fueraTaller": false,
-        "producto": "",
-        "direccion": "LIBERTADORES TEST",
-        "email": "tsnet.evol@myevol.biz",
-        "telefono": "+5939875236998",
-        "motor": "G3H7E0144011",
-        "chasis": "ME1RG4253N2044011",
-        "tipoTrabajo": "",
-        "nota": "",
-        "consideracionTrabajoTecnico": "",
-        "placaColor": "ABC-4011/AZUL",
-        "marcaModeloVersion": "KIA/SOLUTO LX AC 1.4 4P 4X2 TM/FORD - EXPLORER XLT AWD",
-        "trabajo": "VENT HM AMI EQUIPO;VENT HM AMI TRANSMISIÓN;RELAY;",
-        "serie": "",
-        "modelo": "",
-        "unidad": "",
-        "vid": "",
-        "ip": "",
-        "simcard": "",
-        "servidor": "",
-        "fimware": "",
-        "script": "",
-        "apn": "",
-        "imei": "",
-        "ubicacion": ""
+    "subsidiary": {
+        "internalid": {
+            "value": "2",
+            "text": "2"
+        },
+        "country": {
+            "value": "EC",
+            "text": "Ecuador"
+        },
+        "legalname": "Carro Seguro CARSEG S.A.",
+        "name": "Empresa principal : CARSEG",
+        "taxidnum": "0991259546001",
+        "address_country": "Ecuador",
+        "phone": "",
+        "address1": "CDLA.VERNAZA NORTE MZ.10 SOLAR 19",
+        "address2": "",
+        "address3": "",
+        "city": "",
+        "state": "",
+        "zip": ""
+    },
+    "aditional": {
+        "name": "CARSEG202405223.pdf",
+        "user": "jorge.mija@myevol.biz"
     }
-]
+}

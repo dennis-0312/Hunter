@@ -1,0 +1,191 @@
+<customrecordtype scriptid="customrecord_pe_codigo_3_20">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Codigos 3.20</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_descripcion_codigo_3_20">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>Descripción</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_637658_7451241_sb1_313">
+      <custrecord_pe_descripcion_codigo_3_20>Ingresos de actividades ordinarias</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D01ST</name>
+    </instance>
+    <instance scriptid="val_637659_7451241_sb1_195">
+      <custrecord_pe_descripcion_codigo_3_20>Costo de Ventas</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0201</name>
+    </instance>
+    <instance scriptid="val_637660_7451241_sb1_138">
+      <custrecord_pe_descripcion_codigo_3_20>Ganancia (Pérdida) Bruta</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D02ST</name>
+    </instance>
+    <instance scriptid="val_637661_7451241_sb1_826">
+      <custrecord_pe_descripcion_codigo_3_20>Gastos de Ventas y Distribuci—n</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0302</name>
+    </instance>
+    <instance scriptid="val_637662_7451241_sb1_169">
+      <custrecord_pe_descripcion_codigo_3_20>Gastos de Administraci—n</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0301</name>
+    </instance>
+    <instance scriptid="val_637663_7451241_sb1_991">
+      <custrecord_pe_descripcion_codigo_3_20>Ganancia (Pérdida) de la baja en Activos Financieros medidos al Costo Amortizado</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0407</name>
+    </instance>
+    <instance scriptid="val_637664_7451241_sb1_899">
+      <custrecord_pe_descripcion_codigo_3_20>Otros Ingresos Operativos</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0403</name>
+    </instance>
+    <instance scriptid="val_637665_7451241_sb1_465">
+      <custrecord_pe_descripcion_codigo_3_20>Otros Gastos Operativos</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0404</name>
+    </instance>
+    <instance scriptid="val_637666_7451241_sb1_183">
+      <custrecord_pe_descripcion_codigo_3_20>Otras ganancias (pérdidas)</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0412</name>
+    </instance>
+    <instance scriptid="val_637667_7451241_sb1_749">
+      <custrecord_pe_descripcion_codigo_3_20>Ganancia (Pérdida) por actividades de operaci—n</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D03ST</name>
+    </instance>
+    <instance scriptid="val_637668_7451241_sb1_362">
+      <custrecord_pe_descripcion_codigo_3_20>Ingresos Financieros</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0401</name>
+    </instance>
+    <instance scriptid="val_637669_7451241_sb1_585">
+      <custrecord_pe_descripcion_codigo_3_20>Gastos Financieros</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0402</name>
+    </instance>
+    <instance scriptid="val_637670_7451241_sb1_868">
+      <custrecord_pe_descripcion_codigo_3_20>Diferencias de Cambio neto</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0410</name>
+    </instance>
+    <instance scriptid="val_637671_7451241_sb1_924">
+      <custrecord_pe_descripcion_codigo_3_20>Otros ingresos (gastos) de las subsidiarias,negocios conjuntos y asociadas</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0414</name>
+    </instance>
+    <instance scriptid="val_637672_7451241_sb1_988">
+      <custrecord_pe_descripcion_codigo_3_20>Ganancias (Pérdidas) que surgen de la Diferencia entre el Valor Libro Anterior y el Valor Justo de Activos Financieros Reclasificados Medidos a Valor Razonable</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0411</name>
+    </instance>
+    <instance scriptid="val_637673_7451241_sb1_380">
+      <custrecord_pe_descripcion_codigo_3_20>Diferencia entre el importe en libros de los activos distribuidos y el importe en libros del dividendo a pagar</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0413</name>
+    </instance>
+    <instance scriptid="val_637674_7451241_sb1_611">
+      <custrecord_pe_descripcion_codigo_3_20>Resultado antes de Impuesto a las Ganancias</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D04ST</name>
+    </instance>
+    <instance scriptid="val_637675_7451241_sb1_352">
+      <custrecord_pe_descripcion_codigo_3_20>Gasto por Impuesto a las Ganancias</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0502</name>
+    </instance>
+    <instance scriptid="val_637676_7451241_sb1_564">
+      <custrecord_pe_descripcion_codigo_3_20>Ganancia (Pérdida) Neta de Operaciones Continuadas</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0503</name>
+    </instance>
+    <instance scriptid="val_637677_7451241_sb1_230">
+      <custrecord_pe_descripcion_codigo_3_20>Ganancia (pérdida) procedente de operaciones discontinuadas, neta del impuesto a las ganancias</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D0504</name>
+    </instance>
+    <instance scriptid="val_637678_7451241_sb1_663">
+      <custrecord_pe_descripcion_codigo_3_20>Ganancia (Pérdida) Neta del Ejercicio</custrecord_pe_descripcion_codigo_3_20>
+      <isinactive>F</isinactive>
+      <name>2D07ST</name>
+    </instance>
+  </instances>
+</customrecordtype>

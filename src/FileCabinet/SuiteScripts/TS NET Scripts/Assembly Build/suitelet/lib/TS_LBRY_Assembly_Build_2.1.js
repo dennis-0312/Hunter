@@ -159,6 +159,7 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
                 ["field", "date", "custpage_f_date", "Fecha"],
                 ["field", "subsidiary", "custpage_f_subsidiary", "Subsidiaria"],
                 ["field", "inventorydetail", "custpage_f_inventorydetail", "Inventory Detail"],
+                ["field", "datostecnicos", "custpage_field_datos_tecnicos", "Datos Técnicos"],
                 ["subtab", "components", "custpage_st_components", "Componentes"],
                 ["sublist", "components", "custpage_sl_components", "Componentes"],
                 ["sublistfield", "componentid", "custpage_slf_componentid", "Id"],
@@ -210,9 +211,7 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
                 `ON (ibq.bin = b.id AND b.location = '${locationSelected}' AND b.custrecord_deposito_para_alquiler = 'T') ` +
                 `WHERE br.id = '${billOfMaterialRevisionSelected}' AND ail.location = '${locationSelected}' AND i.custitem_ht_ai_tipocomponente IN ('1', '3')`;
 
-            let alquilerResult = query.runSuiteQL({
-                query: sql_1
-            }).asMappedResults();
+            let alquilerResult = query.runSuiteQL({ query: sql_1 }).asMappedResults();
             log.error("sql_1", sql_1);
 
             if (alquilerResult.length != 0) {
@@ -250,10 +249,9 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
                 "INNER JOIN bin b " +
                 `ON (ibq.bin = b.id AND b.location = '${locationSelected}' AND b.binNumber = 'BCO Comercial') ` +
                 `WHERE br.id = '${billOfMaterialRevisionSelected}' AND ail.location = '${locationSelected}'`;
+
             log.error("sql", sql);
-            let queryResult = query.runSuiteQL({
-                query: sql
-            }).asMappedResults();
+            let queryResult = query.runSuiteQL({ query: sql }).asMappedResults();
 
             if (queryResult.length != 0) {
                 for (let i = 0; i < queryResult.length; i++) {
@@ -272,7 +270,6 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
                     if (queryResult[i].type) componentsSublistField.setSublistValue('custpage_slf_type', line, queryResult[i].type);
                     let isAlquiler = queryResult[i].displayname.toLowerCase().indexOf('alqu') > -1 ? 'T' : 'F';
                     componentsSublistField.setSublistValue('custpage_slf_alquiler', line, isAlquiler);
-
                     line++;
                 }
             }
@@ -300,15 +297,9 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
 
         setBillOfMaterialsRevisionFieldData = (billOfMaterialsRevisionField, itemSelected) => {
             log.error("setBillOfMaterialsRevisionFieldData", { itemSelected });
-
             if (!itemSelected) return;
             let filters = [["isinactive", "is", "F"], "AND", ["custrecord_ht_articulo_alquileractivo", "anyof", itemSelected]];
-            let bomRevisionResultSearch = search.create({
-                type: "bomrevision",
-                filters,
-                columns: ["name"]
-            }).run().getRange(0, 1);
-
+            let bomRevisionResultSearch = search.create({ type: "bomrevision", filters, columns: ["name"] }).run().getRange(0, 1);
             for (let i = 0; i < bomRevisionResultSearch.length; i++) {
                 let billOfMaterialRevision = bomRevisionResultSearch[i].id;
                 billOfMaterialsRevisionField.setDefaultValue(billOfMaterialRevision);
@@ -334,9 +325,7 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
 
         getInventoryDetailCSS = () => {
             try {
-                let inventoryDetailCss = file.load({
-                    id: this.CONSTANT.INVENTORY_DETAIL_CSS_PATH
-                });
+                let inventoryDetailCss = file.load({ id: this.CONSTANT.INVENTORY_DETAIL_CSS_PATH });
                 return inventoryDetailCss.getContents();
             } catch (error) {
                 log.error("error", error)

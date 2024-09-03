@@ -1,0 +1,13 @@
+<customglplugin scriptid="customscript_ts_gl_inven_item_expen_acco">
+  <description></description>
+  <isinactive>F</isinactive>
+  <loglevel>ERROR</loglevel>
+  <name>TS GL Inventory Item Expense Account</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <runasrole></runasrole>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Main/plugin/PE_PL_Inventory_Item_Expense_Account.js]</scriptfile>
+  <status>TESTING</status>
+</customglplugin>

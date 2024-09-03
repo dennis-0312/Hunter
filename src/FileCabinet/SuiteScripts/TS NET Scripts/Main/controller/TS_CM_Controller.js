@@ -196,6 +196,7 @@ define([
                     }
                     break;
                 case _constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO:
+                    log.debug('Track1', id)
                     if (id.serviceOrder) {
                         let relatedItemsArr = [];
                         let fam = getParameter(id.item, _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS);
@@ -203,7 +204,8 @@ define([
                         let tag = getParameter(id.item, _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO);
                         let alq = getParameter(id.item, _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER);
                         let dsr = getParameter(id.item, _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS);
-
+                        let nio = getParameter(id.item, _constant.Parameter.PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA);
+                        log.debug('PARAMCONVENIO', nio)
                         let searchProductoRelacionado = search.create({
                             type: "customrecord_ht_pp_main_item_relacionado",
                             filters:
@@ -240,6 +242,8 @@ define([
                                     objRecord.setValue({ fieldId: 'custrecordht_ot_tipo_agrupacion', value: tag });
                                 if (alq != 0 && alq == _constant.Valor.SI)
                                     objRecord.setValue({ fieldId: 'custrecord_flujo_de_alquiler', value: true });
+                                if (nio != 0 && nio == _constant.Valor.VALOR_X_USO_CONVENIOS)
+                                    objRecord.setValue({ fieldId: 'custrecord_flujo_de_convenio', value: true });
                                 if (dsr != 0 && dsr == _constant.Valor.SI) {
                                     let array = new Array();
                                     let array2 = new Array();
@@ -276,6 +280,8 @@ define([
                                 objRecord.setValue({ fieldId: 'custrecordht_ot_tipo_agrupacion', value: tag });
                             if (alq != 0 && alq == _constant.Valor.SI)
                                 objRecord.setValue({ fieldId: 'custrecord_flujo_de_alquiler', value: true });
+                            if (nio != 0 && nio == _constant.Valor.VALOR_X_USO_CONVENIOS)
+                                objRecord.setValue({ fieldId: 'custrecord_flujo_de_convenio', value: true });
                             if (dsr != 0 && dsr == _constant.Valor.SI) {
                                 let array = new Array();
                                 let array2 = new Array();
@@ -283,8 +289,10 @@ define([
                                 let sql2 = 'SELECT custbody_ht_os_servicios as servicios FROM transaction WHERE id = ?'
                                 let resultSet = query.runSuiteQL({ query: sql, params: [id.item] });
                                 let results = resultSet.asMappedResults();
+                                log.debug('Track2', results);
                                 let resultSet2 = query.runSuiteQL({ query: sql2, params: [id.serviceOrder] });
                                 let results2 = resultSet2.asMappedResults();
+                                log.debug('Track3', results)
                                 if (results.length > 0 && results2.length > 0) {
                                     let arregloconvertido = results[0]['servicios'].split(",")
                                     array = arregloconvertido.map(a => parseInt(a));
@@ -422,10 +430,12 @@ define([
                             let productoInstalado = getProductoInstalado(bien, familia);
                             if (productoInstalado > 0) {
                                 let esAlquiler = getParameter(productoInstalado, _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER);
-                                if (esAlquiler == 2) {
+                                if (esAlquiler == _constant.Valor.SI) {
                                     response.status = false;
                                     response.mensaje = 'No se puede renovar un producto de alquiler.'
                                 }
+
+
                             }
                         }
                     } else if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
@@ -561,7 +571,23 @@ define([
                 filters: [
                     ["location", "anyof", location],
                     "AND",
-                    ["custrecord_deposito_para_revision", "is", "T"]
+                    ["custrecord_ht_deposito_para_revision", "is", "T"]
+                ],
+                columns: ["binnumber"]
+            }).run().getRange(0, 1);
+            if (binSearch.length) return binSearch[0].id;
+            return "";
+        }
+
+        const getBinConvenio = (location, convenio) => {
+            let binSearch = search.create({
+                type: _constant.Transaction.BIN,
+                filters: [
+                    ["location", "anyof", location],
+                    "AND",
+                    ["custrecord_ht_bin_para_convenio", "is", "T"],
+                    "AND",
+                    ["custrecord_ht_bin_convenio", "anyof", convenio]
                 ],
                 columns: ["binnumber"]
             }).run().getRange(0, 1);
@@ -623,12 +649,17 @@ define([
 
         const createInventoryAdjustmentIngreso = (scriptParameters, objParams = 0, tipoFlujo = 0) => {
             log.debug('scriptParameters', scriptParameters);
-            let binNumber, account, unitCost, flujo, item, location, customRecord, field, columns;
+            log.debug('tipoFlujo', tipoFlujo);
+            let binNumber, account, unitCost, flujo, item, location, customRecord, field, columns, memo;
+            let sql = 'SELECT custrecord_ht_cuenta_activo_fijo_transit FROM subsidiary WHERE id = ?';
+            let result = query.runSuiteQL({ query: sql, params: [scriptParameters.subsidiary] }).asMappedResults();
+
+            //^Alquiler
             if (tipoFlujo == 0) {
                 binNumber = getBinNumberAlquiler(scriptParameters.location);
-                account = 1433;
+                account = result[0].custrecord_ht_cuenta_activo_fijo_transit;
                 unitCost = 0;
-                //item = scriptParameters.item;
+                memo = 'Ajuste de ingreso por alquiler.';
                 flujo = 'custbody_ht_ai_paraalquiler';
                 location = scriptParameters.location;
                 if (scriptParameters.tag == _constant.Valor.VALOR_LOJ_LOJACK) {
@@ -647,16 +678,14 @@ define([
                         [["name", "startswith", scriptParameters.comercial]],
                     columns: columns
                 });
-                // let pageData = busqueda.runPaged({ pageSize: 1000 });
-                //let searchResultCount = busqueda.runPaged().count;
-                //let objResults = busqueda.run().getRange({ start: 0, end: 1 });
-                //log.debug('JSON-CHASER----', objResults);
+
                 busqueda.run().each((result) => {
                     item = result.getValue({ name: field });
                     return true;
                 });
             }
 
+            //^Convenio
             if (tipoFlujo == 1) {
                 // binNumber = getBinNumberComercial(scriptParameters.location);
                 binNumber = objParams.binNumber;
@@ -665,9 +694,11 @@ define([
                 item = scriptParameters.item;
                 flujo = 'custbody_ht_ai_porconvenio';
                 location = scriptParameters.location;
+                memo = 'Ajuste de ingreso por convenio.'
             }
 
-            if (tipoFlujo == _constant.Constants.FLUJO_CUSTODIA) {
+            //^Custodia
+            if (tipoFlujo == 2) {
                 let ubicacion = 0;
                 binNumber = scriptParameters.deposito;
                 account = 1291; //SB:1255 - PR:1036
@@ -682,24 +713,33 @@ define([
                 // item = dispositivo.custitem_ht_it_item_reins_custodia[0].value;
                 flujo = 'custbody_ht_ai_custodia';
                 location = scriptParameters.location;
-                item = scriptParameters.dispositivo
+                item = scriptParameters.dispositivo;
+                memo = 'Ajuste de ingreso por custodia.'
             }
 
+            //^Garantía
             if (tipoFlujo == 3) {
                 binNumber = scriptParameters.deposito;
-                account = 352;
+                account = 559;
                 unitCost = 0;
                 item = scriptParameters.dispositivo;
                 flujo = 'custbody_ai_por_garantia';
                 location = scriptParameters.location;
+                memo = 'Ajuste de ingreso por garantía.'
             }
 
+            log.debug('createInventoryAdjustmentIngreso.account', account);
+            log.debug('createInventoryAdjustmentIngreso.binNumber', binNumber);
+            log.debug('createInventoryAdjustmentIngreso.customRecord', customRecord);
+            log.debug('createInventoryAdjustmentIngreso.item', item);
+            log.debug('createInventoryAdjustmentIngreso.location', location);
             let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-            newAdjust.setValue({ fieldId: 'subsidiary', value: _constant.Constants.ECUADOR_SUBSIDIARY });
+            newAdjust.setValue({ fieldId: 'subsidiary', value: scriptParameters.subsidiary });
             newAdjust.setValue({ fieldId: 'account', value: account });
             newAdjust.setValue({ fieldId: 'adjlocation', value: location });
             newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.recipientId });
             newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
+            newAdjust.setValue({ fieldId: 'memo', value: memo });
             newAdjust.setValue({ fieldId: flujo, value: scriptParameters.boleano });
 
             newAdjust.selectNewLine({ sublistId: 'inventory' });
@@ -717,8 +757,8 @@ define([
             newDetail.commitLine({ sublistId: 'inventoryassignment' });
             newAdjust.commitLine({ sublistId: 'inventory' });
 
-            let newRecord = newAdjust.save();
-            //log.error("newRecord", newRecord);
+            let newRecord = newAdjust.save({ enableSourcing: false, ignoreMandatoryFields: true });
+            log.error("newRecord", newRecord);
             return newRecord;
         }
 
@@ -763,7 +803,7 @@ define([
                 });
             }
             try {
-                record.submitFields({
+                historialId = record.submitFields({
                     type: 'customrecord_ncfar_asset',
                     id: activoFijo,
                     values: { 'custrecord_ht_alquilado': false },
@@ -775,12 +815,37 @@ define([
 
         const historialInstall = (installId, objParameters) => {
             log.debug('objParameters', JSON.stringify(objParameters))
-            let objRecord = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: installId });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: objParameters.salesorder });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: objParameters.ordentrabajoId });
-            objRecord.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.DEVOLUCION });
-            objRecord.save();
+            let count = verifyExistHistorial(objParameters.salesorder, objParameters.ordentrabajoId, _constant.Status.DEVOLUCION);
+            log.debug('Count', count)
+            if (count == 0) {
+                let objRecord = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: installId });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: objParameters.salesorder });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: objParameters.ordentrabajoId });
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.DEVOLUCION });
+                let savehistorialInstall = objRecord.save();
+                log.debug('savehistorialInstall', savehistorialInstall)
+            }
+        }
+
+        const verifyExistHistorial = (salesorder, ordentrabajo, concepto) => {
+            let objSearch = search.create({
+                type: "customrecord_ht_ct_cobertura_transaction",
+                filters:
+                    [
+                        ["custrecord_ht_ct_orden_servicio", "anyof", salesorder],
+                        "AND",
+                        ["custrecord_ht_ct_orden_trabajo", "anyof", ordentrabajo],
+                        "AND",
+                        ["custrecord_ht_ct_concepto", "anyof", concepto]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "internalid", label: "Internal ID" })
+                    ]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            return searchResultCount;
         }
 
         const updateInstall = (objParameters) => {
@@ -806,16 +871,19 @@ define([
                     return true;
                 });
                 log.debug('installId', installId);
+                log.debug('estado', objParameters.estado);
                 let updateRec = record.load({ type: 'customrecord_ht_co_cobertura', id: installId, isDynamic: true });
-                if ((objParameters.estado == _constant.Status.DANADO || objParameters.estado == _constant.Status.PERDIDO || _constant.Status.DESINSTALADO)) {
+                if ((objParameters.estado == _constant.Status.DANADO || objParameters.estado == _constant.Status.PERDIDO || objParameters.estado == _constant.Status.DESINSTALADO)) {
+                    log.debug('estadoInfra', objParameters.estado);
                     updateRec.setValue({ fieldId: 'custrecord_ht_co_estado', value: _constant.Status.DESINSTALADO });
+                    updateRec.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: _constant.Status.SIN_DISPOSITIVO });
                     historialInstall(installId, objParameters)
                 } else if (objParameters.estado == _constant.Status.INSTALADO) { }
-
                 if (objParameters.t_PPS == true) {
                     updateRec.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: _constant.Status.SIN_DISPOSITIVO });
                 }
                 let updaetIns = updateRec.save();
+                log.debug('ConfirmaciónActualizacióndeCobertura', updaetIns)
             }
             return installId;
         }
@@ -1095,6 +1163,25 @@ define([
             });
             let searchResultCount = objSearch.runPaged().count;
             log.debug('¿Existe ya una custodia?', searchResultCount);
+            //Obtener Cobertura 14/08/2024
+            let CoberturaId = 0;
+            let Coberturaproducto = search.create({
+                type: "customrecord_ht_co_cobertura",
+                filters:
+                    [
+                        ["custrecord_ht_co_numeroserieproducto", "anyof", objParams.serieChaser],
+                        "AND",
+                        ["custrecord_ht_co_bien", "anyof", objParams.bien]
+                    ],
+                columns:
+                    ['internalid']
+            });
+            Coberturaproducto.run().each(result => {
+                CoberturaId = result.getValue({ name: "internalid" });
+                return true;
+            });
+            log.debug('CoberturaId', CoberturaId);
+            //Obtener Cobertura 14/08/2024
             if (searchResultCount == 0) {
                 const objRecord = record.create({ type: _constant.customRecord.CUSTODIA, isDynamic: true });
                 objRecord.setValue({ fieldId: 'name', value: objParams.comercial });
@@ -1106,6 +1193,9 @@ define([
                 objRecord.setValue({ fieldId: 'custrecord_ht_ct_estado', value: _constant.Status.DESINSTALADO });
                 //objRecord.setValue({ fieldId: 'custrecord_ht_ct_venta', value: 42857 });
                 objRecord.setValue({ fieldId: 'custrecord_ht_ct_familia', value: objParams.familia });
+                //Agregando Cobertura 14/08/2024
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_cobertura', value: CoberturaId });
+                //Agregando Cobertura 14/08/2024
                 newCustodia = objRecord.save({ ignoreMandatoryFields: false });
             }
             return newCustodia;
@@ -1517,6 +1607,7 @@ define([
                 columns:
                     [
                         search.createColumn({ name: "internalid", label: "Internal ID" }),
+                        //search.createColumn({ name: "custrecord_ht_ot_estado", label: "Estado OT" }),//*VALIDACIÓN PARA NO ENTRAR A CREAR NADA, pendiente de probar
                     ]
             });
             let searchResultCount = objSearch.runPaged().count;
@@ -1864,9 +1955,8 @@ define([
             try {
                 let sql = 'SELECT custrecord_ht_co_producto as producto FROM customrecord_ht_co_cobertura ' +
                     'WHERE custrecord_ht_co_estado = 1 AND custrecord_ht_co_bien = ? AND custrecord_ht_co_familia_prod = ?';
-                let resultSet = query.runSuiteQL({ query: sql, params: [bien, familia] });
-                let results = resultSet.asMappedResults();
-                //console.log('Response', results);
+                let results = query.runSuiteQL({ query: sql, params: [bien, familia] }).asMappedResults();
+                log.error('Response-getProductoInstalado', results);
                 let producto = results.length > 0 ? results[0]['producto'] : 0;
                 return producto;
             } catch (error) {
@@ -1894,41 +1984,58 @@ define([
 
         const getFiledsDatosTecnicos = (datosTecnicosid) => {
             try {
-                //log.debug('EntryRes', datosTecnicosid)
-                let sql = 'SELECT dat.id as chaser, dat.name as serie, mod.custrecord_ht_dd_modelodispositivo_descr as modelo, uni.custrecord_ht_dd_tipodispositivo_descrip as unidad, ' +
-                    'fim.custrecord_ht_mc_firmware_descrip as fimware, scr.custrecord_ht_mc_script_descrip as script, srv.custrecord_ht_mc_servidor_descrip as servidor, ' +
-                    'sim.name as simcard, dat.custrecord_ht_mc_ip as ip, dat.custrecord_ht_mc_apn as apn, dis.custrecord_ht_dd_imei as imei, dis.custrecord_ht_dd_vid as vid, ' +
-                    'dat.custrecord_ht_mc_seriedispositivolojack as box, dat.custrecord_ht_mc_codigoactivacion as activacion, dat.custrecord_ht_mc_codigorespuesta as respuesta ' +
-                    'FROM customrecord_ht_record_mantchaser dat ' +
-                    'INNER JOIN customrecord_ht_dd_modelodispositivo mod ON dat.custrecord_ht_mc_modelo = mod.id ' +
-                    'INNER JOIN customrecord_ht_dd_tipodispositivo uni ON dat.custrecord_ht_mc_unidad = uni.id ' +
-                    'INNER JOIN customrecord_ht_mc_firmware fim ON dat.custrecord_ht_mc_firmware = fim.id ' +
-                    'INNER JOIN customrecord_ht_mc_script scr ON dat.custrecord_ht_mc_script = scr.id ' +
-                    'INNER JOIN customrecord_ht_mc_servidor srv ON dat.custrecord_ht_mc_servidor = srv.id ' +
-                    'INNER JOIN customrecord_ht_record_detallechasersim sim ON dat.custrecord_ht_mc_celularsimcard = sim.id ' +
-                    'INNER JOIN customrecord_ht_record_detallechaserdisp dis ON dat.custrecord_ht_mc_seriedispositivo = dis.id ' +
-                    'WHERE dat.id = ?';
-                let params = [datosTecnicosid]
-                let resultSet = query.runSuiteQL({ query: sql, params: params });
-                let results = resultSet.asMappedResults();
-                if (results.length > 0) {
-                    return results;
+                let objReturn = new Array();
+                log.debug('EntryRes', datosTecnicosid)
+                let objSearch = search.create({
+                    type: "customrecord_ht_record_mantchaser",
+                    filters:
+                        [
+                            ["internalid", "anyof", datosTecnicosid]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({ name: "name", label: "Name" }),
+                            search.createColumn({ name: "custrecord_ht_dd_modelodispositivo_descr", join: "CUSTRECORD_HT_MC_MODELO", label: "Descripcion" }),
+                            search.createColumn({ name: "custrecord_ht_dd_tipodispositivo_descrip", join: "CUSTRECORD_HT_MC_UNIDAD", label: "Descripcion" }),
+                            search.createColumn({ name: "custrecord_ht_mc_firmware_descrip", join: "CUSTRECORD_HT_MC_FIRMWARE", label: "Descripcion" }),
+                            search.createColumn({ name: "custrecord_ht_mc_script_descrip", join: "CUSTRECORD_HT_MC_SCRIPT", label: "Descripcion" }),
+                            search.createColumn({ name: "custrecord_ht_mc_servidor_descrip", join: "CUSTRECORD_HT_MC_SERVIDOR", label: "Descripcion" }),
+                            search.createColumn({ name: "name", join: "CUSTRECORD_HT_MC_CELULARSIMCARD", label: "Name" }),
+                            search.createColumn({ name: "custrecord_ht_mc_ip", label: "HT MC IP" }),
+                            search.createColumn({ name: "custrecord_ht_mc_apn", label: "HT MC APN" }),
+                            search.createColumn({ name: "custrecord_ht_dd_imei", join: "CUSTRECORD_HT_MC_SERIEDISPOSITIVO", label: "HT DD IMEI" }),
+                            search.createColumn({ name: "custrecord_ht_dd_vid", join: "CUSTRECORD_HT_MC_SERIEDISPOSITIVO", label: "HT DD VID" }),
+                            search.createColumn({ name: "custrecord_ht_cl_seriebox", join: "CUSTRECORD_HT_MC_SERIEDISPOSITIVOLOJACK", label: "HT CL BOX" }),
+                            search.createColumn({ name: "custrecord_ht_mc_codigoactivacion", label: "HT MC Código de activación" }),
+                            search.createColumn({ name: "custrecord_ht_mc_codigorespuesta", label: "HT MC Código de respuesta" })
+                        ]
+                });
+                let results = objSearch.runPaged().count;
+                log.debug("objSearch result count", results);
+                if (results > 0) {
+                    objSearch.run().each((result) => {
+                        objReturn.push({
+                            chaser: result.id,
+                            serie: result.getValue({ name: "name", label: "Name" }),
+                            modelo: result.getValue({ name: "custrecord_ht_dd_modelodispositivo_descr", join: "CUSTRECORD_HT_MC_MODELO", label: "Descripcion" }),
+                            unidad: result.getValue({ name: "custrecord_ht_dd_tipodispositivo_descrip", join: "CUSTRECORD_HT_MC_UNIDAD", label: "Descripcion" }),
+                            fimware: result.getValue({ name: "custrecord_ht_mc_firmware_descrip", join: "CUSTRECORD_HT_MC_FIRMWARE", label: "Descripcion" }),
+                            script: result.getValue({ name: "custrecord_ht_mc_script_descrip", join: "CUSTRECORD_HT_MC_SCRIPT", label: "Descripcion" }),
+                            servidor: result.getValue({ name: "custrecord_ht_mc_servidor_descrip", join: "CUSTRECORD_HT_MC_SERVIDOR", label: "Descripcion" }),
+                            simcard: result.getValue({ name: "name", join: "CUSTRECORD_HT_MC_CELULARSIMCARD", label: "Name" }),
+                            ip: result.getValue({ name: "custrecord_ht_mc_ip", label: "HT MC IP" }),
+                            apn: result.getValue({ name: "custrecord_ht_mc_apn", label: "HT MC APN" }),
+                            imei: result.getValue({ name: "custrecord_ht_dd_imei", join: "CUSTRECORD_HT_MC_SERIEDISPOSITIVO", label: "HT DD IMEI" }),
+                            vid: result.getValue({ name: "custrecord_ht_dd_vid", join: "CUSTRECORD_HT_MC_SERIEDISPOSITIVO", label: "HT DD VID" }),
+                            box: result.getValue({ name: "custrecord_ht_cl_seriebox", join: "CUSTRECORD_HT_MC_SERIEDISPOSITIVOLOJACK", label: "HT CL BOX" }),
+                            activacion: result.getValue({ name: "custrecord_ht_mc_codigoactivacion", label: "HT MC Código de activación" }),
+                            respuesta: result.getValue({ name: "custrecord_ht_mc_codigorespuesta", label: "HT MC Código de respuesta" })
+                        })
+                        return true;
+                    });
+                    return objReturn;
                 } else {
-                    sql = 'SELECT dat.id as chaser, dat.name as serie, dat.custrecord_ht_mc_modelo as modelo, dat.custrecord_ht_mc_unidad as unidad, ' +
-                        'dat.custrecord_ht_mc_firmware as fimware, dat.custrecord_ht_mc_script as script, dat.custrecord_ht_mc_servidor as servidor, ' +
-                        'dat.custrecord_ht_mc_celularsimcard as simcard, dat.custrecord_ht_mc_ip as ip, dat.custrecord_ht_mc_apn as apn, dat.custrecord_ht_mc_imei as imei, dat.custrecord_ht_mc_imei as vid, ' +
-                        'loj.name as box, dat.custrecord_ht_mc_codigoactivacion as activacion, dat.custrecord_ht_mc_codigorespuesta as respuesta ' +
-                        'FROM customrecord_ht_record_mantchaser dat ' +
-                        'INNER JOIN customrecord_ht_record_detallechaslojack loj ON dat.custrecord_ht_mc_seriedispositivolojack = loj.id ' +
-                        'WHERE dat.id = ?';
-                    let params = [datosTecnicosid]
-                    let resultSet = query.runSuiteQL({ query: sql, params: params });
-                    let results = resultSet.asMappedResults();
-                    if (results.length > 0) {
-                        return results;
-                    } else {
-                        return 0
-                    }
+                    return 0;
                 }
             } catch (error) {
                 log.error('Error-getFiledsDatosTecnicos', error)
@@ -1991,6 +2098,7 @@ define([
             createRegistroCustodia,
             getBinNumberCustodia,
             getBinNumberRevision,
+            getBinConvenio,
             deleteRegistroCustodia,
             verifyExistHistorialAF,
             envioTelecCorteSim,

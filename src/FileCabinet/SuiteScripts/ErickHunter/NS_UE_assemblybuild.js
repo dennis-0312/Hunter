@@ -10,15 +10,17 @@ define(['N/log',
     '../TS NET Scripts/Main/constant/TS_CM_Constant',
     '../TS NET Scripts/Main/error/TS_CM_ErrorMessages'],
     (log, search, record, query, _controller, _constant, _errorMessage) => {
+        const INSTALADO = "1";
+
         const beforeLoad = (context) => { }
 
         const afterSubmit = (context) => {
             let id = context.newRecord.id;
             let objRecord = context.newRecord;
-            //log.debug('prueba', id);
             let datosTecnicos = 0;
             let field = 0, box = '', monitoreo = null, lojack = null;
-            if (context.type === context.UserEventType.CREATE) {
+            let jsonDatosTenicosParaEliminar = new Array();
+            if (context.type === context.UserEventType.CREATE || context.type === context.UserEventType.EDIT) {
                 let IdOrdenTrabajo = objRecord.getValue({ fieldId: 'custbody_ht_ce_ordentrabajo' });
                 if (IdOrdenTrabajo.length > 0) {
                     try {
@@ -29,11 +31,28 @@ define(['N/log',
                         });
                         let item = bienid.custrecord_ht_ot_item.length ? bienid.custrecord_ht_ot_item[0].value : "";
                         if (item) {
-                            let parametrizacionProducto = _controller.parametrizacionJson(item);
-                            let esCandado = parametrizacionProducto[_constant.Codigo_parametro.COD_PRO_ITEM_COMERCIAL_DE_PRODUCCION];
-                            if (!(esCandado !== undefined && esCandado.valor == _constant.Codigo_Valor.COD_SI)) {
-                                datosTecnicos = crearCargaDispositivoChaser(objRecord, bienid);
+                            let pro = _controller.getParameter(item, _constant.Parameter.PRO_ITEM_COMERCIAL_DE_PRODUCCION);
+                            let avp = _controller.getParameter(item, _constant.Parameter.AVP_ARTICULO_DE_VENTA_PRODUCCION);
+                            log.debug('pro', pro);
+                            log.debug('avp', avp);
+                            if ((pro == _constant.Valor.SI && avp == _constant.Valor.SI) || (pro == 0 && avp == 0)) {
+                                log.debug('Track1');
+                                if (context.type === context.UserEventType.EDIT) {
+                                    let invdet = objRecord.getSubrecord({ fieldId: 'inventorydetail' });
+                                    let receiptinventorynumber = invdet.getSublistValue({ sublistId: 'inventoryassignment', fieldId: 'receiptinventorynumber', line: 0 });
+                                    let pertenenciaDatoTecnicoInstalado = validacionPertenenciaDatoTecnicoInstalado(id)
+                                    if (pertenenciaDatoTecnicoInstalado == 0) {
+                                        jsonDatosTenicosParaEliminar = validacionPertenenciaDatoTecnico(receiptinventorynumber, id)
+                                        log.debug("jsonDatosTenicosParaEliminar", jsonDatosTenicosParaEliminar);
+                                        let pertenenciaDatoTecnicoExiste = validacionPertenenciaDatoTecnicoExiste(receiptinventorynumber, id);
+                                        if (pertenenciaDatoTecnicoExiste == 0)
+                                            datosTecnicos = crearCargaDispositivoChaser(objRecord, bienid);
+                                    }
+                                } else {
+                                    datosTecnicos = crearCargaDispositivoChaser(objRecord, bienid);
+                                }
                             } else {
+                                log.debug('Track2');
                                 if (objRecord.getValue({ fieldId: 'custbody_ht_as_datos_tecnicos' }).length > 0) {
                                     datosTecnicos = objRecord.getValue({ fieldId: 'custbody_ht_as_datos_tecnicos' });
                                     record.submitFields({
@@ -42,46 +61,58 @@ define(['N/log',
                                         values: { 'custrecord_ht_mc_enlace': id },
                                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                                     });
-                                    //log.debug('DATOSTECNICOS', 'DATOSTECNICOSDESDEENSAMBLE: ' + datosTecnicos);
                                 }
-
                             }
                         } else {
+                            log.debug('Track3')
                             if (objRecord.getValue({ fieldId: 'custbody_ht_as_datos_tecnicos' }).length == 0)
                                 datosTecnicos = crearCargaDispositivoChaser(objRecord, bienid);
                         }
-
                         //datosTecnicos = crearCargaDispositivoChaser(objRecord, bienid);
-                        field = _controller.getFiledsDatosTecnicos(datosTecnicos);
-                        log.debug('ArrayFileds', field);
-                        if (field[0]['box'] != null) {
-                            lojack = field[0]['serie']
-                        } else {
-                            monitoreo = field[0]['serie']
+                        log.debug('datosTecnicos', datosTecnicos);
+                        if (datosTecnicos != 0) {
+                            field = _controller.getFiledsDatosTecnicos(datosTecnicos);
+                            log.debug('ArrayFileds', field);
+                            if (field[0]['box']) {
+                                lojack = field[0]['serie']
+                            } else {
+                                monitoreo = field[0]['serie']
+                            }
+                            let ordenTrabajo = record.submitFields({
+                                type: _constant.customRecord.ORDEN_TRABAJO,
+                                id: IdOrdenTrabajo,
+                                values: {
+                                    'custrecord_ht_ot_serieproductoasignacion': datosTecnicos,
+                                    'custrecord_ht_ot_dispositivo': monitoreo == null ? '' : monitoreo,
+                                    'custrecord_ht_ot_modelo': field[0]['modelo'] == null ? '' : field[0]['modelo'],
+                                    'custrecord_ht_ot_unidad': field[0]['unidad'] == null ? '' : field[0]['unidad'],
+                                    'custrecord_ht_ot_firmware': field[0]['fimware'] == null ? '' : field[0]['fimware'],
+                                    'custrecord_ht_ot_script': field[0]['script'] == null ? '' : field[0]['script'],
+                                    'custrecord_ht_ot_servidor': field[0]['servidor'] == null ? '' : field[0]['servidor'],
+                                    'custrecord_ht_ot_simcard': field[0]['simcard'] == null ? '' : field[0]['simcard'],
+                                    'custrecord_ht_ot_ip': field[0]['ip'] == null ? '' : field[0]['ip'],
+                                    'custrecord_ht_ot_apn': field[0]['apn'] == null ? '' : field[0]['apn'],
+                                    'custrecord_ht_ot_imei': field[0]['imei'] == null ? '' : field[0]['imei'],
+                                    'custrecord_ht_ot_vid': field[0]['vid'] == null ? '' : field[0]['vid'],
+                                    'custrecord_ht_ot_boxserie': lojack == null ? '' : lojack,
+                                    'custrecord_ht_ot_codigoactivacion': field[0]['activacion'] == null ? '' : field[0]['activacion'],
+                                    'custrecord_ht_ot_codigorespuesta': field[0]['respuesta'] == null ? '' : field[0]['respuesta']
+                                },
+                                options: { enableSourcing: false, ignoreMandatoryFields: true }
+                            });
+                            log.debug('AsignarDatosTec', 'Se asignó el registro de datos técnicos ' + datosTecnicos + ' a la Orden de Trabajo ' + ordenTrabajo);
                         }
-                        let ordenTrabajo = record.submitFields({
-                            type: _constant.customRecord.ORDEN_TRABAJO,
-                            id: IdOrdenTrabajo,
-                            values: {
-                                'custrecord_ht_ot_serieproductoasignacion': datosTecnicos,
-                                'custrecord_ht_ot_dispositivo': monitoreo == null ? '' : monitoreo,
-                                'custrecord_ht_ot_modelo': field[0]['modelo'] == null ? '' : field[0]['modelo'],
-                                'custrecord_ht_ot_unidad': field[0]['unidad'] == null ? '' : field[0]['unidad'],
-                                'custrecord_ht_ot_firmware': field[0]['fimware'] == null ? '' : field[0]['fimware'],
-                                'custrecord_ht_ot_script': field[0]['script'] == null ? '' : field[0]['script'],
-                                'custrecord_ht_ot_servidor': field[0]['servidor'] == null ? '' : field[0]['servidor'],
-                                'custrecord_ht_ot_simcard': field[0]['simcard'] == null ? '' : field[0]['simcard'],
-                                'custrecord_ht_ot_ip': field[0]['ip'] == null ? '' : field[0]['ip'],
-                                'custrecord_ht_ot_apn': field[0]['apn'] == null ? '' : field[0]['apn'],
-                                'custrecord_ht_ot_imei': field[0]['imei'] == null ? '' : field[0]['imei'],
-                                'custrecord_ht_ot_vid': field[0]['vid'] == null ? '' : field[0]['vid'],
-                                'custrecord_ht_ot_boxserie': lojack == null ? '' : lojack,
-                                'custrecord_ht_ot_codigoactivacion': field[0]['activacion'] == null ? '' : field[0]['activacion'],
-                                'custrecord_ht_ot_codigorespuesta': field[0]['respuesta'] == null ? '' : field[0]['respuesta']
-                            },
-                            options: { enableSourcing: false, ignoreMandatoryFields: true }
-                        });
-                        log.debug('AsignarDatosTec', 'Se asignó el registro de datos técnicos ' + datosTecnicos + ' a la Orden de Trabajo ' + ordenTrabajo);
+
+                        if (jsonDatosTenicosParaEliminar.length > 0) {
+                            for (let i = 0; i < jsonDatosTenicosParaEliminar.length; i++) {
+                                assemblyDeleteid = jsonDatosTenicosParaEliminar[i]
+                                try {
+                                    record.delete({ type: 'customrecord_ht_record_mantchaser', id: assemblyDeleteid, });
+                                } catch (error) {
+                                    log.error('Error-Delete-Assembly: ' + assemblyDeleteid, error);
+                                }
+                            }
+                        }
                     } catch (error) {
                         log.error('ErrorEnsamble', error);
                     }
@@ -157,12 +188,13 @@ define(['N/log',
                         page = lojack.fetch({ index: pageRange.index });
                         page.data.forEach(function (result) {
                             var columns = result.columns;
-                            //log.debug('fsd', result.columns);
+                            log.debug('fsd', typeof result.getValue(columns[0]));
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_codigoactivacion', value: result.getValue(columns[2]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_codigorespuesta', value: result.getValue(columns[3]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_estadolojack', value: result.getValue(columns[4]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_seriedispositivolojack', value: result.getValue(columns[0]), ignoreFieldChange: true });
                             objRecordCreate.setValue({ fieldId: 'name', value: result.getValue(columns[5]), ignoreFieldChange: true });
+                            objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_vehiculo', value: bienid.custrecord_ht_ot_vehiculo[0].value, ignoreFieldChange: true });
                         });
                     });
                 }
@@ -251,6 +283,81 @@ define(['N/log',
             }
         }
 
+        const validacionPertenenciaDatoTecnico = (serie, assemblybuildid) => {
+            let jsonDatosTecnicos = new Array();
+            let objSearch = search.create({
+                type: "customrecord_ht_record_mantchaser",
+                filters:
+                    [
+                        ["name", "isnot", serie],
+                        "AND",
+                        ["custrecord_ht_mc_enlace", "anyof", assemblybuildid],
+                        "AND",
+                        ["custrecord_ht_mc_estadolodispositivo", "noneof", INSTALADO],
+                        "AND",
+                        ["custrecord_ht_mc_estadolojack", "noneof", INSTALADO]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "internalid", label: "ID" }),
+                        search.createColumn({ name: "name", label: "Name" }),
+                        search.createColumn({ name: "custrecord_ht_mc_estadolodispositivo", label: "ESTADO DISPOSITIVO" }),
+                        search.createColumn({ name: "custrecord_ht_mc_estadolojack", label: "HT MC Estado Lojack" })
+                    ]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            log.debug("cantidad de datos técnicos para eliminar", searchResultCount);
+            if (searchResultCount > 0) {
+                objSearch.run().each((result) => {
+                    jsonDatosTecnicos.push(result.getValue('internalid'))
+                    return true;
+                });
+            }
+            return jsonDatosTecnicos;
+        }
+
+        const validacionPertenenciaDatoTecnicoInstalado = (assemblybuildid) => {
+            let objSearch = search.create({
+                type: "customrecord_ht_record_mantchaser",
+                filters:
+                    [
+                        ["custrecord_ht_mc_enlace", "anyof", assemblybuildid],
+                        "AND",
+                        [["custrecord_ht_mc_estadolodispositivo", "anyof", INSTALADO], "OR", ["custrecord_ht_mc_estadolojack", "anyof", INSTALADO]]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "internalid", label: "ID" }),
+                        search.createColumn({ name: "name", label: "Name" }),
+                        search.createColumn({ name: "custrecord_ht_mc_estadolodispositivo", label: "ESTADO DISPOSITIVO" }),
+                        search.createColumn({ name: "custrecord_ht_mc_estadolojack", label: "HT MC Estado Lojack" })
+                    ]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            log.debug("cantidad de datos técnicos instalados asociado a este ensamble", searchResultCount);
+            return searchResultCount;
+        }
+
+        const validacionPertenenciaDatoTecnicoExiste = (serie, assemblybuildid) => {
+            let objSearch = search.create({
+                type: "customrecord_ht_record_mantchaser",
+                filters:
+                    [
+                        ["name", "is", serie],
+                        "AND",
+                        ["custrecord_ht_mc_enlace", "anyof", assemblybuildid]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "name", label: "Name" }),
+                        search.createColumn({ name: "custrecord_ht_mc_estadolodispositivo", label: "ESTADO DISPOSITIVO" }),
+                        search.createColumn({ name: "custrecord_ht_mc_estadolojack", label: "HT MC Estado Lojack" })
+                    ]
+            });
+            let searchResultCount = objSearch.runPaged().count;
+            log.debug("cantidad de datos técnicos existentes para este ensamble", searchResultCount);
+            return searchResultCount;
+        }
 
 
         return {

@@ -6,7 +6,7 @@
 define(["N/runtime", 'N/render', 'N/file', './TS_LBRY_E_Payment_Freemarker_Builder_2.1.js'],
     (runtime, render, file, FreeMarker) => {
 
-        const FOLDER = "6503" //SB: 6322 - PR 6503 /Path: SuiteScripts > Pago Electronico Personalizado
+        const FOLDER = "6322" //SB: 6322 - PR 6503 /Path: SuiteScripts > Pago Electronico Personalizado
 
         function createFileRender(transactionJSON, ftlTemplateContent) {
             try {
@@ -30,9 +30,7 @@ define(["N/runtime", 'N/render', 'N/file', './TS_LBRY_E_Payment_Freemarker_Build
 
                 renderer.templateContent = content;
 
-                let jsonString = {
-                    text: JSON.stringify(transactionJSON)
-                };
+                let jsonString = {text: JSON.stringify(transactionJSON)};
 
                 renderer.addCustomDataSource({
                     format: render.DataSource.OBJECT,
@@ -49,7 +47,6 @@ define(["N/runtime", 'N/render', 'N/file', './TS_LBRY_E_Payment_Freemarker_Build
         }
 
         function createPDFFileRender(transactionJSON, ftlTemplateContent) {
-
             try {
                 let renderer = render.create();
                 let content = FreeMarker.create(ftlTemplateContent);

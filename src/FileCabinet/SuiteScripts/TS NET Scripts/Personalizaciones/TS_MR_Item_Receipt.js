@@ -138,10 +138,7 @@ define(['N/log',
             }
             // var key = context.key;
             // var value = context.value;
-            context.write({
-                key: context.key,
-                value: itemID
-            });
+            context.write({ key: context.key, value: itemID });
         } catch (error) {
             log.error('Error-map', error);
         }

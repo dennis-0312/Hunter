@@ -1,0 +1,507 @@
+<customrecordtype scriptid="customrecord_pe_bank">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Bank</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_code_bank">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Code Bank</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_code_bank_2">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Code Bank (2)</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_bank_country">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Bank Country</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-159</selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_bank_country_2">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>SELECT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Bank Country (2)</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete>NO_ACTION</onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype>-159</selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_689246_7451241_sb1_439">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>51</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>51</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Agrobanco</name>
+    </instance>
+    <instance scriptid="val_689249_7451241_sb1_281">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>58</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>58</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Banco Azteca Del Peru</name>
+    </instance>
+    <instance scriptid="val_689251_7451241_sb1_525">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>54</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>54</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Banco Falabella S.A.</name>
+    </instance>
+    <instance scriptid="val_689252_7451241_sb1_954">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>55</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>55</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Banco Ripley</name>
+    </instance>
+    <instance scriptid="val_689253_7451241_sb1_524">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>56</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>56</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Banco Santander Peru S.A.</name>
+    </instance>
+    <instance scriptid="val_689254_7451241_sb1_392">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>29</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>29</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Bancosur</name>
+    </instance>
+    <instance scriptid="val_689255_7451241_sb1_578">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>39</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>39</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Banex</name>
+    </instance>
+    <instance scriptid="val_689256_7451241_sb1_490">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>46</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>46</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Bank Of Boston</name>
+    </instance>
+    <instance scriptid="val_689257_7451241_sb1_810">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>50</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>50</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Bnp Paribas</name>
+    </instance>
+    <instance scriptid="val_689258_7451241_sb1_796">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>01</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>01</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Central Reserva Del Peru</name>
+    </instance>
+    <instance scriptid="val_689259_7451241_sb1_671">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>07</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>07</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Citibank Del Peru S.A.</name>
+    </instance>
+    <instance scriptid="val_689260_7451241_sb1_357">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>11</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>11</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>BBVA - BANCO CONTINENTAL DEL PERÚ</name>
+    </instance>
+    <instance scriptid="val_689261_7451241_sb1_612">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>23</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>23</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>De Comercio</name>
+    </instance>
+    <instance scriptid="val_689262_7451241_sb1_505">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>02</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>02</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>BCP - BANCO DE CRÉDITO DEL PERÚ</name>
+    </instance>
+    <instance scriptid="val_689263_7451241_sb1_391">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>12</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>12</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>De Lima</name>
+    </instance>
+    <instance scriptid="val_689264_7451241_sb1_595">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>42</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>42</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Del Libertador</name>
+    </instance>
+    <instance scriptid="val_689265_7451241_sb1_140">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>48</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>48</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Del Pais</name>
+    </instance>
+    <instance scriptid="val_689266_7451241_sb1_573">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>37</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>37</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Del Progreso</name>
+    </instance>
+    <instance scriptid="val_689267_7451241_sb1_887">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>43</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>43</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Del Trabajo</name>
+    </instance>
+    <instance scriptid="val_689268_7451241_sb1_875">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>35</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>35</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Financiero Del Peru</name>
+    </instance>
+    <instance scriptid="val_689269_7451241_sb1_390">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>53</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>53</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>HSBC Bank Peru S.A.</name>
+    </instance>
+    <instance scriptid="val_689270_7451241_sb1_203">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>38</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>38</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>BANBIF - BANCO INTERAMERICANO DE FINANZAS</name>
+    </instance>
+    <instance scriptid="val_689271_7451241_sb1_636">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>03</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>03</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>INTERBANK PERÚ</name>
+    </instance>
+    <instance scriptid="val_689272_7451241_sb1_750">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>05</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>05</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Latino</name>
+    </instance>
+    <instance scriptid="val_689273_7451241_sb1_586">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>16</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>16</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Mercantil</name>
+    </instance>
+    <instance scriptid="val_689274_7451241_sb1_460">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>49</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>49</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>MIBANCO</name>
+    </instance>
+    <instance scriptid="val_689275_7451241_sb1_317">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>18</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>18</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>BANCO DE LA NACIÓN</name>
+    </instance>
+    <instance scriptid="val_689276_7451241_sb1_192">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>26</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>26</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>NBK Bank</name>
+    </instance>
+    <instance scriptid="val_689277_7451241_sb1_948">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>40</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>40</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Nuevo Mundo</name>
+    </instance>
+    <instance scriptid="val_689278_7451241_sb1_361">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>47</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>47</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Orion</name>
+    </instance>
+    <instance scriptid="val_689279_7451241_sb1_376">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>99</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>99</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>OTROS</name>
+    </instance>
+    <instance scriptid="val_689280_7451241_sb1_753">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>25</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>25</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Republica</name>
+    </instance>
+    <instance scriptid="val_689281_7451241_sb1_350">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>22</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>22</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Santander Central Hispano</name>
+    </instance>
+    <instance scriptid="val_689282_7451241_sb1_837">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>09</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>09</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>SCOTIABANK PERÚ</name>
+    </instance>
+    <instance scriptid="val_689283_7451241_sb1_244">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>45</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>45</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Serbanco Sa.</name>
+    </instance>
+    <instance scriptid="val_689284_7451241_sb1_377">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>44</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>44</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Solventa</name>
+    </instance>
+    <instance scriptid="val_689285_7451241_sb1_200">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>08</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>08</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Standard Chartered</name>
+    </instance>
+    <instance scriptid="val_689286_7451241_sb1_597">
+      <custrecord_pe_bank_country>174</custrecord_pe_bank_country>
+      <custrecord_pe_bank_country_2></custrecord_pe_bank_country_2>
+      <custrecord_pe_code_bank>41</custrecord_pe_code_bank>
+      <custrecord_pe_code_bank_2>41</custrecord_pe_code_bank_2>
+      <isinactive>F</isinactive>
+      <name>Sudamericano</name>
+    </instance>
+  </instances>
+</customrecordtype>

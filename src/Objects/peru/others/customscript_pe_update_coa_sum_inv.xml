@@ -1,0 +1,27 @@
+<suitelet scriptid="customscript_pe_update_coa_sum_inv">
+  <defaultfunction>suitelet_main</defaultfunction>
+  <description></description>
+  <isinactive>F</isinactive>
+  <name>PE Update Account Summary</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteBundles/Bundle PE Localization Basic/PEActivarCuentaResumSTLT.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_pe_update_coa_sum_inv">
+      <allemployees>F</allemployees>
+      <allpartners>F</allpartners>
+      <allroles>T</allroles>
+      <audslctrole></audslctrole>
+      <audsubsidiary>3</audsubsidiary>
+      <eventtype></eventtype>
+      <isdeployed>T</isdeployed>
+      <isonline>F</isonline>
+      <loglevel>DEBUG</loglevel>
+      <runasrole>ADMINISTRATOR</runasrole>
+      <status>RELEASED</status>
+      <title>PE Update Account Summary</title>
+    </scriptdeployment>
+  </scriptdeployments>
+</suitelet>

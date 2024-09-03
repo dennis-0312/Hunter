@@ -252,8 +252,15 @@ define([
             ]
         });
 
-        inventoryDetailSearch.run().each(function (result) {
-            let columns = result.columns;
+        var pagedData = inventoryDetailSearch.runPaged({
+            pageSize: 1000
+        });
+        pagedData.pageRanges.forEach(function (pageRange) {
+            var myPage = pagedData.fetch({
+                index: pageRange.index
+            });
+            myPage.data.forEach(function (result) {
+                let columns = result.columns;
             let isSerialized = result.getValue(columns[0]);
             let inventoryNumberId = result.getValue(columns[1]);
             let inventoryNumber = result.getText(columns[1]);
@@ -285,6 +292,7 @@ define([
             }
 
             return true;
+            });
         });
 
         return inventoryDetailResult;

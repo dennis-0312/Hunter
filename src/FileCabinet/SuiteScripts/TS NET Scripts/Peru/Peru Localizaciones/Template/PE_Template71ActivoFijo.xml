@@ -1,0 +1,139 @@
+<#assign data = input.data?eval >
+<#assign company = data.company >
+<#assign cabecera = data.cabecera >
+<#assign total = data.total >
+<#assign movements = data.movements >
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+   <head>
+
+      <meta name="title" value="Formato 7.1" />
+      <macrolist>
+         <macro id = "cabecera">
+            <table width="100%">
+               <tr>
+                  <td colspan="3" align="center" style= "font-weight: bold;">FORMATO 7.1: "REGISTRO DE ACTIVOS FIJOS - DETALLE DE LOS ACTIVOS FIJOS"</td>
+               </tr>
+               <tr>
+                  <td width="30%" align="left" style= "font-weight: bold;">PERIODO</td>
+                  <td width="5%" align="left" style= "font-weight: bold;">:</td>
+                  <td width="65%" align="left">${cabecera.Anio}</td>
+               </tr>
+               <tr>
+                  <td width="30%" align="left" style= "font-weight: bold;">RUC</td>
+                  <td width="5%" align="left" style= "font-weight: bold;">:</td>
+                  <td width="65%" align="left">${cabecera.ruc}</td>
+               </tr>
+               <tr>
+                  <td width="30%" align="left" style= "font-weight: bold;">DENOMINACIÓN O RAZÓN SOCIAL</td>
+                  <td width="5%" align="left" style= "font-weight: bold;">:</td>
+                  <td width="65%" align="left">${cabecera.razonSocial}</td>
+               </tr>
+            </table>
+         </macro>
+      </macrolist>
+   </head>
+   <body background-color="white" font-size="4" size="A4-landscape" header = "cabecera" header-height="30mm" footer-height="10mm">
+      <table style="font-family: Verdana, Arial, Helvetica, sans-serif; width:100%" >
+         <tr>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">CODIGO RELACIONADO CON EL ACTIVO FIJO</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">CUENTA CONTABLE DEL ACTIVO FIJO</td>
+            <td align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">DETALLE DEL ACTIVO FIJO</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">MARCA</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">MODELO</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">N° DE SERIE Y/O PLACA</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">SALDO INICIAL</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">ADQUISICIONES Y/O  ADICIONES</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">SALDO FINAL</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">MEJORAS</td>
+
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">RETIROS Y/O BAJAS</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">OTROS AJUSTES</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">VALOR  HISTORICO DEL ACTIVO FIJO</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">AJUSTE POR INFLAC</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">VALOR AJUSTADO DEL ACTIVO FIJO</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">FECHA DE ADQUISICIÓN</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">FECHA DE INICIO DEL USO DEL ACTIVO FIJO</td>
+            <td align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">DEPRECIACIÓN</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">PORCENT. DE DEPREC</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">DEPRECIACIÓN ACUMULADA AL CIERRE DEL EJERCICIO ANTERIOR</td>
+
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">DEPRECIACIÓN DEL EJERCICIO</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">DEPREC. DEL EJERC RELAC CON LOS RETIROS / BAJAS</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">DEPREC. RELACIONADA CON OTROS AJUSTES</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">DEPREC. ACUMULADA HISTÓRICA</td>
+            <td rowspan="2" align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">AJ. POR INFLAC DE LA DEPREC.</td>
+            <td rowspan="2" align = "center" style= "border: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">DEPRECIACIÓN ACUMULADA AJUSTADA POR INFLACIÓN</td>
+         </tr>
+         <tr>
+            <td align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">DESCRIPCIÓN</td>
+            <td align = "center" style= "border-left: 1px solid black; border-top: 1px solid black; border-bottom: 1px solid black; font-weight:bold; vertical-align: middle; text-align: center;">MÉTODO APLICADO</td>
+         </tr>
+         <#list movements as key,mov>
+            <tr>
+               <td align = "left ">${mov.col_05_codPropioActivo}</td>
+               <td align = "left ">${mov.col_09}</td>
+               <td align = "left ">${mov.col_11}</td>
+               <td align = "left ">${mov.col_12}</td>
+               <td align = "left ">${mov.col_13}</td>
+               <td align = "left ">${mov.col_14}</td>
+               <td align = "left ">${mov.col_15}</td>
+               <td align = "left ">${mov.col_16}</td>
+               <td align = "left "></td>
+               <td align = "left ">${mov.col_17}</td>
+
+               <td align = "left ">${mov.col_18}</td>
+               <td align = "left ">${mov.col_19}</td>
+               <td align = "left "></td>
+               <td align = "left ">${mov.col_23}</td>
+               <td align = "left "></td>
+               <td align = "left ">${mov.col_24}</td>
+               <td align = "left ">${mov.col_25}</td>
+               <td align = "left ">${mov.col_26}</td>
+               <td align = "left ">${mov.col_28}</td>
+               <td align = "left ">${mov.col_29}</td>
+               
+               <td align = "left ">${mov.col_30}</td>
+               <td align = "left ">${mov.col_31}</td>
+               <td align = "left ">${mov.col_32}</td>
+               <td align = "left "></td>
+               <td align = "left ">${mov.col_36}</td>
+               <td align = "left "></td>
+            </tr>
+         </#list>
+          <tr>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black">TOTAL GENERAL</td>
+               <td align = "center " style= "border-top:1px solid black">${total.totalMonto_15}</td>
+               <td align = "center " style= "border-top:1px solid black">${total.totalMonto_16}</td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black">${total.totalMonto_17}</td>
+
+               <td align = "center " style= "border-top:1px solid black">${total.totalMonto_18}</td>
+               <td align = "center " style= "border-top:1px solid black">${total.totalMonto_19}</td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black">${total.totalMonto_23}</td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black">${total.totalMonto_28}</td>
+               <td align = "center " style= "border-top:1px solid black">${total.totalMonto_29}</td>
+
+               <td align = "center " style= "border-top:1px solid black">${total.totalMonto_30}</td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <td align = "center " style= "border-top:1px solid black"></td>
+               <!-- <td colspan="2" align = "right " style= "font-weight:bold; border-top:1px solid black">MONTO TOTAL PROVISIONADO</td>
+               <td align = "right " style= "font-weight:bold; border-top:1px solid black">${total.totalMonto}</td> -->
+            </tr>
+      </table>  
+  </body>
+</pdf>

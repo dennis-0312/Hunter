@@ -189,7 +189,6 @@ define(['N/log',
         }
 
         const setVehiculoValues = (PxAdmin, vehiculo, operacionOrden) => {
-
             let idMarca = vehiculo["custrecord_ht_bien_marca.custrecord_ht_marca_codigo"] || "";
             let descMarca = vehiculo["custrecord_ht_bien_marca.custrecord_ht_marca_descripcion"] || "";
             let idModelo = vehiculo["custrecord_ht_bien_modelo.custrecord_ht_mod_codigo"] || "";

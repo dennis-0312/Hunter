@@ -1,0 +1,13 @@
+<customglplugin scriptid="customscript_pe_gl_receipt_fulfillment">
+  <description></description>
+  <isinactive>F</isinactive>
+  <loglevel>DEBUG</loglevel>
+  <name>PE GL Receipt Fulfillment</name>
+  <notifyadmins>F</notifyadmins>
+  <notifyemails></notifyemails>
+  <notifyowner>T</notifyowner>
+  <notifyuser>F</notifyuser>
+  <runasrole></runasrole>
+  <scriptfile>[/SuiteScripts/TS NET Scripts/Peru/TS Script Peru/TS_GL_receipt_fulfillment.js]</scriptfile>
+  <status>RELEASED</status>
+</customglplugin>

@@ -41,7 +41,7 @@ define(['N/log',
         try {
             const objRecord = scriptContext.newRecord;
             let tranID = objRecord.id;
-            if (scriptContext.type === scriptContext.UserEventType.CREATE) {
+            if (scriptContext.type === scriptContext.UserEventType.CREATE && objRecord.getValue('custbody_ec_cre_aut') == true) {
                 // let queue = task.create({
                 //     taskType: task.TaskType.MAP_REDUCE,
                 //     scriptId: 'customscript_ts_mr_item_receipt',
@@ -61,7 +61,7 @@ define(['N/log',
                 };
                 let token = queue.submit();
                 log.debug('token', token);
-            } else if (scriptContext.type === scriptContext.UserEventType.EDIT) {
+            } else if (scriptContext.type === scriptContext.UserEventType.EDIT && objRecord.getValue('custbody_ec_cre_aut') == true) {
                 // let queue = task.create({
                 //     taskType: task.TaskType.MAP_REDUCE,
                 //     scriptId: 'customscript_ts_mr_item_receipt',

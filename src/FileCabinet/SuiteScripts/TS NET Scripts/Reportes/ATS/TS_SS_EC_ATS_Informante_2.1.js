@@ -14,7 +14,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
                 //let auxiliaryRecords = getAuxiliaryRecords(environmentFeatures, scriptParameters);
 
                 let atsInformanteString = getATSInformante(scriptParameters, environmentFeatures);
-                log.error("atsInformanteString",atsInformanteString);
+                log.error("atsInformanteString", atsInformanteString);
                 scriptParameters.atsFilesId = saveFile(atsInformanteString, scriptParameters) + '|';
 
                 executeMapReduce(scriptParameters, environmentFeatures);
@@ -119,25 +119,15 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
         const getATSInformante = (scriptParameters, environmentFeatures) => {
             log.debug('getATSInformante.scriptParameters', scriptParameters);
             log.debug('getATSInformante.environmentFeatures', environmentFeatures);
-            let atsInformanteSearch = search.load({
-                id: 'customsearch_ts_ec_ats_informante'
-            });
+            let atsInformanteSearch = search.load({ id: 'customsearch_ts_ec_ats_informante' });
 
             if (scriptParameters.periodId) {
-                let periodFilter = search.createFilter({
-                    name: 'postingperiod',
-                    operator: search.Operator.ANYOF,
-                    values: scriptParameters.periodId
-                });
+                let periodFilter = search.createFilter({ name: 'postingperiod', operator: search.Operator.ANYOF, values: scriptParameters.periodId });
                 atsInformanteSearch.filters.push(periodFilter);
             }
 
             if (environmentFeatures.hasSubsidiaries) {
-                let subsidiaryFilter = search.createFilter({
-                    name: 'subsidiary',
-                    operator: search.Operator.ANYOF,
-                    values: scriptParameters.subsidiaryId
-                });
+                let subsidiaryFilter = search.createFilter({ name: 'subsidiary', operator: search.Operator.ANYOF, values: scriptParameters.subsidiaryId });
                 atsInformanteSearch.filters.push(subsidiaryFilter);
             }
 
@@ -223,11 +213,11 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
             let logRecord = record.create({
                 type: "customrecord_ts_ec_rpt_generator_log"
             });
-    
+
             if (hasSubsidiariesFeature) {
                 logRecord.setValue("custrecord_ts_ec_log_rpt_gen_subsidiaria", scriptParameters.subsidiaryId);
             }
-    
+
             logRecord.setValue("custrecord_ts_ec_log_rpt_gen_periodo", scriptParameters.periodId);
             logRecord.setValue("custrecord_ts_ec_log_rpt_gen_estado", "Procesando...");
             logRecord.setValue("custrecord_ts_ec_log_rpt_gen_libro_legal", "Procesando...");

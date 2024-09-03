@@ -27,8 +27,14 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
                 updateNeededTagIcon(line + 1)
             }
         }
-
         return true;
+    }
+
+    const saveRecord = () => {
+        let currentRecord = scriptContext.currentRecord;
+        if (verificarParametroCandado(workOrderId)) {
+            if (currentRecord.getValue({ fieldId: ' ' })) return true;
+        }
     }
 
     const updateSetTagIcon = (line) => {
@@ -43,6 +49,21 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
         var element = document.getElementById(`${COMPONENT_INVENTORY_DETAIL_POPUP_ID}${line}`);
         element.classList.remove("i_inventorydetailset");
         element.classList.add("i_inventorydetailneeded");
+    }
+
+    const verificarParametroCandado = (workOrderId) => {
+        const COD_PRO_ITEM_COMERCIAL_DE_PRODUCCION = "PRO";
+        const COD_SI = "S";
+        let itemVenta = search.lookupFields({
+            type: "customrecord_ht_record_ordentrabajo",
+            id: workOrderId,
+            columns: ["custrecord_ht_ot_item"]
+        }).custrecord_ht_ot_item;
+        let itemVentaId = itemVenta.length ? itemVenta[0].value : "";
+        if (!itemVentaId) return true;
+        let parametrizacionProducto = parametrizacionJson(itemVentaId);
+        let esCandado = parametrizacionProducto[COD_PRO_ITEM_COMERCIAL_DE_PRODUCCION];
+        return esCandado !== undefined && esCandado.valor == COD_SI;
     }
 
     const getSuiteletURL = () => {
@@ -74,6 +95,7 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
 
     return {
         pageInit,
-        fieldChanged
+        fieldChanged,
+        saveRecord
     };
 });

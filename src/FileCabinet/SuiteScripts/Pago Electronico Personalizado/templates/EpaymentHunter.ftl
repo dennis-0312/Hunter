@@ -47,7 +47,7 @@
 <#elseif codTerminoPago == "COB">
 <#assign codTermino = ebank.custrecord_2663_entity_ec_tipo_cuentacob.text >
 <#assign account = setMaxLength(ebank.custrecord_2663_entity_bban,18) >
-<#assign codigoBanco = ebank.custrecord_2663_entity_bank_code.text >
+<#assign codigoBanco = ebank.custrecord_2663_entity_bank_code >
 <#else>
 <#assign codTermino = " " >
 <#assign account = " " >
@@ -59,13 +59,13 @@
 <#if codigoEmpresa?length==0>
 <#assign codigoEmpresa = " " >
 </#if>
-<#assign codigoEmpresa = "00363">
+<#assign codigoEmpresa = transaction.custrecord_ht_cuenta_nombrenetsuite>
 <#--  LOGICA EMITIDO SUSTENTO  -->
 <#if transaction.custbody_ht_emitido_pago_electronico??><#-- si existe este campo puede ser cheque, anticipo o pago  -->
     <#assign emitido="SI">
     <#assign codigoBanco = "34" >
     <#assign codTermino = "03" >
-    <#assign account = "0005018787">
+    <#assign account = transaction.custrecord_ht_ec_cuentabancaria>
     <#assign nrocheque = transaction.tranid>
     <#assign glosa=" ">
     <#if transaction.tipo=="VendPymt">

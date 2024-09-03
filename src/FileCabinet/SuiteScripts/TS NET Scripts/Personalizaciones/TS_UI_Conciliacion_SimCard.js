@@ -18,7 +18,7 @@ define(['N/ui/serverWidget', 'N/redirect', 'N/task', 'N/search', 'N/file', 'N/ur
     function (serverWidget, redirect, task, search, file, url, record, runtime) {
 
         var ID_RECORD_LOG = 'customrecord_excel_conciliacion_gene_log';
-        var taskId= '';
+        var taskId = '';
         function onRequest(context) {
             try {
 
@@ -88,7 +88,7 @@ define(['N/ui/serverWidget', 'N/redirect', 'N/task', 'N/search', 'N/file', 'N/ur
                         sublist1.setSublistValue({ id: 'list1_field_datecreated', line: j, value: column02 });
                         sublist1.setSublistValue({ id: 'list1_field_name_file', line: j, value: column03 });
                         sublist1.setSublistValue({ id: 'list1_field_status', line: j, value: column04 });
-                        sublist1.setSublistValue({ id: 'list1_field_busqueda', line: j, value: column05});
+                        sublist1.setSublistValue({ id: 'list1_field_busqueda', line: j, value: column05 });
                         // sublist1.setSublistValue({ id: 'list1_field_deposit_output', line: j, value: column07 });
                         j++
                         return true
@@ -110,7 +110,7 @@ define(['N/ui/serverWidget', 'N/redirect', 'N/task', 'N/search', 'N/file', 'N/ur
                     var sep_lista = param_sep_lista == 1 ? ";" : ",";
                     log.debug('sep_lista', sep_lista);
 
-                   
+
                     if (fileObj && fileObj.fileType == 'CSV') {
                         var contentCSV = fileObj.getContents();
                         log.debug('contentCSV', contentCSV);
@@ -181,9 +181,9 @@ define(['N/ui/serverWidget', 'N/redirect', 'N/task', 'N/search', 'N/file', 'N/ur
                         'custscript_id_record': idRecLog,
                         'custscript_separador_csv': _sep_lista
                     }
-                    
+
                     mrTask.submit();
-                   
+
                 }
             } catch (e) {
                 log.error('Error-sendProccessCreateDeposit', e);

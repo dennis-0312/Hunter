@@ -1,0 +1,20 @@
+<customlist scriptid="customlist_pe_code_status">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Código Estado del Activo Fijo</name>
+  <customvalues>
+    <customvalue scriptid="val_686242_7451241_sb1_418">
+      <isinactive>F</isinactive>
+      <value>1</value>
+    </customvalue>
+    <customvalue scriptid="val_686243_7451241_sb1_348">
+      <isinactive>F</isinactive>
+      <value>2</value>
+    </customvalue>
+    <customvalue scriptid="val_686244_7451241_sb1_616">
+      <isinactive>F</isinactive>
+      <value>9</value>
+    </customvalue>
+  </customvalues>
+</customlist>

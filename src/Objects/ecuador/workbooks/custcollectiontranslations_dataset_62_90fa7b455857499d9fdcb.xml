@@ -1,0 +1,18 @@
+<translationcollection scriptid="custcollectiontranslations_dataset_62_90fa7b455857499d9fdcb">
+  <defaultlanguage>es-ES</defaultlanguage>
+  <name translate="T">[scriptid=custcollectiontranslations_dataset_62_90fa7b455857499d9fdcb.dataset_name_336_1]</name>
+  <strings>
+    <string scriptid="dataset_name_336_1">
+      <defaulttranslation>Conjunto de datos facturas concesionarios</defaulttranslation>
+      <description>Name in dataset</description>
+    </string>
+    <string scriptid="dataset_description_336_2">
+      <defaulttranslation>Incluye datos de factura, bien, estado, importe y saldo de factura de concesionarios </defaulttranslation>
+      <description>Description of a dataset</description>
+    </string>
+    <string scriptid="dataset_field_341_1">
+      <defaulttranslation>Fecha de vencimiento</defaulttranslation>
+      <description>Field in dataset</description>
+    </string>
+  </strings>
+</translationcollection>

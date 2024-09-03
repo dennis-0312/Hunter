@@ -1,0 +1,166 @@
+<customrecordtype scriptid="customrecord_pe_tipo_de_diario">
+  <accesstype>NONENEEDED</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE TIPO DE DIARIO</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_nombre">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description>Tipos de Entradas de Diario</description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>NOMBRE</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_636823_7451241_sb1_592">
+      <custrecord_nombre>Registro del asiento de apertura del periodo</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Registro del asiento de apertura del periodo</name>
+    </instance>
+    <instance scriptid="val_636824_7451241_sb1_471">
+      <custrecord_nombre>Cobro de facturación</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Cobro de facturación</name>
+    </instance>
+    <instance scriptid="val_636825_7451241_sb1_140">
+      <custrecord_nombre>Registro de comprobantes de ventas</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Registro de comprobantes de ventas</name>
+    </instance>
+    <instance scriptid="val_636826_7451241_sb1_352">
+      <custrecord_nombre>Registro de comprobantes de compras</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Registro de comprobantes de compras</name>
+    </instance>
+    <instance scriptid="val_636827_7451241_sb1_668">
+      <custrecord_nombre>Registro de recibos por honorarios</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Registro de recibos por honorarios</name>
+    </instance>
+    <instance scriptid="val_636828_7451241_sb1_495">
+      <custrecord_nombre>Registro de Invoice del exterior (Importaciones)</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Registro de Invoice del exterior (Importaciones)</name>
+    </instance>
+    <instance scriptid="val_636829_7451241_sb1_179">
+      <custrecord_nombre>Movimiento de transferencias bancarias</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Movimiento de transferencias bancarias</name>
+    </instance>
+    <instance scriptid="val_636830_7451241_sb1_586">
+      <custrecord_nombre>Movimiento de todas las salidas de efectivo</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Movimiento de todas las salidas de efectivo</name>
+    </instance>
+    <instance scriptid="val_636831_7451241_sb1_593">
+      <custrecord_nombre>Pagos con cheques</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Pagos con cheques</name>
+    </instance>
+    <instance scriptid="val_636832_7451241_sb1_621">
+      <custrecord_nombre>Provisiones en libro diario</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Provisiones en libro diario</name>
+    </instance>
+    <instance scriptid="val_636833_7451241_sb1_422">
+      <custrecord_nombre>Provisión mensual del costo de venta</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Provisión mensual del costo de venta</name>
+    </instance>
+    <instance scriptid="val_636834_7451241_sb1_873">
+      <custrecord_nombre>Provisión mensual de la depreciación</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Provisión mensual de la depreciación</name>
+    </instance>
+    <instance scriptid="val_636835_7451241_sb1_904">
+      <custrecord_nombre>Provisión mensual de la planilla</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Provisión mensual de la planilla</name>
+    </instance>
+    <instance scriptid="val_636836_7451241_sb1_498">
+      <custrecord_nombre>Provisión mensual de la planilla</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Provisión mensual de la planilla</name>
+    </instance>
+    <instance scriptid="val_636837_7451241_sb1_384">
+      <custrecord_nombre>Ajuste diferencia en cambio</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Ajuste diferencia en cambio</name>
+    </instance>
+    <instance scriptid="val_636838_7451241_sb1_219">
+      <custrecord_nombre>Registro del asiento de cierre del periodo</custrecord_nombre>
+      <isinactive>F</isinactive>
+      <name>Registro del asiento de cierre del periodo</name>
+    </instance>
+  </instances>
+</customrecordtype>

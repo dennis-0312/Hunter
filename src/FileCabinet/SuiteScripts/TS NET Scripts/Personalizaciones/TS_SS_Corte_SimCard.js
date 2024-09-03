@@ -32,7 +32,7 @@ define([
                 log.debug("idSalesOrder: ", idSalesOrder);
                 for (let i = 0; i < idSalesOrder.length; i++) {
                     if (idSalesOrder[i][0] != "" && idSalesOrder[i][0] != null && idSalesOrder[i][0] != 'undefined') {
-                        let item_cobertura = [];
+                        let item_cobertura = new Array();
                         if (idSalesOrder[i][1] != "" && idSalesOrder[i][1] != null && idSalesOrder[i][1] != 'undefined') {
                             item_cobertura = validar_item(idSalesOrder[i][1]); // ADP y TRM = true
                             log.debug('item_cobertura', item_cobertura);
@@ -173,9 +173,9 @@ define([
                                         }
 
                                         //let Telematic = envioTelematic(telemat);
-                                        let PXAdminPrueba = envioPXAdmin(PxAdmin);
+                                        //let PXAdminPrueba = envioPXAdmin(PxAdmin);
                                         //log.debug('Telematic', Telematic);
-                                        log.debug('PXAdminPrueba', PXAdminPrueba);
+                                        log.debug('PXAdminPrueba', PxAdmin);
                                     }
                                 }
                             }
@@ -206,12 +206,12 @@ define([
                 date.getFullYear(),
                 padTo2Digits(date.getMonth() + 1),
                 padTo2Digits(date.getDate())
-
             ].join('');
         }
 
         const getSalesOrder = (mesCierre) => {
             try {
+                log.debug('mesCierre', mesCierre)
                 var arrSalesOrder = new Array();
                 var busqueda = search.create({
                     type: "invoice",
@@ -219,7 +219,7 @@ define([
                         [
                             ["type", "anyof", "CustInvc"],
                             "AND",
-                            ["duedate", "on", "21/12/2023"],
+                            ["duedate", "on", "08/06/2024"],
                             "AND",
                             ["status", "anyof", "CustInvc:A"],
                             "AND",
@@ -240,6 +240,8 @@ define([
                             search.createColumn({ name: "custbody_ht_so_bien", label: "Bien" })
                         ]
                 });
+                let resultCount = busqueda.runPaged().count;
+                log.debug('resultCount----', resultCount);
                 var pageData = busqueda.runPaged({ pageSize: 1000 });
                 pageData.pageRanges.forEach(pageRange => {
                     page = pageData.fetch({ index: pageRange.index });
@@ -258,7 +260,7 @@ define([
                         //arrSalesOrder.push(arrCustomer);
                     });
                 });
-                //log.debug('JSON----', arrSalesOrder)
+                log.debug('JSON----', arrSalesOrder)
                 return arrSalesOrder;
             } catch (e) {
                 log.error('Error en getSalesOrder', e);
@@ -459,13 +461,15 @@ define([
         }
 
         const getCobertura_bien = (id) => {
-            let cobertura = [];
+            let cobertura = new Array();
             try {
                 var busqueda = search.create({
                     type: "customrecord_ht_co_cobertura",
                     filters:
                         [
-                            ["custrecord_ht_co_bien", "anyof", id]
+                            ["custrecord_ht_co_bien", "anyof", id],
+                            // "AND",
+                            // ["custrecord_ht_co_estado_cobertura", "noneof", 4]
                         ],
                     columns:
                         [
@@ -473,6 +477,8 @@ define([
                             search.createColumn({ name: "custrecord_ht_co_numeroserieproducto", label: "Serie Producto" })
                         ]
                 });
+                let resultCount = busqueda.runPaged().count;
+                log.debug('resultCount-getCobertura_bien----', resultCount);
                 var savedsearch = busqueda.run().getRange(0, 100);
                 if (savedsearch.length > 0) {
                     busqueda.run().each(result => {

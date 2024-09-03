@@ -1,0 +1,225 @@
+<savedcsvimport scriptid="custimport_283_7451241_sb1_544">
+  <charencoding>UTF_8</charencoding>
+  <columndelimiter>SEMICOLON</columndelimiter>
+  <datahandling>ADD</datahandling>
+  <decimaldelimiter>PERIOD</decimaldelimiter>
+  <entryform>[scriptid=custform_pe_inventory_item]</entryform>
+  <ignorereadonly>T</ignorereadonly>
+  <importname>ART-INV</importname>
+  <logsystemnotescustfields>F</logsystemnotescustfields>
+  <multiselectdelimiter>|</multiselectdelimiter>
+  <overwritemissingfields>F</overwritemissingfields>
+  <overwritesublists>F</overwritesublists>
+  <recordtype>INVENTORYITEM</recordtype>
+  <runserversuitescript>F</runserversuitescript>
+  <usemultithread>F</usemultithread>
+  <validatemandatorycustfields>T</validatemandatorycustfields>
+  <audience>
+    <allemployees>F</allemployees>
+    <allpartners>F</allpartners>
+    <allroles>F</allroles>
+    <globaledit>F</globaledit>
+    <ispublic>F</ispublic>
+    <roles></roles>
+  </audience>
+  <filemappings>
+    <filemapping>
+      <file>INVENTORYITEM</file>
+    </filemapping>
+  </filemappings>
+  <recordmappings>
+    <recordmapping>
+      <record>INVENTORYITEM</record>
+      <fieldmappings>
+        <fieldmapping>
+          <field>ASSETACCOUNT</field>
+          <columnreference>
+            <column>CUENTA DE ACTIVO</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>CLASS</field>
+          <columnreference>
+            <column>CLASE</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>COGSACCOUNT</field>
+          <columnreference>
+            <column>CUENTA DE COSTO DE LOS PRODUCTOS VENDIDOS</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>COSTINGMETHOD</field>
+          <columnreference>
+            <column>MÉTODO DE CÁLCULO DE COSTOS</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>[scriptid=custitem_pe_existence_type]</field>
+          <columnreference>
+            <column>PE TIPO DE EXISTENCIA</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>[scriptid=custitem_pe_inventory_catalog]</field>
+          <columnreference>
+            <column>PE CATÁLOGO DE INVENTARIO</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>[scriptid=custitem_pe_measurement_unit]</field>
+          <columnreference>
+            <column>PE UNIDADES DE MEDIDA</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>[scriptid=custitem_pe_purchase_account]</field>
+          <columnreference>
+            <column>PE CUENTA COMPRAS (60)</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>[scriptid=custitem_pe_valuation_method]</field>
+          <columnreference>
+            <column>PE MÉTODO VALUACIÓN</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>[scriptid=custitem_pe_variation_account]</field>
+          <columnreference>
+            <column>PE CUENTA DE VARIACIÓN (61)</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>DEPARTMENT</field>
+          <columnreference>
+            <column>DEPARTAMENTO</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>DISPLAYNAME</field>
+          <columnreference>
+            <column>NOMBRE/CÓDIGO PARA MOSTRAR</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>EXTERNALID</field>
+          <columnreference>
+            <column>ID Externo</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>INCOMEACCOUNT</field>
+          <columnreference>
+            <column>CUENTA DE INGRESOS</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>ITEMID</field>
+          <columnreference>
+            <column>NOMBRE/NÚMERO DEL ARTÍCULO</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>LOCATION</field>
+          <columnreference>
+            <column>OFICINA</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>PURCHASEDESCRIPTION</field>
+          <columnreference>
+            <column>DESCRIPCIÓN DE LA COMPRA</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>PURCHASEUNIT</field>
+          <columnreference>
+            <column>UNIDAD DE COMPRA PRINCIPAL</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>SALESDESCRIPTION</field>
+          <columnreference>
+            <column>DESCRIPCIÓN DE LA VENTA</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>SALEUNIT</field>
+          <columnreference>
+            <column>UNIDAD DE VENTAS PRINCIPAL</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>STOCKUNIT</field>
+          <columnreference>
+            <column>UNIDAD DE STOCK PRINCIPAL</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>SUBSIDIARY</field>
+          <value>3</value>
+        </fieldmapping>
+        <fieldmapping>
+          <field>TAXSCHEDULE</field>
+          <columnreference>
+            <column>PROGRAMA FISCAL</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>UNITSTYPE</field>
+          <columnreference>
+            <column>TIPO DE UNIDADES PRINCIPALES</column>
+            <file>INVENTORYITEM</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+      </fieldmappings>
+    </recordmapping>
+  </recordmappings>
+</savedcsvimport>

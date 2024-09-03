@@ -18,7 +18,6 @@ define([
             let userInterface = new library.UserInterface(context.request.parameters);
             const FIELDS = userInterface.FIELDS;
             if (method == 'GET') {
-
                 const PARAMETERS = userInterface.getFormattedParameters();
                 log.error("parameters Q", PARAMETERS);
 
@@ -60,6 +59,8 @@ define([
                 userInterface.setBillOfMaterialsRevisionFieldData(billOfMaterialRevisionField, itemField.getDefaultValue());
                 billOfMaterialRevisionField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
+                let datosTecnicosField = form.addField(FIELDS.field.datostecnicos.id, serverWidget.FieldType.SELECT, FIELDS.field.datostecnicos.text, FIELDS.fieldgroup.primary.id, 'customrecord_ht_record_mantchaser');
+
                 form.addFieldGroup(FIELDS.fieldgroup.classification.id, FIELDS.fieldgroup.classification.text);
 
                 let subsidiaryField = form.addField(FIELDS.field.subsidiary.id, serverWidget.FieldType.SELECT, FIELDS.field.subsidiary.text, FIELDS.fieldgroup.classification.id, 'subsidiary');
@@ -69,6 +70,8 @@ define([
                 let locationField = form.addField(FIELDS.field.location.id, serverWidget.FieldType.SELECT, FIELDS.field.location.text, FIELDS.fieldgroup.classification.id, 'location');
                 locationField.setDefaultValue(PARAMETERS.location);
                 locationField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+
+                //let datosTecnicosField = form.addField({ id: 'custpage_field_datos_tecnicos', type: serverWidget.FieldType.SELECT, source: 'customrecord_ht_record_mantchaser', label: 'Datos Técnicos', container: 'cuspage_fg_primary' });
 
                 let inventoryDetailField = form.addField(FIELDS.field.inventorydetail.id, serverWidget.FieldType.LONGTEXT, FIELDS.field.inventorydetail.text, FIELDS.fieldgroup.classification.id);
                 inventoryDetailField.setDefaultValue("{}");
@@ -108,7 +111,6 @@ define([
                     id: context.request.parameters.custpage_f_workorder
                 });
             }
-
         } catch (error) {
             log.error("error", error);
             context.response.writePage(error);
@@ -116,7 +118,7 @@ define([
     }
 
     const getParametersForSchedule = (parameters, comercialData, alquilerData) => {
-        let scriptParameters = {};
+        let scriptParameters = new Object();
         scriptParameters.custscript_ts_ss_buil_inv_adj_alquiler = alquilerData;
         scriptParameters.custscript_ts_ss_buil_inv_adj_comercial = comercialData;
         scriptParameters.custscript_ts_ss_buil_inv_adj_customer = parameters.custpage_f_customer || "";
@@ -125,11 +127,12 @@ define([
         scriptParameters.custscript_ts_ss_buil_inv_adj_workorder = parameters.custpage_f_workorder || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_salesorder = parameters.custpage_f_salesorder || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_assemblyfl = 'alquiler';
+        scriptParameters.custscript_ts_ss_buil_inv_adj_datotec = parameters.custpage_field_datos_tecnicos || "";
         return scriptParameters;
     }
 
     const getSublistData = (sublistData, inventoryDetail) => {
-        let comercialData = [], alquilerData = [];
+        let comercialData = new Array(), alquilerData = Array();
         try {
             const breakLine = /\u0002/;
             const breakColumns = /\u0001/;
@@ -141,9 +144,9 @@ define([
                 let id = line[0];
                 let type = line[1];
                 let alquiler = line[7];
-                
+
                 log.error(i, inventoryDetail[i]);
-                log.error(i, {line, id, type, alquiler});
+                log.error(i, { line, id, type, alquiler });
                 if (inventoryDetail[i] === undefined) continue;
                 let length = Object.keys(inventoryDetail[i]).length;
                 if (length <= 0) continue;
@@ -166,6 +169,7 @@ define([
     }
 
     const taskSchedule = (params) => {
+        log.debug('taskSchedule', taskSchedule)
         let scriptTask = task.create({
             taskType: task.TaskType.SCHEDULED_SCRIPT,
             scriptId: 'customscript_ts_ss_build_inventory_adjus',

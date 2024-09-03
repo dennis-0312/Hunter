@@ -113,6 +113,9 @@ define([
                     //objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_familia_prod', value: scriptContext.ttr });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_modelodispositivo', value: scriptContext.modeloDispositivo });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_unidad', value: scriptContext.unidadDispositivo });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_vid', value: scriptContext.vidDispositivo });
                     response = objRecord.save();
                     log.debug('responseNuevoRegistro', response);
                 } else {
@@ -120,16 +123,26 @@ define([
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
                     if (scriptContext.t_PPS == true) {
-                        objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
-                        objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
-                        objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
-                        objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
+                        if (scriptContext.esGarantia == true) {
+                            objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
+                            scriptContext.start = objRecord.getValue('custrecord_ht_co_coberturainicial')
+                            scriptContext.end = objRecord.getValue('custrecord_ht_co_coberturafinal')
+                        } else {
+                            objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_co_plazo', value: scriptContext.plazo });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
+                        }
                     }
-                    objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
+
+                    if (scriptContext.esGarantia == false) { objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto }) }
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
                     //objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_familia_prod', value: scriptContext.ttr });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_modelodispositivo', value: scriptContext.modeloDispositivo });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_unidad', value: scriptContext.unidadDispositivo });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_vid', value: scriptContext.vidDispositivo });
                     response = objRecord.save();
                     log.debug('responseExisteRegistro', response);
                 }
@@ -166,7 +179,14 @@ define([
                     log.debug('responseNuevoHistorial', response_2);
                 }
             } else {
-                let objRecord = record.create({ type: HT_COBERTURA_RECORD, isDynamic: true });
+                let objRecord;
+                if (scriptContext.cobertura != 0) {
+                    objRecord = record.load({ type: HT_COBERTURA_RECORD, id: scriptContext.cobertura, isDynamic: true });
+                    log.debug('record.load','load');
+                } else {
+                    objRecord = record.create({ type: HT_COBERTURA_RECORD, isDynamic: true });
+                    log.debug('record.create', 'create');
+                }
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
@@ -174,7 +194,6 @@ define([
                 objRecord.setValue({ fieldId: '0', value: scriptContext.ttr });
                 let response = objRecord.save();
                 log.debug('response', response);
-
                 let objSearch = verifyExistHistorial(scriptContext.salesorder, scriptContext.ordentrabajo);
                 let searchResultCount = objSearch.runPaged().count;
                 if (searchResultCount > 0) {
@@ -202,7 +221,6 @@ define([
                     let response_2 = objRecord_2.save();
                     log.debug('responseNuevoHistorialSinCobertura', response_2);
                 }
-
             }
             return { 'Conect': 'ConectPost' };
         } catch (error) {

@@ -1,0 +1,497 @@
+<customrecordtype scriptid="customrecord_pe_measurement_unit">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE Measurement Unit</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_code_measurement_unit">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Code Measurement Unit</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_measurement_json">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE Measurement JSON</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>T</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_642379_7451241_sb1_174">
+      <custrecord_pe_code_measurement_unit>BJ</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Balde</name>
+    </instance>
+    <instance scriptid="val_642380_7451241_sb1_919">
+      <custrecord_pe_code_measurement_unit>BLL</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Barriles</name>
+    </instance>
+    <instance scriptid="val_642381_7451241_sb1_414">
+      <custrecord_pe_code_measurement_unit>4A</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Bobinas</name>
+    </instance>
+    <instance scriptid="val_642382_7451241_sb1_443">
+      <custrecord_pe_code_measurement_unit>BG</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Bolsa</name>
+    </instance>
+    <instance scriptid="val_642383_7451241_sb1_988">
+      <custrecord_pe_code_measurement_unit>BO</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Botellas</name>
+    </instance>
+    <instance scriptid="val_642384_7451241_sb1_751">
+      <custrecord_pe_code_measurement_unit>BX</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Caja</name>
+    </instance>
+    <instance scriptid="val_642385_7451241_sb1_820">
+      <custrecord_pe_code_measurement_unit>CT</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Cartones</name>
+    </instance>
+    <instance scriptid="val_642386_7451241_sb1_477">
+      <custrecord_pe_code_measurement_unit>CMK</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Centimetro Cuadrado</name>
+    </instance>
+    <instance scriptid="val_642387_7451241_sb1_495">
+      <custrecord_pe_code_measurement_unit>CMQ</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Centimetro Cubico</name>
+    </instance>
+    <instance scriptid="val_642388_7451241_sb1_943">
+      <custrecord_pe_code_measurement_unit>CMT</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Centimetro Lineal</name>
+    </instance>
+    <instance scriptid="val_642389_7451241_sb1_420">
+      <custrecord_pe_code_measurement_unit>CEN</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Ciento De Unidades</name>
+    </instance>
+    <instance scriptid="val_642390_7451241_sb1_115">
+      <custrecord_pe_code_measurement_unit>CY</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Cilindro</name>
+    </instance>
+    <instance scriptid="val_642391_7451241_sb1_170">
+      <custrecord_pe_code_measurement_unit>CJ</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Conos</name>
+    </instance>
+    <instance scriptid="val_642392_7451241_sb1_683">
+      <custrecord_pe_code_measurement_unit>DZN</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Docena</name>
+    </instance>
+    <instance scriptid="val_642393_7451241_sb1_761">
+      <custrecord_pe_code_measurement_unit>DZP</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Docena Por 10**6</name>
+    </instance>
+    <instance scriptid="val_642394_7451241_sb1_517">
+      <custrecord_pe_code_measurement_unit>BE</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Fardo</name>
+    </instance>
+    <instance scriptid="val_642395_7451241_sb1_612">
+      <custrecord_pe_code_measurement_unit>GLI</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Galon Ingles (4,545956L)</name>
+    </instance>
+    <instance scriptid="val_642396_7451241_sb1_451">
+      <custrecord_pe_code_measurement_unit>GRM</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Gramo</name>
+    </instance>
+    <instance scriptid="val_642397_7451241_sb1_546">
+      <custrecord_pe_code_measurement_unit>GRO</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Gruesa</name>
+    </instance>
+    <instance scriptid="val_642398_7451241_sb1_233">
+      <custrecord_pe_code_measurement_unit>HLT</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Hectolitro</name>
+    </instance>
+    <instance scriptid="val_642399_7451241_sb1_898">
+      <custrecord_pe_code_measurement_unit>LEF</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Hoja</name>
+    </instance>
+    <instance scriptid="val_642400_7451241_sb1_559">
+      <custrecord_pe_code_measurement_unit>SET</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Juego</name>
+    </instance>
+    <instance scriptid="val_642401_7451241_sb1_686">
+      <custrecord_pe_code_measurement_unit>KGM</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Kilogramo</name>
+    </instance>
+    <instance scriptid="val_642402_7451241_sb1_397">
+      <custrecord_pe_code_measurement_unit>KTM</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Kilometro</name>
+    </instance>
+    <instance scriptid="val_642403_7451241_sb1_472">
+      <custrecord_pe_code_measurement_unit>KWH</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Kilovatio Hora</name>
+    </instance>
+    <instance scriptid="val_642404_7451241_sb1_164">
+      <custrecord_pe_code_measurement_unit>KT</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Kit</name>
+    </instance>
+    <instance scriptid="val_642405_7451241_sb1_671">
+      <custrecord_pe_code_measurement_unit>CA</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Latas</name>
+    </instance>
+    <instance scriptid="val_642406_7451241_sb1_789">
+      <custrecord_pe_code_measurement_unit>LBR</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Libras</name>
+    </instance>
+    <instance scriptid="val_642407_7451241_sb1_672">
+      <custrecord_pe_code_measurement_unit>LTR</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Litro</name>
+    </instance>
+    <instance scriptid="val_642410_7451241_sb1_776">
+      <custrecord_pe_code_measurement_unit>MWH</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Megawatt Hora</name>
+    </instance>
+    <instance scriptid="val_642411_7451241_sb1_458">
+      <custrecord_pe_code_measurement_unit>MTR</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Metro</name>
+    </instance>
+    <instance scriptid="val_642412_7451241_sb1_411">
+      <custrecord_pe_code_measurement_unit>MTK</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Metro Cuadrado</name>
+    </instance>
+    <instance scriptid="val_642413_7451241_sb1_912">
+      <custrecord_pe_code_measurement_unit>MTQ</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Metro Cubico</name>
+    </instance>
+    <instance scriptid="val_642414_7451241_sb1_457">
+      <custrecord_pe_code_measurement_unit>MGM</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Miligramos</name>
+    </instance>
+    <instance scriptid="val_642415_7451241_sb1_435">
+      <custrecord_pe_code_measurement_unit>MLT</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Mililitro</name>
+    </instance>
+    <instance scriptid="val_642416_7451241_sb1_494">
+      <custrecord_pe_code_measurement_unit>MMT</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Milimetro</name>
+    </instance>
+    <instance scriptid="val_642417_7451241_sb1_582">
+      <custrecord_pe_code_measurement_unit>MMK</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Milimetro Cuadrado</name>
+    </instance>
+    <instance scriptid="val_642418_7451241_sb1_237">
+      <custrecord_pe_code_measurement_unit>MMQ</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Milimetro Cubico</name>
+    </instance>
+    <instance scriptid="val_642419_7451241_sb1_245">
+      <custrecord_pe_code_measurement_unit>MLL</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Millares</name>
+    </instance>
+    <instance scriptid="val_642420_7451241_sb1_669">
+      <custrecord_pe_code_measurement_unit>UM</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Millon de Unidades</name>
+    </instance>
+    <instance scriptid="val_642421_7451241_sb1_679">
+      <custrecord_pe_code_measurement_unit>ONZ</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Onzas</name>
+    </instance>
+    <instance scriptid="val_642422_7451241_sb1_810">
+      <custrecord_pe_code_measurement_unit>PF</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Paletas</name>
+    </instance>
+    <instance scriptid="val_642423_7451241_sb1_107">
+      <custrecord_pe_code_measurement_unit>PK</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Paquete</name>
+    </instance>
+    <instance scriptid="val_642424_7451241_sb1_916">
+      <custrecord_pe_code_measurement_unit>PR</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Par</name>
+    </instance>
+    <instance scriptid="val_642425_7451241_sb1_760">
+      <custrecord_pe_code_measurement_unit>FOT</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Pies</name>
+    </instance>
+    <instance scriptid="val_642426_7451241_sb1_516">
+      <custrecord_pe_code_measurement_unit>FTK</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Pies Cuadrados</name>
+    </instance>
+    <instance scriptid="val_642427_7451241_sb1_638">
+      <custrecord_pe_code_measurement_unit>FTQ</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Pies Cubicos</name>
+    </instance>
+    <instance scriptid="val_642428_7451241_sb1_285">
+      <custrecord_pe_code_measurement_unit>C62</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Piezas</name>
+    </instance>
+    <instance scriptid="val_642429_7451241_sb1_738">
+      <custrecord_pe_code_measurement_unit>PG</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Placas</name>
+    </instance>
+    <instance scriptid="val_642430_7451241_sb1_419">
+      <custrecord_pe_code_measurement_unit>ST</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Pliego</name>
+    </instance>
+    <instance scriptid="val_642431_7451241_sb1_332">
+      <custrecord_pe_code_measurement_unit>INH</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Pulgadas</name>
+    </instance>
+    <instance scriptid="val_642448_7451241_sb1_526">
+      <custrecord_pe_code_measurement_unit>RM</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Resma</name>
+    </instance>
+    <instance scriptid="val_642449_7451241_sb1_504">
+      <custrecord_pe_code_measurement_unit>DR</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Tambor</name>
+    </instance>
+    <instance scriptid="val_642450_7451241_sb1_310">
+      <custrecord_pe_code_measurement_unit>STN</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Tonelada Corta</name>
+    </instance>
+    <instance scriptid="val_642451_7451241_sb1_966">
+      <custrecord_pe_code_measurement_unit>LTN</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Tonelada Larga</name>
+    </instance>
+    <instance scriptid="val_642453_7451241_sb1_106">
+      <custrecord_pe_code_measurement_unit>TNE</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Toneladas</name>
+    </instance>
+    <instance scriptid="val_642454_7451241_sb1_201">
+      <custrecord_pe_code_measurement_unit>TU</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Tubos</name>
+    </instance>
+    <instance scriptid="val_642455_7451241_sb1_826">
+      <custrecord_pe_code_measurement_unit>NIU</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Unidad (Bienes)</name>
+    </instance>
+    <instance scriptid="val_642456_7451241_sb1_546">
+      <custrecord_pe_code_measurement_unit>ZZ</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Unidad (Servicios)</name>
+    </instance>
+    <instance scriptid="val_642457_7451241_sb1_259">
+      <custrecord_pe_code_measurement_unit>GLL</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Us Galon (3,7843 L)</name>
+    </instance>
+    <instance scriptid="val_642458_7451241_sb1_613">
+      <custrecord_pe_code_measurement_unit>YRD</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Yarda</name>
+    </instance>
+    <instance scriptid="val_642459_7451241_sb1_659">
+      <custrecord_pe_code_measurement_unit>YDK</custrecord_pe_code_measurement_unit>
+      <custrecord_pe_measurement_json></custrecord_pe_measurement_json>
+      <isinactive>F</isinactive>
+      <name>Yarda Cuadrada</name>
+    </instance>
+  </instances>
+</customrecordtype>

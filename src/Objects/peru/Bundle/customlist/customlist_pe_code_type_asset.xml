@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_pe_code_type_asset">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>Código Tipo de Activo Fijo</name>
+  <customvalues>
+    <customvalue scriptid="val_686237_7451241_sb1_799">
+      <isinactive>F</isinactive>
+      <value>1</value>
+    </customvalue>
+    <customvalue scriptid="val_686238_7451241_sb1_622">
+      <isinactive>F</isinactive>
+      <value>2</value>
+    </customvalue>
+  </customvalues>
+</customlist>

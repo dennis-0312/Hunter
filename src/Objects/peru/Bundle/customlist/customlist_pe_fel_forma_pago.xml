@@ -1,0 +1,16 @@
+<customlist scriptid="customlist_pe_fel_forma_pago">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>PE FEL Forma de Pago</name>
+  <customvalues>
+    <customvalue scriptid="val_633444_7451241_sb1_546">
+      <isinactive>F</isinactive>
+      <value>Contado</value>
+    </customvalue>
+    <customvalue scriptid="val_633445_7451241_sb1_101">
+      <isinactive>F</isinactive>
+      <value>Credito</value>
+    </customvalue>
+  </customvalues>
+</customlist>

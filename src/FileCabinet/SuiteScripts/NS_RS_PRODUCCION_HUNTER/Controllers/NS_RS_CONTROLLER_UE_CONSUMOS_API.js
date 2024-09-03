@@ -161,6 +161,7 @@ define(['N/query', 'N/https', 'N/log', 'N/search', 'N/record', 'N/email'], funct
     }
 
     function _post(context) {
+
         try {
             var resultadoServicio
             var valor = context.valor;
@@ -186,7 +187,7 @@ define(['N/query', 'N/https', 'N/log', 'N/search', 'N/record', 'N/email'], funct
                         result.columns.forEach(function (column) {
                             var label = column.label;
                             var value = result.getValue(column);
-
+                            
                             resultObject[label] = value;
                         });
 
@@ -208,7 +209,7 @@ define(['N/query', 'N/https', 'N/log', 'N/search', 'N/record', 'N/email'], funct
                     var jsonObjects = {
                         "PX": [],
                         "AMI": []
-                    };
+                    }
 
                     // Recorrer los resultados de la búsqueda
                     searchResults.forEach(function (result) {
@@ -367,7 +368,7 @@ define(['N/query', 'N/https', 'N/log', 'N/search', 'N/record', 'N/email'], funct
                     //armar JSON para guardar en log
                     var jsonLogAMI = {
                         "custrecord_ht_anio": jsonObjects['AMI'][0].anio,
-                        "custrecord_ht_api": "https://7451241-sb1.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1175&deploy=1",
+                        "custrecord_ht_api": "https://7451241.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=653&deploy=1",
                         "custrecord_ht_categoria": "ACTUALIZA_PLATAFORMA_AMI",
                         "custrecord_ht_chasis": jsonObjects['AMI'][0].chasis,
                         "custrecord_ht_cliente_orden": jsonObjects['AMI'][0].cliente,
@@ -395,7 +396,7 @@ define(['N/query', 'N/https', 'N/log', 'N/search', 'N/record', 'N/email'], funct
 
                     var jsonLogPX = {
                         "custrecord_ht_anio": jsonObjects['PX'][0].anio,
-                        "custrecord_ht_api": "https://7451241-sb1.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=1175&deploy=1",
+                        "custrecord_ht_api": "https://7451241.restlets.api.netsuite.com/app/site/hosting/restlet.nl?script=653&deploy=1",
                         "custrecord_ht_categoria": "ACTUALIZA_PLATAFORMA_PX",
                         "custrecord_ht_chasis": jsonObjects['PX'][0].chasis,
                         "custrecord_ht_cliente_orden": jsonObjects['PX'][0].cliente,

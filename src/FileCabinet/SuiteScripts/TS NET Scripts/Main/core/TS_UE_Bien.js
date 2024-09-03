@@ -107,6 +107,11 @@ define([
                             }
                         }
                     }
+
+                    // log.debug('objRecord.getValue("name") != objRecord.id', objRecord.getValue("name") + ' - ' + objRecord.id)
+                    // if (objRecord.getValue("name") != objRecord.id) {
+                    //     objRecord.setValue("name", objRecord.id)
+                    // }
                 }
             }
         }
@@ -131,14 +136,16 @@ define([
                 let documentNumber = objRecord.getValue('custrecord_ht_bien_seguimiento');
                 let customer = objRecord.getValue('custrecord_ht_bien_propietario');
                 let taller = objRecord.getValue('custrecord_ht_bien_taller_convenio');
+                let transactionid = objRecord.getValue('custrecord_ht_bien_orden_serv_convenio');
+                let isGenerico = objRecord.getValue("custrecord_ht_bien_generico");
                 //let dispositivo = objRecord.getValue('custrecord_ht_bien_dispositivo_convenio');
                 //let simCard = objRecord.getValue('custrecord_ht_bien_simcard_convenio');
-                try {
-                    // dispositivoTXT = objRecord.getText('custrecord_ht_bien_dispositivo_convenio');
-                    // simCardTXT = objRecord.getText('custrecord_ht_bien_simcard_convenio');
-                } catch (error) {
-                    //log.error('Error', 'Campos vacíos, no usar getText: ' + error)
-                }
+                // try {
+                //     // dispositivoTXT = objRecord.getText('custrecord_ht_bien_dispositivo_convenio');
+                //     // simCardTXT = objRecord.getText('custrecord_ht_bien_simcard_convenio');
+                // } catch (error) {
+                //     //log.error('Error', 'Campos vacíos, no usar getText: ' + error)
+                // }
 
                 let datos = new Array();
                 let typeComponents = ["1", "2"]
@@ -149,81 +156,78 @@ define([
                 myRestletHeaders['Content-Type'] = 'application/json';
 
                 try {
-                    if (estadoConvenio == _constant.Status.ACTIVO && documentNumber.length != 0) {
-                        let transactionid = _controller.identifyServiceOrder(documentNumber);
-                        if (transactionid != 0) {
-                            let objReturn = _controller.getItemOfServiceOrder(transactionid);
-                            log.debug('OBJ', objReturn)
-                            log.debug('Length OBJ', objReturn.length)
-                            if (objReturn.length > 0) {
-                                datos = {
-                                    serviceOrder: transactionid,
-                                    customer: customer,
-                                    vehiculo: bienid,
-                                    item: objReturn[0].itemid,
-                                    ordenServicio: objReturn[0].tranid
-                                }
-                                log.debug('objReturn', JSON.stringify(datos))
-                                let existOrdenTrabajo = _controller.validateOrdenTrabajo(transactionid, bienid);
-                                if (existOrdenTrabajo == 0) {
-                                    ordenTrabajo = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, datos);
-                                } else {
-                                    ordenTrabajo = existOrdenTrabajo
-                                }
-                                log.debug('OrdenTrabajo', ordenTrabajo);
-                                let params = {
-                                    soid: transactionid,
-                                    soline: 0,
-                                    specord: 'T',
-                                    assemblyitem: objReturn[0].itemid
-                                };
-
-                                let sql = 'SELECT COUNT(*) as cantidad FROM transaction WHERE custbody_ht_ce_ordentrabajo = ?';
-                                let params2 = [ordenTrabajo]
-                                let resultSet = query.runSuiteQL({ query: sql, params: params2 });
-                                let results = resultSet.asMappedResults()[0]['cantidad'];
-                                if (results == 0) {
-                                    let workOrder = record.create({ type: record.Type.WORK_ORDER, isDynamic: true, defaultValues: params });
-                                    workOrder.setValue({ fieldId: 'quantity', value: 1 });
-                                    workOrder.setValue({ fieldId: 'custbody_ht_ce_ordentrabajo', value: ordenTrabajo });
-                                    let woId = workOrder.save();
-                                    log.debug('woId', woId);
-                                    let order = record.load({ type: _constant.customRecord.ORDEN_TRABAJO, id: ordenTrabajo });
-                                    order.setValue({ fieldId: 'custrecord_ht_ot_ordenfabricacion', value: woId });
-                                    order.setValue({ fieldId: 'custrecord_ht_ot_taller', value: taller });
-                                    order.setValue({ fieldId: 'custrecord_ht_ot_estado', value: _constant.Status.PROCESANDO });
-                                    order.save();
-                                } else {
-                                    log.debug('Exist', 'Ya existe Orden de Fabricación');
-                                }
-                                //TODO: IMPORTANTE! Se comenta el flujo para solo generar hasta la orden de trabajo con el ensamble.
-                                // let existChaser = _controller.validateChaser(bienid, dispositivo, simCard);
-                                // if (existChaser == 0) {
-                                //     chaserRecord = _controller.createChaser(bienid, vid, typeComponents, components);
-                                // } else {
-                                //     chaserRecord = existChaser
-                                // }
-
-                                // log.debug('Chaser', chaserRecord);
-
-                                // let updateOrdenTrabajo = _controller.updateOrdenTrabajo(ordenTrabajo, taller, chaserRecord, dispositivoTXT, simCardTXT);
-                                // log.debug('updateOrdenTrabajo', updateOrdenTrabajo);
-                                // let myUrlParameters = { myFirstParameter: updateOrdenTrabajo }
-                                // let myRestletResponse = https.requestRestlet({
-                                //     // body: JSON.stringify(json),
-                                //     deploymentId: 'customdeploy_ts_rs_integration_plataform',
-                                //     scriptId: 'customscript_ts_rs_integration_plataform',
-                                //     headers: myRestletHeaders,
-                                //     method: 'GET',
-                                //     urlParams: myUrlParameters
-                                // });
-                                // let response = myRestletResponse.body;
-                                // log.debug('Response', response);
-                            } else {
-                                log.error('Error-getItemOfServiceOrder', _errorMessage.ErrorMessages.ITEM_ORDEN_SERVICIO);
+                    if (estadoConvenio == _constant.Status.ACTIVO && transactionid.length != 0) {
+                        //let transactionid = _controller.identifyServiceOrder(documentNumber);
+                        let objReturn = _controller.getItemOfServiceOrder(transactionid);
+                        log.debug('OBJ', objReturn)
+                        log.debug('Length OBJ', objReturn.length)
+                        if (objReturn.length > 0) {
+                            datos = {
+                                serviceOrder: transactionid,
+                                customer: customer,
+                                vehiculo: bienid,
+                                item: objReturn[0].itemid,
+                                ordenServicio: objReturn[0].tranid
                             }
+                            log.debug('objReturn', JSON.stringify(datos))
+                            let existOrdenTrabajo = _controller.validateOrdenTrabajo(transactionid, bienid);
+                            if (existOrdenTrabajo == 0) {
+                                ordenTrabajo = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, datos);
+                            } else {
+                                ordenTrabajo = existOrdenTrabajo
+                            }
+                            log.debug('OrdenTrabajo', ordenTrabajo);
+                            let params = {
+                                soid: transactionid,
+                                soline: 0,
+                                specord: 'T',
+                                assemblyitem: objReturn[0].itemid
+                            };
+
+                            let sql = 'SELECT COUNT(*) as cantidad FROM transaction WHERE custbody_ht_ce_ordentrabajo = ?';
+                            let params2 = [ordenTrabajo]
+                            let resultSet = query.runSuiteQL({ query: sql, params: params2 });
+                            let results = resultSet.asMappedResults()[0]['cantidad'];
+                            if (results == 0) {
+                                let workOrder = record.create({ type: record.Type.WORK_ORDER, isDynamic: true, defaultValues: params });
+                                workOrder.setValue({ fieldId: 'quantity', value: 1 });
+                                workOrder.setValue({ fieldId: 'custbody_ht_ce_ordentrabajo', value: ordenTrabajo });
+                                let woId = workOrder.save();
+                                log.debug('woId', woId);
+                                let order = record.load({ type: _constant.customRecord.ORDEN_TRABAJO, id: ordenTrabajo });
+                                order.setValue({ fieldId: 'custrecord_ht_ot_ordenfabricacion', value: woId });
+                                order.setValue({ fieldId: 'custrecord_ht_ot_taller', value: taller });
+                                order.setValue({ fieldId: 'custrecord_ht_ot_estado', value: _constant.Status.PROCESANDO });
+                                order.setValue({ fieldId: 'custrecord_flujo_de_convenio', value: true });
+                                order.save();
+                            } else {
+                                log.debug('Exist', 'Ya existe Orden de Fabricación');
+                            }
+                            //TODO: IMPORTANTE! Se comenta el flujo para solo generar hasta la orden de trabajo con el ensamble.
+                            // let existChaser = _controller.validateChaser(bienid, dispositivo, simCard);
+                            // if (existChaser == 0) {
+                            //     chaserRecord = _controller.createChaser(bienid, vid, typeComponents, components);
+                            // } else {
+                            //     chaserRecord = existChaser
+                            // }
+
+                            // log.debug('Chaser', chaserRecord);
+
+                            // let updateOrdenTrabajo = _controller.updateOrdenTrabajo(ordenTrabajo, taller, chaserRecord, dispositivoTXT, simCardTXT);
+                            // log.debug('updateOrdenTrabajo', updateOrdenTrabajo);
+                            // let myUrlParameters = { myFirstParameter: updateOrdenTrabajo }
+                            // let myRestletResponse = https.requestRestlet({
+                            //     // body: JSON.stringify(json),
+                            //     deploymentId: 'customdeploy_ts_rs_integration_plataform',
+                            //     scriptId: 'customscript_ts_rs_integration_plataform',
+                            //     headers: myRestletHeaders,
+                            //     method: 'GET',
+                            //     urlParams: myUrlParameters
+                            // });
+                            // let response = myRestletResponse.body;
+                            // log.debug('Response', response);
                         } else {
-                            log.error('Error-identifyServiceOrder', _errorMessage.ErrorMessages.IDENTIFICACION_ORDEN_SERVICIO);
+                            log.error('Error-getItemOfServiceOrder', _errorMessage.ErrorMessages.ITEM_ORDEN_SERVICIO);
                         }
                     }
 
@@ -236,24 +240,16 @@ define([
                                 options: { enableSourcing: false, ignoreMandatoryFields: true }
                             });
                         }
+
+                        if (isGenerico) {
+                            record.submitFields({
+                                type: 'customrecord_ht_record_bienes',
+                                id: bienid,
+                                values: { 'altname': 'GENERICO.:' + bienid },
+                                options: { enableSourcing: false, ignoreMandatoryFields: true }
+                            });
+                        }
                     }
-                    // if (objRecord.getValue("custrecord_ht_bien_tipobien") == _constant.Constants.PRODUCCION) {
-                    //     if (objRecord.getValue('name') != objRecord.getValue('altname')) {
-                    //         record.submitFields({
-                    //             type: 'customrecord_ht_record_bienes',
-                    //             id: bienid,
-                    //             values: { 'name': altname },
-                    //             options: { enableSourcing: false, ignoreMandatoryFields: true }
-                    //         });
-                    //     }
-                    // } else if (altname.includes(bienid) == false) {
-                    //     record.submitFields({
-                    //         type: 'customrecord_ht_record_bienes',
-                    //         id: bienid,
-                    //         values: { 'altname': altname + bienid },
-                    //         options: { enableSourcing: false, ignoreMandatoryFields: true }
-                    //     });
-                    // }
                 } catch (error) {
                     log.debug('Error', error);
                 }
@@ -262,32 +258,21 @@ define([
             if (scriptContext.type === scriptContext.UserEventType.EDIT) {
                 const objRecord = scriptContext.newRecord;
                 const bienid = objRecord.id.toString();
-                let altname = objRecord.getValue('altname');
-
-                // if (objRecord.getValue("custrecord_ht_bien_tipobien") == _constant.Constants.PRODUCCION) {
-                //     if (objRecord.getValue('name') != objRecord.getValue('altname')) {
-                //         record.submitFields({
-                //             type: 'customrecord_ht_record_bienes',
-                //             id: bienid,
-                //             values: { 'name': altname },
-                //             options: { enableSourcing: false, ignoreMandatoryFields: true }
-                //         });
-                //     }
-                // } else if (altname.includes(bienid) == false) {
-                //     record.submitFields({
-                //         type: 'customrecord_ht_record_bienes',
-                //         id: bienid,
-                //         values: { 'altname': altname + bienid },
-                //         options: { enableSourcing: false, ignoreMandatoryFields: true }
-                //     });
-                // }
-
+                let isGenerico = objRecord.getValue("custrecord_ht_bien_generico");
                 if (objRecord.getValue("custrecord_ht_bien_tipobien") == _constant.Constants.VEHICULO) {
-                    if (altname.includes(bienid) == false) {
+                    if (isGenerico) {
                         record.submitFields({
                             type: 'customrecord_ht_record_bienes',
                             id: bienid,
-                            values: { 'altname': altname + bienid },
+                            values: { 'altname': 'GENERICO.:' + bienid },
+                            options: { enableSourcing: false, ignoreMandatoryFields: true }
+                        });
+                    } else {
+                        let altnameFinal = altnameBien(objRecord);
+                        record.submitFields({
+                            type: 'customrecord_ht_record_bienes',
+                            id: bienid,
+                            values: { 'altname': altnameFinal },
                             options: { enableSourcing: false, ignoreMandatoryFields: true }
                         });
                     }
@@ -347,6 +332,62 @@ define([
             } catch (error) {
                 log.error('Error en getBien', error);
             }
+        }
+
+        const altnameBien = (objRecord) => {
+            var placa = objRecord.getText("custrecord_ht_bien_placa");
+            var motor = objRecord.getText("custrecord_ht_bien_motor");
+            var chasis = objRecord.getText("custrecord_ht_bien_chasis");
+            var marca = objRecord.getText("custrecord_ht_bien_marca");
+            var tipo = objRecord.getText("custrecord_ht_bien_tipo");
+            var modelo = objRecord.getText("custrecord_ht_bien_modelo");
+            var color = objRecord.getText("custrecord_ht_bien_colorcarseg");
+
+            if (placa) {
+                placa = "PLC.:" + placa;
+            } else {
+                placa = "";
+            }
+            if (motor) {
+                motor = "MOT.:" + motor;
+            } else {
+                motor = "";
+            }
+            if (chasis) {
+                chasis = "CHA.:" + chasis;
+            } else {
+                chasis = "";
+            }
+            if (marca) {
+                marca = "MAR.:" + marca;
+            } else {
+                marca = "";
+            }
+            if (tipo) {
+                tipo = "TIP.:" + tipo;
+            } else {
+                tipo = "";
+            }
+            if (modelo) {
+                modelo = "MOD.:" + modelo;
+            } else {
+                modelo = "";
+            }
+            if (color) {
+                color = "COL.:" + color;
+            } else {
+                color = "";
+            }
+            let array = [placa, motor, chasis, marca, tipo, modelo, color];
+            let txtfinal = "";
+            for (let i = 0; i < array.length; i++) {
+                if (array[i]) {
+                    txtfinal += array[i];
+                    if (i < array.length - 1 && array[i + 1]) txtfinal += " ";
+                }
+            }
+            log.debug("txtfinal", txtfinal);
+            return txtfinal;
         }
 
         return { beforeLoad, beforeSubmit, afterSubmit }

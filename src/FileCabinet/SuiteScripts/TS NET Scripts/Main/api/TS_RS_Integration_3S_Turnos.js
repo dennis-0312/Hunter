@@ -428,7 +428,7 @@ define(['N/log', 'N/search', 'N/record', 'N/query', 'N/runtime'], (log, search, 
             });
 
             if (tecnico_param == true) {
-                let arr = [];
+                let arr = new Array();
                 let usuarioCreacion = '';
                 let myPagedData = Search_tecnico.runPaged({ pageSize: 1000 });
                 myPagedData.pageRanges.forEach(pageRange => {

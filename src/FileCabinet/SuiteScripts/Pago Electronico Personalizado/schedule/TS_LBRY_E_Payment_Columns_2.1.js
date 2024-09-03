@@ -24,6 +24,7 @@ define(['N/record', 'N/cache', 'N/file', 'N/runtime'], function (record, cache, 
 		{ label: 'custbody_ts_related_transaction', name: 'custbody_ts_related_transaction' },
 		{ label: 'type', join: 'CUSTBODY_TS_RELATED_TRANSACTION', name: 'type' },
 		{ label: 'tipo', name: 'type' },
+		{ label: 'custrecord_ht_cuenta_nombrenetsuite', name: 'formulatext', formula: "{custbody_ts_op_cuentapago.custrecord_ht_cuenta_nombrenetsuite}" },
 	];
 
 	var subsidiary_columns = [
@@ -111,7 +112,7 @@ define(['N/record', 'N/cache', 'N/file', 'N/runtime'], function (record, cache, 
 	var prepayment_columns = [
 		{ label: 'custrecord_ts_epmt_prepmt_currency_symbol', join: 'custrecord_ts_epmt_prepmt_currency', name: 'symbol' },
 		{ label: 'custrecord_ts_epmt_prepmt_bank_account_number', join: 'custrecord_ts_epmt_prepmt_bank_account', name: 'number' },
-		{ label: 'custrecord_ts_epmt_prepmt_bank_account_name', join: 'custrecord_ts_epmt_prepmt_bank_account', name: 'name' },
+		{ label: 'custrecord_ts_epmt_prepmt_bank_account_name', join: 'custrecord_ts_epmt_prepmt_bank_account', name: 'name' }
 	];
 
 	var payment_columns = [
@@ -137,8 +138,9 @@ define(['N/record', 'N/cache', 'N/file', 'N/runtime'], function (record, cache, 
 		{ label: 'custbody_ec_serie_cxc_retencion', name: 'formulatext', formula: "{CUSTBODY_TS_RELATED_TRANSACTION.custbody_ec_serie_cxc_retencion}" },
 		{ label: 'custbody_ts_ec_preimpreso_retencion', join: 'CUSTBODY_TS_RELATED_TRANSACTION', name: 'custbody_ts_ec_preimpreso_retencion' },
 		{ label: 'custbody_ht_emitido_pago_electronico', name: 'custbody_ht_emitido_pago_electronico' },
-		{ label: 'appliedtotransaction', name: 'appliedtotransaction' }
-		
+		{ label: 'appliedtotransaction', name: 'appliedtotransaction' },
+		{ label: 'custrecord_ht_ec_cuentabancaria', name: 'formulatext', formula: "{account.custrecord_ht_ec_cuentabancaria}" },
+		{ label: 'custrecord_ht_cuenta_nombrenetsuite', name: 'formulatext', formula: "{account.custrecord_ht_cuenta_nombrenetsuite}" },
 	]
 
 	const getSubsidiaryColumns = () => {

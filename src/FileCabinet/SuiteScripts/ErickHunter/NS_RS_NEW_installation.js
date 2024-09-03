@@ -3,7 +3,6 @@
  *@NScriptType Restlet
  */
 define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
-
     let OK_STATUS_CODE = [200, 201];
 
     const post = (context) => {

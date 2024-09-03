@@ -1,0 +1,5 @@
+idexterno,itemid,location,serie,bin,tipo
+123460010,791,8,123460010,308,dispositivo
+123460010,284,8,,308,componente
+123460011,791,8,123460011,308,dispositivo
+123460011,284,8,,308,componente

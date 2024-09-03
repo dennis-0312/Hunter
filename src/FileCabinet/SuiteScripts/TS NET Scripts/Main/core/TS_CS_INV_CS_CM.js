@@ -3,12 +3,15 @@
  *@NScriptType ClientScript
  *@NModuleScope Public
  */
-define(['N/runtime', 'N/search',], function (runtime, search) {
+define(['N/runtime', 'N/search', 'N/ui/dialog'], function (runtime, search, dialog) {
 
     const Factura_Compra = 'vendorbill';
+    const VENDOR_BILL = 'vendorbill';
+    const BILL_CREDIT = 'vendorcredit';
     var typeMode = '';
     var customer_old = '';
     var pe_number_old = '';
+
 
     function pageInit(context) {
         try {
@@ -33,31 +36,52 @@ define(['N/runtime', 'N/search',], function (runtime, search) {
         var sublistName = context.sublistId;
         var typeTransaction = currentRecord.type;
         var oldRecord = context.oldRecord;
-        if (typeTransaction == Factura_Compra) {
+        if (typeTransaction == VENDOR_BILL || typeTransaction == BILL_CREDIT) {
             if (typeMode == 'create' || typeMode == 'copy') {
-                var customer = currentRecord.getValue({ fieldId: 'entity' });
-                var pe_number = currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
-                let existe = buscarFacCompra(customer, pe_number);
+                let customer = currentRecord.getValue({ fieldId: 'entity' });
+                let pe_number = currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
+                let doc_fiscal = currentRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                console.log('customer', customer);
+                console.log('pe_number', pe_number);
+                let existe = buscarFacCompra(customer, pe_number, doc_fiscal);
                 console.log('Usuario', userObj.id);
                 console.log(existe)
                 if (existe) {
                     // if (existe || userObj.id == 4 || userObj.id == 13) {
-                    alert('Ya existe una Factura de Compra con el mismo Proveedor y Numero Preimpreso');
+                    dialog.alert({ title: 'Alerta', message: 'Ya existe una Transacción de Compra con el mismo Proveedor y Numero Preimpreso.' });
+                    return false;
+                }
+
+                if (currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' }).length != 9 && doc_fiscal != 10 && userObj.id != 4) {
+                    dialog.alert({ title: 'Alerta', message: 'El número preimpreso debe tener 9 dígitos.' });
                     return false;
                 }
             } else if (typeMode == 'edit') {
                 var customer = currentRecord.getValue({ fieldId: 'entity' });
                 var pe_number = currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
+                let doc_fiscal = currentRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                console.log('customer', customer);
                 if (customer != customer_old || pe_number != pe_number_old) {
-                    let existe = buscarFacCompra(customer, pe_number);
+                    let existe = buscarFacCompra(customer, pe_number, doc_fiscal);
                     if (existe) {
-                        alert('Ya existe una Factura de Compra con el mismo Proveedor y Numero Preimpreso');
+                        dialog.alert({ title: 'Alerta', message: 'Ya existe una Transacción de Compra con el mismo Proveedor y Numero Preimpreso.' });
                         return false;
                     }
                 }
+
+                if (currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' }).length != 9 && userObj.id != 4) {
+                    dialog.alert({ title: 'Alerta', message: 'El número preimpreso debe tener 9 dígitos.' });
+                    return false;
+                }
             }
         }
-        return true;
+        if (userObj.id == 4) {
+            console.log('Usuario', userObj.id)
+            return true
+        } else {
+            return true
+        }
+        //return true;
     }
 
     function validateField(context) { }
@@ -69,9 +93,7 @@ define(['N/runtime', 'N/search',], function (runtime, search) {
         if (typeMode == 'create' || typeMode == 'copy' || typeMode == 'edit') {
             if (sublistName == 'expense') {
                 try {
-                    // console.log('Entry1')
                     if (sublistFieldName == 'taxcode') {
-                        // console.log('Entry2')
                         let descriptionTaxCode = getDescriptionTaxCode();
                         let descTaxCode = descriptionTaxCode.find(element => element.id == currentRecord.getCurrentSublistValue({ sublistId: "expense", fieldId: "taxcode" }))
                         currentRecord.setCurrentSublistValue({ sublistId: 'expense', fieldId: 'custcol_tst_desc_iva', value: descTaxCode.description, ignoreFieldChange: true });
@@ -130,25 +152,26 @@ define(['N/runtime', 'N/search',], function (runtime, search) {
         }
     }
 
-    const buscarFacCompra = (idCustomer, preimpreso) => {
+    const buscarFacCompra = (idCustomer, preimpreso, docFiscal) => {
         var vendorbillSearchObj = search.create({
-            type: "vendorbill",
+            type: "transaction",
             filters:
                 [
-                    ["type", "anyof", "VendBill"],
+                    ["type", "anyof", "VendBill", "VendCred"],
                     "AND",
                     ["name", "anyof", idCustomer],
                     "AND",
                     ["custbody_ts_ec_numero_preimpreso", "is", preimpreso],
                     "AND",
-                    ["mainline", "is", "T"]
+                    ["mainline", "is", "T"],
+                    "AND",
+                    ["custbodyts_ec_tipo_documento_fiscal", "anyof", docFiscal]
                 ],
             columns:
                 [
                     search.createColumn({ name: "internalid", label: "ID interno" })
                 ]
         });
-
         let objRecord = vendorbillSearchObj.run().getRange(0, 1000);
         let existe = false;
         if (objRecord.length > 0) {

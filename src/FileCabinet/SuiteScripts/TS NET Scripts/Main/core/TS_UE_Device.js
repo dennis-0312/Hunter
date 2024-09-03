@@ -60,7 +60,7 @@ define([
                 let sql2 = 'SELECT id, custrecord_ht_mc_enlace as ensambleid FROM customrecord_ht_record_mantchaser WHERE custrecord_ht_mc_seriedispositivo = ?'
                 let resultSet2 = query.runSuiteQL({ query: sql2, params: [objRecord.id] });
                 let results2 = resultSet2.asMappedResults();
-                log.debug('RESULT', results2);
+                log.error('RESULT', results2);
                 if (results2.length > 0) {
                     let objRec = record.submitFields({
                         type: _constant.customRecord.CHASER,

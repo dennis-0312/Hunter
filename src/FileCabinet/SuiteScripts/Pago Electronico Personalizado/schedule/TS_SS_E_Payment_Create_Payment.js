@@ -29,34 +29,41 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
                 let tipoTransaccion = DatosPagos[i][5];
                 if (DatosPagos[i][11] == 'APPROVED') {
                     log.debug('APPROVED', 'APPROVED')
-                    let idCheckAnticipo = '';
+                    log.debug('generatedTransaction', DatosPagos[i][16]);
+                    if (DatosPagos[i][16][0].value.length == 0) {
+                        let idCheckAnticipo = '';
 
-                    if (tipoTransaccion == 'customEmployee') {
-                        idCheckAnticipo = crearCheque(DatosLote, DatosPagos[i]);
-                        recordType = ID_CHECK;
-                    } else if (tipoTransaccion == 'proveedor') {
-                        log.debug('DatosPagos[i][13]', DatosPagos[i][13]);
-                        if (DatosPagos[i][13]) {
-                            log.debug('DatosPagos[i][14][0].value', DatosPagos[i][14][0].value);
-                            if (DatosPagos[i][14][0].value == 'VendBill') {
-                                idCheckAnticipo = createVendorPayment(DatosLote, DatosPagos[i]);
-                                recordType = ID_VENDOR_PAYMENT;
+                        if (tipoTransaccion == 'customEmployee') {
+                            idCheckAnticipo = crearCheque(DatosLote, DatosPagos[i]);
+                            recordType = ID_CHECK;
+                        } else if (tipoTransaccion == 'proveedor') {
+                            log.debug('DatosPagos[i][13]', DatosPagos[i][13]);
+                            if (DatosPagos[i][13]) {
+                                log.debug('DatosPagos[i][14][0].value', DatosPagos[i][14][0].value);
+                                if (DatosPagos[i][14][0].value == 'VendBill') {
+                                    idCheckAnticipo = createVendorPayment(DatosLote, DatosPagos[i]);
+                                    recordType = ID_VENDOR_PAYMENT;
+                                } else {
+                                    log.debug('Anticipo1', DatosPagos[i][14][0].value);
+                                    idCheckAnticipo = crearAnticipo(DatosLote, DatosPagos[i], 1);
+                                    recordType = ID_VENDOR_PREPAYMENT;
+                                }
                             } else {
-                                log.debug('Anticipo1', DatosPagos[i][14][0].value);
-                                idCheckAnticipo = crearAnticipo(DatosLote, DatosPagos[i], 1);
+                                log.debug('Anticipo2', DatosPagos[i][13]);
+                                idCheckAnticipo = crearAnticipo(DatosLote, DatosPagos[i]);
                                 recordType = ID_VENDOR_PREPAYMENT;
                             }
-                        } else {
-                            log.debug('Anticipo2', DatosPagos[i][13]);
-                            idCheckAnticipo = crearAnticipo(DatosLote, DatosPagos[i]);
-                            recordType = ID_VENDOR_PREPAYMENT;
                         }
+                        log.debug('Number(DatosPagos[i][12])', Number(DatosPagos[i][12]));
+                        log.debug('idCheckAnticipo', idCheckAnticipo);
+                        if (idCheckAnticipo != 0) {
+                            record.submitFields({ type: 'customrecord_ts_epmt_payment', id: Number(DatosPagos[i][12]), values: { 'custrecord_ts_epmt_prepaydet_gener_trans': Number(idCheckAnticipo) } });
+                            record.submitFields({ type: 'customtransaction_orden_pago', id: Number(DatosPagos[i][0]), values: { 'transtatus': 'C' } });
+                            record.submitFields({ type: recordType, id: idCheckAnticipo, values: { 'tranid': DatosPagos[i][15] } });
+                        }
+                    } else {
+                        log.debug('Fin del Proceso', 'Ya tiene una transacción generada');
                     }
-                    log.debug('Number(DatosPagos[i][12])', Number(DatosPagos[i][12]));
-                    log.debug('idCheckAnticipo', idCheckAnticipo);
-                    record.submitFields({ type: 'customrecord_ts_epmt_payment', id: Number(DatosPagos[i][12]), values: { 'custrecord_ts_epmt_prepaydet_gener_trans': Number(idCheckAnticipo) } });
-                    record.submitFields({ type: 'customtransaction_orden_pago', id: Number(DatosPagos[i][0]), values: { 'transtatus': 'C' } });
-                    record.submitFields({ type: recordType, id: idCheckAnticipo, values: { 'tranid': DatosPagos[i][15] } });
                 } else if (DatosPagos[i][11] == 'REJECTED') {
                     log.debug('REJECTED', 'REJECTED')
                     record.submitFields({
@@ -135,8 +142,15 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
             var ePayment = search.lookupFields({
                 type: 'customrecord_ts_epmt_payment',
                 id: Number(Pago.PaymentID),
-                columns: ['custrecord_ts_epmt_prepaydet_origin_tran', 'custrecord_ts_epmt_prepaydet_entity', 'custrecord_ts_epmt_prepaydet_tran_amount',
-                    'custrecord_ts_epmt_prepaydet_paym_amount', 'custrecord_ts_epmt_prepaydet_status', 'custrecord_ts_epmt_prepaydet_payord_acc']
+                columns: [
+                    'custrecord_ts_epmt_prepaydet_origin_tran',
+                    'custrecord_ts_epmt_prepaydet_entity',
+                    'custrecord_ts_epmt_prepaydet_tran_amount',
+                    'custrecord_ts_epmt_prepaydet_paym_amount',
+                    'custrecord_ts_epmt_prepaydet_status',
+                    'custrecord_ts_epmt_prepaydet_payord_acc',
+                    'custrecord_ts_epmt_prepaydet_gener_trans'
+                ]
             });
 
             let OrdenPago = ePayment.custrecord_ts_epmt_prepaydet_origin_tran.length ? ePayment.custrecord_ts_epmt_prepaydet_origin_tran[0].value : '';
@@ -144,6 +158,7 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
             let impOrigen = ePayment.custrecord_ts_epmt_prepaydet_tran_amount;
             let impPago = ePayment.custrecord_ts_epmt_prepaydet_paym_amount;
             let estado = ePayment.custrecord_ts_epmt_prepaydet_status;
+            let generatedTransaction = ePayment.custrecord_ts_epmt_prepaydet_gener_trans;
 
             let tipoEntidad = '';
             if (Number(beneficiario) != 0) {
@@ -167,12 +182,13 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
             let relatedTransaction = '';
             let relatedT = '';
             let relatedType = '';
+            let accountLine = '';
 
             if (Number(OrdenPago) != 0) {
                 var op = search.lookupFields({
                     type: 'customtransaction_orden_pago',
                     id: Number(OrdenPago),
-                    columns: ['memo', 'class', 'location', 'department', 'custbody_ts_related_transaction']
+                    columns: ['memo', 'class', 'location', 'department', 'custbody_ts_related_transaction', 'custbody_cuenta_op']
                 });
                 if (op.custbody_ts_related_transaction[0].value) {
                     relatedT = search.lookupFields({ type: search.Type.TRANSACTION, id: op.custbody_ts_related_transaction[0].value, columns: ['type'] });
@@ -187,9 +203,10 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
                 departamento = op.department.length ? op.department[0].value : '';
                 ubicacion = op.location.length ? op.location[0].value : '';
                 relatedTransaction = op.custbody_ts_related_transaction[0].value;
+                accountLine = op.custbody_cuenta_op[0].value;
                 relatedType = relatedT;
             }
-            arrayAuxi = [OrdenPago, beneficiario, impOrigen, impPago, estado, tipoEntidad, cuentaOrdenPago, memo, clase, departamento, ubicacion, Pago.status, Pago.PaymentID, relatedTransaction, relatedType, Pago.llave];
+            arrayAuxi = [OrdenPago, beneficiario, impOrigen, impPago, estado, tipoEntidad, cuentaOrdenPago, memo, clase, departamento, ubicacion, Pago.status, Pago.PaymentID, relatedTransaction, relatedType, Pago.llave, generatedTransaction, Pago.memo, accountLine];
             Pagos.push(arrayAuxi);
         }
         return Pagos;
@@ -201,57 +218,68 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
         recordlog.setValue({ fieldId: 'subsidiary', value: Lote[3] });
         recordlog.setValue({ fieldId: 'account', value: Lote[0] });
         recordlog.setValue({ fieldId: 'currency', value: Lote[1] });
-        recordlog.setValue({ fieldId: 'trandate', value: new Date() });
+        recordlog.setValue({ fieldId: 'trandate', value: new Date('2024-4-30') });
         recordlog.setValue({ fieldId: 'department', value: Number(Pago[9]) });
         recordlog.setValue({ fieldId: 'class', value: Number(Pago[8]) });
         recordlog.setValue({ fieldId: 'location', value: Number(Pago[10]) });
-        recordlog.setValue({ fieldId: 'memo', value: Pago[7] });
         recordlog.setValue({ fieldId: 'custbody_est_emitido', value: 2 });
+        recordlog.setValue({ fieldId: 'memo', value: Pago[17] });
 
         recordlog.selectNewLine({ sublistId: 'expense' });
-        recordlog.setCurrentSublistValue({ sublistId: 'expense', fieldId: 'account', value: Pago[6] });
+        recordlog.setCurrentSublistValue({ sublistId: 'expense', fieldId: 'account', value: Pago[18] });
         recordlog.setCurrentSublistValue({ sublistId: 'expense', fieldId: 'amount', value: Pago[3] });
         recordlog.setCurrentSublistValue({ sublistId: 'expense', fieldId: 'taxcode', value: 5 }); //VAT_EC:UNDEF-EC
         recordlog.setCurrentSublistValue({ sublistId: 'expense', fieldId: 'department', value: Number(Pago[9]) });
         recordlog.setCurrentSublistValue({ sublistId: 'expense', fieldId: 'class', value: Number(Pago[8]) });
         recordlog.setCurrentSublistValue({ sublistId: 'expense', fieldId: 'location', value: Number(Pago[10]) });
         recordlog.commitLine({ sublistId: 'expense' });
+
         let IDCheque = recordlog.save({ enableSourcing: true, ignoreMandatoryFields: true })
         log.error('IDCheque', 'Cheque: ' + IDCheque);
         return IDCheque
     }
 
     const crearAnticipo = (Lote, Pago, purchase = 0) => {
-        var recordlog = record.create({ type: ID_VENDOR_PREPAYMENT, isDynamic: true });
+        var recordlog = record.create({ type: record.Type.VENDOR_PREPAYMENT, isDynamic: true });
         recordlog.setValue({ fieldId: 'entity', value: Number(Pago[1]) });
         recordlog.setValue({ fieldId: 'subsidiary', value: Number(Lote[3]) });
         recordlog.setValue({ fieldId: 'currency', value: Lote[1] });
         recordlog.setValue({ fieldId: 'account', value: Number(Lote[0]) });
-        recordlog.setValue({ fieldId: 'trandate', value: new Date() });
+        recordlog.setValue({ fieldId: 'trandate', value: new Date('2024-4-30') });
         if (purchase == 1 && Pago[14][0].value == "PurchOrd")
             recordlog.setValue({ fieldId: 'purchaseorder', value: Pago[13] });
         recordlog.setValue({ fieldId: 'department', value: Number(Pago[9]) });
         recordlog.setValue({ fieldId: 'class', value: Number(Pago[8]) });
         recordlog.setValue({ fieldId: 'location', value: Number(Pago[10]) });
-        recordlog.setValue({ fieldId: 'memo', value: Pago[7] });
+        recordlog.setValue({ fieldId: 'memo', value: Pago[17] });
         recordlog.setValue({ fieldId: 'payment', value: Pago[3] });
         recordlog.setValue({ fieldId: 'custbody_est_emitido', value: 2 });
         let IDAnticipo = recordlog.save({ enableSourcing: true, ignoreMandatoryFields: true });
         log.error('IDAnticipo', 'Anticipo Proveedor: ' + IDAnticipo);
-        return IDAnticipo
+        return IDAnticipo;
     }
 
     const createVendorPayment = (Lote, Pago) => {
         try {
             let recordlog = record.transform({ fromType: record.Type.VENDOR_BILL, fromId: Pago[13], toType: record.Type.VENDOR_PAYMENT, isDynamic: true });
             recordlog.setValue({ fieldId: 'account', value: Number(Lote[0]) });
-            recordlog.setValue({ fieldId: 'trandate', value: new Date() });
+            recordlog.setValue({ fieldId: 'trandate', value: new Date('2024-4-30') });
             recordlog.setValue({ fieldId: 'department', value: Number(Pago[9]) });
             recordlog.setValue({ fieldId: 'class', value: Number(Pago[8]) });
             recordlog.setValue({ fieldId: 'location', value: Number(Pago[10]) });
-            recordlog.setValue({ fieldId: 'memo', value: Pago[7] });
+            //recordlog.setValue({ fieldId: 'memo', value: Pago[7] });
+            recordlog.setValue({ fieldId: 'memo', value: Pago[17] });
             recordlog.setValue({ fieldId: 'custbody_est_emitido', value: 2 });
-            let IDAnticipo = recordlog.save({ enableSourcing: true, ignoreMandatoryFields: true });
+            let linecount = recordlog.getLineCount({ sublistId: 'apply' });
+            for (let j = 0; j < linecount; j++) {
+                let refnum = recordlog.getCurrentSublistValue({ sublistId: 'apply', fieldId: 'internalid', line: j });
+                if (refnum == Pago[13]) {
+                    recordlog.setCurrentSublistValue({ sublistId: 'apply', fieldId: 'apply', value: true });
+                    recordlog.setCurrentSublistValue({ sublistId: 'apply', fieldId: 'amount', value: Pago[3] });
+                    break;
+                }
+            }
+            let IDAnticipo = recordlog.save();
             log.error('IDAnticipo', 'Pago Proveedor: ' + IDAnticipo);
             return IDAnticipo
         } catch (error) {
@@ -344,6 +372,22 @@ define(['N/search', 'N/record', 'N/runtime', 'N/log', 'N/file', 'N/task', "N/con
         }
         return dayString + '/' + monthString + '/' + year
     }
+
+    const saveJson = (contents, nombre) => {
+        let name = new Date();
+        let fileObj = file.create({
+            name: `${nombre}_${name}.json`,
+            fileType: file.Type.JSON,
+            contents: JSON.stringify(contents),
+            folder: 6322,
+            isOnline: false
+        });
+        // Save the file
+        let id = fileObj.save();
+    }
+
+
+
 
     return {
         execute: execute

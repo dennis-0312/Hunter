@@ -233,27 +233,32 @@ define([
                 /***** */
                 var recordLoad = record.load({ type: currentRecord.type, id: idRecord, isDynamic: true });
                 let formulario = recordLoad.getValue('customform');
-                log.error('formulario', formulario)
+                // log.error('formulario', formulario)
                 let newSerie = getSerie(formulario);
-                log.error('newSerie', newSerie)
+                // log.error('newSerie', newSerie)
                 recordLoad.setValue({ fieldId: 'tranid', value: newSerie });
                 recordLoad.save({ ignoreMandatoryFields: true, enableSourcing: false });
 
                 let objRecord = record.load({ type: 'salesorder', id: idRecord, isDynamic: true });
                 let customer = objRecord.getValue('entity');
                 let vehiculo = objRecord.getValue('custbody_ht_so_bien');
+                let isGenerico = validateGenerico(vehiculo);
                 let ordenServicio = objRecord.getValue('tranid');
                 let numLines = objRecord.getLineCount({ sublistId: 'item' });
                 let aprobacionventa = objRecord.getValue('custbody_ht_os_aprobacionventa');
                 let aprobacioncartera = objRecord.getValue('custbody_ht_os_aprobacioncartera');
-                let parametro = 0, parametro_aprob = 0, parametro_fact = 0, workOrder = 0, adp = 0, fam = 0, plazo = 0, valor_tipo_agrupacion = 0, paramChequeo = 0, coberturaRecord = 0,
+                log.error('statusref', objRecord.getValue('statusRef'));
+                log.error('aprobacionventa', aprobacionventa)
+                log.error('aprobacioncartera', aprobacioncartera)
+                let parametro = 0, parametro_aprob = 0, parametro_fact = 0, workOrder = 0, idWorkOrder = 0, adp = 0, fam = 0, plazo = 0, valor_tipo_agrupacion = 0, paramChequeo = 0, coberturaRecord = 0,
                     generaOrdenTrabajo = 0, esGarantia = 0, esUpgrade = _constant.Valor.NO, ccd = 0, dispositivoEnCustodia = "", itemCustodia = {}, ttr = 0, renovamos = false,
                     plataformas = false, arrayRecipientsOriginal = new Array(), arrayRecipients = new Array(), esAlquiler = 0, definicionServicios = false, paralizador = false,
-                    botonPanico = false, tag = 0, t_PPS = false, variasOT = new Array();
+                    botonPanico = false, tag = 0, t_PPS = false, variasOT = new Array(), idItem = '', unidadTiempo;
 
                 for (let i = 0; i < numLines; i++) {
                     objRecord.selectLine({ sublistId: 'item', line: i });
-                    let cantidad = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity' });
+                    let cantidad = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_tiempo_cobertura' });
+                    unidadTiempo = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_und_tiempo_cobertura' });
                     let inventoryNumber = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ts_dispositivo_en_custodia' });
                     let items = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
                     log.debug('ITEM', items);
@@ -263,6 +268,7 @@ define([
                     if (!botonPanico)
                         botonPanico = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_boton_panico' });
                     let parametrosRespo = _controller.parametrizacion(items);
+                    //log.debug('parametrosRespo', parametrosRespo)
                     let descriptionItem = getDescription(customer, items);
                     if (descriptionItem) {
                         objRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'description', value: descriptionItem });
@@ -312,12 +318,14 @@ define([
                         if (parametrosRespo[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION)
                             ttr = parametrosRespo[j][1]
 
-                        if (parametrosRespo[j][0] == _constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO && parametrosRespo[j][1] == _constant.Valor.SI) {
+                        if (parametrosRespo[j][0] == _constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO && parametrosRespo[j][1] == _constant.Valor.SI && !isGenerico) {
                             workOrder = _controller.parametros(_constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO, json);
                             //variasOT.push(workOrder);
+                            log.debug('workOrder', workOrder);
+                            idWorkOrder = workOrder;
                         }
 
-                        if (parametrosRespo[j][0] == _constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO && parametrosRespo[j][1] == _constant.Valor.SI) {
+                        if (parametrosRespo[j][0] == _constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO && parametrosRespo[j][1] == _constant.Valor.SI && !isGenerico) {
                             workOrder = _controller.parametros(_constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO, json);
                         }
 
@@ -341,6 +349,7 @@ define([
 
                         if (parametrosRespo[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo[j][1] == _constant.Valor.SI) {
                             definicionServicios = true;
+                            idItem = items
                         }
 
                         if (parametrosRespo[j][0] == _constant.Parameter.PPS_PEDIR_PERIODO_DE_SERVICIO && parametrosRespo[j][1] == _constant.Valor.SI) {
@@ -357,197 +366,355 @@ define([
                 }
 
                 //**BLOQUE DE RENOVACIÓN */
-                if (parametro_aprob != _constant.Valor.SI && parametro_fact == _constant.Valor.NO) {
-                } else {
-                    if (parametro_aprob == _constant.Valor.SI) {
-                        objRecord.setValue('orderstatus', 'A');
-                        objRecord.setValue('custbody_ht_os_aprobacionventa', _constant.Status.APROBACION_PENDIENTE);
-                    }
+                // if (parametro_aprob != _constant.Valor.SI && parametro_fact == _constant.Valor.NO) {
+                // } else {
+                //     if (parametro_aprob == _constant.Valor.SI) {
+                //         objRecord.setValue('orderstatus', 'A');
+                //         objRecord.setValue('custbody_ht_os_aprobacionventa', _constant.Status.APROBACION_PENDIENTE);
+                //     }
 
-                    if (renovamos == true) {
-                        var bien = objRecord.getValue('custbody_ht_so_bien');
-                        var idCoberturaItem;
-                        let busqueda_cobertura = [];
-                        if (bien != '') {
-                            busqueda_cobertura = getCoberturaItem(bien);
-                        }
-                        if (busqueda_cobertura.length != 0) {
-                            for (let i = 0; i < busqueda_cobertura.length; i++) {
-                                let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
-                                if (parametrosRespo != 0) {
-                                    let accion_producto_2 = 0;
-                                    let valor_tipo_agrupacion_2 = 0;
-                                    for (let j = 0; j < parametrosRespo.length; j++) {
-                                        if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS)
-                                            valor_tipo_agrupacion_2 = parametrosRespo[j][1];
-                                        if (valor_tipo_agrupacion == valor_tipo_agrupacion_2)
-                                            idCoberturaItem = busqueda_cobertura[i][1];
-                                    }
-                                }
-                            }
-                        }
+                //     if (renovamos == true && aprobacionventa == _constant.Status.APROBADO && aprobacioncartera == _constant.Status.APROBADO) {
+                //         log.debug('Entry', 'Renovación Create');
+                //         var bien = objRecord.getValue('custbody_ht_so_bien');
+                //         var idCoberturaItem;
+                //         let busqueda_cobertura = new Array();
+                //         if (bien != '') {
+                //             busqueda_cobertura = getCoberturaItem(bien);
+                //         }
+                //         //log.debug('busqueda_cobertura', busqueda_cobertura);
+                //         if (busqueda_cobertura.length != 0) {
+                //             for (let i = 0; i < busqueda_cobertura.length; i++) {
+                //                 let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
+                //                 if (parametrosRespo != 0) {
+                //                     let valor_tipo_agrupacion_2 = 0;
+                //                     for (let j = 0; j < parametrosRespo.length; j++) {
+                //                         if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS)
+                //                             valor_tipo_agrupacion_2 = parametrosRespo[j][1];
+                //                         if (valor_tipo_agrupacion == valor_tipo_agrupacion_2)
+                //                             idCoberturaItem = busqueda_cobertura[i][1];
+                //                     }
+                //                 }
+                //             }
+                //         }
 
-                        let vehiculo;
-                        if (bien != '') {
-                            vehiculo = search.lookupFields({ type: 'customrecord_ht_record_bienes', id: bien, columns: ['custrecord_ht_bien_id_telematic'] });
-                        } else {
-                            vehiculo.custrecord_ht_bien_id_telematic = '';
-                        }
+                //         let vehiculo;
+                //         if (bien != '') {
+                //             vehiculo = search.lookupFields({ type: 'customrecord_ht_record_bienes', id: bien, columns: ['custrecord_ht_bien_id_telematic'] });
+                //         } else {
+                //             vehiculo.custrecord_ht_bien_id_telematic = '';
+                //         }
 
-                        var cobertura = search.lookupFields({
-                            type: 'customrecord_ht_co_cobertura',
-                            id: idCoberturaItem,
-                            columns: ['custrecord_ht_co_coberturainicial', 'custrecord_ht_co_coberturafinal', 'custrecord_ht_co_numeroserieproducto', 'custrecord_ht_co_plazo']
-                        });
-                        var idDispositivo = cobertura.custrecord_ht_co_numeroserieproducto[0].value;
-                        var coberturaplazo = cobertura.custrecord_ht_co_plazo;
-                        //log.debug('idDispositivo', idDispositivo);
-                        var coberturaAntigua = cobertura.custrecord_ht_co_coberturafinal;
-                        var cobertura_inicial = cobertura.custrecord_ht_co_coberturainicial;
-                        cobertura_inicial = cobertura_inicial.split('/');
-                        var nuevaCoberturaInicial = cobertura_inicial[1] + '/' + cobertura_inicial[0] + '/' + cobertura_inicial[2];
-                        var fechaInicial = Date.parse(nuevaCoberturaInicial);
-                        var newDateInicial = new Date(fechaInicial);
-                        let producto = search.lookupFields({ type: 'customrecord_ht_record_mantchaser', id: idDispositivo, columns: ['custrecord_ht_mc_id_telematic'] });
-                        var idTelematic = producto.custrecord_ht_mc_id_telematic;
-                        //log.debug('idTelematic', idTelematic);
-                        coberturaAntigua = coberturaAntigua.split('/');
-                        var nuevaCoberturaAntigua = coberturaAntigua[1] + '/' + coberturaAntigua[0] + '/' + coberturaAntigua[2];
-                        var fechaAntigua = Date.parse(nuevaCoberturaAntigua);
-                        var newDateAntigua = new Date(fechaAntigua);
-                        var fechaNuevaDia = newDateAntigua.setDate(newDateAntigua.getDate());
-                        fechaNuevaDia = new Date(fechaNuevaDia);
-                        var fechaNuevaCompletaAntigua = new Date(fechaAntigua);
-                        var fechaNuevaCompleta = fechaNuevaCompletaAntigua.setDate(fechaNuevaCompletaAntigua.getDate());
-                        fechaNuevaCompleta = new Date(fechaNuevaCompleta);
-                        fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
-                        fechaNuevaCompleta = new Date(fechaNuevaCompleta);
-                        fechaNuevaCompleta = obtenerFechaHoraConFormatoConTimezone(fechaNuevaCompleta);
-                        plazo = Number(plazo);
-                        coberturaplazo = Number(coberturaplazo);
-                        var plazoTotal = parseFloat(plazo) + parseFloat(coberturaplazo);
-                        var hoy = new Date();
+                //         let cobertura = search.lookupFields({
+                //             type: 'customrecord_ht_co_cobertura',
+                //             id: idCoberturaItem,
+                //             columns: [
+                //                 'custrecord_ht_co_coberturainicial',
+                //                 'custrecord_ht_co_coberturafinal',
+                //                 'custrecord_ht_co_numeroserieproducto',
+                //                 'custrecord_ht_co_plazo',
+                //                 'custrecord_ht_co_estado_cobertura'
+                //             ]
+                //         });
+                //         log.debug('cobertura', cobertura);
+                //         let idDispositivo = cobertura.custrecord_ht_co_numeroserieproducto[0].value;
+                //         let coberturaplazo = cobertura.custrecord_ht_co_plazo;
+                //         //log.debug('idDispositivo', idDispositivo);
+                //         let coberturaAntigua = cobertura.custrecord_ht_co_coberturafinal;
+                //         let cobertura_inicial = cobertura.custrecord_ht_co_coberturainicial;
+                //         cobertura_inicial = cobertura_inicial.split('/');
+                //         let nuevaCoberturaInicial = cobertura_inicial[1] + '/' + cobertura_inicial[0] + '/' + cobertura_inicial[2];
 
-                        let telemat = {
-                            id: vehiculo.custrecord_ht_bien_id_telematic,
-                            state: 1,
-                            product_expire_date: fechaNuevaCompleta,
-                        }
+                //         if (cobertura.custrecord_ht_co_estado_cobertura[0].value == _constant.Status.ACTIVO) {
 
-                        if (plataformas == true && t_PPS == true) {
-                            log.debug('Entry', 'If');
-                            let Telematic = envioTelematic(telemat);
-                            Telematic = JSON.parse(Telematic);
-                            if (Telematic.asset) {
-                                log.debug('Entry', 'If: ' + Telematic.asset);
-                                record.submitFields({
-                                    type: 'customrecord_ht_co_cobertura',
-                                    id: idCoberturaItem,
-                                    values: {
-                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
-                                        'custrecord_ht_co_plazo': plazoTotal
-                                    },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
-                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
-                                let response = objRecord_detalle.save();
-                            }
-                        } else {
-                            log.debug('Entry', 'Else');
-                            if (newDateAntigua < hoy && t_PPS == true) {
-                                log.debug('Entry', 'Else: ' + newDateAntigua);
-                                record.submitFields({
-                                    type: 'customrecord_ht_co_cobertura',
-                                    id: idCoberturaItem,
-                                    values: {
-                                        'custrecord_ht_co_coberturainicial': new Date(fechaNuevaDia),
-                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
-                                        'custrecord_ht_co_plazo': plazo
-                                    },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
-                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
-                                let response = objRecord_detalle.save();
-                            } else if (t_PPS == true) {
-                                record.submitFields({
-                                    type: 'customrecord_ht_co_cobertura',
-                                    id: idCoberturaItem,
-                                    values: {
-                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
-                                        'custrecord_ht_co_plazo': plazoTotal
-                                    },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
-                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
-                                let response = objRecord_detalle.save();
-                            }
-                        }
-                    }
+                //         } else if (cobertura.custrecord_ht_co_estado_cobertura[0].value == _constant.Status.SUSPENDIDO) {
 
-                    if (objRecord.getValue('custbody_ht_os_issue_invoice') == true) {
-                        _controller.createInvoice(objRecord.id);
-                    }
+                //         }
 
-                    objRecord.save({ ignoreMandatoryFields: true, enableSourcing: false });
-                }
+                //         // const fechaInicial = new Date('2024-01-02');
+                //         // const fechaFinal = new Date('2025-01-02');
+                //         //let fechas = sumarTiempo(cantidad, unidadTiempo, fechaInicial, fechaFinal, noanticipado)
+
+                //         var fechaInicial = Date.parse(nuevaCoberturaInicial);
+                //         var newDateInicial = new Date(fechaInicial);
+                //         let producto = search.lookupFields({ type: 'customrecord_ht_record_mantchaser', id: idDispositivo, columns: ['custrecord_ht_mc_id_telematic'] });
+                //         var idTelematic = producto.custrecord_ht_mc_id_telematic;
+                //         //log.debug('idTelematic', idTelematic);
+                //         coberturaAntigua = coberturaAntigua.split('/');
+                //         var nuevaCoberturaAntigua = coberturaAntigua[1] + '/' + coberturaAntigua[0] + '/' + coberturaAntigua[2];
+                //         var fechaAntigua = Date.parse(nuevaCoberturaAntigua);
+                //         var newDateAntigua = new Date(fechaAntigua);
+                //         var fechaNuevaDia = newDateAntigua.setDate(newDateAntigua.getDate());
+                //         fechaNuevaDia = new Date(fechaNuevaDia);
+                //         var fechaNuevaCompletaAntigua = new Date(fechaAntigua);
+                //         var fechaNuevaCompleta = fechaNuevaCompletaAntigua.setDate(fechaNuevaCompletaAntigua.getDate());
+                //         fechaNuevaCompleta = new Date(fechaNuevaCompleta);
+                //         plazo = Number(plazo);
+                //         if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.ANIO) {
+                //             plazo = plazo * 12;
+                //             fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
+                //             //log.debug('_constant.Constants.UNIDAD_TIEMPO.ANIO', unidadTiempo);
+                //         } else if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.DIA) {
+                //             fechaNuevaCompleta.setDate(fechaNuevaCompleta.getDate() + plazo);
+                //             //log.debug('_constant.Constants.UNIDAD_TIEMPO.DIA', unidadTiempo);
+                //         } else {
+                //             fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
+                //             //log.debug('_constant.Constants.UNIDAD_TIEMPO.MESES', unidadTiempo);
+                //         }
+                //         // plazo = plazo * 12;
+                //         // fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + 5);
+                //         fechaNuevaCompleta = new Date(fechaNuevaCompleta);
+                //         fechaNuevaCompleta = obtenerFechaHoraConFormatoConTimezone(fechaNuevaCompleta);
+                //         coberturaplazo = Number(coberturaplazo);
+                //         var plazoTotal = parseFloat(plazo) + parseFloat(coberturaplazo);
+                //         var hoy = new Date();
+                //         log.debug('fechaNuevaCompleta2', fechaNuevaCompleta);
+                //         log.debug('plazo', plazo);
+                //         log.debug('plazoTotal', plazoTotal);
+                //         let telemat = {
+                //             id: vehiculo.custrecord_ht_bien_id_telematic,
+                //             state: 1,
+                //             product_expire_date: fechaNuevaCompleta,
+                //         }
+
+                //         if (plataformas == true && t_PPS == true) {
+                //             log.debug('Entry', 'If');
+                //             let Telematic = envioTelematic(telemat);
+                //             Telematic = JSON.parse(Telematic);
+                //             if (Telematic.asset) {
+                //                 log.debug('Entry', 'If: ' + Telematic.asset);
+                //                 record.submitFields({
+                //                     type: 'customrecord_ht_co_cobertura',
+                //                     id: idCoberturaItem,
+                //                     values: {
+                //                         'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
+                //                         'custrecord_ht_co_plazo': plazoTotal
+                //                     },
+                //                     options: { enableSourcing: false, ignoreMandatoryFields: true }
+                //                 });
+                //                 let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
+                //                 let response = objRecord_detalle.save();
+                //             }
+                //         } else {
+                //             log.debug('Entry', 'Else');
+                //             if (newDateAntigua < hoy && t_PPS == true) {
+                //                 log.debug('Entry', 'Else: ' + newDateAntigua);
+                //                 record.submitFields({
+                //                     type: 'customrecord_ht_co_cobertura',
+                //                     id: idCoberturaItem,
+                //                     values: {
+                //                         'custrecord_ht_co_coberturainicial': new Date(fechaNuevaDia),
+                //                         'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
+                //                         'custrecord_ht_co_plazo': plazo
+                //                     },
+                //                     options: { enableSourcing: false, ignoreMandatoryFields: true }
+                //                 });
+                //                 let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
+                //                 let response = objRecord_detalle.save();
+                //             } else if (t_PPS == true) {
+                //                 record.submitFields({
+                //                     type: 'customrecord_ht_co_cobertura',
+                //                     id: idCoberturaItem,
+                //                     values: {
+                //                         'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
+                //                         'custrecord_ht_co_plazo': plazoTotal
+                //                     },
+                //                     options: { enableSourcing: false, ignoreMandatoryFields: true }
+                //                 });
+                //                 let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
+                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
+                //                 let response = objRecord_detalle.save();
+
+                //             }
+                //         }
+                //     }
+
+                //     if (objRecord.getValue('custbody_ht_os_issue_invoice') == true) {
+                //         _controller.createInvoice(objRecord.id);
+                //     }
+                //     objRecord.save({ ignoreMandatoryFields: true, enableSourcing: false });
+                // }
+
 
                 //*BLOQUE CHEQUEO, DESINSTALACIÓN: Identificar instalación para asociar a la ot
                 if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO || adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
                     let out = 0;
+                    let busqueda_cobertura = new Array();
                     let bien = objRecord.getValue('custbody_ht_so_bien');
-                    let busqueda_cobertura = [];
-                    let field = 0;
-                    //TODO: REVISAR CARGA DE DATOS TECNICOS
-                    if (/*esUpgrade == _constant.Valor.NO &&*/ bien != '' /**&& esAlquiler == 0*/) {
-                        log.debug('Entry-Edit-OT', 'Update Orden Trabajo');
-                        // if (esGarantia) {
-                        //     workOrder = variasOT[0];
+                    if (workOrder != 0) {
+                        let field = 0;
+                        //TODO: REVISAR CARGA DE DATOS TECNICOS
+                        if (/*esUpgrade == _constant.Valor.NO &&*/ bien != '' /**&& esAlquiler == 0*/) {
+                            log.debug('Entry-Edit-OT', 'Update Orden Trabajo');
+                            // if (esGarantia) {
+                            //     workOrder = variasOT[0];
+                            // }
+                            field = _controller.getFieldsCobertura(bien, fam);
+                            log.debug('Field', field);
+
+                            //inicio Cambio JCEC 24/08/2024
+                            //Logica para traer la serie en caso de Flujo de Accesorio
+
+                            //1° Buscar la familia del articulo de la orden de servicio de desinstalación
+                            let serieAccesorio;
+                            let ArticuloOS = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: 0 });
+                            let paramDesinstalacion = getParamFamiliaProductosArticuloOSDesinstalacion(_constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS, ArticuloOS);
+                            log.debug('JCEC paramDesinstalacion', paramDesinstalacion);
+                            if (paramDesinstalacion.valorTexto == 'AR - HUNTER ARCA' && paramDesinstalacion.aplicacion) {
+                                //2° buscar en las ordenes de servicio relacionadas al Bien la familia del articulo
+                                let familiaArticuloOS = getFamiliaProductosArticuloOSDesinstalacion(bien);
+                                //3° Comparar si la familia del articulo de la orden de servicio de desinstalación es igual a la familia del articulo de la orden de servicio relacionada al bien
+                                for (let i = 0; i < familiaArticuloOS.length; i++) {
+                                    //buscamos la familia del articulo de la orden de servicio relacionada al bien
+                                    let paramFamilia = getParamFamiliaProductosArticuloOSDesinstalacion(_constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS, familiaArticuloOS[i].articulo);
+
+                                    //comparamos si la familia del articulo de la orden de servicio de desinstalación es igual a la familia del articulo de la orden de servicio relacionada al bien
+                                    if (paramDesinstalacion.valor == paramFamilia.valor) {
+                                        //si es igual traemos la serie del articulo de la orden de servicio relacionada al bien
+                                        serieAccesorio = familiaArticuloOS[i].serieAccesorio;
+                                        break;
+                                    }
+                                }
+
+                                try {
+
+                                    record.submitFields({
+                                        type: _constant.customRecord.ORDEN_TRABAJO,
+                                        id: idWorkOrder,
+                                        values: {
+                                            'customform': _constant.Form.OT_HT_ACCESORIOS_ALQUILER,
+                                            'custrecord_ot_serie_acc': serieAccesorio
+                                        },
+                                        options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                    });
+
+
+                                } catch (error) {
+                                    log.error('Error Agregar SerieAccesorio', error);
+                                }
+                                //fin Cambio JCEC 24/08/2024
+                            }
+                            if (field != 0) {
+
+                                log.debug('Field2', field);
+                                record.submitFields({
+                                    type: _constant.customRecord.ORDEN_TRABAJO,
+                                    id: workOrder,
+                                    values: {
+                                        'custrecord_ht_ot_serieproductoasignacion': field[0]['custrecord_ht_co_numeroserieproducto'],
+                                        'custrecord_ht_ot_ubicacion': field[0]['custrecord_ht_mc_ubicacion'] == null ? '' : field[0]['custrecord_ht_mc_ubicacion'],
+                                        'custrecord_ht_ot_dispositivo': field[0]['custrecord_ht_co_numerodispositivo'] == null ? '' : field[0]['custrecord_ht_co_numerodispositivo'],
+                                        'custrecord_ht_ot_modelo': field[0]['custrecord_ht_co_modelodispositivo'] == null ? '' : field[0]['custrecord_ht_co_modelodispositivo'],
+                                        'custrecord_ht_ot_unidad': field[0]['custrecord_ht_co_unidad'] == null ? '' : field[0]['custrecord_ht_co_unidad'],
+                                        'custrecord_ht_ot_firmware': field[0]['custrecord_ht_co_firmware'] == null ? '' : field[0]['custrecord_ht_co_firmware'],
+                                        'custrecord_ht_ot_script': field[0]['custrecord_ht_co_script'] == null ? '' : field[0]['custrecord_ht_co_script'],
+                                        'custrecord_ht_ot_servidor': field[0]['custrecord_ht_co_servidor'] == null ? '' : field[0]['custrecord_ht_co_servidor'],
+                                        'custrecord_ht_ot_simcard': field[0]['custrecord_ht_co_celularsimcard'] == null ? '' : field[0]['custrecord_ht_co_celularsimcard'],
+                                        'custrecord_ht_ot_ip': field[0]['custrecord_ht_co_ip'] == null ? '' : field[0]['custrecord_ht_co_ip'],
+                                        'custrecord_ht_ot_apn': field[0]['custrecord_ht_co_apn'] == null ? '' : field[0]['custrecord_ht_co_apn'],
+                                        'custrecord_ht_ot_imei': field[0]['custrecord_ht_co_imei'] == null ? '' : field[0]['custrecord_ht_co_imei'],
+                                        'custrecord_ht_ot_vid': field[0]['custrecord_ht_co_vid'] == null ? '' : field[0]['custrecord_ht_co_vid'],
+                                        'custrecord_ht_ot_boxserie': field[0]['custrecord_ht_co_seriedispolojack'] == null ? '' : field[0]['custrecord_ht_co_seriedispolojack'],
+                                        'custrecord_ht_ot_codigoactivacion': field[0]['custrecord_ht_co_codigoactivacion'] == null ? '' : field[0]['custrecord_ht_co_codigoactivacion'],
+                                        'custrecord_ht_ot_codigorespuesta': field[0]['custrecord_ht_co_codigorespuesta'] == null ? '' : field[0]['custrecord_ht_co_codigorespuesta']
+                                    },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+                            }
+
+
+
+
+                        }
+
+                        // log.debug('esUpgrade', esUpgrade);
+                        // if (esUpgrade == _constant.Valor.SI) {
+                        //     if (bien != '') {
+                        //         busqueda_cobertura = getCoberturaItem(bien);
+                        //     }
+                        //     if (busqueda_cobertura.length != 0) {
+                        //         for (let i = 0; i < busqueda_cobertura.length; i++) {
+                        //             let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
+                        //             if (parametrosRespo != 0) {
+                        //                 for (let j = 0; j < parametrosRespo.length; j++) {
+                        //                     let rec = record.submitFields({
+                        //                         type: 'customrecord_ht_co_cobertura',
+                        //                         id: busqueda_cobertura[i][1],
+                        //                         values: {
+                        //                             'custrecord_ht_co_familia_prod': fam,
+                        //                             //'custrecord_ht_co_estado': _constant.Status.CONVERTIDO
+                        //                             'custrecord_ht_co_producto_convertido': true
+                        //                         },
+                        //                         options: { enableSourcing: false, ignoreMandatoryFields: true }
+                        //                     });
+                        //                     log.debug('esUpgrade-rec', rec);
+                        //                     out = 1;
+                        //                 }
+
+                        //                 if (out == 1)
+                        //                     break;
+                        //             }
+                        //         }
+                        //     }
                         // }
-                        field = _controller.getFieldsCobertura(bien, fam);
-                        log.debug('Field', field);
-                        if (field != 0) {
-                            log.debug('Field2', field);
-                            record.submitFields({
-                                type: _constant.customRecord.ORDEN_TRABAJO,
-                                id: workOrder,
-                                values: {
-                                    'custrecord_ht_ot_serieproductoasignacion': field[0]['custrecord_ht_co_numeroserieproducto'],
-                                    'custrecord_ht_ot_ubicacion': field[0]['custrecord_ht_mc_ubicacion'] == null ? '' : field[0]['custrecord_ht_mc_ubicacion'],
-                                    'custrecord_ht_ot_dispositivo': field[0]['custrecord_ht_co_numerodispositivo'] == null ? '' : field[0]['custrecord_ht_co_numerodispositivo'],
-                                    'custrecord_ht_ot_modelo': field[0]['custrecord_ht_co_modelodispositivo'] == null ? '' : field[0]['custrecord_ht_co_modelodispositivo'],
-                                    'custrecord_ht_ot_unidad': field[0]['custrecord_ht_co_unidad'] == null ? '' : field[0]['custrecord_ht_co_unidad'],
-                                    'custrecord_ht_ot_firmware': field[0]['custrecord_ht_co_firmware'] == null ? '' : field[0]['custrecord_ht_co_firmware'],
-                                    'custrecord_ht_ot_script': field[0]['custrecord_ht_co_script'] == null ? '' : field[0]['custrecord_ht_co_script'],
-                                    'custrecord_ht_ot_servidor': field[0]['custrecord_ht_co_servidor'] == null ? '' : field[0]['custrecord_ht_co_servidor'],
-                                    'custrecord_ht_ot_simcard': field[0]['custrecord_ht_co_celularsimcard'] == null ? '' : field[0]['custrecord_ht_co_celularsimcard'],
-                                    'custrecord_ht_ot_ip': field[0]['custrecord_ht_co_ip'] == null ? '' : field[0]['custrecord_ht_co_ip'],
-                                    'custrecord_ht_ot_apn': field[0]['custrecord_ht_co_apn'] == null ? '' : field[0]['custrecord_ht_co_apn'],
-                                    'custrecord_ht_ot_imei': field[0]['custrecord_ht_co_imei'] == null ? '' : field[0]['custrecord_ht_co_imei'],
-                                    'custrecord_ht_ot_vid': field[0]['custrecord_ht_co_vid'] == null ? '' : field[0]['custrecord_ht_co_vid'],
-                                    'custrecord_ht_ot_boxserie': field[0]['custrecord_ht_co_seriedispolojack'] == null ? '' : field[0]['custrecord_ht_co_seriedispolojack'],
-                                    'custrecord_ht_ot_codigoactivacion': field[0]['custrecord_ht_co_codigoactivacion'] == null ? '' : field[0]['custrecord_ht_co_codigoactivacion'],
-                                    'custrecord_ht_ot_codigorespuesta': field[0]['custrecord_ht_co_codigorespuesta'] == null ? '' : field[0]['custrecord_ht_co_codigorespuesta']
-                                },
-                                options: { enableSourcing: false, ignoreMandatoryFields: true }
+
+                        if (esAlquiler == _constant.Valor.SI && adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
+                            log.error('Entry', 'Ingreso a envío de correo por geneaci´no de desinstalación de alquiler');
+                            let emailBody = '<p><b>Orden de Servicio por Desinstalación de Alquiler: </b><span style="color: #000000;">' + ordenServicio + '</span></p>' +
+                                //'<p><b>Orden de Servicio por Instalación: </b><span style="color: #000000;">' + customer + '</span></p>' +
+                                '<p><b>Cliente: </b><span style="color: #000000;">' + customer + '</span></p>' +
+                                '<p><b>Bien: </b><span style="color: #000000;">' + vehiculo + '</span></p>'
+
+                            let objSearch = search.create({
+                                type: "employee",
+                                filters: [["role", "anyof", _constant.Roles.EC_CUENTAS_POR_COBRAR], "AND", ["email", "isnotempty", ""]],
+                                columns: [search.createColumn({ name: "email", label: "Email" })]
                             });
+                            objSearch.run().each(result => {
+                                let correo = result.getValue({ name: 'email' });
+                                arrayRecipientsOriginal.push(correo);
+                                return true;
+                            });
+
+                            if (objSearch.runPaged().count > 0) {
+                                for (let i = 0; i < arrayRecipientsOriginal.length; i += 10) {
+                                    const subArreglo = arrayRecipientsOriginal.slice(i, i + 10);
+                                    arrayRecipients.push(subArreglo);
+                                }
+
+                                log.error('ArrayRecipients', arrayRecipients);
+                                for (let j = 0; j < arrayRecipients.length; j++) {
+                                    email.send({
+                                        author: senderId,
+                                        recipients: arrayRecipients[j],
+                                        subject: 'Orden de Servicio por Desinstalación de Alquiler ' + ordenServicio,
+                                        body: emailBody,
+                                        relatedRecords: { transactionId: idRecord }
+                                    });
+                                }
+                            }
                         }
                     }
 
+                    log.debug('esUpgrade', esUpgrade);
+                    let items_inventario = null
+                    for (let i = 0; i < numLines; i++) {
+                        items_inventario = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
+                        log.debug('items_inventario', items_inventario);
+                    }
                     if (esUpgrade == _constant.Valor.SI) {
                         if (bien != '') {
                             busqueda_cobertura = getCoberturaItem(bien);
@@ -557,57 +724,33 @@ define([
                                 let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
                                 if (parametrosRespo != 0) {
                                     for (let j = 0; j < parametrosRespo.length; j++) {
-                                        record.submitFields({
+                                        let rec = record.submitFields({
                                             type: 'customrecord_ht_co_cobertura',
                                             id: busqueda_cobertura[i][1],
                                             values: {
                                                 'custrecord_ht_co_familia_prod': fam,
-                                                'custrecord_ht_co_estado': _constant.Status.CONVERTIDO
+                                                'custrecord_ht_co_producto': items_inventario,
+                                                'custrecord_ht_co_producto_convertido': true
                                             },
                                             options: { enableSourcing: false, ignoreMandatoryFields: true }
                                         });
+                                        log.debug('esUpgrade-rec', rec);
                                         out = 1;
                                     }
+
+                                    log.debug('objParameters', 'Ingresar Historial')
+                                    log.debug('objParameters', busqueda_cobertura[i][1])
+                                    let coberturaId = busqueda_cobertura[i][1]
+                                    let objRecord = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                                    objRecord.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: coberturaId });
+                                    objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                                    //objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: objParameters.ordentrabajoId });
+                                    objRecord.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: 9 });
+                                    objRecord.save();
+
                                     if (out == 1)
                                         break;
                                 }
-                            }
-                        }
-                    }
-
-                    if (esAlquiler == _constant.Valor.SI && adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
-                        log.error('Entry', 'Ingreso a envío de correo por geneaci´no de desinstalación de alquiler');
-                        let emailBody = '<p><b>Orden de Servicio por Desinstalación de Alquiler: </b><span style="color: #000000;">' + ordenServicio + '</span></p>' +
-                            //'<p><b>Orden de Servicio por Instalación: </b><span style="color: #000000;">' + customer + '</span></p>' +
-                            '<p><b>Cliente: </b><span style="color: #000000;">' + customer + '</span></p>' +
-                            '<p><b>Bien: </b><span style="color: #000000;">' + vehiculo + '</span></p>'
-
-                        let objSearch = search.create({
-                            type: "employee",
-                            filters: [["role", "anyof", _constant.Roles.EC_CUENTAS_POR_COBRAR], "AND", ["email", "isnotempty", ""]],
-                            columns: [search.createColumn({ name: "email", label: "Email" })]
-                        });
-                        objSearch.run().each(result => {
-                            let correo = result.getValue({ name: 'email' });
-                            arrayRecipientsOriginal.push(correo);
-                            return true;
-                        });
-
-                        if (objSearch.runPaged().count > 0) {
-                            for (let i = 0; i < arrayRecipientsOriginal.length; i += 10) {
-                                const subArreglo = arrayRecipientsOriginal.slice(i, i + 10);
-                                arrayRecipients.push(subArreglo);
-                            }
-
-                            log.error('ArrayRecipients', arrayRecipients);
-                            for (let j = 0; j < arrayRecipients.length; j++) {
-                                email.send({
-                                    author: senderId,
-                                    recipients: arrayRecipients[j],
-                                    subject: 'Orden de Servicio por Desinstalación de Alquiler ' + ordenServicio,
-                                    body: emailBody,
-                                    relatedRecords: { transactionId: idRecord }
-                                });
                             }
                         }
                     }
@@ -615,69 +758,78 @@ define([
 
                 //TODO: Revisar: parámetro ccd nunca ingresa porque está igualando al valor y aquí no debería generar custodia 
                 if (ccd == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS) {
-                    log.debug("CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS", true);
-                    let deviceItemResult = search.create({
-                        type: "customrecord_ht_record_custodia",
-                        filters: [["name", "is", itemCustodia.inventoryNumber]],
-                        columns: ["custrecord_ht_ct_nombredispositivo", "custrecord_ht_ct_venta"]
-                    }).run().getRange(0, 1);
-                    log.debug("deviceItemResult[0]", deviceItemResult.length);
-                    let salesItem = deviceItemResult[0].getValue("custrecord_ht_ct_venta");
-                    log.debug("salesItem", salesItem);
+                    if (workOrder != 0) {
+                        log.debug("CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS", true);
+                        let deviceItemResult = search.create({
+                            type: "customrecord_ht_record_custodia",
+                            filters: [["name", "is", itemCustodia.inventoryNumber]],
+                            columns: ["custrecord_ht_ct_nombredispositivo", "custrecord_ht_ct_venta"]
+                        }).run().getRange(0, 1);
+                        log.debug("deviceItemResult[0]", deviceItemResult.length);
+                        let salesItem = deviceItemResult[0].getValue("custrecord_ht_ct_venta");
+                        log.debug("salesItem", salesItem);
 
-                    record.submitFields({
-                        type: "customrecord_ht_record_ordentrabajo",
-                        id: workOrder,
-                        values: {
-                            "custrecord_ht_ot_item": salesItem,
-                            "custrecord_ht_ot_itemrelacionado": itemCustodia.item
-                        }
-                    });
+                        record.submitFields({
+                            type: "customrecord_ht_record_ordentrabajo",
+                            id: workOrder,
+                            values: {
+                                "custrecord_ht_ot_item": salesItem,
+                                "custrecord_ht_ot_itemrelacionado": itemCustodia.item
+                            }
+                        });
+                    }
                 }
 
                 if (definicionServicios) {
-                    let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
-                    let params = [idItem];
-                    let array = new Array();
-                    let resultSet = query.runSuiteQL({ query: sql, params: params });
-                    let results = resultSet.asMappedResults();
-                    if (results.length > 0) {
-                        let arregloconvertido = results[0]['servicios'].split(",")
-                        array = arregloconvertido.map(a => parseInt(a));
-                        record.submitFields({
-                            type: _constant.customRecord.ORDEN_TRABAJO,
-                            id: workOrder,
-                            values: {
-                                custrecord_ht_ot_servicios_commands: array,
-                            },
-                            options: { enablesourcing: true }
-                        });
+                    if (workOrder != 0) {
+                        let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
+                        let params = [idItem];
+                        let array = new Array();
+                        let resultSet = query.runSuiteQL({ query: sql, params: params });
+                        let results = resultSet.asMappedResults();
+                        log.debug('results', 'results');
+                        if (results.length > 0) {
+                            let arregloconvertido = results[0]['servicios'].split(",")
+                            array = arregloconvertido.map(a => parseInt(a));
+                            record.submitFields({
+                                type: _constant.customRecord.ORDEN_TRABAJO,
+                                id: workOrder,
+                                values: {
+                                    custrecord_ht_ot_servicios_commands: array,
+                                },
+                                options: { enablesourcing: true }
+                            });
+                        }
                     }
                 }
 
                 if (esGarantia) {
                     var bien = objRecord.getValue('custbody_ht_so_bien');
-                    let itemVentaGarantia = [];
-                    if (bien != '') {
-                        //itemVentaGarantia = getCoberturaItem(bien);
-                        itemVentaGarantia = _controller.getProductoInstalado(bien, fam);
-                    }
-                    log.debug("itemVentaGarantia", itemVentaGarantia);
-                    if (itemVentaGarantia.length) {
-                        let workOrderResult = search.create({
-                            type: "customrecord_ht_record_ordentrabajo",
-                            filters: [["custrecord_ht_ot_orden_servicio", "anyof", idRecord]],
-                            columns: ["internalid"]
-                        }).run().getRange(0, 100);
-                        log.debug("workOrderResult", workOrderResult.length);
-                        if (workOrderResult.length) {
-                            for (let i = 0; i < workOrderResult.length; i++) {
-                                let workOrder = workOrderResult[i].id;
-                                record.submitFields({
-                                    type: "customrecord_ht_record_ordentrabajo",
-                                    id: workOrder,
-                                    values: { "custrecord_ts_item_venta_garantia": itemVentaGarantia }
-                                });
+                    if (workOrder != 0) {
+                        let itemVentaGarantia = new Array();
+                        if (bien != '') {
+                            //itemVentaGarantia = getCoberturaItem(bien);
+                            itemVentaGarantia = _controller.getProductoInstalado(bien, fam);
+                        }
+                        log.debug("itemVentaGarantia", itemVentaGarantia);
+                        if (itemVentaGarantia.toString().length > 0) {
+                            let workOrderResult = search.create({
+                                type: "customrecord_ht_record_ordentrabajo",
+                                filters: [["custrecord_ht_ot_orden_servicio", "anyof", idRecord]],
+                                columns: ["internalid"]
+                            }).run().getRange(0, 100);
+                            log.debug("workOrderResult", workOrderResult.length);
+                            if (workOrderResult.length) {
+                                for (let i = 0; i < workOrderResult.length; i++) {
+                                    let ordenTrabajoId = workOrderResult[i].id;
+                                    let otid = record.submitFields({
+                                        type: "customrecord_ht_record_ordentrabajo",
+                                        id: ordenTrabajoId,
+                                        values: { "custrecord_ts_item_venta_garantia": itemVentaGarantia }
+                                    });
+                                    log.debug("OrdenTrabajoUpdate", `Orden de Trabajo ${otid} actualizada por flujo de garantía`);
+
+                                }
                             }
                         }
                     }
@@ -688,8 +840,10 @@ define([
         }
 
         if (scriptContext.type === scriptContext.UserEventType.EDIT || scriptContext.type === scriptContext.UserEventType.CREATE || scriptContext.type === scriptContext.UserEventType.COPY) {
-            var objRecord = scriptContext.newRecord;
-            const idRecord = objRecord.id;
+            const idRecord = scriptContext.newRecord.id;
+            let objRecord = record.load({ type: 'salesorder', id: idRecord, isDynamic: true });
+            //var objRecord = scriptContext.newRecord;
+
             let orderstatus = objRecord.getValue('orderstatus');
             let numLines = objRecord.getLineCount({ sublistId: 'item' });
             let aprobacionventa = objRecord.getValue('custbody_ht_os_aprobacionventa');
@@ -710,11 +864,27 @@ define([
             let ccd = 0, paramChequeo = 0, esUpgrade = _constant.Valor.NO;
             let esCustodia = 0, esConvenio = 0;
             let custodiaDisp = 0;
+            let unidadTiempo;
+            let plazo = 0;
+            let t_PPS = false;
+            let renovamos = false;
+            let plataformas = false;
+
+            log.error('statusrefEdit', objRecord.getValue('statusRef'));
+            log.error('aprobacionventaEdit', aprobacionventa)
+            log.error('aprobacioncarteraEdit', aprobacioncartera)
             try {
                 if (aprobacionventa == _constant.Status.APROBADO && aprobacioncartera == _constant.Status.APROBADO) {
+                    log.debug('Track1', 'Track1');
                     for (let i = 0; i < numLines; i++) {
                         let items = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
+                        log.debug('items', items);
                         parametrosRespo = _controller.parametrizacion(items);
+                        objRecord.selectLine({ sublistId: 'item', line: i });
+                        let cantidad = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_tiempo_cobertura' })
+                        unidadTiempo = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_und_tiempo_cobertura' });
+
+                        //log.debug('parametrosRespo', parametrosRespo);
                         if (parametrosRespo != 0) {
                             for (let j = 0; j < parametrosRespo.length; j++) {
                                 if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO)
@@ -750,20 +920,33 @@ define([
 
                                 if (parametrosRespo[j][0] == _constant.Parameter.PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA && parametrosRespo[j][1] == _constant.Valor.VALOR_X_USO_CONVENIOS)
                                     esConvenio == 2
+
+                                if (parametrosRespo[j][1] == _constant.Valor.VALOR_004_RENOVACION_DE_DISP) {
+                                    renovamos = true;
+                                    plazo += cantidad;
+                                }
+                                if (parametrosRespo[j][0] == _constant.Parameter.PPS_PEDIR_PERIODO_DE_SERVICIO && parametrosRespo[j][1] == _constant.Valor.SI)
+                                    t_PPS = true;
+                                if (parametrosRespo[j][0] == _constant.Parameter.CPT_CONFIGURA_PLATAFORMA_TELEMATIC && parametrosRespo[j][1] == _constant.Valor.SI)
+                                    plataformas = true;
                             }
                         }
+                        log.debug('monitoreo', objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo', line: i }));
                         htClient = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente', line: i });
                         monitoreo = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo', line: i }).length > 0 ? objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo', line: i }) : '';
                         bien = objRecord.getValue('custbody_ht_so_bien');
                         custodiaDisp = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ts_dispositivo_en_custodia', line: i });
                     }
 
+                    log.debug('Track2', 'Track2');
                     if (ccd == _constant.Valor.SI || ttr == _constant.Valor.VALOR_CAMB_GPS_TDE_DEALER_MOV_CUSTODIA) {
                         esCustodia = 1
                     }
 
+                    log.debug('Track3', 'Track3');
                     if (parametro != 0 && esCustodia == 0 && adp == _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO) {
                         log.debug('entra plataformas por cambio de propietario');
+                        log.debug('parametrosRespo.length', parametrosRespo);
                         for (let j = 0; j < parametrosRespo.length; j++) {
                             if (parametrosRespo[j][0] == _constant.Parameter.PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC && parametrosRespo[j][1] == _constant.Valor.SI) {
                                 returEjerepo = _controller.parametros(_constant.Parameter.PARAM_CPT_CONFIGURA_PLATAFORMA_TELEMATIC, idRecord, parametro);
@@ -841,7 +1024,8 @@ define([
                                     type: 'customrecord_ht_record_bienes',
                                     id: bien,
                                     values: {
-                                        'custrecord_ht_bien_propietario': htClient
+                                        'custrecord_ht_bien_propietario': htClient,
+                                        'custrecord_ht_bien_estadoconvenio': _constant.Status.ESTADO_CONVENIO_INACTIVO,
                                     },
                                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                                 });
@@ -850,6 +1034,9 @@ define([
                             transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
                         }
                     }
+
+                    log.debug('parametrosRespo[j][0]', parametrosRespo)
+                    log.debug('esConvenio', esConvenio)
 
                     if (adp == _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO) {
                         if (esCustodia == 1) {
@@ -891,67 +1078,255 @@ define([
                                 });
                             }
                         } else if (esConvenio == 2) {
+                            log.debug('esConvenio', 'LOGICA PARA CAMBIO DE PROPIETARIO POR CONVENIO')
                             //TODO: LOGICA PARA CAMBIO DE PROPIETARIO POR CONVENIO
+
+
                         }
                         try {
                             transaction.void({ type: transaction.Type.SALES_ORDER, id: idRecord });
                         } catch (error) { }
                     }
 
-                    //TODO: Revisar, porque en el evento crear ya se realiza esta acción
-                    // if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
-                    //     log.debug('Chequeo', 'VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO o VALOR_002_DESINSTALACION_DE_DISP');
-                    //     let out = 0;
-                    //     let bien = objRecord.getValue('custbody_ht_so_bien');
-                    //     let busqueda_cobertura = [];
-                    //     if (bien != '') {
-                    //         busqueda_cobertura = getCoberturaItem(bien);
-                    //     }
-                    //     if (busqueda_cobertura.length != 0) {
-                    //         for (let i = 0; i < busqueda_cobertura.length; i++) {
-                    //             let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
-                    //             if (parametrosRespo != 0) {
-                    //                 for (let j = 0; j < parametrosRespo.length; j++) {
-                    //                     if (parametrosRespo[j][0] == _constant.Parameter.TCH_TIPO_CHEQUEO_OT && parametrosRespo[j][1] == paramChequeo) {
-                    //                         try {
-                    //                             if (workOrder != 0) {
-                    //                                 record.submitFields({
-                    //                                     type: 'customrecord_ht_record_ordentrabajo',
-                    //                                     id: workOrder,
-                    //                                     values: { 'custrecord_ht_ot_serieproductoasignacion': busqueda_cobertura[i][2] },
-                    //                                     options: { enableSourcing: false, ignoreMandatoryFields: true }
-                    //                                 });
-                    //                             }
-                    //                         } catch (error) {
-                    //                             log.error('esUpgrade', 'No tiene OT')
-                    //                         }
-                    //                         if (esUpgrade == _constant.Valor.SI) {
-                    //                             record.submitFields({
-                    //                                 type: 'customrecord_ht_co_cobertura',
-                    //                                 id: busqueda_cobertura[i][1],
-                    //                                 values: {
-                    //                                     'custrecord_ht_co_familia_prod': fam,
-                    //                                     'custrecord_ht_co_estado': _constant.Status.CONVERTIDO
-                    //                                 },
-                    //                                 options: { enableSourcing: false, ignoreMandatoryFields: true }
-                    //                             });
-                    //                         }
-                    //                         out = 1;
-                    //                         break;
-                    //                     }
-                    //                 }
-                    //                 if (out == 1)
-                    //                     break;
-                    //             }
-                    //         }
-                    //     }
-                    // }
+                    log.debug('objRecord.getValue(custbody_ht_so_renovacion_aplicada)', objRecord.getValue('custbody_ht_so_renovacion_aplicada'))
+                    if (renovamos == true && objRecord.getValue('custbody_ht_so_renovacion_aplicada') == false) {
+                        log.debug('Entry', 'Renovación Edit');
+                        var bien = objRecord.getValue('custbody_ht_so_bien');
+                        var idCoberturaItem;
+                        let busqueda_cobertura = new Array();
+                        if (bien != '') {
+                            busqueda_cobertura = getCoberturaItem(bien);
+                        }
+                        log.debug('busqueda_cobertura', busqueda_cobertura);
+                        if (busqueda_cobertura.length != 0) {
+                            for (let i = 0; i < busqueda_cobertura.length; i++) {
+                                let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
+                                if (parametrosRespo != 0) {
+                                    let valor_tipo_agrupacion_2 = 0;
+                                    for (let j = 0; j < parametrosRespo.length; j++) {
+                                        if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS)
+                                            valor_tipo_agrupacion_2 = parametrosRespo[j][1];
+                                        if (valor_tipo_agrupacion == valor_tipo_agrupacion_2)
+                                            idCoberturaItem = busqueda_cobertura[i][1];
+                                    }
+                                }
+                            }
+                        }
+
+                        let vehiculo;
+                        if (bien != '') {
+                            vehiculo = search.lookupFields({ type: 'customrecord_ht_record_bienes', id: bien, columns: ['custrecord_ht_bien_id_telematic'] });
+                        } else {
+                            vehiculo.custrecord_ht_bien_id_telematic = '';
+                        }
+
+                        let cobertura = search.lookupFields({
+                            type: 'customrecord_ht_co_cobertura',
+                            id: idCoberturaItem,
+                            columns: [
+                                'custrecord_ht_co_coberturainicial',
+                                'custrecord_ht_co_coberturafinal',
+                                'custrecord_ht_co_numeroserieproducto',
+                                'custrecord_ht_co_plazo',
+                                'custrecord_ht_co_estado_cobertura'
+                            ]
+                        });
+                        log.debug('cobertura', cobertura);
+                        let idDispositivo = cobertura.custrecord_ht_co_numeroserieproducto[0].value;
+                        let coberturaplazo = cobertura.custrecord_ht_co_plazo;
+                        //log.debug('idDispositivo', idDispositivo);
+                        let coberturaAntigua = cobertura.custrecord_ht_co_coberturafinal;
+                        let cobertura_inicial = cobertura.custrecord_ht_co_coberturainicial;
+                        cobertura_inicial = cobertura_inicial.split('/');
+                        let nuevaCoberturaInicial = cobertura_inicial[1] + '/' + cobertura_inicial[0] + '/' + cobertura_inicial[2];
+
+                        if (cobertura.custrecord_ht_co_estado_cobertura[0].value == _constant.Status.ACTIVO) {
+
+                        } else if (cobertura.custrecord_ht_co_estado_cobertura[0].value == _constant.Status.SUSPENDIDO) {
+
+                        }
+
+                        // const fechaInicial = new Date('2024-01-02');
+                        // const fechaFinal = new Date('2025-01-02');
+                        //let fechas = sumarTiempo(cantidad, unidadTiempo, fechaInicial, fechaFinal, noanticipado)
+
+                        var fechaInicial = Date.parse(nuevaCoberturaInicial);
+                        var newDateInicial = new Date(fechaInicial);
+                        let producto = search.lookupFields({ type: 'customrecord_ht_record_mantchaser', id: idDispositivo, columns: ['custrecord_ht_mc_id_telematic'] });
+                        var idTelematic = producto.custrecord_ht_mc_id_telematic;
+                        //log.debug('idTelematic', idTelematic);
+                        coberturaAntigua = coberturaAntigua.split('/');
+                        var nuevaCoberturaAntigua = coberturaAntigua[1] + '/' + coberturaAntigua[0] + '/' + coberturaAntigua[2];
+                        //log.debug('nuevaCoberturaAntigua', nuevaCoberturaAntigua);
+                        var fechaAntigua = Date.parse(nuevaCoberturaAntigua);
+                        //log.debug('fechaAntigua', fechaAntigua);
+                        var newDateAntigua = new Date(fechaAntigua);
+                        //log.debug('newDateAntigua', newDateAntigua);
+                        var fechaNuevaDia = newDateAntigua.setDate(newDateAntigua.getDate());
+                        fechaNuevaDia = new Date(fechaNuevaDia);
+                        //log.debug('fechaNuevaDia', fechaNuevaDia);
+                        var fechaNuevaCompletaAntigua = new Date(fechaAntigua);
+                        var fechaNuevaCompleta = fechaNuevaCompletaAntigua.setDate(fechaNuevaCompletaAntigua.getDate());
+                        fechaNuevaCompleta = new Date(fechaNuevaCompleta);
+                        plazo = Number(plazo);
+                        if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.ANIO) {
+                            plazo = plazo * 12;
+                            fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
+                            //log.debug('_constant.Constants.UNIDAD_TIEMPO.ANIO', unidadTiempo);
+                        } else if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.DIA) {
+                            fechaNuevaCompleta.setDate(fechaNuevaCompleta.getDate() + plazo);
+                            //log.debug('_constant.Constants.UNIDAD_TIEMPO.DIA', unidadTiempo);
+                        } else {
+                            fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
+                            //log.debug('_constant.Constants.UNIDAD_TIEMPO.MESES', unidadTiempo);
+                        }
+                        fechaNuevaCompleta = new Date(fechaNuevaCompleta);
+                        fechaNuevaCompleta = obtenerFechaHoraConFormatoConTimezone(fechaNuevaCompleta);
+                        coberturaplazo = Number(coberturaplazo);
+                        var plazoTotal = parseFloat(plazo) + parseFloat(coberturaplazo);
+                        var hoy = new Date();
+                        log.debug('fechaNuevaCompleta2', fechaNuevaCompleta);
+                        log.debug('plazo', plazo);
+                        log.debug('plazoTotal', plazoTotal);
+                        let telemat = {
+                            id: vehiculo.custrecord_ht_bien_id_telematic,
+                            state: 1,
+                            product_expire_date: fechaNuevaCompleta,
+                        }
+
+                        if (plataformas == true && t_PPS == true) {
+                            log.debug('Entry', 'If');
+                            let Telematic = envioTelematic(telemat);
+                            Telematic = JSON.parse(Telematic);
+                            if (Telematic.asset) {
+                                log.debug('Entry', 'If: ' + Telematic.asset);
+                                record.submitFields({
+                                    type: 'customrecord_ht_co_cobertura',
+                                    id: idCoberturaItem,
+                                    values: {
+                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
+                                        'custrecord_ht_co_plazo': plazoTotal
+                                    },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
+                                let response = objRecord_detalle.save();
+                            }
+                        } else {
+                            log.debug('Entry', 'Else');
+                            if (newDateAntigua < hoy && t_PPS == true) {
+                                log.debug('Entry', 'Else: ' + newDateAntigua);
+                                record.submitFields({
+                                    type: 'customrecord_ht_co_cobertura',
+                                    id: idCoberturaItem,
+                                    values: {
+                                        'custrecord_ht_co_coberturainicial': new Date(fechaNuevaDia),
+                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
+                                        'custrecord_ht_co_plazo': plazo
+                                    },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
+                                let response = objRecord_detalle.save();
+                            } else if (t_PPS == true) {
+                                record.submitFields({
+                                    type: 'customrecord_ht_co_cobertura',
+                                    id: idCoberturaItem,
+                                    values: {
+                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
+                                        'custrecord_ht_co_plazo': plazoTotal
+                                    },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
+                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
+                                let response = objRecord_detalle.save();
+                            }
+                        }
+
+                        let serviceOrderrecordUp = record.submitFields({
+                            type: 'salesorder',
+                            id: idRecord,
+                            values: {
+                                'custbody_ht_so_renovacion_aplicada': true,
+                            },
+                            options: { enableSourcing: true, ignoreMandatoryFields: true }
+                        });
+                        log.error('serviceOrderrecordUp', 'Orden de Servicio ' + serviceOrderrecordUp + ' actualizada por aplicación de renovación')
+                    }
                 }
             } catch (error) {
                 log.error('Erro-Edit', error);
             }
         }
     }
+
+    const sumarTiempo = (cantidad, unidadTiempo, fechaInicial, fechaFinal, noanticipado) => {
+        let nuevaFechaInicial = noanticipado == 2 ? new Date() : new Date(fechaInicial);
+        let nuevaFechaFinal = noanticipado == 2 ? new Date() : new Date(fechaFinal);
+
+        if (unidadTiempo === 'días') {
+            //nuevaFechaInicial.setDate(nuevaFechaInicial.getDate() + cantidad);
+            nuevaFechaFinal.setDate(nuevaFechaFinal.getDate() + cantidad);
+        } else if (unidadTiempo === 'meses') {
+            //nuevaFechaInicial.setMonth(nuevaFechaInicial.getMonth() + cantidad);
+            nuevaFechaFinal.setMonth(nuevaFechaFinal.getMonth() + cantidad);
+        } else if (unidadTiempo === 'años') {
+            //nuevaFechaInicial.setFullYear(nuevaFechaInicial.getFullYear() + cantidad);
+            nuevaFechaFinal.setFullYear(nuevaFechaFinal.getFullYear() + cantidad);
+        }
+        // if (noanticipado == 2)
+        //     nuevaFechaInicial = new Date();
+        return { nuevaFechaInicial, nuevaFechaFinal };
+    }
+
+    const getCobertura = (cantidad, undTiempo, fechaInicial, fechaFinal) => {
+        log.debug('TIEMPOSSS', parseInt(cantidad) + ' - ' + undTiempo);
+        let date = new Date();
+        date.setDate(date.getDate());
+        let date_final = new Date();
+        try {
+            if (undTiempo == _constant.Constants.UNIDAD_TIEMPO.ANIO) {
+                cantidad = parseInt(cantidad) * 12
+                date_final.setDate(date_final.getDate());
+                date_final.setMonth(date_final.getMonth() + parseInt(cantidad));
+            } else if (undTiempo == _constant.Constants.UNIDAD_TIEMPO.DIA) {
+                date_final.setDate(date_final.getDate() + parseInt(cantidad));
+            } else {
+                date_final.setDate(date_final.getDate());
+                date_final.setMonth(date_final.getMonth() + parseInt(cantidad));
+            }
+            date_final = new Date(date_final);
+            return {
+                coberturaInicial: date,
+                coberturaFinal: date_final
+            };
+        } catch (e) { }
+    }
+
+    function convertirFormatoFecha(fecha) {
+        const partesFecha = fecha.split('/');
+        const nuevaFecha = `${partesFecha[2]}-${partesFecha[1]}-${partesFecha[0]}`;
+        return nuevaFecha;
+    }
+
+    // const fechaOriginal = "18/12/2023";
+    // const fechaConvertida = convertirFormatoFecha(fechaOriginal);
+    // console.log(fechaConvertida); // Output: "2023-12-18"
 
     const envioTelematic = (json) => {
         let myRestletHeaders = new Array();
@@ -988,7 +1363,7 @@ define([
             let internalidItem = '';
             let internalid = '';
             let chaser = '';
-            var arrayIdTotal = [];
+            var arrayIdTotal = new Array();
             if (searchResultCount > 0) {
                 busqueda.run().each(result => {
                     var arrayId = [];
@@ -1128,7 +1503,7 @@ define([
         let busqueda_bien = search.lookupFields({
             type: 'customrecord_ht_record_bienes',
             id: bien,
-            columns: ['custrecord_ht_bien_conveniovehiculo', 'custrecord_ht_bien_estadoconvenio', 'custrecord_ht_bien_conveniovehiculo.custrecord_ht_cn_codigo']
+            columns: ['custrecord_ht_bien_usovehiculo']
         });
         let convenio = busqueda_bien.custrecord_ht_bien_conveniovehiculo.length ? busqueda_bien.custrecord_ht_bien_conveniovehiculo[0].value : '';
         let estadoConvenio = busqueda_bien.custrecord_ht_bien_estadoconvenio.length ? busqueda_bien.custrecord_ht_bien_estadoconvenio[0].value : '';
@@ -1136,6 +1511,17 @@ define([
 
         let result = [convenio, estadoConvenio, cod_convenio];
         return result;
+    }
+
+    const validateGenerico = (bien) => {
+        let busqueda_bien = search.lookupFields({
+            type: 'customrecord_ht_record_bienes',
+            id: bien,
+            columns: ['custrecord_ht_bien_generico']
+        });
+        let isGenerico = busqueda_bien.custrecord_ht_bien_generico;
+        log.debug('busqueda_bien', busqueda_bien);
+        return isGenerico;
     }
 
     const obtenerItem = (id) => {
@@ -1209,6 +1595,99 @@ define([
         correlative = prefijo + ceros + this_number;
 
         return correlative
+    }
+
+
+    //Cambio inicio JCEC 24/08/2024
+
+    const getParamFamiliaProductosArticuloOSDesinstalacion = (Parameter, ArticuloOS) => {
+        try {
+            let respuesta = {};
+            let customrecord_ht_pp_main_param_prodSearchObj = search.create({
+                type: "customrecord_ht_pp_main_param_prod",
+                filters:
+                    [
+                        ["custrecord_ht_pp_parametrizacionid.internalid", "anyof", ArticuloOS],
+                        "AND",
+                        ["custrecord_ht_pp_parametrizacion_rela", "anyof", Parameter]
+                    ],
+                columns:
+                    [
+
+                        search.createColumn({ name: "custrecord_ht_pp_parametrizacionid", label: "Param. Prod." }),
+                        search.createColumn({ name: "custrecord_ht_pp_parametrizacion_rela", label: "Parametrización" }),
+                        search.createColumn({ name: "custrecord_ht_pp_aplicacion", label: "Aplicación" }),
+                        search.createColumn({ name: "custrecord_ht_pp_parametrizacion_valor", label: "Valor" })
+                    ]
+            });
+            let searchResultCount = customrecord_ht_pp_main_param_prodSearchObj.runPaged().count;
+            log.debug("JCEC customrecord_ht_pp_main_param_prodSearchObj result count", searchResultCount);
+            customrecord_ht_pp_main_param_prodSearchObj.run().each(function (result) {
+                respuesta = {
+                    valor: result.getValue({ name: "custrecord_ht_pp_parametrizacion_valor" }),
+                    valorTexto: result.getText({ name: "custrecord_ht_pp_parametrizacion_valor" }),
+                    aplicacion: result.getValue({ name: "custrecord_ht_pp_aplicacion" })
+                }
+                return true;
+            });
+            return respuesta;
+        } catch (error) {
+            log.error('Error en getParamFamiliaProductosArticuloOSDesinstalacion', error);
+        }
+    }
+
+
+    const getFamiliaProductosArticuloOSDesinstalacion = (bien) => {
+        try {
+            let respuesta = [];
+            let customrecord_ht_nc_servicios_instaladosSearchObj = search.create({
+                type: "customrecord_ht_nc_servicios_instalados",
+                filters:
+                    [
+                        ["isinactive", "is", "F"],
+                        "AND",
+                        ["custrecord_ns_bien_si", "anyof", bien],
+                        "AND",
+                        ["custrecord_ns_orden_servicio_si.taxline", "is", "F"],
+                        "AND",
+                        ["custrecord_ns_orden_servicio_si.item", "noneof", "@NONE@"]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "custrecord_ns_bien_si", label: "Otras Operaciones" }),
+                        search.createColumn({ name: "custrecord_ns_orden_servicio_si", label: "Orden Servicio" }),
+                        search.createColumn({ name: "custrecord_ns_orden_trabajo", label: "Orden de Trabajo" }),
+                        search.createColumn({ name: "custrecord_ht_si_tipo_adicional", label: "Tipo Adicional" }),
+                        search.createColumn({ name: "custrecord_ht_si_serie_acc", label: "Serie Accesorio" }),
+                        search.createColumn({ name: "custrecord_ns_servicio", label: "Servicio" }),
+                        search.createColumn({ name: "custrecord_ht_si_numero_puertas", label: "Número de Puertas" }),
+                        search.createColumn({ name: "custrecord_ht_si_novedad", label: "Novedad" }),
+                        search.createColumn({
+                            name: "item",
+                            join: "CUSTRECORD_NS_ORDEN_SERVICIO_SI",
+                            label: "Artículo"
+                        })
+                    ]
+            });
+            var searchResultCount = customrecord_ht_nc_servicios_instaladosSearchObj.runPaged().count;
+            log.debug("JCEC customrecord_ht_nc_servicios_instaladosSearchObj result count", searchResultCount);
+            customrecord_ht_nc_servicios_instaladosSearchObj.run().each(function (result) {
+                respuesta.push({
+                    idOrdenServicio: result.getValue({ name: 'custrecord_ns_orden_servicio_si' }),
+                    idOrdenTrabajo: result.getValue({ name: 'custrecord_ns_orden_trabajo' }),
+                    tipoAdicional: result.getValue({ name: 'custrecord_ht_si_tipo_adicional' }),
+                    serieAccesorio: result.getValue({ name: 'custrecord_ht_si_serie_acc' }),
+                    servicio: result.getValue({ name: 'custrecord_ns_servicio' }),
+                    numeroPuertas: result.getValue({ name: 'custrecord_ht_si_numero_puertas' }),
+                    novedad: result.getValue({ name: 'custrecord_ht_si_novedad' }),
+                    articulo: result.getValue({ name: 'item', join: 'CUSTRECORD_NS_ORDEN_SERVICIO_SI' })
+                });
+                return true;
+            });
+            return respuesta;
+        } catch (error) {
+            log.error('Error en getFamiliaProductosArticuloOSDesinstalacion', error);
+        }
     }
 
     return {

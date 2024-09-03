@@ -1,0 +1,431 @@
+<customrecordtype scriptid="customrecord_pe_tipo_contribuyente">
+  <accesstype>CUSTRECORDENTRYPERM</accesstype>
+  <allowattachments>T</allowattachments>
+  <allowinlinedeleting>F</allowinlinedeleting>
+  <allowinlinedetaching>T</allowinlinedetaching>
+  <allowinlineediting>F</allowinlineediting>
+  <allowmobileaccess>F</allowmobileaccess>
+  <allownumberingoverride>F</allownumberingoverride>
+  <allowquickadd>T</allowquickadd>
+  <allowquicksearch>F</allowquicksearch>
+  <allowuiaccess>T</allowuiaccess>
+  <customsegment></customsegment>
+  <description></description>
+  <enabledle>T</enabledle>
+  <enablekeywords>T</enablekeywords>
+  <enablemailmerge>F</enablemailmerge>
+  <enablenametranslation>F</enablenametranslation>
+  <enablenumbering>F</enablenumbering>
+  <enableoptimisticlocking>T</enableoptimisticlocking>
+  <enablesystemnotes>T</enablesystemnotes>
+  <hierarchical>F</hierarchical>
+  <icon></icon>
+  <iconbuiltin>T</iconbuiltin>
+  <iconindex></iconindex>
+  <includeinsearchmenu>T</includeinsearchmenu>
+  <includename>T</includename>
+  <isinactive>F</isinactive>
+  <isordered>F</isordered>
+  <numberinginit></numberinginit>
+  <numberingmindigits></numberingmindigits>
+  <numberingprefix></numberingprefix>
+  <numberingsuffix></numberingsuffix>
+  <recordname>PE TIPO CONTRIBUYENTE</recordname>
+  <showcreationdate>F</showcreationdate>
+  <showcreationdateonlist>F</showcreationdateonlist>
+  <showid>F</showid>
+  <showlastmodified>F</showlastmodified>
+  <showlastmodifiedonlist>F</showlastmodifiedonlist>
+  <shownotes>T</shownotes>
+  <showowner>F</showowner>
+  <showownerallowchange>F</showownerallowchange>
+  <showowneronlist>F</showowneronlist>
+  <customrecordcustomfields>
+    <customrecordcustomfield scriptid="custrecord_pe_cod_contribuyente">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE COD</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+    <customrecordcustomfield scriptid="custrecord_pe_tipo_contribuyente">
+      <accesslevel>2</accesslevel>
+      <allowquickadd>F</allowquickadd>
+      <applyformatting>F</applyformatting>
+      <checkspelling>F</checkspelling>
+      <defaultchecked>F</defaultchecked>
+      <defaultselection></defaultselection>
+      <defaultvalue></defaultvalue>
+      <description></description>
+      <displayheight></displayheight>
+      <displaytype>NORMAL</displaytype>
+      <displaywidth></displaywidth>
+      <dynamicdefault></dynamicdefault>
+      <encryptatrest>F</encryptatrest>
+      <fieldtype>TEXT</fieldtype>
+      <globalsearch>F</globalsearch>
+      <help></help>
+      <isformula>F</isformula>
+      <ismandatory>F</ismandatory>
+      <isparent>F</isparent>
+      <label>PE NOMBRE</label>
+      <linktext></linktext>
+      <maxlength></maxlength>
+      <maxvalue></maxvalue>
+      <minvalue></minvalue>
+      <onparentdelete></onparentdelete>
+      <parentsubtab></parentsubtab>
+      <rolerestrict>F</rolerestrict>
+      <searchcomparefield></searchcomparefield>
+      <searchdefault></searchdefault>
+      <searchlevel>2</searchlevel>
+      <selectrecordtype></selectrecordtype>
+      <showinlist>F</showinlist>
+      <sourcefilterby></sourcefilterby>
+      <sourcefrom></sourcefrom>
+      <sourcelist></sourcelist>
+      <storevalue>T</storevalue>
+      <subtab></subtab>
+    </customrecordcustomfield>
+  </customrecordcustomfields>
+  <instances>
+    <instance scriptid="val_640255_7451241_sb1_998">
+      <custrecord_pe_cod_contribuyente>01</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>PERSONA NATURAL SIN NEGOCIO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>01-PERSONA NATURAL SIN NEGOCIO</name>
+    </instance>
+    <instance scriptid="val_640256_7451241_sb1_264">
+      <custrecord_pe_cod_contribuyente>02</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>PERSONA NATURAL CON NEGOCIO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>02-PERSONA NATURAL CON NEGOCIO</name>
+    </instance>
+    <instance scriptid="val_640257_7451241_sb1_140">
+      <custrecord_pe_cod_contribuyente>03</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD CONYUGAL SIN NEGOCIO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>03-SOCIEDAD CONYUGAL SIN NEGOCIO</name>
+    </instance>
+    <instance scriptid="val_640258_7451241_sb1_815">
+      <custrecord_pe_cod_contribuyente>04</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD CONYUGAL CON NEGOCIO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>04-SOCIEDAD CONYUGAL CON NEGOCIO</name>
+    </instance>
+    <instance scriptid="val_640259_7451241_sb1_668">
+      <custrecord_pe_cod_contribuyente>05</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SUCESION INDIVISA SIN NEGOCIO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>05-SUCESION INDIVISA SIN NEGOCIO</name>
+    </instance>
+    <instance scriptid="val_640260_7451241_sb1_434">
+      <custrecord_pe_cod_contribuyente>06</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SUCESION INDIVISA CON NEGOCIO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>06-SUCESION INDIVISA CON NEGOCIO</name>
+    </instance>
+    <instance scriptid="val_640261_7451241_sb1_672">
+      <custrecord_pe_cod_contribuyente>07</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>EMPRESA INDIVIDUAL DE RESP. LTDA</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>07-EMPRESA INDIVIDUAL DE RESP. LTDA</name>
+    </instance>
+    <instance scriptid="val_640262_7451241_sb1_374">
+      <custrecord_pe_cod_contribuyente>08</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD CIVIL</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>08-SOCIEDAD CIVIL</name>
+    </instance>
+    <instance scriptid="val_640263_7451241_sb1_136">
+      <custrecord_pe_cod_contribuyente>09</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD IRREGULAR</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>09-SOCIEDAD IRREGULAR</name>
+    </instance>
+    <instance scriptid="val_640264_7451241_sb1_846">
+      <custrecord_pe_cod_contribuyente>10</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>ASOCIACION EN PARTICIPACION</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>10-ASOCIACION EN PARTICIPACION</name>
+    </instance>
+    <instance scriptid="val_640265_7451241_sb1_566">
+      <custrecord_pe_cod_contribuyente>11</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>ASOCIACION</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>11-ASOCIACION</name>
+    </instance>
+    <instance scriptid="val_640266_7451241_sb1_299">
+      <custrecord_pe_cod_contribuyente>12</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>FUNDACION</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>12-FUNDACION</name>
+    </instance>
+    <instance scriptid="val_640267_7451241_sb1_417">
+      <custrecord_pe_cod_contribuyente>13</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD EN COMANDITA SIMPLE</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>13-SOCIEDAD EN COMANDITA SIMPLE</name>
+    </instance>
+    <instance scriptid="val_640268_7451241_sb1_204">
+      <custrecord_pe_cod_contribuyente>14</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD COLECTIVA</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>14-SOCIEDAD COLECTIVA</name>
+    </instance>
+    <instance scriptid="val_640269_7451241_sb1_549">
+      <custrecord_pe_cod_contribuyente>15</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>INSTITUCIONES PUBLICAS</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>15-INSTITUCIONES PUBLICAS</name>
+    </instance>
+    <instance scriptid="val_640270_7451241_sb1_166">
+      <custrecord_pe_cod_contribuyente>16</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>INSTITUCIONES RELIGIOSAS</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>16-INSTITUCIONES RELIGIOSAS</name>
+    </instance>
+    <instance scriptid="val_640271_7451241_sb1_675">
+      <custrecord_pe_cod_contribuyente>17</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD DE BENEFICIENCIA</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>17-SOCIEDAD DE BENEFICIENCIA</name>
+    </instance>
+    <instance scriptid="val_640272_7451241_sb1_371">
+      <custrecord_pe_cod_contribuyente>18</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>ENTIDADES DE AUXILIO MUTUO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>18-ENTIDADES DE AUXILIO MUTUO</name>
+    </instance>
+    <instance scriptid="val_640273_7451241_sb1_739">
+      <custrecord_pe_cod_contribuyente>19</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>UNIVERS. CENTROS EDUCAT. Y CULT.</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>19-UNIVERS. CENTROS EDUCAT. Y CULT.</name>
+    </instance>
+    <instance scriptid="val_640274_7451241_sb1_645">
+      <custrecord_pe_cod_contribuyente>20</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>GOBIERNO REGIONAL, LOCAL</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>20-GOBIERNO REGIONAL, LOCAL</name>
+    </instance>
+    <instance scriptid="val_640275_7451241_sb1_421">
+      <custrecord_pe_cod_contribuyente>21</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>GOBIERNO CENTRAL</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>21-GOBIERNO CENTRAL</name>
+    </instance>
+    <instance scriptid="val_640276_7451241_sb1_484">
+      <custrecord_pe_cod_contribuyente>22</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>COMUNIDAD LABORAL</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>22-COMUNIDAD LABORAL</name>
+    </instance>
+    <instance scriptid="val_640277_7451241_sb1_644">
+      <custrecord_pe_cod_contribuyente>23</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>COMUNIDAD CAMPESINA,NATIVA,COMUNAL</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>23-COMUNIDAD CAMPESINA,NATIVA,COMUNAL</name>
+    </instance>
+    <instance scriptid="val_640278_7451241_sb1_773">
+      <custrecord_pe_cod_contribuyente>24</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>COOPERATIVAS, SAIS, CAPS</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>24-COOPERATIVAS, SAIS, CAPS</name>
+    </instance>
+    <instance scriptid="val_640279_7451241_sb1_826">
+      <custrecord_pe_cod_contribuyente>25</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>EMPRESA DE PROPIEDAD SOCIAL</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>25-EMPRESA DE PROPIEDAD SOCIAL</name>
+    </instance>
+    <instance scriptid="val_640280_7451241_sb1_897">
+      <custrecord_pe_cod_contribuyente>26</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD ANONIMA</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>26-SOCIEDAD ANONIMA</name>
+    </instance>
+    <instance scriptid="val_640281_7451241_sb1_598">
+      <custrecord_pe_cod_contribuyente>27</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD EN COMANDITA POR ACCIONES</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>27-SOCIEDAD EN COMANDITA POR ACCIONES</name>
+    </instance>
+    <instance scriptid="val_640282_7451241_sb1_713">
+      <custrecord_pe_cod_contribuyente>28</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOC.COM.RESPONS. LTDA</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>28-SOC.COM.RESPONS. LTDA</name>
+    </instance>
+    <instance scriptid="val_640283_7451241_sb1_470">
+      <custrecord_pe_cod_contribuyente>29</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SUC,AG.EMP.EXTRANJ,EST.PERM NO DOM.</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>29-SUC,AG.EMP.EXTRANJ,EST.PERM NO DOM.</name>
+    </instance>
+    <instance scriptid="val_640284_7451241_sb1_220">
+      <custrecord_pe_cod_contribuyente>30</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>EMPRESA DE DERECHO PUBLICO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>30-EMPRESA DE DERECHO PUBLICO</name>
+    </instance>
+    <instance scriptid="val_640285_7451241_sb1_903">
+      <custrecord_pe_cod_contribuyente>31</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>EMPRESA ESTATAL DE DERECHO PRIVADO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>31-EMPRESA ESTATAL DE DERECHO PRIVADO</name>
+    </instance>
+    <instance scriptid="val_640286_7451241_sb1_515">
+      <custrecord_pe_cod_contribuyente>32</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>EMPRESA DE ECONOMIA MIXTA</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>32-EMPRESA DE ECONOMIA MIXTA</name>
+    </instance>
+    <instance scriptid="val_640287_7451241_sb1_260">
+      <custrecord_pe_cod_contribuyente>33</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>ACCIONARIADO DEL ESTADO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>33-ACCIONARIADO DEL ESTADO</name>
+    </instance>
+    <instance scriptid="val_640288_7451241_sb1_800">
+      <custrecord_pe_cod_contribuyente>34</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>MISIONES DIPLOMATICAS Y ORG. INTER.</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>34-MISIONES DIPLOMATICAS Y ORG. INTER.</name>
+    </instance>
+    <instance scriptid="val_640289_7451241_sb1_416">
+      <custrecord_pe_cod_contribuyente>35</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>JUNTA DE PROPIETARIOS</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>35-JUNTA DE PROPIETARIOS</name>
+    </instance>
+    <instance scriptid="val_640290_7451241_sb1_527">
+      <custrecord_pe_cod_contribuyente>36</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>OF.REPRESENTACION DE NO DOMICILIADO</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>36-OF.REPRESENTACION DE NO DOMICILIADO</name>
+    </instance>
+    <instance scriptid="val_640291_7451241_sb1_413">
+      <custrecord_pe_cod_contribuyente>37</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>FONDOS MUTUOS DE INVERSION</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>37-FONDOS MUTUOS DE INVERSION</name>
+    </instance>
+    <instance scriptid="val_640292_7451241_sb1_641">
+      <custrecord_pe_cod_contribuyente>38</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD ANONIMA ABIERTA</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>38-SOCIEDAD ANONIMA ABIERTA</name>
+    </instance>
+    <instance scriptid="val_640293_7451241_sb1_927">
+      <custrecord_pe_cod_contribuyente>39</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD ANONIMA CERRADA</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>39-SOCIEDAD ANONIMA CERRADA</name>
+    </instance>
+    <instance scriptid="val_640294_7451241_sb1_643">
+      <custrecord_pe_cod_contribuyente>40</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>CONTRATOS COLABORACION EMPRESARIAL</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>40-CONTRATOS COLABORACION EMPRESARIAL</name>
+    </instance>
+    <instance scriptid="val_640295_7451241_sb1_676">
+      <custrecord_pe_cod_contribuyente>41</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>ENT.INST.COOPERAC.TECNICA - ENIEX</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>41-ENT.INST.COOPERAC.TECNICA - ENIEX</name>
+    </instance>
+    <instance scriptid="val_640296_7451241_sb1_657">
+      <custrecord_pe_cod_contribuyente>42</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>COMUNIDAD DE BIENES</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>42-COMUNIDAD DE BIENES</name>
+    </instance>
+    <instance scriptid="val_640297_7451241_sb1_505">
+      <custrecord_pe_cod_contribuyente>43</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SOCIEDAD MINERA DE RESP.LIMITADA</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>43-SOCIEDAD MINERA DE RESP.LIMITADA</name>
+    </instance>
+    <instance scriptid="val_640298_7451241_sb1_207">
+      <custrecord_pe_cod_contribuyente>44</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>ASOC. FUNDAC. Y COMITE NO INSCRITOS</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>44-ASOC. FUNDAC. Y COMITE NO INSCRITOS</name>
+    </instance>
+    <instance scriptid="val_640299_7451241_sb1_176">
+      <custrecord_pe_cod_contribuyente>45</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>PARTIDOS,MOVIM, ALIANZAS POLITICAS</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>45-PARTIDOS,MOVIM, ALIANZAS POLITICAS</name>
+    </instance>
+    <instance scriptid="val_640300_7451241_sb1_317">
+      <custrecord_pe_cod_contribuyente>46</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>ASOC. DE HECHO DE PROFESIONALES</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>46-ASOC. DE HECHO DE PROFESIONALES</name>
+    </instance>
+    <instance scriptid="val_640301_7451241_sb1_176">
+      <custrecord_pe_cod_contribuyente>47</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>CAFAES Y SUBCAFAES</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>47-CAFAES Y SUBCAFAES</name>
+    </instance>
+    <instance scriptid="val_640302_7451241_sb1_282">
+      <custrecord_pe_cod_contribuyente>48</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>SINDICATOS Y FEDERACIONES</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>48-SINDICATOS Y FEDERACIONES</name>
+    </instance>
+    <instance scriptid="val_640303_7451241_sb1_415">
+      <custrecord_pe_cod_contribuyente>49</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>COLEGIOS PROFESIONALES</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>49-COLEGIOS PROFESIONALES</name>
+    </instance>
+    <instance scriptid="val_640304_7451241_sb1_438">
+      <custrecord_pe_cod_contribuyente>50</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>COMITES INSCRITOS</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>50-COMITES INSCRITOS</name>
+    </instance>
+    <instance scriptid="val_640305_7451241_sb1_223">
+      <custrecord_pe_cod_contribuyente>51</custrecord_pe_cod_contribuyente>
+      <custrecord_pe_tipo_contribuyente>ORGANIZACIONES SOCIALES DE BASE</custrecord_pe_tipo_contribuyente>
+      <isinactive>F</isinactive>
+      <name>51-ORGANIZACIONES SOCIALES DE BASE</name>
+    </instance>
+  </instances>
+</customrecordtype>

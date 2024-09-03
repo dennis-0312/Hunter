@@ -16,7 +16,7 @@ define([
     const currentScript = runtime.getCurrentScript();
     //log.error('currentScript', currentScript);
     //cheque anticipo y pago
-    const INPUT_FILES_FOLDER_ID = "6327"; //*SB:6327 EN PROD: 6504
+    const INPUT_FILES_FOLDER_ID = "6504"; //*SB:6327 EN PROD: 6504
 
     const onRequest = (context) => {
         try {
@@ -66,7 +66,7 @@ define([
         let subsidiaryField = form.addField(FIELDS.field.subsidiary.id, serverWidget.FieldType.SELECT, FIELDS.field.subsidiary.text, FIELDS.fieldgroup.filters.id, 'subsidiary');
         subsidiaryField.setDefaultValue(PARAMETERS.subsidiary);
         subsidiaryField.setIsMandatory(true);
-
+        log.error('Track', 'Track 1');
         let dateFromField = form.addField(FIELDS.field.datefrom.id, serverWidget.FieldType.DATE, FIELDS.field.datefrom.text, FIELDS.fieldgroup.filters.id);
         dateFromField.updateDisplaySize(3, 200);
         dateFromField.setDefaultValue(PARAMETERS.datefrom);
@@ -84,8 +84,8 @@ define([
         paymentMethodField.setDefaultValue(PARAMETERS.paymentmethod);
 
         let entityField = form.addField(FIELDS.field.entity.id, serverWidget.FieldType.SELECT, FIELDS.field.entity.text, FIELDS.fieldgroup.filters.id, 'entity');
-        userInterface.setEntityFieldData(entityField);
-        entityField.setDefaultValue(PARAMETERS.entity);
+        //userInterface.setEntityFieldData(entityField);
+        //entityField.setDefaultValue(PARAMETERS.entity);
 
         log.error('FIELDS.field.emitidos.id', FIELDS.field.emitidos.id)
         log.error('FIELDS.field.emitidos.text', FIELDS.field.emitidos.text)

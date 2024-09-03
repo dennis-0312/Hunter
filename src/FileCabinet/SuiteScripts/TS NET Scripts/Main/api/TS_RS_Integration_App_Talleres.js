@@ -652,7 +652,7 @@ define(['N/log', 'N/search', 'N/record', 'N/email', 'N/format', 'N/query', 'N/fi
                                 search.createColumn({ name: "custrecord_ht_ot_chasis", summary: "GROUP", label: "Chasis" }),
                                 search.createColumn({ name: "custrecord_ht_ot_tipo_trabajo", summary: "GROUP", label: "Tipo Trabajo" }),
                                 search.createColumn({ name: "altname", join: "CUSTRECORD_HT_OT_CLIENTE_ID", summary: "GROUP", label: "Name"}),
-                                search.createColumn({ name: "custentity_ec_vatregnumber", join: "CUSTRECORD_HT_OT_CLIENTE_ID", summary: "GROUP", label: "Doc. Number"}),
+                                //search.createColumn({ name: "custentity_ec_vatregnumber", join: "CUSTRECORD_HT_OT_CLIENTE_ID", summary: "GROUP", label: "Doc. Number"}),
                                 search.createColumn({name: "altname",join: "CUSTRECORD_HT_OT_VEHICULO",summary: "GROUP",label: "Name"}),
                                 search.createColumn({ name: "custbodyec_nota_cliente", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Memo" }),
                                 search.createColumn({ name: "custbody_ht_os_consideracion", join: "CUSTRECORD_HT_OT_ORDEN_SERVICIO", summary: "GROUP", label: "Consideracion" }),

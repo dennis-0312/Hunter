@@ -11,7 +11,7 @@ define([
 ], (serverWidget, search, url, query, file, runtime) => {
     const currentScript = runtime.getCurrentScript();
     const enviroment = "7451241-sb1" //7451241-sb1 - 7451241
-    const custom_record_lote = 1184 //SB:1184 - PR:1281
+    const custom_record_lote = 1281 //SB:1184 - PR:1281
 
     class Parameters {
         constructor({ custpage_f_subsidiary, custpage_f_datefrom, custpage_f_dateto, custpage_f_location, custpage_f_entity,

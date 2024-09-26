@@ -45,8 +45,10 @@ define(['N/search',
             var currentRecord = context.currentRecord;
             var sublistName = context.sublistId;
             var T_VBI = false;
+            let parametrosTodosLosProductos = new Array();
             let accionProducto = 0, familiaDeProductos, esConvenio = false, tieneDispositivoParaCustodia = {}, revisionNivelPrecios, itemParametrizacion, parametro_salesorder = 0, valor_inf_ejec_trabajo = 0, valor_tipo_agrupacion_so = 0, valor_cooperativa = 0, valor_item = 0, flag1 = 0, flag2 = 0, flag6 = 0,
-                flag7 = 0, arraybusquedaitemSO = new Array(), arraybusquedaitem = new Array(), arrayitemSO = new Array(), arrayTA = new Array(), arrayItemOT = new Array(), buscar_orden_trabajo = 0;
+                flag7 = 0, arraybusquedaitemSO = new Array(), arraybusquedaitem = new Array(), arrayitemSO = new Array(), arrayTA = new Array(), arrayItemOT = new Array(), buscar_orden_trabajo = 0, existeRenovacionNormal = false, existeCobertura = 0;
+            let familiaRenovacion = '', familiaRenovacionNormal = '';
 
             let numLines = currentRecord.getLineCount({ sublistId: 'item' });
             var arrayItem = []
@@ -149,6 +151,7 @@ define(['N/search',
             var cooperativa = '';
             var tipo_bien = '';
             let idcobertura = new Array();
+
             if (bien != '') {
                 var busqueda_bien = search.lookupFields({
                     type: 'customrecord_ht_record_bienes',
@@ -161,7 +164,6 @@ define(['N/search',
                 console.log('idcobertura.length', idcobertura.length);
                 fam_product = getCoberturaItem(bien);
             }
-
 
             let esRevisionFamiliaCustodia = false;
             for (let i = 0; i < numLines; i++) {
@@ -176,23 +178,23 @@ define(['N/search',
                 let linea = currentRecord.selectLine({ sublistId: 'item', line: i });
                 let nivelPrecio = currentRecord.getSublistValue({ sublistId: 'item', fieldId: 'price', line: i });
                 let nextItemIsDiscount = verifyNextItemIsDiscount(currentRecord, i, numLines);
-                let verificar_instalacion_parametro;
+                let verificar_instalacion_parametro = ''
 
                 if (cambio_propie_convenio && convenio != '') {
                     let obn_item = obtenerItem(items);
-                    console.log('obn_item', obn_item);
+                    //console.log('obn_item', obn_item);
                     if (obn_item["custitem_ht_it_convenio.custrecord_ht_cn_codigo"] != cod_convenio) {
                         dialog.alert({ title: 'Alerta', message: 'El convenio del Articulo es diferente al del Bien' });
                         return false
                     }
                 }
 
-                let parametrosRespo = _controllerParm.parametrizacion(items);
+                parametrosRespo = _controllerParm.parametrizacion(items);
                 if (parametrosRespo != 0) {
                     var accion_producto_2 = 0;
                     var valor_tipo_agrupacion_2 = 0;
                     if (parametrosRespo.length) itemParametrizacion = items;
-                    console.log('parametrosRespo', JSON.stringify(parametrosRespo));
+                    console.log('parametrosRespo', parametrosRespo);
                     for (let j = 0; j < parametrosRespo.length; j++) {
                         if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO && (parametrosRespo[j][1] == _constant.Valor.VALOR_001_INST_DISPOSITIVO || parametrosRespo[j][1] == _constant.Valor.VALOR_011_INSTALACION_OTROS_PRODUCTOS)) {
                             flag7 += 1;
@@ -208,7 +210,11 @@ define(['N/search',
                         }
                         if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS) {
                             valor_tipo_agrupacion_2 = parametrosRespo[j][1];
-                            arrayitemSO.push(valor_tipo_agrupacion_2);
+                            const elementoEncontrado3 = parametrosRespo.find(elemento => elemento[2] === "ADP");
+                            if (elementoEncontrado3[1] == _constant.Valor.VALOR_004_RENOVACION_DE_DISP) {
+                                parametrosTodosLosProductos.push(parametrosRespo)
+                                arrayitemSO.push(valor_tipo_agrupacion_2);
+                            }
                         }
                         if (accion_producto_2 == _constant.Valor.VALOR_015_VENTA_SERVICIOS && valor_tipo_agrupacion_2 != 0) {
                             arrayTA.push(valor_tipo_agrupacion_2);
@@ -238,14 +244,14 @@ define(['N/search',
                             }
                         }
                         if (parametrosRespo[j][0] == _constant.Parameter.RFC_REVISION_DE_FAMILIA_DE_CUSTODIA && parametrosRespo[j][1] == _constant.Valor.SI) {
-                            console.log('FAMCUSTODIA', parametrosRespo[j][0]);
+                            //console.log('FAMCUSTODIA', parametrosRespo[j][0]);
                             esRevisionFamiliaCustodia = true;
                         }
                         if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS) {
                             familiaDeProductos = { familiaProductoId: parametrosRespo[j][1], familiaProductoName: parametrosRespo[j][3] };
                         }
                         if (parametrosRespo[j][0] == _constant.Parameter.RLP_REVISION_DE_NIVEL_DE_PRECIOS) {
-                            console.log('RLP', parametrosRespo[j][0]);
+                            //console.log('RLP', parametrosRespo[j][0]);
                             revisionNivelPrecios = parametrosRespo[j][1];
                         }
                         if (parametrosRespo[j][0] == _constant.Parameter.PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA && parametrosRespo[j][1] == _constant.Valor.VALOR_X_USO_CONVENIOS) {
@@ -277,15 +283,15 @@ define(['N/search',
                             if (elementoEncontrado) {
                                 familiaDeProductos = { familiaProductoId: elementoEncontrado[1], familiaProductoName: elementoEncontrado[3] };
                             } else {
-                                alert('No tienes una familai configurada');
+                                alert('No tienes una familia configurada');
                                 return false;
                             }
-                            console.log('ADPEntryCPI', accionProducto);
-
+                            //console.log('ADPEntryCPI', accionProducto);
                             const elementoEncontrado3 = parametrosRespo.find(elemento => elemento[2] === "ADP");
                             if (elementoEncontrado3 && elementoEncontrado3[1] == _constant.Valor.VALOR_004_RENOVACION_DE_DISP) {
+                                familiaRenovacion = elementoEncontrado[3]
                                 const elementoEncontrado2 = parametrosRespo.find(elemento => elemento[2] === "TRN");
-                                console.log('ADPEntryCPITRN', accionProducto + ' - ' + elementoEncontrado2);
+                                //console.log('ADPEntryCPITRN', accionProducto + ' - ' + elementoEncontrado2);
                                 if (elementoEncontrado2) {
                                     valor_tipo_renovacion = elementoEncontrado2[1];
                                 } else {
@@ -294,40 +300,39 @@ define(['N/search',
                                 }
                             }
 
-                            console.log('valor_tipo_renovacion', valor_tipo_renovacion)
+                            //console.log('valor_tipo_renovacion', valor_tipo_renovacion)
                             if (valor_tipo_renovacion == _constant.Valor.VALOR_001_RENOVACION_NORMAL || accionProducto == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP || accionProducto == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
-                                verificar_instalacion_parametro = _controllerParm.parametros(_constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS, linea, idcobertura, accionProducto, bien);
+                                verificar_instalacion_parametro = _controllerParm.parametros(_constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS, linea, idcobertura, accionProducto, bien, cliente);
                                 console.log('verificar_instalacion_parametro', verificar_instalacion_parametro)
                                 if (verificar_instalacion_parametro.status == false) {
                                     dialog.alert({ title: 'Alerta', message: verificar_instalacion_parametro.mensaje });
                                     return false
+                                } else {
+                                    existeRenovacionNormal = true;
+                                    familiaRenovacionNormal = elementoEncontrado[3]
                                 }
-                            } else if (accionProducto == _constant.Valor.VALOR_001_INST_DISPOSITIVO || accionProducto == _constant.Valor.VALOR_003_REINSTALACION_DE_DISP) {
-                                verificar_instalacion_parametro = _controllerParm.parametros(_constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS, linea, 1, accionProducto, bien);
+                            } else if ((accionProducto == _constant.Valor.VALOR_001_INST_DISPOSITIVO || accionProducto == _constant.Valor.VALOR_003_REINSTALACION_DE_DISP) && typeMode != 'edit') {
+                                verificar_instalacion_parametro = _controllerParm.parametros(_constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS, linea, 1, accionProducto, bien, cliente, currentRecord.id);
                             }
-                            console.log('ADP2', accionProducto);
-                            console.log('FAM', familiaDeProductos);
+                            //console.log('ADP2', accionProducto);
+                            //console.log('FAM', familiaDeProductos);
                             if (verificar_instalacion_parametro.status == false) {
                                 dialog.alert({ title: 'Alerta', message: verificar_instalacion_parametro.mensaje });
                                 return false
                             }
                         }
-
                         if (parametrosRespo[j][0] == _constant.Parameter.CPR_CONVERSION_DE_PRODUCTO_UPGRADE && parametrosRespo[j][1] == _constant.Valor.SI) {
                             flag3 += 1;
                         }
-
                         if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] == _constant.Valor.VALOR_MON_MONITOREO) {
                             flag4 += 1;
                         }
-
                         if (parametrosRespo[j][0] == _constant.Parameter.PMI_PRODUCTO_PARA_MONITOREO_DE_INMUEBLES && parametrosRespo[j][1] == _constant.Valor.SI && tipo_bien != _constant.Constants.INMUEBLE) {
                             if (bien != '') {
                                 dialog.alert({ title: 'Alerta', message: 'El tipo del vehiculo debe ser INMUEBLE' });
                                 return false
                             }
                         }
-
                         if (parametrosRespo[j][1] == _constant.Valor.SI) {
                             let verificar;
                             if (parametrosRespo[j][0] == _constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS) {
@@ -340,12 +345,10 @@ define(['N/search',
                                 return false
                             }
                         }
-
                         if (parametrosRespo[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo[j][1] == _constant.Valor.VALOR_002_ENTREGA_CUSTODIAS) {
                             let response = _controllerParm.parametros(_constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS, context.currentRecord)
                             tieneDispositivoParaCustodia = response;
                         }
-
                         if (parametrosRespo[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo[j][1] == _constant.Valor.SI) {
                             let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
                             let results = query.runSuiteQL({ query: sql, params: [items] }).asMappedResults();
@@ -363,7 +366,6 @@ define(['N/search',
                         dialog.alert({ title: 'Alerta', message: 'El producto basico debe tener una agrupacion de tipo monitoreo' });
                         return false
                     }
-
                     if (revisionNivelPrecios) {
                         console.log('revisionNivelPrecios', revisionNivelPrecios);
                         if (esConvenio) {
@@ -387,7 +389,6 @@ define(['N/search',
                     }
                 }
             }
-
             if (accionProducto == _constant.Valor.VALOR_003_REINSTALACION_DE_DISP && esRevisionFamiliaCustodia) {
                 console.log('Entra Reinstalación Custodia');
                 let custodia = buscarCustodia(cliente, familiaDeProductos.familiaProductoId);
@@ -397,48 +398,116 @@ define(['N/search',
                     return false;
                 }
             }
-
             if (tieneDispositivoParaCustodia.status == false) {
                 dialog.alert({ title: 'Alerta', message: tieneDispositivoParaCustodia.mensaje });
                 return false;
             }
-
             if (accionProducto == _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO && numLines != 1) {
                 dialog.alert({ title: 'Alerta', message: 'No se puede tener un Artículo tipo Cambio de Propietario junto a otro Artículo' });
-                return false
+                return false;
             }
-
             if (valor_inf_ejec_trabajo == _constant.Valor.SI) {
                 var novedades = currentRecord.getValue('custbody_ht_os_novedades');
                 if (novedades == '') {
                     dialog.alert({ title: 'Alerta', message: 'Debes llenar el campo Novedades' });
-                    return false
+                    return false;
                 }
             }
 
+            //*BLOQUE RENOVACIÓN ====================================================================================================================================================================
+
             console.log(`flag1-flag2-bien: ${flag1} + ${flag2} + ${bien}`);
-            console.log(`familia: ${arrayitemSO}`)
+            console.log(`familia: ${arrayitemSO}`);
             console.log(`accionProducto: ${accionProducto}`);
-            if ((flag1 == 0 || flag2 > 0) && accionProducto == _constant.Valor.VALOR_004_RENOVACION_DE_DISP) {
+            console.log(`familia de renovacion anticipada: ${familiaRenovacion}`);
+            console.log(`familia de renovacion normal: ${familiaRenovacionNormal}`);
+            console.log(JSON.stringify(parametrosTodosLosProductos));
+
+            if (flag1 > 0 && existeRenovacionNormal) {
                 let arrayFamilias = arrayitemSO;
-                let arraySinDuplicados = arrayFamilias.filter((valor, indice, self) => {
-                    return self.indexOf(valor) === indice;
-                });
-                //console.log(arraySinDuplicados);
+                let arraySinDuplicados = arrayFamilias.filter((valor, indice, self) => { return self.indexOf(valor) === indice });
+                console.log(arraySinDuplicados);
                 if (arraySinDuplicados.length > 1) {
-                    dialog.alert({ title: 'Alerta', message: 'El registro contiene más de una familia de productos, la Orden de Servicio de renovación es por familia.' });
-                    return false
+                    // dialog.alert({ title: 'Alerta', message: 'El registro contiene más de una familia de productos, la Orden de Servicio de renovación es por familia.' });
+                    // return false
+                    //console.log('El registro contiene más de una familia de productos, la Orden de Servicio de renovación es por familia 1.');
                 } else if (arraySinDuplicados.length == 1) {
-                    let dentroDeFecha = getFechasCobertura(bien, arraySinDuplicados[0]);
-                    if (dentroDeFecha == 0 && flag1 == 0 && flag2 > 0) {
-                        dialog.alert({ title: 'Alerta', message: 'El artículo de Renovacion Anticipada debe tener un artículo de Renovacion Normal' });
+                    existeCobertura = getCoberturaPorCodigoFamilia(bien, familiaRenovacionNormal);
+                    if (existeCobertura == 0) {
+                        existeCobertura == 1
+                        dialog.alert({ title: 'Alerta', message: 'No existe una cobertura instalada para una renovación normal.' });
                         return false
+                    } else {
+                        existeCobertura = 2
+                        console.log('conformeGuardarOSPorRenoNormal', true);
+                    }
+                }
+            }
+
+            
+            if (flag2 > 0 && accionProducto == _constant.Valor.VALOR_004_RENOVACION_DE_DISP) {
+                let arrayFamilias = arrayitemSO;
+                let arraySinDuplicados = arrayFamilias.filter((valor, indice, self) => { return self.indexOf(valor) === indice });
+                console.log(arraySinDuplicados);
+                if (arraySinDuplicados.length > 1) {
+                    // dialog.alert({ title: 'Alerta', message: 'El registro contiene más de una familia de productos, la Orden de Servicio de renovación es por familia.' });
+                    // return false
+                    //console.log('El registro contiene más de una familia de productos, la Orden de Servicio de renovación es por familia 2.');
+                } else if (arraySinDuplicados.length == 1) {
+                    let dentroDeFecha = getFechasCobertura(bien, arraySinDuplicados[0], cliente, existeCobertura);
+                    if (flag2 > 0) {
+                        let existeVENTA = false;
+                        let existeTRANSMISION = false;
+                        let conformeGuardarOS = false;
+                        for (const subArray of parametrosTodosLosProductos) {
+                            let existsFAM = false;
+                            let existsADPVenta = false;
+                            let existsADPTransmision = false;
+                            for (const row of subArray) {
+                                if (row[2] === "FAM" && row[3] === familiaRenovacion) { existsFAM = true; }
+                                if (row[2] === "ADP" && row[3] === "001") { existsADPVenta = true; }
+                                if (row[2] === "ADP" && row[3] === "015") { existsADPTransmision = true; }
+                                if (existsFAM && (existsADPVenta || dentroDeFecha == 1)) { existeVENTA = true }
+                                if (existsFAM && (existsADPTransmision || dentroDeFecha == 1)) { existeTRANSMISION = true }
+                                if (dentroDeFecha == 2) {
+                                    existeVENTA = true;
+                                    existeTRANSMISION = true;
+                                }
+                            }
+                        }
+                        if (existeVENTA) {
+                            console.log("Existe Venta. " + existeVENTA);
+                        } else {
+                            console.log("No existe Venta. " + existeVENTA);
+                        }
+                        if (existeTRANSMISION) {
+                            console.log("Existe Transmisión. " + existeTRANSMISION);
+                        } else {
+                            console.log("No existe Transmisión. " + existeTRANSMISION);
+                        }
+                        if (existeVENTA && existeTRANSMISION) {
+                            console.log('Existe Venta y Transmisión. Puede continuar.')
+                            conformeGuardarOS = true
+                        } else {
+                            console.log('No existe Venta y Transmisión. No Puede continuar.')
+                        }
+                        console.log('conformeGuardarOS', conformeGuardarOS);
+                        console.log('conformeGuardarOSPorRenoNormal', existeCobertura == 2 ? true : false);
+                        if (!conformeGuardarOS) {
+                            dialog.alert({ title: 'Alerta', message: 'No tiene un registro de cobertura activa con esta familia para este bien y tampoco existe una Orden de Servicio con esta Familia de Producto.' });
+                            return false
+                        }
+                        if (dentroDeFecha == 0 && flag1 == 0 && !existeTRANSMISION) {
+                            dialog.alert({ title: 'Alerta', message: 'El artículo de Renovacion Anticipada debe tener un artículo de Renovacion Normal' });
+                            return false
+                        }
                     }
                 } else {
                     dialog.alert({ title: 'Alerta', message: 'No se encontró una familia de productos, revisar la configuración del/los artículos.' });
                     return false
                 }
             }
+            //* =====================================================================================================================================================================================
 
             let iguales = encontrarElementosIguales(arraybusquedaitemSO, arrayitemSO);
             if (flag6 > 0 && iguales.length > 0) {
@@ -454,7 +523,7 @@ define(['N/search',
 
             if (userId == 4) {
                 console.log(`Bloqueo por usuario: ${userId}`)
-                return true
+                return false;
             } else {
                 return true
             }
@@ -475,24 +544,22 @@ define(['N/search',
                 let typeTransaction = currentRecord.type;
                 let sublistFieldName = context.fieldId;
                 let bien = currentRecord.getValue('custbody_ht_so_bien');
-                let userObj = runtime.getCurrentUser()
-                let userId = userObj.id
+                let userObj = runtime.getCurrentUser();
+                let userId = userObj.id;
                 let numLines = currentRecord.getLineCount({ sublistId: 'item' });
                 parametro_reconexion = 0;
                 if (typeMode == 'create' || typeMode == 'copy' || typeMode == 'edit') {
                     //console.log('Track1', typeMode)
                     if (typeTransaction == _constant.Transaction.SALES_ORDER) {
                         //console.log('Track2', typeMode)
-                        let userObj = runtime.getCurrentUser()
+                        let userObj = runtime.getCurrentUser();
                         if (sublistName == 'item') {
                             //console.log('Track3', typeMode)
                             if (sublistFieldName == 'item') {
-                                console.log('Track4', typeMode)
                                 let idItem = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
                                 let idItemTXT = currentRecord.getCurrentSublistText({ sublistId: 'item', fieldId: 'item' });
                                 let parametrosRespo = _controllerParm.parametrizacion(idItem);
                                 for (let j = 0; j < parametrosRespo.length; j++) {
-                                    console.log('Track5', typeMode)
                                     //console.log('Entre a validar parametrización');
                                     // if (parametrosRespo[j][0] == _constant.Parameter.IRS_ITEM_DE_RECONEXION_DE_SERVICIO && parametrosRespo[j][1] == _constant.Valor.SI) {
                                     //     console.log('Parametrizacion', 'El item' + idItemTXT + ' es de reconexion de servicio.');
@@ -589,17 +656,6 @@ define(['N/search',
                                 }
                             }
                         }
-                        /* else if (sublistFieldName == 'custbody_ht_so_bien') {
-                            currentRecord.setValue({
-                                fieldId: 'custbody_ht_facturar_a',
-                                value: currentRecord.getValue('entity')
-                            });
-                        } */ /* else if (sublistFieldName == 'salesrep') {
-                            currentRecord.setValue({
-                                fieldId: 'custbody_ht_os_ejecutivareferencia',
-                                value: currentRecord.getValue('salesrep')
-                            });
-                        } */
                     }
                     return true
                 }
@@ -685,7 +741,7 @@ define(['N/search',
                 currentRecord.setValue({ fieldId: 'custbody_ht_os_ejecutivareferencia', value: currentRecord.getValue('salesrep') });
                 currentRecord.setValue({ fieldId: 'custbody_ht_facturar_a', value: currentRecord.getValue('entity') });
                 currentRecord.setValue({ fieldId: 'department', value: departamentovalue });
-                currentRecord.setValue({ fieldId: 'class', value: clasevalue });
+                //currentRecord.setValue({ fieldId: 'class', value: clasevalue });
                 // currentRecord.setValue({ fieldId: 'location', value: locationvalue });
             }
         }
@@ -936,7 +992,9 @@ define(['N/search',
         return result;
     }
 
-    const getFechasCobertura = (bien, familia) => {
+    const getFechasCobertura = (bien, familia, cliente, renovacionNormal) => {
+        const codigoSaldo = 2;
+        let renovacioNormalExisetRenoNormal = 0;
         let today = new Date();
         let day = today.getDate();
         let month = today.getMonth() + 1; // Se suma 1 porque los meses empiezan en 0
@@ -947,6 +1005,13 @@ define(['N/search',
         let results = query.runSuiteQL({ query: sql, params: [bien, familia] }).asMappedResults();
         console.log('hoy', fecha)
         console.log(results)
+        if (renovacionNormal == 1) {
+            renovacioNormalExisetRenoNormal = 0
+        } else if (renovacionNormal == 2) {
+            renovacioNormalExisetRenoNormal = 1
+        } else {
+            renovacioNormalExisetRenoNormal = 1
+        }
         if (results.length > 0) {
             if (results[0].finicial == null) {
                 dialog.alert({ title: 'Alerta', message: 'La fecha inicial no es válida.' });
@@ -958,14 +1023,24 @@ define(['N/search',
             }
             if (fechaEnRango(fecha, results[0].finicial, results[0].ffinal)) {
                 console.log('La fecha está dentro del rango.');
-                return 1;
+                return codigoSaldo;
             } else {
                 console.log('La fecha está fuera del rango.');
-                return 0;
+                return renovacioNormalExisetRenoNormal;
             }
         } else {
-            dialog.alert({ title: 'Alerta', message: 'No tiene un registro de cobertura activa con esta familia para este bien, revisar las coberturas del bien.' });
-            return false;
+            let sql1 = "SELECT count(*) as conteo FROM TransactionLine tl " +
+                "INNER JOIN customrecord_ht_pp_main_param_prod pa ON pa.custrecord_ht_pp_parametrizacionid = tl.item " +
+                "WHERE custcol_ht_os_tipoarticulo = 'Ensamblaje' AND tl.entity = ? AND pa.custrecord_ht_pp_parametrizacion_valor = ?"
+            let params = [cliente, familia]
+            let resultSet = query.runSuiteQL({ query: sql1, params: params }).asMappedResults();
+            console.log('resultSet-Reno', resultSet[0].conteo);
+            let param = resultSet[0].conteo == 0 ? 0 : 1
+            if (param == 0) {
+                return 0;
+            } else {
+                return 1
+            }
         }
     }
 
@@ -976,13 +1051,20 @@ define(['N/search',
         return fecha >= fechaInicio && fecha <= fechaFin;
     }
 
-    const validarFecha = (fecha) => {
-        let partesFecha = fecha.split('/');
-        let dia = parseInt(partesFecha[0], 10);
-        let mes = parseInt(partesFecha[1], 10) - 1;
-        let anio = parseInt(partesFecha[2], 10);
-        let fechaValida = new Date(anio, mes, dia);
-        return fechaValida && fechaValida.getDate() === dia && fechaValida.getMonth() === mes && fechaValida.getFullYear() === anio;
+    const getCoberturaPorCodigoFamilia = (bien, codigoFamilia) => {
+        let retorno;
+        let sql = "SELECT co.name as name, co.custrecord_ht_co_estado as estado, co.custrecord_ht_co_coberturainicial as finicial, co.custrecord_ht_co_coberturafinal as ffinal, va.custrecord_ht_pp_codigo as codigofamilia " +
+            "FROM customrecord_ht_co_cobertura co " +
+            "INNER JOIN customrecord_ht_cr_pp_valores va " +
+            "ON co.custrecord_ht_co_familia_prod = va.id " +
+            "WHERE custrecord_ht_co_bien = ? " +
+            "AND va.custrecord_ht_pp_codigo = ?"
+        let params = [bien, codigoFamilia]
+        let resultSet = query.runSuiteQL({ query: sql, params: params }).asMappedResults();
+        retorno = resultSet.length > 0 ? resultSet : false
+        console.log('getCoberturaPorCodigoFamilia')
+        console.log(resultSet)
+        return retorno;
     }
 
     return {

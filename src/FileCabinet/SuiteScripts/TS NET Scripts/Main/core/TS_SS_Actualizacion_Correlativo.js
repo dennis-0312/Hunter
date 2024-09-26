@@ -21,6 +21,7 @@ define(['N/email', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search', 'N/t
         const PE_SERIE_RECORD = 'customrecordts_ec_series_impresion';
         const CUSTOM_TRANSACTION_FACTURA_INTERNA = "customsale_ec_factura_interna";
         const FACTURA = 'invoice';
+        const SERVICE_ORDER = 'salesorder';
         // const FACTURA = 16;
         const execute = (scriptContext) => {
             const objContext = runtime.getCurrentScript();
@@ -99,17 +100,13 @@ define(['N/email', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search', 'N/t
                     type: "transaction",
                     filters:
                         [
-                            ["type", "anyof", "CustInvc", "CuTrSale113"],
+                            ["type", "anyof", "CustInvc", "CuTrSale112", SERVICE_ORDER],
                             "AND",
                             ["datecreated", "within", from, to]
                         ],
                     columns:
                         [
-                            search.createColumn({
-                                name: "internalid",
-                                summary: "GROUP",
-                                label: "1 Internal ID"
-                            }),
+                            search.createColumn({ name: "internalid", summary: "GROUP", label: "1 Internal ID" }),
                             search.createColumn({
                                 name: "formulatext",
                                 summary: "GROUP",
@@ -134,32 +131,13 @@ define(['N/email', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search', 'N/t
                                 formula: "REGEXP_REPLACE (CONCAT({custbodyts_ec_tipo_documento_fiscal.custrecordts_ec_iniciales_tip_comprob}, CONCAT({custbody_ts_ec_serie_cxc},{custbody_ts_ec_numero_preimpreso})),'-','')",
                                 label: "4 SERIE FINAL"
                             }),
-                            search.createColumn({
-                                name: "custbody_ts_ec_numero_preimpreso",
-                                summary: "GROUP",
-                                label: "5 PE NUMBER"
-                            }),
-                            search.createColumn({
-                                name: "datecreated",
-                                summary: "GROUP",
-                                label: "6 FECHA CREACION"
-                            }),
-                            search.createColumn({
-                                name: "custrecordts_ec_iniciales_tip_comprob",
-                                join: "custbodyts_ec_tipo_documento_fiscal",
-                                summary: "GROUP",
-                                label: "7 SERIE"
-                            }),
-                            search.createColumn({
-                                name: "recordtype",
-                                summary: "GROUP",
-                                label: "8 RECORD TYPE"
-                            })
-
+                            search.createColumn({ name: "custbody_ts_ec_numero_preimpreso", summary: "GROUP", label: "5 PE NUMBER" }),
+                            search.createColumn({ name: "datecreated", summary: "GROUP", label: "6 FECHA CREACION" }),
+                            search.createColumn({ name: "custrecordts_ec_iniciales_tip_comprob", join: "custbodyts_ec_tipo_documento_fiscal", summary: "GROUP", label: "7 SERIE" }),
+                            search.createColumn({ name: "recordtype", summary: "GROUP", label: "8 RECORD TYPE" })
                         ]
                 });
                 const searchResultCount = searchLoad.runPaged().count;
-
                 if (searchResultCount != 0) {
                     const searchResult = searchLoad.run().getRange({ start: 0, end: 1000 });
                     for (let j in searchResult) {
@@ -170,7 +148,6 @@ define(['N/email', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search', 'N/t
                         //cambio JCEC 2024-08-03 por error en la formula para Facturas Internas
                         const column05 = searchResult[j].getValue(searchLoad.columns[6]);
                         const column06 = searchResult[j].getValue(searchLoad.columns[7]);
-
                         if (column02 != column03) {
                             json.push({
                                 internalid: column01,
@@ -217,28 +194,23 @@ define(['N/email', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search', 'N/t
                     let peDocumentType = '';
                     let peSerieValue = '';
                     let peSerie = '';
-                    let recordType = invoices[i].transactionType == FACTURA ? FACTURA : CUSTOM_TRANSACTION_FACTURA_INTERNA;
+                    let recordType = invoices[i].transactionType == FACTURA ? FACTURA : (invoices[i].transactionType == SERVICE_ORDER ? SERVICE_ORDER : CUSTOM_TRANSACTION_FACTURA_INTERNA);
                     log.debug('recordType', recordType);
-
                     const recordLoad = record.load({ type: recordType, id: invoices[i].internalid, isDynamic: true, });
                     //cambio JCEC 2024-08-03 por error en la formula para Facturas Internas
                     // peDocumentType = recordLoad.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
                     peDocumentType = invoices[i].prefijo;
-
                     peSerie = recordLoad.getText({ fieldId: 'custbody_ts_ec_serie_cxc' });
                     peSerieValue = recordLoad.getValue({ fieldId: 'custbody_ts_ec_serie_cxc' });
                     recordLoad.setValue({ fieldId: 'tranid', value: invoices[i].seriefinal, ignoreFieldChange: true });
                     //cambio JCEC 2024-08-03 por error en la formula para Facturas Internas
                     recordLoad.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: peSerie, ignoreFieldChange: true });
                     const recordid = recordLoad.save();
-
                     const subLookup = search.lookupFields({ type: recordType, id: recordid, columns: ['tranid'] });
                     const tranid = subLookup.tranid;
-
                     if (tranid != invoices[i].seriefinal) {
                         const newrec = generateCorrelative(peSerieValue, peSerie, peDocumentType);
                         log.debug('NewRecord JCEC Set Record', newrec);
-
                         record.submitFields({
                             type: recordType,
                             id: recordid,
@@ -249,7 +221,6 @@ define(['N/email', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search', 'N/t
                                 'tranid': newrec.newtranid
                             }
                         });
-
                         const subLookup2 = search.lookupFields({ type: recordType, id: recordid, columns: ['tranid'] });
                         const tranid2 = subLookup2.tranid;
                         if (tranid2 != newrec.newtranid) {
@@ -285,14 +256,12 @@ define(['N/email', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search', 'N/t
                     return exists;
                 });
                 log.debug('Duplicados-Update', duplicados);
-
                 for (let i in duplicados) {
                     let peDocumentType = '';
                     let peSerieValue = '';
                     let peSerie = '';
                     let recordType = duplicados[i].transactionType == FACTURA ? FACTURA : CUSTOM_TRANSACTION_FACTURA_INTERNA;
                     const recordLoad = record.load({ type: recordType, id: duplicados[i].internalid, isDynamic: true, });
-
                     //cambio JCEC 2024-08-03 por error en la formula para Facturas Internas
                     // peDocumentType = recordLoad.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
                     peDocumentType = duplicados[i].prefijo;
@@ -300,15 +269,12 @@ define(['N/email', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search', 'N/t
                     peSerieValue = recordLoad.getValue({ fieldId: 'custbody_ts_ec_serie_cxc' });
                     const newrec = generateCorrelative(peSerieValue, peSerie, peDocumentType);
                     log.debug('NewRecord JCEC Duplicados', newrec);
-
                     recordLoad.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: newrec.correlative, ignoreFieldChange: true });
                     recordLoad.setValue({ fieldId: 'tranid', value: newrec.newtranid, ignoreFieldChange: true });
                     //cambio JCEC 2024-08-03 por error en la formula para Facturas Internas
                     recordLoad.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: peSerie, ignoreFieldChange: true });
                     const recordid = recordLoad.save();
-
                     //record.submitFields({ type: record.Type.INVOICE, id: recordid, values: { 'tranid': newtranid } });
-
                     const subLookup = search.lookupFields({ type: recordType, id: recordid, columns: ['tranid'] });
                     const tranid = subLookup.tranid;
                     log.debug('NewRecord', 'id: ' + recordid + ' tranid: ' + newrec.newtranid);
@@ -328,12 +294,9 @@ define(['N/email', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search', 'N/t
             let newtranid = '';
             try {
                 const numberLookup = search.lookupFields({ type: PE_SERIE_RECORD, id: peSerieValue, columns: ['custrecord_ts_ec_rango_inicial'] });
-
                 const peinicio = parseInt(numberLookup.custrecord_ts_ec_rango_inicial);
-
                 const next_number = peinicio + 1
                 record.submitFields({ type: PE_SERIE_RECORD, id: peSerieValue, values: { 'custrecord_ts_ec_rango_inicial': next_number } });
-
                 if (next_number.toString().length == 1) {
                     ceros = '00000000';
                 }

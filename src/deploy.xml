@@ -9,7 +9,7 @@
         <!-- <path>~/Objects/ecuador/test/desplegado/*</path> -->
         <!-- <path>~/Objects/peru/Bundle/subtab/*</path> -->
         <!-- <path>~/Objects/peru/form/*</path> -->
-        <path>~/Objects/ecuador/workbooks/pendiente/*</path>
+        <path>~/Objects/ecuador/test/desplegado/*</path>
     </objects>|
     <!-- <translationimports>
         <path>~/Translations/*</path>

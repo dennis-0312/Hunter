@@ -21,7 +21,6 @@ define([
             for (let j in requestHeader) {
                 objRecord.setValue({ fieldId: requestHeader[j].field, value: requestHeader[j].value });
             }
-
             const detail = objRecord.selectNewLine({ sublistId: 'item' });
             for (let k in requestDetail) {
                 for (let i in requestDetail[k]) {
@@ -87,7 +86,7 @@ define([
             return objRecord.save({ enableSourcing: true, ignoreMandatoryFields: true });
         }
 
-        const parametros = (parametro, id, type = null, adp = null, bien = null) => {
+        const parametros = (parametro, id, type = null, adp = null, bien = null, cliente = null) => {
             let response = { status: true, mensaje: '' };
             let currentRecord = id;
             switch (parseInt(parametro)) {
@@ -324,18 +323,17 @@ define([
                     break;
                 case _constant.Parameter.PCD_PIDE_CODIGO_DE_ORIGEN:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
-                    var item_cliente_monitoreo = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ns_codigo_origen' });
-                    if (!item_cliente_monitoreo) {
+                    var codigo_origen = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ns_codigo_origen' });
+                    var codigo_origen_sys = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcoll_ns_codigo_origen_sys' });
+                    if (!codigo_origen && !codigo_origen_sys) {
                         response.status = false;
                         response.mensaje = 'No existe un Codigo de Origen en el item ' + item + '.'
                     }
                     break;
                 case _constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS://cpi control de productos instalados
-                    console.log('PARAM', parametro + ' - ' + id + ' - ' + type + ' - ' + adp + ' - ' + bien)
+                    console.log('PARAM', parametro + ' - ' + id + ' - ' + type + ' - ' + adp + ' - ' + bien + ' - ' + cliente)
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
-                    let tipoItem;
                     let familia;
-
                     if (adp == _constant.Valor.VALOR_001_INST_DISPOSITIVO) {
                         let famSearch = search.create({
                             type: "customrecord_ht_pp_main_param_prod",
@@ -425,18 +423,35 @@ define([
                             response.mensaje = 'El bien ingresado no cuenta con dispositivo instalado.'
                         }
                     } else if (adp == _constant.Valor.VALOR_004_RENOVACION_DE_DISP) {
+                        console.log('resultSet-adp_constant.Valor.VALOR_004_RENOVACION_DE_DISP', ` ${adp}`);
                         familia = getParameter(item, _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS);
                         if (familia > 0) {
+                            //!Alquiler comentado por renovación de ALQU
                             let productoInstalado = getProductoInstalado(bien, familia);
                             if (productoInstalado > 0) {
                                 let esAlquiler = getParameter(productoInstalado, _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER);
-                                if (esAlquiler == _constant.Valor.SI) {
-                                    response.status = false;
-                                    response.mensaje = 'No se puede renovar un producto de alquiler.'
+                                let alq = getParameter(item, _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER);
+                                console.log('resultSet-Reno-Params', `esAlquiler = ${esAlquiler} - alq = ${alq}`);
+                                if (esAlquiler != 0 || alq != 0) {
+                                    if (esAlquiler != _constant.Valor.SI || alq != _constant.Valor.SI) {
+                                        response.status = false;
+                                        response.mensaje = 'Está intentando renovar un producto en alquiler con un artículo de venta o renovar un producto de venta con una artículo de alquiler.'
+                                    }
                                 }
-
-
                             }
+                            console.log('resultSet-Reno-Params', cliente + ' - ' + familia);
+                            let sql = "SELECT count(*) FROM TransactionLine tl " +
+                                "INNER JOIN customrecord_ht_pp_main_param_prod pa ON pa.custrecord_ht_pp_parametrizacionid = tl.item " +
+                                "WHERE custcol_ht_os_tipoarticulo = 'Ensamblaje' AND tl.entity = ? AND pa.custrecord_ht_pp_parametrizacion_valor = ?"
+                            let params = [cliente, familia]
+                            let resultSet = query.runSuiteQL({ query: sql, params: params }).asMappedResults();
+                            console.log('resultSet-Reno', resultSet);
+                            let param = resultSet == 0 ? 0 : 1
+                            if (param == 0) {
+                                response.status = false;
+                                response.mensaje = 'No existe una Orden de Servicio con esta Familia de Producto.'
+                            }
+
                         }
                     } else if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
                         if (type != null) {

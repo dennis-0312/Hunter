@@ -156,9 +156,6 @@ define([
                     quantitySublistField.updateDisplayType({ displayType: serverWidget.FieldDisplayType.DISABLED });
                     quantitySublistField.isMandatory = true;
                 }
-
-
-
                 form.addSubmitButton("Guardar");
 
                 context.response.writePage(form);
@@ -189,7 +186,7 @@ define([
 
     const getInventoryBalance = (item, location, bin) => {
         if (!(item && location)) return;
-        let inventoryDetail = getInventoryDetail(item, location);
+        //let inventoryDetail = getInventoryDetail(item, location);
         let inventoryBalanceResult = {};
         let inventoryBalanceSearch = search.create({
             type: "inventorybalance",
@@ -208,33 +205,36 @@ define([
             ]
         });
 
-        inventoryBalanceSearch.run().each(function (result) {
-            let inventoryNumberId = result.getValue('inventorynumber');
-            let inventoryNumber = result.getText('inventorynumber');
-            let binNumberId = result.getValue('binnumber');
-            let binNumber = result.getText('binnumber');
-            let status = result.getText('status');
-            let statusId = result.getValue('status');
-            let isSerialized = result.getValue(result.columns[3]);
-
-            let key = isSerialized ? inventoryNumberId : binNumberId;
-            if (binNumber != bin) return true;
-            inventoryBalanceResult[key] = {
-                inventoryNumber,
-                binNumber,
-                binNumberId,
-                status,
-                statusId
-            };
-            return true;
+        var pagedData = inventoryBalanceSearch.runPaged({ pageSize: 1000 });
+        pagedData.pageRanges.forEach((pageRange) => {
+            var myPage = pagedData.fetch({ index: pageRange.index });
+            myPage.data.forEach((result) => {
+                let inventoryNumberId = result.getValue('inventorynumber');
+                let inventoryNumber = result.getText('inventorynumber');
+                let binNumberId = result.getValue('binnumber');
+                let binNumber = result.getText('binnumber');
+                let status = result.getText('status');
+                let statusId = result.getValue('status');
+                let isSerialized = result.getValue(result.columns[3]);
+                let key = isSerialized ? inventoryNumberId : binNumberId;
+                if (binNumber != bin) return true;
+                inventoryBalanceResult[key] = {
+                    inventoryNumber,
+                    binNumber,
+                    binNumberId,
+                    status,
+                    statusId
+                };
+                return true;
+            });
         });
-
         log.error("cantidad", Object.keys(inventoryBalanceResult).length);
         return inventoryBalanceResult;
     }
 
     const getInventoryDetail = (item, location) => {
         if (!(item && location)) return {};
+
         let inventoryDetailResult = {};
         let inventoryDetailSearch = search.create({
             type: "inventorydetail",
@@ -252,46 +252,42 @@ define([
             ]
         });
 
-        var pagedData = inventoryDetailSearch.runPaged({
-            pageSize: 1000
-        });
-        pagedData.pageRanges.forEach(function (pageRange) {
-            var myPage = pagedData.fetch({
-                index: pageRange.index
-            });
-            myPage.data.forEach(function (result) {
+        var pagedData = inventoryDetailSearch.runPaged({ pageSize: 1000 });
+        pagedData.pageRanges.forEach((pageRange) => {
+            var myPage = pagedData.fetch({ index: pageRange.index });
+            myPage.data.forEach((result) => {
                 let columns = result.columns;
-            let isSerialized = result.getValue(columns[0]);
-            let inventoryNumberId = result.getValue(columns[1]);
-            let inventoryNumber = result.getText(columns[1]);
-            let binNumberId = result.getValue(columns[2]);
-            let binNumber = result.getText(columns[2]);
-            let status = result.getText(columns[3]);
-            let statusId = result.getValue(columns[3]);
-            let quantity = result.getValue(columns[4]);
-            if (quantity == "0") return true;
-            if (!isSerialized) {
-                inventoryDetailResult[binNumberId] = {
-                    isSerialized,
-                    binNumber,
-                    binNumberId,
-                    status,
-                    statusId,
-                    quantity
-                };
-            } else {
-                inventoryDetailResult[inventoryNumberId] = {
-                    isSerialized,
-                    inventoryNumber,
-                    binNumber,
-                    binNumberId,
-                    status,
-                    statusId,
-                    quantity
-                };
-            }
+                let isSerialized = result.getValue(columns[0]);
+                let inventoryNumberId = result.getValue(columns[1]);
+                let inventoryNumber = result.getText(columns[1]);
+                let binNumberId = result.getValue(columns[2]);
+                let binNumber = result.getText(columns[2]);
+                let status = result.getText(columns[3]);
+                let statusId = result.getValue(columns[3]);
+                let quantity = result.getValue(columns[4]);
+                if (quantity == "0") return true;
+                if (!isSerialized) {
+                    inventoryDetailResult[binNumberId] = {
+                        isSerialized,
+                        binNumber,
+                        binNumberId,
+                        status,
+                        statusId,
+                        quantity
+                    };
+                } else {
+                    inventoryDetailResult[inventoryNumberId] = {
+                        isSerialized,
+                        inventoryNumber,
+                        binNumber,
+                        binNumberId,
+                        status,
+                        statusId,
+                        quantity
+                    };
+                }
 
-            return true;
+                return true;
             });
         });
 

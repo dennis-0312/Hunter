@@ -162,39 +162,42 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
             ]
         });
 
-        inventoryBalanceSearch.run().each(function (result) {
-            let inventoryNumberId = result.getValue('inventorynumber');
-            let inventoryNumber = result.getText('inventorynumber');
-            let binNumberId = result.getValue('binnumber');
-            let binNumber = result.getText('binnumber');
-            let status = result.getText('status');
-            let statusId = result.getValue('status');
-            let isSerialized = result.getValue(result.columns[3]);
-            let quantity = result.getValue("onhand");
+        var pagedData = inventoryBalanceSearch.runPaged({ pageSize: 1000 });
+        pagedData.pageRanges.forEach((pageRange) => {
+            var myPage = pagedData.fetch({ index: pageRange.index });
+            myPage.data.forEach((result) => {
+                let inventoryNumberId = result.getValue('inventorynumber');
+                let inventoryNumber = result.getText('inventorynumber');
+                let binNumberId = result.getValue('binnumber');
+                let binNumber = result.getText('binnumber');
+                let status = result.getText('status');
+                let statusId = result.getValue('status');
+                let isSerialized = result.getValue(result.columns[3]);
+                let quantity = result.getValue("onhand");
 
-            if (!isSerialized) {
-                inventoryBalanceResult[binNumberId] = {
-                    isSerialized,
-                    binNumber,
-                    binNumberId,
-                    status,
-                    statusId,
-                    quantity
-                };
-            } else {
-                inventoryBalanceResult[inventoryNumberId] = {
-                    isSerialized,
-                    inventoryNumber,
-                    binNumber,
-                    binNumberId,
-                    status,
-                    statusId,
-                    quantity
-                };
-            }
-            return true;
+                if (!isSerialized) {
+                    inventoryBalanceResult[binNumberId] = {
+                        isSerialized,
+                        binNumber,
+                        binNumberId,
+                        status,
+                        statusId,
+                        quantity
+                    };
+                } else {
+                    inventoryBalanceResult[inventoryNumberId] = {
+                        isSerialized,
+                        inventoryNumber,
+                        binNumber,
+                        binNumberId,
+                        status,
+                        statusId,
+                        quantity
+                    };
+                }
+                return true;
+            });
         });
-
         console.log("cantidad", Object.keys(inventoryBalanceResult).length);
         return inventoryBalanceResult;
     }

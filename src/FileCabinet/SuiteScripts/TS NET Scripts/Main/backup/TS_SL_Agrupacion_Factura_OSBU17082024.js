@@ -565,9 +565,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                     searchFacturasFIN = search.create({
                         type: 'transaction',
                         filters: [
-                            ["type", "anyof", "CuTrSale113"],
+                            ["type", "anyof", "CuTrSale112"],
                             "AND",
-                            ["status", "noneof", "CuTrSale113:V"],
+                            ["status", "noneof", "CuTrSale112:V"],
                             "AND",
                             ['mainline', 'is', 'T'],
                             'AND',
@@ -623,9 +623,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                     searchFacturasFIN = search.create({
                         type: 'transaction',
                         filters: [
-                            ["type", "anyof", "CuTrSale113"],
+                            ["type", "anyof", "CuTrSale112"],
                             "AND",
-                            ["status", "noneof", "CuTrSale113:V"],
+                            ["status", "noneof", "CuTrSale112:V"],
                             "AND",
                             ['mainline', 'is', 'T'],
                             'AND',
@@ -731,9 +731,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                         type: "transaction",
                         filters:
                             [
-                                ["type", "anyof", "CuTrSale113"],
+                                ["type", "anyof", "CuTrSale112"],
                                 "AND",
-                                ["status", "noneof", "CuTrSale113:V"],
+                                ["status", "noneof", "CuTrSale112:V"],
                                 "AND",
                                 ["entity", "anyof", cliente],
                                 'AND',
@@ -784,9 +784,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                         type: "transaction",
                         filters:
                             [
-                                ["type", "anyof", "CuTrSale113"],
+                                ["type", "anyof", "CuTrSale112"],
                                 "AND",
-                                ["status", "noneof", "CuTrSale113:V"],
+                                ["status", "noneof", "CuTrSale112:V"],
                                 "AND",
                                 ["entity", "anyof", cliente],
                                 'AND',

@@ -108,7 +108,7 @@ define(['N/log',
         //**============================================================================================================ */
         let userObj = runtime.getCurrentUser();
 
-        if ((eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) /*&& userObj.id != 4*/) {
+        if ((eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) || eventType === context.UserEventType.EDIT /*&& userObj.id != 4*/) {
             const objRecord = context.newRecord;
             try {
                 if (objRecord.type == BILL_CREDIT) {
@@ -211,9 +211,8 @@ define(['N/log',
                     objRecord.save();
                 }
             } catch (error) { }
-
-            // log.debug('status', objRecord.getValue('status'));
-            // log.debug('statusRef', objRecord.getValue('statusRef'));
+            log.debug('status', objRecord.getValue('status'));
+            log.debug('statusRef', objRecord.getValue('statusRef'));
             if (objRecord.type == _constant.Transaction.SALES_ORDER && objRecord.getValue('custbody_ec_estado_factura_interna') != ESTADO_FACTURA_INTERNA) {
                 if (objRecord.getValue('statusRef') == STATUS_PENDING_FULFILLMENT || objRecord.getValue('statusRef') == STATUS_PENDING_BILLING || objRecord.getValue('statusRef') == STATUS_PENDING_BILLING_PARTIALLY_FULFILLED) {
                     let form = context.form;
@@ -280,20 +279,20 @@ define(['N/log',
                     }
                 }
             } else if (objRecord.type == SERVICE_ORDER) {
-                let location = objRecord.getValue({ fieldId: 'location' });
-                doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
-                prefix = 'OS-';
-                try {
-                    let getserie = getSerie(doctype, location, prefix, documentref);
-                    log.error('LOG-getserie', getserie);
-                    let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
-                    log.error('LOG-correlative1', correlative);
-                    objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
-                    objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
-                    objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
-                } catch (error) {
-                    log.error('Error-beforeSubmit-Intro', error);
-                }
+                // let location = objRecord.getValue({ fieldId: 'location' });
+                // doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                // prefix = 'OS-';
+                // try {
+                //     let getserie = getSerie(doctype, location, prefix, documentref);
+                //     log.error('LOG-getserie', getserie);
+                //     let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'beforeSubmit');
+                //     log.error('LOG-correlative1', correlative);
+                //     objRecord.setValue({ fieldId: 'custbody_ts_ec_numero_preimpreso', value: correlative.correlative, ignoreFieldChange: true });
+                //     objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: getserie.serieid, ignoreFieldChange: true });
+                //     objRecord.setValue({ fieldId: 'tranid', value: correlative.numbering });
+                // } catch (error) {
+                //     log.error('Error-beforeSubmit-Intro', error);
+                // }
             } else if (objRecord.type == VENDOR_BILL || context.newRecord.type == BILL_CREDIT) {
                 const objRecord = context.newRecord;
                 var customer = objRecord.getValue({ fieldId: 'entity' });
@@ -426,7 +425,7 @@ define(['N/log',
         log.error("context.newRecord.type", context.newRecord.type);
         let userObj = runtime.getCurrentUser();
 
-        if ((eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) /*&& userObj.id != 4*/) {
+        if ((eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY || eventType === context.UserEventType.EDIT) /*&& userObj.id != 4)*/) {
             if (context.newRecord.type == CREDIT_MEMO) {
                 let custForm = objRecord.getValue({ fieldId: 'customform' });
                 let doctype;
@@ -486,7 +485,7 @@ define(['N/log',
                 } catch (error) {
                     log.error('CREDIT MEMO - Error-afterSubmit-Intro ', error);
                 }
-            } else if (context.newRecord.type == INVOICE) {
+            } else if (context.newRecord.type == INVOICE && eventType === context.UserEventType.CREATE) {
                 let documentref = '';
                 let location_id = objRecord.getValue({ fieldId: 'location' });
                 doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
@@ -498,7 +497,7 @@ define(['N/log',
                 } catch (error) {
                     log.error('Error-afterSubmit-Intro', error);
                 }
-            } else if (context.newRecord.type == FACTURA_INTERNA) {
+            } else if (context.newRecord.type == FACTURA_INTERNA && eventType === context.UserEventType.CREATE) {
                 log.error('FACTURA_INTERNA', FACTURA_INTERNA);
                 let documentref = '';
                 let location_id = objRecord.getValue({ fieldId: 'location' });
@@ -509,7 +508,13 @@ define(['N/log',
                     log.error('getserie-afterSubmit-Intro', getserie);
                     let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
                     log.error('correlative-afterSubmit-Intro', correlative);
+                    let objSave = {
+                        custbody_ts_ec_serie_cxc: getserie.serieid,
+                        tranid: correlative.numbering
+                    }
+                    log.error('objSave-afterSubmit-Intro', objSave);
                     updateTransaction(objRecord.type, objRecord.id, correlative.numbering, correlative.correlative);
+                    updateTransaction2(objRecord.type, objRecord.id, objSave);
                 } catch (error) {
                     log.error('Error-afterSubmit-Intro', error);
                 }
@@ -624,18 +629,30 @@ define(['N/log',
                     }
                     objRecord.save();
                 }
-            } else if (context.newRecord.type == SERVICE_ORDER) {
-                let documentref = '';
-                let location_id = objRecord.getValue({ fieldId: 'location' });
-                doctype = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
-                prefix = 'OS';
+            } else if (context.newRecord.type == SERVICE_ORDER && eventType === context.UserEventType.EDIT) {
+                // Primer Scheduled Script para EC Ordenes de Servicios
                 try {
-                    let getserie = getSerie(doctype, location_id, prefix, documentref);
-                    let correlative = generateCorrelative(getserie.peinicio, getserie.serieid, getserie.serieimpr, 'afterSubmit');
-                    updateTransaction(objRecord.type, objRecord.id, correlative.numbering);
+                    let scheduledScript = task.create({ taskType: task.TaskType.SCHEDULED_SCRIPT });
+                    scheduledScript.scriptId = 'customscript_ts_ss_actual_correla_os';
+                    scheduledScript.deploymentId = 'customdeploy_ts_ss_actual_correla_os';
+                    scheduledScript.params = { 'custscript_ht_punto_inicio_o': '0' };
+                    scheduledScript.submit();
+                    log.debug("se ejecuto el script actualizar correlativos")
                 } catch (error) {
-                    log.error('Error-afterSubmit-Intro', error);
+                    log.error('Error-Update', error);
                 }
+                // Segundo Scheduled Script para EC Orden de Proveduría
+                try {
+                    let scheduledScript = task.create({ taskType: task.TaskType.SCHEDULED_SCRIPT });
+                    scheduledScript.scriptId = 'customscript_ts_ss_actual_correla_osp';
+                    scheduledScript.deploymentId = 'customdeploy_ts_ss_actual_correla_osp';
+                    scheduledScript.params = { 'custscript_ht_punto_inicio_os': '0' };
+                    scheduledScript.submit();
+                    log.debug("se ejecuto el script actualizar correlativos P")
+                } catch (error) {
+                    log.error('Error-Update', error);
+                }
+
             } else if (context.newRecord.type == _constant.Transaction.TRANSFER_ORDER) {
                 try {
                     let objRecord = record.load({ type: _constant.Transaction.TRANSFER_ORDER, id: recordId, isDynamic: true });
@@ -818,7 +835,16 @@ define(['N/log',
             }
 
             if (context.newRecord.type == INVOICE) {
-                if (objRecord.getValue({ fieldId: 'terms' })) {
+                //INICIO Cambio JCEC 20/09/2024
+                //Ejemplo de termino Valido (empieza por 'CREDITO DIRECTO A')
+                let termino = ''
+                try {
+                    termino = objRecord.getText({ fieldId: 'terms' });
+                } catch (error) { }
+                if (termino && termino.startsWith('CREDITO DIRECTO A')) {
+                    // if (objRecord.getValue({ fieldId: 'terms' })) {
+                    //FIN Cambio JCEC 20/09/2024
+
                     let checkCuota = '';
                     let dueDate = '';
                     let objData = new Array();
@@ -939,11 +965,11 @@ define(['N/log',
                         type: "transaction",
                         filters:
                             [
-                                ["type", "anyof", "CuTrSale113"],
+                                ["type", "anyof", "CuTrSale112"],
                                 "AND",
                                 ["custbody_ec_created_from_fac_int", "anyof", creadoDesde],
                                 "AND",
-                                ["status", "anyof", "CuTrSale113:C"]
+                                ["status", "anyof", "CuTrSale112:C"]
                             ],
                         columns:
                             [
@@ -1481,6 +1507,11 @@ define(['N/log',
             // values: { tranid, custbody_ts_ec_numero_preimpreso }
             values: { tranid }
         });
+        log.error("updateTransaction", { transactionId, tranid });
+    }
+
+    const updateTransaction2 = (type, id, tranid, custbody_ts_ec_numero_preimpreso) => {
+        let transactionId = record.submitFields({ type, id, values: tranid });
         log.error("updateTransaction", { transactionId, tranid });
     }
 

@@ -17,14 +17,17 @@ define(['N/log',
     'N/record',
     'N/redirect',
     'N/ui/serverWidget',
+    'N/query',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
     '../error/TS_CM_ErrorMessages',
-], (log, search, record, redirect, serverWidget, _controller, _constant, _error) => {
+], (log, search, record, redirect, serverWidget, query, _controller, _constant, _error) => {
     const CUSTOMER = 'customer';
     const VENDOR = 'vendor';
     const LEAD = 'lead';
     const PROSPECT = 'prospect';
+    const AUTOSAFE = 3
+    const CARSEG = 2
 
     const beforeLoad = (context) => {
         try {
@@ -110,52 +113,35 @@ define(['N/log',
         const objRecord = context.newRecord;
         const recordId = objRecord.id;
         let identifier = '';
-        //let altname = '';
+        let prefijoTipo = {
+            customer: 'C',
+            lead: 'C',
+            prospect: 'C',
+            vendor: 'P'
+        }
+
         if (context.type === context.UserEventType.CREATE || context.type === context.UserEventType.COPY || context.type === context.UserEventType.EDIT) {
             try {
                 let vatregnumber = objRecord.getValue('vatregnumber');
-                // let isperson = objRecord.getValue('isperson');
-                // log.debug('isperson', isperson);
+                let sql = "SELECT subsidiary FROM EntitySubsidiaryRelationship WHERE entity = ?"
+                let results = query.runSuiteQL({ query: sql, params: [recordId] }).asMappedResults();
+                let subsidiary = results.length > 0 ? results[0].subsidiary : 0;
+                let prefijoTipoSeleccionado = prefijoTipo[objRecord.type];
+                let codigoPais = obtenerCodigoPais(subsidiary);
+                let resultado = `${prefijoTipoSeleccionado}-${codigoPais}-`;
+                identifier = resultado + vatregnumber;
+                log.debug('identifier', identifier)
+                record.submitFields({
+                    type: objRecord.type,
+                    id: recordId,
+                    values: {
+                        'entityid': identifier,
+                        custentity_psg_ei_entity_edoc_standard: 2,
+                        custentity_psg_ei_auto_select_temp_sm: true,
+                        custentity_edoc_gen_trans_pdf: true
 
-                // if (isperson == 'F') {
-                //     altname = objRecord.getValue('companyname');
-                // } else {
-                //     altname = objRecord.getValue('firstname') + ' ' + objRecord.getValue('lastname');
-                // }
-
-                if (context.newRecord.type == _constant.Entity.CUSTOMER || context.newRecord.type == _constant.Entity.LEAD || context.newRecord.type == _constant.Entity.PROSPECT) {
-                    identifier = 'C-EC-' + vatregnumber;
-
-                    record.submitFields({
-                        type: record.Type.CUSTOMER,
-                        id: recordId,
-                        values: {
-                            'entityid': identifier,
-                            custentity_psg_ei_entity_edoc_standard: 2,
-                            custentity_psg_ei_auto_select_temp_sm: true,
-                            custentity_edoc_gen_trans_pdf: true
-
-                        }
-                    });
-                }
-
-                if (context.newRecord.type == _constant.Entity.VENDOR) {
-                    identifier = 'P-EC-' + vatregnumber;
-                    record.submitFields({
-                        type: record.Type.VENDOR,
-                        id: recordId,
-                        values: {
-                            'entityid': identifier,
-                            custentity_psg_ei_entity_edoc_standard: 2,
-                            custentity_psg_ei_auto_select_temp_sm: true,
-                            custentity_edoc_gen_trans_pdf: true
-                        }
-                    });
-                }
-                log.debug('DEBUG', identifier);
-
-
-
+                    }
+                });
             } catch (error) {
                 log.error('Error-beforeLoad', error);
             }
@@ -241,6 +227,17 @@ define(['N/log',
             });
         });
         return arrCustomerId;
+    }
+
+    function obtenerCodigoPais(subsidiary) {
+        switch (subsidiary) {
+            case CARSEG:
+                return 'EC';
+            case AUTOSAFE:
+                return 'PE';
+            default:
+                return '';
+        }
     }
 
     return {

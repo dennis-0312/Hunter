@@ -7,7 +7,7 @@
  */
 
 define(['N/runtime', 'N/url', 'N/search', 'N/email'], function (runtime, url, search, email) {
-    const GERENTE_CARTERA = 1632;
+    const GERENTE_CARTERA = 1785;
     const onAction = (context) => {
         const FN = 'onAction';
         try {

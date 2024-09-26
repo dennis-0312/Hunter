@@ -2,7 +2,7 @@
  *@NApiVersion 2.1
  *@NScriptType ScheduledScript
  */
-define([
+ define([
     'N/search',
     'N/record',
     'N/email',
@@ -20,8 +20,16 @@ define([
     (search, record, email, runtime, log, file, task, config, url, https, query, _constant, _controller) => {
         const execute = (context) => {
             try {
+                let subsidiaria = search.lookupFields({
+                    type: 'subsidiary',
+                    id: _constant.Constants.ECUADOR_SUBSIDIARY, // CARSEG
+                    columns: ['custrecord_ht_tiempo_corte_sim_card']
+                });
+                let timeCorte = subsidiaria.custrecord_ht_tiempo_corte_sim_card;
+                log.error('timeCorte',timeCorte)
+                timeCorte = Number(timeCorte);
                 var e = new Date();
-                var mesCierre = e.setMonth(e.getMonth() - 2);
+                var mesCierre = e.setMonth(e.getMonth() - timeCorte);
                 mesCierre = new Date(mesCierre);
                 mesCierre = formatDate(mesCierre);
                 var f = new Date();
@@ -32,7 +40,7 @@ define([
                 log.debug("idSalesOrder: ", idSalesOrder);
                 for (let i = 0; i < idSalesOrder.length; i++) {
                     if (idSalesOrder[i][0] != "" && idSalesOrder[i][0] != null && idSalesOrder[i][0] != 'undefined') {
-                        let item_cobertura = new Array();
+                        let item_cobertura = [];
                         if (idSalesOrder[i][1] != "" && idSalesOrder[i][1] != null && idSalesOrder[i][1] != 'undefined') {
                             item_cobertura = validar_item(idSalesOrder[i][1]); // ADP y TRM = true
                             log.debug('item_cobertura', item_cobertura);
@@ -125,7 +133,7 @@ define([
                                             id: idCobertura,
                                             values: {
                                                 'custrecord_ht_co_estado_cobertura': _constant.Status.SIN_DISPOSITIVO, // suspendido cambia a "sin dispositivo"
-                                                'custrecord_ht_co_estado_conciliacion': _constant.Status.ENVIADO_A_CORTE //En proceso de conciliacion
+                                                //'custrecord_ht_co_estado_conciliacion': _constant.Status.ENVIADO_A_CORTE //En proceso de conciliacion  -  Comentado por Edwin
                                             },
                                             options: {
                                                 enableSourcing: false,
@@ -133,12 +141,26 @@ define([
                                             }
                                         });
 
+                                        //------Nuevo Edwin----------
+                                        record.submitFields({
+                                            type: 'customrecord_ht_record_detallechasersim',
+                                            id: CelSimCard,
+                                            values: {
+                                                'custrecord_ht_ds_estado_conciliacion': _constant.Status.ENVIADO_A_CORTE
+                                            },
+                                            options: {
+                                                enableSourcing: false,
+                                                ignoreMandatoryFields: true
+                                            }
+                                        });
+                                        //------------------------
+
                                         try {
                                             let jeRec = record.create({
                                                 type: 'customrecord_ht_record_detallesimcard',
                                                 isDynamic: true
                                             });
-                                            jeRec.setValue('custrecord_ht_dsc_estado', _constant.Status.PROCESO_CONCILIACION);
+                                            jeRec.setValue('custrecord_ht_dsc_estado', _constant.Status.ENVIADO_A_CORTE);
                                             jeRec.setValue('custrecord_ht_dsc_coberdispo', idCobertura);
                                             jeRec.setValue('custrecord_ht_dsc_serie', serie);
                                             jeRec.setValue('custrecord_ht_dsc_numerocelsim', celular);
@@ -173,13 +195,126 @@ define([
                                         }
 
                                         //let Telematic = envioTelematic(telemat);
-                                        //let PXAdminPrueba = envioPXAdmin(PxAdmin);
+                                        let PXAdminPrueba = envioPXAdmin(PxAdmin);
                                         //log.debug('Telematic', Telematic);
-                                        log.debug('PXAdminPrueba', PxAdmin);
+                                        log.debug('PXAdminPrueba', PXAdminPrueba);
                                     }
                                 }
                             }
                         }
+                        /*
+                        if (idDispositivo != "" && idDispositivo != null && idDispositivo != 'undefined') {
+                            var mant_dispositivo = search.lookupFields({
+                                type: 'customrecord_ht_record_mantchaser',
+                                id: idDispositivo,
+                                columns: ['custrecord_ht_mc_vehiculo', 'custrecord_ht_mc_vid', 'custrecord_ht_mc_id_telematic']
+                            });
+                            var idVehiculo = (mant_dispositivo.custrecord_ht_mc_vehiculo)[0];
+                            log.debug('idVehiculo:' + '[' + i + ']', idVehiculo);
+                            if (idVehiculo) {
+                                idVehiculo = idVehiculo.value
+                            }
+                            var idVid = mant_dispositivo.custrecord_ht_mc_vid;
+                            var idTelematic = mant_dispositivo.custrecord_ht_mc_id_telematic;
+                            log.debug('idVehiculo:' + '[' + i + ']', idVehiculo)
+                            //log.debug('idTelematic:' + '[' + i + ']', idTelematic) -----
+    
+                            if (idVehiculo != "" && idVehiculo != null && idVehiculo != 'undefined') {
+                                var marca_modelo = search.lookupFields({
+                                    type: 'customrecord_ht_record_bienes',
+                                    id: idVehiculo,
+                                    columns: ['custrecord_ht_bien_marca', 'custrecord_ht_bien_modelo']
+                                });
+                                var marca = (marca_modelo.custrecord_ht_bien_marca)[0].text;
+    
+                                marca = marca.split(' ')
+                                marca = marca[0];
+                                var modelo = (marca_modelo.custrecord_ht_bien_modelo)[0].text;
+                                modelo = modelo.split(' ')
+                                modelo = modelo[0];----------
+                                var idCobertura = getCobertura(idVehiculo);
+                                if (idCobertura != 0) {
+                                    log.debug('idCobertura:' + '[' + i + ']', idCobertura);
+                                    var estadoCobertura = search.lookupFields({
+                                        type: 'customrecord_ht_co_cobertura',
+                                        id: idCobertura,
+                                        columns: ['custrecord_ht_co_estado_cobertura', 'custrecord_ht_co_celularsimcard', 'custrecord_ht_co_nocelularsimcard', 'custrecord_ht_co_apn']
+                                    });
+    
+                                    var nuevoestadoCobertura = (estadoCobertura.custrecord_ht_co_estado_cobertura)[0];
+                                    log.debug('nuevoestadoCobertura', nuevoestadoCobertura);
+                                    if (nuevoestadoCobertura) {
+                                        nuevoestadoCobertura = nuevoestadoCobertura.value
+                                    }
+                                    var serie = estadoCobertura.custrecord_ht_co_celularsimcard;
+                                    var celular = estadoCobertura.custrecord_ht_co_nocelularsimcard;
+                                    var apn = estadoCobertura.custrecord_ht_co_apn
+                                    log.debug('estadoCobertura:' + '[' + i + ']', nuevoestadoCobertura);-------------
+                                    if (idCobertura != "" && idCobertura != null && nuevoestadoCobertura != 1) {
+                                        log.debug('marca', marca);
+                                        log.debug('modelo', modelo);
+                                        record.submitFields({
+                                            type: 'customrecord_ht_co_cobertura',
+                                            id: idCobertura,
+                                            values: {
+                                                'custrecord_ht_co_estado_cobertura': 2,
+                                                'custrecord_ht_co_estado_conciliacion': 1
+                                            },
+                                            options: {
+                                                enableSourcing: false,
+                                                ignoreMandatoryFields: true
+                                            }
+                                        });
+                                        try {
+                                            var jeRec = record.create({
+                                                type: 'customrecord_ht_record_detallesimcard',
+                                                isDynamic: true
+                                            });
+                                            jeRec.setValue('custrecord_ht_dsc_estado', 1);
+                                            jeRec.setValue('custrecord_ht_dsc_coberdispo', idCobertura);
+                                            jeRec.setValue('custrecord_ht_dsc_serie', serie);
+                                            jeRec.setValue('custrecord_ht_dsc_numerocelsim', celular);
+                                            jeRec.setValue('custrecord_ht_dsc_estado_conciliacion', 1);
+                                            jeRec.setValue('custrecord_ht_dsc_apn', apn);
+                                            jeRec.setValue('name', serie);
+                                            jeRec.save();
+                                        } catch (error) {
+                                        
+                                        }
+    
+                                        //id dispositivo
+                                        log.debug('idTelematic', idTelematic);
+                                        let telemat = {
+                                            id: idTelematic,
+                                            active: false
+                                        }
+                                        let PxAdmin = {
+                                            StrToken: fechaActual,
+                                            UserName: "PxPrTest",
+                                            Password: "PX12%09#w",
+                                            NumeroOrden: "1101895503",
+                                            UsuarioIngreso: "PRUEBAEVOL",
+                                            OperacionOrden: "017",
+    
+                                            CodigoVehiculo: idVehiculo,
+                                            NumeroCamaras: "0",
+                                            Vid: idVid,
+                                            IdProducto: idDispositivo,
+                                            CodMarcaDispositivo: marca,
+                                            CodModeloDispositivo: modelo,
+                                            EstadoSim: "DSC",
+                                            OperacionDispositivo: "A"
+                                        }
+                                        let Telematic = envioTelematic(telemat);
+                                        let PXAdminPrueba = envioPXAdmin(PxAdmin);
+                                        log.debug('Telematic', Telematic);
+                                        log.debug('PXAdminPrueba', PXAdminPrueba);
+                                    }
+                                }
+    
+    
+                            }
+                        }*/
                     }
                 }
                 //log.debug('territorio',territorio);
@@ -206,12 +341,12 @@ define([
                 date.getFullYear(),
                 padTo2Digits(date.getMonth() + 1),
                 padTo2Digits(date.getDate())
+
             ].join('');
         }
 
         const getSalesOrder = (mesCierre) => {
             try {
-                log.debug('mesCierre', mesCierre)
                 var arrSalesOrder = new Array();
                 var busqueda = search.create({
                     type: "invoice",
@@ -219,7 +354,7 @@ define([
                         [
                             ["type", "anyof", "CustInvc"],
                             "AND",
-                            ["duedate", "on", "08/06/2024"],
+                            ["duedate", "on", "21/12/2023"],
                             "AND",
                             ["status", "anyof", "CustInvc:A"],
                             "AND",
@@ -232,6 +367,8 @@ define([
                             ["custbody_ht_so_bien", "noneof", "@NONE@"],
                             "AND",
                             ["createdfrom", "noneof", "@NONE@"]
+
+
                         ],
                     columns:
                         [
@@ -240,8 +377,6 @@ define([
                             search.createColumn({ name: "custbody_ht_so_bien", label: "Bien" })
                         ]
                 });
-                let resultCount = busqueda.runPaged().count;
-                log.debug('resultCount----', resultCount);
                 var pageData = busqueda.runPaged({ pageSize: 1000 });
                 pageData.pageRanges.forEach(pageRange => {
                     page = pageData.fetch({ index: pageRange.index });
@@ -260,7 +395,7 @@ define([
                         //arrSalesOrder.push(arrCustomer);
                     });
                 });
-                log.debug('JSON----', arrSalesOrder)
+                //log.debug('JSON----', arrSalesOrder)
                 return arrSalesOrder;
             } catch (e) {
                 log.error('Error en getSalesOrder', e);
@@ -461,15 +596,13 @@ define([
         }
 
         const getCobertura_bien = (id) => {
-            let cobertura = new Array();
+            let cobertura = [];
             try {
                 var busqueda = search.create({
                     type: "customrecord_ht_co_cobertura",
                     filters:
                         [
-                            ["custrecord_ht_co_bien", "anyof", id],
-                            // "AND",
-                            // ["custrecord_ht_co_estado_cobertura", "noneof", 4]
+                            ["custrecord_ht_co_bien", "anyof", id]
                         ],
                     columns:
                         [
@@ -477,8 +610,6 @@ define([
                             search.createColumn({ name: "custrecord_ht_co_numeroserieproducto", label: "Serie Producto" })
                         ]
                 });
-                let resultCount = busqueda.runPaged().count;
-                log.debug('resultCount-getCobertura_bien----', resultCount);
                 var savedsearch = busqueda.run().getRange(0, 100);
                 if (savedsearch.length > 0) {
                     busqueda.run().each(result => {

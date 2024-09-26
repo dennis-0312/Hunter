@@ -18,7 +18,6 @@ function (log, search, record, config, format){
     const AUTHORIZATION_MESSAGE = "AUTORIZADO";
     const DOCUMENTO_RETENCION = "07";
 
-
     const put = (requestBody) => {
         try {
             log.error("Put", requestBody)

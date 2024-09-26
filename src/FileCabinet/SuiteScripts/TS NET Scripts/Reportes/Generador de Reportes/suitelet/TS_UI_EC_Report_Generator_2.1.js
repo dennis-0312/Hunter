@@ -24,8 +24,6 @@ define([
             if (method == 'GET') {
 
                 //const PARAMETERS = userInterface.getFormattedParameters();
-
-
                 let form = userInterface.createForm(FIELDS.form.main.text);
                 form.setClientScript("../TS_CS_EC_Report_Generator_2.1.js");
 

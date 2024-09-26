@@ -8,7 +8,8 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
 
         const FTL_TEMPLATE_EXCEL = "./TS_FTL_EC_ATS_XLS_V.ftl"
         const MAX_PAGINATION_SIZE = 1000;
-        const FOLDER_ID = "506";
+        const FOLDER_ID = "585"; //SuiteScripts > TS NET Scripts > Reportes
+        const DEVELOPER_TRACKING_FOLDER = 22192  // SB:22192 - PR:19859 - SuiteScripts > TS NET Scripts > Reportes
 
         let currentScript = runtime.getCurrentScript();
 
@@ -76,7 +77,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
         }
 
         const getATSXLSVentasRet = (scriptParameters, environmentFeatures, atsArrayVentas) => {
-            //saveJson(atsArrayVentas, 'atsArray', 34500);
+            //saveJson(atsArrayVentas, 'atsArray', DEVELOPER_TRACKING_FOLDER);
             log.error('getATSXLSVentasRet', 'getATSXLSVentasRet');
             let atsXLSRetenciones = search.load({ id: 'customsearch_ec_ats_retenciones_mensual' });
             if (scriptParameters.periodId) {
@@ -178,7 +179,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
         }
 
         const getATSXLSVentasRetBanc = (scriptParameters, environmentFeatures, atsArrayVentas) => {
-            //saveJson(atsArrayVentas, 'pruebaXLSatsArrayVentas', 34500)
+            //saveJson(atsArrayVentas, 'pruebaXLSatsArrayVentas', DEVELOPER_TRACKING_FOLDER)
             log.error('getATSXLSVentasRet', 'getATSXLSVentasRetBanc');
             let atsXLSRetenciones = search.load({ id: 'customsearch_ec_ret_ban_men' });
             if (scriptParameters.periodId) {
@@ -255,7 +256,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
             }
             // let objResults = atsXLSRetenciones.run().getRange({ start: 0, end: 1000 });
             // log.debug('objResults', objResults);
-            saveJson(atsArrayVentas, 'objResults', 34500)
+            saveJson(atsArrayVentas, 'objResults', DEVELOPER_TRACKING_FOLDER)
             return atsArrayVentas
         };
 
@@ -387,7 +388,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
 
         const buildJsonForExcel = (ArrayXLS) => {
             let contenidoJSON = new Array();
-            saveJson(ArrayXLS, 'pruebaXLS', 34500)
+            saveJson(ArrayXLS, 'pruebaXLS', DEVELOPER_TRACKING_FOLDER)
             for (let i = 0; i < ArrayXLS.length; i++) {
                 let detalle = new Object();
                 let data = ArrayXLS[i];

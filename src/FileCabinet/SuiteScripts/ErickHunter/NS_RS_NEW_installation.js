@@ -361,7 +361,6 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
                     results.push(getResponseResult(postUserAssetCommandResponse.code, `POST: ${postUserAssetCommandUrl}`, userAssetCommandResponse));
                     if (OK_STATUS_CODE.indexOf(postUserAssetCommandResponse.code) == -1) return getResultResponse("error", results, JSON.stringify({ code: postUserAssetCommandResponse.code, error: userAssetCommandResponse }));
                     log.error("postUserAssetCommandResponse", userAssetCommandResponse);
-
                 } else if (!userAssetCommandFound.can_execute) {
                     let headers = getPatchHeaders();
                     let patchUserAssetCommandUrl = `${urlBase}/user-asset-command/${userAssetCommandFound.id}/`;

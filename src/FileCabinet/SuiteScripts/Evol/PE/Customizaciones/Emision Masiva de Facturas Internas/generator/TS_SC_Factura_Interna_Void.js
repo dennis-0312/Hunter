@@ -21,7 +21,7 @@ define(['N/email', 'N/file', 'N/log', 'N/record', 'N/runtime', 'N/search', 'N/ta
         const COMPROBANTE_FISCAL = 37
         const ESTADO_FACTURA_INTERNA = 2
         const CUSTOM_TRANSACTION_FACTURA_INTERNA = "customsale_ec_factura_interna";
-        const outputfoldervoid = 20073
+        const outputfoldervoid = 18061
         let currentScript = runtime.getCurrentScript();
         let message1 = 'Lote procesado correctamente.';
         let message2 = 'El registro no contiene un archivo de entrada.';

@@ -17,8 +17,9 @@ define([
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
     '../error/TS_CM_ErrorMessages',
-    '../routes/TS_ROUTER_Sales_Order'
-], (log, record, search, serverWidget, plugin, transaction, https, runtime, email, query, err, _controller, _constant, _errorMessage, _router) => {
+    '../routes/TS_ROUTER_Sales_Order',
+    'N/format'
+], (log, record, search, serverWidget, plugin, transaction, https, runtime, email, query, err, _controller, _constant, _errorMessage, _router, format) => {
     const beforeLoad = (scriptContext) => {
         if (scriptContext.type === scriptContext.UserEventType.VIEW) {
             try {
@@ -70,6 +71,33 @@ define([
         const objRecord = scriptContext.newRecord;
         let UserId = runtime.getCurrentUser();
         let usuario_id = UserId.id;
+        /***
+         * Validacion para la Reinstalacion de Custodia (campo custcol_ts_dispositivo_en_custodia)
+         */
+        let getDispositivoEnCustodia = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ts_dispositivo_en_custodia', line: 0 });
+
+        if (getDispositivoEnCustodia) {
+            let salesorderSearchObj = search.create({
+                type: "salesorder",
+                settings: [{ "name": "consolidationtype", "value": "ACCTTYPE" }],
+                filters:
+                    [
+                        ["type", "anyof", "SalesOrd"],
+                        "AND",
+                        ["custcol_ts_dispositivo_en_custodia", "is", getDispositivoEnCustodia],
+                        "AND",
+                        ["custcol_ts_dispositivo_en_custodia", "isnotempty", ""]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "custcol_ts_dispositivo_en_custodia", label: "Dispositivo en Custodia" }),
+                        search.createColumn({ name: "tranid", label: "Número de documento" })
+                    ]
+            });
+            salesorderSearchObj.run().each(function (result) {
+                throw 'El Dispositivo en Custodia ' + getDispositivoEnCustodia + ' ya se encuentra en la Orden de Servicio ' + result.getValue({ name: 'tranid' });
+            });
+        }
         try {
             if (scriptContext.type === scriptContext.UserEventType.CREATE || scriptContext.type === scriptContext.UserEventType.COPY) {
                 let vehiculo = objRecord.getValue('custbody_ht_so_bien');
@@ -223,6 +251,7 @@ define([
 
     const afterSubmit = (scriptContext) => {
         const form = scriptContext.form;
+
         if (scriptContext.type === scriptContext.UserEventType.CREATE || scriptContext.type === scriptContext.UserEventType.COPY) {
             try {
                 const currentRecord = scriptContext.newRecord;
@@ -234,16 +263,73 @@ define([
                 var recordLoad = record.load({ type: currentRecord.type, id: idRecord, isDynamic: true });
                 let formulario = recordLoad.getValue('customform');
                 // log.error('formulario', formulario)
-                let newSerie = getSerie(formulario);
-                // log.error('newSerie', newSerie)
-                recordLoad.setValue({ fieldId: 'tranid', value: newSerie });
+                const newSerie = getSerie(formulario);
+                log.error('NUEVO CORRELATIVO', newSerie);
+
+                recordLoad.setValue({ fieldId: 'tranid', value: newSerie, ignoreFieldChange: true });
+                recordLoad.setValue({ fieldId: 'custbody_ec_flag_correlativo_os', value: newSerie, ignoreFieldChange: true }); 
                 recordLoad.save({ ignoreMandatoryFields: true, enableSourcing: false });
+
+
+                // Cargar de nuevo y verificar el tranid
+
+
+
+
+                /*
+                                let attempts = 0;
+                let maxAttempts = 3;
+                let finalOrdenServicio;
+                
+                do {
+                    try {
+                        let objRecord2 = record.load({ type: 'salesorder', id: idRecord, isDynamic: true });
+                        finalOrdenServicio = objRecord2.getValue('tranid');
+                
+                        log.error('Intento:', attempts + 1, 'Valor actual de tranid:', finalOrdenServicio);
+                
+                        if (finalOrdenServicio !== newSerie) {
+                            log.error('El correlativo no coincide, se intentará guardar de nuevo.');
+                
+                            // Reasignar el correlativo y volver a guardar
+                            objRecord2.setValue({ fieldId: 'tranid', value: newSerie });
+                            let newSaveAttempt = objRecord2.save({ ignoreMandatoryFields: false, enableSourcing: true });
+                            log.error('Resultado del guardado:', newSaveAttempt);
+                
+                            // Verificar el valor de tranid después del guardado
+                            let updatedRecord = record.load({ type: 'salesorder', id: idRecord, isDynamic: true });
+                            let updatedTranid = updatedRecord.getValue('tranid');
+                            log.error("tranid después del guardado:", updatedTranid);
+                
+                            attempts++;
+                        }
+                    } catch (error) {
+                        log.error('Error al guardar el registro:', error);
+                        if (error.message.includes('locked')) {
+                            log.error('El registro está bloqueado, se intentará de nuevo después de un breve retraso.');
+                
+                            let waitTime = 5000; 
+                            let start = new Date().getTime();
+                            while (new Date().getTime() < start + waitTime) {
+                                // Esperar
+                            }
+                        } else {
+                            throw error;
+                        }
+                    }
+                } while (finalOrdenServicio !== newSerie && attempts < maxAttempts);
+                
+                if (finalOrdenServicio !== newSerie) {
+                    throw new Error('El correlativo sigue sin coincidir después de múltiples intentos.');
+                }*/
 
                 let objRecord = record.load({ type: 'salesorder', id: idRecord, isDynamic: true });
                 let customer = objRecord.getValue('entity');
                 let vehiculo = objRecord.getValue('custbody_ht_so_bien');
                 let isGenerico = validateGenerico(vehiculo);
                 let ordenServicio = objRecord.getValue('tranid');
+                log.error('CORRELATIVO', ordenServicio);
+
                 let numLines = objRecord.getLineCount({ sublistId: 'item' });
                 let aprobacionventa = objRecord.getValue('custbody_ht_os_aprobacionventa');
                 let aprobacioncartera = objRecord.getValue('custbody_ht_os_aprobacioncartera');
@@ -254,7 +340,8 @@ define([
                     generaOrdenTrabajo = 0, esGarantia = 0, esUpgrade = _constant.Valor.NO, ccd = 0, dispositivoEnCustodia = "", itemCustodia = {}, ttr = 0, renovamos = false,
                     plataformas = false, arrayRecipientsOriginal = new Array(), arrayRecipients = new Array(), esAlquiler = 0, definicionServicios = false, paralizador = false,
                     botonPanico = false, tag = 0, t_PPS = false, variasOT = new Array(), idItem = '', unidadTiempo;
-
+                log.error('objRecord', objRecord)
+                log.error('numLines', numLines)
                 for (let i = 0; i < numLines; i++) {
                     objRecord.selectLine({ sublistId: 'item', line: i });
                     let cantidad = objRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_tiempo_cobertura' });
@@ -365,192 +452,8 @@ define([
                     newAdjust.save();
                 }
 
-                //**BLOQUE DE RENOVACIÓN */
-                // if (parametro_aprob != _constant.Valor.SI && parametro_fact == _constant.Valor.NO) {
-                // } else {
-                //     if (parametro_aprob == _constant.Valor.SI) {
-                //         objRecord.setValue('orderstatus', 'A');
-                //         objRecord.setValue('custbody_ht_os_aprobacionventa', _constant.Status.APROBACION_PENDIENTE);
-                //     }
-
-                //     if (renovamos == true && aprobacionventa == _constant.Status.APROBADO && aprobacioncartera == _constant.Status.APROBADO) {
-                //         log.debug('Entry', 'Renovación Create');
-                //         var bien = objRecord.getValue('custbody_ht_so_bien');
-                //         var idCoberturaItem;
-                //         let busqueda_cobertura = new Array();
-                //         if (bien != '') {
-                //             busqueda_cobertura = getCoberturaItem(bien);
-                //         }
-                //         //log.debug('busqueda_cobertura', busqueda_cobertura);
-                //         if (busqueda_cobertura.length != 0) {
-                //             for (let i = 0; i < busqueda_cobertura.length; i++) {
-                //                 let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
-                //                 if (parametrosRespo != 0) {
-                //                     let valor_tipo_agrupacion_2 = 0;
-                //                     for (let j = 0; j < parametrosRespo.length; j++) {
-                //                         if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS)
-                //                             valor_tipo_agrupacion_2 = parametrosRespo[j][1];
-                //                         if (valor_tipo_agrupacion == valor_tipo_agrupacion_2)
-                //                             idCoberturaItem = busqueda_cobertura[i][1];
-                //                     }
-                //                 }
-                //             }
-                //         }
-
-                //         let vehiculo;
-                //         if (bien != '') {
-                //             vehiculo = search.lookupFields({ type: 'customrecord_ht_record_bienes', id: bien, columns: ['custrecord_ht_bien_id_telematic'] });
-                //         } else {
-                //             vehiculo.custrecord_ht_bien_id_telematic = '';
-                //         }
-
-                //         let cobertura = search.lookupFields({
-                //             type: 'customrecord_ht_co_cobertura',
-                //             id: idCoberturaItem,
-                //             columns: [
-                //                 'custrecord_ht_co_coberturainicial',
-                //                 'custrecord_ht_co_coberturafinal',
-                //                 'custrecord_ht_co_numeroserieproducto',
-                //                 'custrecord_ht_co_plazo',
-                //                 'custrecord_ht_co_estado_cobertura'
-                //             ]
-                //         });
-                //         log.debug('cobertura', cobertura);
-                //         let idDispositivo = cobertura.custrecord_ht_co_numeroserieproducto[0].value;
-                //         let coberturaplazo = cobertura.custrecord_ht_co_plazo;
-                //         //log.debug('idDispositivo', idDispositivo);
-                //         let coberturaAntigua = cobertura.custrecord_ht_co_coberturafinal;
-                //         let cobertura_inicial = cobertura.custrecord_ht_co_coberturainicial;
-                //         cobertura_inicial = cobertura_inicial.split('/');
-                //         let nuevaCoberturaInicial = cobertura_inicial[1] + '/' + cobertura_inicial[0] + '/' + cobertura_inicial[2];
-
-                //         if (cobertura.custrecord_ht_co_estado_cobertura[0].value == _constant.Status.ACTIVO) {
-
-                //         } else if (cobertura.custrecord_ht_co_estado_cobertura[0].value == _constant.Status.SUSPENDIDO) {
-
-                //         }
-
-                //         // const fechaInicial = new Date('2024-01-02');
-                //         // const fechaFinal = new Date('2025-01-02');
-                //         //let fechas = sumarTiempo(cantidad, unidadTiempo, fechaInicial, fechaFinal, noanticipado)
-
-                //         var fechaInicial = Date.parse(nuevaCoberturaInicial);
-                //         var newDateInicial = new Date(fechaInicial);
-                //         let producto = search.lookupFields({ type: 'customrecord_ht_record_mantchaser', id: idDispositivo, columns: ['custrecord_ht_mc_id_telematic'] });
-                //         var idTelematic = producto.custrecord_ht_mc_id_telematic;
-                //         //log.debug('idTelematic', idTelematic);
-                //         coberturaAntigua = coberturaAntigua.split('/');
-                //         var nuevaCoberturaAntigua = coberturaAntigua[1] + '/' + coberturaAntigua[0] + '/' + coberturaAntigua[2];
-                //         var fechaAntigua = Date.parse(nuevaCoberturaAntigua);
-                //         var newDateAntigua = new Date(fechaAntigua);
-                //         var fechaNuevaDia = newDateAntigua.setDate(newDateAntigua.getDate());
-                //         fechaNuevaDia = new Date(fechaNuevaDia);
-                //         var fechaNuevaCompletaAntigua = new Date(fechaAntigua);
-                //         var fechaNuevaCompleta = fechaNuevaCompletaAntigua.setDate(fechaNuevaCompletaAntigua.getDate());
-                //         fechaNuevaCompleta = new Date(fechaNuevaCompleta);
-                //         plazo = Number(plazo);
-                //         if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.ANIO) {
-                //             plazo = plazo * 12;
-                //             fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
-                //             //log.debug('_constant.Constants.UNIDAD_TIEMPO.ANIO', unidadTiempo);
-                //         } else if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.DIA) {
-                //             fechaNuevaCompleta.setDate(fechaNuevaCompleta.getDate() + plazo);
-                //             //log.debug('_constant.Constants.UNIDAD_TIEMPO.DIA', unidadTiempo);
-                //         } else {
-                //             fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
-                //             //log.debug('_constant.Constants.UNIDAD_TIEMPO.MESES', unidadTiempo);
-                //         }
-                //         // plazo = plazo * 12;
-                //         // fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + 5);
-                //         fechaNuevaCompleta = new Date(fechaNuevaCompleta);
-                //         fechaNuevaCompleta = obtenerFechaHoraConFormatoConTimezone(fechaNuevaCompleta);
-                //         coberturaplazo = Number(coberturaplazo);
-                //         var plazoTotal = parseFloat(plazo) + parseFloat(coberturaplazo);
-                //         var hoy = new Date();
-                //         log.debug('fechaNuevaCompleta2', fechaNuevaCompleta);
-                //         log.debug('plazo', plazo);
-                //         log.debug('plazoTotal', plazoTotal);
-                //         let telemat = {
-                //             id: vehiculo.custrecord_ht_bien_id_telematic,
-                //             state: 1,
-                //             product_expire_date: fechaNuevaCompleta,
-                //         }
-
-                //         if (plataformas == true && t_PPS == true) {
-                //             log.debug('Entry', 'If');
-                //             let Telematic = envioTelematic(telemat);
-                //             Telematic = JSON.parse(Telematic);
-                //             if (Telematic.asset) {
-                //                 log.debug('Entry', 'If: ' + Telematic.asset);
-                //                 record.submitFields({
-                //                     type: 'customrecord_ht_co_cobertura',
-                //                     id: idCoberturaItem,
-                //                     values: {
-                //                         'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
-                //                         'custrecord_ht_co_plazo': plazoTotal
-                //                     },
-                //                     options: { enableSourcing: false, ignoreMandatoryFields: true }
-                //                 });
-                //                 let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
-                //                 let response = objRecord_detalle.save();
-                //             }
-                //         } else {
-                //             log.debug('Entry', 'Else');
-                //             if (newDateAntigua < hoy && t_PPS == true) {
-                //                 log.debug('Entry', 'Else: ' + newDateAntigua);
-                //                 record.submitFields({
-                //                     type: 'customrecord_ht_co_cobertura',
-                //                     id: idCoberturaItem,
-                //                     values: {
-                //                         'custrecord_ht_co_coberturainicial': new Date(fechaNuevaDia),
-                //                         'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
-                //                         'custrecord_ht_co_plazo': plazo
-                //                     },
-                //                     options: { enableSourcing: false, ignoreMandatoryFields: true }
-                //                 });
-                //                 let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
-                //                 let response = objRecord_detalle.save();
-                //             } else if (t_PPS == true) {
-                //                 record.submitFields({
-                //                     type: 'customrecord_ht_co_cobertura',
-                //                     id: idCoberturaItem,
-                //                     values: {
-                //                         'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
-                //                         'custrecord_ht_co_plazo': plazoTotal
-                //                     },
-                //                     options: { enableSourcing: false, ignoreMandatoryFields: true }
-                //                 });
-                //                 let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
-                //                 objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
-                //                 let response = objRecord_detalle.save();
-
-                //             }
-                //         }
-                //     }
-
-                //     if (objRecord.getValue('custbody_ht_os_issue_invoice') == true) {
-                //         _controller.createInvoice(objRecord.id);
-                //     }
-                //     objRecord.save({ ignoreMandatoryFields: true, enableSourcing: false });
-                // }
-
-
                 //*BLOQUE CHEQUEO, DESINSTALACIÓN: Identificar instalación para asociar a la ot
-                if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO || adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
+                if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO || adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP || adp == _constant.Valor.VALOR_007_CHEQUEO_DE_COMPONENTES) {
                     let out = 0;
                     let busqueda_cobertura = new Array();
                     let bien = objRecord.getValue('custbody_ht_so_bien');
@@ -834,6 +737,19 @@ define([
                         }
                     }
                 }
+
+
+
+                let finalRecord = record.load({ type: 'salesorder', id: idRecord, isDynamic: false });
+                let finalOrdenServicio = finalRecord.getValue('tranid');
+                log.error('TRANID FINAL', finalOrdenServicio);
+
+                if (finalOrdenServicio !== newSerie) {
+                    throw new Error('El correlativo sigue sin coincidir después del guardado.');
+                }
+
+
+
             } catch (error) {
                 log.error('Error-Create', error);
             }
@@ -871,8 +787,8 @@ define([
             let plataformas = false;
 
             log.error('statusrefEdit', objRecord.getValue('statusRef'));
-            log.error('aprobacionventaEdit', aprobacionventa)
-            log.error('aprobacioncarteraEdit', aprobacioncartera)
+            log.error('aprobacionventaEdit', aprobacionventa);
+            log.error('aprobacioncarteraEdit', aprobacioncartera);
             try {
                 if (aprobacionventa == _constant.Status.APROBADO && aprobacioncartera == _constant.Status.APROBADO) {
                     log.debug('Track1', 'Track1');
@@ -889,38 +805,27 @@ define([
                             for (let j = 0; j < parametrosRespo.length; j++) {
                                 if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO)
                                     parametro = parametrosRespo[j][1];
-
                                 if (parametrosRespo[j][0] == _constant.Parameter.CPC_HMONITOREO_CAMBIO_PROPETARIO_CON_COBERTURAS)
                                     parametrocambpropcobertura = parametrosRespo[j][1];
-
                                 //*CAMBIO TAG A FAM */
                                 // if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO)
                                 //     valor_tipo_agrupacion = parametrosRespo[j][1];
-
                                 if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS)
                                     valor_tipo_agrupacion = parametrosRespo[j][1];
-
                                 if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO)
                                     adp = parametrosRespo[j][1]
-
                                 if (parametrosRespo[j][0] == _constant.Parameter.TTR_TIPO_TRANSACCION)
                                     ttr = parametrosRespo[j][1]
-
                                 if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS)
                                     fam = parametrosRespo[j][1]
-
                                 if (parametrosRespo[j][0] == _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS)
                                     ccd = parametrosRespo[j][1]
-
                                 if (parametrosRespo[j][0] == _constant.Parameter.CPR_CONVERSION_DE_PRODUCTO_UPGRADE && parametrosRespo[j][1] == _constant.Valor.SI)
                                     esUpgrade = _constant.Valor.SI;
-
                                 if (parametrosRespo[j][0] == _constant.Parameter.TCH_TIPO_CHEQUEO_OT)
                                     paramChequeo = parametrosRespo[j][1];
-
                                 if (parametrosRespo[j][0] == _constant.Parameter.PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA && parametrosRespo[j][1] == _constant.Valor.VALOR_X_USO_CONVENIOS)
                                     esConvenio == 2
-
                                 if (parametrosRespo[j][1] == _constant.Valor.VALOR_004_RENOVACION_DE_DISP) {
                                     renovamos = true;
                                     plazo += cantidad;
@@ -1035,7 +940,7 @@ define([
                         }
                     }
 
-                    log.debug('parametrosRespo[j][0]', parametrosRespo)
+                    //log.debug('parametrosRespo[j][0]', parametrosRespo)
                     log.debug('esConvenio', esConvenio)
 
                     if (adp == _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO) {
@@ -1088,197 +993,486 @@ define([
                         } catch (error) { }
                     }
 
+                    //**BLOQUE DE RENOVACIÓN */
                     log.debug('objRecord.getValue(custbody_ht_so_renovacion_aplicada)', objRecord.getValue('custbody_ht_so_renovacion_aplicada'))
+                    log.debug('renovamos', renovamos)
                     if (renovamos == true && objRecord.getValue('custbody_ht_so_renovacion_aplicada') == false) {
-                        log.debug('Entry', 'Renovación Edit');
-                        var bien = objRecord.getValue('custbody_ht_so_bien');
-                        var idCoberturaItem;
-                        let busqueda_cobertura = new Array();
-                        if (bien != '') {
-                            busqueda_cobertura = getCoberturaItem(bien);
+                        let hayRenovacion = 1;
+                        const fechaActual = new Date();
+                        const resultados = {};
+                        let sql = "SELECT tl.item as item, tl.custcol_ht_os_tiempo_cobertura as tiempo, tl.custcol_ht_os_und_tiempo_cobertura as unidad " +
+                            "FROM TransactionLine tl " +
+                            "INNER JOIN customrecord_ht_pp_main_param_prod pa ON pa.custrecord_ht_pp_parametrizacionid = tl.item " +
+                            "WHERE tl.itemtype = 'Service' " +
+                            "AND tl.transaction = ? " +
+                            "AND pa.custrecord_ht_pp_parametrizacion_valor = ?"
+                        let params = [idRecord, _constant.Valor.VALOR_004_RENOVACION_DE_DISP];
+                        let results = query.runSuiteQL({ query: sql, params: params }).asMappedResults();
+                        log.debug('results.runSuiteQL', results);
+                        for (let j = 0; j < results.length; j++) {
+                            let sql1 = "SELECT va.custrecord_ht_pp_codigo as codigofamilia " +
+                                "FROM  customrecord_ht_cr_pp_valores va " +
+                                "INNER JOIN customrecord_ht_pp_main_param_prod pa ON pa.custrecord_ht_pp_parametrizacion_valor= va.id " +
+                                "INNER JOIN customrecord_ht_cr_parametrizacion_produ pp ON pa.custrecord_ht_pp_parametrizacion_rela= pp.id " +
+                                "WHERE pa.custrecord_ht_pp_parametrizacionid = ? " +
+                                "AND pp.custrecord_ht_pp_code = ?"
+                            let params1 = [results[j].item, 'FAM'];
+                            let results1 = query.runSuiteQL({ query: sql1, params: params1 }).asMappedResults();
+                            results[j].familia = results1[0].codigofamilia
                         }
-                        log.debug('busqueda_cobertura', busqueda_cobertura);
-                        if (busqueda_cobertura.length != 0) {
-                            for (let i = 0; i < busqueda_cobertura.length; i++) {
-                                let parametrosRespo = _controller.parametrizacion(busqueda_cobertura[i][0]);
-                                if (parametrosRespo != 0) {
-                                    let valor_tipo_agrupacion_2 = 0;
-                                    for (let j = 0; j < parametrosRespo.length; j++) {
-                                        if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS)
-                                            valor_tipo_agrupacion_2 = parametrosRespo[j][1];
-                                        if (valor_tipo_agrupacion == valor_tipo_agrupacion_2)
-                                            idCoberturaItem = busqueda_cobertura[i][1];
+                        log.debug('results.runSuiteQL.Before.Group', results);
+                        for (let i = 0; i < results.length; i++) {
+                            const { item, tiempo, unidad, familia } = results[i];
+                            if (!resultados[familia]) {
+                                resultados[familia] = {
+                                    item: item,
+                                    tiempo: 0,
+                                    unidad: unidad
+                                };
+                            }
+                            resultados[familia].tiempo += parseInt(tiempo);
+                        }
+                        results = Object.values(resultados);
+                        log.debug('results.runSuiteQL.After.Group', results);
+                        if (results.length > 0) {
+                            let vehiculo;
+                            if (bien != '') {
+                                vehiculo = search.lookupFields({ type: 'customrecord_ht_record_bienes', id: bien, columns: ['custrecord_ht_bien_id_telematic'] });
+                            } else {
+                                vehiculo.custrecord_ht_bien_id_telematic = '';
+                            }
+                            for (let i = 0; i < results.length; i++) {
+                                let familiaArtOS = _controller.getParameter(results[i].item, _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS);
+                                plataformas = _controller.getParameter(results[i].item, _constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS);
+                                plataformas = plataformas == _constant.Valor.SI ? true : false;
+                                t_PPS = _controller.getParameter(results[i].item, _constant.Parameter.PPS_PEDIR_PERIODO_DE_SERVICIO);
+                                t_PPS = t_PPS == _constant.Valor.SI ? true : false;
+                                let unidadTiempo = results[i].unidad;
+                                let tiempo = results[i].tiempo
+                                log.debug("Familia-OS", `${familiaArtOS}`);
+                                let sql2 = "SELECT id, custrecord_ht_co_coberturainicial, custrecord_ht_co_coberturafinal, custrecord_ht_co_numeroserieproducto, custrecord_ht_co_plazo, " +
+                                    "custrecord_ht_co_estado_cobertura " +
+                                    "FROM customrecord_ht_co_cobertura " +
+                                    "WHERE custrecord_ht_co_familia_prod = ? " +
+                                    "AND custrecord_ht_co_bien = ?"
+                                let params2 = [familiaArtOS, bien];
+                                let results2 = query.runSuiteQL({ query: sql2, params: params2 }).asMappedResults();
+                                log.debug('results2.runSuiteQL', results2);
+                                if (results2.length > 0) {
+                                    for (let j = 0; j < results2.length; j++) {
+                                        let idCoberturaItem = results2[j].id
+                                        log.debug('idCoberturaItem', idCoberturaItem);
+                                        let idDispositivo = results2[j].custrecord_ht_co_numeroserieproducto;
+                                        let coberturaplazo = results2[j].custrecord_ht_co_plazo;
+                                        let coberturaAntigua = results2[j].custrecord_ht_co_coberturafinal;
+                                        const partes = coberturaAntigua.split("/");
+                                        let fechaValidar = new Date(partes[2], partes[1] - 1, partes[0]);
+                                        if (fechaValidar <= fechaActual) {
+                                            const dia = String(fechaActual.getDate()).padStart(2, '0');
+                                            const mes = String(fechaActual.getMonth() + 1).padStart(2, '0');
+                                            const año = fechaActual.getFullYear();
+                                            coberturaAntigua = `${dia}/${mes}/${año}`;
+                                        }
+                                        log.debug('coberturaAntigua', coberturaAntigua);
+                                        // let cobertura_inicial = results2[j].custrecord_ht_co_coberturainicial;
+                                        // cobertura_inicial = cobertura_inicial.split('/');
+                                        // let nuevaCoberturaInicial = cobertura_inicial[1] + '/' + cobertura_inicial[0] + '/' + cobertura_inicial[2];
+                                        // var fechaInicial = Date.parse(nuevaCoberturaInicial);
+                                        // var newDateInicial = new Date(fechaInicial);
+                                        let producto = search.lookupFields({ type: 'customrecord_ht_record_mantchaser', id: idDispositivo, columns: ['custrecord_ht_mc_id_telematic'] });
+                                        var idTelematic = producto.custrecord_ht_mc_id_telematic;
+                                        log.debug('idTelematic', idTelematic);
+                                        coberturaAntigua = coberturaAntigua.split('/');
+                                        var nuevaCoberturaAntigua = coberturaAntigua[1] + '/' + coberturaAntigua[0] + '/' + coberturaAntigua[2];
+                                        log.debug('nuevaCoberturaAntigua', nuevaCoberturaAntigua);
+                                        var fechaAntigua = Date.parse(nuevaCoberturaAntigua);
+                                        log.debug('fechaAntigua', fechaAntigua);
+                                        var newDateAntigua = new Date(fechaAntigua);
+                                        log.debug('newDateAntigua', newDateAntigua);
+                                        var fechaNuevaDia = newDateAntigua.setDate(newDateAntigua.getDate());
+                                        fechaNuevaDia = new Date(fechaNuevaDia);
+                                        log.debug('fechaNuevaDia', fechaNuevaDia);
+                                        var fechaNuevaCompletaAntigua = new Date(fechaAntigua);
+                                        var fechaNuevaCompleta = fechaNuevaCompletaAntigua.setDate(fechaNuevaCompletaAntigua.getDate());
+                                        fechaNuevaCompleta = new Date(fechaNuevaCompleta);
+                                        plazo = Number(tiempo);
+                                        if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.ANIO) {
+                                            plazo = plazo * 12;
+                                            fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
+                                            log.debug('_constant.Constants.UNIDAD_TIEMPO.ANIO', unidadTiempo);
+                                        } else if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.DIA) {
+                                            fechaNuevaCompleta.setDate(fechaNuevaCompleta.getDate() + plazo);
+                                            log.debug('_constant.Constants.UNIDAD_TIEMPO.DIA', unidadTiempo);
+                                        } else {
+                                            fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
+                                            log.debug('_constant.Constants.UNIDAD_TIEMPO.MESES', unidadTiempo);
+                                        }
+                                        fechaNuevaCompleta = new Date(fechaNuevaCompleta);
+                                        fechaNuevaCompleta = obtenerFechaHoraConFormatoConTimezone(fechaNuevaCompleta);
+                                        coberturaplazo = Number(coberturaplazo);
+                                        var plazoTotal = parseFloat(plazo) + parseFloat(coberturaplazo);
+                                        var hoy = new Date();
+                                        log.debug('fechaNuevaCompleta2', fechaNuevaCompleta);
+                                        log.debug('plazo', plazo);
+                                        log.debug('plazoTotal', plazoTotal);
+                                        let telemat = {
+                                            id: vehiculo.custrecord_ht_bien_id_telematic,
+                                            state: 1,
+                                            product_expire_date: fechaNuevaCompleta,
+                                        }
+                                        if (plataformas == true && t_PPS == true) {
+                                            log.debug('Entry', 'If');
+                                            let Telematic = envioTelematic(telemat);
+                                            Telematic = JSON.parse(Telematic);
+                                            log.debug('Telematic-Entry', Telematic);
+                                            if (Telematic.asset) {
+                                                log.debug('Entry', 'If: ' + Telematic.asset);
+                                                record.submitFields({
+                                                    type: 'customrecord_ht_co_cobertura',
+                                                    id: idCoberturaItem,
+                                                    values: {
+                                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
+                                                        'custrecord_ht_co_plazo': plazoTotal,
+                                                        'custrecord_ht_co_estado_cobertura': _constant.Status.ACTIVO
+
+                                                    },
+                                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                                });
+                                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
+                                                objRecord_detalle.save();
+                                            }
+                                        } else {
+                                            log.debug('Entry', 'Else');
+                                            if (newDateAntigua < hoy && t_PPS == true) {
+                                                log.debug('Entry', 'Else: ' + newDateAntigua);
+                                                record.submitFields({
+                                                    type: 'customrecord_ht_co_cobertura',
+                                                    id: idCoberturaItem,
+                                                    values: {
+                                                        'custrecord_ht_co_coberturainicial': new Date(fechaNuevaDia),
+                                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
+                                                        'custrecord_ht_co_plazo': plazo,
+                                                        'custrecord_ht_co_estado_cobertura': _constant.Status.ACTIVO
+                                                    },
+                                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                                });
+                                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
+                                                objRecord_detalle.save();
+                                            } else if (t_PPS == true) {
+                                                record.submitFields({
+                                                    type: 'customrecord_ht_co_cobertura',
+                                                    id: idCoberturaItem,
+                                                    values: {
+                                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
+                                                        'custrecord_ht_co_plazo': plazoTotal,
+                                                        'custrecord_ht_co_estado_cobertura': _constant.Status.ACTIVO
+                                                    },
+                                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                                });
+                                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
+                                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
+                                                objRecord_detalle.save();
+                                            }
+                                        }
                                     }
+                                } else {
+                                    log.debug('Mapeo-Cobertura', results[i].item + ' No tiene cobertura.')
                                 }
                             }
-                        }
-
-                        let vehiculo;
-                        if (bien != '') {
-                            vehiculo = search.lookupFields({ type: 'customrecord_ht_record_bienes', id: bien, columns: ['custrecord_ht_bien_id_telematic'] });
                         } else {
-                            vehiculo.custrecord_ht_bien_id_telematic = '';
+                            log.debug('Debug', 'No es Orden de Servicio por Renovación')
+                            hayRenovacion = 0
                         }
 
-                        let cobertura = search.lookupFields({
-                            type: 'customrecord_ht_co_cobertura',
-                            id: idCoberturaItem,
-                            columns: [
-                                'custrecord_ht_co_coberturainicial',
-                                'custrecord_ht_co_coberturafinal',
-                                'custrecord_ht_co_numeroserieproducto',
-                                'custrecord_ht_co_plazo',
-                                'custrecord_ht_co_estado_cobertura'
+                        if (hayRenovacion == 1) {
+                            let serviceOrderrecordUp = record.submitFields({
+                                type: 'salesorder',
+                                id: idRecord,
+                                values: {
+                                    'custbody_ht_so_renovacion_aplicada': true,
+                                },
+                                options: { enableSourcing: true, ignoreMandatoryFields: true }
+                            });
+                            log.error('serviceOrderrecordUp', 'Orden de Servicio ' + serviceOrderrecordUp + ' actualizada por aplicación de renovación')
+                        }
+                    }
+
+                }
+
+
+                /**BLOQUE COBERTURA SIN ORDEN DE TRABAJO
+                    * Condiciones:
+                    * 1. El articulo debe de tener el paramtro ADP - ACCION DEL PRODUCTO = 008 - VENTA SEGUROS
+                    * 2. El articulo debe de ser del tipo serviceitem 
+                */
+                let articulo = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: 0 });
+                let articulo_type = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'itemtype', line: 0 });
+                let parametrosArticulo = getParamFamiliaProductosArticuloOSDesinstalacion(_constant.Parameter.ADP_ACCION_DEL_PRODUCTO, articulo);
+                let aprobacionventaCobertura = objRecord.getValue('custbody_ht_os_aprobacionventa');
+                let aprobacioncarteraCobertura = objRecord.getValue('custbody_ht_os_aprobacioncartera');
+
+                log.debug('parametrosArticulo', {
+                    articulo: articulo,
+                    articulo_type: articulo_type,
+                    parametrosArticulo: parametrosArticulo
+
+                });
+                log.debug('JCEC scriptContext.type', scriptContext.type);
+                if (scriptContext.type === scriptContext.UserEventType.CREATE || scriptContext.type === scriptContext.UserEventType.COPY) {
+
+                    const idRecordTest = scriptContext.newRecord.id;
+                    //Validacion 1
+                    let validacion1 = false;
+
+                    let validacionDescuento = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'rate', line: 0 });//Precion UNitario del Articulo
+                    let validacionGarantia = true; // Por el momento no hay campo en la orden de venta que valide la garantia
+                    let validacionNivelPrecio = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_nivelprecio', line: 0 });//Nivel de Precio 
+                    let validacionAPRSolicitaAprobacion = false;
+
+                    let validacionSearch2 = {}
+                    let searchValidacion = search.create({
+                        type: "salesorder",
+                        filters:
+                            [
+                                ["internalid", "anyof", idRecordTest],
+                            ],
+                        columns:
+                            [
+                                search.createColumn({ name: "custitem_ht_at_solicitaaprobacion", join: "item", label: "APR_SOLICITA_APRO" }),
+                                search.createColumn({ name: "creditlimit", join: "customerMain", label: "Item" }),
+                                search.createColumn({ name: "unbilledorders", join: "customerMain", label: "Item" }),
+                                search.createColumn({ name: "overduebalance", join: "customerMain", label: "Item" }),
+
                             ]
-                        });
-                        log.debug('cobertura', cobertura);
-                        let idDispositivo = cobertura.custrecord_ht_co_numeroserieproducto[0].value;
-                        let coberturaplazo = cobertura.custrecord_ht_co_plazo;
-                        //log.debug('idDispositivo', idDispositivo);
-                        let coberturaAntigua = cobertura.custrecord_ht_co_coberturafinal;
-                        let cobertura_inicial = cobertura.custrecord_ht_co_coberturainicial;
-                        cobertura_inicial = cobertura_inicial.split('/');
-                        let nuevaCoberturaInicial = cobertura_inicial[1] + '/' + cobertura_inicial[0] + '/' + cobertura_inicial[2];
+                    });
 
-                        if (cobertura.custrecord_ht_co_estado_cobertura[0].value == _constant.Status.ACTIVO) {
+                    searchValidacion.run().each(function (result) {
+                        validacionAPRSolicitaAprobacion = !result.getValue({ name: "custitem_ht_at_solicitaaprobacion", join: "item" });
+                        validacionSearch2.creditlimit = result.getValue({ name: "creditlimit", join: "customerMain" });
+                        validacionSearch2.unbilledorders = result.getValue({ name: "unbilledorders", join: "customerMain" });
+                        validacionSearch2.overduebalance = result.getValue({ name: "overduebalance", join: "customerMain" });
 
-                        } else if (cobertura.custrecord_ht_co_estado_cobertura[0].value == _constant.Status.SUSPENDIDO) {
+                        return true;
+                    });
 
-                        }
 
-                        // const fechaInicial = new Date('2024-01-02');
-                        // const fechaFinal = new Date('2025-01-02');
-                        //let fechas = sumarTiempo(cantidad, unidadTiempo, fechaInicial, fechaFinal, noanticipado)
+                    if (validacionDescuento != 0 && validacionGarantia && validacionNivelPrecio != 'Personalizado' && validacionAPRSolicitaAprobacion) {
+                        validacion1 = true;
+                    }
 
-                        var fechaInicial = Date.parse(nuevaCoberturaInicial);
-                        var newDateInicial = new Date(fechaInicial);
-                        let producto = search.lookupFields({ type: 'customrecord_ht_record_mantchaser', id: idDispositivo, columns: ['custrecord_ht_mc_id_telematic'] });
-                        var idTelematic = producto.custrecord_ht_mc_id_telematic;
-                        //log.debug('idTelematic', idTelematic);
-                        coberturaAntigua = coberturaAntigua.split('/');
-                        var nuevaCoberturaAntigua = coberturaAntigua[1] + '/' + coberturaAntigua[0] + '/' + coberturaAntigua[2];
-                        //log.debug('nuevaCoberturaAntigua', nuevaCoberturaAntigua);
-                        var fechaAntigua = Date.parse(nuevaCoberturaAntigua);
-                        //log.debug('fechaAntigua', fechaAntigua);
-                        var newDateAntigua = new Date(fechaAntigua);
-                        //log.debug('newDateAntigua', newDateAntigua);
-                        var fechaNuevaDia = newDateAntigua.setDate(newDateAntigua.getDate());
-                        fechaNuevaDia = new Date(fechaNuevaDia);
-                        //log.debug('fechaNuevaDia', fechaNuevaDia);
-                        var fechaNuevaCompletaAntigua = new Date(fechaAntigua);
-                        var fechaNuevaCompleta = fechaNuevaCompletaAntigua.setDate(fechaNuevaCompletaAntigua.getDate());
-                        fechaNuevaCompleta = new Date(fechaNuevaCompleta);
-                        plazo = Number(plazo);
-                        if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.ANIO) {
-                            plazo = plazo * 12;
-                            fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
-                            //log.debug('_constant.Constants.UNIDAD_TIEMPO.ANIO', unidadTiempo);
-                        } else if (unidadTiempo == _constant.Constants.UNIDAD_TIEMPO.DIA) {
-                            fechaNuevaCompleta.setDate(fechaNuevaCompleta.getDate() + plazo);
-                            //log.debug('_constant.Constants.UNIDAD_TIEMPO.DIA', unidadTiempo);
-                        } else {
-                            fechaNuevaCompleta.setMonth(fechaNuevaCompleta.getMonth() + plazo);
-                            //log.debug('_constant.Constants.UNIDAD_TIEMPO.MESES', unidadTiempo);
-                        }
-                        fechaNuevaCompleta = new Date(fechaNuevaCompleta);
-                        fechaNuevaCompleta = obtenerFechaHoraConFormatoConTimezone(fechaNuevaCompleta);
-                        coberturaplazo = Number(coberturaplazo);
-                        var plazoTotal = parseFloat(plazo) + parseFloat(coberturaplazo);
-                        var hoy = new Date();
-                        log.debug('fechaNuevaCompleta2', fechaNuevaCompleta);
-                        log.debug('plazo', plazo);
-                        log.debug('plazoTotal', plazoTotal);
-                        let telemat = {
-                            id: vehiculo.custrecord_ht_bien_id_telematic,
-                            state: 1,
-                            product_expire_date: fechaNuevaCompleta,
-                        }
+                    //Validacion 2
+                    let validacion2 = false;
 
-                        if (plataformas == true && t_PPS == true) {
-                            log.debug('Entry', 'If');
-                            let Telematic = envioTelematic(telemat);
-                            Telematic = JSON.parse(Telematic);
-                            if (Telematic.asset) {
-                                log.debug('Entry', 'If: ' + Telematic.asset);
-                                record.submitFields({
-                                    type: 'customrecord_ht_co_cobertura',
-                                    id: idCoberturaItem,
-                                    values: {
-                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
-                                        'custrecord_ht_co_plazo': plazoTotal
-                                    },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
-                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
-                                let response = objRecord_detalle.save();
+                    let validacionTotal = objRecord.getValue('total');
+                    let validacionLimiteCredito = validacionSearch2.creditlimit;
+                    let validacionOrdenesNoFacturadas = validacionSearch2.unbilledorders;
+                    let validacionSaldoVencido = validacionSearch2.overduebalance;
+
+                    let formula = validacionLimiteCredito - validacionOrdenesNoFacturadas - validacionSaldoVencido;
+
+                    if (validacionTotal <= formula) {
+                        validacion2 = true;
+                    }
+
+                    log.debug('Validaciones', {
+                        validacion1: validacion1,
+                        validacion2: validacion2,
+                        validacionDescuento: validacionDescuento,
+                        validacionGarantia: validacionGarantia,
+                        validacionNivelPrecio: validacionNivelPrecio,
+                        validacionAPRSolicitaAprobacion: validacionAPRSolicitaAprobacion,
+                        validacionTotal: validacionTotal,
+                        validacionLimiteCredito: validacionLimiteCredito,
+                        validacionOrdenesNoFacturadas: validacionOrdenesNoFacturadas,
+                        validacionSaldoVencido: validacionSaldoVencido,
+                        formula: formula
+                    }
+                    );
+                    if (validacion1 && validacion2) {
+                        try {
+                            if (articulo_type == 'Service' && parametrosArticulo.valorTexto == '008 - VENTA SEGUROS') {
+                                let params = {};
+                                params.plazo = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_tiempo_cobertura', line: 0 });
+                                params.fechaInicio = scriptContext.newRecord.getValue('trandate');
+                                let cobertura = getCobertura(params.plazo, objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_und_tiempo_cobertura', line: 0 }), params.fechaInicio, params.fechaInicio).coberturaFinal;
+                                // le damos formato a las fechas  
+                                let fechaFinal = cobertura;
+
+                                params.bien = scriptContext.newRecord.getValue('custbody_ht_so_bien');
+                                params.producto = articulo;
+                                params.estado = 1;
+                                params.fechaFinal = fechaFinal;
+                                params.familia = getParamFamiliaProductosArticuloOSDesinstalacion(_constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS, articulo).valor;
+                            
+
+
+                                log.debug('params', params);
+
+
+                                let newCoberturaId = crearCoberturaSinOt(params);
+                                log.debug('newCoberturaId', newCoberturaId);
+
+
+                                let paramsDetalle = {};
+                                paramsDetalle.IdCobertura = newCoberturaId;
+                                paramsDetalle.IdOrdenServicio = idRecord;
+                                paramsDetalle.concepto = 16;
+
+                                let detalleIdCobertura = crearHTDetalleCobertura(paramsDetalle);
+                                log.debug('detalleIdCobertura', detalleIdCobertura);
+
+
+
                             }
-                        } else {
-                            log.debug('Entry', 'Else');
-                            if (newDateAntigua < hoy && t_PPS == true) {
-                                log.debug('Entry', 'Else: ' + newDateAntigua);
-                                record.submitFields({
-                                    type: 'customrecord_ht_co_cobertura',
-                                    id: idCoberturaItem,
-                                    values: {
-                                        'custrecord_ht_co_coberturainicial': new Date(fechaNuevaDia),
-                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
-                                        'custrecord_ht_co_plazo': plazo
-                                    },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
-                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
-                                let response = objRecord_detalle.save();
-                            } else if (t_PPS == true) {
-                                record.submitFields({
-                                    type: 'customrecord_ht_co_cobertura',
-                                    id: idCoberturaItem,
-                                    values: {
-                                        'custrecord_ht_co_coberturafinal': new Date(fechaNuevaCompleta),
-                                        'custrecord_ht_co_plazo': plazoTotal
-                                    },
-                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                                });
-                                let objRecord_detalle = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: idCoberturaItem });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: idRecord });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: _constant.Status.RENOVACION });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_inicial', value: new Date(fechaNuevaDia) });
-                                objRecord_detalle.setValue({ fieldId: 'custrecord_ht_ct_fecha_final', value: new Date(fechaNuevaCompleta) });
-                                let response = objRecord_detalle.save();
-                            }
+                        } catch (error) {
+                            log.error('Error-CoberturaSinOT', error);
                         }
+                    }
 
-                        let serviceOrderrecordUp = record.submitFields({
-                            type: 'salesorder',
-                            id: idRecord,
-                            values: {
-                                'custbody_ht_so_renovacion_aplicada': true,
-                            },
-                            options: { enableSourcing: true, ignoreMandatoryFields: true }
-                        });
-                        log.error('serviceOrderrecordUp', 'Orden de Servicio ' + serviceOrderrecordUp + ' actualizada por aplicación de renovación')
+
+                } else if (scriptContext.type === scriptContext.UserEventType.EDIT) {
+                    let customrecord_ht_ct_cobertura_transactionSearchObj = search.create({
+                        type: "customrecord_ht_ct_cobertura_transaction",
+                        filters:
+                            [
+                                ["custrecord_ht_ct_orden_servicio", "anyof", idRecord]
+                            ],
+                        columns:
+                            [
+                                search.createColumn({ name: "custrecord_ht_ct_orden_servicio", label: "Orden Servicio" })
+                            ]
+                    });
+                    let searchResultCount = customrecord_ht_ct_cobertura_transactionSearchObj.runPaged().count;
+                    log.debug('JCEC searchResultCount ' + idRecord, searchResultCount);
+                    if (searchResultCount == 0) {
+                        if (aprobacionventaCobertura == _constant.Status.APROBADO && aprobacioncarteraCobertura == _constant.Status.APROBADO) {
+
+
+
+                            try {
+                                if (articulo_type == 'Service' && parametrosArticulo.valorTexto == '008 - VENTA SEGUROS') {
+                                    let params = {};
+                                    params.plazo = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_tiempo_cobertura', line: 0 });
+                                    params.fechaInicio = scriptContext.newRecord.getValue('trandate');
+                                    let cobertura = getCobertura(params.plazo, objRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_und_tiempo_cobertura', line: 0 }), params.fechaInicio, params.fechaInicio).coberturaFinal;
+                                    // le damos formato a las fechas  
+                                    let fechaFinal = cobertura;
+
+                                    params.bien = scriptContext.newRecord.getValue('custbody_ht_so_bien');
+                                    params.producto = articulo;
+                                    params.estado = 1;
+                                    params.fechaFinal = fechaFinal;
+                                    params.familia = getParamFamiliaProductosArticuloOSDesinstalacion(_constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS, articulo).valor;
+                                  
+
+
+                                    log.debug('params', params);
+
+                                    let newCoberturaId = crearCoberturaSinOt(params);
+                                    log.debug('newCoberturaId', newCoberturaId);
+
+                                    let paramsDetalle = {};
+                                    paramsDetalle.IdCobertura = newCoberturaId;
+                                    paramsDetalle.IdOrdenServicio = idRecord;
+                                    paramsDetalle.concepto = 16;
+
+                                    let detalleIdCobertura = crearHTDetalleCobertura(paramsDetalle);
+                                    log.debug('detalleIdCobertura', detalleIdCobertura);
+
+
+
+                                }
+                            } catch (error) {
+                                log.error('Error-CoberturaSinOT', error);
+                            }
+
+
+                        }
                     }
                 }
+
+                /****************************** */
+
             } catch (error) {
                 log.error('Erro-Edit', error);
             }
         }
+
+
+
     }
+
+    const crearCoberturaSinOt = (params) => {
+        try {
+            let newCobertura = record.create({ type: 'customrecord_ht_co_cobertura', isDynamic: true });
+            if (params.bien) {
+                newCobertura.setValue({ fieldId: 'custrecord_ht_co_bien', value: params.bien });
+            }
+            if (params.producto) {
+                newCobertura.setValue({ fieldId: 'custrecord_ht_co_producto', value: params.producto });
+            }
+            if (params.estado) {
+                newCobertura.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: params.estado });
+            }
+            if (params.fechaInicio) {
+                newCobertura.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: params.fechaInicio });
+            }
+            if (params.plazo) {
+                newCobertura.setValue({ fieldId: 'custrecord_ht_co_plazo', value: params.plazo });
+            }
+            if (params.fechaFinal) {
+                newCobertura.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: params.fechaFinal });
+            }
+            if (params.familia) {
+                newCobertura.setValue({ fieldId: 'custrecord_ht_co_familia_prod', value: params.familia });
+            }
+            if(params.custrecord_ht_co_udp_pla_px_ami){
+                newCobertura.setValue({ fieldId: 'custrecord_ht_co_udp_pla_px_ami', value: params.custrecord_ht_co_udp_pla_px_ami });
+            }
+            let newCoberturaId = newCobertura.save();
+            return newCoberturaId;
+        } catch (error) {
+            log.error('Error-CrearCoberturaSinOt', error);
+        }
+    }
+
+    const crearHTDetalleCobertura = (params) => {
+        try {
+            let newDetalleCobertura = record.create({ type: 'customrecord_ht_ct_cobertura_transaction', isDynamic: true });
+            if (params.IdCobertura) {
+                newDetalleCobertura.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: params.IdCobertura });
+            }
+            if (params.IdOrdenServicio) {
+                newDetalleCobertura.setValue({ fieldId: 'custrecord_ht_ct_orden_servicio', value: params.IdOrdenServicio });
+            }
+            if (params.concepto) {
+                newDetalleCobertura.setValue({ fieldId: 'custrecord_ht_ct_concepto', value: params.concepto });
+            }
+
+            return newDetalleCobertura.save();
+        } catch (error) {
+            log.error('Error-CrearHTDetalleCobertura', error);
+        }
+    }
+
 
     const sumarTiempo = (cantidad, unidadTiempo, fechaInicial, fechaFinal, noanticipado) => {
         let nuevaFechaInicial = noanticipado == 2 ? new Date() : new Date(fechaInicial);
         let nuevaFechaFinal = noanticipado == 2 ? new Date() : new Date(fechaFinal);
-
         if (unidadTiempo === 'días') {
             //nuevaFechaInicial.setDate(nuevaFechaInicial.getDate() + cantidad);
             nuevaFechaFinal.setDate(nuevaFechaFinal.getDate() + cantidad);
@@ -1298,7 +1492,8 @@ define([
         log.debug('TIEMPOSSS', parseInt(cantidad) + ' - ' + undTiempo);
         let date = new Date();
         date.setDate(date.getDate());
-        let date_final = new Date();
+        // let date_final = new Date();
+        let date_final = new Date(fechaInicial);
         try {
             if (undTiempo == _constant.Constants.UNIDAD_TIEMPO.ANIO) {
                 cantidad = parseInt(cantidad) * 12
@@ -1311,6 +1506,7 @@ define([
                 date_final.setMonth(date_final.getMonth() + parseInt(cantidad));
             }
             date_final = new Date(date_final);
+
             return {
                 coberturaInicial: date,
                 coberturaFinal: date_final
@@ -1548,32 +1744,23 @@ define([
                         search.createColumn({ name: "custrecord_serie_os_numero_inicial", label: "Número inicial" }),
                     ]
             });
-
             var savedsearch = SerieOSSearchObj.run().getRange(0, 1);
-
             let column00 = savedsearch[0].getValue(SerieOSSearchObj.columns[0]);
             let column01 = savedsearch[0].getValue(SerieOSSearchObj.columns[1]);
             let column02 = savedsearch[0].getValue(SerieOSSearchObj.columns[2]);
             let column03 = savedsearch[0].getValue(SerieOSSearchObj.columns[3]);
-
             var serieimpr = generateCorrelative(column00, column01, column02, column03);
-
-
             return serieimpr
-
         } catch (e) {
             log.error('Error en getParamValor', e);
         }
     }
 
     const generateCorrelative = (serieid, prefijo, numdig, numero) => {
-
         let ceros;
         let correlative;
         let this_number = Number(numero) + 1;
-
         record.submitFields({ type: 'customrecord_serie_orden_servicio', id: serieid, values: { 'custrecord_serie_os_numero_inicial': this_number } });
-
         if (this_number.toString().length == 1) {
             ceros = '0000000';
         } else if (this_number.toString().length == 2) {
@@ -1591,9 +1778,7 @@ define([
         } else if (this_number.toString().length >= 8) {
             ceros = '';
         }
-
         correlative = prefijo + ceros + this_number;
-
         return correlative
     }
 
@@ -1613,7 +1798,6 @@ define([
                     ],
                 columns:
                     [
-
                         search.createColumn({ name: "custrecord_ht_pp_parametrizacionid", label: "Param. Prod." }),
                         search.createColumn({ name: "custrecord_ht_pp_parametrizacion_rela", label: "Parametrización" }),
                         search.createColumn({ name: "custrecord_ht_pp_aplicacion", label: "Aplicación" }),

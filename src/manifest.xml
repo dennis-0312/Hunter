@@ -3671,6 +3671,8 @@
       <object>customrecord_registro_cheque.custrecord_importe_cheque</object>
       <object>customrecord_registro_cheque.custrecord_vinculo_cheque</object>
 
+      <object>custform_89_7451241_680</object>
+
     </objects>
     <files>
       <file>/SuiteScripts/TS NET Scripts/Main/core/TS_UE_Asset.js</file>

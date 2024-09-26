@@ -22,6 +22,7 @@ define([
  * @param{error} error
  */
     (log, record, search, https, query, error, _constant, _errorMessage, _controller) => {
+        let placaOld = ""
         /**
          * Defines the function definition that is executed before record is loaded.
          * @param {Object} scriptContext
@@ -31,7 +32,9 @@ define([
          * @param {ServletRequest} scriptContext.request - HTTP request information sent from the browser for a client action only.
          * @since 2015.2
          */
-        const beforeLoad = (scriptContext) => { }
+        const beforeLoad = (scriptContext) => {
+            placaOld = scriptContext.newRecord.getValue('custrecord_ht_bien_placa');
+        }
 
         /**
          * Defines the function definition that is executed before record is submitted.
@@ -49,8 +52,6 @@ define([
                     let tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
                     const bien_placa = objRecord.getValue("custrecord_ht_bien_placa");
                     let patron_placa_vehiculo = /^[A-Z]{3}-[0-9]{4}$/;
-                    let flag = false;
-                    let Bienes = getBien(objRecord.id, flag);
                     if (tipo_terrestre == _constant.Constants.VEHICULO) {
                         if (bien_placa != "S/P") {
                             if (bien_placa.match(patron_placa_vehiculo) == null) {
@@ -62,17 +63,28 @@ define([
                                 log.debug('Error: ' + myCustomError.name, myCustomError.message);
                                 throw myCustomError;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_placa == Bienes[i][0]) {
-                                        let myCustomError = error.create({
-                                            name: 'PLACA YA EXISTENTE',
-                                            message: 'Las placas no se pueden repetir.',
-                                            notifyOff: false
-                                        });
-                                        log.debug('Error: ' + myCustomError.name, myCustomError.message);
-                                        throw myCustomError;
-                                    }
+                                let objValidpl = getPlaca(bien_placa)
+                                if (objValidpl[0] > 0) {
+                                    let myCustomError = error.create({
+                                        name: 'PLACA YA EXISTENTE',
+                                        message: 'Las placas no se pueden repetir.',
+                                        notifyOff: false
+                                    });
+                                    log.debug('Error: ' + myCustomError.name, myCustomError.message);
+                                    throw myCustomError;
+
                                 }
+                                // for (let i = 0; i < Bienes.length; i++) {
+                                //     if (bien_placa == Bienes[i][0]) {
+                                //         let myCustomError = error.create({
+                                //             name: 'PLACA YA EXISTENTE',
+                                //             message: 'Las placas no se pueden repetir.',
+                                //             notifyOff: false
+                                //         });
+                                //         log.debug('Error: ' + myCustomError.name, myCustomError.message);
+                                //         throw myCustomError;
+                                //     }
+                                // }
                             }
                         }
                     }
@@ -81,7 +93,6 @@ define([
                     const bien_placa = objRecord.getValue("custrecord_ht_bien_placa");
                     var patron_placa_vehiculo = /^[A-Z]{3}-[0-9]{4}$/;
                     var flag = true;
-                    var Bienes = getBien(objRecord.id, flag);
                     if (tipo_terrestre == _constant.Constants.VEHICULO) {
                         if (bien_placa != "S/P") {
                             if (bien_placa.match(patron_placa_vehiculo) == null) {
@@ -93,17 +104,32 @@ define([
                                 log.debug('Error: ' + myCustomError.name, myCustomError.message);
                                 throw myCustomError;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_placa == Bienes[i][0]) {
-                                        let myCustomError = error.create({
-                                            name: 'PLACA YA EXISTENTE',
-                                            message: 'Las placas no se pueden repetir.',
-                                            notifyOff: false
-                                        });
-                                        log.debug('Error: ' + myCustomError.name, myCustomError.message);
-                                        throw myCustomError;
+                                let objValidpl = getPlaca(bien_placa)
+                                if (objValidpl[0] > 0) {
+                                    if (flag == true) {
+                                        // log.debug('placaOld', placaOld)
+                                        // if (objValidpl[1] != placaOld) {
+                                        //     let myCustomError = error.create({
+                                        //         name: 'PLACA YA EXISTENTE',
+                                        //         message: 'Las placas no se pueden repetir.',
+                                        //         notifyOff: false
+                                        //     });
+                                        //     log.debug('Error: ' + myCustomError.name, myCustomError.message);
+                                        //     throw myCustomError;
+                                        // }
                                     }
                                 }
+                                // for (let i = 0; i < Bienes.length; i++) {
+                                //     if (bien_placa == Bienes[i][0]) {
+                                //         let myCustomError = error.create({
+                                //             name: 'PLACA YA EXISTENTE',
+                                //             message: 'Las placas no se pueden repetir.',
+                                //             notifyOff: false
+                                //         });
+                                //         log.debug('Error: ' + myCustomError.name, myCustomError.message);
+                                //         throw myCustomError;
+                                //     }
+                                // }
                             }
                         }
                     }
@@ -388,6 +414,27 @@ define([
             }
             log.debug("txtfinal", txtfinal);
             return txtfinal;
+        }
+
+        const getPlaca = (placa) => {
+            let objValidate = new Array();
+            let bienesSearchObj = search.create({
+                type: "customrecord_ht_record_bienes",
+                filters:
+                    [
+                        ["custrecord_ht_bien_placa", "is", placa]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "custrecord_ht_bien_placa", label: "Placa" })
+                    ]
+            });
+            let searchResultCount = bienesSearchObj.runPaged().count;
+            log.debug("customrecord_ht_record_bienesSearchObj result count", searchResultCount);
+            bienesSearchObj.run().each(result => {
+                objValidate.push(searchResultCount, result.getValue('custrecord_ht_bien_placa'));
+            });
+            return objValidate;
         }
 
         return { beforeLoad, beforeSubmit, afterSubmit }

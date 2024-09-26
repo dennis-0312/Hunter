@@ -68,15 +68,10 @@ define(['N/url', 'N/runtime'],
 
     function busqueda() {
       try {
-        var host = url.resolveDomain({
-          hostType: url.HostType.APPLICATION,
-          accountId: runtime.accountId
-        });
-        console.log('host', host);
-
-        window.open('https://7451241-sb1.app.netsuite.com/app/common/search/searchresults.nl?searchid=929&whence=');
-
-
+        const SEARCH_ID = 3560; //SB: 3560 / PR: 3491
+        var host = url.resolveDomain({ hostType: url.HostType.APPLICATION, accountId: runtime.accountId });
+        console.log('host', host); //7451241-sb1.app.netsuite.com
+        window.open('https://' + host + '/app/common/search/searchresults.nl?searchid=' + SEARCH_ID + '&whence=');
       } catch (err) {
         console.log("Error", "[ busqueda ] " + err);
       }

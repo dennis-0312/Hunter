@@ -11,6 +11,7 @@ define(['N/log', 'N/record', 'N/search', 'N/transaction', 'N/runtime'],
         const CUSTOM_TRANSACTION_FACTURA_INTERNA = "customsale_ec_factura_interna";
         const COMPROBANTE_FISCAL = 37;
         const ESTADO_FACTURA_INTERNA = 2;
+        const FACTURA_INTERNA_ANULADA = 3;
 
         const creacionFacturaInterna = (ordenID, cantidadTotalRegistrosProcesados, contadorProcesados, contentResults) => {
             //log.debug('START', '|========================= START LIB =========================|')
@@ -29,10 +30,10 @@ define(['N/log', 'N/record', 'N/search', 'N/transaction', 'N/runtime'],
                 if (numLinesBillingschedule > 1) {
                     for (let i = 0; i < numLinesBillingschedule; i++) {
                         let scriptObj = runtime.getCurrentScript();
-                        //log.debug('Remaining governance units proccess numLinesBillingschedule: ' + i, scriptObj.getRemainingUsage());
+                        log.debug('Remaining governance units proccess numLinesBillingschedule: ' + i, scriptObj.getRemainingUsage());
                         let billamount = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'billingschedule', fieldId: 'billamount', line: i });
                         let billdate = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'billingschedule', fieldId: 'billdate', line: i });
-                        //log.error('billingschedule', `Conteo ${i}-${billamount}-${billdate}`);
+                        log.error('billingschedule', `Conteo ${i}-${billamount}-${billdate}`);
                         let assemblyBuild = record.transform({ fromType: record.Type.SALES_ORDER, fromId: ordenID, toType: CUSTOM_TRANSACTION_FACTURA_INTERNA, isDynamic: true });
                         assemblyBuild.setValue('custbody_ec_created_from_fac_int', ordenID);
                         assemblyBuild.setValue('custbody_ec_nro_cuota_fac_int', nroCuota);
@@ -44,6 +45,8 @@ define(['N/log', 'N/record', 'N/search', 'N/transaction', 'N/runtime'],
                             let itemAgrupado = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_so_item_agrupado', line: j })
                             let quantity = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'quantity', line: j })
                             let units = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'units', line: j })
+                            let priceLevel = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'price', line: j });
+                            let rate = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'rate', line: j });
                             log.debug('UNITS', units);
                             quantity = parseFloat(quantity) / numLinesBillingschedule;
                             //log.error('quantity-itemOriginal-itemAgrupado', `${quantity}-${itemOriginal}-${itemAgrupado}`);
@@ -55,9 +58,11 @@ define(['N/log', 'N/record', 'N/search', 'N/transaction', 'N/runtime'],
                             }
                             assemblyBuild.setCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity', value: quantity });
                             assemblyBuild.setCurrentSublistValue({ sublistId: 'item', fieldId: 'units', value: units });
+                            assemblyBuild.setCurrentSublistValue({ sublistId: 'item', fieldId: 'price', value: priceLevel });
+                            assemblyBuild.setCurrentSublistValue({ sublistId: 'item', fieldId: 'rate', value: rate });
                             assemblyBuild.commitLine({ sublistId: 'item' });
                         }
-                        buildId = assemblyBuild.save();
+                        buildId = assemblyBuild.save({ ignoreFieldChange: true, forceSyncSourcing: true });
                         let fieldLookUp = search.lookupFields({ type: CUSTOM_TRANSACTION_FACTURA_INTERNA, id: buildId, columns: ['tranid'] });
                         //log.error('buildId', `Factura # ${i + 1} - ${fieldLookUp.tranid}`);
                         buildId = fieldLookUp.tranid;
@@ -71,9 +76,13 @@ define(['N/log', 'N/record', 'N/search', 'N/transaction', 'N/runtime'],
                     assemblyBuild.setValue('custbodyts_ec_tipo_documento_fiscal', COMPROBANTE_FISCAL);
                     assemblyBuild.setValue('location', location);
                     for (let j = 0; j < numLinesItem; j++) {
-                        let itemOriginal = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'item', line: j })
-                        let itemAgrupado = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_so_item_agrupado', line: j })
-                        let units = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'units', line: j })
+                        let itemOriginal = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'item', line: j });
+                        let itemAgrupado = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_so_item_agrupado', line: j });
+                        let amount = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'amount', line: j });
+                        let priceLevel = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'price', line: j });
+                        let units = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'units', line: j });
+                        let rate = salesOrderToFacturaInterna.getSublistValue({ sublistId: 'item', fieldId: 'rate', line: j });
+                        log.debug('priceLevel', priceLevel);
                         log.debug('UNITS', units);
                         assemblyBuild.selectLine({ sublistId: 'item', line: j });
                         if (itemAgrupado) {
@@ -82,9 +91,12 @@ define(['N/log', 'N/record', 'N/search', 'N/transaction', 'N/runtime'],
                             assemblyBuild.setCurrentSublistValue({ sublistId: 'item', fieldId: 'item', value: itemOriginal });
                         }
                         assemblyBuild.setCurrentSublistValue({ sublistId: 'item', fieldId: 'units', value: units });
+                        assemblyBuild.setCurrentSublistValue({ sublistId: 'item', fieldId: 'price', value: priceLevel });
+                        assemblyBuild.setCurrentSublistValue({ sublistId: 'item', fieldId: 'rate', value: rate });
+                        assemblyBuild.setCurrentSublistValue({ sublistId: 'item', fieldId: 'amount', value: amount });
                         assemblyBuild.commitLine({ sublistId: 'item' });
                     }
-                    buildId = assemblyBuild.save();
+                    buildId = assemblyBuild.save({ ignoreFieldChange: true, forceSyncSourcing: true });
                     let fieldLookUp = search.lookupFields({ type: CUSTOM_TRANSACTION_FACTURA_INTERNA, id: buildId, columns: ['tranid'] });
                     log.error('buildId', fieldLookUp.tranid);
                     buildId = fieldLookUp.tranid;
@@ -102,7 +114,7 @@ define(['N/log', 'N/record', 'N/search', 'N/transaction', 'N/runtime'],
             if (buildId != 0) {
                 cantidadTotalRegistrosProcesados = contadorProcesados++
                 salesOrderToFacturaInterna.setValue('custbody_ec_estado_factura_interna', ESTADO_FACTURA_INTERNA);
-                salesOrderToFacturaInterna.save();
+                salesOrderToFacturaInterna.save({ ignoreFieldChange: true, forceSyncSourcing: true });
             }
             //log.debug('END', '|========================== END LIB ==========================|')
 
@@ -130,11 +142,13 @@ define(['N/log', 'N/record', 'N/search', 'N/transaction', 'N/runtime'],
                     type: "transaction",
                     filters:
                         [
-                            ["type", "anyof", "CuTrSale113"],
+                            ["type", "anyof", "CuTrSale112"],
                             "AND",
                             ["custbody_ec_created_from_fac_int", "anyof", creadoDesde],
                             "AND",
-                            ["status", "anyof", "CuTrSale113:C"]
+                            ["memo", "isnot", "VOID"],
+                            "AND",
+                            ["mainline", "is", "T"]
                         ],
                     columns:
                         [
@@ -146,21 +160,16 @@ define(['N/log', 'N/record', 'N/search', 'N/transaction', 'N/runtime'],
                 if (searchResultCount == 0) {
                     try {
                         let serviceOrderUpdate = record.submitFields({
-                            type: SERVICE_ORDER,
+                            type: record.Type.SALES_ORDER,
                             id: creadoDesde,
-                            values: {
-                                custbody_ec_estado_factura_interna: _constant.Status.FACTURA_INTERNA_ANULADA
-                            },
+                            values: { custbody_ec_estado_factura_interna: FACTURA_INTERNA_ANULADA }
                         })
                         log.error('serviceOrderUpdate', `Orden de Servicio Actualizada por acción de anulación masiva de Factura Interna: ${serviceOrderUpdate}`);
                     } catch (error) {
                         log.error('Error-serviceOrderUpdate', error);
                     }
                 }
-                contentResults.push({
-                    transaccion: buildId,
-                    resultado: 'Anulado'
-                })
+                contentResults.push({ transaccion: buildId, resultado: 'Anulado' })
             } catch (error) {
                 contentResults.push({
                     transaccion: buildId,

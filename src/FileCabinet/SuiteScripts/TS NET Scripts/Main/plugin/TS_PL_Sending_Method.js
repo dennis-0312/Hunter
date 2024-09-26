@@ -95,6 +95,7 @@ define(['N/https', 'N/record', 'N/search'],
                         if (response.status == "ok") {
                             result.success = true;
                             result.message = fileId + " - Archivo [" + fileName + "] enviado con éxito.";
+                            logError('Resultado', response.status);
                         } else {
                             result.success = false;
                             result.message = fileId + " - Error en el envio del Archivo [" + fileName + "] generado.";
@@ -126,6 +127,7 @@ define(['N/https', 'N/record', 'N/search'],
                     }
                 });
                 return JSON.parse(suiteletResponse.body);
+
             } catch (e) {
                 logError('Error-sendFileToHunterServer', e);
                 return "failed";

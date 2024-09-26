@@ -167,12 +167,14 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                 for (let j = 0; j < page.data.length; j++) {
                     let result = page.data[j];
                     let columns = result.columns;
-
                     let rowArray = [];
                     for (let k = 0; k < columns.length; k++) {
                         rowArray.push(result.getValue(columns[k]));
                     }
+                    log.debug('Track1', 'Track1');
+                    log.debug('Track2', columns);
                     let tipoDocumentoFiscal = result.getText(columns[17]);
+                    log.debug('Track3', 'Track3');
                     let serie = result.getText(columns[18]);
                     let numeroPreimpreso = result.getValue(columns[19]);
                     let key = `${tipoDocumentoFiscal}|${serie}|${numeroPreimpreso}`;

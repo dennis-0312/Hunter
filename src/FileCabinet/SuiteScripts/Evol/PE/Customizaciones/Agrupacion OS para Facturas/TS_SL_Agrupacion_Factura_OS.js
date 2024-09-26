@@ -6,7 +6,7 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
 
     (serverWidget, record, log, search, format, task, runtime, url, redirect, file) => {
         //Configuraciones para la creacion de la factura directa
-        const inputfiles = 22928;
+        const inputfiles = 18054; // antes: 22928;
         const outputfiles = 22929;
         const RECORD_COLA = 'customrecord_ts_standar_ss_cola';
         const userRecord = runtime.getCurrentUser();
@@ -173,6 +173,7 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                         });
 
                         //Agrupamos las facturas sin importar si se repiten los numeros y totalizamos los items
+                        log.debug('facturas0', facturas);
                         let facturaDirecta = {}
                         facturaDirecta.bien = facturas[0].bien;
                         facturaDirecta.departamento = facturas[0].departamento;
@@ -196,7 +197,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                                     item_f: factura.item_f,
                                     nombre: factura.nombreItem,
                                     unidad: factura.unidad,
-                                    cantidad: Number(factura.cantidad)
+                                    cantidad: Number(factura.cantidad),
+                                    price: factura.price,
+                                    rate: factura.rate,
                                 });
                             }
                         });
@@ -251,9 +254,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                         }
                         //Nos redirigimos a la pagina de resultados
                         if (userRecord.id == 4) {
-                            redirect.toSuitelet({ scriptId: 1785, deploymentId: 1 });
+                            redirect.toSuitelet({ scriptId: 3136, deploymentId: 1 });
                         } else {
-                            redirect.toSuitelet({ scriptId: 1800, deploymentId: 1 });
+                            redirect.toSuitelet({ scriptId: 3137, deploymentId: 1 });
                         }
                     } catch (error) {
                         log.error('onRequest POST', error);
@@ -286,9 +289,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                     searchFacturasFIN = search.create({
                         type: 'transaction',
                         filters: [
-                            ["type", "anyof", "CuTrSale113"],
+                            ["type", "anyof", "CuTrSale112"],
                             "AND",
-                            ["status", "noneof", "CuTrSale113:V"],
+                            ["status", "noneof", "CuTrSale112:V"],
                             "AND",
                             ['mainline', 'is', 'T'],
                             'AND',
@@ -321,9 +324,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                     searchFacturasFIN = search.create({
                         type: 'transaction',
                         filters: [
-                            ["type", "anyof", "CuTrSale113"],
+                            ["type", "anyof", "CuTrSale112"],
                             "AND",
-                            ["status", "noneof", "CuTrSale113:V"],
+                            ["status", "noneof", "CuTrSale112:V"],
                             "AND",
                             ['mainline', 'is', 'T'],
                             'AND',
@@ -395,9 +398,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                         type: "transaction",
                         filters:
                             [
-                                ["type", "anyof", "CuTrSale113"],
+                                ["type", "anyof", "CuTrSale112"],
                                 "AND",
-                                ["status", "noneof", "CuTrSale113:V"],
+                                ["status", "noneof", "CuTrSale112:V"],
                                 "AND",
                                 ["entity", "anyof", cliente],
                                 'AND',
@@ -413,7 +416,14 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                                 "AND",
                                 ["custbody_ht_factura_directa", "anyof", "@NONE@"],
                                 "AND",
-                                ["memomain", "isnot", "VOID"]
+                                ["memomain", "isnot", "VOID"],
+                                //Agregado el 09/09/2024 por Edwin
+                                // "AND", 
+                                // ["department","noneof","@NONE@"], 
+                                // "AND", 
+                                // ["class","noneof","@NONE@"], 
+                                // "AND", 
+                                // ["location","noneof","@NONE@"]
                             ],
                         columns:
                             [
@@ -432,7 +442,11 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                                 search.createColumn({ name: "itemid", join: "item", label: "Nombre Articulo" }),
                                 search.createColumn({ name: "quantityuom", label: "Cantidad" }),
                                 search.createColumn({ name: "unitid", label: "Unidad" }),
-                                search.createColumn({ name: "taxcode", label: "Artículo de impuesto sobre las ventas" })
+                                search.createColumn({ name: "taxcode", label: "Artículo de impuesto sobre las ventas" }),
+                                search.createColumn({ name: "pricelevel", label: "Nivel de Precio" }),
+                                search.createColumn({ name: "rate", label: "Tarifa" })
+                                
+                                
                             ]
                     });
                 } else {
@@ -440,9 +454,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                         type: "transaction",
                         filters:
                             [
-                                ["type", "anyof", "CuTrSale113"],
+                                ["type", "anyof", "CuTrSale112"],
                                 "AND",
-                                ["status", "noneof", "CuTrSale113:V"],
+                                ["status", "noneof", "CuTrSale112:V"],
                                 "AND",
                                 ["entity", "anyof", cliente],
                                 'AND',
@@ -456,7 +470,14 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                                 "AND",
                                 ["custbody_ht_factura_directa", "anyof", "@NONE@"],
                                 "AND",
-                                ["memomain", "isnot", "VOID"]
+                                ["memomain", "isnot", "VOID"],
+                                // //Agregado el 09/09/2024 por Edwin
+                                // "AND", 
+                                // ["department","noneof","@NONE@"], 
+                                // "AND", 
+                                // ["class","noneof","@NONE@"], 
+                                // "AND", 
+                                // ["location","noneof","@NONE@"]
                             ],
                         columns:
                             [
@@ -476,7 +497,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                                 search.createColumn({ name: "quantityuom", label: "Cantidad" }),
                                 search.createColumn({ name: "unitid", label: "Unidad" }),
                                 // search.createColumn({ name: "baseunit", join: "item", label: "Unidad" }),
-                                search.createColumn({ name: "taxcode", label: "Artículo de impuesto sobre las ventas" })
+                                search.createColumn({ name: "taxcode", label: "Artículo de impuesto sobre las ventas" }),
+                                search.createColumn({ name: "pricelevel", label: "Nivel de Precio" }),
+                                search.createColumn({ name: "rate", label: "Tarifa" })
                             ]
                     });
                 }
@@ -500,7 +523,9 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', 'N/tas
                         nombreItem: result.getValue({ name: "itemid", join: "item", }),
                         cantidad: result.getValue({ name: 'quantityuom' }),
                         unidad: result.getValue({ name: "unitid" }),
-                        taxcode: result.getValue({ name: 'taxcode' })
+                        taxcode: result.getValue({ name: 'taxcode' }),
+                        price: result.getValue({ name: 'pricelevel' }),
+                        rate: result.getValue({ name: 'rate' })
                     }
                     log.debug("objFacturas result count", objFacturas);
                     respuesta.push(objFacturas);

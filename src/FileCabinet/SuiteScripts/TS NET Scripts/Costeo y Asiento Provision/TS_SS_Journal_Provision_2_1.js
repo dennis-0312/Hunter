@@ -16,6 +16,9 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
         const DOLAR_CURRENCY = "1";
         const PARAMETRIZACIONES_A_CUMPLIR = 3;
         const FORMULARIO = 131;
+        const TIPO_PENDIENTE_FACTURAR = 1;
+        const TIPO_PENDIENTE_INSTALAR = 2;
+        const ESTADO_FACTURA_INTERNA_NO_FACTURADO = 1
 
         /**
          * Defines the Scheduled script trigger point.
@@ -36,22 +39,24 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
                 let { journalValues } = getSalesOrders(itemsToSkipJson, itemsToConsider, startDate);
                 scriptObj = runtime.getCurrentScript();
                 log.debug('Remaining governance units 3: ', scriptObj.getRemainingUsage());
-                //log.error("valores", { journalValues });
-                //log.error("journalValues.length", journalValues.length);
-                if (!journalValues.length) return new Array();
-                let journalId = createJournal(journalValues, startDate);
-                log.error("journalValues.map(value => { value.journalId = journalId; return value; })", journalValues.map(value => { value.journalId = journalId; return value; }))
-                let retorno = journalValues.map(value => { value.journalId = journalId; return value; });
-
-                for (let i = 0; i < retorno.length; i++) {
-                    log.error("element", retorno[i]);
-                    let detalleProvisionId = createDetalleProvision(retorno[i]);
-                    log.error("detalleProvisionId", detalleProvisionId);
+                log.error("valores", { journalValues });
+                log.error("journalValues.length", journalValues.length);
+                //if (!journalValues.length) return new Array();
+                if (journalValues.length) {
+                    log.error("Transacciones para Provisionar", 'SI');
+                    let journalId = createJournal(journalValues, startDate);
+                    log.error("journalValues.map(value => { value.journalId = journalId; return value; })", journalValues.map(value => { value.journalId = journalId; return value; }))
+                    let retorno = journalValues.map(value => { value.journalId = journalId; return value; });
+                    for (let i = 0; i < retorno.length; i++) {
+                        log.error("element", retorno[i]);
+                        let detalleProvisionId = createDetalleProvision(retorno[i]);
+                        log.error("detalleProvisionId", detalleProvisionId);
+                    }
+                    scriptObj = runtime.getCurrentScript();
+                    log.debug('Remaining governance units 4: ', scriptObj.getRemainingUsage());
+                } else {
+                    log.error("Transacciones para Provisionar", 'NO');
                 }
-
-
-                scriptObj = runtime.getCurrentScript();
-                log.debug('Remaining governance units 4: ', scriptObj.getRemainingUsage());
             } catch (error) {
                 log.error("error", error);
             }
@@ -214,7 +219,9 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
                     "AND",
                     ["amount", "greaterthan", "0.00"],
                     "AND",
-                    ["subsidiary", "anyof", ECUADOR_SUBSIDIARY]
+                    ["subsidiary", "anyof", ECUADOR_SUBSIDIARY],
+                    "AND",
+                    ["custbody_ec_estado_factura_interna", "anyof", ESTADO_FACTURA_INTERNA_NO_FACTURADO]
                 ],
                 columns: [
                     search.createColumn({ name: "department" }),
@@ -229,11 +236,13 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
                 ]
             });
 
-            if (lastPeriod) {
-                let periodFilter = search.createFilter({ name: 'postingperiod', operator: search.Operator.ANYOF, values: lastPeriod });
-                salesOrderSearch.filters.push(periodFilter);
-            }
-            //log.error("salesOrderSearch.length", salesOrderSearch.length);
+            // if (lastPeriod) {
+            //     let periodFilter = search.createFilter({ name: 'postingperiod', operator: search.Operator.ANYOF, values: lastPeriod });
+            //     salesOrderSearch.filters.push(periodFilter);
+            // }
+            log.error("salesOrderSearch.length", salesOrderSearch.length);
+            const searchResultCountsalesOrderSearch = salesOrderSearch.runPaged().count;
+            log.debug('searchResultCountsalesOrderSearch', searchResultCountsalesOrderSearch);
             let journalValues = new Array(), detalleProvisionArray = [];
             salesOrderSearch.run().each((result) => {
                 let columns = result.columns;
@@ -256,21 +265,22 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
                     if (itemsToConsider[itemId] === undefined || itemsToConsider[itemId].length != PARAMETRIZACIONES_A_CUMPLIR) return true;
                     //let key = `${department}|${_class}|${location}|${incomeAccount}|${provisionAccount}`;
                     // if (journalValues[key] === undefined) {
-                    journalValues.push({
-                        departamento,
-                        class: _class,
-                        location,
-                        incomeAccount,
-                        provisionAccount,
-                        amount,
-                        salesOrderId,
-                        itemId,
-                        tranId,
-                    });
+                    if (provisionAccount.length) {
+                        journalValues.push({
+                            departamento,
+                            class: _class,
+                            location,
+                            incomeAccount,
+                            provisionAccount,
+                            amount,
+                            salesOrderId,
+                            itemId,
+                            tranId,
+                        });
+                    }
                 }
                 return true;
             });
-
             return { journalValues };
         }
 
@@ -315,7 +325,6 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
             for (let key in journalValues) {
                 let values = journalValues[key];
                 //log.error("values", values);
-
                 journalRecord.selectNewLine('line');
                 journalRecord.setCurrentSublistValue('line', 'account', values.incomeAccount);
                 journalRecord.setCurrentSublistValue('line', 'credit', values.amount);
@@ -347,6 +356,7 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
             detalleProvision.setValue("custrecord_ht_dp_item", values.itemId);
             detalleProvision.setValue("custrecord_ht_dp_income_account", values.incomeAccount);
             detalleProvision.setValue("custrecord_ht_dp_provision", values.amount);
+            detalleProvision.setValue("custrecord_ht_dp_tipo_provision", TIPO_PENDIENTE_FACTURAR);
             return detalleProvision.save();
         }
 
@@ -362,11 +372,9 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
                 'AND',
                 ['item', 'anyof', itemId],
             ];
-
             const invoiceSearchColTranId = search.createColumn({ name: 'tranid' });
             const invoiceSearchColTranDate = search.createColumn({ name: 'trandate' });
             const invoiceSearchColItem = search.createColumn({ name: 'item' });
-
             const invoiceSearch = search.create({
                 type: 'invoice',
                 filters: invoiceSearchFilters,

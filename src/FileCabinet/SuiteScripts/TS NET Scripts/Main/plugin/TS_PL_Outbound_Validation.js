@@ -49,6 +49,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     linesArray = generateItemFulfillmentLines(transactionId, setup);
                     name = "GDR" + name;
                 } else if (transactionRecord.recordtype == "creditmemo") {
+                    // logError('is it a credit note?', 'Y');
                     linesArray = generateCreditNoteLines(transactionId, setup);
                     name = "NCF" + name;
                 } else if (transactionRecord.recordtype == "invoice" && transactionRecord["custbodyts_ec_tipo_documento_fiscal.custrecordts_ec_cod_tipo_comprobante"] == "05") {
@@ -312,7 +313,11 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                         //search.createColumn({ name: "quantity", label: "item.quantity" }),
                         search.createColumn({ name: "quantityuom", label: "item.quantity" }),
                         //search.createColumn({ name: "rate", label: "item.rate" }),
-                        search.createColumn({ name: "formulacurrency", formula: "{amount}/{quantityuom}", label: "item.rate" }),
+                        // search.createColumn({ name: "formulacurrency", formula: "{amount}/{quantityuom}", label: "item.rate" }),
+                        //<I> rhuaccha: 2024-09-19
+                        // search.createColumn({ name: "formulacurrency", formula: "{amount}/{quantityuom}", label: "item.rate" }),
+                        search.createColumn({ name: "formulacurrency", formula: "CASE WHEN {quantityuom} = 0 THEN {amount}/1 ELSE {amount}/{quantityuom} END", label: "item.rate" }),
+                        //<F> rhuaccha: 2024-09-19
                         search.createColumn({ name: "amount", label: "item.amount"/*, function: "absoluteValue"*/ }),
                         search.createColumn({ name: "taxamount", label: "item.taxAmount"/*, function: "absoluteValue" */ }),
                         search.createColumn({ name: "grossamount", label: "item.grossAmount", function: "absoluteValue" }),
@@ -463,6 +468,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
 
                 // Inicializar totales
                 var total15 = 0, descuentototal = 0, impuestototal = 0, totalposicion4 = 0, subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
+                //<I> rhuaccha: 2024-09-18
+                var totalDiscAmount = 0;
+                var totalDiscTaxAmount = 0;
+                //<F> rhuaccha: 2024-09-18
 
                 // Procesar cada ítem en la transacción
                 for (var i = 0; i < transactionRecord.items.length; i++) {
@@ -473,6 +482,21 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     // Crear array DE line y agregar a lineArray
                     if (Number(item.amount) > 0) {
                         var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.detail, item.quantity, item.rate, 0, item.amount, ""];
+                        //<I> rhuaccha: 2024-09-18
+                        if (i + 1 < transactionRecord.items.length) {
+                            var nextItem = transactionRecord.items[i + 1];
+        
+                            if (isNegativeNumber(nextItem.amount)) {
+                                // var lineAmountDe = Number(DEline[5]) - Math.abs(Number(nextItem.rate));
+                                var lineTaxAmountDe = Number(DEline[7]) - Math.abs(Number(nextItem.amount));
+                                
+                                // DEline[5] = parseFloat(lineAmountDe).toFixed(2);
+                                DEline[6] = parseFloat(Math.abs(Number(nextItem.amount))).toFixed(2);
+                                DEline[7] = parseFloat(lineTaxAmountDe).toFixed(2);
+                            }
+        
+                        }
+                        //<F> rhuaccha: 2024-09-18
                         lineArray.push(DEline);
                     }
                     // Calcular subtotales e impuestos
@@ -488,6 +512,13 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     if (item.taxRateCode == '4' && Number(item.amount) > 0) {
                         subtotalWithoutTaxation += Number(item.amount);
                         total15 += Number(item.taxAmount);
+                    } else {
+                        //<I> rhuaccha: 2024-09-18: Discount
+                        if (isNegativeNumber(item.amount)) {
+                            totalDiscAmount += Math.abs(Number(item.amount));
+                            totalDiscTaxAmount += Math.abs(Number(item.taxAmount));
+                        }
+                        //<F> rhuaccha: 2024-09-18
                     }
                     if (Number(item.amount) < 0) {
                         totalposicion4 += Number(item.amount) * (-1) + Number(item.taxAmount) * (-1);
@@ -498,11 +529,39 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     // Crear array IM line y agregar a lineArray
                     if (Number(item.amount) > 0) {
                         var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, item.amount, Number(item.taxAmount).toFixed(2), item.taxName, "",];
+                        //<I> rhuaccha: 2024-09-18
+                        if (i + 1 < transactionRecord.items.length) {
+                            var nextItem = transactionRecord.items[i + 1];
+        
+                            if (isNegativeNumber(nextItem.amount)) {
+                                var discAmountIm = Number(IMline[4]) - Math.abs(Number(nextItem.amount));
+                                var discTaxRateIm = Number(IMline[5]) - Math.abs(Number(nextItem.taxAmount));
+                                
+                                IMline[4] = parseFloat(discAmountIm).toFixed(2);
+                                IMline[5] = parseFloat(discTaxRateIm).toFixed(2);
+                            }
+        
+                        }
+                        //<F> rhuaccha: 2024-09-18
                         lineArray.push(IMline);
                     }
                     // Crear una línea TI para cada ítem directamente
                     if (Number(item.amount) > 0) {
                         var TILine = ["TI", item.taxCode, item.taxRateCode, item.amount, item.taxRate, Number(item.taxAmount).toFixed(2), item.taxName, ""];
+                        //<I> rhuaccha: 2024-09-18
+                        if (i + 1 < transactionRecord.items.length) {
+                            var nextItem = transactionRecord.items[i + 1];
+        
+                            if (isNegativeNumber(nextItem.amount)) {
+                                var discAmountTi = Number(TILine[3]) - Math.abs(Number(nextItem.amount));
+                                var discTaxRateTi = Number(TILine[5]) - Math.abs(Number(nextItem.taxAmount));
+                                
+                                TILine[3] = parseFloat(discAmountTi).toFixed(2);
+                                TILine[5] = parseFloat(discTaxRateTi).toFixed(2);
+                            }
+        
+                        }
+                        //<F> rhuaccha: 2024-09-18
                         lineTIline.push(TILine)
                     }
                     amountToPay += Number(item.grossAmount);
@@ -533,8 +592,29 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 }
                 resultArray.push(finalResult);
 
+                //<I> rhuaccha: 2024-09-18
+                var calAmount = parseFloat(Number(subtotalWithoutTaxation) - totalDiscAmount).toFixed(2);
+                var totalColumn4 = parseFloat(totalposicion4 - totalDiscTaxAmount).toFixed(2);
+                var total15Column = parseFloat(total15 - totalDiscTaxAmount).toFixed(2);
+                //<F> rhuaccha: 2024-09-18
+
                 // Crear array T line y agregar a resultArray
-                var TLine = ["T", subtotalWithoutTaxation.toFixed(2), descuentototal.toFixed(2), subtotalNotSubject, (subtotalWithoutTaxation + descuentototal).toFixed(2)/*subtotalWithoutTaxation*/, totalposicion4.toFixed(2), ICE, total15.toFixed(2), transactionRecord.total, tip, transactionRecord.total, ""];
+                // var TLine = ["T", subtotalWithoutTaxation.toFixed(2), descuentototal.toFixed(2), subtotalNotSubject, (subtotalWithoutTaxation + descuentototal).toFixed(2)/*subtotalWithoutTaxation*/, totalposicion4.toFixed(2), ICE, total15.toFixed(2), transactionRecord.total, tip, transactionRecord.total, ""];
+                //<I> rhuaccha: 2024-09-18
+                var TLine = [
+                    "T",
+                    calAmount,
+                    descuentototal.toFixed(2),
+                    subtotalNotSubject,
+                    parseFloat(calAmount + descuentototal).toFixed(2),
+                    totalColumn4, // 20.00
+                    ICE,
+                    total15Column, // 45.00
+                    transactionRecord.total,
+                    tip,
+                    transactionRecord.total,
+                    ""];
+                //<F> rhuaccha: 2024-09-18
                 resultArray.unshift(TLine);
 
                 // Combinar y retornar el array de resultados
@@ -775,6 +855,7 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 creditNoteLines.push(ITline);
 
                 var detailArray = getCreditNoteTotalAndDetails(transactionRecord);
+                // logError('NC Details', detailArray);
                 var total = detailArray[0][8] || "0";
 
                 var ICline = ['IC', transactionRecord.date, transactionRecord.subsidiaryAddress, transactionRecord.customerSpecialTaxPayer, transactionRecord.customerObligatedToAccountFor, transactionRecord.customerDocumentTypeCode,
@@ -890,6 +971,10 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
 
                 // T LINE
                 var total15 = 0, descuentototal = 0, impuestototal = 0, totalposicion4 = 0, subtotal12 = 0, subtotal0 = 0, subtotalNotSubject = 0, subtotalWithoutTaxation = 0, totalDescuento = 0, ICE = 0, IVA12 = 0, totalAmount = 0, tip = 0, amountToPay = 0;
+                //<I> rhuaccha: 2024-09-18
+                var totalDiscAmount = 0;
+                var totalDiscTaxAmount = 0;
+                //<F> rhuaccha: 2024-09-18
 
                 // Procesar cada ítem en la transacción
                 for (var i = 0; i < transactionRecord.items.length; i++) {
@@ -907,6 +992,21 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     // Crear array DE line y agregar a lineArray
                     if (Number(item.amount) < 0) {
                         var DEline = ['DE', item.code.substring(0, 15), item.code.substring(0, 15), item.description/*item.code.substring(0, 15)*/, item.quantity, item.rate, 0, Number(item.amount * (-1)).toFixed(2), ""];
+                        //<I> rhuaccha: 2024-09-23
+                        if (i + 1 < transactionRecord.items.length) {
+                            var nextItem = transactionRecord.items[i + 1];
+        
+                            if (isNegativeNumber(nextItem.rate)) {
+                                // var lineAmountDe = Number(DEline[5]) - Math.abs(Number(nextItem.rate));
+                                var lineTaxAmountDe = Number(DEline[7]) - Math.abs(Number(nextItem.amount));
+                                
+                                // DEline[5] = parseFloat(lineAmountDe).toFixed(2);
+                                DEline[6] = parseFloat(Math.abs(Number(nextItem.amount))).toFixed(2);
+                                DEline[7] = parseFloat(lineTaxAmountDe).toFixed(2);
+                            }
+        
+                        }
+                        //<F> rhuaccha: 2024-09-23
                         lineArray.push(DEline);
                     }
 
@@ -923,6 +1023,13 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     if (item.taxRateCode == '4' && Number(item.amount) < 0) {
                         subtotalWithoutTaxation += Number(item.amount) * (-1);
                         total15 += Number(item.taxAmount);
+                    } else {
+                        //<I> rhuaccha: 2024-09-23
+                        if (isNegativeNumber(item.rate)) {
+                            totalDiscAmount += Math.abs(Number(item.amount));
+                            totalDiscTaxAmount += Math.abs(Number(item.taxAmount));
+                        }
+                        //<F> rhuaccha: 2024-09-23
                     }
 
                     if (Number(item.amount) > 0) {
@@ -935,12 +1042,40 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                     // Crear array IM line y agregar a lineArray
                     if (Number(item.amount) < 0) {
                         var IMline = ["IM", item.taxCode, item.taxRateCode, item.taxRate, Number(item.amount * (-1)).toFixed(2), Number(item.taxAmount).toFixed(2), item.taxName, ""];
+                        //<I> rhuaccha: 2024-09-23
+                        if (i + 1 < transactionRecord.items.length) {
+                            var nextItem = transactionRecord.items[i + 1];
+        
+                            if (isNegativeNumber(nextItem.rate)) {
+                                var discAmountIm = Number(IMline[4]) - Math.abs(Number(nextItem.amount));
+                                var discTaxRateIm = Number(IMline[5]) - Math.abs(Number(nextItem.taxAmount));
+                                
+                                IMline[4] = parseFloat(discAmountIm).toFixed(2);
+                                IMline[5] = parseFloat(discTaxRateIm).toFixed(2);
+                            }
+        
+                        }
+                        //<F> rhuaccha: 2024-09-23
                         lineArray.push(IMline);
                     }
 
                     // Crear una línea TI para cada ítem directamente
                     if (Number(item.amount) < 0) {
                         var TILine = ["TI", item.taxCode, item.taxRateCode, item.taxRate, Number(item.amount * (-1)).toFixed(2), Number(item.taxAmount).toFixed(2), item.taxName, ""];
+                        //<I> rhuaccha: 2024-09-23
+                        if (i + 1 < transactionRecord.items.length) {
+                            var nextItem = transactionRecord.items[i + 1];
+        
+                            if (isNegativeNumber(nextItem.rate)) {
+                                var discAmountTi = Number(TILine[4]) - Math.abs(Number(nextItem.amount));
+                                var discTaxRateTi = Number(TILine[5]) - Math.abs(Number(nextItem.taxAmount));
+                                
+                                TILine[4] = parseFloat(discAmountTi).toFixed(2);
+                                TILine[5] = parseFloat(discTaxRateTi).toFixed(2);
+                            }
+        
+                        }
+                        //<F> rhuaccha: 2024-09-23
                         resultArray.push(TILine);
                     }
 
@@ -948,7 +1083,26 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
                 }
 
                 // Crear array T line y agregar a resultArray
-                var TLine = ["T", subtotalWithoutTaxation.toFixed(2), descuentototal.toFixed(2), subtotalNotSubject, (subtotalWithoutTaxation + descuentototal).toFixed(2), totalposicion4, ICE, total15.toFixed(2), transactionRecord.total, tip, transactionRecord.total, ""];
+                // var TLine = ["T", subtotalWithoutTaxation.toFixed(2), descuentototal.toFixed(2), subtotalNotSubject, (subtotalWithoutTaxation + descuentototal).toFixed(2), totalposicion4, ICE, total15.toFixed(2), transactionRecord.total, tip, transactionRecord.total, ""];
+                //<I> rhuaccha: 2024-09-23
+                var calAmount = parseFloat(Number(subtotalWithoutTaxation) - totalDiscAmount).toFixed(2);
+                var totalColumn4 = parseFloat(totalposicion4 - totalDiscTaxAmount).toFixed(2);
+                var total15Column = parseFloat(total15 - totalDiscTaxAmount).toFixed(2);
+                var TLine = [
+                    "T",
+                    calAmount, // subtotalWithoutTaxation.toFixed(2),
+                    descuentototal.toFixed(2),
+                    subtotalNotSubject,
+                    // (subtotalWithoutTaxation + descuentototal).toFixed(2),
+                    parseFloat(calAmount + descuentototal).toFixed(2),
+                    totalColumn4, // totalposicion4,
+                    ICE,
+                    total15Column, // total15.toFixed(2),
+                    transactionRecord.total,
+                    tip,
+                    transactionRecord.total,
+                    ""];
+                //<F> rhuaccha: 2024-09-2
                 resultArray.unshift(TLine);
 
                 return resultArray.concat(lineArray);
@@ -2558,6 +2712,13 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
         function roundTwoDecimal(value) {
             return Math.round(Number(value) * 100) / 100;
         }
+
+        //<I> rhuaccha: 2024-09-18
+        function isNegativeNumber(value) {
+            var numberValue = Number(value);
+            return !isNaN(numberValue) && numberValue < 0;
+        }
+        //<F> rhuaccha: 2024-09-18
 
         return {
             validate: validate

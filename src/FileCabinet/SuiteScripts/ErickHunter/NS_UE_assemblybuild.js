@@ -140,6 +140,7 @@ define(['N/log',
 
                 if (quantity != 0 && tipeItmes == 1) {
                     object = getInventorynumber(objRecord, i, tipeItmes);
+                    log.debug('object', object)
                     object.pageRanges.forEach(pageRange => {
                         page = object.fetch({ index: pageRange.index });
                         page.data.forEach(result => {
@@ -184,6 +185,7 @@ define(['N/log',
 
                 if (quantity != 0 && tipeItmes == 3) {
                     lojack = getInventorynumber(objRecord, i, tipeItmes);
+                    log.debug('lojack', lojack)
                     lojack.pageRanges.forEach(function (pageRange) {
                         page = lojack.fetch({ index: pageRange.index });
                         page.data.forEach(function (result) {
@@ -204,6 +206,7 @@ define(['N/log',
             return recordId;
         }
 
+        
         const getInventorynumber = (objRecord, i, tipeItmes) => {
             let tipoItmesText;
             let customRecord;
@@ -279,6 +282,8 @@ define(['N/log',
                     columns: columns
                 });
                 let pageData = busqueda.runPaged({ pageSize: 1000 });
+                let objResults = busqueda.run().getRange({ start: 0, end: 100 });
+                log.debug('objResults-Search', objResults)
                 return pageData;
             }
         }

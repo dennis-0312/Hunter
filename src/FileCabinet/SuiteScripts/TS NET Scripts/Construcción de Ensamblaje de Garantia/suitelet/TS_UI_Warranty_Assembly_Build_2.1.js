@@ -249,3 +249,40 @@ define([
         onRequest
     };
 })
+
+
+
+
+// case when {type} 
+// in ('Currency Revaluation', 'Journal', 'Expense Report','Revaluación de moneda', 'Informe de gastos', 'Asiento') 
+// then {account.displayname} 
+// else 
+// CASE WHEN {customer.companyname} IS NULL THEN {vendor.companyname} 
+// CASE WHEN {customer.companyname} IS NULL THEN {vendor.companyname} 
+// ELSE {customer.companyname} 
+// END 
+// END
+
+
+// case 
+// when {type} in ('Currency Revaluation', 'Journal', 'Expense Report','Revaluación de moneda', 'Informe de gastos', 'Asiento') then {account.displayname} 
+// else 
+// CASE 
+// WHEN {vendor.companyname} IS NULL THEN {employee.altname}
+// WHEN {customer.companyname} IS NULL THEN {vendor.companyname}
+// ELSE {customer.companyname} 
+// END 
+// END
+
+
+// case 
+// when {type} in ('Currency Revaluation', 'Journal', 'Expense Report','Revaluación de moneda', 'Informe de gastos', 'Asiento') 
+// then {account.displayname} 
+// else
+// CASE WHEN {customer.companyname} IS NULL THEN {employee.altname} 
+// ELSE {customer.companyname} 
+// END 
+// END
+
+
+

@@ -16,7 +16,6 @@ Governance points: N/A
 define(['N/log', 'N/search', 'N/record', 'N/ui/serverWidget', 'N/https', 'N/error'],
     (log, search, record, serverWidget, https, error) => {
 
-
         const afterSubmit = (context) => {
             if (context.type === context.UserEventType.CREATE || context.type === context.UserEventType.EDIT) {
                 const objRecord = context.newRecord;

@@ -91,13 +91,9 @@ define([
                 let alquilerField = componentSubList.addSublistField(FIELDS.sublistfield.alquiler.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.alquiler.text);
                 alquilerField.updateDisplayType(serverWidget.FieldDisplayType.HIDDEN);
                 componentSubList.addSublistField(FIELDS.sublistfield.inventorydetail.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.inventorydetail.text);
-
                 userInterface.setComponentsSublistData(componentSubList, billOfMaterialRevisionField.getDefaultValue(), locationField.getDefaultValue(), itemField.getDefaultValue());
-
                 form.addSubmitButton(FIELDS.button.submit.text);
-
                 context.response.writePage(form.form);
-
             } else if (method == 'POST') {
                 let inventoryDetail = JSON.parse(context.request.parameters.custpage_f_inventorydetail);
                 log.error("inventoryDetail", inventoryDetail);
@@ -177,6 +173,7 @@ define([
             params
         });
         let scriptTaskId = scriptTask.submit();
+        log.debug('scriptTaskId', scriptTaskId)
     }
 
     function viewInventoryDetail(element, line) {

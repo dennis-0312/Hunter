@@ -49,15 +49,15 @@ define(['N/url', 'N/format'],
                 fechaDesde = format.format({
                     value: fechaDesde,
                     type: format.Type.DATE
-                }); 
+                });
 
                 fechaHasta = format.format({
                     value: fechaHasta,
                     type: format.Type.DATE
                 });
-                
+
                 let params = {
-                    flag : 'searchEjecuciones',
+                    flag: 'searchEjecuciones',
                     fechaDesde: fechaDesde,
                     fechaHasta: fechaHasta
                 }
@@ -65,15 +65,15 @@ define(['N/url', 'N/format'],
                 params = JSON.stringify(params);
                 window.onbeforeunload = null;
                 let output = url.resolveScript({
-                    scriptId: 'customscriptts_sl_agru_fact_os_est',
-                    deploymentId: 'customdeploy_ts_sl_agru_fact_os_est_dp_1',  
+                    scriptId: 'customscript_sl_agru_fact_os_est',
+                    deploymentId: 'customdeploy_ts_sl_agru_fact_os_est_dp_1',
                     params: {
                         custscript_ts_params: params
                     }
                 });
 
                 setWindowChanged(window, false);
-                window.location.href = output; 
+                window.location.href = output;
             }
         }
 
@@ -197,13 +197,13 @@ define(['N/url', 'N/format'],
             // pageInit: pageInit,
             fieldChanged: fieldChanged,
             /*  postSourcing: postSourcing,
-             sublistChanged: sublistChanged,
-             lineInit: lineInit,
-             validateField: validateField,
-             validateLine: validateLine,
-             validateInsert: validateInsert,
-             validateDelete: validateDelete,
-             saveRecord: saveRecord */
+            sublistChanged: sublistChanged,
+            lineInit: lineInit,
+            validateField: validateField,
+            validateLine: validateLine,
+            validateInsert: validateInsert,
+            validateDelete: validateDelete,
+            saveRecord: saveRecord */
         };
 
     });

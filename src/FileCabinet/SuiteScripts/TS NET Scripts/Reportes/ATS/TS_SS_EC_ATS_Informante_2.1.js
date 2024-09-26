@@ -120,19 +120,18 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
             log.debug('getATSInformante.scriptParameters', scriptParameters);
             log.debug('getATSInformante.environmentFeatures', environmentFeatures);
             let atsInformanteSearch = search.load({ id: 'customsearch_ts_ec_ats_informante' });
-
             if (scriptParameters.periodId) {
                 let periodFilter = search.createFilter({ name: 'postingperiod', operator: search.Operator.ANYOF, values: scriptParameters.periodId });
                 atsInformanteSearch.filters.push(periodFilter);
             }
-
             if (environmentFeatures.hasSubsidiaries) {
                 let subsidiaryFilter = search.createFilter({ name: 'subsidiary', operator: search.Operator.ANYOF, values: scriptParameters.subsidiaryId });
                 atsInformanteSearch.filters.push(subsidiaryFilter);
             }
-
             let searchResult = atsInformanteSearch.run().getRange(0, 1000);
+            log.error("searchResult", searchResult);
             log.error("searchResult.length", searchResult.length);
+            log.error("atsInformanteSearch", atsInformanteSearch);
             if (!searchResult.length) return "";
 
             let rowArray = [];

@@ -30,7 +30,6 @@ define(['N/log', 'N/search', 'N/record', 'N/redirect', 'N/ui/serverWidget', 'N/r
     }
     function getRecepcion(id) {
         try {
-
             var busqueda = search.create({
                 type: "customrecord_ht_record_ordentrabajo",
                 filters:
@@ -70,6 +69,7 @@ define(['N/log', 'N/search', 'N/record', 'N/redirect', 'N/ui/serverWidget', 'N/r
             log.error('Error en getRecepcion', e);
         }
     }
+
     return {
         afterSubmit: afterSubmit
         //beforeLoad: beforeLoad

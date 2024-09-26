@@ -91,25 +91,30 @@ define([
                         options: { enableSourcing: false, ignoreMandatoryFields: true }
                     });
                     log.error('Registro', objRec);
-                    let sql = 'SELECT custbody_ht_ce_ordentrabajo as otid FROM transaction WHERE id = ?';
-                    let resultSet = query.runSuiteQL({ query: sql, params: [results2[0]['ensambleid']] });
-                    let results = resultSet.asMappedResults();
-                    if (results.length > 0) {
-                        try {
-                            let objOt = record.submitFields({
-                                type: _constant.customRecord.ORDEN_TRABAJO,
-                                id: results[0]['otid'],
-                                values: {
-                                    'custrecord_ht_ot_firmware': objRecord.getText('custrecord_ht_dd_firmware'),
-                                    'custrecord_ht_ot_script': objRecord.getText('custrecord_ht_dd_script'),
-                                    'custrecord_ht_ot_servidor': objRecord.getText('custrecord_ht_dd_servidor'),
-                                    'custrecord_ht_ot_vid': objRecord.getValue('custrecord_ht_dd_vid')
-                                },
-                                options: { enableSourcing: false, ignoreMandatoryFields: true }
-                            });
-                            log.error('RegistroOT', objOt);
-                        } catch (error) { }
+                    try {
+                        let sql = 'SELECT custbody_ht_ce_ordentrabajo as otid FROM transaction WHERE id = ?';
+                        let resultSet = query.runSuiteQL({ query: sql, params: [results2[0]['ensambleid']] });
+                        let results = resultSet.asMappedResults();
+                        if (results.length > 0) {
+                            try {
+                                let objOt = record.submitFields({
+                                    type: _constant.customRecord.ORDEN_TRABAJO,
+                                    id: results[0]['otid'],
+                                    values: {
+                                        'custrecord_ht_ot_firmware': objRecord.getText('custrecord_ht_dd_firmware'),
+                                        'custrecord_ht_ot_script': objRecord.getText('custrecord_ht_dd_script'),
+                                        'custrecord_ht_ot_servidor': objRecord.getText('custrecord_ht_dd_servidor'),
+                                        'custrecord_ht_ot_vid': objRecord.getValue('custrecord_ht_dd_vid')
+                                    },
+                                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+                                });
+                                log.error('RegistroOT', objOt);
+                            } catch (error) { }
+                        }
+                    } catch (error) {
+
                     }
+
                 }
 
             }

@@ -159,6 +159,7 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
                 ["field", "date", "custpage_f_date", "Fecha"],
                 ["field", "subsidiary", "custpage_f_subsidiary", "Subsidiaria"],
                 ["field", "inventorydetail", "custpage_f_inventorydetail", "Inventory Detail"],
+
                 ["field", "datostecnicos", "custpage_field_datos_tecnicos", "Datos Técnicos"],
                 ["subtab", "components", "custpage_st_components", "Componentes"],
                 ["sublist", "components", "custpage_sl_components", "Componentes"],
@@ -213,7 +214,7 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
 
             let alquilerResult = query.runSuiteQL({ query: sql_1 }).asMappedResults();
             log.error("sql_1", sql_1);
-
+            log.error("sql_1_alquilerResult", alquilerResult);
             if (alquilerResult.length != 0) {
                 for (let i = 0; i < alquilerResult.length; i++) {
                     if (alquilerResult[i].id) componentsSublistField.setSublistValue('custpage_slf_componentid', line, alquilerResult[i].id);
@@ -234,6 +235,22 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
             }
             //  }
 
+            //Inicio Edwin
+            let binnumber = '';
+            let filters = [["location","anyof",locationSelected], "AND", ["custrecord_deposito_para_bodega_comercia","is","T"]];
+            let binSearchObj = search.create({
+                type: "bin",
+                filters,
+                columns: ["binnumber"]
+            }).run().getRange(0, 1);
+
+            for (let i = 0; i < binSearchObj.length; i++) {
+                let columns = binSearchObj[i].columns;
+                binnumber = binSearchObj[i].getValue(columns[0]);
+                log.error("binnumber", binnumber);
+            }
+            //Fin Edwin
+
             let sql = "SELECT i.id, i.fullname, i.custitem_ht_ai_tipocomponente as type, i.displayname, ail.quantityavailable, ail.quantityOnHand, ut.abbreviation, ibq.onHandAvail, b.binNumber, b.custrecord_deposito_para_alquiler as alquiler, brcm.bomQuantity " +
                 "FROM bomRevision br " +
                 "INNER JOIN bomRevisionComponentMember brcm " +
@@ -247,19 +264,19 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
                 "INNER JOIN itemBinQuantity ibq " +
                 "ON i.id = ibq.item " +
                 "INNER JOIN bin b " +
-                `ON (ibq.bin = b.id AND b.location = '${locationSelected}' AND b.binNumber = 'BCO Comercial') ` +
+                `ON (ibq.bin = b.id AND b.location = '${locationSelected}' AND b.binNumber = '${binnumber}') ` +
                 `WHERE br.id = '${billOfMaterialRevisionSelected}' AND ail.location = '${locationSelected}'`;
 
-            log.error("sql", sql);
             let queryResult = query.runSuiteQL({ query: sql }).asMappedResults();
-
+            log.error("sql", sql);
+            log.error("sql_1_queryResult", queryResult);
             if (queryResult.length != 0) {
                 for (let i = 0; i < queryResult.length; i++) {
                     if (queryResult[i].id) componentsSublistField.setSublistValue('custpage_slf_componentid', line, queryResult[i].id);
                     if (queryResult[i].id) componentsSublistField.setSublistValue('custpage_slf_component', line, `${queryResult[i].fullname} ${queryResult[i].displayname}`);
                     componentsSublistField.setSublistValue('custpage_slf_quantity', line, queryResult[i].bomquantity);
-                    if (queryResult[i].quantityonhand) {
-                        componentsSublistField.setSublistValue('custpage_slf_onhand', line, queryResult[i].quantityonhand);
+                    if (queryResult[i].onhandavail) { //queryResult[i].quantityonhand    //onhandavail
+                        componentsSublistField.setSublistValue('custpage_slf_onhand', line, queryResult[i].onhandavail); //queryResult[i].quantityonhand    //onhandavail
                         let text = `<a id="compinvdet_popup_${line + 1}" class="smalltextul  i_inventorydetailneeded" href="#" onclick="viewInventoryDetail(this, ${line})" role="button"></a>`;
                         componentsSublistField.setSublistValue('custpage_slf_inventorydetail', line, text);
                     } else {

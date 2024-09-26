@@ -19,8 +19,8 @@ define(['N/file', 'N/log', 'N/search', 'N/record', 'N/runtime', 'N/task'],
         const PROCESANDO = 4;
         const LOG_RECORD = 'customrecord_ts_standar_ss_cola';
         const CUSTOM_TRANSACTION_FACTURA_INTERNA = "customsale_ec_factura_interna";
-        const flagfolder = 22937;
-        const outputfolder = 22929;
+        const flagfolder = 18053;
+        const outputfolder = 18055;
 
         /**
          * Defines the Scheduled script trigger point.
@@ -156,6 +156,7 @@ define(['N/file', 'N/log', 'N/search', 'N/record', 'N/runtime', 'N/task'],
                             log.error('buildId', `Factura # ${i + 1} - ${fieldLookUp.tranid}`);
                             let tranid = fieldLookUp.tranid;
                             record.submitFields({ type: CUSTOM_TRANSACTION_FACTURA_INTERNA, id: ordenID[i].id, values: { custbody_ht_factura_directa: facturaDirecta } });
+                            record.submitFields({ type: 'salesorder', id: ordenID[i].creado_desde, values: { custbody_ht_factura_directa: facturaDirecta } });
                             let factura = record.create({ type: "customrecord_ht_fact_internas_asociadas", isDynamic: true });
                             factura.setValue({ fieldId: 'custrecord_nro_factura', value: facturaDirecta });
                             factura.setValue({ fieldId: 'custrecord_nro_factura_interna', value: ordenID[i].id });

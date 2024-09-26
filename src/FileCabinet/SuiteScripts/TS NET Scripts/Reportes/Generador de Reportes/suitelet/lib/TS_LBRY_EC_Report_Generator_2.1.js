@@ -1,7 +1,7 @@
 /**
  *@NApiVersion 2.1
 */
-define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file','N/log'], (serverWidget, search, url, query, file, log) => {
+define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file', 'N/log'], (serverWidget, search, url, query, file, log) => {
 
     class Parameters {
         constructor({ item, workorder, salesorder, customer, location, subsidiary }) {
@@ -116,8 +116,9 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file','N/log'], 
                 }));
                 const options = [
                     { value: "XLSX", text: "EXCEL" },
-                    { value: "XML", text: "XML" }
-                  ];
+                    { value: "XML", text: "XML" },
+                    { value: "XLSX_V", text: "VENTAS" }
+                ];
                 for (const item of options) {
                     field.addSelectOption(item.value, item.text);
                 }
@@ -233,7 +234,7 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file','N/log'], 
                 let report = result.getValue(columns[5]) || "";
                 let owner = result.getValue(columns[6]) || "";
                 let fileName = result.getValue(columns[7]) || "";
-                
+
 
                 resultSubList.setSublistValue("custpage_slf_id", line, id)
                 if (created) resultSubList.setSublistValue("custpage_slf_datecreated", line, created);

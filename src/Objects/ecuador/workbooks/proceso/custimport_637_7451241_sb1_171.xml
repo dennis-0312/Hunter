@@ -1,0 +1,63 @@
+<savedcsvimport scriptid="custimport_637_7451241_sb1_171">
+  <charencoding>UTF_8</charencoding>
+  <columndelimiter>COMMA</columndelimiter>
+  <datahandling>UPDATE</datahandling>
+  <decimaldelimiter>PERIOD</decimaldelimiter>
+  <description>Update de Nro de Identificacion Clientes</description>
+  <entryform>[scriptid=custform_89_7451241_680]</entryform>
+  <ignorereadonly>T</ignorereadonly>
+  <importname>Update de Nro de Identificacion Clientes</importname>
+  <logsystemnotescustfields>F</logsystemnotescustfields>
+  <multiselectdelimiter>|</multiselectdelimiter>
+  <overwritemissingfields>F</overwritemissingfields>
+  <overwritesublists>F</overwritesublists>
+  <preventduplicates>F</preventduplicates>
+  <recordtype>CUSTOMER</recordtype>
+  <runserversuitescript>F</runserversuitescript>
+  <usemultithread>F</usemultithread>
+  <validatemandatorycustfields>T</validatemandatorycustfields>
+  <audience>
+    <allemployees>F</allemployees>
+    <allpartners>F</allpartners>
+    <allroles>F</allroles>
+    <globaledit>F</globaledit>
+    <ispublic>F</ispublic>
+    <roles></roles>
+  </audience>
+  <filemappings>
+    <filemapping>
+      <file>CUSTOMER</file>
+    </filemapping>
+  </filemappings>
+  <recordmappings>
+    <recordmapping>
+      <record>CUSTOMER</record>
+      <fieldmappings>
+        <fieldmapping>
+          <field>[scriptid=custentity_tax_reg_no]</field>
+          <columnreference>
+            <column>valor de NRO de ID</column>
+            <file>CUSTOMER</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>ID</field>
+          <columnreference>
+            <column>ID interno</column>
+            <file>CUSTOMER</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+        <fieldmapping>
+          <field>VATREGNUMBER</field>
+          <columnreference>
+            <column>valor de NRO de ID</column>
+            <file>CUSTOMER</file>
+            <type>NAME</type>
+          </columnreference>
+        </fieldmapping>
+      </fieldmappings>
+    </recordmapping>
+  </recordmappings>
+</savedcsvimport>

@@ -8,7 +8,7 @@ define(['N/record', 'N/log', 'N/search', 'N/format', 'N/runtime', 'N/task', 'N/f
         const FORM_EC_FORMULARIO_FACTURA_VENTA = 101;//SANDBOX = 101, PRODUCCION = ?
         const TIPO_DOCUMENTO_18 = 16; //SANDBOX = 16, PRODUCCION = ?
         const LOG_RECORD = 'customrecord_ts_standar_ss_cola'
-        const inputfolder = 22928;
+        const inputfolder = 18054;
         const PENDIENTE = 3;
         const COMPLETADO = 1;
         const ERROR = 2;
@@ -100,6 +100,8 @@ define(['N/record', 'N/log', 'N/search', 'N/format', 'N/runtime', 'N/task', 'N/f
                     }
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'units', value: params.facturaDirecta.items[i].unidad });
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity', value: params.facturaDirecta.items[i].cantidad });
+                    facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'price', value: params.facturaDirecta.items[i].price });
+                    facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'rate', value: params.facturaDirecta.items[i].rate });
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'department', value: params.facturaDirecta.departamento });
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'class', value: params.facturaDirecta.clase });
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: params.facturaDirecta.oficina });

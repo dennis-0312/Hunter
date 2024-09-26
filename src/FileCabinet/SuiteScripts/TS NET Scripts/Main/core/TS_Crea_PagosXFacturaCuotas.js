@@ -34,11 +34,9 @@ define(['N/log', 'N/search', 'N/record', 'N/https', 'N/runtime'], (log, search, 
                         break;
                     }
                 }
-
             }
             newRecord.setValue({ fieldId: 'custbody_ec_nro_factura', value: datosFactura[0].tranid });
             newRecord.setValue({ fieldId: 'custbody_ec_fecha_vencimiento', value: datosFactura[0].duedate });
-
         } catch (error) {
             log.debug("Error beforeLoad", error.message);
         }
@@ -87,9 +85,10 @@ define(['N/log', 'N/search', 'N/record', 'N/https', 'N/runtime'], (log, search, 
             }
             var datosFactura = getCuotasFactura(idFacturaPantalla);
 
-            if (context.type === context.UserEventType.CREATE && getListCuotas().includes(datosFactura[0].terms)
+            if (context.type === context.UserEventType.CREATE  && getListCuotas().includes(datosFactura[0].terms)
                 //&& userName == 'E-00000005 Juan Chavez' //Usar para dar mantenimiento
             ) {
+                log.debug('Entry');
                 //<I> Inserta Pago por la cantidad de nros de cuotas
                 for (var i = iniciaCuota; i <= cuotas; i++) {
 
@@ -174,9 +173,7 @@ define(['N/log', 'N/search', 'N/record', 'N/https', 'N/runtime'], (log, search, 
                             log.debug('objRecord', objRecord)
                             log.debug("afterSubmit", "Cuota: " + i + ". Creado correctamente!");
                         }
-
                     }
-
                     log.debug("indice", indice);
                     indice = 0;
 
@@ -211,7 +208,6 @@ define(['N/log', 'N/search', 'N/record', 'N/https', 'N/runtime'], (log, search, 
         } catch (e) {
             log.error('Error (getListCuotas):', e.message);
         }
-
         return ids;
     }
 

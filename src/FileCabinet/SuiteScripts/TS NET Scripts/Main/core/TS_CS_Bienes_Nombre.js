@@ -13,10 +13,16 @@ define([
     '../error/TS_CM_ErrorMessages',
 ], (search, currentRecord, message, url, runtime, _controller, _constant, _errorMessage) => {
     let typeMode = "";
+    let placaOld = "";
+    let motorOld = "";
+    let chasisOld = "";
 
     const pageInit = (context) => {
         let currentRecord = context.currentRecord;
         typeMode = context.mode; //!Importante, no borrar.
+        placaOld = currentRecord.getValue('custrecord_ht_bien_placa');
+        motorOld = currentRecord.getValue('custrecord_ht_bien_motor');
+        chasisOld = currentRecord.getValue('custrecord_ht_bien_chasis');
         //let field = currentRecord.getField('altname');
         // if (currentRecord.getValue("custrecord_ht_bien_tipobien") == _constant.Constants.TERRESTRE)
         //field.isDisabled = true;
@@ -40,19 +46,17 @@ define([
                     let patron_placa_moto = /^[A-Z]{2}[0-9]{3}[A-Z]{1}$/;
                     let patron_motor_chasis = /^[0-9A-Z]{0,30}$/;
                     let patron_puertas = /^[3-5]{1}$/;
-                    let flag = false;
-                    let Bienes = getBien(objRecord.id, flag);
                     if (tipo_terrestre == _constant.Constants.VEHICULO) {
                         if (bien_placa != "S/P") {
                             if (bien_placa.match(patron_placa_vehiculo) == null) {
                                 alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-0123), o sin placa (S/P) si la desconoce.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_placa == Bienes[i][0]) {
-                                        alert("Las placas no se pueden repetir.");
-                                        return false;
-                                    }
+                                let objValidpl = getPlaca(bien_placa)
+                                console.log(objValidpl);
+                                if (objValidpl[0] > 0) {
+                                    alert("Las placas no se pueden repetir.");
+                                    return false;
                                 }
                             }
                             if (nro_puertas.match(patron_puertas) == null) {
@@ -63,22 +67,22 @@ define([
                                 alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
-                                        return false;
-                                    }
+                                let objValidmt = getMotor(bien_motor)
+                                console.log(objValidmt);
+                                if (objValidmt[0] > 0) {
+                                    alert("El motor no se puede repetir.");
+                                    return false;
                                 }
                             }
                             if (bien_chasis.match(patron_motor_chasis) == null) {
                                 alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
-                                        return false;
-                                    }
+                                let objValidch = getChasis(bien_chasis)
+                                console.log(objValidch);
+                                if (objValidch[0] > 0) {
+                                    alert("El chasis no se puede repetir.");
+                                    return false;
                                 }
                             }
                         } else {
@@ -90,22 +94,22 @@ define([
                                 alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
-                                        return false;
-                                    }
+                                let objValidmt = getMotor(bien_motor)
+                                console.log(objValidmt);
+                                if (objValidmt[0] > 0) {
+                                    alert("El motor no se puede repetir.");
+                                    return false;
                                 }
                             }
                             if (bien_chasis.match(patron_motor_chasis) == null) {
                                 alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
-                                        return false;
-                                    }
+                                let objValidch = getChasis(bien_chasis)
+                                console.log(objValidch);
+                                if (objValidch[0] > 0) {
+                                    alert("El chasis no se puede repetir.");
+                                    return false;
                                 }
                             }
                         }
@@ -205,17 +209,20 @@ define([
                     var patron_motor_chasis = /^[0-9A-Z]{0,30}$/;
                     var patron_puertas = /^[3-5]{1}$/;
                     var flag = true;
-                    var Bienes = getBien(objRecord.id, flag);
                     if (tipo_terrestre == _constant.Constants.VEHICULO) {
                         if (bien_placa != "S/P") {
                             if (bien_placa.match(patron_placa_vehiculo) == null) {
                                 alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-0123), o sin placa (S/P) si la desconoce.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_placa == Bienes[i][0]) {
-                                        alert("Las placas no se pueden repetir.");
-                                        return false;
+                                let objValidpl = getPlaca(bien_placa)
+                                console.log(objValidpl);
+                                if (objValidpl[0] > 0) {
+                                    if (flag == true) {
+                                        if (objValidpl[1] != placaOld) {
+                                            alert("Las placas no se pueden repetir.");
+                                            return false;
+                                        }
                                     }
                                 }
                             }
@@ -227,10 +234,14 @@ define([
                                 alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
-                                        return false;
+                                let objValidmt = getMotor(bien_motor)
+                                console.log(objValidmt);
+                                if (objValidmt[0] > 0) {
+                                    if (flag == true) {
+                                        if (objValidmt[1] != motorOld) {
+                                            alert("El motor no se puede repetir.");
+                                            return false;
+                                        }
                                     }
                                 }
                             }
@@ -238,10 +249,14 @@ define([
                                 alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
-                                        return false;
+                                let objValidch = getChasis(bien_chasis)
+                                console.log(objValidch);
+                                if (objValidch[0] > 0) {
+                                    if (flag == true) {
+                                        if (objValidch[1] != chasisOld) {
+                                            alert("El chasis no se puede repetir.");
+                                            return false;
+                                        }
                                     }
                                 }
                             }
@@ -254,10 +269,13 @@ define([
                                 alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
-                                        return false;
+                                let objValidmt = getMotor(bien_motor)
+                                console.log(objValidmt);
+                                if (objValidmt[0] > 0) {
+                                    if (flag == true) {
+                                        if (objValidmt[1] != motorOld) {
+                                            alert("El motor no se puede repetir.");
+                                        }
                                     }
                                 }
                             }
@@ -265,10 +283,14 @@ define([
                                 alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                                 return false;
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
-                                        return false;
+                                let objValidch = getChasis(bien_chasis)
+                                console.log(objValidch);
+                                if (objValidch[0] > 0) {
+                                    if (flag == true) {
+                                        if (objValidch[1] != chasisOld) {
+                                            alert("El chasis no se puede repetir.");
+                                            return false;
+                                        }
                                     }
                                 }
                             }
@@ -372,15 +394,13 @@ define([
             //console.log("objRecord", objRecord);
             const typeTransaction = objRecord.type;
             const sublistFieldName = context.fieldId;
+            const tipoBienChange = context.fieldId
             //const customForm = objRecord.getValue("customform");
+
             const tipoBien = objRecord.getValue("custrecord_ht_bien_tipobien");
             if (tipoBien == _constant.Constants.TERRESTRE) {
-                console.log('TERRESTREEEE', Bienes);
                 if (typeMode == _constant.Constants.CREATE || typeMode == _constant.Constants.COPY) {
                     if (typeTransaction === "customrecord_ht_record_bienes") {
-                        var flag = false;
-                        var Bienes = getBien(objRecord.id, flag);
-                        console.log('Bienes', Bienes);
                         var tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
                         let isGenerico = objRecord.getValue("custrecord_ht_bien_generico");
                         if (sublistFieldName === "custrecord_ht_bien_placa") {
@@ -390,29 +410,25 @@ define([
                                     var patron_placa = /^[A-Z]{3}-[0-9]{4}$/;
                                     if (bien_placa.match(patron_placa) == null) {
                                         alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-0123), o sin placa (S/P) si la desconoce.");
-
                                     } else {
-                                        for (let i = 0; i < Bienes.length; i++) {
-                                            if (bien_placa == Bienes[i][0]) {
-                                                console.log('entra bien placa');
-                                                alert("Las placas no se pueden repetir.");
-
-                                            }
+                                        let objValidpl = getPlaca(bien_placa)
+                                        console.log(objValidpl);
+                                        if (objValidpl[0] > 0) {
+                                            alert("Las placas no se pueden repetir.");
+                                        }
+                                    }
+                                } else if (tipo_terrestre == _constant.Constants.MOTO) {
+                                    var patron_placa = /^[A-Z]{2}[0-9]{3}[A-Z]{1}$/;
+                                    if (bien_placa.match(patron_placa) == null) {
+                                        alert("Debe de ingresar una placa válida por ejemplo (AB123C) o (AB012C), o sin placa (S/P) si la desconoce.");
+                                    } else {
+                                        let objValidpl = getPlaca(bien_placa)
+                                        console.log(objValidpl);
+                                        if (objValidpl[0] > 0) {
+                                            alert("Las placas no se pueden repetir.");
                                         }
                                     }
                                 }
-                                // else if (tipo_terrestre == _constant.Constants.MOTO) {
-                                //     var patron_placa = /^[A-Z]{2}[0-9]{3}[A-Z]{1}$/;
-                                //     if (bien_placa.match(patron_placa) == null) {
-                                //         alert("Debe de ingresar una placa válida por ejemplo (AB123C) o (AB012C), o sin placa (S/P) si la desconoce.");
-                                //     } else {
-                                //         for (let i = 0; i < Bienes.length; i++) {
-                                //             if (bien_placa == Bienes[i][0]) {
-                                //                 alert("Las placas no se pueden repetir.");
-                                //             }
-                                //         }
-                                //     }
-                                // }
                             }
                         } else if (sublistFieldName === "custrecord_ht_bien_numeropuertas") {
                             const nro_puertas = objRecord.getText(sublistFieldName);
@@ -429,10 +445,10 @@ define([
                             if (bien_motor.match(patron_motor_chasis) == null) {
                                 alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
-                                    }
+                                let objValidmt = getMotor(bien_motor)
+                                console.log(objValidmt);
+                                if (objValidmt[0] > 0) {
+                                    alert("El motor no se puede repetir.");
                                 }
                             }
                         } else if (sublistFieldName === "custrecord_ht_bien_chasis") {
@@ -441,10 +457,10 @@ define([
                             if (bien_chasis.match(patron_motor_chasis) == null) {
                                 alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
-                                    }
+                                let objValidch = getChasis(bien_chasis)
+                                console.log(objValidch);
+                                if (objValidch[0] > 0) {
+                                    alert("El chasis no se puede repetir.");
                                 }
                             }
                         }
@@ -505,8 +521,8 @@ define([
                 } else if (typeMode == _constant.Constants.EDIT) {
                     if (typeTransaction === "customrecord_ht_record_bienes") {
                         var flag = true;
-                        var Bienes = getBien(objRecord.id, flag);
-                        console.log('Bienes', Bienes);
+                        //var Bienes = getBien(objRecord.id, flag);
+                        //console.log('Bienes', Bienes);
                         var tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
                         let isGenerico = objRecord.getValue("custrecord_ht_bien_generico");
                         if (sublistFieldName === "custrecord_ht_bien_placa") {
@@ -517,10 +533,13 @@ define([
                                     if (bien_placa.match(patron_placa) == null) {
                                         alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-0123), o sin placa (S/P) si la desconoce.");
                                     } else {
-                                        for (let i = 0; i < Bienes.length; i++) {
-                                            if (bien_placa == Bienes[i][0]) {
-                                                console.log('entra bien placa');
-                                                alert("Las placas no se pueden repetir.");
+                                        let objValidpl = getPlaca(bien_placa)
+                                        console.log(objValidpl);
+                                        if (objValidpl[0] > 0) {
+                                            if (flag == true) {
+                                                if (objValidpl[1] != placaOld) {
+                                                    alert("Las placas no se pueden repetir.");
+                                                }
                                             }
                                         }
                                     }
@@ -529,9 +548,13 @@ define([
                                     if (bien_placa.match(patron_placa) == null) {
                                         alert("Debe de ingresar una placa válida por ejemplo (AB123C) o (AB012C), o sin placa (S/P) si la desconoce.");
                                     } else {
-                                        for (let i = 0; i < Bienes.length; i++) {
-                                            if (bien_placa == Bienes[i][0]) {
-                                                alert("Las placas no se pueden repetir.");
+                                        let objValidpl = getPlaca(bien_placa)
+                                        console.log(objValidpl);
+                                        if (objValidpl[0] > 0) {
+                                            if (flag == true) {
+                                                if (objValidpl[1] != placaOld) {
+                                                    alert("Las placas no se pueden repetir.");
+                                                }
                                             }
                                         }
                                     }
@@ -552,9 +575,13 @@ define([
                             if (bien_motor.match(patron_motor_chasis) == null) {
                                 alert("El valor a ingresar para el Motor debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_motor == Bienes[i][1]) {
-                                        alert("El motor no se puede repetir.");
+                                let objValidmt = getMotor(bien_motor)
+                                console.log(objValidmt);
+                                if (objValidmt[0] > 0) {
+                                    if (flag == true) {
+                                        if (objValidmt[1] != motorOld) {
+                                            alert("El motor no se puede repetir.");
+                                        }
                                     }
                                 }
                             }
@@ -564,9 +591,13 @@ define([
                             if (bien_chasis.match(patron_motor_chasis) == null) {
                                 alert("El valor a ingresar para el Chasis debe tener longitud maxima 30 caracteres y no acepta caracteres especiales.");
                             } else {
-                                for (let i = 0; i < Bienes.length; i++) {
-                                    if (bien_chasis == Bienes[i][2]) {
-                                        alert("El chasis no se puede repetir.");
+                                let objValidch = getChasis(bien_chasis)
+                                console.log(objValidch);
+                                if (objValidch[0] > 0) {
+                                    if (flag == true) {
+                                        if (objValidch[1] != chasisOld) {
+                                            alert("El chasis no se puede repetir.");
+                                        }
                                     }
                                 }
                             }
@@ -628,6 +659,8 @@ define([
                 }
             }
 
+
+
             // if (tipoBien == _constant.Constants.PRODUCCION) {
             //     //const objRecord = scriptContext.newRecord;
             //     if (objRecord.getValue('custrecord_ht_bien_placa').length > 0) {
@@ -664,6 +697,8 @@ define([
                 const filterOne = search.createFilter({ name: 'internalid', operator: search.Operator.NONEOF, values: internalId });
                 filters.push(filterOne);
             }
+            var searchResultCount = busqueda.runPaged().count;
+            console.log("vendorbillSearchObj result count", searchResultCount);
             let pageData = busqueda.runPaged({ pageSize: 1000 });
             pageData.pageRanges.forEach(pageRange => {
                 page = pageData.fetch({ index: pageRange.index });
@@ -694,6 +729,69 @@ define([
         } catch (error) {
             log.error('Error en getBien', error);
         }
+    }
+
+    const getPlaca = (placa) => {
+        let objValidate = new Array();
+        let bienesSearchObj = search.create({
+            type: "customrecord_ht_record_bienes",
+            filters:
+                [
+                    ["custrecord_ht_bien_placa", "is", placa]
+                ],
+            columns:
+                [
+                    search.createColumn({ name: "custrecord_ht_bien_placa", label: "Placa" })
+                ]
+        });
+        let searchResultCount = bienesSearchObj.runPaged().count;
+        log.debug("customrecord_ht_record_bienesSearchObj result count", searchResultCount);
+        bienesSearchObj.run().each(result => {
+            objValidate.push(searchResultCount, result.getValue('custrecord_ht_bien_placa'));
+        });
+        return objValidate;
+    }
+
+    const getMotor = (motor) => {
+        let objValidate = new Array();
+        let bienesSearchObj = search.create({
+            type: "customrecord_ht_record_bienes",
+            filters:
+                [
+                    ["custrecord_ht_bien_motor", "is", motor]
+                ],
+            columns:
+                [
+                    search.createColumn({ name: "custrecord_ht_bien_motor", label: "Motor" })
+                ]
+        });
+        let searchResultCount = bienesSearchObj.runPaged().count;
+        log.debug("customrecord_ht_record_bienesSearchObj result count", searchResultCount);
+        bienesSearchObj.run().each(result => {
+            objValidate.push(searchResultCount, result.getValue('custrecord_ht_bien_motor'));
+        });
+        return objValidate;
+    }
+
+    const getChasis = (chasis) => {
+        let objValidate = new Array();
+        let bienesSearchObj = search.create({
+            type: "customrecord_ht_record_bienes",
+            filters:
+                [
+                    ["custrecord_ht_bien_chasis", "is", chasis]
+                ],
+            columns:
+                [
+                    search.createColumn({ name: "custrecord_ht_bien_chasis", label: "Motor" })
+                ]
+        });
+        let searchResultCount = bienesSearchObj.runPaged().count;
+        log.debug("customrecord_ht_record_bienesSearchObj result count", searchResultCount);
+        bienesSearchObj.run().each(result => {
+            objValidate.push(searchResultCount, result.getValue('custrecord_ht_bien_chasis'));
+        });
+        return objValidate;
     }
 
     return {

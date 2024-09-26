@@ -2101,6 +2101,7 @@ define(['N/log',
                 ]
             }).run().getRange(0, 10);
 
+            log.debug('coberturaSearchResult', coberturaSearchResult);
             let result = {
                 name: "",
                 custrecord_ht_co_estado_cobertura: "",
@@ -2525,11 +2526,8 @@ define(['N/log',
         }
 
         const actualizarRegistroImpulsoPlataforma = (registroImpulsoPlataforma, estado, mensaje) => {
-            let values = {
-                "custrecord_ts_reg_imp_plt_estado": estado
-            };
+            let values = { "custrecord_ts_reg_imp_plt_estado": estado };
             if (estado) values["custrecord_ts_reg_imp_plt_mensaje"] = mensaje;
-
             record.submitFields({
                 type: "customrecord_ts_regis_impulso_plataforma",
                 id: registroImpulsoPlataforma,

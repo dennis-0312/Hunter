@@ -30,7 +30,7 @@ define(['N/log',
                             columns: ['custrecord_ht_ot_vehiculo', 'custrecord_ht_ot_item']
                         });
                         let item = bienid.custrecord_ht_ot_item.length ? bienid.custrecord_ht_ot_item[0].value : "";
-                        if (item) {
+                        if (item && objRecord.getValue({ fieldId: 'subsidiary' }) != 3) {//*PARA CARSEG =================
                             let pro = _controller.getParameter(item, _constant.Parameter.PRO_ITEM_COMERCIAL_DE_PRODUCCION);
                             let avp = _controller.getParameter(item, _constant.Parameter.AVP_ARTICULO_DE_VENTA_PRODUCCION);
                             log.debug('pro', pro);
@@ -65,7 +65,9 @@ define(['N/log',
                             }
                         } else {
                             log.debug('Track3')
-                            if (objRecord.getValue({ fieldId: 'custbody_ht_as_datos_tecnicos' }).length == 0)
+                            if (objRecord.getValue({ fieldId: 'subsidiary' }) == 3 && objRecord.getValue({ fieldId: 'custbody_ht_as_datos_tecnicos' })) {
+                                datosTecnicos = objRecord.getValue({ fieldId: 'custbody_ht_as_datos_tecnicos' })
+                            } else if (objRecord.getValue({ fieldId: 'custbody_ht_as_datos_tecnicos' }).length == 0)
                                 datosTecnicos = crearCargaDispositivoChaser(objRecord, bienid);
                         }
                         //datosTecnicos = crearCargaDispositivoChaser(objRecord, bienid);
@@ -206,7 +208,7 @@ define(['N/log',
             return recordId;
         }
 
-        
+
         const getInventorynumber = (objRecord, i, tipeItmes) => {
             let tipoItmesText;
             let customRecord;

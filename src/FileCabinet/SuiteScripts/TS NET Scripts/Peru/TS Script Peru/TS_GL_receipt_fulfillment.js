@@ -38,7 +38,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                 nlapiLogExecution('DEBUG', 'count_transaction', count_transaction);
                 if (currency == 5 || entitycurrency == 5) {
                     tipo_cambio = 1
-                } else if(currency == 1 || entitycurrency == 1) {
+                } else if (currency == 1 || entitycurrency == 1) {
                     tipo_cambio = exchangerate;
                 };
                 for (var i = 1; i <= count_transaction; i++) {
@@ -63,7 +63,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                             var searchresult2 = search2[j];
                             cuenta_60 = searchresult2.getValue('custitem_pe_purchase_account');
                             cuenta_61 = searchresult2.getValue('custitem_pe_variation_account');
-                            ItemidName = searchresult2.getValue('itemid'); 
+                            ItemidName = searchresult2.getValue('itemid');
                         }
 
                         if (cuenta_60 && cuenta_60 != "" && cuenta_61 && cuenta_61 != "") {
@@ -96,7 +96,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                                     newLine2.setClassId(val_class);
                                     newLine2.setDepartmentId(val_department);
                                 }
-                                var arr = [ItemidName,cuenta_60,cuenta_61,val_class,val_department];
+                                var arr = [ItemidName, cuenta_60, cuenta_61, val_class, val_department];
                                 paraCuentas20.push(arr);
                             }
                             if (recType === ITEMFULFILLMENT) {
@@ -158,7 +158,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                     var servicioCarga = transactionRecord.getFieldValue('landedcostamount10');
                     var otros = transactionRecord.getFieldValue('landedcostamount11');
                     var seguro = transactionRecord.getFieldValue('landedcostamount12');
-    
+
                     nlapiLogExecution('DEBUG', 'MSK', 'idTransaccion=' + idTransaccion);
 
                     var itemreceiptSearch = nlapiSearchRecord("itemreceipt", null,
@@ -171,7 +171,18 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                             "AND",
                             ["formulanumeric: CASE WHEN substr({account.number},1,2) = '20' THEN 1 ELSE 0 END", "equalto", "1"],
                             "AND",
-                            [["memo", "contains", "Flete"], "OR", ["memo", "contains", "Handling"], "OR", ["memo", "contains", "Transporte local"], "OR", ["memo", "contains", "Comisión Aduanas"], "OR", ["memo", "contains", "Visto bueno"], "OR", ["memo", "contains", "Almacenaje"], "OR", ["memo", "contains", "Desconsolidación"], "OR", ["memo", "contains", "Gastos en origen"], "OR", ["memo", "contains", "Gate in"], "OR", ["memo", "contains", "Servicio de carga"], "OR", ["memo", "contains", "Otros"], "OR", ["memo", "contains", "Seguro"]]
+                            [["memo", "contains", "Flete"], "OR",
+                            ["memo", "contains", "Handling"], "OR",
+                            ["memo", "contains", "Transporte local"], "OR",
+                            ["memo", "contains", "Comisión Aduanas"], "OR",
+                            ["memo", "contains", "Visto bueno"], "OR",
+                            ["memo", "contains", "Almacenaje"], "OR",
+                            ["memo", "contains", "Desconsolidación"], "OR",
+                            ["memo", "contains", "Gastos en origen"], "OR",
+                            ["memo", "contains", "Gate in"], "OR",
+                            ["memo", "contains", "Servicio de carga"], "OR",
+                            ["memo", "contains", "Otros"], "OR",
+                            ["memo", "contains", "Seguro"]]
                         ],
                         [
                             new nlobjSearchColumn("account"),
@@ -184,12 +195,12 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                             new nlobjSearchColumn("location")
                         ]
                     );
-    
+
                     for (var j = 0; itemreceiptSearch != null && j < itemreceiptSearch.length; j++) {
                         var searchresult2 = itemreceiptSearch[j];
                         var newMonto = searchresult2.getValue('debitamount');
                         var val_memo = searchresult2.getValue('memo');
-    
+
                         if (newMonto < 0) {
                             newMonto = newMonto * (-1);
                         }
@@ -198,8 +209,8 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                         nlapiLogExecution('DEBUG', 'MSK', 'val_memo=' + val_memo);
                         nlapiLogExecution('DEBUG', 'MSK', 'paraCuentas20=' + paraCuentas20);
 
-                        for(var x = 0; x < paraCuentas20.length; x++){
-                            if(val_memo.indexOf(paraCuentas20[x][0]) != -1){
+                        for (var x = 0; x < paraCuentas20.length; x++) {
+                            if (val_memo.indexOf(paraCuentas20[x][0]) != -1) {
 
                                 var newLine = customLines.addNewLine();
                                 newLine.setCreditAmount(newMonto);
@@ -207,17 +218,17 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                                 //newLine.setMemo(name_item);
                                 newLine.setClassId(Number(paraCuentas20[x][3]));
                                 newLine.setDepartmentId(Number(paraCuentas20[x][4]));
-            
+
                                 var newLine2 = customLines.addNewLine();
                                 newLine2.setDebitAmount(newMonto);
                                 newLine2.setAccountId(Number(paraCuentas20[x][1]));
                                 //newLine2.setMemo(name_item);
                                 newLine2.setClassId(Number(paraCuentas20[x][3]));
                                 newLine2.setDepartmentId(Number(paraCuentas20[x][4]));
-                                
+
                             }
                         }
-    
+
                     }
                 }
 
@@ -392,7 +403,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                 }
             }
             */
-            
+
 
         } catch (e) {
             nlapiLogExecution('ERROR', recType, e);

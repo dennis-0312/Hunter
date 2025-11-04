@@ -22,6 +22,12 @@ define([
             //let relateditem = objRecord.getValue({ fieldId: 'relateditem' });
             let transaction = objRecord.getValue({ fieldId: 'transaction' });
             let taller = objRecord.getValue({ fieldId: 'custevent_ht_turno_taller' });
+            const custrecord_ht_tt_oficina = search.lookupFields({
+                type: 'customrecord_ht_tt_tallertablet',
+                id: taller,
+                columns: ["custrecord_ht_tt_oficina"],
+            });
+            log.error('Error-custrecord_ht_tt_oficina', custrecord_ht_tt_oficina);
             // let salesOrder = record.load({ type: 'salesorder', id: transaction });
             // let numLines = salesOrder.getLineCount({ sublistId: 'item' });
             //log.debug('Item', relateditem);
@@ -31,9 +37,10 @@ define([
                     'WHERE ot.custrecord_ht_ot_orden_servicio = ?';
                 let resultSet = query.runSuiteQL({ query: sql, params: [transaction] });
                 let results = resultSet.asMappedResults();
+
                 if (results.length > 0) {
                     for (let i in results) {
-                        let otUpdate = record.submitFields({ type: _constant.customRecord.ORDEN_TRABAJO, id: results[i]['id'], values: { 'custrecord_ht_ot_taller': taller } });
+                        let otUpdate = record.submitFields({ type: _constant.customRecord.ORDEN_TRABAJO, id: results[i]['id'], values: { 'custrecord_ht_ot_taller': taller, 'custrecord_ht_ot_location': custrecord_ht_tt_oficina.custrecord_ht_tt_oficina[0].value } });
                         log.error('InserTaller', 'Se asignó el Taller ' + taller + ' en la Orden de Trabajo ' + otUpdate);
                     }
                 } else {

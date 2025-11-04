@@ -87,7 +87,7 @@ define(['N/config', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search'],
                         fromType: record.Type.WORK_ORDER,
                         fromId: workOrderId,
                         toType: record.Type.ASSEMBLY_BUILD,
-                        isDynamic: true
+                        isDynamic: false
                     });
 
                     assemblyBuild.setValue({ fieldId: 'quantity', value: objJson[i].quantity });
@@ -107,7 +107,7 @@ define(['N/config', 'N/log', 'N/query', 'N/record', 'N/runtime', 'N/search'],
                     for (let j = 0; j < countTotal; j++) {
                         assemblyBuild.selectLine({ sublistId: 'component', line: j });
                         for (let k = 0; k < arrayLines.length; k++) {
-                            let component = assemblyBuild.getCurrentSublistValue({ sublistId: 'component', fieldId: 'item' })
+                            let component = assemblyBuild.getCurrentSublistValue({ sublistId: 'component', fieldId: 'item'})
                             // log.error('component1', component + ' == ' + arrayLines[k].itemid);
                             if (component == arrayLines[k].itemid) {
                                 // log.error('component2', component + ' == ' + arrayLines[k].itemid);

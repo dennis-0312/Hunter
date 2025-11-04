@@ -3,10 +3,10 @@
  * @NScriptType ScheduledScript
  */
 define(['N/email', 'N/log', 'N/record', 'N/runtime', 'N/search', 'N/task', 'N/format'],
-    function(email, log, record, runtime, search, task, format) {
+    function (email, log, record, runtime, search, task, format) {
 
-        const PE_SERIE_RECORD = 'customrecord_serie_orden_servicio'; 
-        const SERVICE_ORDER = 'salesorder'; 
+        const PE_SERIE_RECORD = 'customrecord_serie_orden_servicio';
+        const SERVICE_ORDER = 'salesorder';
         const FORMULARIO_OS = 137;
 
         function execute(context) {
@@ -30,20 +30,19 @@ define(['N/email', 'N/log', 'N/record', 'N/runtime', 'N/search', 'N/task', 'N/fo
                     });
                     scriptTask.scriptId = 'customscript_ts_ss_actual_correla_osp';
                     scriptTask.deploymentId = 'customdeploy_ts_ss_actual_correla_osp';
-                    scriptTask.params = {'custscript_ht_punto_inicio_os': puntoInicio + 1000 };
+                    scriptTask.params = { 'custscript_ht_punto_inicio_os': puntoInicio + 1000 };
                     //scriptTask.submit();
                 }
-
             } catch (e) {
                 log.error('Error en la ejecución', e.message);
             }
         }
 
         function getOrders(puntoInicio) {
-            const fechaActual  = sysDate(); 
-            const from = fechaActual  + ' 00:00';
-            const to = fechaActual  + ' 23:59';
-          log.debug('Debug', from + ' - ' + to);
+            const fechaActual = sysDate();
+            const from = fechaActual + ' 00:00';
+            const to = fechaActual + ' 23:59';
+            log.debug('Debug', from + ' - ' + to);
             var ordenes = search.create({
                 type: "transaction",
                 filters: [
@@ -66,30 +65,29 @@ define(['N/email', 'N/log', 'N/record', 'N/runtime', 'N/search', 'N/task', 'N/fo
                 pageSize: 1000
             });
 
-            pagedData.pageRanges.forEach(function(pageRange) {
+            pagedData.pageRanges.forEach(function (pageRange) {
                 if (pageRange.index < (puntoInicio / 1000)) {
                     return;
                 }
                 var currentPage = pagedData.fetch({ index: pageRange.index });
 
-                currentPage.data.forEach(function(result) {
+                currentPage.data.forEach(function (result) {
                     var tranid = result.getValue('tranid');
                     var internalid = result.getValue('internalid');
-                    
+
                     log.debug('Registro encontrado', 'TranID: ' + tranid + ', InternalID: ' + internalid);
-                    
+
                     if (!registrosAgrupados[tranid]) {
                         registrosAgrupados[tranid] = new Set();
                     }
-
                     registrosAgrupados[tranid].add(internalid);
                 });
             });
 
             // Identificar duplicados
-            Object.keys(registrosAgrupados).forEach(function(tranid) {
+            Object.keys(registrosAgrupados).forEach(function (tranid) {
                 if (registrosAgrupados[tranid].size > 1) {
-                    registrosAgrupados[tranid].forEach(function(internalid) {
+                    registrosAgrupados[tranid].forEach(function (internalid) {
                         duplicados.push({ tranid: tranid, internalid: internalid });
                     });
                 }
@@ -101,23 +99,23 @@ define(['N/email', 'N/log', 'N/record', 'N/runtime', 'N/search', 'N/task', 'N/fo
         function processDuplicates(duplicados) {
             var registrosPorTranid = {};
 
-            duplicados.forEach(function(orden) {
+            duplicados.forEach(function (orden) {
                 if (!registrosPorTranid[orden.tranid]) {
                     registrosPorTranid[orden.tranid] = [];
                 }
                 registrosPorTranid[orden.tranid].push(orden.internalid);
             });
 
-            Object.keys(registrosPorTranid).forEach(function(tranid) {
+            Object.keys(registrosPorTranid).forEach(function (tranid) {
                 var internalids = registrosPorTranid[tranid];
                 if (internalids.length > 1) {
                     var originalInternalId = internalids[0];
                     var duplicateInternalIds = internalids.slice(1);
 
-                    duplicateInternalIds.forEach(function(internalid) {
+                    duplicateInternalIds.forEach(function (internalid) {
                         var newTranid = generateNewTranid();
                         log.debug('Actualizando TranID', 'InternalID: ' + internalid + ', Nuevo TranID: ' + newTranid);
-                        
+
                         var duplicatedRecord = record.load({
                             type: SERVICE_ORDER,
                             id: internalid
@@ -157,7 +155,7 @@ define(['N/email', 'N/log', 'N/record', 'N/runtime', 'N/search', 'N/task', 'N/fo
 
             return 'OS' + nuevoNumero;
         }
-        
+
         function sysDate() { // Aquí defines la función 'sysDate'
             try {
                 var date = new Date();

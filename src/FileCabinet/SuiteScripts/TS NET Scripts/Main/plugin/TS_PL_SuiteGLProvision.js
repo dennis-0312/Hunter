@@ -5,6 +5,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
     var accountCajaTransito = 122 //11001010200 FONDOS SIN DEPOSITAR
     const TIPO_PENDIENTE_FACTURAR = 1;
     const TIPO_PENDIENTE_INSTALAR = 2;
+    const ESTADO_FACTURADO = 2
     nlapiLogExecution("ERROR", "customizeGlImpact", recordType);
 
     //& PROCESO DE RETENCIÓN =========================================================================
@@ -85,74 +86,101 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                 if (standardLines.getLine(i).getAccountId() == accountCajaTransito) {
                     // nlapiLogExecution("ERROR", "GLENTRY", standardLines.getLine(i).getAccountId());
                     // nlapiLogExecution("ERROR", "GLENTRYACCOUNT", typeof cuenta);
+                    var monto = 0;
 
-                    var newLine = customLines.addNewLine();
-                    newLine.setCreditAmount(standardLines.getLine(i).getCreditAmount());
-                    newLine.setAccountId(Number(cuenta));
-                    newLine.setEntityId(standardLines.getLine(1).getEntityId());
-                    newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                    newLine.setClassId(standardLines.getLine(0).getClassId());
-                    newLine.setLocationId(standardLines.getLine(0).getLocationId());
-                    newLine.setMemo(standardLines.getLine(0).getMemo());
+                    if (standardLines.getLine(i).getCreditAmount() > 0) {
+                        monto = standardLines.getLine(i).getCreditAmount();
 
-                    var newLine = customLines.addNewLine();
-                    newLine.setDebitAmount(standardLines.getLine(i).getCreditAmount());
-                    newLine.setAccountId(accountCajaTransito);
-                    newLine.setEntityId(standardLines.getLine(1).getEntityId());
-                    newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                    newLine.setClassId(standardLines.getLine(0).getClassId());
-                    newLine.setLocationId(standardLines.getLine(0).getLocationId());
-                    newLine.setMemo(standardLines.getLine(0).getMemo());
-                }
-            }
-        } catch (error) {
-            nlapiLogExecution('ERROR', recordType, error);
-        }
-    }
+                        var newLine = customLines.addNewLine();
+                        newLine.setCreditAmount(monto);
+                        newLine.setAccountId(Number(cuenta));
+                        newLine.setEntityId(standardLines.getLine(i).getEntityId());
+                        newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+                        newLine.setClassId(standardLines.getLine(0).getClassId());
+                        newLine.setLocationId(standardLines.getLine(0).getLocationId());
+                        newLine.setMemo(standardLines.getLine(0).getMemo());
 
-    if (recordType == 'creditmemo') {
-        nlapiLogExecution("ERROR", recordType, 'Init');
-        var memo = transactionRecord.getFieldValue('memo');
-        var i = 0;
-        try {
-            var createdFrom = transactionRecord.getFieldValue('createdfrom');
-            nlapiLogExecution("ERROR", "CREATEDFROM", createdFrom);
-            if (!createdFrom) return;
-            var fields = ['recordtype', 'createdfrom', 'statusref', 'tranid'];
-            var transactionFields = nlapiLookupField('transaction', createdFrom, fields);
-            nlapiLogExecution("ERROR", "transactionFields", JSON.stringify(transactionFields));
-            if (transactionFields.recordtype == "invoice" && transactionFields.createdfrom) {
-                var createdFrom = transactionFields.createdfrom;
-                var salesOrderRecord = nlapiLookupField('transaction', createdFrom, fields);
-                nlapiLogExecution("ERROR", "salesOrderRecord 2", JSON.stringify(salesOrderRecord));
-                if (salesOrderRecord.recordtype == "salesorder" && salesOrderRecord.statusref == "partiallyFulfilled") {
-                    var costProvisionAccount = "", amount = 0, location;
-                    var detalleProvision = obtenerProvisionDeLinea(createdFrom);
-                    nlapiLogExecution("ERROR", "CREATEDFROM", JSON.stringify(detalleProvision));
-                    if (detalleProvision == null) return;
-                    var tranid = salesOrderRecord.tranid;
-                    var factura = transactionFields.tranid;
-                    var item = transactionRecord.getLineItemValue('item', 'item', 1);
-                    var itemtxt = transactionRecord.getLineItemText('item', 'item', 1);
-                    var glosa = tranid + '-' + itemtxt;
-                    try {
-                        var ordenTrabajo = getOrdenTrabajo(createdFrom, item)
-                        glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + itemtxt;
-                    } catch (error) {
-                        nlapiLogExecution('ERROR', 'Glosa', error);
+                        var newLine = customLines.addNewLine();
+                        newLine.setDebitAmount(monto);
+                        newLine.setAccountId(accountCajaTransito);
+                        newLine.setEntityId(standardLines.getLine(i).getEntityId());
+                        newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+                        newLine.setClassId(standardLines.getLine(0).getClassId());
+                        newLine.setLocationId(standardLines.getLine(0).getLocationId());
+                        newLine.setMemo(standardLines.getLine(0).getMemo());
+
+                    } else {
+                        monto = standardLines.getLine(i).getDebitAmount();
+
+                        var newLine = customLines.addNewLine();
+                        newLine.setCreditAmount(monto);
+                        newLine.setAccountId(accountCajaTransito);
+                        newLine.setEntityId(standardLines.getLine(i).getEntityId());
+                        newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+                        newLine.setClassId(standardLines.getLine(0).getClassId());
+                        newLine.setLocationId(standardLines.getLine(0).getLocationId());
+                        newLine.setMemo(standardLines.getLine(0).getMemo());
+
+                        var newLine = customLines.addNewLine();
+                        newLine.setDebitAmount(monto);
+                        newLine.setAccountId(Number(cuenta));
+                        newLine.setEntityId(standardLines.getLine(i).getEntityId());
+                        newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+                        newLine.setClassId(standardLines.getLine(0).getClassId());
+                        newLine.setLocationId(standardLines.getLine(0).getLocationId());
+                        newLine.setMemo(standardLines.getLine(0).getMemo());
                     }
-                    var entityId = standardLines.getLine(0).getEntityId();
-                    var deparmentId = standardLines.getLine(0).getDepartmentId();
-                    var classId = standardLines.getLine(0).getClassId();
-                    var locationId = detalleProvision.location;
-                    agregarCustomLines(customLines, detalleProvision.provisionAmount, 0, detalleProvision.provisionAccount, entityId, deparmentId, classId, locationId, glosa);
-                    agregarCustomLines(customLines, 0, detalleProvision.provisionAmount, detalleProvision.costAccount, entityId, deparmentId, classId, locationId, glosa);
                 }
             }
         } catch (error) {
             nlapiLogExecution('ERROR', recordType, error);
         }
     }
+
+    //& dfernandez - Comentado por inactivación de Provisión
+    // if (recordType == 'creditmemo') {
+    //     nlapiLogExecution("ERROR", recordType, 'Init');
+    //     var memo = transactionRecord.getFieldValue('memo');
+    //     var i = 0;
+    //     try {
+    //         var createdFrom = transactionRecord.getFieldValue('createdfrom');
+    //         nlapiLogExecution("ERROR", "CREATEDFROM", createdFrom);
+    //         if (!createdFrom) return;
+    //         var fields = ['recordtype', 'createdfrom', 'statusref', 'tranid'];
+    //         var transactionFields = nlapiLookupField('transaction', createdFrom, fields);
+    //         nlapiLogExecution("ERROR", "transactionFields", JSON.stringify(transactionFields));
+    //         if (transactionFields.recordtype == "invoice" && transactionFields.createdfrom) {
+    //             var createdFrom = transactionFields.createdfrom;
+    //             var salesOrderRecord = nlapiLookupField('transaction', createdFrom, fields);
+    //             nlapiLogExecution("ERROR", "salesOrderRecord 2", JSON.stringify(salesOrderRecord));
+    //             if (salesOrderRecord.recordtype == "salesorder" && salesOrderRecord.statusref == "partiallyFulfilled") {
+    //                 var costProvisionAccount = "", amount = 0, location;
+    //                 var detalleProvision = obtenerProvisionDeLinea(createdFrom);
+    //                 nlapiLogExecution("ERROR", "CREATEDFROM", JSON.stringify(detalleProvision));
+    //                 if (detalleProvision == null) return;
+    //                 var tranid = salesOrderRecord.tranid;
+    //                 var factura = transactionFields.tranid;
+    //                 var item = transactionRecord.getLineItemValue('item', 'item', 1);
+    //                 var itemtxt = transactionRecord.getLineItemText('item', 'item', 1);
+    //                 var glosa = tranid + '-' + itemtxt;
+    //                 try {
+    //                     var ordenTrabajo = getOrdenTrabajo(createdFrom, item)
+    //                     glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + itemtxt;
+    //                 } catch (error) {
+    //                     nlapiLogExecution('ERROR', 'Glosa', error);
+    //                 }
+    //                 var entityId = standardLines.getLine(0).getEntityId();
+    //                 var deparmentId = standardLines.getLine(0).getDepartmentId();
+    //                 var classId = standardLines.getLine(0).getClassId();
+    //                 var locationId = detalleProvision.location;
+    //                 agregarCustomLines(customLines, detalleProvision.provisionAmount, 0, detalleProvision.provisionAccount, entityId, deparmentId, classId, locationId, glosa);
+    //                 agregarCustomLines(customLines, 0, detalleProvision.provisionAmount, detalleProvision.costAccount, entityId, deparmentId, classId, locationId, glosa);
+    //             }
+    //         }
+    //     } catch (error) {
+    //         nlapiLogExecution('ERROR', recordType, error);
+    //     }
+    // }
     //&===============================================================================================
 
     if (recordType == 'itemfulfillment') {
@@ -161,8 +189,13 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
             var createdFrom = transactionRecord.getFieldValue('createdfrom');
             var ubicacion = Number(transactionRecord.getLineItemValue('item', 'location', 1));
             nlapiLogExecution("ERROR", "CREATEDFROM", createdFrom);
-            var fields = ['recordtype', 'statusref']
+            var fields = ['recordtype', 'statusref', 'custbody_ht_saldo_inicial', 'custbody_ec_estado_factura_interna']
             var transactionFields = nlapiLookupField('transaction', createdFrom, fields);
+            nlapiLogExecution("ERROR", "transactionFields", transactionFields);
+            var cargaInicial = transactionFields.custbody_ht_saldo_inicial;
+            var estadoFacInterna = transactionFields.custbody_ec_estado_factura_interna;
+            nlapiLogExecution("ERROR", "cargaInicial", cargaInicial);
+            nlapiLogExecution("ERROR", "estadoFacInterna", estadoFacInterna);
             if (transactionFields.recordtype == "salesorder") {
                 var salesOrderRecord = nlapiLoadRecord('salesorder', createdFrom);
                 var subsidiary = salesOrderRecord.getFieldValue('subsidiary');
@@ -178,7 +211,7 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                     nlapiLogExecution('ERROR', 'Glosa', error);
                 }
                 var itemCount = salesOrderRecord.getLineItemCount('item');
-                var costProvisionAccount = "", costAccount = "", amount = 0, location;
+                var costProvisionAccount = "", costAccount = "", amount = 0, location, objData;
                 for (var i = 1; i <= itemCount; i++) {
                     var itemtype = salesOrderRecord.getLineItemValue('item', 'itemtype', i);
                     nlapiLogExecution("ERROR", "itemtype " + i, itemtype);
@@ -194,36 +227,45 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
                         var itemId = Number(salesOrderRecord.getLineItemValue('item', 'item', i));
                         var itemFields = nlapiLookupField('item', itemId, ["recordtype"]);
                         if (itemFields.recordtype != "serializedassemblyitem") continue;
-                        amount = obtenerCostoProvisionDeFactura(salesOrderRecord);
+                        if ((cargaInicial || cargaInicial == "T") && estadoFacInterna == ESTADO_FACTURADO) {
+                            objData = obtenerDetalleProvisionSaldoInicialPendienteInstalar(createdFrom, itemId, TIPO_PENDIENTE_INSTALAR)
+                            nlapiLogExecution("ERROR", "objData " + i, JSON.stringify(objData));
+                            amount = Number(objData.monto);
+                            costProvisionAccount = Number(objData.ctaPendienteInstalar);
+                            costAccount = Number(objData.ctaCosto);
+                        }
                         if (amount == 0) {
-                            var facturaid = obtenerFacturaAgrupada(createdFrom);
-                            amount = obtenerBusquedaCostoProvision(facturaid);
+                            amount = obtenerCostoProvisionDeFactura(salesOrderRecord);
+                            if (amount == 0) {
+                                var facturaid = obtenerFacturaAgrupada(createdFrom);
+                                amount = obtenerBusquedaCostoProvision(facturaid);
+                            }
                         }
                         break;
                     }
-
                 }
                 nlapiLogExecution("ERROR", "amount", amount);
-                //if (amount == 0) return;
+                if (amount == 0) return;
 
                 if (amount != 0) {
-                    var newLine = customLines.addNewLine();
-                    newLine.setDebitAmount(amount);
-                    newLine.setAccountId(costProvisionAccount);
-                    newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                    newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                    newLine.setClassId(standardLines.getLine(0).getClassId());
-                    newLine.setLocationId(location);
-                    newLine.setMemo(glosa);
+                    //& dfernandez - Comentado por inactivación de Provisión
+                    // var newLine = customLines.addNewLine();
+                    // newLine.setDebitAmount(amount);
+                    // newLine.setAccountId(costProvisionAccount);
+                    // newLine.setEntityId(standardLines.getLine(0).getEntityId());
+                    // newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+                    // newLine.setClassId(standardLines.getLine(0).getClassId());
+                    // newLine.setLocationId(location);
+                    // newLine.setMemo(glosa);
 
-                    var newLine = customLines.addNewLine();
-                    newLine.setCreditAmount(amount);
-                    newLine.setAccountId(costAccount);
-                    newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                    newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                    newLine.setClassId(standardLines.getLine(0).getClassId());
-                    newLine.setLocationId(location);
-                    newLine.setMemo(glosa);
+                    // var newLine = customLines.addNewLine();
+                    // newLine.setCreditAmount(amount);
+                    // newLine.setAccountId(costAccount);
+                    // newLine.setEntityId(standardLines.getLine(0).getEntityId());
+                    // newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+                    // newLine.setClassId(standardLines.getLine(0).getClassId());
+                    // newLine.setLocationId(location);
+                    // newLine.setMemo(glosa);
                 }
 
                 if (ubicacion != location) {
@@ -259,383 +301,392 @@ function customizeGlImpact(transactionRecord, standardLines, customLines, book) 
         nlapiLogExecution("DEBUG", "Consignación", 'FIN Item Fulfillment: ' + id + ' ----------------------------------------------------------------------------------------------------');
     }
 
-    if (recordType == 'invoice') {
-        nlapiLogExecution("ERROR", "Provisión TEST 1", 'INICIO Invoice: ' + id + ' ------------------------------------------------------------------------------------------------');
-        try {
-            var arrOrdenServicio = [];
-            var createdFrom = transactionRecord.getFieldValue('createdfrom');
-            var procesoAgrupacion = transactionRecord.getFieldValue('custbody_ht_status_process_group'); // 1: Completado
-            nlapiLogExecution("ERROR", "procesoAgrupacion", procesoAgrupacion);
-            nlapiLogExecution("ERROR", "CREATEDFROM", createdFrom);
-            if (procesoAgrupacion == '1') {
-                arrOrdenServicio = getFacturaInternas(id);
-            }
+    //& dfernandez - Comentado por inactivación de Provisión
+    // if (recordType == 'invoice') {
+    //     nlapiLogExecution("ERROR", "Provisión TEST 1", 'INICIO Invoice: ' + id + ' ------------------------------------------------------------------------------------------------');
+    //     try {
+    //         var arrOrdenServicio = [];
+    //         var createdFrom = transactionRecord.getFieldValue('createdfrom');
+    //         var procesoAgrupacion = transactionRecord.getFieldValue('custbody_ht_status_process_group'); // 1: Completado
+    //         nlapiLogExecution("ERROR", "procesoAgrupacion", procesoAgrupacion);
+    //         nlapiLogExecution("ERROR", "CREATEDFROM", createdFrom);
+    //         if (procesoAgrupacion == '1') {
+    //             arrOrdenServicio = getFacturaInternas(id);
+    //         }
 
-            if (!createdFrom && procesoAgrupacion == '1') { // AGREGADO POR EDWIN
-                for (var x = 0; x < arrOrdenServicio.length; x++) {
-                    var fields = ['recordtype', 'statusref'];
-                    var transactionFields = nlapiLookupField('transaction', arrOrdenServicio[x], fields);
-                    if (transactionFields.recordtype == "salesorder") {
-                        nlapiLogExecution("ERROR", "Status==============", transactionFields.statusref);
-                    }
-                    if (transactionFields.statusref == "pendingFulfillment" || transactionFields.statusref == "partiallyFulfilled" || transactionFields.statusref == "pendingBillingPartFulfilled") {
-                        var salesOrderRecord = nlapiLoadRecord('salesorder', arrOrdenServicio[x]);
-                        var tranid = salesOrderRecord.getFieldValue('tranid');
-                        var item = transactionRecord.getLineItemValue('item', 'item', 1);
-                        var customer = transactionRecord.getLineItemText('item', 'item', 1);
-                        var glosa = tranid + '-' + customer;
-                        try {
-                            var ordenTrabajo = getOrdenTrabajo(arrOrdenServicio[x], item)
-                            var factura = getFactura(arrOrdenServicio[x], item)
-                            glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + customer;
-                        } catch (error) {
-                            nlapiLogExecution('ERROR', 'Glosa', error);
-                        }
-                        var itemCount = salesOrderRecord.getLineItemCount('item');
-                        var costProvisionAccount = "", costAccount = "", amount = 0, location = "";
-                        for (var i = 1; i <= itemCount; i++) {
-                            costProvisionAccount = Number(salesOrderRecord.getLineItemValue('item', 'custcol_ht_so_cost_account_provision', i));
-                            costAccount = Number(salesOrderRecord.getLineItemValue('item', 'custcol_ht_so_cost_account', i));
-                            nlapiLogExecution("ERROR", "costProvisionAccount " + i, costProvisionAccount + "|" + costAccount);
-                            if (!(costProvisionAccount && costAccount)) continue;
-                            var itemId = Number(salesOrderRecord.getLineItemValue('item', 'item', i));
-                            var description = salesOrderRecord.getLineItemValue('item', 'description', i);
-                            var itemFields = nlapiLookupField('item', itemId, ["recordtype"]);
-                            if (itemFields.recordtype != "serializedassemblyitem") continue;
-                            if (validarGLCosteoFactura(itemId)) continue;
-                            var quantity = Number(salesOrderRecord.getLineItemValue('item', 'quantity', i));
-                            nlapiLogExecution("ERROR", "quantity", quantity);
-                            // var averageCost = Number(salesOrderRecord.getLineItemValue('item', 'averagecost', i));
-                            location = Number(salesOrderRecord.getLineItemValue('item', 'location', i));
-                            //nlapiLogExecution("ERROR", "location", location);
-                            var averageCost = obtenerCostoPromedio(itemId, location);
-                            //nlapiLogExecution("ERROR", "averageCost", averageCost);
-                            amount = quantity * averageCost;
-                            salesOrderRecord.setLineItemValue('item', 'custcol_ht_os_asientoprovision', i, "T");
-                            salesOrderRecord.setLineItemValue('item', 'custcol_ht_so_cost_import', i, amount);
-                            nlapiLogExecution("ERROR", "amount ", amount);
-                            if (amount == 0) continue;
-                            var entity = standardLines.getLine(0).getEntityId();
-                            var department = standardLines.getLine(0).getDepartmentId();
-                            var _class = standardLines.getLine(0).getClassId();
-                            var newLine = customLines.addNewLine();
-                            newLine.setDebitAmount(amount);
-                            newLine.setAccountId(costAccount);
-                            newLine.setMemo(glosa);
-                            if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                            if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                            if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
-                            newLine.setLocationId(location);
-                            nlapiLogExecution("ERROR", "FIRST LINE");
+    //         if (!createdFrom && procesoAgrupacion == '1') {
+    //             for (var x = 0; x < arrOrdenServicio.length; x++) {
+    //                 var fields = ['recordtype', 'statusref'];
+    //                 var transactionFields = nlapiLookupField('transaction', arrOrdenServicio[x], fields);
+    //                 if (transactionFields.recordtype == "salesorder") {
+    //                     nlapiLogExecution("ERROR", "Status==============", transactionFields.statusref);
+    //                 }
+    //                 if (transactionFields.statusref == "pendingFulfillment" || transactionFields.statusref == "partiallyFulfilled" || transactionFields.statusref == "pendingBillingPartFulfilled") {
+    //                     var salesOrderRecord = nlapiLoadRecord('salesorder', arrOrdenServicio[x]);
+    //                     var tranid = salesOrderRecord.getFieldValue('tranid');
+    //                     var item = transactionRecord.getLineItemValue('item', 'item', 1);
+    //                     var customer = transactionRecord.getLineItemText('item', 'item', 1);
+    //                     var glosa = tranid + '-' + customer;
+    //                     try {
+    //                         var ordenTrabajo = getOrdenTrabajo(arrOrdenServicio[x], item)
+    //                         var factura = getFactura(arrOrdenServicio[x], item)
+    //                         glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + customer;
+    //                     } catch (error) {
+    //                         nlapiLogExecution('ERROR', 'Glosa', error);
+    //                     }
+    //                     var itemCount = salesOrderRecord.getLineItemCount('item');
+    //                     var costProvisionAccount = "", costAccount = "", amount = 0, location = "";
+    //                     for (var i = 1; i <= itemCount; i++) {
+    //                         costProvisionAccount = Number(salesOrderRecord.getLineItemValue('item', 'custcol_ht_so_cost_account_provision', i));
+    //                         costAccount = Number(salesOrderRecord.getLineItemValue('item', 'custcol_ht_so_cost_account', i));
+    //                         nlapiLogExecution("ERROR", "costProvisionAccount " + i, costProvisionAccount + "|" + costAccount);
+    //                         if (!(costProvisionAccount && costAccount)) continue;
+    //                         var itemId = Number(salesOrderRecord.getLineItemValue('item', 'item', i));
+    //                         var description = salesOrderRecord.getLineItemValue('item', 'description', i);
+    //                         var itemFields = nlapiLookupField('item', itemId, ["recordtype"]);
+    //                         if (itemFields.recordtype != "serializedassemblyitem") continue;
+    //                         if (validarGLCosteoFactura(itemId)) continue;
+    //                         var quantity = Number(salesOrderRecord.getLineItemValue('item', 'quantity', i));
+    //                         nlapiLogExecution("ERROR", "quantity", quantity);
+    //                         // var averageCost = Number(salesOrderRecord.getLineItemValue('item', 'averagecost', i));
+    //                         location = Number(salesOrderRecord.getLineItemValue('item', 'location', i));
+    //                         //nlapiLogExecution("ERROR", "location", location);
+    //                         var averageCost = obtenerCostoPromedio(itemId, location);
+    //                         //nlapiLogExecution("ERROR", "averageCost", averageCost);
+    //                         amount = quantity * averageCost;
+    //                         salesOrderRecord.setLineItemValue('item', 'custcol_ht_os_asientoprovision', i, "T");
+    //                         salesOrderRecord.setLineItemValue('item', 'custcol_ht_so_cost_import', i, amount);
+    //                         nlapiLogExecution("ERROR", "amount ", amount);
+    //                         if (amount == 0) continue;
+    //                         var entity = standardLines.getLine(0).getEntityId();
+    //                         var department = standardLines.getLine(0).getDepartmentId();
+    //                         var _class = standardLines.getLine(0).getClassId();
+    //                         var newLine = customLines.addNewLine();
+    //                         newLine.setDebitAmount(amount);
+    //                         newLine.setAccountId(costAccount);
+    //                         newLine.setMemo(glosa);
+    //                         if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                         if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                         if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                         newLine.setLocationId(location);
+    //                         nlapiLogExecution("ERROR", "FIRST LINE");
 
-                            var newLine = customLines.addNewLine();
-                            newLine.setCreditAmount(amount);
-                            newLine.setAccountId(costProvisionAccount);
-                            newLine.setMemo(glosa);
-                            if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                            if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                            if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
-                            newLine.setLocationId(location);
-                            nlapiLogExecution("ERROR", "SECOND LINE");
-                            //break;
-                        }
+    //                         var newLine = customLines.addNewLine();
+    //                         newLine.setCreditAmount(amount);
+    //                         newLine.setAccountId(costProvisionAccount);
+    //                         newLine.setMemo(glosa);
+    //                         if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                         if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                         if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                         newLine.setLocationId(location);
+    //                         nlapiLogExecution("ERROR", "SECOND LINE");
+    //                         //break;
+    //                     }
 
-                        nlapiSubmitRecord(salesOrderRecord, false, true);
-                        nlapiLogExecution("ERROR", "END ");
-                    } else if (transactionFields.statusref == "pendingBilling" || transactionFields.statusref == "fullyBilled") {
-                        nlapiLogExecution("ERROR", "customrecord_ht_dp_detalle_provision", "Agrupada");
-                        var salesOrderRecord = nlapiLoadRecord('salesorder', arrOrdenServicio[x]);
-                        var tranid = salesOrderRecord.getFieldValue('tranid');
-                        var item = transactionRecord.getLineItemValue('item', 'item', 1);
-                        var customer = transactionRecord.getLineItemText('item', 'item', 1);
-                        var glosa = tranid + '-' + customer;
-                        try {
-                            var ordenTrabajo = getOrdenTrabajo(arrOrdenServicio[x], item)
-                            var factura = getFactura(arrOrdenServicio[x], item)
-                            glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + customer;
-                        } catch (error) {
-                            nlapiLogExecution('ERROR', 'Glosa', error);
-                        }
-                        var detalleProvision = nlapiSearchRecord("customrecord_ht_dp_detalle_provision", null,
-                            [["custrecord_ht_dp_transaccion_prov", "anyof", arrOrdenServicio[x]]],
-                            [
-                                new nlobjSearchColumn("custrecord_ht_dp_aplicado"),
-                                new nlobjSearchColumn("custrecord_ht_dp_item"),
-                                new nlobjSearchColumn("custrecord_ht_dp_provision"),
-                                new nlobjSearchColumn("custrecord_ht_dp_tipo_provision")
-                            ]
-                        );
+    //                     nlapiSubmitRecord(salesOrderRecord, false, true);
+    //                     nlapiLogExecution("ERROR", "END ");
+    //                 } else if (transactionFields.statusref == "pendingBilling" || transactionFields.statusref == "fullyBilled") {
+    //                     nlapiLogExecution("ERROR", "customrecord_ht_dp_detalle_provision", "Agrupada");
+    //                     var salesOrderRecord = nlapiLoadRecord('salesorder', arrOrdenServicio[x]);
+    //                     var tranid = salesOrderRecord.getFieldValue('tranid');
+    //                     var item = transactionRecord.getLineItemValue('item', 'item', 1);
+    //                     var customer = transactionRecord.getLineItemText('item', 'item', 1);
+    //                     var glosa = tranid + '-' + customer;
+    //                     try {
+    //                         var ordenTrabajo = getOrdenTrabajo(arrOrdenServicio[x], item)
+    //                         var factura = getFactura(arrOrdenServicio[x], item)
+    //                         glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + customer;
+    //                     } catch (error) {
+    //                         nlapiLogExecution('ERROR', 'Glosa', error);
+    //                     }
+    //                     var detalleProvision = nlapiSearchRecord("customrecord_ht_dp_detalle_provision", null,
+    //                         [
+    //                             ["custrecord_ht_dp_transaccion_prov", "anyof", arrOrdenServicio[x]],
+    //                             "AND",
+    //                             ["custrecord_ht_dp_tipo_provision", "anyof", TIPO_PENDIENTE_FACTURAR]
+    //                         ],
+    //                         [
+    //                             new nlobjSearchColumn("custrecord_ht_dp_aplicado"),
+    //                             new nlobjSearchColumn("custrecord_ht_dp_item"),
+    //                             new nlobjSearchColumn("custrecord_ht_dp_provision"),
+    //                             new nlobjSearchColumn("custrecord_ht_dp_tipo_provision")
+    //                         ]
+    //                     );
 
-                        if (detalleProvision == null) continue;
-                        if (detalleProvision[0].getValue('custrecord_ht_dp_aplicado') == 'T') continue;
-                        if (!detalleProvision[0].getValue('custrecord_ht_dp_item')) continue;
-                        if (detalleProvision[0].getValue('custrecord_ht_dp_tipo_provision') != TIPO_PENDIENTE_FACTURAR) continue;
+    //                     if (detalleProvision == null) continue;
+    //                     if (detalleProvision[0].getValue('custrecord_ht_dp_aplicado') == 'T') continue;
+    //                     if (!detalleProvision[0].getValue('custrecord_ht_dp_item')) continue;
+    //                     if (detalleProvision[0].getValue('custrecord_ht_dp_tipo_provision') != TIPO_PENDIENTE_FACTURAR) continue;
 
-                        var itemSearchResult = nlapiSearchRecord("item", null,
-                            [["internalid", "anyof", detalleProvision[0].getValue('custrecord_ht_dp_item')]],
-                            [
-                                new nlobjSearchColumn("incomeaccount"),
-                                new nlobjSearchColumn("custitem_cuenta_provision_ingreso")
-                            ]
-                        );
+    //                     var itemSearchResult = nlapiSearchRecord("item", null,
+    //                         [["internalid", "anyof", detalleProvision[0].getValue('custrecord_ht_dp_item')]],
+    //                         [
+    //                             new nlobjSearchColumn("incomeaccount"),
+    //                             new nlobjSearchColumn("custitem_cuenta_provision_ingreso")
+    //                         ]
+    //                     );
 
-                        if (itemSearchResult == null) return;
-                        var incomeAccount = itemSearchResult[0].getValue('incomeaccount');
-                        var provisionAccount = itemSearchResult[0].getValue('custitem_cuenta_provision_ingreso');
-                        var amount = detalleProvision[0].getValue('custrecord_ht_dp_provision');
+    //                     if (itemSearchResult == null) return;
+    //                     var incomeAccount = itemSearchResult[0].getValue('incomeaccount');
+    //                     var provisionAccount = itemSearchResult[0].getValue('custitem_cuenta_provision_ingreso');
+    //                     var amount = detalleProvision[0].getValue('custrecord_ht_dp_provision');
 
-                        nlapiLogExecution("ERROR", "incomeAccount", incomeAccount);
-                        var newLine = customLines.addNewLine();
-                        newLine.setDebitAmount(amount);
-                        newLine.setAccountId(Number(incomeAccount));
-                        newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                        newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                        newLine.setClassId(standardLines.getLine(0).getClassId());
-                        newLine.setLocationId(standardLines.getLine(0).getLocationId());
-                        newLine.setMemo(glosa);
+    //                     nlapiLogExecution("ERROR", "incomeAccount", incomeAccount);
+    //                     var newLine = customLines.addNewLine();
+    //                     newLine.setDebitAmount(amount);
+    //                     newLine.setAccountId(Number(incomeAccount));
+    //                     newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                     newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                     newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                     newLine.setLocationId(standardLines.getLine(0).getLocationId());
+    //                     newLine.setMemo(glosa);
 
-                        nlapiLogExecution("ERROR", "provisionAccount", provisionAccount);
-                        var newLine = customLines.addNewLine();
-                        newLine.setCreditAmount(amount);
-                        newLine.setAccountId(Number(provisionAccount));
-                        newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                        newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                        newLine.setClassId(standardLines.getLine(0).getClassId());
-                        newLine.setLocationId(standardLines.getLine(0).getLocationId());
-                        newLine.setMemo(glosa);
-                        nlapiLogExecution("ERROR", "Proccess", "final");
-                        nlapiSubmitField('customrecord_ht_dp_detalle_provision', detalleProvision[0].getId(), 'custrecord_ht_dp_aplicado', 'T')
-                    }
-                }
-            }
+    //                     nlapiLogExecution("ERROR", "provisionAccount", provisionAccount);
+    //                     var newLine = customLines.addNewLine();
+    //                     newLine.setCreditAmount(amount);
+    //                     newLine.setAccountId(Number(provisionAccount));
+    //                     newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                     newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                     newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                     newLine.setLocationId(standardLines.getLine(0).getLocationId());
+    //                     newLine.setMemo(glosa);
+    //                     nlapiLogExecution("ERROR", "Proccess", "final");
+    //                     nlapiSubmitField('customrecord_ht_dp_detalle_provision', detalleProvision[0].getId(), 'custrecord_ht_dp_aplicado', 'T')
+    //                 }
+    //             }
+    //         }
 
-            if (!createdFrom) return;
-            var fields = ['recordtype', 'statusref'];
-            var transactionFields = nlapiLookupField('transaction', createdFrom, fields);
-            if (transactionFields.recordtype == "salesorder") {
-                nlapiLogExecution("ERROR", "Status==============", transactionFields.statusref);
-                if (transactionFields.statusref == "pendingFulfillment" || transactionFields.statusref == "partiallyFulfilled" || transactionFields.statusref == "pendingBillingPartFulfilled") {
-                    var salesOrderRecord = nlapiLoadRecord('salesorder', createdFrom);
-                    var tranid = salesOrderRecord.getFieldValue('tranid');
-                    var item = transactionRecord.getLineItemValue('item', 'item', 1);
-                    var customer = transactionRecord.getLineItemText('item', 'item', 1);
-                    var glosa = tranid + '-' + customer;
-                    try {
-                        var ordenTrabajo = getOrdenTrabajo(createdFrom, item)
-                        var factura = getFactura(createdFrom, item)
-                        glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + customer;
-                    } catch (error) {
-                        nlapiLogExecution('ERROR', 'Glosa', error);
-                    }
-                    var itemCount = salesOrderRecord.getLineItemCount('item');
-                    var costProvisionAccount = "", costAccount = "", amount = 0, location = "";
-                    for (var i = 1; i <= itemCount; i++) {
-                        costProvisionAccount = Number(salesOrderRecord.getLineItemValue('item', 'custcol_ht_so_cost_account_provision', i));
-                        costAccount = Number(salesOrderRecord.getLineItemValue('item', 'custcol_ht_so_cost_account', i));
-                        nlapiLogExecution("ERROR", "costProvisionAccount " + i, costProvisionAccount + "|" + costAccount);
-                        if (!(costProvisionAccount && costAccount)) continue;
-                        var itemId = Number(salesOrderRecord.getLineItemValue('item', 'item', i));
-                        var description = salesOrderRecord.getLineItemValue('item', 'description', i);
-                        var itemFields = nlapiLookupField('item', itemId, ["recordtype"]);
-                        if (itemFields.recordtype != "serializedassemblyitem") continue;
-                        if (validarGLCosteoFactura(itemId)) continue;
-                        var quantity = Number(salesOrderRecord.getLineItemValue('item', 'quantity', i));
-                        // var averageCost = Number(salesOrderRecord.getLineItemValue('item', 'averagecost', i));
-                        location = Number(salesOrderRecord.getLineItemValue('item', 'location', i));
-                        var averageCost = obtenerCostoPromedio(itemId, location);
-                        nlapiLogExecution("ERROR", "quantity", quantity);
-                        amount = quantity * averageCost;
-                        salesOrderRecord.setLineItemValue('item', 'custcol_ht_os_asientoprovision', i, "T");
-                        salesOrderRecord.setLineItemValue('item', 'custcol_ht_so_cost_import', i, amount);
-                        nlapiLogExecution("ERROR", "amount ", amount);
-                        if (amount == 0) continue;
-                        var itemfulfillmentSearch = nlapiSearchRecord("itemfulfillment", null,
-                            [
-                                ["type", "anyof", "ItemShip"],
-                                "AND",
-                                ["mainline", "is", "T"],
-                                "AND",
-                                ["taxline", "is", "F"],
-                                "AND",
-                                ["createdfrom", "anyof", createdFrom],
-                                "AND",
-                                ["item", "anyof", itemId]
-                            ],
-                            [
-                                new nlobjSearchColumn("tranid"),
-                                new nlobjSearchColumn("createdfrom")
-                            ]
-                        );
-                        nlapiLogExecution("ERROR", "itemfulfillmentSearch " + i, 'Tiene FF ' + itemfulfillmentSearch);
-                        if (itemfulfillmentSearch != null) continue;
-                        var entity = standardLines.getLine(0).getEntityId();
-                        var department = standardLines.getLine(0).getDepartmentId();
-                        var _class = standardLines.getLine(0).getClassId();
-                        var newLine = customLines.addNewLine();
-                        newLine.setDebitAmount(amount);
-                        newLine.setAccountId(costAccount);
-                        newLine.setMemo(glosa);
-                        if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                        if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                        if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
-                        newLine.setLocationId(location);
-                        nlapiLogExecution("ERROR", "FIRST LINE");
-                        var newLine = customLines.addNewLine();
-                        newLine.setCreditAmount(amount);
-                        newLine.setAccountId(costProvisionAccount);
-                        newLine.setMemo(glosa);
-                        if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                        if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                        if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
-                        newLine.setLocationId(location);
-                        nlapiSubmitRecord(salesOrderRecord, false, true);
-                        nlapiLogExecution("ERROR", "END ");
-                        //break;
-                    }
-                    // nlapiLogExecution("ERROR", "amount ", amount);
-                    // if (amount == 0) return;
-                    // var entity = standardLines.getLine(0).getEntityId();
-                    // var department = standardLines.getLine(0).getDepartmentId();
-                    // var _class = standardLines.getLine(0).getClassId();
-                    // var newLine = customLines.addNewLine();
-                    // newLine.setDebitAmount(amount);
-                    // newLine.setAccountId(costAccount);
-                    // newLine.setMemo(description);
-                    // if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                    // if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                    // if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
-                    // newLine.setLocationId(location);
-                    // nlapiLogExecution("ERROR", "FIRST LINE");
+    //         if (!createdFrom) return;
+    //         var fields = ['recordtype', 'statusref'];
+    //         var transactionFields = nlapiLookupField('transaction', createdFrom, fields);
+    //         if (transactionFields.recordtype == "salesorder") {
+    //             nlapiLogExecution("ERROR", "Status==============", transactionFields.statusref);
+    //             if (transactionFields.statusref == "pendingFulfillment" || transactionFields.statusref == "partiallyFulfilled" || transactionFields.statusref == "pendingBillingPartFulfilled") {
+    //                 var salesOrderRecord = nlapiLoadRecord('salesorder', createdFrom);
+    //                 var tranid = salesOrderRecord.getFieldValue('tranid');
+    //                 var item = transactionRecord.getLineItemValue('item', 'item', 1);
+    //                 var customer = transactionRecord.getLineItemText('item', 'item', 1);
+    //                 var glosa = tranid + '-' + customer;
+    //                 try {
+    //                     var ordenTrabajo = getOrdenTrabajo(createdFrom, item)
+    //                     var factura = getFactura(createdFrom, item)
+    //                     glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + customer;
+    //                 } catch (error) {
+    //                     nlapiLogExecution('ERROR', 'Glosa', error);
+    //                 }
+    //                 var itemCount = salesOrderRecord.getLineItemCount('item');
+    //                 var costProvisionAccount = "", costAccount = "", amount = 0, location = "";
+    //                 for (var i = 1; i <= itemCount; i++) {
+    //                     costProvisionAccount = Number(salesOrderRecord.getLineItemValue('item', 'custcol_ht_so_cost_account_provision', i));
+    //                     costAccount = Number(salesOrderRecord.getLineItemValue('item', 'custcol_ht_so_cost_account', i));
+    //                     nlapiLogExecution("ERROR", "costProvisionAccount " + i, costProvisionAccount + "|" + costAccount);
+    //                     if (!(costProvisionAccount && costAccount)) continue;
+    //                     var itemId = Number(salesOrderRecord.getLineItemValue('item', 'item', i));
+    //                     var description = salesOrderRecord.getLineItemValue('item', 'description', i);
+    //                     var itemFields = nlapiLookupField('item', itemId, ["recordtype"]);
+    //                     if (itemFields.recordtype != "serializedassemblyitem") continue;
+    //                     if (validarGLCosteoFactura(itemId)) continue;
+    //                     var quantity = Number(salesOrderRecord.getLineItemValue('item', 'quantity', i));
+    //                     // var averageCost = Number(salesOrderRecord.getLineItemValue('item', 'averagecost', i));
+    //                     location = Number(salesOrderRecord.getLineItemValue('item', 'location', i));
+    //                     var averageCost = obtenerCostoPromedio(itemId, location);
+    //                     nlapiLogExecution("ERROR", "quantity", quantity);
+    //                     amount = quantity * averageCost;
+    //                     salesOrderRecord.setLineItemValue('item', 'custcol_ht_os_asientoprovision', i, "T");
+    //                     salesOrderRecord.setLineItemValue('item', 'custcol_ht_so_cost_import', i, amount);
+    //                     nlapiLogExecution("ERROR", "amount ", amount);
+    //                     if (amount == 0) continue;
+    //                     var itemfulfillmentSearch = nlapiSearchRecord("itemfulfillment", null,
+    //                         [
+    //                             ["type", "anyof", "ItemShip"],
+    //                             "AND",
+    //                             ["mainline", "is", "T"],
+    //                             "AND",
+    //                             ["taxline", "is", "F"],
+    //                             "AND",
+    //                             ["createdfrom", "anyof", createdFrom],
+    //                             "AND",
+    //                             ["item", "anyof", itemId]
+    //                         ],
+    //                         [
+    //                             new nlobjSearchColumn("tranid"),
+    //                             new nlobjSearchColumn("createdfrom")
+    //                         ]
+    //                     );
+    //                     nlapiLogExecution("ERROR", "itemfulfillmentSearch " + i, 'Tiene FF ' + itemfulfillmentSearch);
+    //                     if (itemfulfillmentSearch != null) continue;
+    //                     var entity = standardLines.getLine(0).getEntityId();
+    //                     var department = standardLines.getLine(0).getDepartmentId();
+    //                     var _class = standardLines.getLine(0).getClassId();
+    //                     var newLine = customLines.addNewLine();
+    //                     newLine.setDebitAmount(amount);
+    //                     newLine.setAccountId(costAccount);
+    //                     newLine.setMemo(glosa);
+    //                     if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                     if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                     if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                     newLine.setLocationId(location);
+    //                     nlapiLogExecution("ERROR", "FIRST LINE");
+    //                     var newLine = customLines.addNewLine();
+    //                     newLine.setCreditAmount(amount);
+    //                     newLine.setAccountId(costProvisionAccount);
+    //                     newLine.setMemo(glosa);
+    //                     if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                     if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                     if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                     newLine.setLocationId(location);
+    //                     nlapiSubmitRecord(salesOrderRecord, false, true);
+    //                     nlapiLogExecution("ERROR", "END ");
+    //                     //break;
+    //                 }
+    //                 // nlapiLogExecution("ERROR", "amount ", amount);
+    //                 // if (amount == 0) return;
+    //                 // var entity = standardLines.getLine(0).getEntityId();
+    //                 // var department = standardLines.getLine(0).getDepartmentId();
+    //                 // var _class = standardLines.getLine(0).getClassId();
+    //                 // var newLine = customLines.addNewLine();
+    //                 // newLine.setDebitAmount(amount);
+    //                 // newLine.setAccountId(costAccount);
+    //                 // newLine.setMemo(description);
+    //                 // if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                 // if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                 // if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                 // newLine.setLocationId(location);
+    //                 // nlapiLogExecution("ERROR", "FIRST LINE");
 
-                    // var newLine = customLines.addNewLine();
-                    // newLine.setCreditAmount(amount);
-                    // newLine.setAccountId(costProvisionAccount);
-                    // newLine.setMemo(description);
-                    // if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                    // if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                    // if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
-                    // newLine.setLocationId(location);
-                    // nlapiSubmitRecord(salesOrderRecord, false, true);
-                    // nlapiLogExecution("ERROR", "END ");
-                } else if (transactionFields.statusref == "pendingBilling" || transactionFields.statusref == "fullyBilled") {
-                    nlapiLogExecution("ERROR", "customrecord_ht_dp_detalle_provision", "");
-                    var salesOrderRecord = nlapiLoadRecord('salesorder', createdFrom);
-                    var tranid = salesOrderRecord.getFieldValue('tranid');
-                    var item = transactionRecord.getLineItemValue('item', 'item', 1);
-                    var customer = transactionRecord.getLineItemText('item', 'item', 1);
-                    var glosa = tranid + '-' + customer;
-                    try {
-                        var ordenTrabajo = getOrdenTrabajo(createdFrom, item)
-                        var factura = getFactura(createdFrom, item)
-                        glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + customer;
-                    } catch (error) {
-                        nlapiLogExecution('ERROR', 'Glosa', error);
-                    }
-                    var detalleProvision = nlapiSearchRecord("customrecord_ht_dp_detalle_provision", null,
-                        [["custrecord_ht_dp_transaccion_prov", "anyof", createdFrom]],
-                        [
-                            new nlobjSearchColumn("custrecord_ht_dp_aplicado"),
-                            new nlobjSearchColumn("custrecord_ht_dp_item"),
-                            new nlobjSearchColumn("custrecord_ht_dp_provision")
-                        ]
-                    );
+    //                 // var newLine = customLines.addNewLine();
+    //                 // newLine.setCreditAmount(amount);
+    //                 // newLine.setAccountId(costProvisionAccount);
+    //                 // newLine.setMemo(description);
+    //                 // if (entity) newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                 // if (department) newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                 // if (_class) newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                 // newLine.setLocationId(location);
+    //                 // nlapiSubmitRecord(salesOrderRecord, false, true);
+    //                 // nlapiLogExecution("ERROR", "END ");
+    //             } else if (transactionFields.statusref == "pendingBilling" || transactionFields.statusref == "fullyBilled") {
+    //                 nlapiLogExecution("ERROR", "customrecord_ht_dp_detalle_provision", "");
+    //                 var salesOrderRecord = nlapiLoadRecord('salesorder', createdFrom);
+    //                 var tranid = salesOrderRecord.getFieldValue('tranid');
+    //                 var item = transactionRecord.getLineItemValue('item', 'item', 1);
+    //                 var customer = transactionRecord.getLineItemText('item', 'item', 1);
+    //                 var glosa = tranid + '-' + customer;
+    //                 try {
+    //                     var ordenTrabajo = getOrdenTrabajo(createdFrom, item)
+    //                     var factura = getFactura(createdFrom, item)
+    //                     glosa = tranid + '-' + ordenTrabajo + '-' + factura + '-' + customer;
+    //                 } catch (error) {
+    //                     nlapiLogExecution('ERROR', 'Glosa', error);
+    //                 }
+    //                 var detalleProvision = nlapiSearchRecord("customrecord_ht_dp_detalle_provision", null,
+    //                     [["custrecord_ht_dp_transaccion_prov", "anyof", createdFrom]],
+    //                     [
+    //                         new nlobjSearchColumn("custrecord_ht_dp_aplicado"),
+    //                         new nlobjSearchColumn("custrecord_ht_dp_item"),
+    //                         new nlobjSearchColumn("custrecord_ht_dp_provision")
+    //                     ]
+    //                 );
 
-                    if (detalleProvision == null) return;
-                    if (detalleProvision[0].getValue('custrecord_ht_dp_aplicado') == 'T') return;
-                    if (!detalleProvision[0].getValue('custrecord_ht_dp_item')) return;
+    //                 if (detalleProvision == null) return;
+    //                 if (detalleProvision[0].getValue('custrecord_ht_dp_aplicado') == 'T') return;
+    //                 if (!detalleProvision[0].getValue('custrecord_ht_dp_item')) return;
 
-                    var itemSearchResult = nlapiSearchRecord("item", null,
-                        [["internalid", "anyof", detalleProvision[0].getValue('custrecord_ht_dp_item')]],
-                        [
-                            new nlobjSearchColumn("expenseaccount"),
-                            new nlobjSearchColumn("custitem_cuenta_provsion_costos")
-                        ]
-                    );
+    //                 var itemSearchResult = nlapiSearchRecord("item", null,
+    //                     [["internalid", "anyof", detalleProvision[0].getValue('custrecord_ht_dp_item')]],
+    //                     [
+    //                         new nlobjSearchColumn("expenseaccount"),
+    //                         new nlobjSearchColumn("custitem_cuenta_provsion_costos")
+    //                     ]
+    //                 );
 
-                    if (itemSearchResult == null) return;
-                    var expenseAccount = itemSearchResult[0].getValue('expenseaccount');
-                    var provisionAccount = itemSearchResult[0].getValue('custitem_cuenta_provsion_costos');
-                    var amount = detalleProvision[0].getValue('custrecord_ht_dp_provision');
+    //                 if (itemSearchResult == null) return;
+    //                 var expenseAccount = itemSearchResult[0].getValue('expenseaccount');
+    //                 var provisionAccount = itemSearchResult[0].getValue('custitem_cuenta_provsion_costos');
+    //                 var amount = detalleProvision[0].getValue('custrecord_ht_dp_provision');
 
-                    nlapiLogExecution("ERROR", "expenseAccount", expenseAccount);
-                    var newLine = customLines.addNewLine();
-                    newLine.setDebitAmount(amount);
-                    newLine.setAccountId(Number(expenseAccount));
-                    newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                    newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                    newLine.setClassId(standardLines.getLine(0).getClassId());
-                    newLine.setLocationId(standardLines.getLine(0).getLocationId());
-                    newLine.setMemo(glosa);
+    //                 nlapiLogExecution("ERROR", "expenseAccount", expenseAccount);
+    //                 var newLine = customLines.addNewLine();
+    //                 newLine.setDebitAmount(amount);
+    //                 newLine.setAccountId(Number(expenseAccount));
+    //                 newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                 newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                 newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                 newLine.setLocationId(standardLines.getLine(0).getLocationId());
+    //                 newLine.setMemo(glosa);
 
-                    nlapiLogExecution("ERROR", "provisionAccount", provisionAccount);
-                    var newLine = customLines.addNewLine();
-                    newLine.setCreditAmount(amount);
-                    newLine.setAccountId(Number(provisionAccount));
-                    newLine.setEntityId(standardLines.getLine(0).getEntityId());
-                    newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
-                    newLine.setClassId(standardLines.getLine(0).getClassId());
-                    newLine.setLocationId(standardLines.getLine(0).getLocationId());
-                    newLine.setMemo(glosa);
-                    nlapiLogExecution("ERROR", "Proccess", "final");
-                    nlapiSubmitField('customrecord_ht_dp_detalle_provision', detalleProvision[0].getId(), 'custrecord_ht_dp_aplicado', 'T')
-                }
-            }
-        } catch (error) {
-            nlapiLogExecution('ERROR', 'Invoice', error);
-        }
-        nlapiLogExecution("ERROR", "Consignación", 'FIN Invoice: ' + id + ' ----------------------------------------------------------------------------------------------------');
-    }
+    //                 nlapiLogExecution("ERROR", "provisionAccount", provisionAccount);
+    //                 var newLine = customLines.addNewLine();
+    //                 newLine.setCreditAmount(amount);
+    //                 newLine.setAccountId(Number(provisionAccount));
+    //                 newLine.setEntityId(standardLines.getLine(0).getEntityId());
+    //                 newLine.setDepartmentId(standardLines.getLine(0).getDepartmentId());
+    //                 newLine.setClassId(standardLines.getLine(0).getClassId());
+    //                 newLine.setLocationId(standardLines.getLine(0).getLocationId());
+    //                 newLine.setMemo(glosa);
+    //                 nlapiLogExecution("ERROR", "Proccess", "final");
+    //                 nlapiSubmitField('customrecord_ht_dp_detalle_provision', detalleProvision[0].getId(), 'custrecord_ht_dp_aplicado', 'T')
+    //             }
+    //         }
+    //     } catch (error) {
+    //         nlapiLogExecution('ERROR', 'Invoice', error);
+    //     }
+    //     nlapiLogExecution("ERROR", "Consignación", 'FIN Invoice: ' + id + ' ----------------------------------------------------------------------------------------------------');
+    // }
 
-    if (recordType == 'itemreceipt') {
-        var glosa = 0;
-        var createdfrom = transactionRecord.getFieldValue('createdfrom');
-        nlapiLogExecution("ERROR", "CREATEDFROM", createdfrom);
+    //& dfernandez - Comentado por inactivación de Provisión
+    // if (recordType == 'itemreceipt') {
+    //     var glosa = 0;
+    //     var createdfrom = transactionRecord.getFieldValue('createdfrom');
+    //     nlapiLogExecution("ERROR", "CREATEDFROM", createdfrom);
 
-        var fields = ['recordtype', 'createdfrom'];
-        var returnTransactionFields = nlapiLookupField('transaction', createdfrom, fields);
-        nlapiLogExecution("ERROR", "returnTransactionFields", returnTransactionFields);
-        nlapiLogExecution("ERROR", "returnTransactionFields", returnTransactionFields.createdfrom);
+    //     var fields = ['recordtype', 'createdfrom'];
+    //     var returnTransactionFields = nlapiLookupField('transaction', createdfrom, fields);
+    //     nlapiLogExecution("ERROR", "returnTransactionFields", returnTransactionFields);
+    //     nlapiLogExecution("ERROR", "returnTransactionFields", returnTransactionFields.createdfrom);
 
-        if (returnTransactionFields.recordtype == "returnauthorization" && returnTransactionFields.createdfrom) {
-            nlapiLogExecution("ERROR", "entro a returnauth", salesTransactionFields);
+    //     if (returnTransactionFields.recordtype == "returnauthorization" && returnTransactionFields.createdfrom) {
+    //         nlapiLogExecution("ERROR", "entro a returnauth", salesTransactionFields);
 
-            var salesTransactionFields = nlapiLookupField('transaction', returnTransactionFields.createdfrom, fields);
-            nlapiLogExecution("ERROR", "returnauthorization", salesTransactionFields);
-            nlapiLogExecution("ERROR", "returnauthorization", salesTransactionFields.createdfrom);
-            if (salesTransactionFields.recordtype == "salesorder") {
-                nlapiLogExecution("ERROR", "salesorder", "salesorder");
-                nlapiLogExecution("ERROR", "salesorder", "salesorder");
-                var detalleProvision = buscarDetalleProvision(returnTransactionFields.createdfrom);
-                if (detalleProvision == null) return;
+    //         var salesTransactionFields = nlapiLookupField('transaction', returnTransactionFields.createdfrom, fields);
+    //         nlapiLogExecution("ERROR", "returnauthorization", salesTransactionFields);
+    //         nlapiLogExecution("ERROR", "returnauthorization", salesTransactionFields.createdfrom);
+    //         if (salesTransactionFields.recordtype == "salesorder") {
+    //             nlapiLogExecution("ERROR", "salesorder", "salesorder");
+    //             nlapiLogExecution("ERROR", "salesorder", "salesorder");
+    //             var detalleProvision = buscarDetalleProvision(returnTransactionFields.createdfrom);
+    //             if (detalleProvision == null) return;
 
-                var entityId = standardLines.getLine(0).getEntityId();
-                var deparmentId = standardLines.getLine(0).getDepartmentId();
-                var classId = standardLines.getLine(0).getClassId();
-                var locationId = standardLines.getLine(0).getLocationId();
-                agregarCustomLines(customLines, detalleProvision.provisionAmount, 0, detalleProvision.incomeAccount, entityId, deparmentId, classId, locationId, glosa);
-                agregarCustomLines(customLines, 0, detalleProvision.provisionAmount, detalleProvision.provisionAccount, entityId, deparmentId, classId, locationId, glosa);
-            }
-        }
-    }
+    //             var entityId = standardLines.getLine(0).getEntityId();
+    //             var deparmentId = standardLines.getLine(0).getDepartmentId();
+    //             var classId = standardLines.getLine(0).getClassId();
+    //             var locationId = standardLines.getLine(0).getLocationId();
+    //             agregarCustomLines(customLines, detalleProvision.provisionAmount, 0, detalleProvision.incomeAccount, entityId, deparmentId, classId, locationId, glosa);
+    //             agregarCustomLines(customLines, 0, detalleProvision.provisionAmount, detalleProvision.provisionAccount, entityId, deparmentId, classId, locationId, glosa);
+    //         }
+    //     }
+    // }
 
     if (recordType == 'customerpayment' || recordType == 'customerdeposit') {
         var fondoSinDepositar = transactionRecord.getFieldValue('undepfunds');
-        // var cuentaAR = Number(transactionRecord.getFieldValue('aracct'));
+        //var cuentaARA = Number(transactionRecord.getFieldValue('aracct'));
         var cuentaAR = Number(transactionRecord.getFieldValue('account'));
         var pago = Number(transactionRecord.getFieldValue('payment'));
         var location_id = Number(transactionRecord.getFieldValue('location'));
         var paymentoption = transactionRecord.getFieldValue('paymentoption');
         var memo = transactionRecord.getFieldValue('memo'); //Add JChaveza 25.06.2024
+        var exchangerate = transactionRecord.getFieldValue('exchangerate');
 
         nlapiLogExecution("ERROR", "fondoSinDepositar", fondoSinDepositar);
         nlapiLogExecution("ERROR", "cuentaAR", cuentaAR);
+        //nlapiLogExecution("ERROR", "cuentaARA", cuentaARA);
         nlapiLogExecution("ERROR", "pago", pago);
         nlapiLogExecution("ERROR", "location_id", location_id);
         nlapiLogExecution("ERROR", "paymentoption", paymentoption);
         nlapiLogExecution("ERROR", "memo", memo);
+        pago = (pago * Number(exchangerate)).toFixed(2);
 
-        //if (fondoSinDepositar == true || fondoSinDepositar == 'T') {
-        if (cuentaAR == accountCajaTransito) {
+        if (fondoSinDepositar == true || fondoSinDepositar == 'T') {
+            //if ((recordType == 'customerdeposit' && cuentaAR == accountCajaTransito) || (recordType == 'customerpayment' && (fondoSinDepositar == true || fondoSinDepositar == 'T'))) {
             var customrecord_ht_cuentas_nrocuotasSearch = nlapiSearchRecord("customrecord_ht_cuentas_nrocuotas", null,
                 [
                     ["custrecord_ht_cc_paymentmethod", "anyof", paymentoption]
@@ -813,6 +864,37 @@ function obtenerBusquedaCostoProvision(id) {
     return invoiceSearch[0].getValue("formulacurrency");
 }
 
+function obtenerDetalleProvisionSaldoInicialPendienteInstalar(id, itemid, tipoProvision) {
+    var arrayData = {}
+    arrayData.ctaCosto = 0;
+    arrayData.ctaPendienteInstalar = 0;
+    arrayData.monto = 0
+    var provisionSearch = nlapiSearchRecord("customrecord_ht_dp_detalle_provision", null,
+        [
+            ["custrecord_ht_dp_transaccion_prov", "anyof", id],
+            "AND",
+            ["custrecord_ht_dp_item", "is", itemid],
+            "AND",
+            ["custrecord_ht_dp_tipo_provision", "anyof", tipoProvision],
+            "AND",
+            ["custrecord_ht_dp_factura", "is", "T"],
+            "AND",
+            ["custrecord_ht_dp_aplicado", "is", "F"]
+        ],
+        [
+            new nlobjSearchColumn("custrecord_ht_dp_item"),
+            new nlobjSearchColumn("custrecord_ht_dp_cost_account"),
+            new nlobjSearchColumn("custrecord_ht_dp_inventory_account"),
+            new nlobjSearchColumn("custrecord_ht_dp_provision")
+        ]
+    );
+    if (!provisionSearch) return 0;
+    arrayData.ctaCosto = provisionSearch[0].getValue("custrecord_ht_dp_cost_account");
+    arrayData.ctaPendienteInstalar = provisionSearch[0].getValue("custrecord_ht_dp_inventory_account");
+    arrayData.monto = provisionSearch[0].getValue("custrecord_ht_dp_provision");
+    return arrayData
+}
+
 function obtenerFacturaAgrupada(soid) {
     var facturaAgrupada = nlapiSearchRecord("customrecord_ht_fact_internas_asociadas", null,
         [
@@ -848,21 +930,35 @@ function obtenerFiltrosBusqueda(itemId, parametrizaciones) {
 
 function obtenerParametrizacionNoConsiderar() {
     return [
-        ["129", "1813"], //CCD - CONTROL DE CUSTODIAS DE DISPOSITIVOS
-        ["132", "1798"], //ALQ - PRODUCTO DE ALQUILER
-        ["111", "1798"], //PGR - PRODUCTO DE GARANTÍA
-        ["117", "1849"], //TDP - TIPO DE PRODUCTO --- 009 - DEMO
-        //["117", "107"], //TDP - TIPO DE PRODUCTO --- 013 - SOFTWARE GENERAL
-        ["150", "1798"], //IRP - ITEM DE REPUESTO
-        //["45", "1798"]  //MPT - MANEJA PROCESOS DE TALLER
+        //*SB =================================================================================
+        // ["129", "1813"], //CCD - CONTROL DE CUSTODIAS DE DISPOSITIVOS
+        // ["132", "1798"], //ALQ - PRODUCTO DE ALQUILER
+        // ["111", "1798"], //PGR - PRODUCTO DE GARANTÍA
+        // ["117", "1849"], //TDP - TIPO DE PRODUCTO --- 009 - DEMO
+        // //["117", "107"], //TDP - TIPO DE PRODUCTO --- 013 - SOFTWARE GENERAL
+        // ["150", "1798"], //IRP - ITEM DE REPUESTO
+        // //["45", "1798"]  //MPT - MANEJA PROCESOS DE TALLER
+
+        //*PR =================================================================================
+        ["119", "336"], //CCD - CONTROL DE CUSTODIAS DE DISPOSITIVOS, 002 - ENTREGA CUSTODIAS
+        ["110", "331"], //ALQ - PRODUCTO DE ALQUILER, S - SI
+        ["157", "331"], //PGR - PRODUCTO DE GARANTÍA, S - SI
+        ["181", "549"], //TDP - TIPO DE PRODUCTO, D - DEMO
+        ["146", "331"], //IRP - ITEM DE REPUESTO. S - SI
     ]
 }
 
 function obtenerParametrizacionAConsiderar() {
     return [
-        ["126", "1805"], //TMI - TIPO DE MOVIMIENTO DE INVENTARIO
-        ["104", "1797"], //ADP - ACCION DEL PRODUCTO
-        ["122", "1798"] //GOT - GENERA SOLICITUD DE TRABAJO               //Cambio de Edwin 57784 por 122
+        //*SB =================================================================================
+        // ["126", "1805"], //TMI - TIPO DE MOVIMIENTO DE INVENTARIO
+        // ["104", "1797"], //ADP - ACCION DEL PRODUCTO
+        // ["122", "1798"] //GOT - GENERA SOLICITUD DE TRABAJO               //Cambio de Edwin 57784 por 122
+
+        //*PR =================================================================================
+        ["184", "364"], //TMI - TIPO DE MOVIMIENTO DE INVENTARIO, E - EGRESO
+        ["109", "317"], //ADP - ACCION DEL PRODUCTO, 001 - INST. DISPOSITIVO
+        ["134", "331"] //GOT - GENERA SOLICITUD DE TRABAJO, S - SI
     ];
 }
 
@@ -933,7 +1029,7 @@ function agregarCustomLines(customLines, debit, credit, account, entity, departm
 function validarGLCosteoFactura(itemId) {
     var parametrizaciones = obtenerParametrizacionNoConsiderar();
     var filtrosBusqueda = obtenerFiltrosBusqueda(itemId, parametrizaciones);
-    //nlapiLogExecution("ERROR", "filtrosBusqueda", JSON.stringify(filtrosBusqueda));
+    nlapiLogExecution("ERROR", "filtrosBusqueda", JSON.stringify(filtrosBusqueda));
     var parametrizacionesNoConsiderar = nlapiSearchRecord("customrecord_ht_pp_main_param_prod", null, filtrosBusqueda, [new nlobjSearchColumn("custrecord_ht_pp_parametrizacionid")]);
 
     parametrizaciones = obtenerParametrizacionAConsiderar();

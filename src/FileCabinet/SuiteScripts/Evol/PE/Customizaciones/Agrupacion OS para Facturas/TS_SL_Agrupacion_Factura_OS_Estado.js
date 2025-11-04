@@ -20,9 +20,8 @@ define(['N/ui/serverWidget', 'N/record', 'N/log', 'N/search', 'N/format', "N/url
                 const id = request.parameters.id;
                 const deploy = request.parameters.deploy;
 
-
                 let form = serverWidget.createForm({
-                    title: 'Agrupacion de Facturas'
+                    title: 'Agrupacion de Facturas PE'
                 });
 
                 form.clientScriptModulePath = './TS_CS_Agrupacion_Factura_OS_estado.js';

@@ -87,26 +87,29 @@ define([
         }
 
         const parametros = (parametro, id, type = null, adp = null, bien = null, cliente = null) => {
+            log.error('Controller - parametro, id, type = null, adp = null, bien = null, cliente = null', `${parametro}, ${id}, ${type} = null, ${adp} = null, ${bien} = null, ${cliente} = null`);
+            log.error('Controller - objId', id);
             let response = { status: true, mensaje: '' };
             let currentRecord = id;
-            switch (parseInt(parametro)) {
-                case _constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
+            let idordenFabricación = 0;
+            switch (parametro) {
+                case _constant.Codigo_parametro.COD_GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
                     switch (parseInt(type)) {
-                        case _constant.Valor.VALOR_001_INST_DISPOSITIVO:
+                        case _constant.Codigo_Valor.COD_VALOR_001_INST_DISPOSITIVO:
                             response = _platformController.envioPXInstalacionDispositivo(id); // id Orden de Trabajo
                             break;
-                        case _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO:
-                            log.debug('VALOR_010_CAMBIO_DE_PROPIETARIOPX', 'Entré a cambiar propietario PX');
+                        case _constant.Codigo_Valor.COD_VALOR_010_CAMBIO_DE_PROPIETARIO:
+                            log.debug('COD_VALOR_010_CAMBIO_DE_PROPIETARIO', 'Entré a cambiar propietario PX');
                             response = _platformController.envioPXCambioPropietario(id); // id Orden de Trabajo
                             log.debug('ResponsePX', response);
                             break;
-                        case _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP:
+                        case _constant.Codigo_Valor.COD_VALOR_002_DESINSTALACION_DE_DISP:
                             log.debug('VALOR_002_DESINSTALACION_DE_DISP_PX', 'Entré a Desinstalacion PX');
                             response = _platformController.envioPXDesinstalacionDispositivo(id); // id Orden de Trabajo
                             log.debug('ResponsePX', response);
                             break;
-                        case _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO:
-                            log.debug('VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO', 'Entré a Chequeo Dispositivo PX');
+                        case _constant.Codigo_Valor.COD_VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO:
+                            log.debug('COD_VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO', 'Entré a Chequeo Dispositivo PX');
                             response = _platformController.envioPXMantenimientoChequeoDispositivo(id); // id Orden de Trabajo
                             log.debug('ResponsePX', response);
                             break;
@@ -114,31 +117,29 @@ define([
                             log.debug('accionEstadoOT');
                     }
                     break;
-                case _constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS:
+                case _constant.Codigo_parametro.COD_GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS:
                     switch (parseInt(type)) {
-                        case _constant.Valor.VALOR_001_INST_DISPOSITIVO:
-                            // let Dispositivo = _platformController.Dispositivo(id);
-                            // let vehiculo = _platformController.vehiculo(id);
-                            // let Propietario = _platformController.Propietario(id);
-                            // let PropietarioMonitero = _platformController.PropietarioMonitoreo(id);
-                            // response = _platformController.envioPXAdminInstallTelec(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
+                        case _constant.Codigo_Valor.COD_VALOR_001_INST_DISPOSITIVO:
                             response = _platformController.envioTelecInstalacionNueva(id); // id Orden de Trabajo
                             break;
-                        case _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO:
-                            log.debug('VALOR_010_CAMBIO_DE_PROPIETARIOTM', 'Entré a cambiar propietario TM')
+                        case _constant.Codigo_Valor.COD_VALOR_010_CAMBIO_DE_PROPIETARIO:
+                            log.debug('COD_VALOR_010_CAMBIO_DE_PROPIETARIOTM', 'Entré a cambiar propietario TM')
                             // response = _platformController.envioCambioPropietario(id);
                             response = _platformController.envioTelecCambioPropietario(id); // id Orden de Trabajo
                             log.debug('ResponseTM', response)
                             break;
-                        case _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP:
+                        case _constant.Codigo_Valor.COD_VALOR_002_DESINSTALACION_DE_DISP:
                             log.debug('VALOR_002_DESINSTALACION_DE_DISP_TM', 'Entré a Desinstalacion TM');
                             response = _platformController.envioTelecDesinstalacionDispositivo(id); // id Orden de Trabajo
                             log.debug('ResponseTM', response);
                             break;
-                        case _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO:
-                            log.debug('VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO', 'Entré a Chequeo Dispositivo TM');
+                        case _constant.Codigo_Valor.COD_VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO:
+                            log.debug('COD_VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO', 'Entré a Chequeo Dispositivo TM');
                             response = _platformController.envioTelecDesinstalacionDispositivo(id); // id Orden de Trabajo
                             log.debug('ResponseTM', response);
+                            break;
+                        case _constant.Codigo_Valor.COD_VALOR_003_REINSTALACION_DE_DISP:
+                            response = _platformController.envioTelecInstalacionNueva(id); // id Orden de Trabajo
                             break;
                         default:
                             response.status = false;
@@ -151,9 +152,20 @@ define([
                             }
                     }
                     break;
-                case _constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO:
+                case _constant.Codigo_parametro.COD_VOT_VARIAS_ORDENES_DE_TRABAJO:
                     log.debug('id.item-Varias', id.item);
                     if (id.serviceOrder) {
+                        let relatedItemsArr = [];
+                        let arrayWorkOrders = [];
+                        let fam = getParameter(id.item, _constant.Codigo_parametro.COD_FAM_FAMILIA_DE_PRODUCTOS);
+                        let ttr = getParameter(id.item, _constant.Codigo_parametro.COD_TTR_TIPO_TRANSACCION);
+                        let tag = getParameter(id.item, _constant.Codigo_parametro.COD_TAG_TIPO_AGRUPACION_PRODUCTO);
+                        let alq = getParameter(id.item, _constant.Codigo_parametro.COD_ALQ_PRODUCTO_DE_ALQUILER);
+                        let dsr = getParameter(id.item, _constant.Codigo_parametro.COD_DSR_DEFINICION_DE_SERVICIOS);
+                        let nio = getParameter(id.item, _constant.Codigo_parametro.PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA);
+                        let ccd = getParameter(id.item, _constant.Codigo_parametro.COD_CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS);
+                        let pgr = getParameter(id.item, _constant.Codigo_parametro.COD_PGR_PRODUCTO_DE_GARANTÍA);
+
                         var customrecord_ht_pp_main_item_relacionadoSearchObj = search.create({
                             type: "customrecord_ht_pp_main_item_relacionado",
                             filters:
@@ -167,62 +179,13 @@ define([
                         });
                         let searchResultCount = customrecord_ht_pp_main_item_relacionadoSearchObj.run().getRange(0, 1000);
                         log.debug("customrecord_ht_pp_main_item_relacionadoSearchObj result count", searchResultCount);
-                        let relatedItemsArr = [];
                         if (searchResultCount.length != 0) {
                             for (let index = 0; index < searchResultCount.length; index++) {
                                 relatedItemsArr.push(searchResultCount[index].getValue({ name: 'custrecord_ht_pp_descripcionit' }));
                             }
                         }
                         log.debug('Crea ordenes de trabajo')
-                        if (relatedItemsArr.length != 0) {
-                            for (let index = 0; index < relatedItemsArr.length; index++) {
-                                let currentItem = relatedItemsArr[index];
-                                log.debug('i', i);
-                                let objRecord = record.create({ type: _constant.customRecord.ORDEN_TRABAJO });
-                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_servicio', value: id.serviceOrder });
-                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_cliente_id', value: id.customer });
-                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_vehiculo', value: id.vehiculo });
-                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_itemrelacionado', value: currentItem });
-                                log.debug('id.item', id.item);
-                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_item', value: id.item });
-                                //objRecord.setValue({ fieldId: 'custrecord_ht_ot_descripcionitem', value: id.displayname });
-                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_estado', value: _constant.Status.VENTAS });
-                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
-                                log.debug('record.getsublistvalue', record.getsublistvalue);
-                                response = objRecord.save();
-                            }
-                        }
-                    }
-                    break;
-                case _constant.Parameter.GOT_GENERA_SOLICITUD_DE_TRABAJO:
-                    log.debug('Track1', id)
-                    if (id.serviceOrder) {
-                        let relatedItemsArr = [];
-                        let fam = getParameter(id.item, _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS);
-                        let ttr = getParameter(id.item, _constant.Parameter.TTR_TIPO_TRANSACCION);
-                        let tag = getParameter(id.item, _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO);
-                        let alq = getParameter(id.item, _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER);
-                        let dsr = getParameter(id.item, _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS);
-                        let nio = getParameter(id.item, _constant.Parameter.PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA);
-                        log.debug('PARAMCONVENIO', nio)
-                        let searchProductoRelacionado = search.create({
-                            type: "customrecord_ht_pp_main_item_relacionado",
-                            filters:
-                                [
-                                    ["custrecord_ht_pp_parametrizacionir", "anyof", id.item]
-                                ],
-                            columns:
-                                [
-                                    search.createColumn({ name: "custrecord_ht_pp_descripcionit", sort: search.Sort.DESC, label: "Descripción" })
-                                ]
-                        });
-                        let searchResultCount = searchProductoRelacionado.run().getRange(0, 1000);
-                        if (searchResultCount.length != 0) {
-                            for (let index = 0; index < searchResultCount.length; index++) {
-                                relatedItemsArr.push(searchResultCount[index].getValue({ name: 'custrecord_ht_pp_descripcionit' }));
-                            }
-                        }
-                        log.debug('Crea ordenes de trabajo', '===============================')
+
                         if (relatedItemsArr.length != 0) {
                             for (let index = 0; index < relatedItemsArr.length; index++) {
                                 let currentItem = relatedItemsArr[index];
@@ -239,73 +202,179 @@ define([
                                     objRecord.setValue({ fieldId: 'custrecord_ht_ot_tipo_trabajo', value: ttr });
                                 if (tag != 0)
                                     objRecord.setValue({ fieldId: 'custrecordht_ot_tipo_agrupacion', value: tag });
-                                if (alq != 0 && alq == _constant.Valor.SI)
+                                if (alq != 0 && alq == _constant.Codigo_Valor.COD_SI)
                                     objRecord.setValue({ fieldId: 'custrecord_flujo_de_alquiler', value: true });
                                 if (nio != 0 && nio == _constant.Valor.VALOR_X_USO_CONVENIOS)
                                     objRecord.setValue({ fieldId: 'custrecord_flujo_de_convenio', value: true });
-                                if (dsr != 0 && dsr == _constant.Valor.SI) {
-                                    let array = new Array();
-                                    let array2 = new Array();
+                                if (dsr != 0 && dsr == _constant.Codigo_Valor.COD_SI) {
                                     let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
-                                    let sql2 = 'SELECT custbody_ht_os_servicios as servicios FROM transaction WHERE id = ?'
-                                    let resultSet = query.runSuiteQL({ query: sql, params: [id.item] });
-                                    let results = resultSet.asMappedResults();
-                                    let resultSet2 = query.runSuiteQL({ query: sql2, params: [id.serviceOrder] });
-                                    let results2 = resultSet2.asMappedResults();
-                                    if (results.length > 0 && results2.length > 0) {
-                                        let arregloconvertido = results[0]['servicios'].split(",")
-                                        array = arregloconvertido.map(a => parseInt(a));
-                                        let arregloconvertido2 = results2[0]['servicios'].split(",")
-                                        array2 = arregloconvertido2.map(a => parseInt(a));
-                                        let common = array.filter((it) => array2.includes(it));
-                                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_servicios_commands', value: common });
-                                    }
+                                    let aditionalService = query.runSuiteQL({ query: sql, params: [id.item] }).asMappedResults();
+                                    log.debug('ENTRY-aditionalService', aditionalService)
+                                    let cadena = aditionalService[0].servicios;
+                                    let arreglo = cadena.split(",").map(num => parseInt(num.trim(), 10));
+                                    objRecord.setValue({ fieldId: 'custrecord_ht_ot_servicios_commands', value: arreglo });
                                 }
-                                response = objRecord.save();
+                                if (ccd != 0 && ccd == _constant.Codigo_Valor.COD_VALOR_002_ENTREGA_CUSTODIAS)
+                                    objRecord.setValue({ fieldId: 'custrecord_flujo_de_custodia', value: true });
+                                if (pgr != 0 && pgr == _constant.Codigo_Valor.COD_SI)
+                                    objRecord.setValue({ fieldId: 'custrecord_flujo_de_garantia', value: true });
+
+                                workOrder = objRecord.save({ enableSourcing: true, ignoreMandatoryFields: true });
+                                arrayWorkOrders.push(workOrder);
                             }
-                        } else {
-                            let objRecord = record.create({ type: _constant.customRecord.ORDEN_TRABAJO });
-                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_servicio', value: id.serviceOrder });
-                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_cliente_id', value: id.customer });
-                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_vehiculo', value: id.vehiculo });
-                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_item', value: id.item });
-                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_itemrelacionado', value: id.item });
-                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
-                            if (fam != 0)
-                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_producto', value: fam });
-                            if (ttr != 0)
-                                objRecord.setValue({ fieldId: 'custrecord_ht_ot_tipo_trabajo', value: ttr });
-                            if (tag != 0)
-                                objRecord.setValue({ fieldId: 'custrecordht_ot_tipo_agrupacion', value: tag });
-                            if (alq != 0 && alq == _constant.Valor.SI)
-                                objRecord.setValue({ fieldId: 'custrecord_flujo_de_alquiler', value: true });
-                            if (nio != 0 && nio == _constant.Valor.VALOR_X_USO_CONVENIOS)
-                                objRecord.setValue({ fieldId: 'custrecord_flujo_de_convenio', value: true });
-                            if (dsr != 0 && dsr == _constant.Valor.SI) {
-                                let array = new Array();
-                                let array2 = new Array();
-                                let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
-                                let sql2 = 'SELECT custbody_ht_os_servicios as servicios FROM transaction WHERE id = ?'
-                                let resultSet = query.runSuiteQL({ query: sql, params: [id.item] });
-                                let results = resultSet.asMappedResults();
-                                log.debug('Track2', results);
-                                let resultSet2 = query.runSuiteQL({ query: sql2, params: [id.serviceOrder] });
-                                let results2 = resultSet2.asMappedResults();
-                                log.debug('Track3', results)
-                                if (results.length > 0 && results2.length > 0) {
-                                    let arregloconvertido = results[0]['servicios'].split(",")
-                                    array = arregloconvertido.map(a => parseInt(a));
-                                    let arregloconvertido2 = results2[0]['servicios'].split(",")
-                                    array2 = arregloconvertido2.map(a => parseInt(a));
-                                    let common = array.filter((it) => array2.includes(it));
-                                    objRecord.setValue({ fieldId: 'custrecord_ht_ot_servicios_commands', value: common });
-                                }
-                            }
-                            response = objRecord.save();
+                            response = arrayWorkOrders.length > 0 ? arrayWorkOrders[0] : 0
                         }
                     }
                     break;
-                case _constant.Parameter.PXB_ITEM_SOLICITA_CLIENTE_NUEVO:
+                case _constant.Codigo_parametro.COD_GOT_GENERA_SOLICITUD_DE_TRABAJO:
+                    log.debug('Controller - Track1', id);
+                    if (id.serviceOrder) {
+                        let relatedItemsArr = [];
+                        let fam = getParameter(id.item, _constant.Codigo_parametro.COD_FAM_FAMILIA_DE_PRODUCTOS);
+                        let ttr = getParameter(id.item, _constant.Codigo_parametro.COD_TTR_TIPO_TRANSACCION);
+                        let tag = getParameter(id.item, _constant.Codigo_parametro.COD_TAG_TIPO_AGRUPACION_PRODUCTO);
+                        let alq = getParameter(id.item, _constant.Codigo_parametro.COD_ALQ_PRODUCTO_DE_ALQUILER);
+                        log.debug('Controller - ALQ mepeando respuesta', alq);
+                        let dsr = getParameter(id.item, _constant.Codigo_parametro.COD_DSR_DEFINICION_DE_SERVICIOS);
+                        let nio = getParameter(id.item, _constant.Codigo_parametro.COD_PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA);
+                        log.debug('PARAMCONVENIO', nio);
+                        let ccd = getParameter(id.item, _constant.Codigo_parametro.COD_CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS);
+                        // let searchProductoRelacionado = search.create({
+                        //     type: "customrecord_ht_pp_main_item_relacionado",
+                        //     filters:
+                        //         [
+                        //             ["custrecord_ht_pp_parametrizacionir", "anyof", id.item]
+                        //         ],
+                        //     columns:
+                        //         [
+                        //             search.createColumn({ name: "custrecord_ht_pp_descripcionit", sort: search.Sort.DESC, label: "Descripción" })
+                        //         ]
+                        // });
+                        // let searchResultCount = searchProductoRelacionado.run().getRange(0, 1000);
+                        // if (searchResultCount.length != 0) {
+                        //     for (let index = 0; index < searchResultCount.length; index++) {
+                        //         relatedItemsArr.push(searchResultCount[index].getValue({ name: 'custrecord_ht_pp_descripcionit' }));
+                        //     }
+                        // }
+                        // log.debug('Crea ordenes de trabajo', '===============================')
+                        // if (relatedItemsArr.length != 0) {
+                        //     log.debug('Crea ordenes de trabajo relatedItemsArr', '===============================')
+                        //     for (let index = 0; index < relatedItemsArr.length; index++) {
+                        //         let currentItem = relatedItemsArr[index];
+                        //         let objRecord = record.create({ type: _constant.customRecord.ORDEN_TRABAJO });
+                        //         objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_servicio', value: id.serviceOrder });
+                        //         objRecord.setValue({ fieldId: 'custrecord_ht_ot_cliente_id', value: id.customer });
+                        //         objRecord.setValue({ fieldId: 'custrecord_ht_ot_vehiculo', value: id.vehiculo });
+                        //         objRecord.setValue({ fieldId: 'custrecord_ht_ot_itemrelacionado', value: currentItem });
+                        //         objRecord.setValue({ fieldId: 'custrecord_ht_ot_item', value: id.item });
+                        //         objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
+                        //         if (fam != 0)
+                        //             objRecord.setValue({ fieldId: 'custrecord_ht_ot_producto', value: fam });
+                        //         if (ttr != 0)
+                        //             objRecord.setValue({ fieldId: 'custrecord_ht_ot_tipo_trabajo', value: ttr });
+                        //         if (tag != 0)
+                        //             objRecord.setValue({ fieldId: 'custrecordht_ot_tipo_agrupacion', value: tag });
+                        //         if (alq != 0 && alq == _constant.Codigo_Valor.COD_SI)
+                        //             objRecord.setValue({ fieldId: 'custrecord_flujo_de_alquiler', value: true });
+                        //         if (nio != 0 && nio == _constant.Valor.VALOR_X_USO_CONVENIOS)
+                        //             objRecord.setValue({ fieldId: 'custrecord_flujo_de_convenio', value: true });
+                        //         if (dsr != 0 && dsr == _constant.Codigo_Valor.COD_SI) {
+                        //             // let array = new Array();
+                        //             // let array2 = new Array();
+                        //             let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
+                        //             //let sql2 = 'SELECT custbody_ht_os_servicios as servicios FROM transaction WHERE id = ?'
+                        //             let aditionalService = query.runSuiteQL({ query: sql, params: [id.item] }).asMappedResults();
+                        //             log.debug('ENTRY-aditionalService', aditionalService)
+                        //             let cadena = aditionalService[0].servicios;
+                        //             let arreglo = cadena.split(",").map(num => parseInt(num.trim(), 10));
+                        //             objRecord.setValue({ fieldId: 'custrecord_ht_ot_servicios_commands', value: arreglo });
+                        //             // let resultSet2 = query.runSuiteQL({ query: sql2, params: [id.serviceOrder] });
+                        //             // let results2 = resultSet2.asMappedResults();
+                        //             // if (results.length > 0 && results2.length > 0) {
+                        //             //     let arregloconvertido = results[0]['servicios'].split(",")
+                        //             //     array = arregloconvertido.map(a => parseInt(a));
+                        //             //     let arregloconvertido2 = results2[0]['servicios'].split(",")
+                        //             //     array2 = arregloconvertido2.map(a => parseInt(a));
+                        //             //     let common = array.filter((it) => array2.includes(it));
+                        //             //     objRecord.setValue({ fieldId: 'custrecord_ht_ot_servicios_commands', value: common });
+                        //             // }
+                        //         }
+                        //         response = objRecord.save();
+                        //     }
+                        // } 
+                        // else {
+                        log.error('Controller - Crea ordenes de trabajo unique', '===============================')
+                        let objRecord = record.create({ type: _constant.customRecord.ORDEN_TRABAJO });
+                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_servicio', value: id.serviceOrder });
+                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_cliente_id', value: id.customer });
+                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_vehiculo', value: id.vehiculo });
+                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_item', value: id.item });
+                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_itemrelacionado', value: id.item });
+                        objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
+                        if (fam.codigo != 0)
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_producto', value: fam.idinterno });
+                        if (ttr.codigo != 0)
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_tipo_trabajo', value: ttr.idinterno });
+                        if (tag.codigo != 0)
+                            objRecord.setValue({ fieldId: 'custrecordht_ot_tipo_agrupacion', value: tag.idinterno });
+                        log.debug('Controller - ALQ entrando a setear check', `${alq.codigo} != 0 && ${alq.codigo} == ${_constant.Codigo_Valor.COD_SI}`);
+                        if (alq.codigo != 0 && alq.codigo == _constant.Codigo_Valor.COD_SI)
+                            objRecord.setValue({ fieldId: 'custrecord_flujo_de_alquiler', value: true });
+                        if (nio.codigo != 0 && nio.codigo == _constant.Valor.VALOR_X_USO_CONVENIOS) {
+                            log.debug('Controller - ENTRY-PARAMCONVENIO', nio)
+                            objRecord.setValue({ fieldId: 'custrecord_flujo_de_convenio', value: true });
+                        }
+                        //& <I> dfernandez | 20/08/2025
+                        if (ccd.codigo != 0 && ccd.codigo == _constant.Codigo_Valor.COD_VALOR_002_ENTREGA_CUSTODIAS)
+                            objRecord.setValue({ fieldId: 'custrecord_flujo_de_custodia', value: true });
+                        //& <F> dfernandez | 20/08/2025
+                        if (dsr.codigo != 0 && dsr.codigo == _constant.Codigo_Valor.COD_SI) {
+                            let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
+                            let aditionalService = query.runSuiteQL({ query: sql, params: [id.item] }).asMappedResults();
+                            log.error('Controller - ENTRY-aditionalService', aditionalService)
+                            let cadena = aditionalService[0].servicios;
+                            let arreglo = cadena.split(",").map(num => parseInt(num.trim(), 10));
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_servicios_commands', value: arreglo });
+                        }
+                        //** LÓGICA PARA ASIGNAR LA OF EN CASO SE GENERA DESPUÉS ================================== */
+                        //id.item - id.serviceOrder
+                        let workorderSearchObj = search.create({
+                            type: "workorder",
+                            filters:
+                                [
+                                    ["type", "anyof", "WorkOrd"],
+                                    "AND",
+                                    ["item", "anyof", id.item],
+                                    "AND",
+                                    ["createdfrom", "anyof", id.serviceOrder]
+                                ],
+                            columns:
+                                [
+                                    search.createColumn({ name: "tranid", label: "Document Number" })
+                                ]
+                        });
+                        let searchResultCount2 = workorderSearchObj.runPaged().count;
+                        log.debug("Controller - workorderSearchObj result count", searchResultCount2);
+                        if (searchResultCount2 > 0) {
+                            workorderSearchObj.run().each((result) => {
+                                idordenFabricación = result.id
+                            });
+                            objRecord.setValue({ fieldId: 'custrecord_ht_ot_ordenfabricacion', value: idordenFabricación });
+                        }
+                        //** ====================================================================================== */
+                        response = objRecord.save(); //save Orden de Trabajo
+                        log.debug("Orden de Trabajo Create", response);
+                        if (idordenFabricación != 0) {
+                            record.submitFields({
+                                type: "workorder",
+                                id: idordenFabricación,
+                                values: { custbody_ht_ce_ordentrabajo: response },
+                            })
+                        }
+                        // }
+                    }
+                    break;
+                case _constant.Codigo_parametro.COD_PXB_ITEM_SOLICITA_CLIENTE_NUEVO:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente' });
                     if (!item_cliente) {
@@ -313,7 +382,7 @@ define([
                         response.mensaje = 'No existe un Cliente para el item ' + item + '.'
                     }
                     break;
-                case _constant.Parameter.SCK_SOLICITA_CLIENTE_MONITOREO:
+                case _constant.Codigo_parametro.COD_SCK_SOLICITA_CLIENTE_MONITOREO:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_cliente_monitoreo = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente_monitoreo' });
                     if (!item_cliente_monitoreo) {
@@ -321,7 +390,7 @@ define([
                         response.mensaje = 'No existe un Cliente Monitoreo para el item ' + item + '.'
                     }
                     break;
-                case _constant.Parameter.PCD_PIDE_CODIGO_DE_ORIGEN:
+                case _constant.Codigo_parametro.COD_PCD_PIDE_CODIGO_DE_ORIGEN:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var codigo_origen = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ns_codigo_origen' });
                     var codigo_origen_sys = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcoll_ns_codigo_origen_sys' });
@@ -330,18 +399,18 @@ define([
                         response.mensaje = 'No existe un Codigo de Origen en el item ' + item + '.'
                     }
                     break;
-                case _constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS://cpi control de productos instalados
-                    console.log('PARAM', parametro + ' - ' + id + ' - ' + type + ' - ' + adp + ' - ' + bien + ' - ' + cliente)
+                case _constant.Codigo_parametro.COD_CPI_CONTROL_DE_PRODUCTOS_INSTALADOS://cpi control de productos instalados
+                    //console.log('PARAM', parametro + ' - ' + id + ' - ' + type + ' - ' + adp + ' - ' + bien + ' - ' + cliente)
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
                     let familia;
-                    if (adp == _constant.Valor.VALOR_001_INST_DISPOSITIVO) {
+                    if (adp == _constant.Codigo_Valor.COD_VALOR_001_INST_DISPOSITIVO) {
                         let famSearch = search.create({
                             type: "customrecord_ht_pp_main_param_prod",
                             filters:
                                 [
                                     ["custrecord_ht_pp_parametrizacionid", "anyof", item],
                                     "AND",
-                                    ["custrecord_ht_pp_parametrizacion_rela", "anyof", _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS],
+                                    ["custrecord_ht_pp_parametrizacion_rela.custrecord_ht_pp_code", "anyof", _constant.Codigo_parametro.COD_FAM_FAMILIA_DE_PRODUCTOS],
                                 ],
                             columns:
                                 [
@@ -354,7 +423,7 @@ define([
                             familia = result.getValue({ name: "custrecord_ht_pp_parametrizacion_valor", label: "Valor" })
                             return true;
                         });
-                        console.log('FAM', familia);
+                        //console.log('FAM', familia);
                         let mySearch = search.create({
                             type: "customrecord_ht_co_cobertura",
                             filters:
@@ -371,81 +440,50 @@ define([
                                 ]
                         });
                         let searchResultCount = mySearch.runPaged().count;
-                        console.log("customrecord_ht_co_coberturaSearchObj result count", searchResultCount);
+                        //console.log("customrecord_ht_co_coberturaSearchObj result count", searchResultCount);
                         if (searchResultCount > 0) {
                             response.status = false;
                             response.mensaje = 'Ya existe un producto instalado con esta familia de producto.'
                         }
-                    } else if (adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP) {
+                    } else if (adp == _constant.Codigo_Valor.COD_VALOR_002_DESINSTALACION_DE_DISP) {
                         if (type != null) {
-                            let fam = getParameter(item, _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS);
+                            let fam = getParameter(item, _constant.Codigo_parametro.COD_FAM_FAMILIA_DE_PRODUCTOS);
                             let producto = getProductoInstalado(bien, fam);
-                            console.log('PRODUCTO', producto);
+                            //console.log('PRODUCTO', producto);
                             if (producto == 0) {
                                 response.status = false;
                                 response.mensaje = 'No existe un producto instalado con esta familia de producto del ITEM ' + item + '.'
                             }
                         }
 
-                        //TODO: BACKUP VALIDACION CPI POR QUERY
-                        // let parametrosRespoitem = parametrizacion(item);
-                        // if (parametrosRespoitem.length != 0) {
-                        //     for (let j = 0; j < parametrosRespoitem.length; j++) {
-                        //         if (parametrosRespoitem[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS) {
-                        //             tipoItem = parametrosRespoitem[j][1];
-                        //         }
-                        //     }
-                        // }
-                        // if (type != null) {
-                        //     var cont = 0;
-                        //     for (let i = 0; i < type.length; i++) {
-                        //         if (type[i] != '') {
-                        //             let parametrosRespo = parametrizacion(type[i]);
-                        //             if (parametrosRespo.length != 0) {
-                        //                 for (let j = 0; j < parametrosRespo.length; j++) {
-                        //                     if (parametrosRespo[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS && parametrosRespo[j][1] == tipoItem) {
-                        //                         cont += 1;
-                        //                     }
-                        //                 }
-                        //             }
-                        //         }
-                        //     }
-
-                        //     if (cont == 0) {
-                        //         response.status = false;
-                        //         response.mensaje = 'No existe un producto instalado con esta familia de producto del ITEM ' + item + '.'
-                        //     }
-                        //     //TODO: Revisar cuando sea para instalación y desinstalación, dependiendo del caso debe validar que tenga instalado y otro no.
-                        // }
-
                         if (type == '') {
                             response.status = false;
                             response.mensaje = 'El bien ingresado no cuenta con dispositivo instalado.'
                         }
-                    } else if (adp == _constant.Valor.VALOR_004_RENOVACION_DE_DISP) {
-                        console.log('resultSet-adp_constant.Valor.VALOR_004_RENOVACION_DE_DISP', ` ${adp}`);
-                        familia = getParameter(item, _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS);
+                    } else if (adp == _constant.Codigo_Valor.COD_VALOR_004_RENOVACION_DE_DISP) {
+                        //console.log('resultSet-adp_constant.Codigo_Valor.COD_VALOR_004_RENOVACION_DE_DISP', ` ${adp}`);
+                        familia = getParameter(item, _constant.Codigo_parametro.COD_FAM_FAMILIA_DE_PRODUCTOS);
                         if (familia > 0) {
                             //!Alquiler comentado por renovación de ALQU
                             let productoInstalado = getProductoInstalado(bien, familia);
                             if (productoInstalado > 0) {
-                                let esAlquiler = getParameter(productoInstalado, _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER);
-                                let alq = getParameter(item, _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER);
-                                console.log('resultSet-Reno-Params', `esAlquiler = ${esAlquiler} - alq = ${alq}`);
+                                let esAlquiler = getParameter(productoInstalado, _constant.Codigo_parametro.COD_ALQ_PRODUCTO_DE_ALQUILER);
+                                let alq = getParameter(item, _constant.Codigo_parametro.COD_ALQ_PRODUCTO_DE_ALQUILER);
+                                //console.log('resultSet-Reno-Params', `esAlquiler = ${esAlquiler} - alq = ${alq}`);
                                 if (esAlquiler != 0 || alq != 0) {
-                                    if (esAlquiler != _constant.Valor.SI || alq != _constant.Valor.SI) {
+                                    if (esAlquiler != _constant.Codigo_Valor.COD_SI || alq != _constant.Codigo_Valor.COD_SI) {
                                         response.status = false;
                                         response.mensaje = 'Está intentando renovar un producto en alquiler con un artículo de venta o renovar un producto de venta con una artículo de alquiler.'
                                     }
                                 }
                             }
-                            console.log('resultSet-Reno-Params', cliente + ' - ' + familia);
+                            //console.log('resultSet-Reno-Params', cliente + ' - ' + familia);
                             let sql = "SELECT count(*) FROM TransactionLine tl " +
                                 "INNER JOIN customrecord_ht_pp_main_param_prod pa ON pa.custrecord_ht_pp_parametrizacionid = tl.item " +
                                 "WHERE custcol_ht_os_tipoarticulo = 'Ensamblaje' AND tl.entity = ? AND pa.custrecord_ht_pp_parametrizacion_valor = ?"
                             let params = [cliente, familia]
                             let resultSet = query.runSuiteQL({ query: sql, params: params }).asMappedResults();
-                            console.log('resultSet-Reno', resultSet);
+                            //console.log('resultSet-Reno', resultSet);
                             let param = resultSet == 0 ? 0 : 1
                             if (param == 0) {
                                 response.status = false;
@@ -453,9 +491,9 @@ define([
                             }
 
                         }
-                    } else if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                    } else if (adp == _constant.Codigo_Valor.COD_VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
                         if (type != null) {
-                            let fam = getParameter(item, _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS);
+                            let fam = getParameter(item, _constant.Codigo_parametro.COD_FAM_FAMILIA_DE_PRODUCTOS);
                             let producto = getProductoInstalado(bien, fam);
                             if (producto == 0) {
                                 response.status = false;
@@ -468,7 +506,7 @@ define([
                         }
                     }
                     break;
-                case _constant.Parameter.PIM_PEDIR_INFORMACION_MEDICA:
+                case _constant.Codigo_parametro.COD_PIM_PEDIR_INFORMACION_MEDICA:
                     var item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'description' });
                     var item_ficha_medica = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_fichamedica' });
                     if (!item_ficha_medica) {
@@ -476,11 +514,39 @@ define([
                         response.mensaje = 'No existe una Ficha Médica para el item ' + item + '.'
                     }
                     break;
-                case _constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS:
+                case _constant.Codigo_parametro.COD_CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS:
                     let dispositivoCustodia = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ts_dispositivo_en_custodia' });
-                    if (dispositivoCustodia.length == 0) {
-                        response.status = false;
-                        response.mensaje = 'Debe Ingresar La Serie del Dispositivo en Custodia.'
+                    if (!dispositivoCustodia) {
+                        let item = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
+                        let objSearch = search.create({
+                            type: _constant.customRecord.CUSTODIA,
+                            filters: [
+                                ["custrecord_ht_ct_cliente", "anyof", currentRecord.getValue('entity')],
+                                "AND",
+                                ["custrecord_ht_ct_nombredispositivo", "anyof", item]
+                            ],
+                            columns: [search.createColumn({ name: "internalid", label: "Internal ID" })]
+                        });
+                        let searchResultCount = objSearch.runPaged().count;
+                        if (searchResultCount == 0) {
+                            let objSearch2 = search.create({
+                                type: _constant.customRecord.CUSTODIA,
+                                filters: [
+                                    ["custrecord_ht_ct_cliente", "anyof", currentRecord.getValue('entity')]
+                                ],
+                                columns: [search.createColumn({ name: "internalid", label: "Internal ID" })]
+                            });
+                            let searchResultCount2 = objSearch2.runPaged().count;
+                            if (searchResultCount2 == 0) {
+                                response.status = false;
+                                response.mensaje = 'No existe un registro de custodia para este cliente.'
+                            } else {
+                                response.status = true;
+                                response.mensaje = 'Existe al menos un registro de custodia que no pertenece al artículo.'
+                            }
+                        } else {
+                            response.status = true;
+                        }
                     } else {
                         let objSearch = search.create({
                             type: _constant.customRecord.CUSTODIA,
@@ -663,11 +729,13 @@ define([
         }
 
         const createInventoryAdjustmentIngreso = (scriptParameters, objParams = 0, tipoFlujo = 0) => {
-            log.debug('scriptParameters', scriptParameters);
-            log.debug('tipoFlujo', tipoFlujo);
+            log.debug('Controller - scriptParameters', scriptParameters);
+            log.debug('Controller - tipoFlujo', tipoFlujo);
             let binNumber, account, unitCost, flujo, item, location, customRecord, field, columns, memo;
             let sql = 'SELECT custrecord_ht_cuenta_activo_fijo_transit FROM subsidiary WHERE id = ?';
             let result = query.runSuiteQL({ query: sql, params: [scriptParameters.subsidiary] }).asMappedResults();
+            let sqlGetCuentaCustodia = 'SELECT custrecord_ht_cuenta_de_custodia FROM subsidiary WHERE id = ?';
+            let resultGetCuentaCustodia = query.runSuiteQL({ query: sqlGetCuentaCustodia, params: [scriptParameters.subsidiary] }).asMappedResults();
 
             //^Alquiler
             if (tipoFlujo == 0) {
@@ -677,7 +745,7 @@ define([
                 memo = 'Ajuste de ingreso por alquiler.';
                 flujo = 'custbody_ht_ai_paraalquiler';
                 location = scriptParameters.location;
-                if (scriptParameters.tag == _constant.Valor.VALOR_LOJ_LOJACK) {
+                if (scriptParameters.tag == _constant.Codigo_Valor.COD_VALOR_LOJ_LOJACK) {
                     customRecord = 'customrecord_ht_record_detallechaslojack'
                     field = 'custrecord_ht_cl_lojack'
                     columns = [search.createColumn({ name: field })];
@@ -716,16 +784,8 @@ define([
             if (tipoFlujo == 2) {
                 let ubicacion = 0;
                 binNumber = scriptParameters.deposito;
-                account = 1291; //SB:1255 - PR:1036
+                account = resultGetCuentaCustodia[0].custrecord_ht_cuenta_de_custodia;
                 unitCost = 0;
-                //item = scriptParameters.item; 42857
-                // item = 42857;
-                // let dispositivo = search.lookupFields({
-                //     type: 'serializedassemblyitem',
-                //     id: scriptParameters.item,
-                //     columns: ['custitem_ht_it_item_reins_custodia']
-                // });
-                // item = dispositivo.custitem_ht_it_item_reins_custodia[0].value;
                 flujo = 'custbody_ht_ai_custodia';
                 location = scriptParameters.location;
                 item = scriptParameters.dispositivo;
@@ -743,11 +803,11 @@ define([
                 memo = 'Ajuste de ingreso por garantía.'
             }
 
-            log.debug('createInventoryAdjustmentIngreso.account', account);
-            log.debug('createInventoryAdjustmentIngreso.binNumber', binNumber);
-            log.debug('createInventoryAdjustmentIngreso.customRecord', customRecord);
-            log.debug('createInventoryAdjustmentIngreso.item', item);
-            log.debug('createInventoryAdjustmentIngreso.location', location);
+            log.debug('Controller - createInventoryAdjustmentIngreso.account', account);
+            log.debug('Controller - createInventoryAdjustmentIngreso.binNumber', binNumber);
+            log.debug('Controller - createInventoryAdjustmentIngreso.customRecord', customRecord);
+            log.debug('Controller - createInventoryAdjustmentIngreso.item', item);
+            log.debug('Controller - createInventoryAdjustmentIngreso.location', location);
             let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
             newAdjust.setValue({ fieldId: 'subsidiary', value: scriptParameters.subsidiary });
             newAdjust.setValue({ fieldId: 'account', value: account });
@@ -773,7 +833,7 @@ define([
             newAdjust.commitLine({ sublistId: 'inventory' });
 
             let newRecord = newAdjust.save({ enableSourcing: false, ignoreMandatoryFields: true });
-            log.error("newRecord", newRecord);
+            log.error("Controller - newRecord", newRecord);
             return newRecord;
         }
 
@@ -788,7 +848,7 @@ define([
                         "AND",
                         ["custrecord_ht_hs_vidvehiculo", "startswith", objParameters.bien],
                         "AND",
-                        ["custrecord_ht_hs_estado", "anyof", _constant.Status.INSTALADO]
+                        ["custrecord_ht_hs_estado", "anyof", _constant.StatusPE.INSTALADO]
                     ],
                 columns:
                     [
@@ -812,7 +872,7 @@ define([
                     values: {
                         'custrecord_ht_hs_numeroordenserviciodes': objParameters.salesorder,
                         'custrecord_ht_hs_fechaordenserviciodes': new Date(dateNow),
-                        'custrecord_ht_hs_estado': _constant.Status.DESINSTALADO
+                        'custrecord_ht_hs_estado': _constant.StatusPE.DESINSTALADO
                     },
                     options: { enableSourcing: false, ignoreMandatoryFields: true }
                 });
@@ -866,6 +926,23 @@ define([
         const updateInstall = (objParameters) => {
             log.debug('updateInstall', objParameters)
             let installId = 0;
+            let instalado;
+            let desinstalado;
+            let dañado;
+            let perdido;
+
+            if (objParameters.subsidiary == _constant.Constants.ECUADOR_SUBSIDIARY) {
+                instalado = _constant.Status.INSTALADO;
+                desinstalado = _constant.Status.DESINSTALADO;
+                dañado = _constant.Status.DANADO;
+                perdido = _constant.Status.PERDIDO;
+            } else if (objParameters.subsidiary == _constant.Constants.PERU_SUBSIDIARY) {
+                instalado = _constant.StatusPE.INSTALADO;
+                desinstalado = _constant.StatusPE.DESINSTALADO;
+                dañado = _constant.StatusPE.DANADO;
+                perdido = _constant.StatusPE.PERDIDO;
+            }
+
             let productInstall = search.create({
                 type: "customrecord_ht_co_cobertura",
                 filters:
@@ -874,7 +951,7 @@ define([
                         "AND",
                         ["custrecord_ht_co_bien", "anyof", objParameters.bien],
                         "AND",
-                        ["custrecord_ht_co_estado", "noneof", _constant.Status.DESINSTALADO]
+                        ["custrecord_ht_co_estado", "noneof", desinstalado]
                     ],
                 columns:
                     ['internalid']
@@ -888,12 +965,14 @@ define([
                 log.debug('installId', installId);
                 log.debug('estado', objParameters.estado);
                 let updateRec = record.load({ type: 'customrecord_ht_co_cobertura', id: installId, isDynamic: true });
-                if ((objParameters.estado == _constant.Status.DANADO || objParameters.estado == _constant.Status.PERDIDO || objParameters.estado == _constant.Status.DESINSTALADO)) {
+
+                if ((objParameters.estado == dañado || objParameters.estado == perdido || objParameters.estado == desinstalado)) {
                     log.debug('estadoInfra', objParameters.estado);
-                    updateRec.setValue({ fieldId: 'custrecord_ht_co_estado', value: _constant.Status.DESINSTALADO });
+                    updateRec.setValue({ fieldId: 'custrecord_ht_co_estado', value: desinstalado });
                     updateRec.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: _constant.Status.SIN_DISPOSITIVO });
                     historialInstall(installId, objParameters)
-                } else if (objParameters.estado == _constant.Status.INSTALADO) { }
+                } else if (objParameters.estado == instalado) { }
+
                 if (objParameters.t_PPS == true) {
                     updateRec.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: _constant.Status.SIN_DISPOSITIVO });
                 }
@@ -1211,6 +1290,9 @@ define([
                 //Agregando Cobertura 14/08/2024
                 objRecord.setValue({ fieldId: 'custrecord_ht_ct_cobertura', value: CoberturaId });
                 //Agregando Cobertura 14/08/2024
+                //& <I> dfernandez | 12/08/2025
+                objRecord.setValue({ fieldId: 'custrecord_ht_ct_vehiculo', value: objParams.bien });
+                //& <F> dfernandez | 12/08/2025
                 newCustodia = objRecord.save({ ignoreMandatoryFields: false });
             }
             return newCustodia;
@@ -1231,25 +1313,26 @@ define([
                     return true;
                 });
 
-                // record.submitFields({
-                //     type: _constant.customRecord.CUSTODIA,
-                //     id: registroCustodia,
-                //     values: {
-                //         'custrecord_ht_ct_estado': _constant.Status.INSTALADO,
-                //         'custrecord_ht_ct_vehiculo': objParams.bien
-                //     },
-                //     options: { enableSourcing: false, ignoreMandatoryFields: true }
-                // });
-
-                let deleteRecordPromise = record.delete.promise({
+                record.submitFields({
                     type: _constant.customRecord.CUSTODIA,
-                    id: registroCustodia
+                    id: registroCustodia,
+                    values: {
+                        'isinactive': true
+                        // 'custrecord_ht_ct_estado': _constant.Status.INSTALADO,
+                        // 'custrecord_ht_ct_vehiculo': objParams.bien
+                    },
+                    options: { enableSourcing: false, ignoreMandatoryFields: true }
                 });
-                deleteRecordPromise.then(() => {
-                    log.debug('Success', 'Custodia Record successfully deleted');
-                }, (error) => {
-                    log.error('Ocurrió un error al elimianr el registro de custodia', error);
-                });
+
+                // let deleteRecordPromise = record.delete.promise({
+                //     type: _constant.customRecord.CUSTODIA,
+                //     id: registroCustodia
+                // });
+                // deleteRecordPromise.then(() => {
+                //     log.debug('Success', 'Custodia Record successfully deleted');
+                // }, (error) => {
+                //     log.error('Ocurrió un error al elimianr el registro de custodia', error);
+                // });
             }
             // return registroCustodia;
         }
@@ -1501,15 +1584,8 @@ define([
                 type: "customrecord_ht_pp_main_param_prod",
                 filters:
                     [
-                        search.createFilter({
-                            name: 'custrecord_ht_pp_aplicacion',
-                            operator: search.Operator.IS,
-                            values: true
-                        }), search.createFilter({
-                            name: 'custrecord_ht_pp_parametrizacionid',
-                            operator: search.Operator.ANYOF,
-                            values: items
-                        })
+                        search.createFilter({ name: 'custrecord_ht_pp_aplicacion', operator: search.Operator.IS, values: true }),
+                        search.createFilter({ name: 'custrecord_ht_pp_parametrizacionid', operator: search.Operator.ANYOF, values: items })
                     ],
                 columns:
                     [
@@ -1519,6 +1595,8 @@ define([
                         search.createColumn({ name: "custrecord_ht_pp_codigo", join: "CUSTRECORD_HT_PP_PARAMETRIZACION_VALOR", label: "Código" })
                     ]
             });
+
+            //console.log(busqueda)
             let resultCount = busqueda.runPaged().count;
             //log.debug('COUNTTTTTTTTTTTTT', resultCount);
             if (resultCount > 0) {
@@ -1957,13 +2035,21 @@ define([
             log.error("ajusteRelacionadoId", ajusteRelacionadoId);
         }
 
-        const getParameter = (item, parametro) => {
-            let sql = "SELECT custrecord_ht_pp_parametrizacion_valor as valor FROM customrecord_ht_pp_main_param_prod " +
-                "WHERE custrecord_ht_pp_aplicacion = 'T' AND custrecord_ht_pp_parametrizacionid = ? AND custrecord_ht_pp_parametrizacion_rela = ?";
-            let resultSet = query.runSuiteQL({ query: sql, params: [item, parametro] });
+        const getParameter = (parametrizacionid, parametro) => {
+            log.debug('Controller - parametrizacionid - parametro ', `${parametrizacionid}, ${parametro}`)
+            let sql = "SELECT va.custrecord_ht_pp_codigo as valor, va.id as idinterno  FROM customrecord_ht_pp_main_param_prod pp " +
+                "INNER JOIN customrecord_ht_cr_parametrizacion_produ pr ON pp.custrecord_ht_pp_parametrizacion_rela = pr.id " +
+                "INNER JOIN customrecord_ht_cr_pp_valores va ON  pp.custrecord_ht_pp_parametrizacion_valor = va.id " +
+                "WHERE pp.custrecord_ht_pp_aplicacion = 'T' AND pp.custrecord_ht_pp_parametrizacionid = ? AND pr.custrecord_ht_pp_code = ?";
+            let resultSet = query.runSuiteQL({ query: sql, params: [parametrizacionid, parametro] });
             let results = resultSet.asMappedResults();
             let valor = results.length > 0 ? results[0]['valor'] : 0;
-            return valor;
+            let idinterno = results.length > 0 ? results[0]['idinterno'] : 0;
+            log.debug('Controller - valor === ', `${valor}`)
+            return {
+                codigo: valor,
+                idinterno: idinterno
+            };
         }
 
         const getProductoInstalado = (bien, familia) => {
@@ -2081,6 +2167,62 @@ define([
             return location;
         }
 
+        const paramCodes = (items) => {
+            let arr = new Array();
+            let busqueda = search.create({
+                type: "customrecord_ht_pp_main_param_prod",
+                filters:
+                    [
+                        search.createFilter({
+                            name: 'custrecord_ht_pp_aplicacion',
+                            operator: search.Operator.IS,
+                            values: true
+                        }), search.createFilter({
+                            name: 'custrecord_ht_pp_parametrizacionid',
+                            operator: search.Operator.ANYOF,
+                            values: items
+                        })
+                    ],
+                columns:
+                    [
+                        // search.createColumn({ name: "custrecord_ht_pp_parametrizacion_rela", label: "Param" }),
+                        // search.createColumn({ name: "custrecord_ht_pp_parametrizacion_valor", label: "Valor" }),
+                        search.createColumn({
+                            name: "custrecord_ht_pp_code",
+                            join: "CUSTRECORD_HT_PP_PARAMETRIZACION_RELA",
+                            label: "Código Parámetro"
+                        }),
+                        search.createColumn({
+                            name: "custrecord_ht_pp_codigo",
+                            join: "CUSTRECORD_HT_PP_PARAMETRIZACION_VALOR",
+                            label: "Código Valor"
+                        })
+                    ]
+            });
+            let resultCount = busqueda.runPaged().count;
+            if (resultCount > 0) {
+                let pageData = busqueda.runPaged({ pageSize: 1000 });
+                pageData.pageRanges.forEach(pageRange => {
+                    page = pageData.fetch({ index: pageRange.index });
+                    page.data.forEach(result => {
+                        let columns = result.columns;
+                        let parametrizacion = new Array();
+                        result.getValue(columns[0]) != null ? parametrizacion[0] = result.getValue(columns[0]) : parametrizacion[0] = '';
+                        result.getValue(columns[1]) != null ? parametrizacion[1] = result.getValue(columns[1]) : parametrizacion[1] = '';
+                        // result.getValue(columns[2]) != null ? parametrizacion[2] = result.getValue(columns[2]) : parametrizacion[2] = '';
+                        // result.getValue(columns[3]) != null ? parametrizacion[3] = result.getValue(columns[3]) : parametrizacion[3] = '';
+                        arr.push({
+                            paramCode: parametrizacion[0],
+                            valorCode: parametrizacion[1]
+                        });
+                    });
+                });
+            } else {
+                arr = resultCount;
+            }
+            return arr;
+        }
+
         return {
             createServiceOrder,
             createInvoice,
@@ -2129,7 +2271,8 @@ define([
             getParameter,
             getProductoInstalado,
             getProductoDesinstalado,
-            getLocationToAssembly
+            getLocationToAssembly,
+            paramCodes
         }
     });
 /*

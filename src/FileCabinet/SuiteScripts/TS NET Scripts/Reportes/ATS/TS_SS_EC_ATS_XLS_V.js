@@ -9,7 +9,8 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
         const FTL_TEMPLATE_EXCEL = "./TS_FTL_EC_ATS_XLS_V.ftl"
         const MAX_PAGINATION_SIZE = 1000;
         const FOLDER_ID = "585"; //SuiteScripts > TS NET Scripts > Reportes
-        const DEVELOPER_TRACKING_FOLDER = 22192  // SB:22192 - PR:19859 - SuiteScripts > TS NET Scripts > Reportes
+        const DEVELOPER_TRACKING_FOLDER = 19859  // SB:22192 - PR:19859 - SuiteScripts > TS NET Scripts > Reportes
+        const MAX_CANTIDAD = 2000;
 
         let currentScript = runtime.getCurrentScript();
 
@@ -22,10 +23,26 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
                 let atsArray = getATSXLSVentas(scriptParameters, environmentFeatures);
                 let atsArrayRet = getATSXLSVentasRet(scriptParameters, environmentFeatures, atsArray);
                 let atsArrayRetBanc = getATSXLSVentasRetBanc(scriptParameters, environmentFeatures, atsArrayRet);
-
-                let json = buildJsonForExcel(atsArrayRetBanc)
-
+                let json = buildJsonForExcel(atsArrayRetBanc, scriptParameters);
+                let finalizo = termino(atsArrayRetBanc, scriptParameters);
                 generateXls(json, scriptParameters, auxiliaryRecords)
+
+                if (finalizo == false) {
+                    let scriptTask = task.create({
+                        taskType: task.TaskType.SCHEDULED_SCRIPT,
+                        scriptId: 'customscript_ts_ss_ec_ats_xls_v',
+                        deploymentId: 'customdeploy_ts_ss_ec_ats_xls_v',
+                        params: {
+                            custscript_ts_ss_ec_ats_xls_v_subsidiary: scriptParameters.subsidiaryId,
+                            custscript_ts_ss_ec_ats_xls_v_period: scriptParameters.periodId,
+                            custscript_ts_ss_ec_ats_xls_v_folder: scriptParameters.folderId,
+                            custscript_ts_ss_ec_ats_xls_v_report: scriptParameters.reportId,
+                            custscript_ts_ss_ec_ats_xls_v_formato: scriptParameters.format,
+                            custscript_ts_ss_ec_ats_xls_v_conta: Number(scriptParameters.contador) + 1,
+                        }
+                    });
+                    var scriptTaskId = scriptTask.submit();
+                }
             } catch (error) {
                 log.error("error execute", error)
             }
@@ -39,6 +56,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
             scriptParameters.folderId = currentScript.getParameter('custscript_ts_ss_ec_ats_xls_v_folder');
             scriptParameters.reportId = currentScript.getParameter('custscript_ts_ss_ec_ats_xls_v_report');
             scriptParameters.format = currentScript.getParameter('custscript_ts_ss_ec_ats_xls_v_formato');
+            scriptParameters.contador = currentScript.getParameter('custscript_ts_ss_ec_ats_xls_v_conta');
             scriptParameters.logId = createLogRecord(scriptParameters, environmentFeatures.hasSubsidiaries);
             return scriptParameters;
         }
@@ -117,6 +135,9 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
                         co26: result.getValue(columns[16]),
                         co27: result.getValue(columns[17]),
                         co28: result.getValue(columns[18]),
+                        co29: result.getValue(columns[19]),
+                        co30: result.getValue(columns[20]),
+                        co31: result.getValue(columns[21]),
                     });
                     retencionesCount++;
                 }
@@ -145,16 +166,22 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
                         retencionData.col9 !== undefined ? retencionData.col9 : row[23],  // Reemplazar columna 23
                         ...row.slice(24, 25),
                         retencionData.co20 !== undefined ? retencionData.co20 : row[25],  // Reemplazar columna 25
+                        ...row.slice(26, 27),
                         retencionData.co21 !== undefined ? retencionData.co21 : row[27],  // Reemplazar columna 27
                         retencionData.co22 !== undefined ? retencionData.co22 : row[30],  // Reemplazar columna 30
                         retencionData.co23 !== undefined ? retencionData.co23 : row[28],  // Reemplazar columna 28
                         retencionData.co24 !== undefined ? retencionData.co24 : row[29],  // Reemplazar columna 29
+                        retencionData.co25 !== undefined ? retencionData.co25 : row[30],  // Reemplazar columna 30
                         //...row.slice(31, 32),
-                        retencionData.co25 !== undefined ? retencionData.co25 : row[31],
-                        retencionData.co26 !== undefined ? retencionData.co26 : row[32],  // Reemplazar columna 32
+                        retencionData.co26 !== undefined ? retencionData.co26 : row[32],
                         retencionData.co27 !== undefined ? retencionData.co27 : row[33],  // Reemplazar columna 33
                         retencionData.co28 !== undefined ? retencionData.co28 : row[34],  // Reemplazar columna 34
-                        ...row.slice(35),
+                        retencionData.co29 !== undefined ? retencionData.co29 : row[35],  // Reemplazar columna 35
+                        //...row.slice(36),
+                        ...row.slice(36, 48),
+                        retencionData.co30 !== undefined ? retencionData.co30 : row[48],
+                        retencionData.co31 !== undefined ? retencionData.co31 : row[49],
+                        ...row.slice(50),
                         // Mantener las columnas desde el índice 35 en adelante
 
                         // retencionData.co20 !== undefined ? retencionData.co20 : row[25],  // Reemplazar columna 25
@@ -225,7 +252,7 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
                         result.getValue(columns[24]),
                         result.getValue(columns[25]),
                         result.getValue(columns[26]),
-                        //result.getValue(columns[27]),
+                        result.getValue(columns[27]),//estaba comentado
                         result.getValue(columns[28]),
                         result.getValue(columns[29]),
                         result.getValue(columns[30]),
@@ -249,20 +276,21 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
                         result.getValue(columns[48]),
                         result.getValue(columns[49]),
                         result.getValue(columns[50]),
-                        result.getValue(columns[51])
+                        result.getValue(columns[51]),
+                        result.getValue(columns[52])
                     ]
                     atsArrayVentas.push(ventasRetBanc)
                 }
             }
             // let objResults = atsXLSRetenciones.run().getRange({ start: 0, end: 1000 });
             // log.debug('objResults', objResults);
-            saveJson(atsArrayVentas, 'objResults', DEVELOPER_TRACKING_FOLDER)
+            //saveJson(atsArrayVentas, 'objResults', DEVELOPER_TRACKING_FOLDER)
             return atsArrayVentas
         };
 
-        const getFileName = (auxiliaryRecords, format) => {
+        const getFileName = (auxiliaryRecords, format, conta) => {
             if (format === 'XLSX') {
-                return `AT${auxiliaryRecords.period.month}${auxiliaryRecords.period.year}.xls`;
+                return `AT${auxiliaryRecords.period.month}${auxiliaryRecords.period.year}_${conta}.xls`;
             }
         }
 
@@ -288,19 +316,22 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
                 alias: 'jsonString',
                 data
             });
-            let contents = renderer.renderAsString();
+            let contents = renderer.rendersAString();
             let base64 = encode.convert({
                 string: contents,
                 inputEncoding: encode.Encoding.UTF_8,
                 outputEncoding: encode.Encoding.BASE_64
             });
-            let name = getFileName(auxiliaryRecords, 'XLSX');
+            let name = getFileName(auxiliaryRecords, 'XLSX', scriptParameters.contador);
             let fileId = file.create({
                 name,
                 fileType: file.Type.EXCEL,
                 contents: base64,
                 folder: FOLDER_ID
             }).save();
+
+            log.error();
+
             let xlsFile = file.load({ id: fileId });
             updateRecordLog(scriptParameters, xlsFile.url, xlsFile.name);
         }
@@ -386,10 +417,17 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
             return periodRecord;
         }
 
-        const buildJsonForExcel = (ArrayXLS) => {
+        const buildJsonForExcel = (ArrayXLS, scriptParameters) => {
             let contenidoJSON = new Array();
-            saveJson(ArrayXLS, 'pruebaXLS', DEVELOPER_TRACKING_FOLDER)
-            for (let i = 0; i < ArrayXLS.length; i++) {
+            let conta = scriptParameters.contador;
+            let totalMax = 2000 + (Number(conta) * MAX_CANTIDAD);
+            let inicial = 0 + (Number(conta) * MAX_CANTIDAD);
+            let cantidadArray = ArrayXLS.length;
+            if (totalMax < Number(ArrayXLS.length)) {
+                cantidadArray = totalMax;
+            }
+            //saveJson(ArrayXLS, 'pruebaXLS', DEVELOPER_TRACKING_FOLDER)
+            for (let i = inicial; i < cantidadArray; i++) {
                 let detalle = new Object();
                 let data = ArrayXLS[i];
                 let idInterno = data[0]; //* 0 ID interno
@@ -419,36 +457,47 @@ define(['N/log', 'N/runtime', 'N/task', 'N/format', 'N/file', 'N/search', 'N/rec
                 detalle.montoIce = Number(data[24]) || 0; //24 MONTO ICE
                 detalle.montoRetIva = Number(data[25]) || 0; //25 MONTO RET. IVA
                 detalle.declaraRetRenta = data[18] || ""; //26 DECLARAR RET.RENTA
-                detalle.montoRetIr = Number(data[26]) || 0; //27 MONTO RET. IR
-                detalle.ir1 = Number(data[27]) || 0; //28 IR 1%
-                detalle.ir2 = Number(data[28]) || 0; //29 IR 2%
-                detalle.ir0 = Number(data[29]) || 0; //30 IR 0%
-                detalle.factFisico = data[30] || ""; //31 FAC. FÍSICO
-                detalle.serie = data[31] || ""; //32 SERIE
-                detalle.secuencia = data[32] || ""; //33 SECUENCIA
-                detalle.autoriza = data[33] || ""; //34 AUTORIZACION
-                detalle.origenRtf = data[34] || ""; //35 ORIGENRTF
-                detalle.oficinaRtf = data[36] || ""; //36 OFICINARTF
-                detalle.tasaIvaMov = data[37] || ""; //37 TASA IVA MOVIMIENTO
-                detalle.dscto2Solidario = data[38] || ""; //38 DSCTO.2% SOLIDARIO
-                detalle.tipoRtf = data[39] || ""; //39 TIPORTF
-                detalle.fecEmiDoc = data[40] || ""; //40 FEC.EMISIÓN DOCUMENTO
-                detalle.fecAutSri = data[41] || ""; //41 FEC.AUTORIZACIÓN SRI
-                detalle.denom_cliente = data[42] || ""; //42 DENOMINACIÓN CLIENTE
-                detalle.tipoEmision = data[43] || ""; //43 TIPO EMISIÓN
-                detalle.tipoCompen = data[44] || ""; //44 TIPO COMPEN.
-                detalle.montoCompen = Number(data[45]) || 0; //45 MONTO COMPENSACIÓN
-                detalle.formaPago = data[46] || ""; //46 FORMA PAGO
-                detalle.ir1_75 = Number(data[47]) || 0; //47 IR 1.75
-                detalle.ir2_75 = Number(data[48]) || 0; //48 IR 2.75%
-                detalle.parRel = data[49] || ""; //49 PAR REL.
-                detalle.montoIce_1 = Number(data[50]) || 0; //50 MONTO ICE
-                detalle.tipoIdeSri = data[51] || ""; //51 TIPO ID. SRI
+                detalle.montoRetIr = Number(data[27]) || 0; //27 MONTO RET. IR
+                detalle.ir1 = Number(data[28]) || 0; //28 IR 1%
+                detalle.ir2 = Number(data[29]) || 0; //29 IR 2%
+                detalle.ir3 = Number(data[30]) || 0; //30 IR 3%
+                detalle.ir0 = Number(data[31]) || 0; //31 IR 0%
+                detalle.factFisico = data[32] || ""; //32 FAC. FÍSICO
+                detalle.serie = data[33] || ""; //33 SERIE
+                detalle.secuencia = data[34] || ""; //34 SECUENCIA
+                detalle.autoriza = data[35] || ""; //35 AUTORIZACION
+                detalle.origenRtf = data[36] || ""; //36 ORIGENRTF
+                detalle.oficinaRtf = data[37] || ""; //37 OFICINARTF
+                detalle.tasaIvaMov = data[38] || ""; //38 TASA IVA MOVIMIENTO
+                detalle.dscto2Solidario = data[39] || ""; //39 DSCTO.2% SOLIDARIO
+                detalle.tipoRtf = data[40] || ""; //40 TIPORTF
+                detalle.fecEmiDoc = data[41] || ""; //41 FEC.EMISIÓN DOCUMENTO
+                detalle.fecAutSri = data[42] || ""; //42 FEC.AUTORIZACIÓN SRI
+                detalle.denom_cliente = data[43] || ""; //43 DENOMINACIÓN CLIENTE
+                detalle.tipoEmision = data[44] || ""; //44 TIPO EMISIÓN
+                detalle.tipoCompen = data[45] || ""; //45 TIPO COMPEN.
+                detalle.montoCompen = Number(data[46]) || 0; //46 MONTO COMPENSACIÓN
+                detalle.formaPago = data[47] || ""; //47 FORMA PAGO
+                detalle.ir1_75 = Number(data[48]) || 0; //48 IR 1.75
+                detalle.ir2_75 = Number(data[49]) || 0; //49 IR 2.75%
+                detalle.parRel = data[50] || ""; //50 PAR REL.
+                detalle.montoIce_1 = Number(data[51]) || 0; //51 MONTO ICE
+                detalle.tipoIdeSri = data[52] || ""; //52 TIPO ID. SRI
 
                 contenidoJSON.push(detalle);
 
             }
             return contenidoJSON;
+        }
+
+        const termino = (ArrayXLS, scriptParameters) => {
+            let conta = scriptParameters.contador;
+            let totalMax = 2000 + (Number(conta) * MAX_CANTIDAD);
+            let finalizo = true;
+            if (totalMax < Number(ArrayXLS.length)) {
+                finalizo = false;
+            }
+            return finalizo;
         }
 
         const saveJson = (contents, nombre, folder) => {

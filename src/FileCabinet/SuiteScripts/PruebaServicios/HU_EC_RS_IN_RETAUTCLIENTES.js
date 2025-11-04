@@ -2,7 +2,7 @@
  *@NApiVersion 2.1
  *@NScriptType Restlet
  */
- define(['N/log', 'N/record', 'N/search'], function(log, record, search) {
+define(['N/log', 'N/record', 'N/search'], function (log, record, search) {
 
     function _get(context) {
         try {
@@ -10,11 +10,11 @@
             let objRecord = record.load({ type: record.Type.CUSTOMER_PAYMENT, id: iddocument, isDynamic: true });
             //let objRecord = record.load({ type: record.Type.VENDOR, id: iddocument, isDynamic: true });
 
-           //let companyname = objRecord.getValue({ fieldId: 'entityid' });
-  
+            //let companyname = objRecord.getValue({ fieldId: 'entityid' });
+
             return {
                 customerpayment: objRecord
-               
+
             }
         } catch (error) {
             log.error('Error', error);
@@ -25,13 +25,13 @@
     function _post(context) {
         try {
             //REQUEST
-            
+
             // FIELDS
             let customer = context.customer; // codigo cliente
-            let currency  = context.currency; // codigo moneda
+            let currency = context.currency; // codigo moneda
             let exchangerate = context.exchangerate; // tipo de cambio
             let aracct = context.aracct; // cuenta contable de cliente
-            let trandate  = context.trandate; // fecha de transacción
+            let trandate = context.trandate; // fecha de transacción
             let location = context.location; // Ciudad
             let department = context.department; // departmento
             let paymentoption = context.paymentoption // tipo de pago
@@ -49,15 +49,15 @@
             let custbody_ts_ec_codigo_retencion = context.custbody_ts_ec_codigo_retencion // código de retención
             let custbody_ts_ec_porcentaje_retencion = context.custbody_ts_ec_porcentaje_retencion // porcentaje de retención
             let custbodyts_ec_cod_wht_autorization = context.custbodyts_ec_cod_wht_autorization // numero de autorizacion de retención
-        
+
 
             // sublists
             // Apply : documento a aplicar
-            let amount = Number.parseFloat( context.apply[0].amount).toFixed(2); // valor de pago
+            let amount = Number.parseFloat(context.apply[0].amount).toFixed(2); // valor de pago
             let doc = context.apply[0].doc; // codigo de factura netsuite
-            let internalid  = context.apply[0].internalid;    // codigo de factura netsuite
-            let apply     = context.apply[0].apply; // aplicar
-            
+            let internalid = context.apply[0].internalid;    // codigo de factura netsuite
+            let apply = context.apply[0].apply; // aplicar
+
             /*
             log.debug('Dato cliente........', customer);
             log.debug('Dato moneda........', currency);
@@ -95,9 +95,9 @@
             objRecord.setValue({ fieldId: 'location', value: location });
             objRecord.setValue({ fieldId: 'department', value: department });
             objRecord.setValue({ fieldId: 'paymentoption', value: paymentoption });
-            objRecord.setValue({ fieldId: 'usepaymentoption', value: usepaymentoption }); 
+            objRecord.setValue({ fieldId: 'usepaymentoption', value: usepaymentoption });
             objRecord.setValue({ fieldId: 'applied', value: applied });
-            objRecord.setValue({ fieldId: 'origtotal', value: origtotal }); 
+            objRecord.setValue({ fieldId: 'origtotal', value: origtotal });
             objRecord.setValue({ fieldId: 'payment', value: payment });
             objRecord.setValue({ fieldId: 'undepFunds', value: undepFunds }); // pago que será depositado en una cuenta bancaria
             objRecord.setValue({ fieldId: 'account', value: account });// cuenta deudora - cuenta de retención
@@ -109,7 +109,7 @@
             objRecord.setValue({ fieldId: 'custbody_ts_ec_codigo_retencion', value: custbody_ts_ec_codigo_retencion });// código de retención
             objRecord.setValue({ fieldId: 'custbody_ts_ec_porcentaje_retencion', value: custbody_ts_ec_porcentaje_retencion });// porcentaje de retención
             objRecord.setValue({ fieldId: 'custbodyts_ec_cod_wht_autorization', value: custbodyts_ec_cod_wht_autorization });// numero autorizacion de retención
-          
+
             //objRecord.setValue({ fieldId: 'numeroretencion', value: numeroretencion });  
             //objRecord.setValue({ fieldId: 'codigoretencion', value: codigoretencion });  
             //objRecord.setValue({ fieldId: 'porcretencion', value: porcretencion });  
@@ -124,7 +124,7 @@
             let items = context.apply; // declaracion del arreglo del for
             //log.debug('items..1....', items);
 
-            if(apLine > 0){
+            if (apLine > 0) {
                 for (var i = 0; i < apLine; i++) {
 
                     var refnum = objRecord.getSublistValue({
@@ -163,9 +163,9 @@
                     */
 
                     //  Validar saldo de factura
-                    if (refnum == internalid && saldofact < amount){
+                    if (refnum == internalid && saldofact < amount) {
                         log.error({
-                            title: 'Error: Documento no tiene saldo para aplicar', 
+                            title: 'Error: Documento no tiene saldo para aplicar',
                             details: 'Documento: ' + internalid
                         });
                         return
@@ -187,7 +187,7 @@
 
                         });
 
-                        
+
                         /*cruce.setCurrentSublistValue({
 
                             sublistId: 'apply',
@@ -199,7 +199,7 @@
                         });
                         */
                         //log.debug("total", acumula)
-                        
+
                         // Aplicar documento
                         objRecord.setCurrentSublistValue({
 
@@ -210,7 +210,7 @@
                             value: true
 
                         });
-                    
+
                         // Valor de aplicación
                         objRecord.setCurrentSublistValue({
 
@@ -221,7 +221,7 @@
                             value: amount
 
                         });
-                        
+
 
                         objRecord.commitLine({
 
@@ -229,20 +229,20 @@
 
                         });
 
-                        
+
 
                     }
 
                 }
             }
 
-            
+
             let recordId = objRecord.save({ enableSourcing: false, ignoreMandatoryFields: false });
             log.debug('Result', recordId);
             return recordId;
         } catch (error) {
             log.error('Error', error);
-            
+
         }
 
 

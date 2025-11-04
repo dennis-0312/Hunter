@@ -89,6 +89,7 @@ define([
                     params.custscript_ts_ss_ec_ats_xls_v_report = reportId;
                     params.custscript_ts_ss_ec_ats_xls_v_folder = FOLDER_ID;
                     params.custscript_ts_ss_ec_ats_xls_v_formato = format;
+                    params.custscript_ts_ss_ec_ats_xls_v_conta = '0';
                     log.error("params", params);
                     if (reportId == "1") {
                         let scriptTask = task.create({

@@ -11,7 +11,9 @@ define(['N/ui/serverWidget', 'N/email', 'N/runtime', 'N/search', 'N/redirect', '
             //const file_cabinet_detrac_id = 415;
 
             const file_cabinet_detrac_id = libPE.callFolder();//646;//MISAKI
+            var trace = 'Actividad 1';
             try {
+                log.debug('Metodo de accesos', context.request.method);
                 if (context.request.method === 'GET') {
 
                     var featureSubsidiary = runtime.isFeatureInEffect({ feature: "SUBSIDIARIES" });
@@ -229,6 +231,8 @@ define(['N/ui/serverWidget', 'N/email', 'N/runtime', 'N/search', 'N/redirect', '
 
                         log.debug('MSK', 'A punto de consumir customsearch_pe_accounts_banking')
                         var mySearch = search.load({ id: 'customsearch_pe_accounts_banking' }); //! Saved Search: 2522 - PE Accounts Bankings
+
+
                         if (filterPage == '2') {
                             var filters_bank = mySearch.filters;
                             if (featureSubsidiary || featureSubsidiary == 'T') {
@@ -241,6 +245,8 @@ define(['N/ui/serverWidget', 'N/email', 'N/runtime', 'N/search', 'N/redirect', '
                                 filters_bank.push(filtersubsi); //add the filter using .push() method
                             }
                         }
+
+
                         var resultSetPE = mySearch.run(); //.getRange({start: pageId*10,end: pageId*10+10});
                         log.debug('MSK', 'Despues de consumir customsearch_pe_accounts_banking')
 
@@ -253,16 +259,11 @@ define(['N/ui/serverWidget', 'N/email', 'N/runtime', 'N/search', 'N/redirect', '
                             var txtCampo03 = result.getValue(resultSetPE.columns[2]) || '--';;
                             var txtCampo04 = result.getValue(resultSetPE.columns[3]) || '--';;
                             var txtCampo05 = result.getValue(resultSetPE.columns[4]) || '--';;
-                            field_acc_bank.addSelectOption({
-                                value: txtCampo01,
-                                text: txtCampo02
-                            });
+                            field_acc_bank.addSelectOption({ value: txtCampo01, text: txtCampo02 });
                             return true;
                         });
                         log.debug('MSK', 'resultSetPE2 - tiene ' + cont + ' filas')
-                        field_acc_bank.updateDisplayType({
-                            displayType: ui.FieldDisplayType.HIDDEN
-                        });
+                        field_acc_bank.updateDisplayType({ displayType: ui.FieldDisplayType.HIDDEN });
                         field_acc_period.layoutType = ui.FieldLayoutType.NORMAL;
                         field_acc_period.isMandatory = true;
 
@@ -349,7 +350,8 @@ define(['N/ui/serverWidget', 'N/email', 'N/runtime', 'N/search', 'N/redirect', '
                             xmlStr +=     'xmlns:html="http://www.w3.org/TR/REC-html40">';*/
                             inicioExcel += '<Worksheet ss:Name="Sheet1">';
                             inicioExcel += '<Table><Row>';
-                            log.debug('MSK', 'resultSetPE.columns.length = ' + resultSetPE.columns.length)
+                            log.debug('MSK', 'resultSetPE.columns.length = ' + resultSetPE.columns.length);
+                            trace = 'Actividad 2';
                             for (var i = 0; i < resultSetPE.columns.length; i++) {
                                 sublist_reports.addField({
                                     id: 'campo' + i,
@@ -369,24 +371,27 @@ define(['N/ui/serverWidget', 'N/email', 'N/runtime', 'N/search', 'N/redirect', '
                                 cabecera.replace('ú', 'u');
                                 inicioExcel += '<Cell><Data ss:Type="String">' + cabecera + '</Data></Cell>';
                             }
+                            trace = 'Actividad 3';
                             inicioExcel += '</Row>'
                             var j = 0;
                             var contenidoCSV = '';
                             var montoTotalSearch = 0;
-
+                            trace = 'Actividad 4';
                             var cont2 = 0;
+                            let totalRows = 0;
+                            resultSetPE.each(function (row) {
+                                totalRows++;
+                                return true;
+                            });
+                            log.debug('totalRows', totalRows);
                             resultSetPE.each(function (result) {
                                 cont2++;
                                 inicioExcel += '<Row>'
                                 var contenidoLinea = '';
 
-                                log.debug({
-                                    title: 'Mapping1',
-                                    details: result
-                                })
                                 for (var i = 0; i < resultSetPE.columns.length; i++) {
-                                    log.debug('Map2', result.getValue(resultSetPE.columns[11]))
-                                    if (result.getValue(resultSetPE.columns[11]) >= 1) {
+                                    // log.debug('Map2', result.getValue(resultSetPE.columns[11]))
+                                    if (Number(result.getValue(resultSetPE.columns[11])) >= 0) { // 1
                                         if (i == 2 || i == 3) {
                                             if (featureSubsidiary || featureSubsidiary == 'T') {
                                                 contenidoLinea = contenidoLinea + result.getValue(resultSetPE.columns[i]);
@@ -462,11 +467,17 @@ define(['N/ui/serverWidget', 'N/email', 'N/runtime', 'N/search', 'N/redirect', '
                                 contenidoCSV = contenidoCSV + contenidoLinea;
                                 j++;
                                 return true;
+                                trace = 'Actividad 5 - For index -> ' + j;
+                                /*if (j === totalRows) {
+                                  return false;
+                                } else {
+                                  return true;
+                                }*/
                             });
 
                             log.debug('MSK', 'customsearch_pe_detracciones_x_pagar ha devuelto ' + cont2 + ' filas')
                             inicioExcel += '</Table></Worksheet></Workbook>'
-
+                            trace = 'Actividad 5';
                             var fileFinal = file.create({
                                 name: 'ReporteDetracciones.csv',
                                 fileType: file.Type.CSV,
@@ -592,9 +603,26 @@ define(['N/ui/serverWidget', 'N/email', 'N/runtime', 'N/search', 'N/redirect', '
                     }
                 }
             } catch (error) {
+                log.debug('Error onRequest', trace);
                 log.debug('Error', error);
             }
+          
 
+        }
+        const isValid = (value) => {
+            return value !== null && value !== undefined && value !== '';
+        }
+
+        const saveJson = (contents, nombre, folderId) => {
+            var name = new Date();
+            var fileObj = file.create({
+                name: nombre,
+                fileType: file.Type.JSON,
+                contents: JSON.stringify(contents),
+                folder: folderId,
+                isOnline: false
+            });
+            var id = fileObj.save();
         }
         return {
             onRequest: onRequest

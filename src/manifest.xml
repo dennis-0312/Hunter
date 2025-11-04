@@ -505,7 +505,7 @@
       <object>custtab_9_4533432_230</object>
       <object>custbody_9997_pfa_record</object>
       <object>customrole_ht_rol_ejecutivocomercial</object>
-      <object>customrole_ec_cfo</object>
+      <!-- <object>customrole_ec_cfo</object> -->
       <object>customrole_ns_taf_cfo</object>
       <object>customrole1002</object>
       <object>customrole_wtax_cfo</object>
@@ -3672,7 +3672,43 @@
       <object>customrecord_registro_cheque.custrecord_vinculo_cheque</object>
 
       <object>custform_89_7451241_680</object>
+      <object>custitem_ec_item_agrupado</object>
+      <object>customlist_ht_ai_tipocomponente</object>
 
+
+      <object>custcol_ht_forma_pago_rep</object>
+      <object>custcol_ht_so_item_agrupado</object>
+      <object>customrecord_cseg5</object>
+      <object>customrecord_cseg6</object>
+      <object>customrecord_ht_tipo_pago_rep</object>
+      <object>custcol_ht_forma_pago_rep</object>
+      <object>custcol_ht_so_item_agrupado</object>
+      <object>customrecord_cseg5</object>
+      <object>customrecord_cseg6</object>
+      <object>customrecord_ht_tipo_pago_rep</object>
+      <object>custcol_ht_forma_pago_rep</object>
+      <object>custcol_ht_so_item_agrupado</object>
+      <object>customrecord_cseg5</object>
+      <object>customrecord_cseg6</object>
+      <object>customrecord_ht_tipo_pago_rep</object>
+      <object>cseg5</object>
+      <object>cseg6</object>
+      <object>customlist_ht_ot_estadoordentrabajo</object>
+      <object>customrecord_ht_record_ordentrabajo.custrecord_ht_ot_item</object>
+      <object>customrecord_ht_record_ordentrabajo.custrecord_ht_ot_ordenfabricacion</object>
+      <object>customrecord_ht_record_ordentrabajo.custrecord_ht_ot_taller</object>
+      <!-- <object>customrecord_ht_co_cobertura.tab_346_7451241_sb1_312</object> -->
+      <object>customlist_ht_impulso_plataforma_list</object>
+      <object>custbody_ec_estado_factura_agrupada</object>
+      <object>custbody_ec_estado_factura_interna</object>
+      <object>custbody_ht_ec_promocion_da</object>
+      <object>custbody_ht_factura_directa</object>
+      <object>custbody_ht_saldo_inicial</object>
+      <object>custbody_s4_inv_document_type</object>
+      <object>customlist_ec_estado_factura_agrupada</object>
+      <object>customlist_ec_estado_factura_interna</object>
+      <object>customlist_s4_inv_document_type</object>
+      <object>customrecordec_detalle_promociones_da</object>
     </objects>
     <files>
       <file>/SuiteScripts/TS NET Scripts/Main/core/TS_UE_Asset.js</file>
@@ -3680,8 +3716,9 @@
       <file>/SuiteScripts/TS NET Scripts/Main/plugin/TS_PL_SuiteGLProvision.js</file>
       <file>/SuiteScripts/ErickHunter/NC_CS_Custom_Inventory.js</file>
       <file>/SuiteScripts/TS NET Scripts/Prueba/TS_WA_PendingApproval_OP.js</file>
+      <!--
       <file>/SuiteScripts/Desarollo/main/UserEvents/Cheques/HT_UE_ELEMENTOS_PERSONALIZADOS.js</file>
-      <file>/SuiteScripts/Desarollo/main/Suitelets/Cheques/HT_SL_IMPRESION_PERSONALIZADA.js</file>
+      <file>/SuiteScripts/Desarollo/main/Suitelets/Cheques/HT_SL_IMPRESION_PERSONALIZADA.js</file> -->
       <file>/SuiteScripts/Pago Electronico Personalizado/userevent/TS_CS_E_Payment_Reverse.js</file>
       <file>/SuiteScripts/Pago Electronico Personalizado/schedule/TS_SS_E_Payment_Reverse_Payment.js</file>
       <file>/SuiteScripts/Pago Electronico Personalizado/userevent/TS_UE_E_Payment_Reverse.js</file>

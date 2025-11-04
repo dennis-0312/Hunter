@@ -210,21 +210,21 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url', 'N/runtime', 'N/
 
             //*TEMPORAL
             console.log('Entry-tipoDoc', tipoDoc)
-            // if (tipoDoc == '1' || tipoDoc == '2') {
-            //     if (typeMode != 'delete') {
-            //         console.log('Entry-typeMode')
-            //         let numeroDocumento = objRecord.getValue('vatregnumber');
-            //         var digitoVerificador = getDigitoVerificador(numeroDocumento, tipoDoc);
-            //         console.log('digitoVerificador', digitoVerificador)
-            //         if (!digitoVerificador) { dialog.alert({ title: 'Información', message: 'El número de cédula es incorrecto.' }) }
-            //         return digitoVerificador
-            //         // const regex = /^\d$/;
-            //         // if (!regex.test(digitoVerificador)) {
-            //         //     alert('El número de cédula es incorrecto');
-            //         //     return false;
-            //         // }
-            //     }
-            // }
+            if (tipoDoc == '1' || tipoDoc == '2') {
+                if (typeMode != 'delete') {
+                    console.log('Entry-typeMode')
+                    let numeroDocumento = objRecord.getValue('vatregnumber');
+                    var digitoVerificador = getDigitoVerificador(numeroDocumento, tipoDoc);
+                    console.log('digitoVerificador', digitoVerificador)
+                    if (!digitoVerificador) { dialog.alert({ title: 'Información', message: 'El número de cédula es incorrecto.' }) }
+                    return digitoVerificador
+                    // const regex = /^\d$/;
+                    // if (!regex.test(digitoVerificador)) {
+                    //     alert('El número de cédula es incorrecto');
+                    //     return false;
+                    // }
+                }
+            }
             return true;
         } catch (e) {
             console.log('Error en el saveRecord', e);

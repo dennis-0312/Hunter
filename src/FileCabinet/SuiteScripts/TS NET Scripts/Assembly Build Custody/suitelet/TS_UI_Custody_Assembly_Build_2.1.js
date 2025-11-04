@@ -7,11 +7,13 @@ define([
     'N/log',
     'N/task',
     'N/redirect',
-    './lib/TS_LBRY_Custody_Assembly_Build_2.1.js'
-], (serverWidget, log, task, redirect, library) => {
+    './lib/TS_LBRY_Custody_Assembly_Build_2.1.js',
+    'N/search'
+], (serverWidget, log, task, redirect, library, search) => {
 
     const onRequest = (context) => {
         try {
+            log.error("parameters Y", context.request.parameters);
             var method = context.request.method;
             let userInterface = new library.UserInterface(context.request.parameters);
             const FIELDS = userInterface.FIELDS;
@@ -49,15 +51,23 @@ define([
                 reinstaallItemField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
                 let deviceItemField = form.addField(FIELDS.field.deviceitem.id, serverWidget.FieldType.SELECT, FIELDS.field.deviceitem.text, FIELDS.fieldgroup.primary.id, 'item');
-                deviceItemField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+                deviceItemField.setDefaultValue(PARAMETERS.device);
+                //deviceItemField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
                 let inventoryNumberField = form.addField(FIELDS.field.inventorynumber.id, serverWidget.FieldType.TEXT, FIELDS.field.inventorynumber.text, FIELDS.fieldgroup.primary.id);
                 userInterface.setInventoryNumber(inventoryNumberField, salesOrderField.getDefaultValue(), salesItemField.getDefaultValue());
                 userInterface.setDeviceItem(deviceItemField, inventoryNumberField.getDefaultValue());
                 inventoryNumberField.isMandatory = true;
 
-                let inventoryNumberIdField = form.addField(FIELDS.field.inventorynumberid.id, serverWidget.FieldType.SELECT, FIELDS.field.inventorynumberid.text, FIELDS.fieldgroup.primary.id, 'inventorynumber');
-                inventoryNumberIdField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+                let inventoryNumberIdField = form.addField(FIELDS.field.inventorynumberid.id, serverWidget.FieldType.SELECT, FIELDS.field.inventorynumberid.text, FIELDS.fieldgroup.primary.id/*, 'inventorynumber'*/);
+                //** ============================== */
+                log.error('===================', PARAMETERS.device)
+                if (PARAMETERS.device) {
+                    log.error('===================')
+                    cargarOpcionesDesdeLista(PARAMETERS.device, 'inventorynumber', inventoryNumberIdField);
+                }
+                //reinstaallItemField.setDefaultValue(PARAMETERS.relateditem);
+                //inventoryNumberIdField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
                 let billOfMaterialRevisionField = form.addField(FIELDS.field.billofmaterialsrev.id, serverWidget.FieldType.SELECT, FIELDS.field.billofmaterialsrev.text, FIELDS.fieldgroup.primary.id, 'bomrevision');
                 userInterface.setBillOfMaterialsRevisionFieldData(billOfMaterialRevisionField, salesItemField.getDefaultValue());
@@ -78,7 +88,7 @@ define([
                 inventoryDetailField.updateDisplayType(serverWidget.FieldDisplayType.NODISPLAY);
 
                 userInterface.setInventoryNumberId(inventoryNumberIdField, locationField.getDefaultValue(), deviceItemField.getDefaultValue(), inventoryNumberField.getDefaultValue());
-                inventoryNumberField.updateDisplayType(serverWidget.FieldDisplayType.NODISPLAY);
+                //inventoryNumberField.updateDisplayType(serverWidget.FieldDisplayType.NODISPLAY);
 
                 form.addSubtab(FIELDS.subtab.components.id, FIELDS.subtab.components.text);
                 let componentSubList = form.addSublist(FIELDS.sublist.components.id, serverWidget.SublistType.LIST, FIELDS.sublist.components.text, FIELDS.subtab.components.id);
@@ -133,6 +143,7 @@ define([
         scriptParameters.custscript_ts_ss_buil_inv_adj_salesorder = parameters.custpage_f_salesorder || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_invtnumber = parameters.custpage_f_inventorynumber || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_reinvnumid = parameters.custpage_f_inventorynumberid || "";
+        scriptParameters.custscript_ts_ss_buil_inv_adj_subsidiary = parameters.custpage_f_subsidiary || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_assemblyfl = 'custodia';
         return scriptParameters;
     }
@@ -175,7 +186,7 @@ define([
         let scriptTask = task.create({
             taskType: task.TaskType.SCHEDULED_SCRIPT,
             scriptId: 'customscript_ts_ss_build_inventory_adjus',
-            deploymentId: 'customdeploy_ts_ss_build_inventory_adjus',
+            deploymentId: 'customscript_ts_ss_build_inventory_adjus',
             params
         });
         let scriptTaskId = scriptTask.submit();
@@ -192,7 +203,6 @@ define([
                     alert("Ingrese una cantidad mayor a 0 para el artículo");
                     return;
                 }
-
                 if (validateUniqueItemType(parameters)) {
                     alert("Solo se puede seleccionar un tipo de item para el ensamble de alquiler");
                     currentRecord.setSublistValue('custpage_sl_components', 'custpage_slf_quantity', line, 0);
@@ -251,6 +261,40 @@ define([
 
             execute();
         })
+    }
+
+    function cargarOpcionesDesdeLista(item, idLista, campoSelect) {
+        try {
+            log.error('item, idLista', `${item}, ${idLista}`)
+            var searchOpciones = search.create({
+                type: idLista,
+                filters:
+                    [
+                        ["item", "anyof", item]
+                    ],
+                columns: ['inventorynumber']
+            });
+
+            // Método con paginación para muchos resultados
+            var searchResults = searchOpciones.runPaged({ pageSize: 1000 });
+            for (var i = 0; i < searchResults.pageRanges.length; i++) {
+                var page = searchResults.fetch({ index: i });
+                page.data.forEach(function (result) {
+                    campoSelect.addSelectOption(result.id,result.getValue('inventorynumber'), false);
+                });
+            }
+
+            // searchOpciones.run().each(function (result) {
+            //     campoSelect.addSelectOption({
+            //         value: result.getValue('internalid'),
+            //         text: result.getValue('name')
+            //     });
+            //     return true;
+            // });
+
+        } catch (error) {
+            log.error('Error cargando lista', error);
+        }
     }
 
     return {

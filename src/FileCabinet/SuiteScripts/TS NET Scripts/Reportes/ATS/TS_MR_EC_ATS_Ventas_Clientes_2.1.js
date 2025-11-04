@@ -159,11 +159,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
             let resultArray = [];
             for (let i = 0; i < pagedData.pageRanges.length; i++) {
-
-                let page = pagedData.fetch({
-                    index: pagedData.pageRanges[i].index
-                });
-
+                let page = pagedData.fetch({ index: pagedData.pageRanges[i].index });
                 for (let j = 0; j < page.data.length; j++) {
                     let result = page.data[j];
                     let columns = result.columns;
@@ -188,7 +184,6 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
                     resultArray.push(rowArray);
                 }
             }
-            
             return resultArray;
         }
 
@@ -216,7 +211,7 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
             }
 
             let pagedData = atsRetencionVentasClientesSearch.runPaged({ pageSize: MAX_PAGINATION_SIZE });
-            
+
             let retencionVentasJson = {};
             for (let i = 0; i < pagedData.pageRanges.length; i++) {
 
@@ -226,24 +221,25 @@ define(['N/search', 'N/email', 'N/file', 'N/runtime', 'N/log', 'N/format', 'N/re
 
                 for (let j = 0; j < page.data.length; j++) {
                     let result = page.data[j];
-                    
+
                     let columns = result.columns;
-                    
+
                     let tipoDocumentoFiscal = result.getText(columns[0]);
                     let serie = result.getValue(columns[1]);
                     let numeroPreimpreso = result.getValue(columns[2]);
                     // let montoRetencionIR = result.getValue(columns[4]);
                     // let montoRetencionIVA = result.getValue(columns[5]);
                     //<I> rhuaccha: 2024-02-16 error de posición de columnas
-                    let montoRetencionIR = result.getValue(columns[3]);
-                    let montoRetencionIVA = result.getValue(columns[4]);
+                    //*LO VOLVIÓ HACER MI COMPARE JORGE
+                    // let montoRetencionIR = result.getValue(columns[3]);
+                    // let montoRetencionIVA = result.getValue(columns[4]);
                     //<F> rhuaccha: 2024-02-16
 
                     let key = `${tipoDocumentoFiscal}|${serie}|${numeroPreimpreso}`;
-                    retencionVentasJson[key] = {
-                        montoRetencionIR,
-                        montoRetencionIVA
-                    }
+                    // retencionVentasJson[key] = {
+                    //     montoRetencionIR,
+                    //     montoRetencionIVA
+                    // }
                 }
             }
             return retencionVentasJson;

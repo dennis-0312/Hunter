@@ -9,120 +9,159 @@ define([
     'N/query',
     '../TS NET Scripts/Main/controller/TS_CM_Controller',
     '../TS NET Scripts/Main/constant/TS_CM_Constant',
-    '../TS NET Scripts/Main/error/TS_CM_ErrorMessages'
+    '../TS NET Scripts/Main/error/TS_CM_ErrorMessages',
+    'N/error',
+    'N/search'
 ],
-    (log, record, https, query, _controller, _constant, errorMessage) => {
-        const afterSubmit = (scriptContext) => {
+    (log, record, https, query, _controller, _constant, errorMessage, error, search) => {
+
+        const beforeSubmit = (scriptContext) => {
             let objRecord = scriptContext.newRecord;
-            let id = objRecord.id;
-            if (scriptContext.type == scriptContext.UserEventType.EDIT) {
-                updateDevice(objRecord);
-                //updateSim(objRecord)
-            }
-        }
+            let message = '';
+            let recordType = '';
+            let recordType2 = '';
+            let dispositivoSerie = ''
+            let columns = [];
+            let columns2 = [];
+            let idDispositivo = '';
+            let simcardSerie = '';
+            let idSimcard = '';
+            let searchResultCountDisponibleSim = -1;
+            let searchResultCountExisteInventarioSim = 0;
+            let subsidiary = objRecord.getValue('custrecord_ht_mc_subsidiaria');
+            let monitoreo = objRecord.getValue('custrecord_ht_mc_seriedispositivo');
+            let lojack = objRecord.getValue('custrecord_ht_mc_seriedispositivolojack');
+            let simcard = objRecord.getValue('custrecord_ht_mc_celularsimcard');
+            let cargaFlujo = objRecord.getValue('custrecord_ht_ds_carga_flujo');
 
-        const updateDevice = (objRecord) => {
-            if (objRecord.getValue('custrecord_ht_mc_seriedispositivo').length > 0) {
-                let objRec = record.submitFields({
-                    type: _constant.customRecord.DISPOSITIVO,
-                    id: objRecord.getValue('custrecord_ht_mc_seriedispositivo'),
-                    values: {
-                        'custrecord_ht_dd_modelodispositivo': objRecord.getValue('custrecord_ht_mc_modelo'),
-                        'custrecord_ht_dd_imei': objRecord.getValue('custrecord_ht_mc_imei'),
-                        'custrecord_ht_dd_firmware': objRecord.getValue('custrecord_ht_mc_firmware'),
-                        'custrecord_ht_dd_script': objRecord.getValue('custrecord_ht_mc_script'),
-                        'custrecord_ht_dd_servidor': objRecord.getValue('custrecord_ht_mc_servidor'),
-                        'custrecord_ht_dd_tipodispositivo': objRecord.getValue('custrecord_ht_mc_unidad'),
-                        'custrecord_ht_dd_vid': objRecord.getValue('custrecord_ht_mc_vid'),
-                        'custrecord_ht_dd_macaddress': objRecord.getValue('custrecord_ht_mc_macaddress'),
-                        'custrecord_ht_dd_sn': objRecord.getValue('custrecord_ht_mc_sn'),
-                        'custrecord_ht_dd_estado': objRecord.getValue('custrecord_ht_mc_estadolodispositivo')
-                    },
-                    options: { enableSourcing: false, ignoreMandatoryFields: true }
+            if (!cargaFlujo) {
+                if (monitoreo) {
+                    recordType = 'customrecord_ht_record_detallechaserdisp';
+                    idDispositivo = objRecord.getValue('custrecord_ht_mc_seriedispositivo');
+                    dispositivoSerie = objRecord.getText('custrecord_ht_mc_seriedispositivo');
+                    columns = ['custrecord_ht_dd_dispositivo'];
+                } else if (lojack) {
+                    recordType = 'customrecord_ht_record_detallechaslojack';
+                    idDispositivo = objRecord.getValue('custrecord_ht_mc_seriedispositivolojack');
+                    dispositivoSerie = objRecord.getText('custrecord_ht_mc_seriedispositivolojack');
+                    columns = ['custrecord_ht_cl_lojack'];
+                }
+
+                if (simcard) {
+                    recordType2 = 'customrecord_ht_record_detallechasersim';
+                    idSimcard = objRecord.getValue('custrecord_ht_mc_celularsimcard');
+                    simcardSerie = objRecord.getText('custrecord_ht_mc_celularsimcard');
+                    columns2 = ['custrecord_ht_ds_simcard'];
+
+                    let searchSim = getSearchLookupFields(recordType2, idSimcard, columns2)
+                    idSimcard = searchSim.custrecord_ht_ds_simcard[0].value;
+
+                    searchResultCountExisteInventarioSim = getInventoryNumber(idSimcard, simcardSerie)
+                    if (searchResultCountExisteInventarioSim == 0) {
+                        message += 'El SIM CARD no está en el inventario.'
+                    }
+
+                    let customrecord_ht_record_detallechasersimSearchObj = search.create({
+                        type: recordType2,
+                        filters:
+                            [
+                                ["custrecord_ht_ds_subsidiaria", "anyof", subsidiary],
+                                "AND",
+                                ["name", "is", simcardSerie]
+                            ],
+                        columns:
+                            [
+                                search.createColumn({ name: "name", label: "Name" }),
+                            ]
+                    });
+                    searchResultCountDisponibleSim = customrecord_ht_record_detallechasersimSearchObj.runPaged().count;
+                    log.debug("SIM CARD Disponible", searchResultCountDisponibleSim);
+                    if (searchResultCountDisponibleSim == 0) {
+                        message += 'El SIM CARD no está disponible.'
+                    }
+                }
+
+                let searchDis = getSearchLookupFields(recordType, idDispositivo, columns)
+                if (monitoreo) {
+                    idDispositivo = searchDis.custrecord_ht_dd_dispositivo[0].value;
+                } else if (lojack) {
+                    idDispositivo = searchDis.custrecord_ht_cl_lojack[0].value;
+                }
+                let searchResultCountExisteInventarioDis = getInventoryNumber(idDispositivo, dispositivoSerie)
+                if (searchResultCountExisteInventarioDis == 0) {
+                    message += 'El Dispositivo no está en el inventario.'
+                }
+
+
+                let customrecord_ht_record_detallechaserdispSearchObj = search.create({
+                    type: recordType,
+                    filters:
+                        [
+                            ["custrecordht_hdd_subsidiaria", "anyof", subsidiary],
+                            "AND",
+                            ["name", "is", dispositivoSerie]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({ name: "name", label: "Name" }),
+                        ]
                 });
-                log.error('Registro', objRec);
+                let searchResultCountDisponible = customrecord_ht_record_detallechaserdispSearchObj.runPaged().count;
+                log.debug("Dispositivo Disponible", searchResultCountDisponible);
+                if (searchResultCountDisponible == 0) {
+                    message += 'El Dispositivo no está disponible.'
+                }
 
-                let sql = 'SELECT custbody_ht_ce_ordentrabajo as otid FROM transaction WHERE id = ?';
-                let resultSet = query.runSuiteQL({ query: sql, params: [objRecord.getValue('custrecord_ht_mc_enlace')] });
-                let results = resultSet.asMappedResults();
-                if (results.length > 0) {
-                    try {
-                        let objOt = record.submitFields({
-                            type: _constant.customRecord.ORDEN_TRABAJO,
-                            id: results[0]['otid'],
-                            values: {
-                                'custrecord_ht_ot_firmware': objRecord.getText('custrecord_ht_mc_firmware'),
-                                'custrecord_ht_ot_script': objRecord.getText('custrecord_ht_mc_script'),
-                                'custrecord_ht_ot_servidor': objRecord.getText('custrecord_ht_mc_servidor'),
-                                'custrecord_ht_ot_vid': objRecord.getValue('custrecord_ht_mc_vid')
-                            },
-                            options: { enableSourcing: false, ignoreMandatoryFields: true }
-                        });
-                        log.error('RegistroOT', objOt);
-                    } catch (error) { }
+                if (searchResultCountExisteInventarioDis == 0 || searchResultCountDisponible == 0 || searchResultCountExisteInventarioSim == 0 || searchResultCountDisponibleSim == 0) {
+                    log.debug('message', message);
+                    let custom_error = error.create({
+                        name: 'El dispotivo o SIM CARD no se encuentran disponibles',
+                        message: message,
+                        notifyOff: false
+                    });
+                    throw custom_error;
                 }
             }
-        }
-        
-        const updateSim = (objRecord) => {
-            record.submitFields({
-                type: _constant.customRecord.CHASER,
-                id: objRecord.getValue('custrecord_ht_mc_seriedispositivo'),
-                values: {
-                    'custrecord_ht_mc_modelo': objRecord.getValue('custrecord_ht_dd_modelodispositivo'),
-                    'custrecord_ht_mc_imei': objRecord.getValue('custrecord_ht_dd_imei'),
-                    'custrecord_ht_mc_firmware': objRecord.getValue('custrecord_ht_dd_firmware'),
-                    'custrecord_ht_mc_script': objRecord.getValue('custrecord_ht_dd_script'),
-                    'custrecord_ht_mc_servidor': objRecord.getValue('custrecord_ht_dd_servidor'),
-                    'custrecord_ht_mc_tipodispositivo': objRecord.getValue('custrecord_ht_mc_seriedispositivo'),
-                    'custrecord_ht_mc_unidad': objRecord.getValue('custrecord_ht_dd_tipodispositivo'),
-                    'custrecord_ht_mc_vid': objRecord.getValue('custrecord_ht_dd_vid'),
-                    'custrecord_ht_mc_macaddress': objRecord.getValue('custrecord_ht_dd_macaddress'),
-                    'custrecord_ht_mc_sn': objRecord.getValue('custrecord_ht_dd_sn'),
-                    'custrecord_ht_cl_estado': objRecord.getValue('custrecord_ht_dd_estado')
-                },
-                options: { enableSourcing: false, ignoreMandatoryFields: true }
-            });
-        }
-        const updateLojack = (objRecord) => { }
 
-        const envioTelematic = (json) => {
-            let myRestletHeaders = new Array();
-            myRestletHeaders['Accept'] = '*/*';
-            myRestletHeaders['Content-Type'] = 'application/json';
-            let myRestletResponse = https.requestRestlet({
-                body: JSON.stringify(json),
-                deploymentId: 'customdeploy_ts_rs_new_device',
-                scriptId: 'customscript_ts_rs_new_device',
-                headers: myRestletHeaders,
+
+            objRecord.getValue('custrecord_ht_ds_carga_flujo', false);
+        }
+
+        const getInventoryNumber = (item, serie) => {
+            let inventorynumberSearchObj = search.create({
+                type: "inventorynumber",
+                filters:
+                    [
+                        ["item", "anyof", item],
+                        "AND",
+                        ["inventorynumber", "is", serie],
+                        "AND",
+                        ["quantityavailable", "greaterthan", "0"]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "inventorynumber", label: "Number" })
+                    ]
             });
-            let response = myRestletResponse.body;
-            return response;
+            let searchResultCountExisteInventario = inventorynumberSearchObj.runPaged().count;
+            log.debug("Item se encuentra en el inventario", searchResultCountExisteInventario);
+            return searchResultCountExisteInventario;
+        }
+
+        const getSearchLookupFields = (recordType, id, columns) => {
+            let searchDis = search.lookupFields({
+                type: recordType,
+                id: id,
+                columns: columns
+            })
+
+            return searchDis
         }
 
         return {
-            afterSubmit: afterSubmit
+            beforeSubmit: beforeSubmit,
+            //afterSubmit: afterSubmit
         }
 
-        // if (idTelematic.length == 0) {
-        //     let telemat = {
-        //         device: {
-        //             report_from: 3,
-        //             active: true,
-        //             model: 1,
-        //             company_code: "PruebaEvol",
-        //             id: objRecord.getValue('name')
-        //         }
-        //     }
-        //     let Telematic = envioTelematic(telemat);
-        //     log.debug('Telematic', Telematic);
-        //     Telematic = JSON.parse(Telematic);
-
-        //     if (Telematic.Device.id) {
-        //         let cliente = record.load({ type: 'customrecord_ht_record_mantchaser', id: ordenId });
-        //         cliente.setValue({ fieldId: 'custrecord_ht_mc_id_telematic', value: Telematic.Device.id })
-        //         cliente.save();
-        //     }
-        // }
     });
 

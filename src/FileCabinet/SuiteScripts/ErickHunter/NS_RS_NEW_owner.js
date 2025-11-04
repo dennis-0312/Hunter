@@ -3,18 +3,21 @@
  *@NScriptType Restlet
  */
 define(['N/log', 'N/https'], function (log, https) {
+    let URL = "https://test-telematicsapi.hunterlabs.io" //SB: https://test-telematicsapi.hunterlabs.io / PR: https://telematicsapi.hunterlabs.io
+    let TOKEN = 'ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI='
+
     function _post(context) {
         log.error("context", context);
         let newCustomer;
         let headers1 = [];
         headers1['Accept'] = '*/*';
         headers1['Content-Type'] = 'application/json';
-        headers1['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers1['Authorization'] = 'Basic ' + TOKEN;
 
         var respCustomer;
         if (!context.customerNew.id) {
             respCustomer = https.post({
-                url: "https://test-telematicsapi.hunterlabs.io/customer/user/",
+                url: URL + "/customer/user/",
                 headers: headers1,
                 body: JSON.stringify(context.customerNew),
             });
@@ -23,7 +26,7 @@ define(['N/log', 'N/https'], function (log, https) {
             newCustomer = respCustomer.id
         } else {
             var respCustomer = https.get({
-                url: "https://test-telematicsapi.hunterlabs.io/customer/user/" + context.customerNew.id + "/",
+                url: URL + "/customer/user/" + context.customerNew.id + "/",
                 headers: headers1
             });
             respCustomer = JSON.parse(respCustomer.body);
@@ -34,20 +37,16 @@ define(['N/log', 'N/https'], function (log, https) {
         headers1['X-HTTP-Method-Override'] = 'PATCH';
 
         const respUserRemove = https.put({
-            url: "https://test-telematicsapi.hunterlabs.io/asset/" + context.asset + "/user-remove/",
+            url: URL + "/asset/" + context.asset + "/user-remove/",
             headers: headers1,
-            body: JSON.stringify({
-                "user_id": context.customerOld
-            })
+            body: JSON.stringify({ "user_id": context.customerOld })
         });
         log.error("Patch /asset/" + context.asset + "/user-remove/", respUserRemove)
 
         const respAddUser = https.put({
-            url: "https://test-telematicsapi.hunterlabs.io/asset/" + context.asset + "/user-add/",
+            url: URL + "/asset/" + context.asset + "/user-add/",
             headers: headers1,
-            body: JSON.stringify({
-                "user_id": newCustomer
-            })
+            body: JSON.stringify({ "user_id": newCustomer })
         });
         log.error("Patch /asset/" + context.asset + "/user-add/", respAddUser)
 
@@ -57,7 +56,7 @@ define(['N/log', 'N/https'], function (log, https) {
         var commands = [];
         if (context.customerOld && context.asset) {
             var respGetUserAssetCommand = https.get({
-                url: "https://test-telematicsapi.hunterlabs.io/user-asset-command/?user=" + context.customerOld + "&asset=" + context.asset,
+                url: URL + "/user-asset-command/?user=" + context.customerOld + "&asset=" + context.asset,
                 headers: headers1
             });
             log.error("Get /user-asset-command/?user=" + context.customerOld + "&asset=" + context.asset, respGetUserAssetCommand);
@@ -65,7 +64,7 @@ define(['N/log', 'N/https'], function (log, https) {
             respGetUserAssetCommand = JSON.parse(respGetUserAssetCommand.body);
             for (let i = 0; i < respGetUserAssetCommand.count; i++) {
                 const respRemoveUserAssetCommands = https.put({
-                    url: "https://test-telematicsapi.hunterlabs.io/user-asset-command/" + context.asset + "/remove-user-asset-commands/",
+                    url: URL + "/user-asset-command/" + context.asset + "/remove-user-asset-commands/",
                     headers: headers1,
                     body: JSON.stringify({
                         "user": respGetUserAssetCommand.results[i].user,
@@ -82,7 +81,7 @@ define(['N/log', 'N/https'], function (log, https) {
             }
             if (commands.length) {
                 var respAddUserAssetCommand = https.post({
-                    url: "https://test-telematicsapi.hunterlabs.io/user-asset-command/" + context.asset + "/add-user-asset-commands/",
+                    url: URL + "/user-asset-command/" + context.asset + "/add-user-asset-commands/",
                     headers: headers1,
                     body: JSON.stringify({
                         "commands": commands,
@@ -92,22 +91,23 @@ define(['N/log', 'N/https'], function (log, https) {
                 });
                 log.error("Post /user-asset-command/" + context.asset + "/add-user-asset-commands/", respAddUserAssetCommand)
                 respAddUserAssetCommand = JSON.parse(respAddUserAssetCommand.body);
-                responUserAssetCommand[i] = respAddUserAssetCommand;
+                log.error('respAddUserAssetCommand', respAddUserAssetCommand)
+                //responUserAssetCommand = respAddUserAssetCommand;
             }
-
         }
 
-
         const respSetPassword = https.get({
-            url: "https://test-telematicsapi.hunterlabs.io/customer/user/" + newCustomer + "/set_password/",
+            url: URL + "/customer/user/" + newCustomer + "/set_password/",
             headers: headers1
         });
         log.error("Get /customer/user/" + newCustomer + "/set_password/", respSetPassword)
 
         return {
-            "newCustomer": respCustomer, "AddUser": respAddUser.body,
+            "newCustomer": newCustomer,
+            "AddUser": respAddUser.body,
             "UserRemove": respUserRemove.body,
-            "SetPassword": respSetPassword.body
+            "SetPassword": respSetPassword.body,
+            "send": true
         };
     }
     return {

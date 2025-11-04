@@ -5,6 +5,8 @@
 define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
 
     let OK_STATUS_CODE = [200, 201];
+    let URL = "https://test-telematicsapi.hunterlabs.io" //SB: https://test-telematicsapi.hunterlabs.io / PR: https://telematicsapi.hunterlabs.io
+    let TOKEN = 'ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI='
 
     const post = (context) => {
         let results = [];
@@ -34,7 +36,7 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
                     body: JSON.stringify({ status: context.status, command: context.command, asset: context.asset })
                 });
                 assetCommandResponse = JSON.parse(postAssetCommandResponse.body);
-                
+
                 results.push(getResponseResult(assetCommandResponse.code, `POST: ${postAssetCommandUrl}`, assetCommandResponse));
                 if (OK_STATUS_CODE.indexOf(postAssetCommandResponse.code) == -1) return getResultResponse("error", results, JSON.stringify({ code: postAssetCommandResponse.code, error: assetCommandResponse }));
                 log.error("postAssetCommandResponse", assetCommandResponse);
@@ -67,7 +69,7 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
         let headers = {};
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         return headers;
     }
 
@@ -75,13 +77,13 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
         let headers = {};
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         headers['X-HTTP-Method-Override'] = 'PATCH';
         return headers;
     }
 
     const getTelematicUrlBase = () => {
-        return "https://test-telematicsapi.hunterlabs.io";
+        return URL
     }
 
     const getResultResponse = (status, results, message, data) => {

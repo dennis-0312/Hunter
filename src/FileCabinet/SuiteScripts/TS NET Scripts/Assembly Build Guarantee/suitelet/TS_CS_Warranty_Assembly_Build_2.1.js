@@ -16,6 +16,28 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
         let fieldId = scriptContext.fieldId;
         let line = scriptContext.line;
 
+        if (scriptContext.fieldId == 'custpage_f_location') {
+            let location = currentRecord.getValue('custpage_f_location');
+            let item = currentRecord.getValue('custpage_f_item');
+            let workorder = currentRecord.getValue('custpage_f_workorder');
+            let salesorder = currentRecord.getValue('custpage_f_salesorder');
+            let customer = currentRecord.getValue('custpage_f_customer');
+
+            let parametros = {
+                location,
+                item,
+                workorder,
+                salesorder,
+                customer
+            }
+
+            console.log(parametros);
+            let url = getSuiteletURL(parametros);
+            //evitamos mostrar el mensaje de confirmacion
+            window.onbeforeunload = null;
+            window.open(url, '_self');
+        }
+
         if (sublistId == 'custpage_sl_components' && fieldId == 'custpage_slf_quantity') {
             let getInventoryDetail = JSON.parse(currentRecord.getValue('custpage_f_inventorydetail'));
             if (getInventoryDetail[line] === undefined) return true;
@@ -45,11 +67,12 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
         element.classList.add("i_inventorydetailneeded");
     }
 
-    const getSuiteletURL = () => {
+    const getSuiteletURL = (parametros) => {
         return url.resolveScript({
             scriptId: 'customscript_ts_ui_assembly_build_21',
             deploymentId: 'customdeploy_ts_ui_assembly_build_21',
-            returnExternalUrl: false
+            //returnExternalUrl: false
+            params: parametros
         });
     }
 

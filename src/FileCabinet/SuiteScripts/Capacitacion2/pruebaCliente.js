@@ -244,10 +244,10 @@ define(['N/log', 'N/file', 'N/xml', 'N/encode', 'N/render', 'N/query', 'N/record
 
 
 
-                    let fooRecord = record.load({ type: record.Type.SALES_ORDER, id: 44903 });
+                    //let fooRecord = record.load({ type: record.Type.SALES_ORDER, id: 44903 });
                     let itemFulfillment = record.transform({
-                        fromType: record.Type.SALES_ORDER,
-                        fromId: 44903,
+                        fromType: 'customsalestransaction',
+                        fromId: 412798,
                         toType: record.Type.ITEM_FULFILLMENT,
                         isDynamic: true
                     });
@@ -268,10 +268,7 @@ define(['N/log', 'N/file', 'N/xml', 'N/encode', 'N/render', 'N/query', 'N/record
                     objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1 });
                     objSubRecord.commitLine({ sublistId: 'inventoryassignment' });
                     itemFulfillment.commitLine({ sublistId: 'item' });
-
                     // }
-
-
                     let fulfillment = itemFulfillment.save();
                     log.debug('fulfillment', 'fulfillment');
                     return fulfillment;

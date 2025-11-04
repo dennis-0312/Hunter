@@ -19,7 +19,7 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
  * @param{serverWidget} serverWidget
  */
     (config, error, file, log, query, record, redirect, runtime, search, task, dialog, message, serverWidget) => {
-        const PAGE_SIZE = 1000;
+        const PAGE_SIZE = 4000;
         const SEARCH_ID = 'customsearch_ec_emision_masiva_fac_inter'; //EC Emisión Masiva de Facturas Internas - PRODUCCIÓN
         const userRecord = runtime.getCurrentUser();
         const currentScript = runtime.getCurrentScript();
@@ -48,7 +48,7 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
             try {
                 let method = scriptContext.request.method;
                 let deploymentId = currentScript.deploymentId;
-                if (deploymentId == "customdeploy_ts_sl_factura_interna_bulk") {
+                if (deploymentId == "customdeploy_ts_sl_factura_bulk_pe") {
                     if (method == 'GET') {
                         //log.debug('userRecord', userRecord);
                         mainView(scriptContext);
@@ -56,8 +56,8 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
                         processData(scriptContext, PROCESS_EMISION);
                         if (userRecord.id == 4) {
                             redirect.toSuitelet({
-                                scriptId: 'customscript_ts_sl_factura_interna_bulk',
-                                deploymentId: 'customdeploy_ts_sl_factura_interna_bulk',
+                                scriptId: 'customscript_ts_sl_factura_bulk_pe',
+                                deploymentId: 'customdeploy_ts_sl_factura_bulk_pe',
                                 parameters: {}
                             });
                         } else {
@@ -95,6 +95,7 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
                 log.debug('fechas1', `${desde}-${hasta}`);
                 cliente = typeof body.request.parameters.paramCliente != 'undefined' ? body.request.parameters.paramCliente : 0;
                 clientetxt = typeof body.request.parameters.paramClientetxt != 'undefined' ? body.request.parameters.paramClientetxt : 0;
+                CodAgrupado = typeof body.request.parameters.paramCodAgrupado != 'undefined' ? body.request.parameters.paramCodAgrupado : 0;
                 let nameButton = 'Procesar';
 
                 //& ---------------------------- VALIDACIÓN DE CONFIGURACIÓN ---------------------------- */
@@ -143,6 +144,10 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
                 fechaHastaField.isMandatory = true;
                 if (hasta.length != 0 && hasta != 0)
                     fechaHastaField.defaultValue = new Date(hasta);
+                
+                let CodAgrupadoField = form.addField({ id: 'custpage_field_cod_agrupado', type: serverWidget.FieldType.TEXT, label: 'cod agrupado', container: 'fieldgroup_filtros' });
+                if (CodAgrupado.length != 0 && CodAgrupado != 0)
+                    CodAgrupadoField.defaultValue = CodAgrupado;
 
                 //& ---------------------------- SUBLISTA ---------------------------- */
                 form.addTab({ id: 'tab_orden_servicio', label: 'Órdenes de Servicio' });
@@ -154,6 +159,8 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
                 sublist.addField({ id: 'sublist_field_nrodoc', type: serverWidget.FieldType.TEXT, label: 'N° Documento' });
                 sublist.addField({ id: 'sublist_field_fecha', type: serverWidget.FieldType.TEXT, label: 'Fecha' });
                 sublist.addField({ id: 'sublist_field_cliente', type: serverWidget.FieldType.TEXT, label: 'Cliente' });
+                sublist.addField({ id: 'sublist_field_facturacion', type: serverWidget.FieldType.TEXT, label: 'Facturación' });
+                sublist.addField({ id: 'sublist_field_codagrupado', type: serverWidget.FieldType.TEXT, label: 'Código Agrupador' });
                 sublist.addField({ id: 'sublist_field_importe', type: serverWidget.FieldType.CURRENCY, label: 'Importe' });
 
                 //& ---------------------------- CAMPOS DE RESULTANDO ---------------------------- */
@@ -164,7 +171,7 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
 
                 if (cargarLista === CARGAR_LISTA) {
                     //& ---------------------------- PAGINADO DE RESULTADOS ---------------------------- */
-                    let retrieveSearch = runSearch(SEARCH_ID, PAGE_SIZE, desde, hasta, cliente);
+                    let retrieveSearch = runSearch(SEARCH_ID, PAGE_SIZE, desde, hasta, cliente , CodAgrupado);
                     totalResultadodsField.defaultValue = retrieveSearch.count;
                     if (retrieveSearch.count > 0) {
                         let pageCount = Math.ceil(retrieveSearch.count / PAGE_SIZE);
@@ -191,6 +198,7 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
                             sublist.setSublistValue({ id: 'sublist_field_nrodoc', line: j, value: result.tranid });
                             sublist.setSublistValue({ id: 'sublist_field_fecha', line: j, value: result.trandate });
                             sublist.setSublistValue({ id: 'sublist_field_cliente', line: j, value: result.cliente });
+                            sublist.setSublistValue({ id: 'sublist_field_codagrupado', line: j, value: result.codagrupa || '' });
                             sublist.setSublistValue({ id: 'sublist_field_importe', line: j, value: result.importe });
                             j++
                         });
@@ -279,7 +287,7 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
             }
         }
 
-        const runSearch = (searchId, searchPageSize, desde, hasta, cliente) => {
+        const runSearch = (searchId, searchPageSize, desde, hasta, cliente, CodAgrupadoField) => {
             let searchObj = search.load({ id: searchId });
             let filters = searchObj.filters;
             if (desde != 0 && hasta != 0) {
@@ -295,6 +303,11 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
                 const filterCliente = search.createFilter({ name: 'internalid', join: "customermain", operator: search.Operator.ANYOF, values: cliente });
                 filters.push(filterCliente);
             }
+            log.debug('CodAgrupadoField', CodAgrupadoField)
+            if (CodAgrupadoField != 0) {
+                const filterCodAgrupado = search.createFilter({ name: 'custbody_ht_cod_agru',  operator: 'startswith', values: CodAgrupadoField });
+                filters.push(filterCodAgrupado);
+            }
             return searchObj.runPaged({ pageSize: searchPageSize });
         }
 
@@ -307,13 +320,14 @@ define(['N/config', 'N/error', 'N/file', 'N/log', 'N/query', 'N/record', 'N/redi
                 let trandate = result.getValue({ name: 'trandate' }).length > 0 ? result.getValue({ name: 'trandate' }) : ' ';
                 let cliente = result.getValue(pagedData.searchDefinition.columns[2]);
                 let importe = result.getValue(pagedData.searchDefinition.columns[3]);
-
+                let codagrupa = result.getValue(pagedData.searchDefinition.columns[6]) || ' ';
                 results.push({
                     id: internalId,
                     tranid: tranid,
                     trandate: trandate,
                     cliente: cliente,
-                    importe: importe
+                    importe: importe,
+                    codagrupa:codagrupa
 
                 });
             });

@@ -10,21 +10,24 @@ define(['N/search', 'N/currentRecord', 'N/ui/message', 'N/url'], (search, curren
     }
 
     const fieldChanged = (context) => {
-        console.log ('entra');
+        console.log('entra');
         const objRecord = currentRecord.get();
-        console.log('objRecord',objRecord);
-        console.log('typeMode',typeMode);
-
+        console.log('objRecord', objRecord);
+        console.log('typeMode', typeMode);
+        var sublistFieldName = context.fieldId;
         if (typeMode == 'create' || typeMode == 'copy' || typeMode == 'edit') {
+            if (sublistFieldName == 'custrecord_ht_ds_serie') {
+                var serie = objRecord.getText('custrecord_ht_ds_serie');
+                objRecord.setText({
+                    fieldId: 'name',
+                    text: serie,
+                    ignoreFieldChange: true
+                });
+            }
 
-            var serie = objRecord.getText('custrecord_ht_ds_serie');
-            
-            objRecord.setText({
-                fieldId: 'name',
-                text: serie,
-                ignoreFieldChange: true
-            });
-          
+            // if (serie) {
+
+            // }
         }
     }
 

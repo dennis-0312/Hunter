@@ -1,0 +1,53 @@
+102827837       MANUEL JOSE CALLE SUAREZ                                    408072021-044  USD     1000020210709               3038                      0              0000000000
+102886297       ENRIQUE OLMOS RAMIREZ                                       408072021-045  USD     1000020210709               3038                      0              0000000000
+118217261       OSKAR OSWALDO OJEDA MIRANDA                                 408072021-046  USD     1500020210709               3038                      0              0000000000
+148129440       EDMUNDO ALEXANDER CUETO HIDALGO                             408072021-047  USD      550020210709               3038                      0              0000000000
+110577019       JOHN MARTIN OCON CABRERA                                    408072021-048  USD      600020210709               3038                      0              0000000000
+176184715       CHIARA FACCIA FIOCCO MATOS                                  408072021-049  USD      700020210709               3038                      0              0000000000
+140940673       HANS WILLIAMS RAMIREZ PIMENTEL                              408072021-050  USD     1000020210709               3038                      0              0000000000
+107977673       LUIS MIGUEL INZA CHAMOCHUMBI                                408072021-051  USD     2000020210709               3038                      0              0000000000
+109597183       JORGE LUIS MATOS ARANA                                      408072021-052  USD      200020210709               3038                      0              0000000000
+144084322       AMPARO DEL PILAR PACAYA FUENTES                             408072021-053  USD      200020210709               3038                      0              0000000000
+173487085       CECILIA MONTALVO NAVARRO                                    408072021-054  USD      200020210709               3038                      0              0000000000
+106028191       PEDRO PADILLA VALERA                                        408072021-055  USD      400020210709               3038                      0              0000000000
+140557398       PARIS ABRAHAM JUAREZ DEL AGUILA                             408072021-056  USD      400020210709               3038                      0              0000000000
+141423028       SELENE PASCALET CUCAT PERALTA                               408072021-057  USD      450020210709               3038                      0              0000000000
+141844380       WILSON ALEJANDRO PUERTA CORONADO                            408072021-058  USD      750020210709               3038                      0              0000000000
+143776081       JEAN PIERRE COSTA ZEVALLOS                                  408072021-059  USD      400020210709               3038                      0              0000000000
+3000915982      MARIA JIMENA CAMPOS LEIVA                                   408072021-060  USD      750020210709               3038                      0              0000000000
+170340584       IRVING WILLIAM VELASQUEZ SANCHEZ                            408072021-061  USD      490020210709               3038                      0              0000000000
+118141707       JUAN SANTIAGO FLORIAN PAREDES                               408072021-062  USD      300020210709               3038                      0              0000000000
+118149579       LUCY HAYDEE ZEGARRA NIÑO                                    408072021-063  USD      950020210709               3038                      0              0000000000
+118217436       VERONICA BENITES CASTILLO                                   408072021-064  USD     1400020210709               3038                      0              0000000000
+132983818       CARLOS JOSSY MONGE CARRION                                  408072021-065  USD     1040020210709               3038                      0              0000000000
+140318555       FIORELLA ANTONIETA CERRATO MAGGIO                           408072021-066  USD     1550020210709               3038                      0              0000000000
+140602867       ANA MARIA YGLESIAS MORALES                                  408072021-067  USD     1550020210709               3038                      0              0000000000
+141227663       RONNY ORLANDO COVEÑAS RAMIREZ                               408072021-068  USD      970020210709               3038                      0              0000000000
+144721004       ANTENOR ELMER CENIZARIO AVALOS                              408072021-069  USD      950020210709               3038                      0              0000000000
+146899742       DIEGO SANTIAGO PINILLOS MORILLO                             408072021-070  USD     1550020210709               3038                      0              0000000000
+147437939       JHONNY CESAR BARDALES ARANA                                 408072021-071  USD     4010020210709               3038                      0              0000000000
+147502503       MARITZA ELIZABETH MORENO ARAUJO                             408072021-072  USD     2060020210709               3038                      0              0000000000
+171405331       PATRICIA ELISABETH ACEVEDO CERNA                            408072021-073  USD      550020210709               3038                      0              0000000000
+143215348       JUAN PABLO HUAMAN MORALES                                   408072021-074  USD      400020210709               3038                      0              0000000000
+145441924       MATILDE FERNANDA ECHEGARAY ESPARZA                          408072021-075  USD      550020210709               3038                      0              0000000000
+146417108       NELVA YESCENIA SANTAMARIA LOZANO                            408072021-076  USD      800020210709               3038                      0              0000000000
+144764440       ALARCON TORRES VICTOR JUNIOR                                408072021-077  USD     1170020210709               3038                      0              0000000000
+170857614       JEAN MARCO CACHI MONASTERIO                                 408072021-078  USD     2600020210709               3038                      0              0000000000
+172422027       KATHERIN MAYRA CABREJOS ARENAS                              408072021-079  USD     1000020210709               3038                      0              0000000000
+146335636       GIANINA ROSAESTELA GALVAN RIVEROS                           408072021-080  USD      400020210709               3038                      0              0000000000
+146447877       CARMEN LIZBETH PESANTES SALAS                               408072021-081  USD     1600020210709               3038                      0              0000000000
+3001751365      KATHERINE MILAGROS CASTILLO RAMIREZ                         408072021-082  USD      400020210709               3038                      0              0000000000
+107519040       ALBERTO ENRIQUE MARTINEZ VALLADARES                         408072021-083  USD      700020210709               3038                      0              0000000000
+110439109       JULIA SAENZ CÓRDOVA                                         408072021-084  USD      600020210709               3038                      0              0000000000
+142656813       MIGUEL ANGEL AMAYA MAGUIÑO                                  408072021-085  USD      400020210709               3038                      0              0000000000
+146784680       PERCY ERNESTO OVIEDO MAYTA                                  408072021-086  USD      350020210709               3038                      0              0000000000
+143500093       JENNY JACKELINE IGNACIO TIPIANI                             408072021-087  USD     1150020210709               3038                      0              0000000000
+172511990       ANGELO ALDAIR PALACIOS BALLADARES                           408072021-088  USD      970020210709               3038                      0              0000000000
+109672307       MARIA ELENA OROSCO LA VERA                                  408072021-089  USD      400020210709               3038                      0              0000000000
+125705423       CESAR ALEJANDRO MILIANO VEGA                                408072021-090  USD      600020210709               3038                      0              0000000000
+141156890       ISMAEL ANTONIO AYALA ORTIZ                                  408072021-091  USD      390020210709               3038                      0              0000000000
+142500278       MARIANELLA BENITES HERNANDEZ                                408072021-092  USD      400020210709               3038                      0              0000000000
+144007427       ALEX SANCHEZ QUISPE                                         408072021-093  USD      200020210709               3038                      0              0000000000
+144893772       GERMAN GUSTAVO JUAREZ RUIZ                                  408072021-094  USD      400020210709               3038                      0              0000000000
+146806411       EDUARDO LUIS FLORES CHIRE                                   408072021-095  USD     1200020210709               3038                      0              0000000000
+170194902       ALEXANDRA TRANCON MENDOZA                                   408072021-096  USD     1010020210709               3038                      0              0000000000

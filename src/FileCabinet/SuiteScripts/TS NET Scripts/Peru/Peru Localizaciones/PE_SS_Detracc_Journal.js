@@ -4,7 +4,7 @@
  */
 define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/task', 'N/format', "N/config"],
     (search, record, email, runtime, log, file, task, format, config) => {
-
+        //Hola Mundo
         const execute = (context) => {
             var featureSubsidiary = runtime.isFeatureInEffect({ feature: "SUBSIDIARIES" });
             var configpage = config.load({ type: config.Type.COMPANY_INFORMATION });
@@ -25,9 +25,13 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                 name: 'custscript_pe_ss_detracc_journal_acc'//IMorales 20230926 (Cambios GG)
             });
 
+            log.debug('filterAccountBank', filterAccountBank);
+
             var fedIdNumb;
-            custrecord_pe_detraccion_sales
+
             var recordAccount;
+            var recordAccountDol;
+
 
             var companyname;
 
@@ -59,8 +63,12 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                 detraccionAccountDolId = recordAccountDol.split('"')[3];
                 detraccionAccountDolName = recordAccountDol.split('"')[7];
 
-                log.debug('MSK-recordAccount', recordAccount)
-                log.debug('MSK-recordAccountDol', recordAccountDol)
+                log.debug('cuentas', {
+                    detraccionAccountId: detraccionAccountId,
+                    detraccionAccountName: detraccionAccountName,
+                    detraccionAccountDolId: detraccionAccountDolId,
+                    detraccionAccountDolName: detraccionAccountDolName
+                })
 
             } else {
                 fedIdNumb = configpage.getValue('employerid');
@@ -78,21 +86,32 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                 });
 
                 detraccionAccountName = accLookup.name;
+
+                recordAccountDol = configpage.getValue('custrecord_pe_detraccion_account_dol');
+
+                detraccionAccountDolId = recordAccountDol;
+
+                var accLookupDol = search.lookupFields({
+                    type: search.Type.ACCOUNT,
+                    id: recordAccountDol,
+                    columns: ['name']
+                });
+
+                detraccionAccountDolName = accLookupDol.name;
+
+                log.debug('cuentas', {
+                    detraccionAccountId: detraccionAccountId,
+                    detraccionAccountName: detraccionAccountName,
+                    detraccionAccountDolId: detraccionAccountDolId,
+                    detraccionAccountDolName: detraccionAccountDolName
+                })
+
             }
 
-            var perLookup = search.lookupFields({
-                type: search.Type.ACCOUNTING_PERIOD,
-                id: filterPostingPeriod,
-                columns: ['periodname']
-            });
-            var accLookup = search.lookupFields({
-                type: search.Type.ACCOUNT,
-                id: filterAccountBank,
-                columns: ['name']
-            });
-
-
+            var perLookup = search.lookupFields({ type: search.Type.ACCOUNTING_PERIOD, id: filterPostingPeriod, columns: ['periodname'] });
+            var accLookup = search.lookupFields({ type: search.Type.ACCOUNT, id: filterAccountBank, columns: ['name'] });
             var accBankName = accLookup.name;
+            log.debug('accBankName',accBankName)
             var periodName = perLookup.periodname;
 
             var fileCabinetId = scriptObj.getParameter({
@@ -122,6 +141,7 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
 
                 var stringContentReport = '';
                 var periodString = retornaPeriodoString(periodName);
+                log.debug({ title: 'result', details: result });
                 var folderReportGenerated = fileCabinetId;
                 var result = searchLoad.run().getRange({ start: 0, end: 1000 });
                 log.debug({ title: 'result', details: result });
@@ -151,46 +171,21 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                     ]
                 });
                 log.debug('fechaGenInic antes', fechaGenInic);
-                var parsedSampleDate = format.parse({value: fechaGenInic,type: format.Type.DATE});
+                var parsedSampleDate = format.parse({ value: fechaGenInic, type: format.Type.DATE });
                 log.debug('fechaGenInic antes', parsedSampleDate);
-
-                var parsedSampleDate = format.format({
-                    value: parsedSampleDate,
-                    type: format.Type.DATE
-                });
-
+                var parsedSampleDate = format.format({ value: parsedSampleDate, type: format.Type.DATE });
                 log.debug('fechaGenInic despues', parsedSampleDate);
-
-                customAccountingPeriod.filters = [
-                    search.createFilter({
-                        name: 'startdate',
-                        operator: search.Operator.ON,
-                        values: fechaGenInic
-                    })
-                ]
-
+                customAccountingPeriod.filters = [search.createFilter({ name: 'startdate', operator: search.Operator.ON, values: fechaGenInic })]
                 var resultSet = customAccountingPeriod.run();
-                var results = resultSet.getRange({
-                    start: 0,
-                    end: 1
-                });
-                log.debug({
-                    title: 'resultsGG',
-                    details: results
-                });
+                var results = resultSet.getRange({ start: 0, end: 1 });
+                log.debug({ title: 'resultsGG', details: results });
                 var nameAcc = '';
                 for (var i in results) {
                     // log.debug('Found custom list record', results[i]);
-                    nameAcc = results[i].getValue({
-                        name: 'periodname'
-                    });
+                    //nameAcc = results[i].getValue({ name: 'periodname' }); 
+                    nameAcc = obtenerNombreMesYAnio(fechaGenInic);
                 };
-
-                log.debug({
-                    title: 'nameAcc',
-                    details: 'nameAcc: ' + nameAcc
-                });
-
+                log.debug({ title: 'nameAcc', details: 'nameAcc: ' + nameAcc });
 
                 for (i; i < result.length; i++) {
                     var campoRegistro00 = result[i].getValue(searchLoad.columns[0]);
@@ -280,72 +275,127 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                         var itemCount = vendorBill.getLineCount({
                             sublistId: "item",
                         });
+                        var item_department
+                        var item_clase
+                        var item_location
 
-                        log.debug('vendorBill', vendorBill);
-                        log.debug('itemCount', itemCount);
-                        for (var line = 0; line < itemCount; line++) {
-                            var item_department = vendorBill.getSublistValue({
-                                sublistId: "item",
-                                fieldId: "department_display",
-                                line: line,
-                            });
-                            var item_clase = vendorBill.getSublistValue({
-                                sublistId: "item",
-                                fieldId: "class_display",
-                                line: line,
-                            });
+                        if (itemCount > 0) {
+                            for (var line = 0; line < itemCount; line++) {
+                                item_department = vendorBill.getSublistValue({
+                                    sublistId: "item",
+                                    fieldId: "department_display",
+                                    line: line,
+                                });
+                                item_clase = vendorBill.getSublistValue({
+                                    sublistId: "item",
+                                    fieldId: "class_display",
+                                    line: line,
+                                });
 
-                            var item_location = vendorBill.getSublistValue({
-                                sublistId: "item",
-                                fieldId: "location_display",
-                                line: line,
-                            });
-                            log.debug('line', line);
-                            log.debug('item_department', item_department);
-                            log.debug('item_clase', item_clase);
-                            log.debug('item_location', item_location);
+                                item_location = vendorBill.getSublistValue({
+                                    sublistId: "item",
+                                    fieldId: "location_display",
+                                    line: line,
+                                });
+                            }
                         }
+
+                        var expensesCount = vendorBill.getLineCount({
+                            sublistId: "expense",
+                        });
+
+                        if (expensesCount > 0) {
+                            for (var line = 0; line < expensesCount; line++) {
+                                item_department = vendorBill.getSublistValue({
+                                    sublistId: "expense",
+                                    fieldId: "department_display",
+                                    line: line,
+                                });
+                                item_clase = vendorBill.getSublistValue({
+                                    sublistId: "expense",
+                                    fieldId: "class_display",
+                                    line: line,
+                                });
+
+                                item_location = vendorBill.getSublistValue({
+                                    sublistId: "expense",
+                                    fieldId: "location_display",
+                                    line: line,
+                                });
+
+                            }
+                        }
+
+
                     } else {
                         debito = "0";
                         credito = Math.abs(parseFloat(result[i].getValue(searchLoad.columns[11])));
-                        log.debug('MSK', 'VendorCredit')
-                        log.debug('MSK', 'campoRegistro20 = ' + campoRegistro20)
-                        log.debug('MSK', 'traza 0')
                         var vendorCredit = record.load({
                             //type: record.Type.VENDOR_CREDIT,
                             type: "vendorcredit",
                             id: campoRegistro20,
                             isDynamic: true,
                         });
-                        log.debug('MSK', 'traza 1')
 
                         var itemCount = vendorCredit.getLineCount({
                             sublistId: "item",
                         });
-                        log.debug('MSK', 'traza 2')
 
-                        for (var line = 0; line < itemCount; line++) {
-                            log.debug('MSK', 'traza 2.' + line)
-                            var item_department = vendorCredit.getSublistValue({
-                                sublistId: "item",
-                                fieldId: "department_display",
-                                line: line,
-                            });
-                            var item_clase = vendorCredit.getSublistValue({
-                                sublistId: "item",
-                                fieldId: "class_display",
-                                line: line,
-                            });
+                        var item_department;
+                        var item_clase;
+                        var item_location;
 
-                            var item_location = vendorCredit.getSublistValue({
-                                sublistId: "item",
-                                fieldId: "location_display",
-                                line: line,
-                            });
+                        if (itemCount > 0) {
+                            for (var line = 0; line < itemCount; line++) {
+                                item_department = vendorCredit.getSublistValue({
+                                    sublistId: "item",
+                                    fieldId: "department_display",
+                                    line: line,
+                                });
+                                item_clase = vendorCredit.getSublistValue({
+                                    sublistId: "item",
+                                    fieldId: "class_display",
+                                    line: line,
+                                });
 
+                                item_location = vendorCredit.getSublistValue({
+                                    sublistId: "item",
+                                    fieldId: "location_display",
+                                    line: line,
+                                });
+
+
+                            }
 
                         }
-                        log.debug('MSK', 'traza 3')
+
+
+                        var expensesCount = vendorCredit.getLineCount({
+                            sublistId: "expense",
+                        });
+
+                        if (expensesCount > 0) {
+                            for (var line = 0; line < expensesCount; line++) {
+                                item_department = vendorCredit.getSublistValue({
+                                    sublistId: "expense",
+                                    fieldId: "department_display",
+                                    line: line,
+                                });
+                                item_clase = vendorCredit.getSublistValue({
+                                    sublistId: "expense",
+                                    fieldId: "class_display",
+                                    line: line,
+                                });
+
+                                item_location = vendorCredit.getSublistValue({
+                                    sublistId: "expense",
+                                    fieldId: "location_display",
+                                    line: line,
+                                });
+
+                            }
+                        }
+
                     }
 
                     if (!featureSubsidiary) {
@@ -368,7 +418,7 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                             fechaGen + ',' +
                             nameAcc + ',' +
                             //detraccionAccountName + ',' +
-                            (campoRegistro22 == "1" ? detraccionAccountName : campoRegistro22 == "2" ? detraccionAccountDolName : "") + ',' + //IM 20230906
+                            (campoRegistro22 == "5" ? detraccionAccountName : campoRegistro22 == "1" ? detraccionAccountDolName : "") + ',' + //IM 20230906 
 
                             // result[i].getValue(searchLoad.columns[11]) + ',' +
                             // '0' + ',' +
@@ -381,7 +431,7 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
                             ',' +
                             'Pago de Detracciones Periodo ' + periodName + ',' +
                             //detraccionAccountId + ',' +
-                            (campoRegistro22 == "1" ? detraccionAccountId : campoRegistro22 == "2" ? detraccionAccountDolId : "") + ',' + //IM 20230906
+                            (campoRegistro22 == "5" ? detraccionAccountId : campoRegistro22 == "1" ? detraccionAccountDolId : "") + ',' + //IM 20230906
                             'T' + ',' +
 
                             'T' + ',' +
@@ -565,6 +615,45 @@ define(['N/search', 'N/record', 'N/email', 'N/runtime', 'N/log', 'N/file', 'N/ta
             }
             return campoRegistro01;
         }
+
+        function obtenerNombreMesYAnio(fechaInput) {
+            // Validar formato de la fecha (dd/mm/yyyy)
+            var regexFecha = /^(\d{2})\/(\d{2})\/(\d{4})$/;
+            var match = fechaInput.match(regexFecha);
+
+            if (!match) {
+                return "La fecha ingresada no tiene el formato válido (dd/mm/yyyy).";
+            }
+
+            // Extraer día, mes y año
+            var dia = parseInt(match[1], 10);
+            var mes = parseInt(match[2], 10) - 1; // Los meses en JavaScript van de 0 a 11
+            var anio = parseInt(match[3], 10);
+
+            // Validar que el mes sea válido
+            if (mes < 0 || mes > 11) {
+                return "El mes ingresado no es válido.";
+            }
+
+            // Crear un objeto de fecha
+            var fecha = new Date(anio, mes, dia);
+
+            // Validar que la fecha sea correcta
+            if (fecha.getDate() !== dia || fecha.getMonth() !== mes || fecha.getFullYear() !== anio) {
+                return "La fecha ingresada no es válida.";
+            }
+
+            // Obtener el nombre abreviado del mes
+            var nombresMesesAbreviados = [
+                "Ene", "Feb", "Mar", "Abr", "May", "Jun",
+                "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"
+            ];
+            var nombreMes = nombresMesesAbreviados[mes];
+
+            // Retornar el resultado
+            return nombreMes + " " + anio;
+        }
+
         return {
             execute: execute
         };

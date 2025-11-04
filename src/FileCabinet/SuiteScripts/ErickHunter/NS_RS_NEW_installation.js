@@ -4,6 +4,8 @@
  */
 define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
     let OK_STATUS_CODE = [200, 201];
+    let URL = "https://test-telematicsapi.hunterlabs.io" //SB: https://test-telematicsapi.hunterlabs.io / PR: https://telematicsapi.hunterlabs.io
+    let TOKEN = 'ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI='
 
     const post = (context) => {
         let results = [];
@@ -79,8 +81,6 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
                 results.push(getResponseResult(postCustomerResponse.code, `POST: ${postCustomerUrl}`, customerResponse));
                 if (OK_STATUS_CODE.indexOf(postCustomerResponse.code) == -1) return getResultResponse("error", results, JSON.stringify({ code: postCustomerResponse.code, error: customerResponse }));
                 log.error("postCustomerResponse", customerResponse);
-
-
             } else if (getCustomerResponse.count == 1) {
                 context.customer.id = getCustomerResponse.results[0].id;
                 let headers = getPatchHeaders();
@@ -101,6 +101,9 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
             //* ASSET ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
             // TODO: Verificar como realizar la consulta get para realizar las validaciones comentadas.
             log.error('ASSET', '||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||');
+            let idTelematicsCliente = customerResponse.id;
+            log.error("idTelematicsCliente", idTelematicsCliente);
+            context.asset.owner = idTelematicsCliente;
             let assetResponse = {};
             if (context.asset.cod_sys) {
                 let getAssetParams = { attributes__attribute__name: "COD_SYS", attributes__value: context.asset.cod_sys };
@@ -108,8 +111,6 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
                 let getAssetResponse = https.get({ headers, url: getAssetUrl });
                 if (OK_STATUS_CODE.indexOf(getAssetResponse.code) == -1) return getResultResponse("error", results, JSON.stringify({ code: getAssetResponse.code, error: JSON.parse(getAssetResponse.body) }));
                 getAssetResponse = JSON.parse(getAssetResponse.body);
-                log.error("getAssetResponse", getAssetResponse);
-
                 if (getAssetResponse.count == 0) {
                     let postAssetUrl = `${urlBase}/asset/`;
                     let postAssetResponse = https.post({
@@ -122,6 +123,7 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
                     if (OK_STATUS_CODE.indexOf(postAssetResponse.code) == -1) return getResultResponse("error", results, JSON.stringify({ code: postAssetResponse.code, error: assetResponse }));
                     log.error("postAssetResponse", assetResponse);
                 } else if (getAssetResponse.count == 1) {
+                    log.error("track#4", `${urlBase}/asset/${context.asset.id}/`);
                     context.asset.id = getAssetResponse.results[0].id;
                     let headers = getPatchHeaders();
                     let patchAssetUrl = `${urlBase}/asset/${context.asset.id}/`;
@@ -397,7 +399,7 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
         let headers = {};
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         return headers;
     }
 
@@ -405,13 +407,13 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
         let headers = {};
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         headers['X-HTTP-Method-Override'] = 'PATCH';
         return headers;
     }
 
     const getTelematicUrlBase = () => {
-        return "https://test-telematicsapi.hunterlabs.io";
+        return URL
     }
 
     const getResultResponse = (status, results, message, data) => {

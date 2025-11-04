@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generar Excel</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+
+<body>
+    <h1>Generar Archivo Excel</h1>
+    <button id="generateExcel">Descargar Excel</button>
+
+    <script>
+        // Definir las cabeceras del Excel
+        const headers = ["RUC Empresa", "Ruc / Cédula / Pasaporte", "Base Impon. Tarifa <> 0%"]; // Orden y nombres de las columnas
+
+        // Función para crear una hoja con cabeceras personalizadas
+        function createSheetWithHeaders(data, headers) {
+            // Convertir el arreglo a una hoja de trabajo
+            const worksheet = XLSX.utils.json_to_sheet(data, { header: headers });
+            return worksheet;
+        }
+
+        document.getElementById("generateExcel").addEventListener("click", () => {
+            // Datos de ejemplo
+            const data = [
+                { "RUC Empresa": "Betsabe", "Ruc / Cédula / Pasaporte": 30, "Base Impon. Tarifa <> 0%": "Quito" },
+                { "RUC Empresa": "Carlos", "Ruc / Cédula / Pasaporte": 25, "Base Impon. Tarifa <> 0%": "Guayaquil" },
+                { "RUC Empresa": "Ana", "Ruc / Cédula / Pasaporte": 28, "Base Impon. Tarifa <> 0%": "Cuenca" }
+            ];
+
+            // Crear la hoja de trabajo con cabeceras
+            const worksheet = createSheetWithHeaders(data, headers);
+
+            // Crear un libro de trabajo y agregar la hoja
+            const workbook = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Datos");
+
+            // Exportar el archivo Excel
+            XLSX.writeFile(workbook, "Datos.xlsx");
+        });
+    </script>
+</body>
+
+</html>

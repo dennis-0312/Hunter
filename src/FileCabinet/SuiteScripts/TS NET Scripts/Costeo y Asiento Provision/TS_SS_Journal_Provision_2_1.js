@@ -11,7 +11,6 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
  * @param{format} format
  */
     (log, record, runtime, search, format, _constant) => {
-
         const ECUADOR_SUBSIDIARY = "2";
         const DOLAR_CURRENCY = "1";
         const PARAMETRIZACIONES_A_CUMPLIR = 3;
@@ -357,7 +356,7 @@ define(['N/log', 'N/record', 'N/runtime', 'N/search', 'N/format', '../Main/const
             detalleProvision.setValue("custrecord_ht_dp_income_account", values.incomeAccount);
             detalleProvision.setValue("custrecord_ht_dp_provision", values.amount);
             detalleProvision.setValue("custrecord_ht_dp_tipo_provision", TIPO_PENDIENTE_FACTURAR);
-            return detalleProvision.save();
+            return detalleProvision.save({ ignoreMandatoryFields: true, enableSourcing: false });
         }
 
         const roundTwoDecimal = (value) => {

@@ -270,8 +270,9 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
 
         if (sublistId == 'custpage_sl_inventorydetail') {
             let itemType = currentRecord.getValue('custpage_f_itemtype');
-
             if (itemType == "inventoryitem") {
+                //alert('if')
+                console.log('if')
                 let lines = currentRecord.getLineCount('custpage_sl_inventorydetail');
                 let deposit = currentRecord.getCurrentSublistValue('custpage_sl_inventorydetail', 'custpage_slf_deposit');
                 let depositName = currentRecord.getCurrentSublistText('custpage_sl_inventorydetail', 'custpage_slf_deposit');
@@ -283,7 +284,6 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
                         return false;
                     }
                 }
-
             } else {
                 let lines = currentRecord.getLineCount('custpage_sl_inventorydetail');
                 let serial = currentRecord.getCurrentSublistValue('custpage_sl_inventorydetail', 'custpage_slf_serial');
@@ -296,7 +296,8 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
                         return false;
                     }
                 }
-
+                //alert('else')
+                console.log('else')
                 if (validateFieldConfiguration(serialName)) {
                     return false
                 }
@@ -308,10 +309,13 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
 
     const validateFieldConfiguration = (serial) => {
         let itemType = getParamFromUrl("type");
+        //alert(itemType)
         if (itemType == "4" || itemType == "5") return false;
         let { columns, customRecord, typeName, estadoColumna, filterBy } = getDataForSerchByType(itemType);
+        //alert('resultSearch2')
         console.log("validateFieldConfiguration", { columns, customRecord, typeName, estadoColumna });
         let resultSearch = createSearchByType(customRecord, columns, serial, filterBy);
+        //alert('resultSearch3')
         if (!resultSearch.length) {
             alert(`El número de serie seleccionado no es válido`);
             return true;
@@ -354,6 +358,8 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/search'], (url, currentRec
     }
 
     const getDataForSerchByType = (itemType) => {
+        //alert(itemType)
+        console.log(itemType)
         let columns = [], customRecord = "", typeName = "", estadoColumna, filterBy = "";
         switch (itemType) {
             case '1':

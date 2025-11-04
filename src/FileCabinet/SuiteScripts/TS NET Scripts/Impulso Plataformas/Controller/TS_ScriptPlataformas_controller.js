@@ -69,7 +69,6 @@ define(['N/log',
 
         const setAuthenticationValues = (PxAdmin) => {
             let { year, month, day } = obtenerValoresFechaHoy();
-
             PxAdmin["StrToken"] = `SH2PX${year}${month}${day}`;
             PxAdmin["UserName"] = `PxPrTest`;
             PxAdmin["Password"] = `PX12%09#w`;
@@ -159,7 +158,7 @@ define(['N/log',
         const setFinancieraEmptyFields = (PxAdmin) => {
             PxAdmin["IdentificadorFinanciera"] = "";
             PxAdmin["RazonSocialFinanciera"] = "";
-            PxAdmin["RazonSocialFinanciera"] = "";
+            PxAdmin["DireccionFinanciera"] = "";
             PxAdmin["ConvencionalFinanciera"] = "";
             PxAdmin["CelularFinanciera"] = "";
             PxAdmin["EmailFinanciera"] = "";
@@ -185,125 +184,136 @@ define(['N/log',
 
         const setSalesOrderValues = (PxAdmin, salesOrderId) => {
             let salesOrder = getSalesOrder(salesOrderId);
-            PxAdmin["NumeroOrden"] = "9999" + salesOrder.tranid.replace(/\D/g, '');
+            PxAdmin["NumeroOrden"] = salesOrder.tranid.replace(/\D/g, '');
         }
 
         const setVehiculoValues = (PxAdmin, vehiculo, operacionOrden) => {
             let idMarca = vehiculo["custrecord_ht_bien_marca.custrecord_ht_marca_codigo"] || "";
+            let idMarca2 = vehiculo["custrecord_ht_bien_marca"] || "";
             let descMarca = vehiculo["custrecord_ht_bien_marca.custrecord_ht_marca_descripcion"] || "";
             let idModelo = vehiculo["custrecord_ht_bien_modelo.custrecord_ht_mod_codigo"] || "";
+            let idModelo2 = vehiculo["custrecord_ht_bien_modelo"] || "";
             let descModelo = vehiculo["custrecord_ht_bien_modelo.custrecord_ht_mod_descripcion"];
             let colorName = vehiculo["custrecord_ht_bien_colorcarseg.custrecord_ht_bn_colorcarseg_descripcion"];
             let tipoVehiculo = vehiculo["custrecord_ht_bien_tipo.custrecord_ht_tv_descripcion"];
 
             if (operacionOrden == OPERACION_ORDEN_INSTALACION) {
-                PxAdmin["Placa"] = vehiculo.custrecord_ht_bien_placa == "S/P" ? vehiculo.name : vehiculo.custrecord_ht_bien_placa;
-                PxAdmin["IdMarca"] = idMarca;
+                //<I> dfernandez 06/12/2024
+                //retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa
+                PxAdmin["Placa"] = vehiculo.custrecord_ht_bien_placa;
+                //<F> dfernandez 06/12/2024
+                PxAdmin["IdMarca"] = idMarca2[0].value; //idMarca;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;//idModelo
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
                 PxAdmin["Chasis"] = vehiculo.custrecord_ht_bien_chasis;
                 PxAdmin["Motor"] = vehiculo.custrecord_ht_bien_motor;
                 PxAdmin["Color"] = colorName;
                 PxAdmin["Anio"] = vehiculo.custrecord_ht_bien_ano;
                 PxAdmin["Tipo"] = tipoVehiculo;
             } else if (operacionOrden == OPERACION_ORDEN_DESINSTALACION) {
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_REINSTALACION) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_RENOVACION) {
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_MODIFICACION) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_MANTENIMIENTO_CHEQUEO) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_CHEQUEO_COMPONENTES) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_VENTA_SEGUROS) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_RENOVACION_SEGUROS) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_CAMBIO_PROPIETARIO) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_INSTALACION_OTROS_PRODUCTOS) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_DESINSTALACION_OTROS_PRODUCTOS) {
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_CHEQUEO_OTROS_PRODUCTOS) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_REINSTALACION_OTROS_PRODUCTOS) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_VENTA_SERVICIOS) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_ACTUALIZACION_ESTADOS) {
-                PxAdmin["IdMarca"] = idMarca;
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             } else if (operacionOrden == OPERACION_ORDEN_REGISTRAR_CANAL) {
-                PxAdmin["Placa"] = vehiculo.custrecord_ht_bien_placa == "S/P" ? vehiculo.name : vehiculo.custrecord_ht_bien_placa;
-                PxAdmin["IdMarca"] = idMarca;
+                //<i> dfernandez 06/12/2024
+                //retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa
+                PxAdmin["Placa"] = vehiculo.custrecord_ht_bien_placa;
+                //<F> dfernandez 06/12/2024
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
                 PxAdmin["DescModelo"] = descModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
                 PxAdmin["Chasis"] = vehiculo.custrecord_ht_bien_chasis;
                 PxAdmin["Motor"] = vehiculo.custrecord_ht_bien_motor;
                 PxAdmin["Color"] = colorName;
                 PxAdmin["Anio"] = vehiculo.custrecord_ht_bien_ano;
                 PxAdmin["Tipo"] = tipoVehiculo;
             } else if (operacionOrden == OPERACION_ORDEN_INSTALACION_COMPONENTES) {
-                PxAdmin["Placa"] = vehiculo.custrecord_ht_bien_placa == "S/P" ? vehiculo.name : vehiculo.custrecord_ht_bien_placa;
-                PxAdmin["IdMarca"] = idMarca;
+                //<i> dfernandez 06/12/2024
+                //retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa
+                PxAdmin["Placa"] = vehiculo.custrecord_ht_bien_placa;
+                //<F> dfernandez 06/12/2024
+                PxAdmin["IdMarca"] = idMarca2[0].value;
                 PxAdmin["DescMarca"] = descMarca;
-                PxAdmin["IdModelo"] = idModelo;
-                PxAdmin["CodigoVehiculo"] = vehiculo.name;
+                PxAdmin["IdModelo"] = idModelo2[0].value;
+                PxAdmin["CodigoVehiculo"] = vehiculo.custrecord_ht_bien_codsysh ? vehiculo.custrecord_ht_bien_codsysh : vehiculo.name;
             }
         }
 
@@ -330,9 +340,15 @@ define(['N/log',
             let idModelo = Dispositivo["custrecord_ht_mc_modelo.custrecord_ht_dd_modelodispositivo_codig"];
             let descModelo = Dispositivo["custrecord_ht_mc_modelo.custrecord_ht_dd_modelodispositivo_descr"];
 
+            let idUnidad2 = Dispositivo["custrecord_ht_mc_unidad"];
+            let idModelo2 = Dispositivo["custrecord_ht_mc_modelo"];
+
             // Serie
-            let serie = Dispositivo.custrecord_ht_mc_seriedispositivo.length ? Dispositivo.custrecord_ht_mc_seriedispositivo[0].text.split(' - ') : '';
+            // <i> dfernandez 06/12/2024
+            //cambio de código dispositivo a vid
+            let serie = Dispositivo.custrecord_ht_mc_vid.length ? Dispositivo.custrecord_ht_mc_vid : '';
             let idSerie = serie.length ? serie[0] : '';
+            // <f> dfernandez 06/12/2024
 
             let descOperadora = Dispositivo["custrecord_ht_mc_operadora.custrecord_ht_cs_operadora_descrip"];
 
@@ -353,13 +369,19 @@ define(['N/log',
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
                 PxAdmin["IdProducto"] = idProducto.substr(0, 5);
                 PxAdmin["DescProducto"] = descProducto;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                // <I> dfernandez 06/12/2024
+                // cambio de campo por el id interno del registro de la unidad.
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
+                // <F> dfernandez 06/12/2024
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                // <I> dfernandez 06/12/2024
+                // cambio de campo por el id interno del registro del modelo.
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
+                // <F> dfernandez 06/12/2024
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["Sn"] = Dispositivo.custrecord_ht_mc_sn;
                 PxAdmin["Imei"] = Dispositivo.custrecord_ht_mc_imei;
-                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara || "0";
+                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara.replace(/&/g, '&amp;') || "0";
                 PxAdmin["DireccionMac"] = Dispositivo.custrecord_ht_mc_macaddress;
                 PxAdmin["Icc"] = Dispositivo.custrecord_ht_mc_icc;
                 PxAdmin["NumeroCelular"] = Dispositivo.custrecord_ht_mc_nocelularsim;
@@ -373,13 +395,13 @@ define(['N/log',
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
                 PxAdmin["IdProducto"] = Dispositivo.name.substr(0, 5);
                 PxAdmin["DescProducto"] = Dispositivo.name;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["Sn"] = Dispositivo.custrecord_ht_mc_sn;
                 PxAdmin["Imei"] = Dispositivo.custrecord_ht_mc_imei;
-                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara || "0";
+                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara.replace(/&/g, '&amp;') || "0";
                 PxAdmin["DireccionMac"] = Dispositivo.custrecord_ht_mc_macaddress;
                 PxAdmin["Icc"] = Dispositivo.custrecord_ht_mc_icc;
                 PxAdmin["NumeroCelular"] = Dispositivo.custrecord_ht_mc_nocelularsim;
@@ -391,13 +413,13 @@ define(['N/log',
                 PxAdmin["OperacionDispositivo"] = "A";
             } else if (operacionOrden == OPERACION_ORDEN_MODIFICACION) {
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["Sn"] = Dispositivo.custrecord_ht_mc_sn;
                 PxAdmin["Imei"] = Dispositivo.custrecord_ht_mc_imei;
-                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara || "0";
+                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara.replace(/&/g, '&amp;') || "0";
                 PxAdmin["DireccionMac"] = Dispositivo.custrecord_ht_mc_macaddress;
                 PxAdmin["Icc"] = Dispositivo.custrecord_ht_mc_icc;
                 PxAdmin["NumeroCelular"] = Dispositivo.custrecord_ht_mc_nocelularsim;
@@ -407,13 +429,13 @@ define(['N/log',
             } else if (operacionOrden == OPERACION_ORDEN_MANTENIMIENTO_CHEQUEO) {
                 let estadoSim = obtenerEstadoSIM(idEstadoDispositivo);
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["Sn"] = Dispositivo.custrecord_ht_mc_sn;
                 PxAdmin["Imei"] = Dispositivo.custrecord_ht_mc_imei;
-                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara || "0";
+                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara.replace(/&/g, '&amp;') || "0";
                 PxAdmin["DireccionMac"] = Dispositivo.custrecord_ht_mc_macaddress;
                 PxAdmin["Icc"] = Dispositivo.custrecord_ht_mc_icc;
                 PxAdmin["NumeroCelular"] = Dispositivo.custrecord_ht_mc_nocelularsim;
@@ -422,13 +444,13 @@ define(['N/log',
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_CHEQUEO_COMPONENTES) {
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["Sn"] = Dispositivo.custrecord_ht_mc_sn;
                 PxAdmin["Imei"] = Dispositivo.custrecord_ht_mc_imei;
-                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara || "0";
+                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara.replace(/&/g, '&amp;') || "0";
                 PxAdmin["DireccionMac"] = Dispositivo.custrecord_ht_mc_macaddress;
                 PxAdmin["Icc"] = Dispositivo.custrecord_ht_mc_icc;
                 PxAdmin["NumeroCelular"] = Dispositivo.custrecord_ht_mc_nocelularsim;
@@ -437,13 +459,13 @@ define(['N/log',
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_VENTA_SEGUROS) {
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["Sn"] = Dispositivo.custrecord_ht_mc_sn;
                 PxAdmin["Imei"] = Dispositivo.custrecord_ht_mc_imei;
-                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara || "0";
+                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara.replace(/&/g, '&amp;') || "0";
                 PxAdmin["DireccionMac"] = Dispositivo.custrecord_ht_mc_macaddress;
                 PxAdmin["Icc"] = Dispositivo.custrecord_ht_mc_icc;
                 PxAdmin["NumeroCelular"] = Dispositivo.custrecord_ht_mc_nocelularsim;
@@ -452,13 +474,13 @@ define(['N/log',
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_RENOVACION_SEGUROS) {
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["Sn"] = Dispositivo.custrecord_ht_mc_sn;
                 PxAdmin["Imei"] = Dispositivo.custrecord_ht_mc_imei;
-                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara || "0";
+                PxAdmin["NumeroCamaras"] = Dispositivo.custrecord_ht_mc_numero_camara.replace(/&/g, '&amp;') || "0";
                 PxAdmin["DireccionMac"] = Dispositivo.custrecord_ht_mc_macaddress;
                 PxAdmin["Icc"] = Dispositivo.custrecord_ht_mc_icc;
                 PxAdmin["NumeroCelular"] = Dispositivo.custrecord_ht_mc_nocelularsim;
@@ -467,9 +489,9 @@ define(['N/log',
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_INSTALACION_OTROS_PRODUCTOS) {
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_DESINSTALACION_OTROS_PRODUCTOS) {
@@ -477,38 +499,38 @@ define(['N/log',
                 PxAdmin["OperacionDispositivo"] = "D";
             } else if (operacionOrden == OPERACION_ORDEN_CHEQUEO_OTROS_PRODUCTOS) {
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_REINSTALACION_OTROS_PRODUCTOS) {
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_VENTA_SERVICIOS) {
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_ACTUALIZACION_DATOS_PROPIETARIOS) {
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_ACTUALIZACION_ESTADOS) {
                 PxAdmin["Vid"] = Dispositivo.custrecord_ht_mc_vid;
                 PxAdmin["IdProducto"] = Dispositivo.name.substr(0, 5);
                 PxAdmin["DescProducto"] = Dispositivo.name;
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
                 //PxAdmin["EstadoSim"] = Dispositivo.custrecord_ht_mc_estado[0].text.substr(0, 5);
                 PxAdmin["OperacionDispositivo"] = "A";
@@ -516,9 +538,9 @@ define(['N/log',
                 PxAdmin["OperacionDispositivo"] = "I";
             } else if (operacionOrden == OPERACION_ORDEN_INSTALACION_COMPONENTES) {
                 PxAdmin["OperacionDispositivo"] = "I";
-                PxAdmin["CodMarcaDispositivo"] = idUnidad;
+                PxAdmin["CodMarcaDispositivo"] = idUnidad2[0].value;
                 PxAdmin["MarcaDispositivo"] = descUnidad;
-                PxAdmin["CodModeloDispositivo"] = idModelo;
+                PxAdmin["CodModeloDispositivo"] = idModelo2[0].value;
                 PxAdmin["ModeloDispositivo"] = descModelo;
             }
         }
@@ -527,25 +549,25 @@ define(['N/log',
             let persona = Propietario.isperson;
             if (operacionOrden == OPERACION_ORDEN_INSTALACION) {
                 PxAdmin["IdentificadorPropietario"] = Propietario.vatregnumber;
-                PxAdmin["NombrePropietario"] = Propietario.custentity_ht_cl_primernombre + ' ' + (typeof Propietario.custentity_ht_cl_segundonombre == 'undefined' ? '' : Propietario.custentity_ht_cl_segundonombre);
-                PxAdmin["ApellidosPropietario"] = (typeof Propietario.custentity_ht_cl_apellidopaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidopaterno) + ' ' + (typeof Propietario.custentity_ht_cl_apellidomaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidomaterno);
-                PxAdmin["DireccionPropietario"] = Propietario.provincia;
+                PxAdmin["NombrePropietario"] = Propietario.custentity_ht_cl_primernombre.replace(/&/g, '&amp;') + ' ' + (typeof Propietario.custentity_ht_cl_segundonombre == 'undefined' ? '' : Propietario.custentity_ht_cl_segundonombre).replace(/&/g, '&amp;');
+                PxAdmin["ApellidosPropietario"] = (typeof Propietario.custentity_ht_cl_apellidopaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidopaterno).replace(/&/g, '&amp;') + ' ' + (typeof Propietario.custentity_ht_cl_apellidomaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidomaterno);
+                PxAdmin["DireccionPropietario"] = Propietario.provincia.replace(/&/g, '&amp;');
                 PxAdmin["ConvencionalPropietario"] = Propietario.homephone;
                 PxAdmin["CelularPropietario"] = Propietario.phone.length ? Propietario.phone.replace('+593', '0') : '';
                 PxAdmin["EmailPropietario"] = Propietario.email;
             } else if (operacionOrden == OPERACION_ORDEN_ACTUALIZACION_DATOS_PROPIETARIOS) {
                 PxAdmin["IdentificadorPropietario"] = Propietario.vatregnumber;
-                PxAdmin["NombrePropietario"] = (typeof Propietario.custentity_ht_cl_primernombre == 'undefined' ? '' : Propietario.custentity_ht_cl_primernombre) + ' ' + (typeof Propietario.custentity_ht_cl_segundonombre == 'undefined' ? '' : Propietario.custentity_ht_cl_segundonombre);
-                PxAdmin["ApellidosPropietario"] = (typeof Propietario.custentity_ht_cl_apellidopaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidopaterno) + ' ' + (typeof Propietario.custentity_ht_cl_apellidomaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidomaterno);
-                PxAdmin["DireccionPropietario"] = Propietario.provincia;
+                PxAdmin["NombrePropietario"] = (typeof Propietario.custentity_ht_cl_primernombre == 'undefined' ? '' : Propietario.custentity_ht_cl_primernombre).replace(/&/g, '&amp;') + ' ' + (typeof Propietario.custentity_ht_cl_segundonombre == 'undefined' ? '' : Propietario.custentity_ht_cl_segundonombre).replace(/&/g, '&amp;');
+                PxAdmin["ApellidosPropietario"] = (typeof Propietario.custentity_ht_cl_apellidopaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidopaterno).replace(/&/g, '&amp;') + ' ' + (typeof Propietario.custentity_ht_cl_apellidomaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidomaterno);
+                PxAdmin["DireccionPropietario"] = Propietario.provincia.replace(/&/g, '&amp;');
                 PxAdmin["ConvencionalPropietario"] = Propietario.homephone;
                 PxAdmin["CelularPropietario"] = Propietario.phone.length ? Propietario.phone.replace('+593', '0') : '';
                 PxAdmin["EmailPropietario"] = Propietario.email;
             } else if (operacionOrden == OPERACION_ORDEN_CAMBIO_PROPIETARIO) {
                 PxAdmin["IdentificadorPropietario"] = Propietario.vatregnumber;
-                PxAdmin["NombrePropietario"] = Propietario.custentity_ht_cl_primernombre + ' ' + (typeof Propietario.custentity_ht_cl_segundonombre == 'undefined' ? '' : Propietario.custentity_ht_cl_segundonombre);
-                PxAdmin["ApellidosPropietario"] = (typeof Propietario.custentity_ht_cl_apellidopaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidopaterno) + ' ' + (typeof Propietario.custentity_ht_cl_apellidomaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidomaterno);
-                PxAdmin["DireccionPropietario"] = Propietario.provincia;
+                PxAdmin["NombrePropietario"] = Propietario.custentity_ht_cl_primernombre.replace(/&/g, '&amp;') + ' ' + (typeof Propietario.custentity_ht_cl_segundonombre == 'undefined' ? '' : Propietario.custentity_ht_cl_segundonombre).replace(/&/g, '&amp;');
+                PxAdmin["ApellidosPropietario"] = (typeof Propietario.custentity_ht_cl_apellidopaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidopaterno).replace(/&/g, '&amp;') + ' ' + (typeof Propietario.custentity_ht_cl_apellidomaterno == 'undefined' ? '' : Propietario.custentity_ht_cl_apellidomaterno);
+                PxAdmin["DireccionPropietario"] = Propietario.provincia.replace(/&/g, '&amp;');
                 PxAdmin["ConvencionalPropietario"] = Propietario.homephone;
                 PxAdmin["CelularPropietario"] = Propietario.phone.length ? Propietario.phone.replace('+593', '0') : '';
                 PxAdmin["EmailPropietario"] = Propietario.email;
@@ -556,8 +578,8 @@ define(['N/log',
             if (!Aseguradora.custrecord_ht_cd_nombre) return;
             if (operacionOrden == OPERACION_ORDEN_INSTALACION) {
                 PxAdmin["IdentificadorAseguradora"] = Aseguradora.custrecord_ht_cd_ruccanaldistribucion || "";
-                PxAdmin["RazonSocialAseguradora"] = Aseguradora.custrecord_ht_cd_nombre || "";
-                PxAdmin["DireccionAseguradora"] = Aseguradora.custrecord_ht_cd_direccion || "";
+                PxAdmin["RazonSocialAseguradora"] = Aseguradora.custrecord_ht_cd_nombre.replace(/&/g, '&amp;') || "";
+                PxAdmin["DireccionAseguradora"] = Aseguradora.custrecord_ht_cd_direccion.replace(/&/g, '&amp;') || "";
                 PxAdmin["ConvencionalAseguradora"] = Aseguradora.custrecord_ht_cd_convencional.replace('+593', '0');
                 PxAdmin["CelularAseguradora"] = Aseguradora.custrecord_ht_cd_telefono.replace('+593', '0') || "";
                 PxAdmin["EmailAseguradora"] = Aseguradora.custrecord_ht_cd_email || "";
@@ -611,17 +633,17 @@ define(['N/log',
             convencional = results3.length ? results3[0]['convencional'].replace('+593', '0') : convencional;
             if (operacionOrden == OPERACION_ORDEN_INSTALACION) {
                 PxAdmin["IdentificadorMonitorea"] = PropietarioMonitoreo.vatregnumber;
-                PxAdmin["NombreMonitorea"] = (typeof PropietarioMonitoreo.custentity_ht_cl_primernombre == 'undefined' ? '' : PropietarioMonitoreo.custentity_ht_cl_primernombre) + ' ' + (typeof PropietarioMonitoreo.custentity_ht_cl_segundonombre == 'undefined' ? '' : PropietarioMonitoreo.custentity_ht_cl_segundonombre);
-                PxAdmin["ApellidosMonitorea"] = (typeof PropietarioMonitoreo.custentity_ht_cl_apellidopaterno == 'undefined' ? '' : PropietarioMonitoreo.custentity_ht_cl_apellidopaterno) + ' ' + (typeof PropietarioMonitoreo.custentity_ht_cl_apellidomaterno == 'undefined' ? '' : PropietarioMonitoreo.custentity_ht_cl_apellidomaterno);
-                PxAdmin["DireccionMonitorea"] = PropietarioMonitoreo.provincia;
+                PxAdmin["NombreMonitorea"] = (typeof PropietarioMonitoreo.custentity_ht_cl_primernombre == 'undefined' ? '' : PropietarioMonitoreo.custentity_ht_cl_primernombre).replace(/&/g, '&amp;') + ' ' + (typeof PropietarioMonitoreo.custentity_ht_cl_segundonombre == 'undefined' ? '' : PropietarioMonitoreo.custentity_ht_cl_segundonombre).replace(/&/g, '&amp;');
+                PxAdmin["ApellidosMonitorea"] = (typeof PropietarioMonitoreo.custentity_ht_cl_apellidopaterno == 'undefined' ? '' : PropietarioMonitoreo.custentity_ht_cl_apellidopaterno).replace(/&/g, '&amp;') + ' ' + (typeof PropietarioMonitoreo.custentity_ht_cl_apellidomaterno == 'undefined' ? '' : PropietarioMonitoreo.custentity_ht_cl_apellidomaterno);
+                PxAdmin["DireccionMonitorea"] = PropietarioMonitoreo.provincia.replace(/&/g, '&amp;');
                 PxAdmin["ConvencionalMonitorea"] = convencional;
                 PxAdmin["CelularMonitorea"] = PropietarioMonitoreo.phone.replace('+593', '0');
                 PxAdmin["EmailMonitorea"] = PropietarioMonitoreo.email;
             } else if (operacionOrden == OPERACION_ORDEN_CAMBIO_PROPIETARIO) {
                 PxAdmin["IdentificadorMonitorea"] = PropietarioMonitoreo.vatregnumber;
-                PxAdmin["NombreMonitorea"] = PropietarioMonitoreo.custentity_ht_cl_primernombre + ' ' + PropietarioMonitoreo.custentity_ht_cl_segundonombre;
-                PxAdmin["ApellidosMonitorea"] = PropietarioMonitoreo.custentity_ht_cl_apellidopaterno + ' ' + PropietarioMonitoreo.custentity_ht_cl_apellidomaterno;
-                PxAdmin["DireccionMonitorea"] = PropietarioMonitoreo.provincia;
+                PxAdmin["NombreMonitorea"] = PropietarioMonitoreo.custentity_ht_cl_primernombre.replace(/&/g, '&amp;') + ' ' + PropietarioMonitoreo.custentity_ht_cl_segundonombre.replace(/&/g, '&amp;');
+                PxAdmin["ApellidosMonitorea"] = PropietarioMonitoreo.custentity_ht_cl_apellidopaterno.replace(/&/g, '&amp;') + ' ' + PropietarioMonitoreo.custentity_ht_cl_apellidomaterno;
+                PxAdmin["DireccionMonitorea"] = PropietarioMonitoreo.provincia.replace(/&/g, '&amp;');
                 PxAdmin["ConvencionalMonitorea"] = convencional;
                 PxAdmin["CelularMonitorea"] = PropietarioMonitoreo.phone.replace('+593', '0');
                 PxAdmin["EmailMonitorea"] = PropietarioMonitoreo.email;
@@ -638,13 +660,14 @@ define(['N/log',
                 telematicDocumenType = 1;
             } else if (codigoTipoDocumento == "04") {
                 telematicDocumenType = 2;
-            } else if (codigoTipoDocumento == "05") {
+            } else if (codigoTipoDocumento == "05" || codigoTipoDocumento == "00") {
                 telematicDocumenType = 3;
             }
             return telematicDocumenType;
         }
 
         const getPropietarioTelematic = (Propietario, Subsidiaria, operacion) => {
+            log.debug('Propietario', Propietario)
             let customer = {};
             if (operacion == TELEMATIC_OPERACION_INSTALACION_NUEVA) {
                 customer.username = Propietario.htEmail.amiEmail;
@@ -673,7 +696,6 @@ define(['N/log',
                     company_code: Subsidiaria.taxidnum,
                     identity_document_number: Propietario.vatregnumber
                 }
-
             } else if (operacion == TELEMATIC_OPERACION_ACTUALIZACION_DATOS_CLIENTES) {
                 customer.username = Propietario.htEmail.amiEmail;
                 customer.first_name = Propietario.custentity_ht_cl_primernombre;
@@ -714,42 +736,57 @@ define(['N/log',
             return customer;
         }
 
-        const getVehiculoTelematic = (Vehiculo, operacion) => {
+        const getVehiculoTelematic = (Vehiculo, operacion, numPuertas) => {
             let asset = {};
             if (operacion == TELEMATIC_OPERACION_INSTALACION_NUEVA) {
                 let tipoVehiculoTelematic = Vehiculo["custrecord_ht_bien_tipoterrestre.custrecord_ht_tt_idtelematic"];
                 asset.id = Vehiculo.custrecord_ht_bien_id_telematic;
                 asset.product = Vehiculo.producto;
-                asset.name = Vehiculo.custrecord_ht_bien_placa ? Vehiculo.custrecord_ht_bien_placa : "S/P";
-                asset.description = Vehiculo.name.substring(0, 100);//Vehiculo.altname.substring(0, 100);
-                asset.custom_name = asset.name == "S/P" ? "" : asset.name;
+                //<I> dfernandez 06/12/2024
+                //retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa
+                asset.name = Vehiculo.custrecord_ht_bien_placa;
+                //<F> dfernandez 06/12/2024
+                asset.description = Vehiculo.altname.substring(0, 100);//Vehiculo.altname.substring(0, 100);
+                //<I> dfernandez 06/12/2024
+                //retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa
+                asset.custom_name = asset.name;
+                //<F> dfernandez 06/12/2024
                 //asset.aceptation_date = obtenerFechaHoraConFormatoConTimezone(fechaInicioCobertura);
                 asset.active = true;
                 asset.asset_type = tipoVehiculoTelematic;
                 asset.product_expire_date = obtenerFechaHoraConFormatoConTimezone(Vehiculo.fechaFinCobertura);
-                asset.contract_code = "";
+                //asset.contract_code = "";
                 asset.attributes = obtenerAtributos(tipoVehiculoTelematic, Vehiculo);
-                asset.doors_sensors = Vehiculo.custrecord_ht_bien_numeropuertas || 0;
-                asset.cod_sys = Number(Vehiculo.name.replace(/\D/g, '')).toString();
+                asset.doors_sensors = Number(numPuertas); // Vehiculo.custrecord_ht_bien_numeropuertas || 0;
+                asset.cod_sys = Vehiculo.custrecord_ht_bien_codsysh ? Vehiculo.custrecord_ht_bien_codsysh : Vehiculo.name;//Number(Vehiculo.name.replace(/\D/g, '')).toString();
             } else if (operacion == TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO) {
                 asset.id = Vehiculo.custrecord_ht_bien_id_telematic;
-                asset.name = Vehiculo.custrecord_ht_bien_placa ? Vehiculo.custrecord_ht_bien_placa : "S/P";
-                asset.cod_sys = Vehiculo.name;
+                //<I> dfernandez 06/12/2024
+                //retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa
+                asset.name = Vehiculo.custrecord_ht_bien_placa;
+                //<F> dfernandez 06/12/2024
+                asset.cod_sys = Vehiculo.custrecord_ht_bien_codsysh ? Vehiculo.custrecord_ht_bien_codsysh : Vehiculo.name;
             } else if (operacion == TELEMATIC_OPERACION_ACTUALIZACION_COBERTURAS) {
                 let tipoVehiculoTelematic = Vehiculo["custrecord_ht_bien_tipoterrestre.custrecord_ht_tt_idtelematic"];
                 asset.id = Vehiculo.custrecord_ht_bien_id_telematic;
                 asset.product = Vehiculo.producto;
-                asset.name = Vehiculo.custrecord_ht_bien_placa ? Vehiculo.custrecord_ht_bien_placa : "S/P";
-                asset.description = Vehiculo.name.substring(0, 100);//Vehiculo.altname.substring(0, 100);
-                asset.custom_name = asset.name == "S/P" ? "" : asset.name;
+                //<I> dfernandez 06/12/2024
+                //retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa
+                asset.name = Vehiculo.custrecord_ht_bien_placa;
+                //<F> dfernandez 06/12/2024
+                asset.description = Vehiculo.altname.substring(0, 100);//Vehiculo.altname.substring(0, 100);
+                //<I> dfernandez 06/12/2024
+                //retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa
+                asset.custom_name = asset.name;
+                //<F> dfernandez 06/12/2024
                 //asset.aceptation_date = obtenerFechaHoraConFormatoConTimezone(fechaInicioCobertura);
                 asset.active = true;
                 asset.asset_type = tipoVehiculoTelematic;
                 asset.product_expire_date = obtenerFechaHoraConFormatoConTimezone(Vehiculo.fechaFinCobertura);
-                asset.contract_code = Vehiculo.custrecord_ht_ot_producto;
+                //asset.contract_code = Vehiculo.custrecord_ht_ot_producto;
                 asset.attributes = obtenerAtributos(tipoVehiculoTelematic, Vehiculo);
-                asset.doors_sensors = Vehiculo.custrecord_ht_bien_numeropuertas || 0;
-                asset.cod_sys = Number(Vehiculo.name.replace(/\D/g, '')).toString();
+                asset.doors_sensors = Number(numPuertas); // Vehiculo.custrecord_ht_bien_numeropuertas || 0;
+                asset.cod_sys = Vehiculo.custrecord_ht_bien_codsysh ? Vehiculo.custrecord_ht_bien_codsysh : Vehiculo.name;
             }
             return asset;
         }
@@ -766,9 +803,15 @@ define(['N/log',
                 if (Dispositivo["custrecord_ht_mc_modelo.custrecord_ht_dd_mod_disp_id_telematic"] && servidorRelacionado == servidor)
                     device.model = Dispositivo["custrecord_ht_mc_modelo.custrecord_ht_dd_mod_disp_id_telematic"];
                 device.company_code = Subsidiaria.taxidnum;
-                device.id = Dispositivo.name;
+                //<I> defernandez 06/12/2024
+                // retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa.
+                device.id = Dispositivo.custrecord_ht_mc_vid;
+                //<F> defernandez 06/12/2024
             } else if (operacion == TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO) {
-                device.id = Dispositivo.name;
+                //<I> defernandez 06/12/2024
+                // retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa.
+                device.id = Dispositivo.custrecord_ht_mc_vid;
+                //<F> defernandez 06/12/2024
                 device.active = false;
             } else if (operacion == TELEMATIC_OPERACION_ACTUALIZACION_DATOS_TECNICOS) {
                 var servidorRelacionado = Dispositivo["custrecord_ht_mc_modelo.custrecord_ht_md_servidor_relacionado"];
@@ -780,9 +823,15 @@ define(['N/log',
                 if (Dispositivo["custrecord_ht_mc_modelo.custrecord_ht_dd_mod_disp_id_telematic"] && servidorRelacionado == servidor)
                     device.model = Dispositivo["custrecord_ht_mc_modelo.custrecord_ht_dd_mod_disp_id_telematic"];
                 device.company_code = Subsidiaria.taxidnum;
-                device.id = Dispositivo.name;
+                //<I> defernandez 06/12/2024
+                // retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa.
+                device.id = Dispositivo.custrecord_ht_mc_vid;
+                //<F> defernandez 06/12/2024
             } else if (operacion == TELEMATIC_OPERACION_CORTE_SIM) {
-                device.id = Dispositivo.name;
+                //<I> defernandez 06/12/2024
+                // retiro de la lógica de validación S/P, se debe enviar lo que contenga el campo placa.
+                device.id = Dispositivo.custrecord_ht_mc_vid;
+                //<F> defernandez 06/12/2024
                 device.active = false;
             }
             return device;
@@ -829,6 +878,7 @@ define(['N/log',
         const obtenerCamposOrdenTrabajo = (ordenTrabajoId) => {
             let Convenio = {};
             let ordenTrabajo = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: ordenTrabajoId });
+            let numPuertas = ordenTrabajo.getValue('custrecord_ht_ot_numero_puertas');
             let salesOrderId = ordenTrabajo.getValue('custrecord_ht_ot_orden_servicio');
             let ordenVenta = record.load({ type: record.Type.SALES_ORDER, id: salesOrderId });
             let bien = ordenVenta.getValue('custbody_ht_so_bien');
@@ -840,7 +890,11 @@ define(['N/log',
             let Dispositivo = obtenerDispositivo(ordenTrabajo.getValue('custrecord_ht_ot_serieproductoasignacion'));
             Dispositivo.producto = ordenTrabajo.getText('custrecord_ht_ot_producto') || "";
             let vehiculo = obtenerVehiculo(ordenTrabajo.getValue('custrecord_ht_ot_vehiculo'));
-            vehiculo.producto = ordenTrabajo.getText('custrecord_ht_ot_producto') || "";
+            let productCadena = ordenTrabajo.getText('custrecord_ht_ot_producto')
+            if (productCadena.includes("-")) {
+                productCadena = productCadena.split('-')[1]/*.replace(/\s+/g, '')*/
+            }
+            vehiculo.producto = productCadena || "";
             vehiculo.fechaInicioCobertura = ordenVenta.getValue('trandate');
             vehiculo.fechaFinCobertura = new Date(vehiculo.fechaInicioCobertura.getFullYear(), vehiculo.fechaInicioCobertura.getMonth() + periodoCobertura, vehiculo.fechaInicioCobertura.getDate());
             let Propietario = obtenerPropietario(ordenTrabajo.getValue('custrecord_ht_ot_cliente_id'));
@@ -864,7 +918,7 @@ define(['N/log',
             //let Producto = ordenTrabajo.getText('custrecord_ht_ot_producto');
             log.debug('CONVENIOOOO', Convenio)
             log.debug('PROPIETARIOMON', PropietarioMonitoreo)
-            return { Dispositivo, vehiculo, Propietario, PropietarioMonitoreo, Cobertura, Subsidiaria, Aseguradora, Concesionario, Financiera, Convenio, Commands, Servicios, pxadminfinalizacion, confirmaciontelamatic, salesOrderId };
+            return { Dispositivo, vehiculo, Propietario, PropietarioMonitoreo, Cobertura, Subsidiaria, Aseguradora, Concesionario, Financiera, Convenio, Commands, Servicios, pxadminfinalizacion, confirmaciontelamatic, salesOrderId, numPuertas };
         }
 
         const envioPXInstalacionDispositivo = (ordenTrabajoId) => {
@@ -895,7 +949,7 @@ define(['N/log',
                     updatePxadmin.setValue({ fieldId: 'custrecord_ht_ot_pxadminfinalizacion', value: true })
                     updatePxadmin.save();
                     pxadminfinalizacion = true;
-                    actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "exitoso", response.body);
+                    actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "enviado", response.body);
                 } else {
                     actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "error", response.body);
                 }
@@ -1047,7 +1101,7 @@ define(['N/log',
             let response = sendPXServer(PxAdmin);
             log.error("Response PX Mantenimiento Chequeo Dispositivo", response.body);
             if (response.body == 1) {
-                actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "exitoso", response.body);
+                actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "enviado", response.body);
                 return true;
             } else {
                 actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "error", response.body);
@@ -1432,13 +1486,13 @@ define(['N/log',
 
         const envioTelecInstalacionNueva = (ordenTrabajoId) => {
             let confirm = false;
-            let { Dispositivo, vehiculo, Propietario, PropietarioMonitoreo, confirmaciontelamatic, Subsidiaria, Commands, salesOrderId } = obtenerCamposOrdenTrabajo(ordenTrabajoId);
+            let { Dispositivo, vehiculo, Propietario, PropietarioMonitoreo, confirmaciontelamatic, Subsidiaria, Commands, salesOrderId, numPuertas } = obtenerCamposOrdenTrabajo(ordenTrabajoId);
             if (!confirmaciontelamatic) {
                 let registroImpulsoPlataforma = crearRegistroImpulsoPlataforma(ordenTrabajoId, null, "enviado", "Telematic");
                 let telematic = {};
                 telematic.monitoreo = getPropietarioTelematic(PropietarioMonitoreo, Subsidiaria, TELEMATIC_OPERACION_INSTALACION_NUEVA);
                 telematic.customer = getPropietarioTelematic(Propietario, Subsidiaria, TELEMATIC_OPERACION_INSTALACION_NUEVA);
-                telematic.asset = getVehiculoTelematic(vehiculo, TELEMATIC_OPERACION_INSTALACION_NUEVA);
+                telematic.asset = getVehiculoTelematic(vehiculo, TELEMATIC_OPERACION_INSTALACION_NUEVA, numPuertas);
                 telematic.asset.owner = Propietario.custentity_ht_customer_id_telematic /*|| ""*/;
                 telematic.device = getDispositivoTelematic(Dispositivo, Subsidiaria, TELEMATIC_OPERACION_INSTALACION_NUEVA);
                 telematic.command = Commands;
@@ -1453,7 +1507,47 @@ define(['N/log',
                     actualizarIdVehiculo(vehiculo.internalid[0].value, response.data.asset.id);//^ aquí se asigna el id telemtics en el registro del bien de ns
                     actualizarIdCliente(Propietario.internalid[0].value, response.data.customer.id);
                     confirmaciontelamatic = true;
-                    actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "exitoso", response.message);
+                    actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "enviado", response.message);
+                    confirm = true
+                } else {
+                    log.error("Response Message", response.message);
+                    actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "error", response.message);
+                }
+            }
+
+            if (!confirmaciontelamatic) {
+                let updateTelematic = record.load({ type: 'customrecord_ht_record_ordentrabajo', id: ordenTrabajoId });
+                updateTelematic.setValue({ fieldId: 'custrecord_ht_ot_estado', value: 4 })
+                updateTelematic.save();
+                return false;
+            }
+            return confirm;
+        }
+
+        const envioTelecReinstalacion = (ordenTrabajoId) => {
+            let confirm = false;
+            let { Dispositivo, vehiculo, Propietario, PropietarioMonitoreo, confirmaciontelamatic, Subsidiaria, Commands, salesOrderId, numPuertas } = obtenerCamposOrdenTrabajo(ordenTrabajoId);
+            if (!confirmaciontelamatic) {
+                let registroImpulsoPlataforma = crearRegistroImpulsoPlataforma(ordenTrabajoId, null, "enviado", "Telematic");
+                let telematic = {};
+                telematic.monitoreo = getPropietarioTelematic(PropietarioMonitoreo, Subsidiaria, TELEMATIC_OPERACION_INSTALACION_NUEVA);
+                telematic.customer = getPropietarioTelematic(Propietario, Subsidiaria, TELEMATIC_OPERACION_INSTALACION_NUEVA);
+                telematic.asset = getVehiculoTelematic(vehiculo, TELEMATIC_OPERACION_INSTALACION_NUEVA, numPuertas);
+                telematic.asset.owner = Propietario.custentity_ht_customer_id_telematic /*|| ""*/;
+                telematic.device = getDispositivoTelematic(Dispositivo, Subsidiaria, TELEMATIC_OPERACION_INSTALACION_NUEVA);
+                telematic.command = Commands;
+                log.error("Body Telematic Nueva Instalacion", telematic);
+                let myRestletResponse = ejecutarRestlet(JSON.stringify(telematic), 'customscript_ns_rs_new_installation', 'customdeploy_ns_rs_new_installation');
+                saveFile(Dispositivo.name, myRestletResponse.body);
+                let response = JSON.parse(myRestletResponse.body);
+                log.error('Response Telematic Nueva Instalacion', response);
+                if (response.results) imprimirResultados(response.results);
+                if (response.status == "ok") {
+                    aprobarTelematic(ordenTrabajoId);
+                    actualizarIdVehiculo(vehiculo.internalid[0].value, response.data.asset.id);//^ aquí se asigna el id telemtics en el registro del bien de ns
+                    actualizarIdCliente(Propietario.internalid[0].value, response.data.customer.id);
+                    confirmaciontelamatic = true;
+                    actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "enviado", response.message);
                     confirm = true
                 } else {
                     log.error("Response Message", response.message);
@@ -1471,12 +1565,12 @@ define(['N/log',
         }
 
         const envioTelecDesinstalacionDispositivoActivoFijo = (ordenTrabajoId, activofijoId) => {
-            let { Dispositivo, vehiculo, Propietario, Subsidiaria } = obtenerCamposOrdenTrabajo(ordenTrabajoId);
+            let { Dispositivo, vehiculo, Propietario, Subsidiaria, numPuertas } = obtenerCamposOrdenTrabajo(ordenTrabajoId);
 
             let registroImpulsoPlataforma = crearRegistroImpulsoPlataforma(ordenTrabajoId, activofijoId, "enviado", "Telematic");
             let telematic = {};
             telematic.customer = getPropietarioTelematic(Propietario, Subsidiaria, TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO);
-            telematic.asset = getVehiculoTelematic(vehiculo, TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO);
+            telematic.asset = getVehiculoTelematic(vehiculo, TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO, numPuertas);
             telematic.device = getDispositivoTelematic(Dispositivo, Subsidiaria, TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO);
 
             log.error("Body Telematic Desinstalacion Dispositivo AF", telematic);
@@ -1486,7 +1580,7 @@ define(['N/log',
             log.error('Response Telematic Desinstalacion Dispositivo AF', response);
             if (response.results) imprimirResultados(response.results);
             if (response.status == "ok") {
-                actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "exitoso", response.message);
+                actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "enviado", response.message);
                 return true;
             } else {
                 log.error("Response Message", response.message);
@@ -1497,14 +1591,14 @@ define(['N/log',
 
         const envioTelecDesinstalacionDispositivo = (ordenTrabajoId) => {
             let confirm = false;
-            let { Dispositivo, vehiculo, Subsidiaria, Propietario, confirmaciontelamatic } = obtenerCamposOrdenTrabajo(ordenTrabajoId);
+            let { Dispositivo, vehiculo, Subsidiaria, Propietario, confirmaciontelamatic, numPuertas } = obtenerCamposOrdenTrabajo(ordenTrabajoId);
 
             if (!confirmaciontelamatic) {
                 let registroImpulsoPlataforma = crearRegistroImpulsoPlataforma(ordenTrabajoId, null, "enviado", "Telematic");
 
                 let telematic = {};
                 telematic.customer = getPropietarioTelematic(Propietario, Subsidiaria, TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO);
-                telematic.asset = getVehiculoTelematic(vehiculo, TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO);
+                telematic.asset = getVehiculoTelematic(vehiculo, TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO, numPuertas);
                 telematic.device = getDispositivoTelematic(Dispositivo, Subsidiaria, TELEMATIC_OPERACION_DESINSTALACION_DISPOSITIVO);
 
                 log.error("Body Telematic Desinstalacion Dispositivo", telematic);
@@ -1515,7 +1609,7 @@ define(['N/log',
                 if (response.results) imprimirResultados(response.results);
                 if (response.status == "ok") {
                     aprobarTelematic(ordenTrabajoId);
-                    actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "exitoso", response.message);
+                    actualizarRegistroImpulsoPlataforma(registroImpulsoPlataforma, "enviado", response.message);
                     confirmaciontelamatic = true;
                     confirm = true;
                 } else {
@@ -1534,45 +1628,67 @@ define(['N/log',
         const envioTelecCambioPropietario = (id) => {
             try {
                 let order = record.load({ type: 'salesorder', id: id });
+                let subsidiaryData = obtenerSubsidiaria(order.getValue('subsidiary'));
                 let clienteNew = order.getSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_os_cliente', line: 0 });
                 let vehiculo = search.lookupFields({
                     type: 'customrecord_ht_record_bienes', id: order.getValue('custbody_ht_so_bien'),
-                    columns: ['custrecord_ht_bien_placa', 'custrecord_ht_bien_marca', 'custrecord_ht_bien_modelo',
+                    columns: [
+                        'custrecord_ht_bien_placa',
+                        'custrecord_ht_bien_marca',
+                        'custrecord_ht_bien_modelo',
                         'custrecord_ht_bien_chasis',
                         'custrecord_ht_bien_motor',
                         'custrecord_ht_bien_colorcarseg',
                         'custrecord_ht_bien_tipoterrestre',
                         'name',
                         'custrecord_ht_bien_ano',
-                        'altname', 'custrecord_ht_bien_id_telematic']
+                        'altname', 'custrecord_ht_bien_id_telematic'
+                    ]
                 });
                 let Propietario = search.lookupFields({
                     type: 'customer', id: order.getValue('entity'),
-                    columns: ['entityid', 'custentity_ht_cl_primernombre', 'custentity_ht_cl_segundonombre',
+                    columns: [
+                        'entityid',
+                        'custentity_ht_cl_primernombre',
+                        'custentity_ht_cl_segundonombre',
                         'custentity_ht_cl_apellidopaterno',
                         'custentity_ht_cl_apellidomaterno',
                         'phone',
-                        'email', 'custentity_ht_customer_id_telematic']
+                        'email', 'custentity_ht_customer_id_telematic'
+                    ]
                 });
                 let PropietarioNew = search.lookupFields({
                     type: 'customer', id: clienteNew,
-                    columns: ['entityid', 'custentity_ht_cl_primernombre', 'custentity_ht_cl_segundonombre',
+                    columns: [
+                        'entityid',
+                        'custentity_ht_cl_primernombre',
+                        'custentity_ht_cl_segundonombre',
                         'custentity_ht_cl_apellidopaterno',
                         'custentity_ht_cl_apellidomaterno',
                         'phone',
                         'email',
-                        'custentity_ht_customer_id_telematic'
+                        'custentity_ht_customer_id_telematic',
+                        'custentityts_ec_cod_tipo_doc_identidad',
+                        'vatregnumber',
+                        'companyname'
                     ]
                 });
+
+                let identityDocumentType = obtenerTipoDocumentoTelematic(PropietarioNew.custentityts_ec_cod_tipo_doc_identidad)
 
                 let telematic = {
                     customerNew: {
                         id: PropietarioNew.custentity_ht_customer_id_telematic,
-                        username: PropietarioNew.entityid,
+                        username: PropietarioNew.email,
                         customer: {
-                            identity_document_number: "0932677495",
-                            company_code: "0991259546001",
-                            identity_document_type: 3
+                            identity_document_number: PropietarioNew.vatregnumber,
+                            company_code: subsidiaryData.taxidnum,
+                            identity_document_type: identityDocumentType,
+                            business_name: PropietarioNew.companyname || "",
+                            phone_number:PropietarioNew.phone,
+                            emergency_phone_number: subsidiaryData.custrecord_telematic_emergency_phone_num,
+                            assistance_phone_number: subsidiaryData.custrecord_telematic_assistanc_phone_num,
+                            technical_support_email: subsidiaryData.custrecord_telematic_technic_support_ema
                         },
                         first_name: PropietarioNew.custentity_ht_cl_primernombre + ' ' + PropietarioNew.custentity_ht_cl_segundonombre,
                         last_name: PropietarioNew.custentity_ht_cl_apellidopaterno + ' ' + PropietarioNew.custentity_ht_cl_apellidomaterno,
@@ -1580,7 +1696,7 @@ define(['N/log',
                         email: PropietarioNew.email
                     },
                     customerOld: Propietario.custentity_ht_customer_id_telematic,
-                    asset: vehiculo.custrecord_ht_bien_id_telematic
+                    asset: vehiculo.custrecord_ht_bien_id_telematic,
                 }
 
                 log.error("Body Telematic Cambio Propietario", telematic);
@@ -1591,9 +1707,12 @@ define(['N/log',
                     headers: obtenerHeaders()
                 });
                 log.error("Response Telematic Cambio Propietario", JSON.parse(myRestletResponse.body));
-                return true;
+                return JSON.parse(myRestletResponse.body);
             } catch (e) {
-                return false;
+                let retornoError = {
+                    send: false
+                }
+                return retornoError;
             }
         }
 
@@ -1820,7 +1939,10 @@ define(['N/log',
             if (!id) return;
             let vehiculo = search.lookupFields({
                 type: 'customrecord_ht_record_bienes', id: id,
-                columns: ['custrecord_ht_bien_placa', 'custrecord_ht_bien_marca', 'custrecord_ht_bien_modelo',
+                columns: [
+                    'custrecord_ht_bien_placa',
+                    'custrecord_ht_bien_marca',
+                    'custrecord_ht_bien_modelo',
                     'custrecord_ht_bien_chasis',
                     'custrecord_ht_bien_motor',
                     'custrecord_ht_bien_colorcarseg',
@@ -1828,7 +1950,7 @@ define(['N/log',
                     'custrecord_ht_bien_tipoterrestre.custrecord_ht_tt_idtelematic',
                     'name',
                     'custrecord_ht_bien_ano',
-                    //'altname',
+                    'custrecord_ht_bien_codsysh',
                     'custrecord_ht_bien_consesionarios.custrecord_ht_cd_ruccanaldistribucion',
                     'custrecord_ht_bien_consesionarios.custrecord_ht_cd_nombre',
                     'custrecord_ht_bien_consesionarios.custrecord_ht_cd_direccion',
@@ -1851,7 +1973,8 @@ define(['N/log',
                     'custrecord_ht_bien_numeropuertas',
                     'custrecord_ht_bien_num_ruedas',
                     'custrecord_ht_bien_max_peso',
-                    'custrecord_ht_bien_largo'
+                    'custrecord_ht_bien_largo',
+                    'altname'
                 ]
             });
             return vehiculo;
@@ -1861,7 +1984,9 @@ define(['N/log',
             if (!id) return;
             let Dispositivo = search.lookupFields({
                 type: 'customrecord_ht_record_mantchaser', id: id,
-                columns: ['custrecord_ht_mc_vid', 'custrecord_ht_mc_modelo',
+                columns: [
+                    'custrecord_ht_mc_vid',
+                    'custrecord_ht_mc_modelo',
                     'custrecord_ht_mc_unidad',
                     'custrecord_ht_mc_seriedispositivo',
                     'custrecord_ht_mc_imei',
@@ -2299,13 +2424,13 @@ define(['N/log',
 
         const envioTelecActualizacionCobertura = (ordenTrabajoId, fechaFinCobertura) => {
             log.error("datos", { ordenTrabajoId, fechaFinCobertura });
-            let { vehiculo, Propietario, Subsidiaria } = obtenerCamposOrdenTrabajo(ordenTrabajoId);
+            let { vehiculo, Propietario, Subsidiaria, numPuertas } = obtenerCamposOrdenTrabajo(ordenTrabajoId);
 
             vehiculo.fechaFinCobertura = fechaFinCobertura;
             log.error("envioTelecActualizacionCobertura", "envioTelecActualizacionCobertura");
             let telematic = {};
             telematic.customer = getPropietarioTelematic(Propietario, Subsidiaria, TELEMATIC_OPERACION_ACTUALIZACION_COBERTURAS);
-            telematic.asset = getVehiculoTelematic(vehiculo, TELEMATIC_OPERACION_ACTUALIZACION_COBERTURAS);
+            telematic.asset = getVehiculoTelematic(vehiculo, TELEMATIC_OPERACION_ACTUALIZACION_COBERTURAS, numPuertas);
 
             log.error("Body Telematic envio", telematic);
             let myRestletResponse = https.requestRestlet({
@@ -2375,26 +2500,42 @@ define(['N/log',
                 let longitud = Vehiculo["custrecord_ht_bien_largo"]
                 let pesoMaximo = Vehiculo["custrecord_ht_bien_max_peso"]
 
-                if (name == "Brand" && descMarca) {
-                    result.push({ attribute: id, value: descMarca })
-                } else if (name == "Model" && descModelo) {
-                    result.push({ attribute: id, value: descModelo });
-                } else if (name == "Cilinders" && descCilindro) {
-                    result.push({ attribute: id, value: descCilindro });
-                } else if (name == "Number Wheels" && numeroRuedas) {
-                    result.push({ attribute: id, value: numeroRuedas });
-                } else if (name == "Max Weight" && pesoMaximo) {
-                    result.push({ attribute: id, value: pesoMaximo });
-                } else if (name == "Length" && longitud) {
-                    result.push({ attribute: id, value: longitud });
-                } else if (name == "Chasis" && Vehiculo.custrecord_ht_bien_chasis) {
-                    result.push({ attribute: id, value: Vehiculo.custrecord_ht_bien_chasis });
-                } else if (name == "Motor" && Vehiculo.custrecord_ht_bien_motor) {
-                    result.push({ attribute: id, value: Vehiculo.custrecord_ht_bien_motor });
-                } else if (name == "Plate" && Vehiculo.custrecord_ht_bien_placa) {
-                    result.push({ attribute: id, value: Vehiculo.custrecord_ht_bien_placa });
-                } else if (name == "COD_SYS" && Vehiculo.name) {
-                    result.push({ attribute: id, value: Number(Vehiculo.name.replace(/\D/g, '')).toString() });
+                if (tipoVehiculo == '1' || tipoVehiculo == '2') {
+                    if (name == "Brand" && descMarca) {
+                        result.push({ attribute: id, value: descMarca })
+                    } else if (name == "Model" && descModelo) {
+                        result.push({ attribute: id, value: descModelo });
+                    } else if (name == "Cilinders" && descCilindro) {
+                        result.push({ attribute: id, value: descCilindro });
+                    } else if (name == "Number Wheels" && numeroRuedas) {
+                        result.push({ attribute: id, value: numeroRuedas });
+                    } else if (name == "Max Weight" && pesoMaximo) {
+                        result.push({ attribute: id, value: pesoMaximo });
+                    } else if (name == "Length" && longitud) {
+                        result.push({ attribute: id, value: longitud });
+                    }
+                } else {
+                    if (name == "Brand" && descMarca) {
+                        result.push({ attribute: id, value: descMarca })
+                    } else if (name == "Model" && descModelo) {
+                        result.push({ attribute: id, value: descModelo });
+                    } else if (name == "Cilinders" && descCilindro) {
+                        result.push({ attribute: id, value: descCilindro });
+                    } else if (name == "Number Wheels" && numeroRuedas) {
+                        result.push({ attribute: id, value: numeroRuedas });
+                    } else if (name == "Max Weight" && pesoMaximo) {
+                        result.push({ attribute: id, value: pesoMaximo });
+                    } else if (name == "Length" && longitud) {
+                        result.push({ attribute: id, value: longitud });
+                    } else if (name == "Chasis" && Vehiculo.custrecord_ht_bien_chasis) {
+                        result.push({ attribute: id, value: Vehiculo.custrecord_ht_bien_chasis });
+                    } else if (name == "Motor" && Vehiculo.custrecord_ht_bien_motor) {
+                        result.push({ attribute: id, value: Vehiculo.custrecord_ht_bien_motor });
+                    } else if (name == "Plate" && Vehiculo.custrecord_ht_bien_placa) {
+                        result.push({ attribute: id, value: Vehiculo.custrecord_ht_bien_placa });
+                    } else if (name == "COD_SYS" && Vehiculo.name) {
+                        result.push({ attribute: id, value: Vehiculo.custrecord_ht_bien_codsysh ? Vehiculo.custrecord_ht_bien_codsysh : Vehiculo.name });
+                    }
                 }
             }
             return result;
@@ -2556,6 +2697,7 @@ define(['N/log',
             envioPXRegistrarCanal,
             envioPXInstalacionComponentes,
             envioTelecInstalacionNueva,
+            envioTelecReinstalacion,
             envioTelecDesinstalacionDispositivo,
             envioTelecDesinstalacionDispositivoActivoFijo,
             envioTelecCambioPropietario,

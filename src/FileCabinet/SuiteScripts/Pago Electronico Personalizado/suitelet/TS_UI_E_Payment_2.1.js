@@ -158,7 +158,7 @@ define([
         logSubList.addSublistField(FIELDS.sublistfield.status.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.status.text);
         logSubList.addSublistField(FIELDS.sublistfield.documents.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.documents.text);
         logSubList.addSublistField(FIELDS.sublistfield.result.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.result.text);
-        logSubList.addSublistField(FIELDS.sublistfield.files.id, serverWidget.FieldType.TEXT, FIELDS.sublistfield.files.text);
+        logSubList.addSublistField(FIELDS.sublistfield.files.id, serverWidget.FieldType.TEXTAREA, FIELDS.sublistfield.files.text);
         userInterface.setLogSublistData(logSubList);
         logSubList.addRefreshButton();
         form.addSubmitButton(FIELDS.button.process.text);

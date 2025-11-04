@@ -476,7 +476,7 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
     }
 
     const getTelematicUrlBase = () => {
-        return "https://test-telematicsapi.hunterlabs.io";
+        return "https://telematicsapi.hunterlabs.io";
     }
 
     const getResultResponse = (status, results, message, data) => {

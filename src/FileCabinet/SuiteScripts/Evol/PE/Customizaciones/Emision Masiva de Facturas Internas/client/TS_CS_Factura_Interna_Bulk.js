@@ -45,6 +45,7 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/https'],
                 let paramHasta = curRec.getValue('custpage_field_fecha_hasta');
                 if (paramDesde.toString().length > 0 && paramHasta.toString().length > 0) {
                     let paramCliente = curRec.getValue('custpage_field_cliente');
+                    let paramCodAgrupado = curRec.getValue('custpage_field_cod_agrupado');
                     // if (paramTransportista.length > 0) {
                     // if (paramDesde.toString().length > 0 && paramHasta.toString().length > 0) {
                     let paramClientetxt = curRec.getText('custpage_field_cliente');
@@ -60,7 +61,8 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/https'],
                             paramDesde: paramDesde,
                             paramHasta: paramHasta,
                             paramCliente: paramCliente,
-                            paramClientetxt: paramClientetxt
+                            paramClientetxt: paramClientetxt,
+                            paramCodAgrupado:paramCodAgrupado
                         }
                     });
                 } else {
@@ -75,6 +77,7 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/https'],
                     let paramCliente = curRec.getValue('custpage_field_cliente');
                     let paramClientetxt = curRec.getText('custpage_field_cliente');
                     let pageId = curRec.getValue({ fieldId: 'custpage_pageid' });
+                    let paramCodAgrupado = curRec.getValue('custpage_field_cod_agrupado');
                     pageId = parseInt(pageId.split('_')[1]);
                     window.onbeforeunload = null;
                     document.location = url.resolveScript({
@@ -86,7 +89,8 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/https'],
                             paramDesde: paramDesde,
                             paramHasta: paramHasta,
                             paramCliente: paramCliente,
-                            paramClientetxt: paramClientetxt
+                            paramClientetxt: paramClientetxt,
+                            paramCodAgrupado:paramCodAgrupado
                         }
                     });
                 }
@@ -131,7 +135,8 @@ define(['N/url', 'N/currentRecord', 'N/ui/dialog', 'N/https'],
                         paramDesde: paramDesde,
                         paramHasta: paramHasta,
                         paramCliente: paramCliente,
-                        paramClientetxt: paramClientetxt
+                        paramClientetxt: paramClientetxt,
+                        paramCodAgrupado:paramCodAgrupado
                     }
                 });
             } else {

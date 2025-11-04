@@ -20,6 +20,7 @@ define([
                 let units = context.request.parameters.units || " ";
                 let bin = context.request.parameters.bin || "";
                 let inventoryDetail = getInventoryBalance(item, location, bin);
+                log.error('inventoryDetail', inventoryDetail);
                 let itemType = getItemType(item);
 
                 let form = serverWidget.createForm({
@@ -187,13 +188,16 @@ define([
     const getInventoryBalance = (item, location, bin) => {
         if (!(item && location)) return;
         //let inventoryDetail = getInventoryDetail(item, location);
+        log.error('item, location, bin', `${item}, ${location}, ${bin}`)
         let inventoryBalanceResult = {};
         let inventoryBalanceSearch = search.create({
             type: "inventorybalance",
             filters: [
                 ["location", "anyof", location],
                 "AND",
-                ["item", "anyof", item]
+                ["item", "anyof", item],
+                "AND",
+                ["binnumber.binnumber", "is", bin]
             ],
             columns: [
                 search.createColumn({ name: "binnumber", label: "Bin Number" }),
@@ -204,6 +208,8 @@ define([
                 search.createColumn({ name: "available", label: "Available" })
             ]
         });
+        var searchResultCount = inventoryBalanceSearch.runPaged().count;
+        //log.error('searchResultCount', searchResultCount)
 
         var pagedData = inventoryBalanceSearch.runPaged({ pageSize: 1000 });
         pagedData.pageRanges.forEach((pageRange) => {
@@ -217,7 +223,10 @@ define([
                 let statusId = result.getValue('status');
                 let isSerialized = result.getValue(result.columns[3]);
                 let key = isSerialized ? inventoryNumberId : binNumberId;
-                if (binNumber != bin) return true;
+
+                //if (binNumber != bin) return true;
+                //log.error('binNumber != bin', `${binNumber} != ${bin}`)
+                //log.error('KEY', `${isSerialized} ? ${inventoryNumberId} :${binNumberId}`)
                 inventoryBalanceResult[key] = {
                     inventoryNumber,
                     binNumber,

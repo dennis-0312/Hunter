@@ -22,7 +22,9 @@ define([
  * @param{error} error
  */
     (log, record, search, https, query, error, _constant, _errorMessage, _controller) => {
-        let placaOld = ""
+        let placaOld = "";
+        const SUBSIDIARY_EC = 2;
+        const SUBSIDIARY_PE = 3;
         /**
          * Defines the function definition that is executed before record is loaded.
          * @param {Object} scriptContext
@@ -51,13 +53,23 @@ define([
                 if (scriptContext.type === scriptContext.UserEventType.CREATE || scriptContext.type === scriptContext.UserEventType.COPY) {
                     let tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
                     const bien_placa = objRecord.getValue("custrecord_ht_bien_placa");
-                    let patron_placa_vehiculo = /^[A-Z]{3}-[0-9]{4}$/;
+                    let subsidiary = objRecord.getValue('custrecord_bn_subsidiaria');
+                    let patron_placa_vehiculo = subsidiary == SUBSIDIARY_EC ? /^[A-Z]{3}-[0-9]{4}$/ : subsidiary == SUBSIDIARY_PE ? /^[A-Z0-9]{3}-[0-9]{3}$/ : false;
+                    if (!patron_placa_vehiculo) {
+                        let myCustomError1 = error.create({
+                            name: 'SUBSIDIARIA NO CONFIGURADA',
+                            message: 'La subsidiaria no cuenta con una configuración de formato de placa o no se ha ingresado.',
+                            notifyOff: false
+                        });
+                        log.debug('Error: ' + myCustomError1.name, myCustomError1.message);
+                        throw myCustomError1;
+                    }
                     if (tipo_terrestre == _constant.Constants.VEHICULO) {
                         if (bien_placa != "S/P") {
                             if (bien_placa.match(patron_placa_vehiculo) == null) {
                                 let myCustomError = error.create({
                                     name: 'FORMATO DE PLACA INCORRECTO',
-                                    message: 'Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-0123), o sin placa (S/P) si la desconoce.',
+                                    message: 'Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-012) de acuerdo al país, o sin placa (S/P) si la desconoce.',
                                     notifyOff: false
                                 });
                                 log.debug('Error: ' + myCustomError.name, myCustomError.message);
@@ -91,7 +103,17 @@ define([
                 } else if (scriptContext.type === scriptContext.UserEventType.EDIT) {
                     var tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
                     const bien_placa = objRecord.getValue("custrecord_ht_bien_placa");
-                    var patron_placa_vehiculo = /^[A-Z]{3}-[0-9]{4}$/;
+                    let subsidiary = objRecord.getValue('custrecord_bn_subsidiaria');
+                    let patron_placa_vehiculo = subsidiary == SUBSIDIARY_EC ? /^[A-Z]{3}-[0-9]{4}$/ : subsidiary == SUBSIDIARY_PE ? /^[A-Z0-9]{3}-[0-9]{3}$/ : false;
+                    if (!patron_placa_vehiculo) {
+                        let myCustomError1 = error.create({
+                            name: 'SUBSIDIARIA NO CONFIGURADA',
+                            message: 'La subsidiaria no cuenta con una configuración de formato de placa o no se ha ingresado.',
+                            notifyOff: false
+                        });
+                        log.debug('Error: ' + myCustomError1.name, myCustomError1.message);
+                        throw myCustomError1;
+                    }
                     var flag = true;
                     if (tipo_terrestre == _constant.Constants.VEHICULO) {
                         if (bien_placa != "S/P") {

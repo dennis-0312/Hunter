@@ -5,6 +5,8 @@
 define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
 
     let OK_STATUS_CODE = [200, 201];
+    let URL = "https://test-telematicsapi.hunterlabs.io" //SB: https://test-telematicsapi.hunterlabs.io / PR: https://telematicsapi.hunterlabs.io
+    let TOKEN = 'ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI='
 
     const post = (context) => {
         let results = [];
@@ -21,7 +23,6 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
             if (OK_STATUS_CODE.indexOf(getUserAssetCommandResponse.code) == -1) return getResultResponse("error", results, JSON.stringify({ code: getUserAssetCommandResponse.code, error: JSON.parse(getUserAssetCommandResponse.body) }));
             getUserAssetCommandResponse = JSON.parse(getUserAssetCommandResponse.body);
             log.error("getUserAssetCommandResponse", getUserAssetCommandResponse);
-
 
             let userAssetCommandFound = getUserAssetCommandResponse.results.find(userAssetCommand => userAssetCommand.command == context.command);
             if (userAssetCommandFound === undefined) {
@@ -49,10 +50,6 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
                 if (OK_STATUS_CODE.indexOf(patchUserAssetCommandResponse.code) == -1) return getResultResponse("error", results, JSON.stringify({ code: patchUserAssetCommandResponse.code, error: userAssetCommandResponse }));
                 log.error("patchUserAssetCommandResponse", userAssetCommandResponse);
             }
-
-
-
-
             return getResultResponse("ok", results, "Ejecución exitosa");
         } catch (error) {
             log.error("error", error);
@@ -68,7 +65,7 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
         let headers = {};
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         return headers;
     }
 
@@ -76,13 +73,13 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
         let headers = {};
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         headers['X-HTTP-Method-Override'] = 'PATCH';
         return headers;
     }
 
     const getTelematicUrlBase = () => {
-        return "https://test-telematicsapi.hunterlabs.io";
+        return URL
     }
 
     const getResultResponse = (status, results, message, data) => {
@@ -94,7 +91,6 @@ define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
     }
 
     const validateFields = (context) => {
-
         let assetValidation = validateAsset(context.asset);
         if (assetValidation.status == "error") return assetValidation;
         let userValidation = validatuser(context.user);

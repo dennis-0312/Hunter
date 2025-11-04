@@ -2,7 +2,7 @@
  *@NApiVersion 2.1
  *@NScriptType ScheduledScript
  */
- define([
+define([
     'N/search',
     'N/record',
     'N/email',
@@ -26,7 +26,7 @@
                     columns: ['custrecord_ht_tiempo_corte_sim_card']
                 });
                 let timeCorte = subsidiaria.custrecord_ht_tiempo_corte_sim_card;
-                log.error('timeCorte',timeCorte)
+                log.error('timeCorte', timeCorte)
                 timeCorte = Number(timeCorte);
                 var e = new Date();
                 var mesCierre = e.setMonth(e.getMonth() - timeCorte);
@@ -354,7 +354,7 @@
                         [
                             ["type", "anyof", "CustInvc"],
                             "AND",
-                            ["duedate", "on", "21/12/2023"],
+                            ["duedate", "on", mesCierre],
                             "AND",
                             ["status", "anyof", "CustInvc:A"],
                             "AND",
@@ -367,8 +367,6 @@
                             ["custbody_ht_so_bien", "noneof", "@NONE@"],
                             "AND",
                             ["createdfrom", "noneof", "@NONE@"]
-
-
                         ],
                     columns:
                         [

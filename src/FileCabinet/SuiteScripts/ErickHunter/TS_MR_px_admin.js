@@ -3,7 +3,10 @@
  *@NScriptType MapReduceScript
  */
 define(['N/log', 'N/https', 'N/search', 'N/record', 'N/task', 'N/runtime'], function (log, https, search, record, task, runtime) {
-    const URLPX = 'https://apipx.24hm.net/API_PX/WSPX.asmx'; // -> reemplezar https://www2.huntermonitoreo.com/API_PX/WSPX.asmx
+    const URLPX = 'https://apipx.24hm.net/API_PX/WSPX.asmx'; 
+    // DEV: https://apipx.24hm.net/API_PX/WSPX.asmx
+    // PR: https://tristan.24hm.net/API_PX_LATAM/WSPX.asmx
+    //-> reemplezar https://www2.huntermonitoreo.com/API_PX/WSPX.asmx
     const scriptObj = runtime.getCurrentScript();
     function getInputData() {
         let StrToken = scriptObj.getParameter({ name: 'custscript_strtoken' });

@@ -8,15 +8,15 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
 
     const pageInit = (scriptContext) => {
         typeMode = scriptContext.mode; //!Importante, no borrar.
+        let currentRecord = scriptContext.currentRecord;
     }
 
-    const saveRecord = (context) => {
-        let currentRecord = context.currentRecord;
-        //console.log('typeMode', typeMode);
-        // alert(currentRecord.type)
+    const saveRecord = (scriptContext) => {
+        let currentRecord = scriptContext.currentRecord;
         let inventoryAssignment = currentRecord.selectLine({ sublistId: 'inventoryassignment', line: 0 });
         let receiptinventorynumber = inventoryAssignment.getCurrentSublistText({ sublistId: 'inventoryassignment', fieldId: 'receiptinventorynumber' });
         let issueinventorynumber = inventoryAssignment.getCurrentSublistText({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber' });
+
         if (receiptinventorynumber.length > 0) {
             try {
                 console.log('inventorydetailid', currentRecord.id);
@@ -35,6 +35,7 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
                     }
                 }
                 return true;
+                //return false;
             } catch (error) {
                 console.log(error)
                 dialog.alert({ title: 'Error', message: 'Ocurrió un error, comuníquese con su adminsitrador.' });
@@ -106,8 +107,8 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
                     ];
                     break;
                 default:
-                // alert("Revisar configuración TIPO DE COMPONENTE del artículo")
-                // return false;
+                    alert("Revisar configuración TIPO DE COMPONENTE del artículo")
+                    return false;
             }
             // console.log(customRecord);
             // console.log(columns);
@@ -160,10 +161,46 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
                     });
                 });
             }
+            //return false;
             return flag
         }
     }
 
+    const fieldChanged = (scriptContext) => {
+        let currentRecord = scriptContext.currentRecord;
+        let sublistName = scriptContext.sublistId;
+        let fieldName = scriptContext.fieldId;
+        if (typeMode == 'create' || typeMode == 'copy' || typeMode == 'edit') {
+            try {
+                if (fieldName == 'receiptinventorynumber') {
+                    //alert('receiptinventorynumber', receiptinventorynumber);
+                }
+
+                if (fieldName == 'issueinventorynumber') {
+                    //alert('issueinventorynumber', issueinventorynumber);
+                    //alert(currentRecord.getValue('item'));
+                    // Campos que queremos recuperar
+                    let camposRequeridos = ['custitem_ht_ai_tipocomponente'];
+                    let resultado = search.lookupFields({
+                        type: 'serializedinventoryitem',
+                        id: currentRecord.getValue('item'),
+                        columns: camposRequeridos
+                    });
+                    //alert(JSON.stringify(resultado));
+                    // Mostrar los resultados
+                    for (let campo in resultado) {
+                        if (resultado.hasOwnProperty(campo)) {
+                            //alert(campo + ': ' + JSON.stringify(resultado[campo]));
+                        }
+                    }
+                }
+
+            } catch (error) {
+                console.log(error)
+                dialog.alert({ title: 'Alerta', message: 'Ocurrió un error. Contacte con su administrador.' });
+            }
+        }
+    }
 
     const validacionGlobalDatoTecnico = (serie) => {
         let retorno = true;
@@ -233,6 +270,7 @@ define(['N/search', 'N/ui/dialog'], (search, dialog) => {
 
     return {
         pageInit: pageInit,
-        saveRecord: saveRecord
+        saveRecord: saveRecord,
+        fieldChanged: fieldChanged
     }
 });

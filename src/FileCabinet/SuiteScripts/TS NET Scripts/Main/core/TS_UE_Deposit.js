@@ -40,6 +40,7 @@ define(['N/log', 'N/record', 'N/search'],
          */
         const afterSubmit = (scriptContext) => {
             if (scriptContext.type != scriptContext.UserEventType.CREATE || scriptContext.type != scriptContext.UserEventType.EDIT) {
+
                 try {
                     let depositSearchObj = search.create({
                         type: "deposit",
@@ -57,18 +58,20 @@ define(['N/log', 'N/record', 'N/search'],
                         columns:
                             [
                                 search.createColumn({ name: "internalid", label: "Internal ID" }),
-                                search.createColumn({ name: "memomain", join: "appliedToTransaction", label: "Memo (Main)" })
+                                search.createColumn({ name: "memomain", join: "appliedToTransaction", label: "Memo (Main)" }),
+                                search.createColumn({ name: "formulatext", formula: "{appliedtotransaction.entity}", label: "Formula (Text)" })
                             ]
                     });
                     var searchResultCount = depositSearchObj.runPaged().count;
                     log.debug("depositSearchObj result count", searchResultCount);
                     let objResults = depositSearchObj.run().getRange({ start: 0, end: 1 });
                     log.debug('objResults', objResults);
-                    let glosa = objResults[0].getValue({ name: "memomain", join: "appliedToTransaction", label: "Memo (Main)" });
+                    let glosa = `${objResults[0].getValue({ name: "formulatext", formula: "{appliedtotransaction.entity}", label: "Formula (Text)" })}:${objResults[0].getValue({ name: "memomain", join: "appliedToTransaction", label: "Memo (Main)" })}`;
+                    log.debug('glosa', glosa);
                     record.submitFields({
                         type: scriptContext.newRecord.type,
                         id: scriptContext.newRecord.id,
-                        values: { 'memo': glosa },
+                        values: { 'memo': `${glosa} ${scriptContext.newRecord.getValue('memo')}` },
                         options: {
                             enableSourcing: true,
                             ignoreMandatoryFields: true

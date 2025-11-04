@@ -4,26 +4,26 @@
  * @param {string} altname - El valor del campo altname.
  * @returns {string} - El campo altname en el formato deseado. 
  */
- define(['N/query', 'N/https', 'N/log'], function (query, https, log) {
+define(['N/query', 'N/https', 'N/log'], function (query, https, log) {
 
     function _get(context) {
-        try{
-            
+        try {
+
             let Id = context.id;
             let ResultadoConsulta = [];
 
             switch (Id) {
-              case "OS": 
-                ResultadoConsulta = ConsultaOrdenServicio(context.IdCliente, 'PVP');
-                break;
-              case "CANAL":
-                ResultadoConsulta = ConsultaCanal();
-                break;
-              case "OTRO":
-                ResultadoConsulta = ConsultaCualquiera(context.tabla);
-                break;
-              default: 
-                return 'id:400, No se encontraron resultados.';
+                case "OS":
+                    ResultadoConsulta = ConsultaOrdenServicio(context.IdCliente, 'PVP');
+                    break;
+                case "CANAL":
+                    ResultadoConsulta = ConsultaCanal();
+                    break;
+                case "OTRO":
+                    ResultadoConsulta = ConsultaCualquiera(context.tabla);
+                    break;
+                default:
+                    return 'id:400, No se encontraron resultados.';
             }
             return ResultadoConsulta;
 
@@ -35,21 +35,21 @@
         }
     }
 
-    function _post(context){
-        try{
+    function _post(context) {
+        try {
             let ResultadoConsulta = [];
 
             ResultadoConsulta = ConsultaCualquiera(context.tabla);
 
             return ResultadoConsulta;
-        }catch (error) {
+        } catch (error) {
             log.error('error', error.message);
             return 'id:400, No se pudo insertar el registro. Error controlado.';
         }
     }
 
-    function  _put(context) {
-        try{
+    function _put(context) {
+        try {
             let rec = record.load({
                 type: record.Type.customer,
                 id: 455,
@@ -64,21 +64,21 @@
             let recId = rec.save();
 
             return recId;
-        }catch (error) {
+        } catch (error) {
             log.error('error', error.message);
             return 'id:400, No se pudo insertar el registro. Error controlado.';
         }
     }
-   
+
     function ConsultaCualquiera(Entidad) {
-        try{
+        try {
             let resultado = null;
-log.error('post: ', Entidad);
-          
+            log.error('post: ', Entidad);
+
             let CanalQuery = query.runSuiteQL({
-              query: `${Entidad}`
-              //query: `SELECT * FROM CUSTOMRECORD_HT_PP_MAIN_PARAM_PROD WHERE custrecord_ht_pp_parametrizacion_valor='118'`
-              //query: `SELECT * FROM CUSTOMRECORD_HT_PP_MAIN_PARAM_PROD WHERE custrecord_ht_pp_parametrizacion_rela = 6`
+                query: `${Entidad}`
+                //query: `SELECT * FROM CUSTOMRECORD_HT_PP_MAIN_PARAM_PROD WHERE custrecord_ht_pp_parametrizacion_valor='118'`
+                //query: `SELECT * FROM CUSTOMRECORD_HT_PP_MAIN_PARAM_PROD WHERE custrecord_ht_pp_parametrizacion_rela = 6`
             });
 
             let res = CanalQuery.asMappedResults();
@@ -89,21 +89,21 @@ log.error('post: ', Entidad);
                 resultado = { error: 'no data' };
             }
 
-          log.error('consulta: ',resultado);
+            log.error('consulta: ', resultado);
 
             return JSON.stringify({
                 results: resultado
             });
-         
+
         } catch (error) {
-                log.error('error', error);
-                //return JSON.stringify({error: error.message});
-                return 'id:400, No se encontraron resultados. Error Controlado. (ConsultaCualquiera)';
+            log.error('error', error);
+            //return JSON.stringify({error: error.message});
+            return 'id:400, No se encontraron resultados. Error Controlado. (ConsultaCualquiera)';
         }
-   }
+    }
 
     function ConsultaCanal() {
-        try{
+        try {
             let resultado = null;
             let CanalQuery = query.runSuiteQL({
                 query: `SELECT  * FROM CUSTOMRECORD_HT_RECORD_CANALDISTRIBUCION`,
@@ -120,19 +120,19 @@ log.error('post: ', Entidad);
             return JSON.stringify({
                 results: resultado
             });
-         
+
         } catch (error) {
-                log.error('error', error);
-                //return JSON.stringify({error: error.message});
-                return 'id:400, No se encontraron resultados. Error Controlado. (ConsultaCanal)';
+            log.error('error', error);
+            //return JSON.stringify({error: error.message});
+            return 'id:400, No se encontraron resultados. Error Controlado. (ConsultaCanal)';
         }
-   }
-   
+    }
+
     function ConsultaOrdenServicio(idCliente, NivelPrecio) {
-        try{
+        try {
             let resultado = null;
             let OrdenQuery = query.runSuiteQL({
-            query:  `SELECT OS.abbrevtype TipoDoc,
+                query: `SELECT OS.abbrevtype TipoDoc,
                             OS.autocalculatelag RutaCentroTrabajoFabricacion,
                             OS.billingaddress DireccionFactura,
                             OS.billingstatus EstadoFactura,
@@ -312,7 +312,7 @@ log.error('post: ', Entidad);
                         AND     OS.entity = ?
                         AND     PRC.pricelevelname = ?
                         ORDER BY OS.CREATEDDATE `,
-                        params: [idCliente, NivelPrecio]
+                params: [idCliente, NivelPrecio]
             });
 
             let res = OrdenQuery.asMappedResults();
@@ -327,16 +327,16 @@ log.error('post: ', Entidad);
                 results: resultado
             });
 
-        }catch (error) {
-                log.error('error', error);
-                //return JSON.stringify({error: error.message});
-                return 'id:400, No se encontraron resultados. Error Controlado. (ConsultaOrdenServicio)';
-        }    
+        } catch (error) {
+            log.error('error', error);
+            //return JSON.stringify({error: error.message});
+            return 'id:400, No se encontraron resultados. Error Controlado. (ConsultaOrdenServicio)';
+        }
     }
 
     return {
         get: _get,
-      post: _post
+        post: _post
     }
 
- });
+});

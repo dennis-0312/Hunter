@@ -2,7 +2,7 @@
  *@NApiVersion 2.1
  *@NScriptType Restlet
  */
-define(['N/log', 'N/https'], function (log, https) {
+define(['N/log', 'N/https'], (log, https) => {
     function _post(context) {
         let headers1 = [];
         headers1['Accept'] = '*/*';

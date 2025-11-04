@@ -80,9 +80,7 @@ define([
                     type: serverWidget.FieldType.INTEGER,
                     label: 'Cantidad'
                 });
-
                 form.addSubmitButton("Guardar");
-
                 context.response.writePage(form);
             }
 

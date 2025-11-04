@@ -2,9 +2,11 @@
  *@NApiVersion 2.1
  *@NScriptType Restlet
  */
-define(['N/log', 'N/https'], function (log, https) {
+define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
 
     let OK_STATUS_CODE = [200, 201];
+    let URL = "https://test-telematicsapi.hunterlabs.io" //SB: https://test-telematicsapi.hunterlabs.io / PR: https://telematicsapi.hunterlabs.io
+    let TOKEN = 'ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
 
     const post = (context) => {
         try {
@@ -39,12 +41,10 @@ define(['N/log', 'N/https'], function (log, https) {
                 } else {
                     return getResultResponse("error", results, `Se encontró más de un dispositivo con el id ${context.device.id}`);
                 }
-
             } else {
                 return getResultResponse("error", results, `No se envío el id del dispositivo`);
             }
-
-            return getResultResponse("ok", results, "Ejecución exitosa", {device: deviceResponse});
+            return getResultResponse("ok", results, "Ejecución exitosa", { device: deviceResponse });
         } catch (error) {
             log.error("error", error);
             return getResultResponse("error", results, "Ocurrió un error inesperado en la instalación");
@@ -59,7 +59,7 @@ define(['N/log', 'N/https'], function (log, https) {
         let headers = {};
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         return headers;
     }
 
@@ -67,13 +67,13 @@ define(['N/log', 'N/https'], function (log, https) {
         let headers = {};
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         headers['X-HTTP-Method-Override'] = 'PATCH';
         return headers;
     }
 
     const getTelematicUrlBase = () => {
-        return "https://test-telematicsapi.hunterlabs.io";
+        return URL
     }
 
     const getResultResponse = (status, results, message, data) => {
@@ -81,7 +81,7 @@ define(['N/log', 'N/https'], function (log, https) {
     }
 
     const getResponseResult = (code, operation, body) => {
-        return {code, operation, body};
+        return { code, operation, body };
     }
 
     return {

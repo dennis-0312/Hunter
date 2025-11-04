@@ -12,7 +12,8 @@ define(['N/search',
     '../controller/TS_CM_Controller',
     '../constant/TS_CM_Constant',
     '../error/TS_CM_ErrorMessages',
-], (search, currentRecord, message, runtime, record, dialog, query, _controllerParm, _constant, _errorMessage) => {
+    '../controller/TS_CM_Controller_PE',
+], (search, currentRecord, message, runtime, record, dialog, query, _controllerParm, _constant, _errorMessage, _controllerParmPE) => {
     let typeMode = '';
     const COD_CPR_ACCION_DEL_PRODUCTO = 'CPR'; //_constant.Codigo_parametro.COD_CPR_CONVERSION_DE_PRODUCTO_UPGRADE
     const COD_RFU_ACCION_DEL_PRODUCTO = 'RFU'; //_constant.Codigo_parametro.COD_RFU_REVISIÓN_DE_FAMILIA_UPGRADE
@@ -23,14 +24,17 @@ define(['N/search',
     const pageInit = (context) => {
         let currentRecord = context.currentRecord;
         typeMode = context.mode; //!Importante, no borrar.
-        if (currentRecord.getValue('customform') != _constant.Form.ORDEN_PROVEDURIA && currentRecord.getValue('customform') != _constant.Form.STANDAR_SALES_ORDER) {
+        if (currentRecord.getValue('customform') != _constant.Form.ORDEN_PROVEDURIA && currentRecord.getValue('customform') != 180 && currentRecord.getValue('customform') != _constant.Form.STANDAR_SALES_ORDER) {
             let field = currentRecord.getField('location');
             field.isDisabled = false;
+
         }
         console.log('typeMode', typeMode);
         if (typeMode == 'create' || typeMode == 'copy') {
             if (currentRecord.getValue('customform') == _constant.Form.ORDEN_PROVEDURIA) {
+
                 currentRecord.setValue({ fieldId: 'entity', value: 20995 });
+
             }
             //currentRecord.setValue('custbody_ht_os_servicios', [3,4,5]);
         }
@@ -40,7 +44,6 @@ define(['N/search',
         var currentRecord = context.currentRecord;
         if (currentRecord.getValue('customform') != _constant.Form.ORDEN_PROVEDURIA && currentRecord.getValue('customform') != _constant.Form.STANDAR_SALES_ORDER) {
             let userObj = runtime.getCurrentUser();
-
             let userId = userObj.id;
             var currentRecord = context.currentRecord;
             var sublistName = context.sublistId;
@@ -138,7 +141,7 @@ define(['N/search',
                                 valor_tipo_agrupacion = parametrosRespo[j][1];
                             }
 
-                            if (valor_tipo_agrupacion != 0 && (accion_producto == _constant.Valor.VALOR_001_INST_DISPOSITIVO || accion_producto == _constant.Valor.VALOR_011_INSTALACION_OTROS_PRODUCTOS)) {
+                            if (valor_tipo_agrupacion != 0 && (accion_producto == _constant.Valor.VALOR_001_INST_DISPOSITIVO || accion_producto == _constant.Valor.VALOR_011_INSTALACION_OTROS_PRODUCTOS || accion_producto == _constant.Valor.COD_VALOR_051_ACTIVADOS)) {
                                 arrayItemOT.push(valor_tipo_agrupacion);
                             }
                         }
@@ -162,6 +165,7 @@ define(['N/search',
                 tipo_bien = busqueda_bien.custrecord_ht_bien_tipobien[0].value;
                 idcobertura = _controllerParm.getCobertura(bien);
                 console.log('idcobertura.length', idcobertura.length);
+                console.log('idcobertura', idcobertura);
                 fam_product = getCoberturaItem(bien);
             }
 
@@ -196,7 +200,7 @@ define(['N/search',
                     if (parametrosRespo.length) itemParametrizacion = items;
                     console.log('parametrosRespo', parametrosRespo);
                     for (let j = 0; j < parametrosRespo.length; j++) {
-                        if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO && (parametrosRespo[j][1] == _constant.Valor.VALOR_001_INST_DISPOSITIVO || parametrosRespo[j][1] == _constant.Valor.VALOR_011_INSTALACION_OTROS_PRODUCTOS)) {
+                        if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO && (parametrosRespo[j][1] == _constant.Valor.VALOR_001_INST_DISPOSITIVO || parametrosRespo[j][1] == _constant.Valor.VALOR_011_INSTALACION_OTROS_PRODUCTOS || parametrosRespo[j][1] == _constant.Valor.COD_VALOR_051_ACTIVADOS)) {
                             flag7 += 1;
                         }
                         if (parametrosRespo[j][0] == _constant.Parameter.ADP_ACCION_DEL_PRODUCTO) {
@@ -275,7 +279,6 @@ define(['N/search',
                                 }
                             }
                         }
-
                         /****************************************** */
                         //Validación de Prodcutos Instalados
                         if (parametrosRespo[j][0] == _constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS && parametrosRespo[j][1] == _constant.Valor.SI) {
@@ -299,24 +302,47 @@ define(['N/search',
                                     return false;
                                 }
                             }
-
                             //console.log('valor_tipo_renovacion', valor_tipo_renovacion)
+                            let estadoTrabajo = ''; //MLNY 07-2025
                             if (valor_tipo_renovacion == _constant.Valor.VALOR_001_RENOVACION_NORMAL || accionProducto == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP || accionProducto == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO) {
+                                console.log('idcobertura-Valid', idcobertura)
                                 verificar_instalacion_parametro = _controllerParm.parametros(_constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS, linea, idcobertura, accionProducto, bien, cliente);
-                                console.log('verificar_instalacion_parametro', verificar_instalacion_parametro)
-                                if (verificar_instalacion_parametro.status == false) {
+                                log.debug('verificar_instalacion_parametro', verificar_instalacion_parametro)
+
+                                //log.debug('idItem ', items);   
+                                let idOrdenServicio = currentRecord.getValue('id');
+                                log.debug('idOrdenServicio ', currentRecord.getValue('id'));
+                                if (idOrdenServicio != null && idOrdenServicio != undefined && idOrdenServicio.trim() != '') {
+                                    let param = {
+                                        idServicio: currentRecord.getValue('id'),
+                                        idTrabajo: 0,
+                                        idItem: items
+                                    };
+
+                                    verificar_estado_trabajo = _controllerParm.getOrdenTrabajo(param);
+                                    //verificar_estado_trabajo = _controllerParm.getOrdenTrabajo(idServicio = currentRecord.getValue('id'),0,idItem = items);
+                                    //log.debug('verificar_estado_trabajo', verificar_estado_trabajo)
+
+                                    if (verificar_estado_trabajo.cantidad > 0) {
+                                        estadoTrabajo = verificar_estado_trabajo.data[0].estado_ot;
+                                    }
+                                } //FIN MLNY 07-2025 
+                                log.debug('estadoTrabajo ', estadoTrabajo);
+                                //MLNY 07-2025 ADICIONO ESTADOTRABAJO
+                                if (verificar_instalacion_parametro.status == false && estadoTrabajo != _constant.Status.CHEQUEADO) {
+                                    log.debug('Ingresa ...');
                                     dialog.alert({ title: 'Alerta', message: verificar_instalacion_parametro.mensaje });
                                     return false
                                 } else {
                                     existeRenovacionNormal = true;
                                     familiaRenovacionNormal = elementoEncontrado[3]
                                 }
-                            } else if ((accionProducto == _constant.Valor.VALOR_001_INST_DISPOSITIVO || accionProducto == _constant.Valor.VALOR_003_REINSTALACION_DE_DISP) && typeMode != 'edit') {
+                            } else if ((accionProducto == _constant.Valor.VALOR_001_INST_DISPOSITIVO || accionProducto == _constant.Valor.VALOR_003_REINSTALACION_DE_DISP || accionProducto == _constant.Valor.COD_VALOR_051_ACTIVADOS) && typeMode != 'edit') {
                                 verificar_instalacion_parametro = _controllerParm.parametros(_constant.Parameter.CPI_CONTROL_DE_PRODUCTOS_INSTALADOS, linea, 1, accionProducto, bien, cliente, currentRecord.id);
                             }
                             //console.log('ADP2', accionProducto);
                             //console.log('FAM', familiaDeProductos);
-                            if (verificar_instalacion_parametro.status == false) {
+                            if (verificar_instalacion_parametro.status == false && estadoTrabajo != _constant.Status.CHEQUEADO) {
                                 dialog.alert({ title: 'Alerta', message: verificar_instalacion_parametro.mensaje });
                                 return false
                             }
@@ -327,6 +353,7 @@ define(['N/search',
                         if (parametrosRespo[j][0] == _constant.Parameter.TAG_TIPO_AGRUPACION_PRODUCTO && parametrosRespo[j][1] == _constant.Valor.VALOR_MON_MONITOREO) {
                             flag4 += 1;
                         }
+                        //console.log(`valid: ${parametrosRespo[j][0]} == ${_constant.Parameter.PMI_PRODUCTO_PARA_MONITOREO_DE_INMUEBLES} && ${parametrosRespo[j][1]} == ${_constant.Valor.SI} && ${tipo_bien} != ${_constant.Constants.INMUEBLE}`)
                         if (parametrosRespo[j][0] == _constant.Parameter.PMI_PRODUCTO_PARA_MONITOREO_DE_INMUEBLES && parametrosRespo[j][1] == _constant.Valor.SI && tipo_bien != _constant.Constants.INMUEBLE) {
                             if (bien != '') {
                                 dialog.alert({ title: 'Alerta', message: 'El tipo del vehiculo debe ser INMUEBLE' });
@@ -349,6 +376,12 @@ define(['N/search',
                             let response = _controllerParm.parametros(_constant.Parameter.CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS, context.currentRecord)
                             tieneDispositivoParaCustodia = response;
                         }
+
+                        if (parametrosRespo[j][2] == _constant.Codigo_parametro.COD_CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS && parametrosRespo[j][3] == _constant.Codigo_Valor.COD_VALOR_002_ENTREGA_CUSTODIAS) {
+                            let response = _controllerParmPE.parametros(_constant.Codigo_parametro.COD_CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS, context.currentRecord)
+                            tieneDispositivoParaCustodia = response;
+                        }
+
                         if (parametrosRespo[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo[j][1] == _constant.Valor.SI) {
                             let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
                             let results = query.runSuiteQL({ query: sql, params: [items] }).asMappedResults();
@@ -358,18 +391,21 @@ define(['N/search',
                             }
                         }
                     }
+                    console.log('UPGRADE', `(${flag3} > 0) && (${flag3} != ${flag4})`)
                     if ((flag3 > 0) && (flag3 != flag4)) {
                         dialog.alert({ title: 'Alerta', message: 'El producto upgrade debe tener una agrupacion de tipo monitoreo' });
                         return false
                     }
+                    console.log(`(${flag5} > 0) && (${flag5} != ${flag4})`)
                     if ((flag5 > 0) && (flag5 != flag4)) {
-                        dialog.alert({ title: 'Alerta', message: 'El producto basico debe tener una agrupacion de tipo monitoreo' });
-                        return false
+                        // dialog.alert({ title: 'Alerta', message: 'El producto básico debe tener una agrupacion de tipo monitoreo' });
+                        // return false
                     }
                     if (revisionNivelPrecios) {
                         console.log('revisionNivelPrecios', revisionNivelPrecios);
                         if (esConvenio) {
                             let itemRecord = obtenerItem(items);
+                            dialog.alert({ title: 'itemRecord', message: items });
                             if (!itemRecord["custitem_ht_it_convenio.custrecord_ht_cn_codigo"]) {
                                 dialog.alert({ title: 'Alerta', message: 'Configure un código de convenio para el artículo' });
                                 return false;
@@ -402,6 +438,15 @@ define(['N/search',
                 dialog.alert({ title: 'Alerta', message: tieneDispositivoParaCustodia.mensaje });
                 return false;
             }
+
+            if (tieneDispositivoParaCustodia.status == true && tieneDispositivoParaCustodia.mensaje) {
+                let options = {
+                    title: "Aviso",
+                    message: tieneDispositivoParaCustodia.mensaje
+                };
+                dialog.confirm(options).then(success).catch(failure);
+            }
+
             if (accionProducto == _constant.Valor.VALOR_010_CAMBIO_DE_PROPIETARIO && numLines != 1) {
                 dialog.alert({ title: 'Alerta', message: 'No se puede tener un Artículo tipo Cambio de Propietario junto a otro Artículo' });
                 return false;
@@ -415,7 +460,6 @@ define(['N/search',
             }
 
             //*BLOQUE RENOVACIÓN ====================================================================================================================================================================
-
             console.log(`flag1-flag2-bien: ${flag1} + ${flag2} + ${bien}`);
             console.log(`familia: ${arrayitemSO}`);
             console.log(`accionProducto: ${accionProducto}`);
@@ -444,7 +488,7 @@ define(['N/search',
                 }
             }
 
-            
+
             if (flag2 > 0 && accionProducto == _constant.Valor.VALOR_004_RENOVACION_DE_DISP) {
                 let arrayFamilias = arrayitemSO;
                 let arraySinDuplicados = arrayFamilias.filter((valor, indice, self) => { return self.indexOf(valor) === indice });
@@ -494,12 +538,12 @@ define(['N/search',
                         console.log('conformeGuardarOS', conformeGuardarOS);
                         console.log('conformeGuardarOSPorRenoNormal', existeCobertura == 2 ? true : false);
                         if (!conformeGuardarOS) {
-                            dialog.alert({ title: 'Alerta', message: 'No tiene un registro de cobertura activa con esta familia para este bien y tampoco existe una Orden de Servicio con esta Familia de Producto.' });
-                            return false
+                            // dialog.alert({ title: 'Alerta', message: 'No tiene un registro de cobertura activa con esta familia para este bien y tampoco existe una Orden de Servicio con esta Familia de Producto.' });
+                            // return false
                         }
                         if (dentroDeFecha == 0 && flag1 == 0 && !existeTRANSMISION) {
-                            dialog.alert({ title: 'Alerta', message: 'El artículo de Renovacion Anticipada debe tener un artículo de Renovacion Normal' });
-                            return false
+                            // dialog.alert({ title: 'Alerta', message: 'El artículo de Renovacion Anticipada debe tener un artículo de Renovacion Normal' });
+                            // return false
                         }
                     }
                 } else {
@@ -523,7 +567,7 @@ define(['N/search',
 
             if (userId == 4) {
                 console.log(`Bloqueo por usuario: ${userId}`)
-                return false;
+                return true;
             } else {
                 return true
             }
@@ -535,132 +579,143 @@ define(['N/search',
 
     const validateField = (context) => {
         var currentRecord = context.currentRecord;
-        if (currentRecord.getValue('customform') != _constant.Form.ORDEN_PROVEDURIA && currentRecord.getValue('customform') != _constant.Form.STANDAR_SALES_ORDER) {
-            //alert('userId', 'Entry validateField');
-            try {
-                //const objRecord = currentRecord.get();
-                let currentRecord = context.currentRecord;
-                let sublistName = context.sublistId;
-                let typeTransaction = currentRecord.type;
-                let sublistFieldName = context.fieldId;
-                let bien = currentRecord.getValue('custbody_ht_so_bien');
-                let userObj = runtime.getCurrentUser();
-                let userId = userObj.id;
-                let numLines = currentRecord.getLineCount({ sublistId: 'item' });
-                parametro_reconexion = 0;
-                if (typeMode == 'create' || typeMode == 'copy' || typeMode == 'edit') {
-                    //console.log('Track1', typeMode)
-                    if (typeTransaction == _constant.Transaction.SALES_ORDER) {
-                        //console.log('Track2', typeMode)
-                        let userObj = runtime.getCurrentUser();
-                        if (sublistName == 'item') {
-                            //console.log('Track3', typeMode)
-                            if (sublistFieldName == 'item') {
-                                let idItem = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
-                                let idItemTXT = currentRecord.getCurrentSublistText({ sublistId: 'item', fieldId: 'item' });
-                                let parametrosRespo = _controllerParm.parametrizacion(idItem);
-                                for (let j = 0; j < parametrosRespo.length; j++) {
-                                    //console.log('Entre a validar parametrización');
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.IRS_ITEM_DE_RECONEXION_DE_SERVICIO && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     console.log('Parametrizacion', 'El item' + idItemTXT + ' es de reconexion de servicio.');
-                                    //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de reconexion de servicio.' });
-                                    // }
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     console.log('Parametrizacion', 'El item' + idItemTXT + ' es de alquiler.');
-                                    //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de alquiler.' });
-                                    // }
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.PGR_PRODUCTO_DE_GARANTÍA && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de garantia.');
-                                    //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de garantia.' });
-                                    // }
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.IGS_PRODUCTO_MONITOREADO_POR_GEOSYS && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' va ser monitoreado desde la plataforma px.');
-                                    //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' va ser monitoreado desde la plataforma px.' });
-                                    // }
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.TRM_SERVICIO_DE_TRANSMISION && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de transmisión');
-                                    //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de transmisión' });
-                                    // }
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.THC_HUNTER_CARGO_TECNOLOGIA && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de categoria de hunter cargo');
-                                    //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de categoria de hunter cargo' });
-                                    // }
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.TDP_TIPO_DE_PRODUCTO && parametrosRespo[j][1] == _constant.Valor.VALOR_009_DEMO) {
-                                    //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de tipo DEMO');
-                                    //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de tipo DEMO' });
-                                    // }
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.IRP_ITEM_DE_REPUESTO && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es un ITEM de REPUESTO');
-                                    //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es un ITEM de REPUESTO' });
-                                    // }
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.PCI_PRODUCTO_CONTROL_INTERNO && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es un ITEM Comercial');
-                                    //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es un ITEM Comercial' });
-                                    // }
+        if (currentRecord.getValue('customform') != _constant.Form.ORDEN_PROVEDURIA && currentRecord.getValue('customform') != 180 && currentRecord.getValue('customform') != _constant.Form.STANDAR_SALES_ORDER) {
 
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.PMI_PRODUCTO_PARA_MONITOREO_DE_INMUEBLES && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     if (bien != '') {
-                                    //         let typeBien = verifyType(bien);
-                                    //         if (typeBien == _constant.Constants.INMUEBLE) {
-                                    //             console.log('Parametrizacion', 'El bien ingresado ES de tipo INMUEBLE');
-                                    //         } else {
-                                    //             console.log('Parametrizacion', 'El bien ingresado NO ES de tipo INMUEBLE');
-                                    //         }
-                                    //     }
-                                    // }
+            //log.debug('entro.........', currentRecord);
+            //try {
+            //const objRecord = currentRecord.get();
+            let currentRecord = context.currentRecord;
+            let sublistName = context.sublistId;
+            let typeTransaction = currentRecord.type;
+            let sublistFieldName = context.fieldId;
+            let bien = currentRecord.getValue('custbody_ht_so_bien');
 
-                                    // if (parametrosRespo[j][0] == _constant.Parameter.PRO_ITEM_COMERCIAL_DE_PRODUCCION && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                    //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es un de PRODUCCIÓN');
-                                    // }
-                                    if (parametrosRespo[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo[j][1] == _constant.Valor.SI) {
-                                        let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
-                                        let params = [idItem];
-                                        let array = new Array();
-                                        let resultSet = query.runSuiteQL({ query: sql, params: params });
-                                        let results = resultSet.asMappedResults();
-                                        if (results[0].servicios == null) {
-                                            dialog.alert({ title: 'Alerta', message: 'El item ' + idItemTXT + ' maneja servicios integrados, pero no tiene servicios configurados.' });
-                                        } else {
-                                            if (results.length > 0) {
-                                                let arregloconvertido = results[0]['servicios'].split(",")
-                                                array = arregloconvertido.map(a => parseInt(a));
-                                                dialog.alert({ title: 'Alerta', message: 'El item ' + idItemTXT + ' maneja servicios integrados.' });
-                                                currentRecord.setValue('custbody_ht_os_servicios', array);
-                                            }
+            let userObj = runtime.getCurrentUser();
+
+            let userId = userObj.id;
+            let numLines = currentRecord.getLineCount({ sublistId: 'item' });
+            parametro_reconexion = 0;
+            if (typeMode == 'create' || typeMode == 'copy' || typeMode == 'edit') {
+                console.log('Track1', typeMode)
+                if (typeTransaction == _constant.Transaction.SALES_ORDER) {
+                    //console.log('Track2', typeMode)
+                    //log.debug('entro2.........', currentRecord);
+                    let userObj = runtime.getCurrentUser();
+                    if (sublistName == 'item') {
+                        //console.log('Track3', sublistFieldName)
+                        if (sublistFieldName == 'item') {
+                            // console.log('Track4', typeMode)
+                            let idItem = currentRecord.getCurrentSublistValue({ sublistId: 'item', fieldId: 'item' });
+                            let idItemTXT = currentRecord.getCurrentSublistText({ sublistId: 'item', fieldId: 'item' });
+                            console.log(idItem);
+
+                            //log.debug('entro3.........', currentRecord);
+
+                            let parametrosRespo = _controllerParm.parametrizacion(idItem);
+                            console.log(parametrosRespo);
+                            for (let j = 0; j < parametrosRespo.length; j++) {
+                                // console.log('Entre a validar parametrización');
+                                // if (parametrosRespo[j][0] == _constant.Parameter.IRS_ITEM_DE_RECONEXION_DE_SERVICIO && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     console.log('Parametrizacion', 'El item' + idItemTXT + ' es de reconexion de servicio.');
+                                //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de reconexion de servicio.' });
+                                // }
+                                // if (parametrosRespo[j][0] == _constant.Parameter.ALQ_PRODUCTO_DE_ALQUILER && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     console.log('Parametrizacion', 'El item' + idItemTXT + ' es de alquiler.');
+                                //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de alquiler.' });
+                                // }
+                                // if (parametrosRespo[j][0] == _constant.Parameter.PGR_PRODUCTO_DE_GARANTÍA && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de garantia.');
+                                //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de garantia.' });
+                                // }
+                                // if (parametrosRespo[j][0] == _constant.Parameter.IGS_PRODUCTO_MONITOREADO_POR_GEOSYS && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' va ser monitoreado desde la plataforma px.');
+                                //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' va ser monitoreado desde la plataforma px.' });
+                                // }
+                                // if (parametrosRespo[j][0] == _constant.Parameter.TRM_SERVICIO_DE_TRANSMISION && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de transmisión');
+                                //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de transmisión' });
+                                // }
+                                // if (parametrosRespo[j][0] == _constant.Parameter.THC_HUNTER_CARGO_TECNOLOGIA && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de categoria de hunter cargo');
+                                //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de categoria de hunter cargo' });
+                                // }
+                                // if (parametrosRespo[j][0] == _constant.Parameter.TDP_TIPO_DE_PRODUCTO && parametrosRespo[j][1] == _constant.Valor.VALOR_009_DEMO) {
+                                //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es de tipo DEMO');
+                                //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es de tipo DEMO' });
+                                // }
+                                // if (parametrosRespo[j][0] == _constant.Parameter.IRP_ITEM_DE_REPUESTO && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es un ITEM de REPUESTO');
+                                //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es un ITEM de REPUESTO' });
+                                // }
+                                // if (parametrosRespo[j][0] == _constant.Parameter.PCI_PRODUCTO_CONTROL_INTERNO && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es un ITEM Comercial');
+                                //     //dialog.alert({ title: 'Alerta', message: 'El item ' + idItem + ' es un ITEM Comercial' });
+                                // }
+
+                                // if (parametrosRespo[j][0] == _constant.Parameter.PMI_PRODUCTO_PARA_MONITOREO_DE_INMUEBLES && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     if (bien != '') {
+                                //         let typeBien = verifyType(bien);
+                                //         if (typeBien == _constant.Constants.INMUEBLE) {
+                                //             console.log('Parametrizacion', 'El bien ingresado ES de tipo INMUEBLE');
+                                //         } else {
+                                //             console.log('Parametrizacion', 'El bien ingresado NO ES de tipo INMUEBLE');
+                                //         }
+                                //     }
+                                // }
+
+                                // if (parametrosRespo[j][0] == _constant.Parameter.PRO_ITEM_COMERCIAL_DE_PRODUCCION && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                //     console.log('Parametrizacion', 'El item ' + idItemTXT + ' es un de PRODUCCIÓN');
+                                // }
+
+                                if (parametrosRespo[j][0] == _constant.Parameter.DSR_DEFINICION_DE_SERVICIOS && parametrosRespo[j][1] == _constant.Valor.SI) {
+                                    console.log('_constant.Parameter.DSR_DEFINICION_DE_SERVICIOS')
+                                    let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
+                                    let params = [idItem];
+                                    let array = new Array();
+                                    let resultSet = query.runSuiteQL({ query: sql, params: params });
+                                    let results = resultSet.asMappedResults();
+                                    if (results[0].servicios == null) {
+                                        dialog.alert({ title: 'Alerta', message: 'El item ' + idItemTXT + ' maneja servicios integrados, pero no tiene servicios configurados.' });
+                                    } else {
+                                        if (results.length > 0) {
+                                            let arregloconvertido = results[0]['servicios'].split(",")
+                                            array = arregloconvertido.map(a => parseInt(a));
+                                            dialog.alert({ title: 'Alerta', message: 'El item ' + idItemTXT + ' maneja servicios integrados.' });
+                                            currentRecord.setValue('custbody_ht_os_servicios', array);
                                         }
                                     }
                                 }
-                                let internalid = getServiceSale(idItem);
-                                let employee = search.lookupFields({
-                                    type: 'employee',
-                                    id: userObj.id,
-                                    columns: ['location']
-                                });
-                                let test = employee.location;
+                            }
 
-                                if (internalid) {
-                                    //currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity', value: '12' });
-                                    if (test != '') {
-                                        test = test[0].value;
-                                        //console.log('location', test);
-                                        currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: test });
-                                    }
-                                    //currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'item', value: internalid });
-                                } else {
-                                    currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity', value: '1' });
-                                    if (test != '') {
-                                        test = test[0].value;
-                                        //console.log('location', test);
-                                        currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: test });
-                                    }
+                            let internalid = getServiceSale(idItem);
+                            console.log('erick');
+                            let employee = search.lookupFields({
+                                type: 'employee',
+                                id: userObj.id,
+                                columns: ['location']
+                            });
+                            let test = employee.location;
+
+                            if (internalid) {
+                                //currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity', value: '12' });
+                                if (test != '') {
+                                    test = test[0].value;
+                                    //console.log('location', test);
+                                    currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: test });
+                                }
+                                //currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'item', value: internalid });
+                            } else {
+                                currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity', value: '1' });
+                                if (test != '') {
+                                    test = test[0].value;
+                                    //console.log('location', test);
+                                    currentRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: test });
                                 }
                             }
                         }
                     }
-                    return true
                 }
-            } catch (error) {
-                console.log('errror en field change', error);
+                return true
             }
         } else {
             return true;
@@ -669,14 +724,15 @@ define(['N/search',
 
     const fieldChanged = (scriptContext) => {
         const objRecord = scriptContext.currentRecord;
-        if (objRecord.getValue('customform') != _constant.Form.ORDEN_PROVEDURIA && objRecord.getValue('customform') != _constant.Form.STANDAR_SALES_ORDER) {
+        if (objRecord.getValue('customform') != _constant.Form.ORDEN_PROVEDURIA && objRecord.getValue('customform') != 180 && objRecord.getValue('customform') != _constant.Form.STANDAR_SALES_ORDER) {
             //alert('userId', 'Entry fieldChanged');
             var FieldName = scriptContext.fieldId;
-            let userObj = runtime.getCurrentUser();
-            let userId = userObj.id; // 507190 => 209 Edwin
+
             try {
                 // if (typeMode == 'create' || typeMode == 'copy') {
                 if (typeMode == 'create') {
+                    console.log(objRecord.getValue({ fieldId: 'custbody_ht_so_bien' }));
+                    console.log(objRecord.getValue({ fieldId: 'custbody_ht_os_bien_flag' }));
                     if (objRecord.getValue({ fieldId: 'custbody_ht_so_bien' }) != objRecord.getValue({ fieldId: 'custbody_ht_os_bien_flag' })) {
                         let linecount = parseInt(objRecord.getLineCount({ sublistId: 'item' }));
                         if (linecount > 0) {
@@ -706,43 +762,15 @@ define(['N/search',
 
     const postSourcing = (context) => {
         let currentRecord = context.currentRecord;
-        if (currentRecord.getValue('customform') != _constant.Form.ORDEN_PROVEDURIA && currentRecord.getValue('customform') != _constant.Form.STANDAR_SALES_ORDER) {
+        if (currentRecord.getValue('customform') != _constant.Form.ORDEN_PROVEDURIA && currentRecord.getValue('customform') != 180 && currentRecord.getValue('customform') != _constant.Form.STANDAR_SALES_ORDER) {
             //alert('userId', 'Entry postSourcing');
             const sublistFieldName = context.fieldId;
             let userObj = runtime.getCurrentUser()
             let userId = userObj.id
             if (typeMode == 'create' || typeMode == 'copy' || typeMode == 'edit') {
-                let employee = search.lookupFields({
-                    type: 'employee',
-                    id: userId,
-                    columns: [
-                        'department',
-                        'class',
-                        'location'
-                    ]
-                });
-                let departamento = employee.department;
-                let departamentovalue = ''
-                if (departamento != '') {
-                    departamentovalue = departamento[0].value;
-                }
-                let clase = employee.class;
-                let clasevalue = '';
-                if (clase != '') {
-                    clasevalue = clase[0].value;
-                }
-
-                // let location = employee.location;
-                // let locationvalue = '';
-                // if (location != '') {
-                //     locationvalue = location[0].value;
-                // }
-                //var salesrep = currentRecord.getValue('salesrep');
+                console.log(userId);
                 currentRecord.setValue({ fieldId: 'custbody_ht_os_ejecutivareferencia', value: currentRecord.getValue('salesrep') });
                 currentRecord.setValue({ fieldId: 'custbody_ht_facturar_a', value: currentRecord.getValue('entity') });
-                currentRecord.setValue({ fieldId: 'department', value: departamentovalue });
-                //currentRecord.setValue({ fieldId: 'class', value: clasevalue });
-                // currentRecord.setValue({ fieldId: 'location', value: locationvalue });
             }
         }
     }
@@ -1066,6 +1094,33 @@ define(['N/search',
         console.log(resultSet)
         return retorno;
     }
+
+
+    function success(result) {
+        console.log("Success with value " + result);
+        try {
+            if (result) {
+                // record.submitFields({
+                //     type: 'customrecord_ht_co_cobertura',
+                //     id: scriptContext.id,
+                //     values: {
+                //         custrecord_ht_co_impulso_plataforma: TM_RENOVACION_ACTIVACION
+                //     },
+                // })
+                // //window.open(absoluteURL);
+                // location.reload()
+            }
+        } catch (error) {
+            dialog.alert({ title: 'Alerta', message: `No es posible realizar la acción, contacte con su administrador.` });
+            console.log(error);
+        }
+    }
+
+    function failure(reason) {
+        console.log("Failure: " + reason);
+    }
+
+
 
     return {
         pageInit: pageInit,

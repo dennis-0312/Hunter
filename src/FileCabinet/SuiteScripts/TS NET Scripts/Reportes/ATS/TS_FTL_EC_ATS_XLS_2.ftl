@@ -226,5 +226,8 @@
       </Row>
       </#list>
     </Table>
+    tabla
+      TOTAL GENERAL USS
+    tabla
   </Worksheet>
 </Workbook>

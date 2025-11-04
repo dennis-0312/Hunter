@@ -2,8 +2,9 @@
  *@NApiVersion 2.1
  *@NScriptType Restlet
  */
-define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode, task) {
-    const URLPX = 'https://apipx.24hm.net/API_PX/WSPX.asmx'; // -> reemplezar https://www2.huntermonitoreo.com/API_PX/WSPX.asmx
+define(['N/log', 'N/https', 'N/encode', 'N/task','N/file'], function (log, https, encode, task, file) {
+    const URLPX = 'https://apipx.24hm.net/API_PX/WSPX.asmx';  //DEV: https://apipx.24hm.net/API_PX/WSPX.asmx / PR: https://tristan.24hm.net/API_PX_LATAM/WSPX.asmx
+     //-> reemplazar https://www2.huntermonitoreo.com/API_PX/WSPX.asmx
 
     function _post(context) {
         log.error("context-sendPXServer", context);
@@ -39,12 +40,14 @@ define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode,
         });
 
         var xmlDoc = resp.body;
+        log.debug('resp.body', resp.body)
         const regex = /.*<AutenticacionUsuarioPxResult>(.*)<\/AutenticacionUsuarioPxResult>.*/;
 
         let rowXml = getBodyByOperacionOrden(context);
 
         log.debug("rowXml", rowXml);
         let string = xmlDoc.replace(regex, '$1');
+        log.debug("AutenticacionToken", string);
         let headers2 = [];
         headers2['Content-Type'] = 'text/xml';
         headers2['SOAPAction'] = 'http://tempuri.org/InsertaOrden';
@@ -68,13 +71,26 @@ define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode,
             "</InsertaOrden>\r\n" +
             "</soap:Body>\r\n" +
             "</soap:Envelope>";
+
         const resp2 = https.post({
             url: `${URLPX}?op=InsertaOrden`,
             headers: headers2,
             body: rawInsert
         });
 
+        //log.debug('url', `${URLPX}?op=InsertaOrden`);
+        //log.debug('headers2',headers2);
 
+        var xmlFile = file.create({
+            name: context.StrToken+'.xml', // Nombre del archivo
+            fileType: file.Type.XMLDOC, // Tipo de archivo
+            contents: rawInsert, // Contenido XML
+            encoding: file.Encoding.UTF8, // Codificación
+            folder: 24686 // ID de la carpeta donde deseas guardar, -15 es "Sin carpeta"
+        });
+        var fileId = xmlFile.save();
+        log.debug('fileId', fileId);
+        
         const regex2 = /.*<string>(.*)<\/string>.*/;
         let Respon = resp2.body.replace(regex2, '$1');
         log.debug('XML', rawInsert);
@@ -86,6 +102,7 @@ define(['N/log', 'N/https', 'N/encode', 'N/task'], function (log, https, encode,
     const getBodyByOperacionOrden = (context) => {
         let rowXml = "";
         rowXml = getInstalacionBody(context);
+        log.debug('rowXml', rowXml)
         /*
         if (context.OperacionOrden == "002") {
             rowXml = getDesinstalacionBody(context);

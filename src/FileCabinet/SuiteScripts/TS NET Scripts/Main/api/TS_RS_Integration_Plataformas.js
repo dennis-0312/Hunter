@@ -1,4 +1,3 @@
-
 /*********************************************************************************************************************************************
 This script for Sales Order (Se consumira el servicio para consulta de información de NetSuite y generar la orden de trabajo) 
 /*********************************************************************************************************************************************
@@ -29,6 +28,7 @@ define([
     const ORDEN_TRABAJO = 'CUSTOMRECORD_HT_RECORD_ORDENTRABAJO';
     const CHEQUEADO = 2;
     const PROCESANDO = 4;
+    const PX_MODIFICACION_DATOS_DISPOSITIVOS = 1
 
     const _get = (scriptContext) => {
         try {
@@ -37,57 +37,6 @@ define([
             recordLoad.setValue({ fieldId: 'custrecord_ht_ot_estado', value: CHEQUEADO });
             updateRecord = recordLoad.save();
             return updateRecord;
-
-            //!PRUEBA DEPOSITO CLIENTE
-            // let paymentmethod = context.paymentmethod;
-            // let customer = context.customer;
-            // let fecha = context.fecha;
-            // let deposit = record.create({ type: record.Type.CUSTOMER_DEPOSIT, isDynamic: true });
-            // deposit.setValue({ fieldId: 'customer', value: customer });
-            // deposit.setValue({ fieldId: 'undepfunds', value: 'T' });
-            // deposit.setValue({ fieldId: 'trandate', value: new Date(fecha) })
-            // deposit.setValue({ fieldId: 'payment', value: 100 });
-            // deposit.setValue({ fieldId: 'paymentoption', value: paymentmethod });
-            // let response = deposit.save({ ignoreMandatoryFields: true });
-            // let objSearch = search.load({ id: 'customsearch802' });
-            // let result = objSearch.run().getRange({ start: 0, end: 1000 });
-            // for (let i in result) {
-            //     let internalid = result[i].id;
-            //     record.delete({ type: 'customrecord_pe_update_coa_sum_inv', id: internalid });
-            // }
-
-
-            // let objSearch2 = search.load({ id: 'customsearch803' });
-            // let result2 = objSearch2.run().getRange({ start: 0, end: 1000 });
-            // for (let i in result2) {
-            //     let internalid = result2[i].id;
-            //     record.submitFields({
-            //         type: record.Type.ACCOUNT,
-            //         id: internalid,
-            //         values: {
-            //             'issummary': 'F',
-            //             'isinactive': 'F',
-            //         }
-            //     });
-            // }
-            // return { 'ConextGet': response };
-
-
-            //!INTEGRACION EVOLUTION
-
-            // const scriptTask = task.create({ taskType: task.TaskType.CSV_IMPORT });
-            // scriptTask.mappingId = SAVED_CSV_IMPORTS;
-            // let csv = file.load({ id: context.csvfile });
-            // scriptTask.importFile = csv;
-            // let csvImportTaskId = scriptTask.submit();
-            // log.debug('csvImportTaskId', csvImportTaskId);
-
-            // let csvTaskStatus = task.checkStatus({
-            //     taskId: csvImportTaskId
-            // });
-
-            // log.debug('csvTaskStatus', csvTaskStatus);
-            // return { 'ConextGet': csvTaskStatus.status };
         } catch (error) {
             log.error('Error', error);
             return error;
@@ -102,6 +51,8 @@ define([
                 let historial;
                 if (scriptContext.cobertura == 0) {
                     let objRecord = record.create({ type: HT_COBERTURA_RECORD, isDynamic: true });
+                    //galvar 26/02/2025
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_subsidiaria', value: scriptContext.subsidiary });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
@@ -110,7 +61,7 @@ define([
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturafinal', value: new Date(scriptContext.end) });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
-                    //objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_familia_prod', value: scriptContext.ttr });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_modelodispositivo', value: scriptContext.modeloDispositivo });
@@ -120,13 +71,16 @@ define([
                     log.debug('responseNuevoRegistro', response);
                 } else {
                     let objRecord = record.load({ type: HT_COBERTURA_RECORD, id: scriptContext.cobertura });
+                    //galvar 26/02/2025
+                    objRecord.setValue({ fieldId: 'custrecord_ht_co_subsidiaria', value: scriptContext.subsidiary });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
                     if (scriptContext.t_PPS == true) {
                         if (scriptContext.esGarantia == true) {
                             objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
-                            scriptContext.start = objRecord.getValue('custrecord_ht_co_coberturainicial')
-                            scriptContext.end = objRecord.getValue('custrecord_ht_co_coberturafinal')
+                            scriptContext.start = objRecord.getValue('custrecord_ht_co_coberturainicial');
+                            scriptContext.end = objRecord.getValue('custrecord_ht_co_coberturafinal');
+                            objRecord.setValue({ fieldId: 'custrecord_ht_co_impulso_plataforma', value: PX_MODIFICACION_DATOS_DISPOSITIVOS });
                         } else {
                             objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
                             objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });
@@ -135,7 +89,9 @@ define([
                         }
                     }
 
-                    if (scriptContext.esGarantia == false) { objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto }) }
+                    if (scriptContext.esCambioSimCard == true) { objRecord.setValue({ fieldId: 'custrecord_ht_co_impulso_plataforma', value: PX_MODIFICACION_DATOS_DISPOSITIVOS }); }
+                    if (scriptContext.esItemRepuesto == true) { objRecord.setValue({ fieldId: 'custrecord_ht_co_impulso_plataforma', value: PX_MODIFICACION_DATOS_DISPOSITIVOS }); }
+                    if (!scriptContext.esGarantia) { objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto }) }
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_numeroserieproducto', value: scriptContext.serieproducto });
                     //objRecord.setValue({ fieldId: 'custrecord_ht_co_clientemonitoreo', value: scriptContext.monitoreo });
                     objRecord.setValue({ fieldId: 'custrecord_ht_co_estado', value: scriptContext.estado });
@@ -146,6 +102,7 @@ define([
                     response = objRecord.save();
                     log.debug('responseExisteRegistro', response);
                 }
+
                 let objSearch = verifyExistHistorial(scriptContext.salesorder, scriptContext.ordentrabajo);
                 let searchResultCount = objSearch.runPaged().count;
                 if (searchResultCount > 0) {
@@ -165,7 +122,6 @@ define([
                     }
                     let response_2 = objRecord_2.save();
                     log.debug('responseExisteHistorial', response_2);
-
                 } else {
                     let objRecord_2 = record.create({ type: HT_DETALLE_COBERTURA, isDynamic: true });
                     objRecord_2.setValue({ fieldId: 'custrecord_ht_ct_transacciones', value: response });
@@ -182,11 +138,13 @@ define([
                 let objRecord;
                 if (scriptContext.cobertura != 0) {
                     objRecord = record.load({ type: HT_COBERTURA_RECORD, id: scriptContext.cobertura, isDynamic: true });
-                    log.debug('record.load','load');
+                    log.debug('record.load', 'load');
                 } else {
                     objRecord = record.create({ type: HT_COBERTURA_RECORD, isDynamic: true });
                     log.debug('record.create', 'create');
                 }
+                //galvar 26/02/2025
+                objRecord.setValue({ fieldId: 'custrecord_ht_co_subsidiaria', value: scriptContext.subsidiary });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_bien', value: scriptContext.bien });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_propietario', value: scriptContext.propietario });
                 objRecord.setValue({ fieldId: 'custrecord_ht_co_producto', value: scriptContext.producto });

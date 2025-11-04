@@ -31,6 +31,15 @@ define(['N/search', 'N/record', 'N/runtime', 'N/task'], function (search, record
             var recordLoad = '';
             recordLoad = record.load({ type: objRecord.type, id: recordId, isDynamic: false });
             var newEntityId = '';
+            log.error({
+                title: 'Parametros',
+                details: JSON.stringify({
+                    eventType: eventType,
+                    recordType: objRecord.type,
+                    recordId: recordId,
+                    numero: recordLoad.getValue('custentity_pe_document_number')
+                })
+            });
             if (eventType == context.UserEventType.COPY || eventType == context.UserEventType.CREATE || eventType == context.UserEventType.EDIT) {
                 if (objRecord.type == CUSTOMER || objRecord.type == VENDOR || objRecord.type == EMPLEADO) {
                     if (objRecord.type == CUSTOMER) {
@@ -46,6 +55,7 @@ define(['N/search', 'N/record', 'N/runtime', 'N/task'], function (search, record
                     newEntityId = entityIndicator + "-" + documentNumber;
                 }
             }
+            log.error('newEntityId', newEntityId)
             record.submitFields({ type: objRecord.type, id: recordId, values: { entityid: newEntityId } });
             log.error("END afterSubmit", "END afterSubmit");
         } catch (e) {

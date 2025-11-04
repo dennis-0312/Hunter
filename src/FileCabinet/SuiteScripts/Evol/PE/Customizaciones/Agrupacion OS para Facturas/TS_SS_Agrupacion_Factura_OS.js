@@ -6,8 +6,10 @@ define(['N/record', 'N/log', 'N/search', 'N/format', 'N/runtime', 'N/task', 'N/f
 
     (record, log, search, format, runtime, task, file) => {
         const FORM_EC_FORMULARIO_FACTURA_VENTA = 101;//SANDBOX = 101, PRODUCCION = ?
+        const FORM_PE_FORMULARIO_FACTURA_VENTA = 183;
         const TIPO_DOCUMENTO_18 = 16; //SANDBOX = 16, PRODUCCION = ?
-        const LOG_RECORD = 'customrecord_ts_standar_ss_cola'
+        const TIPO_DOCUMENTO_01 = 50;
+        const LOG_RECORD = 'customrecord_ts_standar_ss_cola' //PE
         const inputfolder = 18054;
         const PENDIENTE = 3;
         const COMPLETADO = 1;
@@ -45,8 +47,8 @@ define(['N/record', 'N/log', 'N/search', 'N/format', 'N/runtime', 'N/task', 'N/f
                             scriptId: 'customscript_ts_ss_agrupacion_factura_os',
                             deploymentId: 'customdeploy_ts_ss_agrupacion_factura_os',
                             params: {
-                                custscript_ts_ss_agrup_fac_params: '{}',
-                                custscript_ts_ss_agrup_fac_slect_fact: 't'
+                                custscriptts_ss_agrup_fac_par_pe: '{}',
+                                custscript_ts_ss_agrup_fac_slect_fact_pe: 't'
                             }
                         });
                         scriptTask.submit();
@@ -60,23 +62,44 @@ define(['N/record', 'N/log', 'N/search', 'N/format', 'N/runtime', 'N/task', 'N/f
         }
 
         const generarFacturaDirecta = (params, id_cola) => {
+            log.debug('params', params);
             let idCabLog = params.id_log;
             try {
                 let respuesta = new Object();
                 //Creacion de la factura directa
                 let facturaDirecta = record.create({ type: record.Type.INVOICE, isDynamic: true });
-                facturaDirecta.setValue({ fieldId: 'customform', value: FORM_EC_FORMULARIO_FACTURA_VENTA });
+                facturaDirecta.setValue({ fieldId: 'customform', value: FORM_PE_FORMULARIO_FACTURA_VENTA });
                 params.facturarA ? facturaDirecta.setValue({ fieldId: 'entity', value: params.facturarA }) : facturaDirecta.setValue({ fieldId: 'entity', value: params.cliente });
+                params.account ? facturaDirecta.setValue({ fieldId: 'account', value: params.account }) : log.debug('Account', 'Cuenta por configurada.');
                 if (params.agrupador) { facturaDirecta.setValue({ fieldId: 'custbody_ht_cod_agru', value: params.agrupador }); }
                 facturaDirecta.setValue({ fieldId: 'trandate', value: new Date() });
                 facturaDirecta.setValue({ fieldId: 'memo', value: params.glosa });
                 facturaDirecta.setValue({ fieldId: 'department', value: params.facturaDirecta.departamento });
                 facturaDirecta.setValue({ fieldId: 'class', value: params.facturaDirecta.clase });
+                facturaDirecta.setValue({ fieldId: 'currency', value: params.currency });
                 facturaDirecta.setValue({ fieldId: 'location', value: params.facturaDirecta.oficina });
-                facturaDirecta.setValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal', value: TIPO_DOCUMENTO_18 });
+                facturaDirecta.setValue({ fieldId: 'custbody_pe_document_type', value: params.tipo_doc });
                 facturaDirecta.setValue({ fieldId: 'terms', value: params.terminoPago });
                 facturaDirecta.setValue({ fieldId: 'custbodyec_nota_cliente', value: params.notaFactura });
                 facturaDirecta.setValue({ fieldId: 'custbody_ht_status_process_group', value: PENDIENTE });
+                facturaDirecta.setValue({ fieldId: 'custbody_pe_serie', value: params.serie });
+
+                facturaDirecta.setValue({ fieldId: 'custbody_pe_ei_forma_pago', value: params.forma_pago });
+                facturaDirecta.setValue({ fieldId: 'custbody_pe_concept_detraction', value: params.concept_detraction });
+                facturaDirecta.setValue({ fieldId: 'custbody_pe_ei_operation_type', value: params.tipo_operacion });
+                if (params.gratutita != 'F') {
+                    facturaDirecta.setValue({ fieldId: 'custbody_pe_free_operation', value: true });
+                    facturaDirecta.setValue({ fieldId: 'discountitem', value: 47451 });
+                }
+                let witaxCode
+                if (params.concept_detraction != 1) {
+                    let currencyname = facturaDirecta.getText({ fieldId: 'currency' });
+
+                    witaxCode = getWitaxCode(params.concept_detraction, currencyname);
+
+
+                }
+
                 //Lista de items que no inventariables
                 // let itemNoInv = getItemsNoInv();
                 //Actualizamos el porcentaje del log
@@ -101,14 +124,53 @@ define(['N/record', 'N/log', 'N/search', 'N/format', 'N/runtime', 'N/task', 'N/f
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'units', value: params.facturaDirecta.items[i].unidad });
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity', value: params.facturaDirecta.items[i].cantidad });
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'price', value: params.facturaDirecta.items[i].price });
-                    facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'rate', value: params.facturaDirecta.items[i].rate });
+                    if (params.facturaDirecta.items[i].price == '-1') {
+                        facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'rate', value: params.facturaDirecta.items[i].rate });
+                    }
+                    // facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'rate', value: params.facturaDirecta.items[i].rate });
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'department', value: params.facturaDirecta.departamento });
+                    log.debug('params.facturaDirecta.items[i]', i);
+                    if (params.concept_detraction != 1) {
+                        log.debug('params.facturaDirecta.items[i]', i);
+
+                        var totalline = facturaDirecta.getCurrentSublistValue({ sublistId: 'item', fieldId: 'amount' });
+
+                        totalline = (parseFloat(totalline) + parseFloat(totalline * 0.18)).toFixed(2);
+                        log.debug('totalline', totalline);
+                        let totalporcentaje = witaxCode.percentageDetraction;
+                        let porcentaje = totalporcentaje.replace('%', '') / 100;
+                        log.debug('porcentaje', porcentaje);
+                        let totalretenciones = totalline * porcentaje;
+                        log.debug('totalretenciones', totalretenciones);
+                        facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_4601_witaxapplies', value: true });
+                        facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_4601_witaxcode', value: witaxCode.taxCodes });
+                        facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_4601_witaxbaseamount', value: parseFloat(totalline) * -1 });
+                        facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_4601_witaxamount', value: totalretenciones.toFixed(2) });
+                    }
+                    
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'class', value: params.facturaDirecta.clase });
                     facturaDirecta.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: params.facturaDirecta.oficina });
                     facturaDirecta.commitLine({ sublistId: 'item' });
                 }
                 let facturaDirectaId = facturaDirecta.save();
                 //Actualizamos el porcentaje del log
+                for (i = 0; i < params.facturasSeleccionadas.length; i++) {
+                    log.debug(`params.facturasSeleccionadas[${i}].id`, params.facturasSeleccionadas[i].id)
+                    let loadRecord = record.load({ type: 'customsale_ec_factura_interna', id: params.facturasSeleccionadas[i].id, isDynamic: true });
+                    var linkscount = loadRecord.getLineCount({ sublistId: 'item' });
+                    for (var index = 0; index < linkscount; index++) {
+                        var item = loadRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: index });
+                        log.debug('item', item);
+                        log.debug(`params.facturasSeleccionadas[${i}].items`, params.facturasSeleccionadas[i].items);
+                        if (parseFloat(item) == parseFloat(params.facturasSeleccionadas[i].items)) {
+                            log.debug('entro', `${facturaDirectaId} - ${params.facturasSeleccionadas[i].id} - ${item} - ${params.facturasSeleccionadas[i].items}`);
+                            loadRecord.selectLine({ sublistId: 'item', line: index });
+                            loadRecord.setCurrentSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_fac_agru', value: facturaDirectaId });
+                            loadRecord.commitLine({ sublistId: 'item' });
+                        }
+                    }
+                    loadRecord.save();
+                }
                 try {
                     updateCabLog({ idCabLog: idCabLog, porcentaje: '100%' });
                 } catch (error) {
@@ -142,7 +204,57 @@ define(['N/record', 'N/log', 'N/search', 'N/format', 'N/runtime', 'N/task', 'N/f
                 }
             }
         }
+        const getWitaxCode = (conceptDetraction, currencyName) => {
+            try {
+                let objSearch = search.create({
+                    type: "customrecord_pe_concept_detraction",
+                    filters:
+                        [
+                            ["internalid", "anyof", conceptDetraction]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({ name: "name", label: "Name" }),
+                            search.createColumn({ name: "custrecord_pe_code_detraccion", label: "PE Code Detraccion" }),
+                            search.createColumn({ name: "custrecord_pe_percentage_detraction", label: "PE Percentage Detraction" }),
+                            search.createColumn({ name: "custrecord_pe_tax_codes_pen", label: "PE Tax Code Soles" }),
+                            search.createColumn({ name: "custrecord_pe_tax_codes_dol", label: "PE Tax Code Dolares" })
+                        ]
+                });
+                let searchResultCount = objSearch.runPaged().count;
+                log.error('searchResultCount-getWitaxCode', searchResultCount);
+                const searchResult = objSearch.run().getRange(0, 1);
+                log.error('searchResult-getWitaxCode', searchResult);
+                let column01 = currencyName == 'Soles' ? searchResult[0].getValue(objSearch.columns[3]) : searchResult[0].getValue(objSearch.columns[4]);
+                return {
+                    taxCodes: column01,
+                    percentageDetraction: searchResult[0].getValue(objSearch.columns[2])
+                };
 
+                // const searchLoad = search.create({
+                //     type: "customrecord_4601_witaxcode",
+                //     filters:
+                //         [
+                //             ["custrecord_4601_wtc_witaxtype", "anyof", "1"],
+                //             "AND",
+                //             ["custrecord_4601_wtc_rate", "equalto", detraction]
+                //         ],
+                //     columns:
+                //         [
+                //             search.createColumn({ name: "internalid", label: "Internal ID" })
+                //         ]
+                // });
+
+                // const searchResult = searchLoad.run().getRange(0, 1);
+                // let column01 = searchResult[0].getValue(searchLoad.columns[0]);
+                // return column01;
+
+
+
+            } catch (error) {
+                log.error('Error-getWitaxCode', error)
+            }
+        }
         const updateCabLog = (params) => {
             try {
                 let cabLog = record.load({ type: 'customrecord_ts_log_ejec_agrup_fact_cab', id: params.idCabLog });

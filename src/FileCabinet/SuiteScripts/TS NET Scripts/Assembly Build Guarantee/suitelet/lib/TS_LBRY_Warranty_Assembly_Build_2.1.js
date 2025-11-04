@@ -190,7 +190,7 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
             log.error("setComponentsSublistData", { billOfMaterialRevisionSelected, locationSelected });
             if (!(billOfMaterialRevisionSelected && locationSelected)) return;
             let line = 0;
-
+            //let bin = 'B621 COM. QUITO';//B238 COM. GUAYAQUIL
             let sql = "SELECT i.id, i.fullname, i.custitem_ht_ai_tipocomponente as type, i.displayname, ail.quantityavailable, ut.abbreviation, ibq.onHandAvail, b.binNumber, b.custrecord_deposito_para_alquiler as alquiler, ail.quantityOnHand, brcm.bomQuantity " +
                 "FROM bomRevision br " +
                 "INNER JOIN bomRevisionComponentMember brcm " +
@@ -204,20 +204,18 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
                 "INNER JOIN itemBinQuantity ibq " +
                 "ON i.id = ibq.item " +
                 "INNER JOIN bin b " +
-                `ON (ibq.bin = b.id AND b.location = '${locationSelected}' AND b.binNumber = 'BCO Comercial') ` +
+                `ON (ibq.bin = b.id AND b.location = '${locationSelected}' AND b.custrecord_deposito_para_bodega_comercia = 'T') ` +
                 `WHERE br.id = '${billOfMaterialRevisionSelected}' AND ail.location = '${locationSelected}'`;
             log.error("sql", sql);
-            let queryResult = query.runSuiteQL({
-                query: sql
-            }).asMappedResults();
+            let queryResult = query.runSuiteQL({ query: sql }).asMappedResults();
 
             if (queryResult.length != 0) {
                 for (let i = 0; i < queryResult.length; i++) {
                     if (queryResult[i].id) componentsSublistField.setSublistValue('custpage_slf_componentid', line, queryResult[i].id);
                     if (queryResult[i].id) componentsSublistField.setSublistValue('custpage_slf_component', line, `${queryResult[i].fullname} ${queryResult[i].displayname}`);
                     componentsSublistField.setSublistValue('custpage_slf_quantity', line, queryResult[i].bomquantity);
-                    if (queryResult[i].quantityonhand) {
-                        componentsSublistField.setSublistValue('custpage_slf_onhand', line, queryResult[i].quantityonhand);
+                    if (queryResult[i].onhandavail) {
+                        componentsSublistField.setSublistValue('custpage_slf_onhand', line, queryResult[i].onhandavail);
                         let text = `<a id="compinvdet_popup_${line + 1}" class="smalltextul  i_inventorydetailneeded" href="#" onclick="viewInventoryDetail(this, ${line})" role="button"></a>`;
                         componentsSublistField.setSublistValue('custpage_slf_inventorydetail', line, text);
                     } else {
@@ -238,7 +236,8 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
             log.error("setBillOfMaterialsAndAssemblyItemFieldData", serviceItemSelected);
 
             if (!serviceItemSelected) return;
-            let filters = [["assemblyitem.assembly", "anyof", serviceItemSelected]];
+            //let filters = [["assemblyitem.assembly", "anyof", serviceItemSelected]];
+            let filters = [["custrecord_ht_articulo_alquiler", "anyof", serviceItemSelected]];
             let bomResultSearch = search.create({
                 type: "bom",
                 filters,
@@ -255,16 +254,18 @@ define(['N/ui/serverWidget', 'N/search', 'N/url', 'N/query', 'N/file'], (serverW
         setBillOfMaterialsRevisionFieldData = (billOfMaterialsRevisionField, itemSelected) => {
             log.error("setBillOfMaterialsRevisionFieldData", { itemSelected });
 
+            // if (!itemSelected) return;
+            // let bom = this.getBillOfMaterials(itemSelected);
+            // if (!bom) return;
             if (!itemSelected) return;
-            let bom = this.getBillOfMaterials(itemSelected);
-            if (!bom) return;
-            let filters = [["isinactive", "is", "F"], "AND", ["billofmaterials", "anyof", bom]];
+            //let filters = [["isinactive", "is", "F"], "AND", ["billofmaterials", "anyof", bom]];
+            let filters = [["isinactive", "is", "F"], "AND", ["custrecord_ht_articulo_alquileractivo", "anyof", itemSelected]];
             let bomRevisionResultSearch = search.create({
                 type: "bomrevision",
                 filters,
                 columns: ["name"]
             }).run().getRange(0, 1);
-
+            log.error("bomRevisionResultSearch.length", bomRevisionResultSearch.length);
             for (let i = 0; i < bomRevisionResultSearch.length; i++) {
                 let billOfMaterialRevision = bomRevisionResultSearch[i].id;
                 billOfMaterialsRevisionField.setDefaultValue(billOfMaterialRevision);

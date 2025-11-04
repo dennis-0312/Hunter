@@ -2,9 +2,11 @@
  *@NApiVersion 2.1
  *@NScriptType Restlet
  */
-define(['N/log', 'N/https', 'N/url'], function (log, https, url) {
+define(['N/log', 'N/https', 'N/url'], (log, https, url) => {
 
     let OK_STATUS_CODE = [200, 201];
+    let URL = "https://test-telematicsapi.hunterlabs.io" //SB: https://test-telematicsapi.hunterlabs.io / PR: https://telematicsapi.hunterlabs.io
+    let TOKEN = 'ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI='
 
     const post = (context) => {
         let results = [];
@@ -44,10 +46,11 @@ define(['N/log', 'N/https', 'N/url'], function (log, https, url) {
                 if (!getAssetResponse.count) return { status: "error", message: `No se encontró el vehículo con vid: ${context.asset.name}`, results };
                 getAssetResponse = getAssetResponse.results[0];
             }
+
             if (getAssetResponse == null) return { status: "error", message: `El vehículo no se encuentra registrado en telematic y no tiene placa`, results };
             results.push(getAssetResponse);
 
-            if (getAssetResponse.user.indexOf(getCustomerResponse.id) == -1) return { status: "error", message: `El vehículo con id ${context.asset.id} no le pertenece al propietario ${context.customer.username}`, results};
+            if (getAssetResponse.user.indexOf(getCustomerResponse.id) == -1) return { status: "error", message: `El vehículo con id ${context.asset.id} no le pertenece al propietario ${context.customer.username}`, results };
 
             headers['X-HTTP-Method-Override'] = 'PATCH';
             let patchAssetUrl = `${urlBase}/asset/${context.asset.id}/`;
@@ -76,12 +79,12 @@ define(['N/log', 'N/https', 'N/url'], function (log, https, url) {
         let headers = {};
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         return headers;
     }
 
     const getTelematicUrlBase = () => {
-        return "https://test-telematicsapi.hunterlabs.io";
+        return URL;
     }
 
     const getResultResponse = (status, results, message) => {

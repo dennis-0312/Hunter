@@ -2,7 +2,7 @@
  * @NApiVersion 2.x
  * @NScriptType plugintypeimpl
  */
-define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N/file', './umploadparts.js'],
+define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N/file', './umploadparts.js', 'N/runtime'],
     /**
      * @param{email} email
      * @param{encode} encode
@@ -38,42 +38,26 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
     * @returns {Boolean} result.success
     * @returns {String}  result.message
      */
-    function (email, encode, format, https, record, search, file, multiPartUpload_1) {
+    function (email, encode, format, https, record, search, file, multiPartUpload_1, runtime) {
         var recordtype = '';
         var internalId = '';
         var userId = '';
-        // var FOLDER_PDF = 604;
-        const FOLDER_PDF = 12183; // SB: 8338 - PR: 12183 Path -> SuiteScripts/TS NET Scripts/Peru
-        const CUSTOM_RECORD_EI_ENABLED_FEATURES = 'customrecord_pe_ei_enable_features';
-        var url_token = '';
-        var url_ticket = '';
-        var url_document = '';
-        var url_pdf = '';
-        var url_xml = '';
-        var url_cdr = '';
+        var FOLDER_PDF = '';
+        var script = runtime.getCurrentScript();
+        var remainingUsage = script.getRemainingUsage();
 
         function send(pluginContext) {
             internalId = pluginContext.transaction.id;
             userId = pluginContext.sender.id;
-            var userMail = pluginContext.sender.email;
-            var tranID = pluginContext.transaction.number;
-            var senderDetails = pluginContext.sender;
-            var customer = pluginContext.customer;
             var transaction = pluginContext.transaction;
-            var recipientList = customer.recipients;
             var tranType = pluginContext.transaction.tranType
-            var result = new Object();
-            var parameters;
-            var docstatus = 'Sent'
+            var result = {};
             var request;
             var send = new Array();
-            var statustrasanction = '';
-            var sendresponsecode = 'Completed Process';
-            var docstatus1 = 'Sending Failed';
             var array = [internalId, userId, tranType];
-
-            logStatus(internalId, 'Debug4 ' + JSON.stringify(transaction));
-            logStatus(internalId, 'Debug5 ' + tranType);
+            FOLDER_PDF = BuscarFolder();
+            // logStatus(internalId, 'Debug4 ' + JSON.stringify(transaction));
+            // logStatus(internalId, 'Debug5 ' + tranType);
 
             result = {
                 success: true,
@@ -82,70 +66,62 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
 
             try {
                 var getcredentials = openCredentials(array);
-                url_token = getcredentials.wsurl;
-                url_ticket = getcredentials.wsticket;
-                url_document = getcredentials.wsdocument;
-                url_pdf = getcredentials.wspdf;
-                url_xml = getcredentials.wsxml;
-                url_cdr = getcredentials.wscdr;
+
                 var request = getIdentifyDocument(internalId);
+
                 logStatus(internalId, request);
-                logStatus(internalId, getcredentials);
-                log.debug('track2', request);
-                log.debug('track1', getcredentials);
-                var headers1 = new Array();
+                var headers1 = [];
                 headers1['Accept'] = '*/*';
                 headers1['Content-Type'] = 'application/json';
                 headers1['Authorization'] = 'Basic Y2xpZW50OnNlY3JldA==';
 
                 var respAsset = https.post({
-                    url: url_token +
-                        "?username=" + getcredentials.username +
-                        "&password=" + getcredentials.password +
-                        "&grant_type=password",
+                    url: getcredentials.token + "?username=" + getcredentials.username + "&password=" + getcredentials.password + "&grant_type=password",
                     headers: headers1
                 });
                 var reponse = JSON.parse(respAsset.body);
-                log.debug('track3', reponse);
-                logStatus(internalId, reponse);
                 var tiket = '';
-                var newtikect = getSentDocument(request.filename, reponse.access_token);
-                newtikect = JSON.parse(newtikect.pdf);
-                log.debug('track8', newtikect);
+                var newtikect = getSentDocument(request.filename, reponse.access_token, getcredentials.ticket);
+
+                newtikect = JSON.parse(newtikect.pdf)
                 logStatus(internalId, newtikect);
+                logStatus(internalId, 'File: ' + request.filename + ' - Request: ' + request.request);
+                // saveFelTrace(internalId, 'SEND', 'Actividad 1', userId, JSON.stringify(newtikect));
                 if (newtikect.tickets) {
                     tiket = newtikect.tickets[0];
-                    logStatus(internalId, 'entro newtikect.tickets');
-                    log.debug('track7', 'entro newtikect.tickets');
-                    var getpdf = getDocumentPDF(tiket, reponse.access_token);
-                    logStatus(internalId, getpdf);
-                    log.debug('track4', getpdf);
+
+                    var getpdf = getDocumentPDF(tiket, reponse.access_token, getcredentials.pdf);
+
+
                     var filepdf = generateFilePDF(request.filename, getpdf.pdf);
-                    log.debug('track12', filepdf);
-                    logStatus(internalId, filepdf);
+                    // saveFelTrace(internalId, 'SEND', 'Actividad 2', userId, JSON.stringify(filepdf));
                     if (filepdf == false) {
-                        send = sendDocument(request.filename, request.request, reponse.access_token);
-                        sleep(15000);
+                        send = sendDocument(request.filename, request.request, reponse.access_token, getcredentials.document);
+                        /* var tiempoInicio = new Date().getTime();
+                        var tiempoTranscurrido = 0;
+                        while (tiempoTranscurrido < 8000) {
+                            tiempoTranscurrido = new Date().getTime() - tiempoInicio;
+                        }*/
                         tiket = send.description;
                     }
                 } else {
-                    log.debug('track23', 'entro sendDocument');
-                    send = sendDocument(request.filename, request.request, reponse.access_token);
-                    log.debug('track24', send);
-                    logStatus(internalId, send);
-                    sleep(15000);
+                    send = sendDocument(request.filename, request.request, reponse.access_token, getcredentials.document);
                     tiket = send.description;
-
                 }
+
                 //logStatus(array[0], send.description);
+                //  
+                // saveFelTrace(internalId, 'SEND', 'Actividad 3', userId, JSON.stringify(send));
+                // saveFelTrace(internalId, 'SEND', 'Actividad 4', userId, JSON.stringify(filepdf));
+
                 if (send.code == '0' || filepdf) {
-                    log.debug('track6', send.description);
-                    var estatus = recuperarArchivos(tiket, reponse.access_token, request.filename, internalId, tranType);
+                    var estatus = recuperarArchivos(tiket, reponse.access_token, request.filename, internalId, tranType, 1, getcredentials);
+                    //saveFelTrace(internalId, 'SEND', 'Actividad 5', userId, JSON.stringify(estatus));
                     result.success = estatus.success;
-                    result.message = estatus.message
+                    result.message = '(Efact) ' + estatus.message
                 } else {
                     result.success = false;
-                    result.message = send.description /*|| codestatus.description*/ || 'Fallo Envio';
+                    result.message = send.description || 'Fallo Envio';
                 }
             } catch (error) {
 
@@ -154,72 +130,132 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
                     message: error.message
                 };
             }
+
             return result;
         }
+        function BuscarFolder() {
+            try {
+                var folder = '';
+                var tmpSearch = search.create({
+                    type: search.Type.FOLDER,
+                    filters:
+                        [
+                            ["name", search.Operator.IS, 'Docs'],
+                        ],
+                    columns:
+                        [
+                            search.createColumn({ name: "internalid", label: "0.InternalId" }),
+                        ]
+                });
+                var resultSet = tmpSearch.run().getRange({ start: 0, end: 50 });
 
-        function recuperarArchivos(tiket, access_token, filename, internalId, tranType) {
+                if (resultSet === '' || resultSet === null) {
+                    var tmpfolder = search.create({
+                        type: search.Type.FOLDER,
+                        columns: [
+                            search.createColumn({ name: "internalid", label: "0.InternalId" }),
+                        ],
+                        filters: [
+                            ["name", search.Operator.IS, 'TS NET Scripts']
+                        ]
+                    });
+                    var objResultfolder = tmpfolder.run().getRange(0, 50);
+                    var varRecordFolder = record.create({
+                        type: 'folder'
+                    });
+                    varRecordFolder.setValue('name', 'Docs');
+                    varRecordFolder.setValue('parent', objResultfolder[0].getValue('internalid'));
+                    folder = varRecordFolder.save();
+                } else {
+                    folder = resultSet[0].getValue('internalid')
+                }
+                return folder;
+            } catch (e) {
+                return e;
+            }
+
+        }
+        function recuperarArchivos(tiket, access_token, filename, internalId, tranType, attempt, getcredentials) {
             var access_token = access_token;
             var tiket = tiket;
             var filename = filename;
             var tranType = tranType;
             var internalId = internalId;
-            var getpdf = getDocumentPDF(tiket, access_token);
+            var maxAttempts = 15;
+            remainingUsage = script.getRemainingUsage();
+            var getpdf = getDocumentPDF(tiket, access_token, getcredentials.pdf);
             var filepdf = generateFilePDF(filename, getpdf.pdf);
-            log.debug('track13', send.description);
-            log.debug('track14', getpdf);
-            log.debug('track15', JSON.parse(getpdf.pdf));
+
+            if (remainingUsage < 100) {
+                return {
+                    success: false,
+                    message: 'Se alcanzo el límite de intentos, No se puede recuperar los archivos : ' + JSON.stringify(getpdf)
+                };
+            }
 
             if (filepdf == false) {
+
                 var statusTrans = JSON.parse(getpdf.pdf);
-                //logStatus(internalId, statusTrans);
+                logStatus(internalId, statusTrans);
                 if (statusTrans.code == "-9998" || statusTrans.code == "1033" || statusTrans.code == "0100") {
-                    var newtikect = getSentDocument(filename, access_token);
-                    sleep(15000);
-                    //logStatus(internalId, newtikect);
-                    log.debug('track16', newtikect);
+
+                    var newtikect = getSentDocument(filename, access_token, getcredentials.ticket);
+                    //saveFelTrace(internalId, 'RECUPERARARCHIVOS', 'getSentDocument' + filename, userId, JSON.stringify(newtikect));
+                    // saveFelTrace(internalId, 'RECUPERARARCHIVOS', 'Timeout start - ' + attempt, userId, getDateTime('GMT-5'));
+                    // sleep(15000);
+                    //sleepV2(20000);
+                    //   saveFelTrace(internalId, 'RECUPERARARCHIVOS', 'Timeout ends - ' + attempt, userId, getDateTime('GMT-5'));
+                    // logStatus(internalId, newtikect);
                     newtikect = JSON.parse(newtikect.pdf)
+
                     if (newtikect.tickets) {
-                        var returns = recuperarArchivos(newtikect.tickets[0], access_token, filename, internalId, tranType);
+                        var returns = recuperarArchivos(newtikect.tickets[0], access_token, filename, internalId, tranType, Number(attempt) + 1, getcredentials);
                         return returns
                     } else {
-                        //logStatus(internalId, 'entro');
+                        logStatus(internalId, 'entro');
                         if (newtikect.code == "0100") {
-                            var returns2 = recuperarArchivos(tiket, access_token, filename, internalId, tranType);
-                            log.debug('track17', returns2);
-                            return returns2
-                            //logStatus(internalId, returns2);
 
+                            var returns2 = recuperarArchivos(tiket, access_token, filename, internalId, tranType, Number(attempt) + 1, getcredentials);
+                            return returns2
+                            logStatus(internalId, returns2);
                         } else {
                             return {
                                 success: false,
                                 message: newtikect.description
                             }
                         }
+
                     }
+
+
+
                 } else {
                     return {
                         success: false,
                         message: statusTrans.description
                     };
                 }
+
+
             } else {
-                var getxml = getDocumentXML(tiket, access_token);
-                var getcdr = getDocumentCDR(tiket, access_token);
+                var getxml = getDocumentXML(tiket, access_token, getcredentials.xml);
+                var getcdr = getDocumentCDR(tiket, access_token, getcredentials.cdr);
+
                 var filexml = generateFileXML(filename, getxml.pdf);
                 var filecdr = generateFileCDR(filename, getcdr.pdf);
                 var recordSet = setRecord(tranType, internalId, filepdf, filexml, filecdr)
-                log.debug('track18', getxml);
-                log.debug('track19', getcdr);
-                log.debug('track20', retfilexmlurns2);
-                log.debug('track21', filecdr);
-                log.debug('track22', recordSet);
                 return {
                     success: true,
                     message: 'Registro Correcto'
                 };
             }
-        }
 
+
+
+
+
+            //
+        }
         function openCredentials(array) {
             try {
                 var accountSearch = search.create({
@@ -231,41 +267,36 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
                     ],
                     columns: ["subsidiary"]
                 });
+
                 var searchResult = accountSearch.run().getRange({ start: 0, end: 1 });
 
-                var credentials = search.create({
-                    type: CUSTOM_RECORD_EI_ENABLED_FEATURES,
-                    filters: [search.createFilter({ name: "custrecord_pe_ei_subsidiary", operator: search.Operator.IS, values: [searchResult[0].getValue({ name: "subsidiary" })] })],
-                    columns: [
-                        "internalid",
-                        "custrecord_pe_ei_user",
-                        "custrecord_pe_ei_password",
-                        "custrecord_pe_ei_employ_copy",
-                        "custrecord_pe_ei_url_ws",
-                        "custrecord_pe_ei_url_get_ticket",
-                        "custrecord_pe_ei_url_post_document",
-                        "custrecord_pe_ei_url_get_pdf",
-                        "custrecord_pe_ei_url_get_xml",
-                        "custrecord_pe_ei_url_get_cdr"
-                    ]
+                var accountSearchs = search.create({
+                    type: 'customrecord_pe_ei_enable_features',
+                    filters: [
+                        search.createFilter({
+                            name: "custrecord_pe_ei_subsidiary", operator: search.Operator.IS, values: [searchResult[0].getValue({ name: "subsidiary" })]
+                        })
+                    ],
+                    columns: ["internalid"]
                 });
 
-                var searchResults = credentials.run().getRange({ start: 0, end: 1 });
-                // var credentials = search.lookupFields({
-                //     type: CUSTOM_RECORD_EI_ENABLED_FEATURES,
-                //     id: searchResults[0].getValue({ name: "internalid" }),
-                //     columns: ['custrecord_pe_ei_url_ws', 'custrecord_pe_ei_user', 'custrecord_pe_ei_password', 'custrecord_pe_ei_employ_copy']
-                // });
+                var searchResults = accountSearchs.run().getRange({ start: 0, end: 1 });
+
+                var credentials = search.lookupFields({
+                    type: 'customrecord_pe_ei_enable_features',
+                    id: searchResults[0].getValue({ name: "internalid" }),
+                    columns: ['custrecord_pe_ei_url_ws', 'custrecord_pe_ei_url_get_pdf', 'custrecord_pe_ei_url_get_cdr', 'custrecord_pe_ei_url_get_xml', 'custrecord_pe_ei_url_post_document', 'custrecord_pe_ei_url_get_ticket', 'custrecord_pe_ei_user', 'custrecord_pe_ei_password', 'custrecord_pe_ei_employ_copy']
+                });
 
                 return {
-                    username: searchResults[0].getValue({ name: "custrecord_pe_ei_user" }),
-                    password: searchResults[0].getValue({ name: "custrecord_pe_ei_password" }),
-                    wsurl: searchResults[0].getValue({ name: "custrecord_pe_ei_url_ws" }),
-                    wsticket: searchResults[0].getValue({ name: "custrecord_pe_ei_url_get_ticket" }),
-                    wsdocument: searchResults[0].getValue({ name: "custrecord_pe_ei_url_post_document" }),
-                    wspdf: searchResults[0].getValue({ name: "custrecord_pe_ei_url_get_pdf" }),
-                    wsxml: searchResults[0].getValue({ name: "custrecord_pe_ei_url_get_xml" }),
-                    wscdr: searchResults[0].getValue({ name: "custrecord_pe_ei_url_get_cdr" })
+                    token: credentials.custrecord_pe_ei_url_ws,
+                    ticket: credentials.custrecord_pe_ei_url_get_ticket,
+                    document: credentials.custrecord_pe_ei_url_post_document,
+                    pdf: credentials.custrecord_pe_ei_url_get_pdf,
+                    xml: credentials.custrecord_pe_ei_url_get_xml,
+                    cdr: credentials.custrecord_pe_ei_url_get_cdr,
+                    username: credentials.custrecord_pe_ei_user,
+                    password: credentials.custrecord_pe_ei_password
                 }
             } catch (e) {
                 //logError(array[0], array[1], 'Error-openCredentials', e.message);
@@ -273,6 +304,7 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
         }
 
         function getIdentifyDocument(internalid) {
+
             var searchLoad = search.create({
                 type: "transaction",
                 filters:
@@ -292,7 +324,8 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
                         search.createColumn({ name: "legalname", join: "subsidiary", label: "emisname" }),
                         search.createColumn({ name: "custbody_pe_document_type", label: "typedoc" }),
                         search.createColumn({ name: "taxidnum", join: "subsidiary", label: "rucemi" }),
-                        search.createColumn({ name: "custbody_pe_ei_printed_xml_req", label: "request" })
+                        search.createColumn({ name: "custbody_pe_ei_printed_xml_req", label: "request" }),
+                        search.createColumn({ name: "custrecord_pe_serie_impresion", join: "CUSTBODY_PE_SERIE", label: "SerieImpresion" })
                     ]
             });
 
@@ -300,7 +333,8 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
             var typedoccode = searchResult[0].getValue(searchLoad.columns[0]);
             var numbering = searchResult[0].getValue(searchLoad.columns[1]);
             var correlativo = searchResult[0].getValue(searchLoad.columns[2]);
-            var serie = searchResult[0].getText({ name: "custbody_pe_serie", label: "serie" });
+            // var serie = searchResult[0].getText({ name: "custbody_pe_serie", label: "serie" });
+            var serie = searchResult[0].getValue({ name: "custrecord_pe_serie_impresion", join: "CUSTBODY_PE_SERIE", label: "SerieImpresion" });
             if (!serie) {
                 serie = searchResult[0].getValue({ name: "custbody_pe_serie_cxp", label: "serie2" });
             }
@@ -323,19 +357,20 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
                 filename: filename,
                 request: request
             }
+
         }
 
-        function getDocumentPDF(documento, token) {
+        function getDocumentPDF(documento, token, url) {
             var headers1 = new Array();
             try {
                 headers1['Accept'] = '*/*';
                 headers1['Authorization'] = 'Bearer ' + token;
                 var response = https.get({
-                    url: url_pdf + documento,
+                    url: url + documento,
                     body: '',
                     headers: headers1
                 });
-                log.debug('track5', response);
+                log.debug('response-pdf', response);
                 //var body = JSON.parse(response.body);
                 //logStatus(internalId, 'Debug3 ' + JSON.stringify(pdf));
                 return {
@@ -346,43 +381,25 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
                 //logError(array[0], array[1], 'Error-getDocumentPDF', JSON.stringify(e));
             }
         }
-
-        function getSentDocument(documento, token) {
+        function getSentDocument(documento, token, url) {
             var headers1 = new Array();
             try {
 
                 headers1['Accept'] = '*/*';
-                headers1['Authorization'] = 'Bearer ' + token;
-                var response = https.get({
-                    url: url_ticket + documento,
-                    body: '',
-                    headers: headers1
-                });
-                //var body = JSON.parse(response.body);
-                //logStatus(internalId, 'Debug3 ' + JSON.stringify(pdf));
-                return {
-                    pdf: response.body
-                }
-            } catch (error) {
-                return error;
-                //logError(array[0], array[1], 'Error-getDocumentPDF', JSON.stringify(e));
-            }
-        }
 
-        function getDocumentXML(documento, token) {
-            var headers1 = new Array();
-            try {
-                headers1['Accept'] = '*/*';
                 headers1['Authorization'] = 'Bearer ' + token;
                 var response = https.get({
-                    url: url_xml + documento,
+                    url: url + documento,
                     body: '',
                     headers: headers1
                 });
                 log.debug('response', response);
                 //var body = JSON.parse(response.body);
+
                 //logStatus(internalId, 'Debug3 ' + JSON.stringify(pdf));
+
                 return {
+
                     pdf: response.body
                 }
             } catch (error) {
@@ -391,18 +408,47 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
             }
         }
 
-        function getDocumentCDR(documento, token) {
+
+        function getDocumentXML(documento, token, url) {
             var headers1 = new Array();
             try {
+
                 headers1['Accept'] = '*/*';
+
                 headers1['Authorization'] = 'Bearer ' + token;
                 var response = https.get({
-                    url: url_cdr + documento,
+                    url: url + documento,
                     body: '',
                     headers: headers1
                 });
                 log.debug('response', response);
                 //var body = JSON.parse(response.body);
+
+                //logStatus(internalId, 'Debug3 ' + JSON.stringify(pdf));
+
+                return {
+
+                    pdf: response.body
+                }
+            } catch (error) {
+                return error;
+                //logError(array[0], array[1], 'Error-getDocumentPDF', JSON.stringify(e));
+            }
+        }
+        function getDocumentCDR(documento, token, url) {
+            var headers1 = new Array();
+            try {
+
+                headers1['Accept'] = '*/*';
+                headers1['Authorization'] = 'Bearer ' + token;
+                var response = https.get({
+                    url: url + documento,
+                    body: '',
+                    headers: headers1
+                });
+                log.debug('response', response);
+                //var body = JSON.parse(response.body);
+
                 //logStatus(internalId, 'Debug3 ' + JSON.stringify(pdf));
                 return {
                     pdf: response.body
@@ -413,30 +459,33 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
             }
         }
 
-        function sendDocument(filename, request, access_token) {
+
+        function sendDocument(filename, request, access_token, url) {
             var headers1 = new Array();
             try {
                 var files = [
                     { name: filename, value: file.load({ id: request }) } // file cabinet ids; you can use dynamic files
+
                 ];
 
                 var headers = [];
                 headers['Accept'] = '*/*';
                 headers['Authorization'] = 'Bearer ' + access_token;
-                var resp = multiPartUpload_1.uploadParts(url_document, headers, files);
+
+                var resp = multiPartUpload_1.uploadParts(url, headers, files);
                 resp = JSON.parse(resp.body);
                 return resp;
 
             } catch (error) {
+
                 return error;
                 //logError(array[0], array[1], 'Error-sendDocument', JSON.stringify(e));
             }
         }
 
+
         function generateFilePDF(namefile, content) {
             try {
-                log.debug('track26', namefile)
-                log.debug('track27', content)
                 var fileObj = file.create({
                     name: namefile + '.pdf',
                     fileType: file.Type.PDF,
@@ -445,7 +494,6 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
                     isOnline: true
                 });
                 var fileid = fileObj.save();
-                log.debug('track28', fileid)
                 return fileid;
             } catch (error) {
                 return false;
@@ -453,6 +501,7 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
                 //logError(array[0], array[1], 'Error-generateFilePDF', e.message);
             }
         }
+
 
         function generateFileXML(namefile, content) {
             try {
@@ -488,6 +537,7 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
             }
         }
 
+
         function sleep(milliseconds) {
             var start = new Date().getTime();
             for (var i = 0; i < 1e7; i++) {
@@ -497,25 +547,35 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
             }
         }
 
+        //<I> rhuaccha: 2024-08-20
+        function sleepV2(ms) {
+            var start = new Date().getTime();
+            while (new Date().getTime() < start + ms) { }
+        }
+        //<F> rhuaccha: 2024-08-20
+
+
         function random() {
             return Math.random().toString(36).substr(2); // Eliminar `0.`
         }
+
 
         function token() {
             return random() + random() + random() + random() + random(); // Para hacer el token más largo
         }
 
+
         function logStatus(internalid, docstatus) {
             try {
                 var logStatus = record.create({ type: 'customrecord_pe_ei_document_status' });
                 logStatus.setValue('custrecord_pe_ei_document', internalid);
-                logStatus.setValue('custrecord_pe_ei_document_status_2', JSON.stringify(docstatus));
-                var recordLog = logStatus.save();
+                logStatus.setValue('custrecord_pe_ei_document_status', docstatus);
+                logStatus.save();
             } catch (error) {
                 logStatus(internalId, error);
-                log.error('error-logStatus', error);
             }
         }
+
 
         function logError(internalid, response) {
             try {
@@ -530,6 +590,7 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
 
             }
         }
+
 
         function sendEmail(success, arrayheader, arraybody, recordtype, array) {
             try {
@@ -581,6 +642,7 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
             }
         }
 
+
         //function setRecord(recordtype, internalid, tranid, urlpdf, urlxml, urlcdr, urljson, encodepdf, array) {
         function setRecord(recordtype, internalid, urlpdf, urlxml, urlcdr) {
             var recordload = '';
@@ -629,6 +691,7 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
             return base64encoded;
         }
 
+
         function base64Decoded(content) {
             var base64decoded = encode.convert({
                 string: content,
@@ -637,6 +700,46 @@ define(['N/email', 'N/encode', 'N/format', 'N/https', 'N/record', 'N/search', 'N
             });
             return base64decoded;
         }
+
+        //<I> rhuaccha: 2024-08-19
+        function saveFelTrace(transactionId, event, message, userId, additional) {
+
+            var process = record.create({
+                type: 'customrecord_ts_fel_custom_trace'
+            });
+            var timeStamp = getDateTime('GMT-5');
+            process.setValue('custrecord_ts_transacction', transactionId);
+            process.setValue('custrecord_ts_time_stamp', timeStamp);
+            process.setValue('custrecord_ts_event', event);
+            process.setValue('custrecord_ts_message', message);
+            process.setValue('custrecord_ts_user', userId);
+            process.setValue('custrecord_ts_additional', additional);
+            process.save();
+
+        }
+
+
+        function getDateTime(timeZone) {
+            var currentDate = new Date();
+            var offset = Number(timeZone.replace('GMT', '')) * 60 * 60 * 1000; // Convertir horas a milisegundos
+            var utcDate = new Date(currentDate.getTime() + offset);
+
+            var year = utcDate.getUTCFullYear();
+            /*var month = String(utcDate.getUTCMonth() + 1).padStart(2, '0'); // El mes está indexado desde 0
+            var day = String(utcDate.getUTCDate()).padStart(2, '0');
+            var hours = String(utcDate.getUTCHours()).padStart(2, '0');
+            var minutes = String(utcDate.getUTCMinutes()).padStart(2, '0');
+            var seconds = String(utcDate.getUTCSeconds()).padStart(2, '0');*/
+            var month = String(utcDate.getUTCMonth() + 1); // El mes está indexado desde 0
+            var day = String(utcDate.getUTCDate());
+            var hours = String(utcDate.getUTCHours());
+            var minutes = String(utcDate.getUTCMinutes());
+            var seconds = String(utcDate.getUTCSeconds());
+            var formattedDateTime = day + '-' + month + '-' + year + ' ' + hours + ':' + minutes + ':' + seconds;
+
+            return formattedDateTime;
+        }
+        //<F> rhuaccha: 2024-08-19
 
         return {
             send: send

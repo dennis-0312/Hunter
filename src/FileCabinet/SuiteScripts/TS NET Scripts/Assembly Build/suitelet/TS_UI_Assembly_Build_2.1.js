@@ -9,12 +9,14 @@ define([
     'N/url',
     'N/task',
     'N/redirect',
-    './lib/TS_LBRY_Assembly_Build_2.1.js'
-], (serverWidget, log, config, url, task, redirect, library) => {
-
+    './lib/TS_LBRY_Assembly_Build_2.1.js',
+    'N/search'
+], (serverWidget, log, config, url, task, redirect, library, search) => {
     const onRequest = (context) => {
         try {
+            log.error("parameters Y", context.request.parameters);
             var method = context.request.method;
+
             let userInterface = new library.UserInterface(context.request.parameters);
             const FIELDS = userInterface.FIELDS;
             if (method == 'GET') {
@@ -60,6 +62,7 @@ define([
                 billOfMaterialRevisionField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
                 let datosTecnicosField = form.addField(FIELDS.field.datostecnicos.id, serverWidget.FieldType.SELECT, FIELDS.field.datostecnicos.text, FIELDS.fieldgroup.primary.id, 'customrecord_ht_record_mantchaser');
+                datosTecnicosField.setDefaultValue(PARAMETERS.datoTecnico);
 
                 form.addFieldGroup(FIELDS.fieldgroup.classification.id, FIELDS.fieldgroup.classification.text);
 
@@ -69,7 +72,11 @@ define([
 
                 let locationField = form.addField(FIELDS.field.location.id, serverWidget.FieldType.SELECT, FIELDS.field.location.text, FIELDS.fieldgroup.classification.id, 'location');
                 locationField.setDefaultValue(PARAMETERS.location);
-                locationField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+
+                //Inicio Cambio JCEC 08/10/2024
+                //Comentado
+                //locationField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+                //Fin Cambio JCEC 08/10/2024
 
                 //let datosTecnicosField = form.addField({ id: 'custpage_field_datos_tecnicos', type: serverWidget.FieldType.SELECT, source: 'customrecord_ht_record_mantchaser', label: 'Datos Técnicos', container: 'cuspage_fg_primary' });
 
@@ -95,11 +102,25 @@ define([
                 form.addSubmitButton(FIELDS.button.submit.text);
                 context.response.writePage(form.form);
             } else if (method == 'POST') {
-                let inventoryDetail = JSON.parse(context.request.parameters.custpage_f_inventorydetail);
-                log.error("inventoryDetail", inventoryDetail);
-                let { comercialData, alquilerData } = getSublistData(context.request.parameters.custpage_sl_componentsdata, inventoryDetail);
-                log.error("comercialData", comercialData);
-                let parameters = getParametersForSchedule(context.request.parameters, comercialData, alquilerData);
+                let parameters = '';
+                let datoTecnico = context.request.parameters.custpage_field_datos_tecnicos;
+                let subsidiary = context.request.parameters.custpage_f_subsidiary;
+
+                //& <I> dfernandez 28/08/2025
+                if (datoTecnico && subsidiary) {
+                    let { comercialData, alquilerData } = getJsonData(datoTecnico);
+                    log.error("comercialData", comercialData);
+                    log.error("alquilerData", alquilerData);
+                    parameters = getParametersForSchedule(context.request.parameters, comercialData, alquilerData);
+                } else {
+                    let inventoryDetail = JSON.parse(context.request.parameters.custpage_f_inventorydetail);
+                    log.error("inventoryDetail", inventoryDetail);
+                    let { comercialData, alquilerData } = getSublistData(context.request.parameters.custpage_sl_componentsdata, inventoryDetail);
+                    log.error("comercialData", comercialData);
+                    parameters = getParametersForSchedule(context.request.parameters, comercialData, alquilerData);
+                }
+                //& <F> dfernandez 28/08/2025
+
                 log.error("parameters", parameters);
                 taskSchedule(parameters)
                 redirect.toRecord({
@@ -124,6 +145,7 @@ define([
         scriptParameters.custscript_ts_ss_buil_inv_adj_salesorder = parameters.custpage_f_salesorder || "";
         scriptParameters.custscript_ts_ss_buil_inv_adj_assemblyfl = 'alquiler';
         scriptParameters.custscript_ts_ss_buil_inv_adj_datotec = parameters.custpage_field_datos_tecnicos || "";
+        scriptParameters.custscript_ts_ss_buil_inv_adj_subsidiary = parameters.custpage_f_subsidiary || "";
         return scriptParameters;
     }
 
@@ -246,6 +268,174 @@ define([
 
             execute();
         })
+    }
+
+    function getJsonData(datoTecnico) {
+        let comercialData = new Array(), alquilerData = Array();
+        let jsonData = {};
+        let jsonData2 = {};
+        let lines = [];
+        let recordType = '';
+        let recordType2 = '';
+        let dispositivoSerie = ''
+        let columns = [];
+        let columns2 = [];
+        let idDispositivo = '';
+        let simcardSerie = '';
+        let idSimcard = '';
+        let monitoreo = '';
+        let lojack = '';
+        let simcard = '';
+        let inventoryNumberDis = '';
+        let inventoryNumberSim = '';
+
+        var mySearch = search.create({
+            type: "customrecord_ht_record_mantchaser",
+            filters:
+                [
+                    ["internalid", "anyof", datoTecnico]
+                ],
+            columns:
+                [
+                    search.createColumn({ name: "custrecord_ht_mc_subsidiaria", label: "HT Subsidiaria" }),
+                    search.createColumn({ name: "custrecord_ht_mc_seriedispositivo", label: "HT MC Serie Dispositivo Chaser" }),
+                    search.createColumn({ name: "custrecord_ht_mc_seriedispositivolojack", label: "HT MC Serie Dispositivo Lojack" }),
+                    search.createColumn({ name: "custrecord_ht_mc_celularsimcard", label: "HT MC Celular Sim Card" })
+                ]
+        });
+        //var searchResultCount = mySearch.runPaged().count;
+        mySearch.run().each(function (result) {
+            subsidiary = result.getValue('custrecord_ht_mc_subsidiaria');
+            monitoreo = result.getValue('custrecord_ht_mc_seriedispositivo');
+            lojack = result.getValue('custrecord_ht_mc_seriedispositivolojack');
+            simcard = result.getValue('custrecord_ht_mc_celularsimcard');
+
+            if (monitoreo) {
+                recordType = 'customrecord_ht_record_detallechaserdisp';
+                idDispositivo = result.getValue('custrecord_ht_mc_seriedispositivo');
+                dispositivoSerie = result.getText('custrecord_ht_mc_seriedispositivo');
+                columns = ['custrecord_ht_dd_dispositivo'];
+            } else if (lojack) {
+                recordType = 'customrecord_ht_record_detallechaslojack';
+                idDispositivo = result.getValue('custrecord_ht_mc_seriedispositivolojack');
+                dispositivoSerie = result.getText('custrecord_ht_mc_seriedispositivolojack');
+                columns = ['custrecord_ht_cl_lojack'];
+            }
+
+            let searchDis = getSearchLookupFields(recordType, idDispositivo, columns)
+            if (monitoreo) {
+                idDispositivo = searchDis.custrecord_ht_dd_dispositivo[0].value;
+            } else if (lojack) {
+                idDispositivo = searchDis.custrecord_ht_cl_lojack[0].value;
+            }
+
+            inventoryNumberDis = InventoryBinNumbers(dispositivoSerie, idDispositivo);
+
+            jsonData = {
+                id: idDispositivo,  // ID debe coincidir exactamente
+                type: '1',
+                seriales: [
+                    {
+                        serial: inventoryNumberDis.inventorynumberid,
+                        deposit: inventoryNumberDis.bin,
+                        state: "1",
+                        quantity: 1
+                    }
+                ]
+            }
+
+            // log.error('inventoryNumberDis', inventoryNumberDis)
+            // log.error('jsonData1', jsonData)
+
+            if (inventoryNumberDis.custrecord_deposito_para_alquiler) {
+                alquilerData.push(jsonData);
+            } else if (inventoryNumberDis.custrecord_deposito_para_bodega_comercia) {
+                comercialData.push(jsonData);
+            }
+
+            if (simcard) {
+                recordType2 = 'customrecord_ht_record_detallechasersim';
+                idSimcard = result.getValue('custrecord_ht_mc_celularsimcard');
+                simcardSerie = result.getText('custrecord_ht_mc_celularsimcard');
+                columns2 = ['custrecord_ht_ds_simcard'];
+
+                let searchSim = getSearchLookupFields(recordType2, idSimcard, columns2)
+                idSimcard = searchSim.custrecord_ht_ds_simcard[0].value;
+
+                inventoryNumberSim = InventoryBinNumbers(simcardSerie, idSimcard);
+
+                jsonData2 = {
+                    id: idSimcard,  // ID debe coincidir exactamente
+                    type: '2',
+                    seriales: [
+                        {
+                            serial: inventoryNumberSim.inventorynumberid,
+                            deposit: inventoryNumberSim.bin,
+                            state: "1",
+                            quantity: 1
+                        }
+                    ]
+                }
+
+                comercialData.push(jsonData2);
+            }
+        });
+
+        log.error('jsonData', { alquilerData, comercialData });
+
+        return { alquilerData, comercialData };
+    }
+
+    function InventoryBinNumbers(serie, item) {
+        let jsonData = {};
+        var inventorynumberbinSearchObj = search.create({
+            type: "inventorynumberbin",
+            filters:
+                [
+                    ["inventorynumber", "is", serie],
+                    "AND",
+                    ["inventorynumber.item", "anyof", item],
+                    "AND",
+                    ["quantityavailable", "greaterthan", "0"]
+                ],
+            columns:
+                [
+                    search.createColumn({ name: "inventorynumber", label: "Inventory Number" }),
+                    search.createColumn({ name: "location", label: "Location" }),
+                    search.createColumn({ name: "binnumber", label: "Bin Number" }),
+                    search.createColumn({
+                        name: "custrecord_deposito_para_bodega_comercia",
+                        join: "binNumber",
+                        label: "Deposito para bodega comercial"
+                    }),
+                    search.createColumn({
+                        name: "custrecord_deposito_para_alquiler",
+                        join: "binNumber",
+                        label: "Depósito para Alquiler"
+                    }),
+                    search.createColumn({ name: "quantityavailable", label: "Available" })
+                ]
+        });
+        var searchResultCount = inventorynumberbinSearchObj.runPaged().count;
+        log.debug("inventorynumberbinSearchObj result count", searchResultCount);
+        inventorynumberbinSearchObj.run().each(function (result) {
+            jsonData.inventorynumberid = result.getValue('inventorynumber');
+            jsonData.bin = result.getValue('binnumber');
+            jsonData.custrecord_deposito_para_bodega_comercia = result.getValue({ name: "custrecord_deposito_para_bodega_comercia", join: "binNumber", label: "Deposito para bodega comercial" });
+            jsonData.custrecord_deposito_para_alquiler = result.getValue({ name: "custrecord_deposito_para_alquiler", join: "binNumber", label: "Depósito para Alquiler" });
+        });
+
+        return jsonData;
+    }
+
+    const getSearchLookupFields = (recordType, id, columns) => {
+        let searchDis = search.lookupFields({
+            type: recordType,
+            id: id,
+            columns: columns
+        })
+
+        return searchDis
     }
 
     return {

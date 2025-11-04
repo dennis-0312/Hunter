@@ -94,12 +94,12 @@ define(['N/log',
                 case GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
                     switch (parseInt(type)) {
                         case 43:
-                            let Dispositivo =  _Controller.Dispositivo(id);
-                            let vehiculo =  _Controller.vehiculo(id);
-                            let Propietario =  _Controller.Propietario(id);
-                            let PropietarioMonitero =  _Controller.PropietarioMonitoreo(id);
-                          
-                            response =  _Controller.envioPXAdminInstall(Dispositivo,vehiculo,Propietario,PropietarioMonitero,id);
+                            let Dispositivo = _Controller.Dispositivo(id);
+                            let vehiculo = _Controller.vehiculo(id);
+                            let Propietario = _Controller.Propietario(id);
+                            let PropietarioMonitero = _Controller.PropietarioMonitoreo(id);
+
+                            response = _Controller.envioPXAdminInstall(Dispositivo, vehiculo, Propietario, PropietarioMonitero, id);
                             break;
                         case 10:
 

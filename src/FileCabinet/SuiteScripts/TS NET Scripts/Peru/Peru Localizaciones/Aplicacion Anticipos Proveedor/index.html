@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla con Paginación y Selección</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <style>
+        html,
+        body {
+            height: 100%;
+            /* Asegura que el body ocupe toda la altura de la ventana */
+            margin: 0;
+            /* Elimina el margen predeterminado */
+            padding: 0;
+            /* Elimina el padding predeterminado */
+        }
+
+        .container-fluid {
+            height: 100%;
+            /* Asegura que el contenedor ocupe toda la altura */
+            padding: 10px;
+            /* Espacio mínimo alrededor del contenido */
+        }
+
+        .table-container {
+            overflow-x: auto;
+            /* Habilita el scroll horizontal */
+            white-space: nowrap;
+            /* Evita que el texto se divida en varias líneas */
+            height: calc(100vh - 200px);
+            /* Ajusta la altura de la tabla */
+        }
+
+        .table {
+            width: 100%;
+            /* Asegura que la tabla ocupe el ancho completo */
+            margin-bottom: 0;
+            /* Elimina el margen inferior predeterminado */
+        }
+
+        .pagination {
+            margin-top: 10px;
+            /* Espacio entre la tabla y la paginación */
+        }
+
+        #jsonResult {
+            margin-top: 10px;
+            /* Espacio entre la paginación y el resultado JSON */
+        }
+
+        .disabled-row {
+            opacity: 0.6;
+            background-color: #f8f9fa;
+            color: #6c757d;
+        }
+
+        /* Ocultar columnas ID (segunda columna) y Moneda (octava columna) */
+        .table-container table th:nth-child(2),
+        .table-container table td:nth-child(2),
+        .table-container table th:nth-child(5),
+        .table-container table td:nth-child(5),
+        .table-container table th:nth-child(8),
+        .table-container table td:nth-child(8),
+        .table-container table th:nth-child(9),
+        .table-container table td:nth-child(9),
+        .table-container table th:nth-child(10),
+        .table-container table td:nth-child(10),
+        .table-container table th:nth-child(11),
+        .table-container table td:nth-child(11) {
+            display: none;
+        }
+
+        /* Estilos para el contenedor de botones */
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Estilos para la UI de progreso */
+        .text-success {
+            color: green;
+        }
+
+        .text-danger {
+            color: red;
+        }
+
+        #progress-container {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        #log-container {
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            padding: 10px;
+        }
+
+        #log-container p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#" style="height: 50px;">
+                <img src="https://7451241-sb1.app.netsuite.com/core/media/media.nl?id=256757&c=7451241_SB1&h=iZcetjaYP0LJoHHMlcjlp4FnXbk0Bv-zmHpvC64k10rJq0uW"
+                    alt="Logo" style="height: 100%; width: auto; max-width: 180px; object-fit: contain;">
+            </a>
+            <!-- Resto del navbar -->
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <h2 class="text-left mb-5 mt-5">Aplicación de anticipos</h2>
+        <div class="button-group mb-5">
+            <button id="consultarSeleccion" class="btn btn-primary me-2">Consultar</button>
+            <button id="enviarSeleccion" class="btn btn-success me-2">Procesar</button>
+            <button id="guardarSeleccion" class="btn btn-dark">Ver registros enviados</button>
+        </div>
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <label for="custpage_amount_field" class="form-label">Importe</label>
+                <input type="number" class="form-control" id="custpage_amount_field" placeholder="Ingrese un número"
+                    name="custpage_amount_field" required>
+            </div>
+            <div class="col-md-3">
+                <label for="custpage_currency_field" class="form-label">Moneda</label>
+                <select class="form-select" id="custpage_currency_field" name="custpage_currency_field" required>
+                    <option value="">Seleccione...</option>
+                    <!--optionsContentCurrencies-->
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="custpage_subsidiary_field" class="form-label">Subsidiaria</label>
+                <input type="text" class="form-control" id="custpage_subsidiary_field"
+                    placeholder="Seleccione una opción" name="custpage_subsidiary_field"
+                    value="_custpage_subsidiary_field_value_" readonly required>
+            </div>
+            <!-- <div class="col-md-3">
+                <label for="custpage_bank_account_field" class="form-label">Cuenta Bancaria</label>
+                <input type="text" class="form-control" id="custpage_bank_account_field"
+                    placeholder="Seleccione una opción" name="custpage_bank_account_field"
+                    value="_custpage_bank_account_field_value_" readonly>
+            </div> -->
+        </div>
+
+        <!-- Contenedor de la tabla con scroll horizontal -->
+        <div class="table-container">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Seleccionar</th>
+                        <th>ID</th>
+                        <th>Documento</th>
+                        <th>Fecha</th>
+                        <th>Proveedor ID</th>
+                        <th>Estado</th>
+                        <th>Importe</th>
+                        <th>Moneda</th>
+                        <th>Clase</th>
+                        <th>Departamento</th>
+                        <th>Ubicación</th>
+                        <th>Proveedor</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaBody">
+                    <!-- Las filas se generan dinámicamente con JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Paginación -->
+        <nav aria-label="Paginación">
+            <ul class="pagination justify-content-center" id="paginacion">
+                <!-- Los botones de paginación se generan dinámicamente con JavaScript -->
+            </ul>
+        </nav>
+
+        <!-- </form> -->
+        <!-- Botón para guardar selección -->
+        <!-- <button id="guardarSeleccion" class="btn btn-primary">Guardar Selección</button> -->
+        <!-- <button id="enviarSeleccion" class="btn btn-success mb-5">Procesar</button>
+        <button id="consultarSeleccion" class="btn btn-primary mb-5">Consultar Registros</button> -->
+        <!-- Resultado en JSON -->
+        <pre id="jsonResult" class="mt-4"></pre>
+        <!-- UI de Progreso (añadir esto antes del cierre del div container-fluid) -->
+        <div id="progress-container" style="display: none; width: 100%; background: #f3f3f3; margin: 20px 0;">
+            <div id="progress-bar" style="height: 30px; background: #4CAF50; width: 0%; transition: width 0.3s;">
+                <span id="progress-text" style="color: white; line-height: 30px; padding-left: 10px;">0%</span>
+            </div>
+        </div>
+        <div id="log-container"
+            style="height: 200px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 20px;"></div>
+    </div>
+
+    <!-- Bootstrap JS y dependencias -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript personalizado -->
+    <script>
+        // Añade esto al inicio de tu script (después de let datos = [];)
+        const BATCH_SIZE = 50; // Tamaño del lote para procesamiento
+        let datos = [];
+        //<!--htmlContentObjectData-->
+    </script>
+    <script>
+        // Variables globales
+        const filasPorPagina = 1000;
+        let paginaActual = 1;
+        const filasSeleccionadas = new Set(); // Almacena los IDs de las filas seleccionadas
+
+        // Función para generar las filas de la tabla
+        function generarFilas(pagina) {
+            const inicio = (pagina - 1) * filasPorPagina;
+            const fin = inicio + filasPorPagina;
+            const filasPagina = datos.slice(inicio, fin);
+
+            const tablaBody = document.getElementById('tablaBody');
+            tablaBody.innerHTML = ''; // Limpiar la tabla
+
+            filasPagina.forEach(dato => {
+                const fila = document.createElement('tr');
+                fila.innerHTML = `
+                    <td><input type="checkbox" class="form-check-input" data-id="${dato.id}" ${filasSeleccionadas.has(dato.id) ? 'checked' : ''}></td>
+                    <td>${dato.id}</td>
+                    <td>${dato.number}</td>
+                    <td>${dato.date}</td>
+                    <td>${dato.entity}</td>
+                    <td>${dato.status}</td>
+                    <td>${dato.amount}</td>
+                    <td>${dato.currency}</td>
+                    <td>${dato.clase}</td>
+                    <td>${dato.department}</td>
+                    <td>${dato.location}</td>
+                    <td>${dato.vendor}</td>
+
+                `;
+                tablaBody.appendChild(fila);
+            });
+
+            // Actualizar la paginación
+            actualizarPaginacion();
+        }
+
+        // Función para actualizar la paginación
+        function actualizarPaginacion() {
+            const totalPaginas = Math.ceil(datos.length / filasPorPagina);
+            const paginacion = document.getElementById('paginacion');
+            paginacion.innerHTML = '';
+
+            for (let i = 1; i <= totalPaginas; i++) {
+                const li = document.createElement('li');
+                li.className = `page-item ${i === paginaActual ? 'active' : ''}`;
+                li.innerHTML = `<a class="page-link" href="#">${i}</a>`;
+                li.addEventListener('click', () => {
+                    paginaActual = i;
+                    generarFilas(paginaActual);
+                });
+                paginacion.appendChild(li);
+            }
+        }
+
+        // Función para manejar la selección de filas
+        document.getElementById('tablaBody').addEventListener('change', (event) => {
+            if (event.target.type === 'checkbox') {
+                const id = event.target.getAttribute('data-id');
+                if (event.target.checked) {
+                    filasSeleccionadas.add(id);
+                } else {
+                    filasSeleccionadas.delete(id);
+                }
+                console.log('Filas seleccionadas:', filasSeleccionadas); // Depuración
+            }
+        });
+
+
+        //Función para guardar la selección
+        document.getElementById('guardarSeleccion').addEventListener('click', () => {
+            // console.log('IDs en filasSeleccionadas:', Array.from(filasSeleccionadas)); // Verificar IDs seleccionados
+            // console.log('IDs en datos:', datos.map(dato => dato.id)); // Verificar IDs en datos
+            const datosSeleccionados = datos.filter(dato => filasSeleccionadas.has(dato.id));
+            //console.log('Datos seleccionados:', JSON.stringify(datosSeleccionados)); // Depuración
+            const jsonResult = JSON.stringify(datosSeleccionados, null, 2);
+            document.getElementById('jsonResult').textContent = jsonResult;
+        });
+
+
+        // Función para enviar al POST
+        // document.getElementById('enviarSeleccion').addEventListener('click', () => {
+        //     const btn = document.getElementById('enviarSeleccion');
+        //     btn.disabled = true;
+        //     btn.textContent = 'Procesando...';
+
+        //     const datosSeleccionados = datos.filter(dato => filasSeleccionadas.has(dato.id));
+        //     const jsonResult = JSON.stringify(datosSeleccionados);
+
+        //     fetch('/app/site/hosting/scriptlet.nl?script=4652&deploy=1', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'application/json',
+        //         },
+        //         body: jsonResult,
+        //         //body: JSON.stringify(datosSeleccionados),
+        //     })
+        //         .then(response => {
+        //             if (!response.ok) {
+        //                 throw new Error('Error en la respuesta del servidor');
+        //             }
+        //             return response.json();
+        //         })
+        //         .then(data => {
+        //             console.log('Respuesta del Suitelet:', data);
+
+        //             // Desactivar y deshabilitar los checkboxes seleccionados
+        //             filasSeleccionadas.forEach(id => {
+        //                 const checkbox = document.querySelector(`input[data-id="${id}"]`);
+        //                 if (checkbox) {
+        //                     checkbox.checked = false;
+        //                     checkbox.disabled = true;
+        //                     // Opcional: cambiar el estilo visual
+        //                     checkbox.closest('tr').style.opacity = '0.6';
+        //                     checkbox.closest('tr').classList.add('disabled-row');
+        //                 }
+        //             });
+
+        //             // Limpiar el conjunto de selecciones
+        //             filasSeleccionadas.clear();
+
+        //             btn.disabled = false;
+        //             btn.textContent = 'Procesar';
+        //             alert('Datos enviados correctamente');
+        //         })
+        //         .catch(error => {
+        //             console.error('Error al enviar los datos:', error);
+        //             btn.disabled = false;
+        //             btn.textContent = 'Procesar';
+        //             alert('Error al enviar los datos');
+        //         });
+        // });
+        document.getElementById('enviarSeleccion').addEventListener('click', () => {
+            const btn = document.getElementById('enviarSeleccion');
+            btn.disabled = true;
+            btn.textContent = 'Procesando...';
+
+            const datosSeleccionados = datos.filter(dato => filasSeleccionadas.has(dato.id));
+            const progressContainer = document.getElementById('progress-container');
+            const progressBar = document.getElementById('progress-bar');
+            const progressText = document.getElementById('progress-text');
+            const logContainer = document.getElementById('log-container');
+
+            // Mostrar la UI de progreso
+            progressContainer.style.display = 'block';
+            progressBar.style.width = '0%';
+            progressText.textContent = '0%';
+            logContainer.innerHTML = '';
+
+            function procesarLote(offset) {
+                const batchEnd = Math.min(offset + BATCH_SIZE, datosSeleccionados.length);
+                const loteActual = datosSeleccionados.slice(offset, batchEnd);
+
+                fetch('/app/site/hosting/scriptlet.nl?script=4652&deploy=1', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        batchData: datosSeleccionados,
+                        offset: offset
+                    }),
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error en la respuesta del servidor');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.success) {
+                            // Actualizar UI
+                            const progress = Math.round((data.processedSoFar / datosSeleccionados.length) * 100);
+                            progressBar.style.width = progress + '%';
+                            progressText.textContent = progress + '%';
+
+                            logContainer.innerHTML += `<p>${data.message}</p>`;
+                            logContainer.scrollTop = logContainer.scrollHeight;
+
+                            // Deshabilitar filas procesadas
+                            loteActual.forEach(item => {
+                                const checkbox = document.querySelector(`input[data-id="${item.id}"]`);
+                                if (checkbox) {
+                                    checkbox.checked = false;
+                                    checkbox.disabled = true;
+                                    checkbox.closest('tr').classList.add('disabled-row');
+                                }
+                                filasSeleccionadas.delete(item.id);
+                            });
+
+                            if (data.nextOffset !== null) {
+                                setTimeout(() => procesarLote(data.nextOffset), 1000);
+                            } else {
+                                logContainer.innerHTML += '<p class="text-success">¡Proceso completado exitosamente!</p>';
+                                btn.disabled = false;
+                                btn.textContent = 'Procesar';
+                            }
+                        } else {
+                            logContainer.innerHTML += `<p class="text-danger">Error: ${data.message}</p>`;
+                            btn.disabled = false;
+                            btn.textContent = 'Procesar';
+                        }
+                    })
+                    .catch(error => {
+                        logContainer.innerHTML += `<p class="text-danger">Error: ${error.message}</p>`;
+                        console.error('Error al procesar el lote:', error);
+                        btn.disabled = false;
+                        btn.textContent = 'Procesar';
+                    });
+            }
+
+            // Iniciar el procesamiento
+            procesarLote(0);
+        });
+
+        // Función para enviar al GET
+        document.getElementById('consultarSeleccion').addEventListener('click', () => {
+            const amount = document.getElementById('custpage_amount_field').value;
+            const currency = document.getElementById('custpage_currency_field').value;
+
+            // Validar que los campos estén llenos
+            if (!amount || !currency) {
+                const modalBody = document.querySelector('#validationModal .modal-body');
+                let errorMessage = '<ul>';
+
+                if (!amount) errorMessage += '<li>Importe es requerido</li>';
+                if (!currency) errorMessage += '<li>Moneda es requerida</li>';
+
+                errorMessage += '</ul>';
+                modalBody.innerHTML = errorMessage;
+
+                const validationModal = new bootstrap.Modal(document.getElementById('validationModal'));
+                validationModal.show();
+                return;
+            }
+
+            // Deshabilitar el botón durante la consulta
+            const btn = document.getElementById('consultarSeleccion');
+            btn.disabled = true;
+            btn.textContent = 'Consultando...';
+
+            // Construir la URL con los parámetros
+            const url = `/app/site/hosting/scriptlet.nl?script=5879&deploy=1&custpage_amount_field=${amount}&custpage_currency_field=${currency}`;
+
+            // Realizar la petición AJAX GET
+            fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Error en la respuesta del servidor');
+                    }
+                    return response.json(); // Parsear la respuesta como JSON
+                })
+                .then(data => {
+                    // Actualizar los datos de la tabla
+                    datos = data;
+                    generarFilas(1); // Mostrar la primera página de los nuevos datos
+
+                    // Restablecer el botón
+                    btn.disabled = false;
+                    btn.textContent = 'Consultar';
+                })
+                .catch(error => {
+                    console.error('Error al consultar los datos:', error);
+                    alert('Error al consultar los datos');
+
+                    // Restablecer el botón en caso de error
+                    btn.disabled = false;
+                    btn.textContent = 'Consultar';
+                });
+        });
+
+        // Inicializar la tabla
+        generarFilas(paginaActual);
+    </script>
+
+    <!-- Modal de Validación -->
+    <div class="modal fade" id="validationModal" tabindex="-1" aria-labelledby="validationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-primary">
+                    <h5 class="modal-title" id="validationModalLabel">Validación Requerida</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Por favor complete todos los campos requeridos antes de continuar.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Entendido</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

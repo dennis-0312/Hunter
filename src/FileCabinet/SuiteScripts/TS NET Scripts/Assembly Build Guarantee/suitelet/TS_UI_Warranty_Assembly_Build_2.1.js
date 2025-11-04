@@ -66,7 +66,7 @@ define([
 
                 let locationField = form.addField(FIELDS.field.location.id, serverWidget.FieldType.SELECT, FIELDS.field.location.text, FIELDS.fieldgroup.classification.id, 'location');
                 locationField.setDefaultValue(PARAMETERS.location);
-                locationField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
+                //locationField.updateDisplayType(serverWidget.FieldDisplayType.INLINE);
 
                 let inventoryDetailField = form.addField(FIELDS.field.inventorydetail.id, serverWidget.FieldType.LONGTEXT, FIELDS.field.inventorydetail.text, FIELDS.fieldgroup.classification.id);
                 inventoryDetailField.setDefaultValue("{}");

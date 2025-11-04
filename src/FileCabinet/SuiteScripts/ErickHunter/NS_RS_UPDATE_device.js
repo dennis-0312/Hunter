@@ -2,12 +2,17 @@
  *@NApiVersion 2.1
  *@NScriptType Restlet
  */
-define(['N/log', 'N/https'], function (log, https) {
+define(['N/log', 'N/https'], (log, https) => {
+
+    let URL = "https://test-telematicsapi.hunterlabs.io" //SB: https://test-telematicsapi.hunterlabs.io / PR: https://telematicsapi.hunterlabs.io
+    let TOKEN = 'ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+
     const _post = (context) => {
+        let urlBase = getTelematicUrlBase();
         let headers = getHeaderRequest();
         let body = getBodyRequest(context);
-        let url = `https://test-telematicsapi.hunterlabs.io/device/${context.id}/`;
-        log.error("PUT", url)
+        let url = `${urlBase}/device/${context.id}/`;
+        log.error("PUT", url);
         log.error("BodyRequest", body);
         let respDevice = https.put({
             url,
@@ -15,7 +20,6 @@ define(['N/log', 'N/https'], function (log, https) {
             body
         });
         log.debug(`Response`, respDevice);
-
         respDevice = JSON.parse(respDevice.body);
         return { "Device": respDevice };
     }
@@ -29,9 +33,13 @@ define(['N/log', 'N/https'], function (log, https) {
         let headers = [];
         headers['Accept'] = '*/*';
         headers['Content-Type'] = 'application/json';
-        headers['Authorization'] = 'Basic ZGVubmlzLmZlcm5hbmRlekBteWV2b2wuYml6OkM0cnMzZ3M0QDIwMjI=';
+        headers['Authorization'] = 'Basic ' + TOKEN;
         headers['X-HTTP-Method-Override'] = 'PATCH';
         return headers;
+    }
+
+    const getTelematicUrlBase = () => {
+        return URL;
     }
 
     return {

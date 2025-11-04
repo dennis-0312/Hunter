@@ -5,18 +5,12 @@
 define(['N/log', 'N/https'], function (log, https) {
 
     function _get(context) {
-
-        let response = https.get({
-            url: 'http://www.google.com'
-        });
-
+        let response = https.get({ url: 'http://www.google.com' });
         sendGetRequest();
-
         return { response: response };
     }
 
     function _post(context) {
-
         try {
             let headers1 = [];
             headers1['Accept'] = '*/*';
@@ -42,8 +36,8 @@ define(['N/log', 'N/https'], function (log, https) {
             log.debug("resp-code", resp);
             return { response: resp };
         } catch (error) {
-            return { 'Error': error }
             log.error('Error', error);
+            return { 'Error': error }
         }
     }
 

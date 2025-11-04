@@ -248,8 +248,8 @@
         <Cell ss:StyleID="s74"><Data ss:Type="String">${item.aplicConvDobTrib}</Data></Cell>
         <Cell ss:StyleID="s74"><Data ss:Type="String">${item.pagExtSujRetNorLeg}</Data></Cell>
         <Cell ss:StyleID="s74"><Data ss:Type="String"></Data></Cell>
-          </#if>
-          <#if item.tipoRegi == '02'>
+        </#if>
+        <#if item.tipoRegi == '02'>
         <#assign variable = variable + 1>
         <Cell ss:StyleID="s74"><Data ss:Type="String"></Data></Cell>
         <Cell ss:StyleID="s74"><Data ss:Type="String">${item.paisEfecPago}</Data></Cell>

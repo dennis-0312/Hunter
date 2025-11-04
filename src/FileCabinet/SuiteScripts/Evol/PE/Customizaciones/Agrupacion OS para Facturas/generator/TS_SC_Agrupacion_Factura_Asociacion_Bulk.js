@@ -47,7 +47,13 @@ define(['N/file', 'N/log', 'N/search', 'N/record', 'N/runtime', 'N/task'],
                         valuesRecord.custrecord_ts_ss_res_asociar_fact = responseProcesssData.message;
                         valuesRecord.custrecord_ts_ss_salida_asociar_fac = responseProcesssData.outputFileId;
                         updateLote(scriptParameters.loteID, valuesRecord);
-                        record.submitFields({ type: 'invoice', id: scriptParameters.facturaDirectaid, values: { custbody_ht_status_process_group: responseProcesssData.statusProcess } });
+                        if(responseProcesssData.statusProcess == '1'){
+                            var facturaFinal = record.load({ type: 'invoice', id: Number(scriptParameters.facturaDirectaid) });
+                            facturaFinal.setValue( 'custbody_ht_status_process_group', responseProcesssData.statusProcess );
+                            facturaFinal.save();
+                        } else {
+                            record.submitFields({ type: 'invoice', id: scriptParameters.facturaDirectaid, values: { custbody_ht_status_process_group: responseProcesssData.statusProcess } });
+                        }
                     }
                 } else {
                     valuesRecord.custrecord_ts_ss_estado_asociar_fac = ERROR;

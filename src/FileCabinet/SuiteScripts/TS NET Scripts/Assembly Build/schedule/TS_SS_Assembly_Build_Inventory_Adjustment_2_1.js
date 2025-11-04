@@ -2,8 +2,14 @@
  *@NApiVersion 2.1
  *@NScriptType ScheduledScript
 */
-define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
-    function (record, log, runtime, search, query) {
+define(['N/record',
+    'N/log',
+    'N/runtime',
+    'N/search',
+    'N/query',
+    '../../Main/constant/TS_CM_Constant'
+],
+    function (record, log, runtime, search, query, _constant) {
         let currentScript = runtime.getCurrentScript();
         const FIXED_ASSET_ACCOUNT = "370"; // SB: 2676
         const EXPENSE_ACCOUNT = "1312";
@@ -19,11 +25,16 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
         const PRO_ITEM_COMERCIAL_DE_PRODUCCION = 68;
         const SI = 2;
 
+        //8934071100295885622
+
         const execute = (context) => {
             try {
                 let scriptParameters = getScriptParameters();
                 log.error("scriptParameters.alquiler.length", scriptParameters.alquiler.length);
                 log.error("scriptParameters.assemblyFlow", scriptParameters.assemblyFlow);
+                log.error("COD_PRO_ITEM_COMERCIAL_DE_PRODUCCION", _constant.Codigo_parametro.COD_PRO_ITEM_COMERCIAL_DE_PRODUCCION);
+                log.error("COD_SI", _constant.Codigo_Valor.COD_SI);
+
                 if (scriptParameters.assemblyFlow == 'alquiler') {
                     if (scriptParameters.alquiler.length == 0) {
                         let outputInventoryAdjustmentId = createInventoryAdjustmentSalidaSinAlquiler(scriptParameters);
@@ -32,7 +43,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
                         let inputInventoryAdjustmentId = createInventoryAdjustmentIngreso(scriptParameters, scriptParameters.comercial);
                         createHTAjusteRelacionado(scriptParameters.workorder, inputInventoryAdjustmentId, TIPO_MOVIEMIENTO_INGRESO);
 
-                        let inputJournalEntryId = createJournalEntrySalidaConAlquiler(scriptParameters.item, outputInventoryAdjustmentId, scriptParameters.location);
+                        let inputJournalEntryId = createJournalEntrySalidaConAlquiler(scriptParameters, outputInventoryAdjustmentId);
                         createHTAjusteRelacionado(scriptParameters.workorder, inputJournalEntryId, TIPO_MOVIEMIENTO_ASIENTO);
                     } else {
                         let outputInventoryAdjustmentId = createInventoryAdjustmentSalidaConAlquiler(scriptParameters);
@@ -43,12 +54,19 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
                     }
                     createChaser(scriptParameters);
                 } else if (scriptParameters.assemblyFlow == 'custodia') {
-                    let inputInventoryAdjustmentId = createInventoryAdjustmentIngresoCustodia(scriptParameters);
-                    createHTAjusteRelacionado(scriptParameters.workorder, inputInventoryAdjustmentId);
 
-                    let outputInventoryAdjustmentId = createInventoryAdjustmentSalidaCustodia(scriptParameters);
-                    createHTAjusteRelacionado(scriptParameters.workorder, outputInventoryAdjustmentId);
-                    createChaser(scriptParameters);
+                    let objCustodia = getCustodiaData(scriptParameters.inventoryNumber, scriptParameters.deviceItem, scriptParameters.customer);
+                    if (objCustodia.searchResultCount > 0) {
+                        let outputInventoryAdjustmentId = createInventoryAdjustmentSalidaCustodia(scriptParameters, objCustodia);
+                        createHTAjusteRelacionado(scriptParameters.workorder, outputInventoryAdjustmentId);
+
+                        let inputInventoryAdjustmentId = createInventoryAdjustmentIngresoCustodia(scriptParameters);
+                        createHTAjusteRelacionado(scriptParameters.workorder, inputInventoryAdjustmentId);
+                        createChaser(scriptParameters);
+                    } else {
+                        log.error('No se encontró ningún registro de custodia para: ', serie + '-' + dispositivo + '-' + cliente)
+                    }
+
 
                 } else if (scriptParameters.assemblyFlow == 'garantia') {
                     let outputInventoryAdjustmentId = createInventoryAdjustmentSalidaGarantia(scriptParameters);
@@ -75,22 +93,48 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
             scriptParameters.deviceInventoryNumberId = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_reinvnumid');
             scriptParameters.assemblyFlow = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_assemblyfl');
             scriptParameters.datosTecnicos = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_datotec');
+            scriptParameters.subsidiary = currentScript.getParameter('custscript_ts_ss_buil_inv_adj_subsidiary');
             log.error("scriptParameters", scriptParameters);
             return scriptParameters;
         }
 
-        const createInventoryAdjustmentSalidaCustodia = (scriptParameters) => {
-            let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-            newAdjust.setValue({ fieldId: 'customform', value: 120 });
-            newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
-            newAdjust.setValue({ fieldId: 'account', value: EXPENSE_ACCOUNT });
-            newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
-            newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
-            newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
-            setItemstoInventoryAdjustment(newAdjust, scriptParameters);
-            let newRecord = newAdjust.save({ enableSourcing: false, ignoreMandatoryFields: true });
-            log.error("newRecord createInventoryAdjustmentSalidaCustodia", newRecord);
-            return newRecord;
+        const createInventoryAdjustmentSalidaCustodia = (scriptParameters, objCustodia) => {
+            let sql2 = 'SELECT custrecord_ht_cuenta_de_custodia FROM subsidiary WHERE id = ?';
+            let params2 = [scriptParameters.subsidiary];
+            let resultSet2 = query.runSuiteQL({ query: sql2, params: params2 });
+            let results2 = resultSet2.asMappedResults();
+            log.debug('CUENTA-DE-CUSTODIA SalidaCustodia', results2);
+
+            if (results2.length > 0) {
+                let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
+                newAdjust.setValue({ fieldId: 'customform', value: 172 });
+                newAdjust.setValue({ fieldId: 'subsidiary', value: scriptParameters.subsidiary });
+                newAdjust.setValue({ fieldId: 'account', value: results2[0]['custrecord_ht_cuenta_de_custodia'] });
+                newAdjust.setValue({ fieldId: 'adjlocation', value: objCustodia.location });
+                newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
+                newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
+                // setItemstoInventoryAdjustment(newAdjust, scriptParameters);
+
+                newAdjust.selectNewLine({ sublistId: 'inventory' });
+                newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: scriptParameters.deviceItem });
+                newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: objCustodia.location });
+                newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: -1 });
+
+                let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
+                newDetail.selectNewLine({ sublistId: 'inventoryassignment' });
+
+                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: scriptParameters.deviceInventoryNumberId });
+                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: objCustodia.deposito });
+                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1 });
+                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: -1 });
+                newDetail.commitLine({ sublistId: 'inventoryassignment' });
+                //newDetail.removeLine({ sublistId: 'inventoryassignment', line: 1 });
+                newAdjust.commitLine({ sublistId: 'inventory' });
+
+                let newRecord = newAdjust.save({ enableSourcing: false, ignoreMandatoryFields: true });
+                log.error("newRecord createInventoryAdjustmentSalidaCustodia", newRecord);
+                return newRecord;
+            }
         }
 
         const createInventoryAdjustmentSalidaGarantia = (scriptParameters) => {
@@ -114,22 +158,14 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
         }
 
         const createInventoryAdjustmentSalidaSinAlquiler = (scriptParameters) => {
-            // let sql = 'SELECT it.assetaccount as inventoryaccount, af.custrecord_assettypeassetacc as fixedassetaccount FROM item it ' +
-            //     'INNER JOIN customrecord_ncfar_assettype af ON it.custitem_ht_ar_tipoactivo = af.id ' +
-            //     'WHERE it.id = ?';
-            // let params = [scriptParameters.comercial.item];
-            // let resultSet = query.runSuiteQL({ query: sql, params: params }).asMappedResults();
-            //let expenseaccount = resultSet.length > 0 ? resultSet : 0
-            // log.error("expenseaccount", expenseaccount);
             let sql2 = 'SELECT custrecord_ht_cuenta_activo_fijo_transit FROM subsidiary WHERE id = ?';
-            let params2 = [ECUADOR_SUBSIDIARY];
+            let params2 = [scriptParameters.subsidiary];
             let resultSet2 = query.runSuiteQL({ query: sql2, params: params2 });
             let results2 = resultSet2.asMappedResults();
             log.debug('CUENTA-ACTIVO-FIJO-TRANSITO SalidaSinAlquiler', results2);
             if (results2.length > 0) {
                 let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-                newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
-                //newAdjust.setValue({ fieldId: 'account', value: expenseaccount });
+                newAdjust.setValue({ fieldId: 'subsidiary', value: scriptParameters.subsidiary });
                 newAdjust.setValue({ fieldId: 'account', value: results2[0]['custrecord_ht_cuenta_activo_fijo_transit'] });
                 newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
                 newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
@@ -269,7 +305,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
 
         const createInventoryAdjustmentIngreso = (scriptParameters, components) => {
             let sql2 = 'SELECT custrecord_ht_cuenta_activo_fijo_transit FROM subsidiary WHERE id = ?';
-            let params2 = [ECUADOR_SUBSIDIARY];
+            let params2 = [scriptParameters.subsidiary];
             let resultSet2 = query.runSuiteQL({ query: sql2, params: params2 });
             let results2 = resultSet2.asMappedResults();
             log.debug('CUENTA-ACTIVO-FIJO-TRANSITO Ingreso', results2);
@@ -297,21 +333,19 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
 
                 //Fin Cambio JCEC 19/08/2024
 
-                //Inicio - dfernandez 21/08/2024
+                //&Inicio - dfernandez 21/08/2024
                 if (!custrecord_ht_ot_flu_acc) {
-                    let esItemProduccion = getParameter(scriptParameters.item, PRO_ITEM_COMERCIAL_DE_PRODUCCION)
-                    if (esItemProduccion != 0 && esItemProduccion == SI) {
+                    let esItemProduccion = getParameter(scriptParameters.item, _constant.Codigo_parametro.COD_PRO_ITEM_COMERCIAL_DE_PRODUCCION)
+                    if (esItemProduccion != 0 && esItemProduccion == _constant.Codigo_Valor.COD_SI) {
                         let serieItemProd = getNameForSerieItemProd(scriptParameters.datosTecnicos)
                         inventoryNumber = serieItemProd;
                     }
                 }
-                //Fin - dfernandez 21/08/2024
-
-
+                //&Fin - dfernandez 21/08/2024
 
                 let binNumber = getBinNumberAlquiler(scriptParameters.location);
                 let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-                newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
+                newAdjust.setValue({ fieldId: 'subsidiary', value: scriptParameters.subsidiary });
                 newAdjust.setValue({ fieldId: 'account', value: results2[0]['custrecord_ht_cuenta_activo_fijo_transit'] });
                 newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
                 newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
@@ -351,35 +385,42 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
         }
 
         const createInventoryAdjustmentIngresoCustodia = (scriptParameters) => {
-            let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-            let binNumber = getBinNumberCustodia(scriptParameters.location);
-            log.error("newRecord binNumber", binNumber);
-            newAdjust.setValue({ fieldId: 'customform', value: 120 });
-            newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
-            newAdjust.setValue({ fieldId: 'account', value: EXPENSE_ACCOUNT });
-            newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
-            newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
-            newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
+            let sql2 = 'SELECT custrecord_ht_cuenta_de_custodia FROM subsidiary WHERE id = ?';
+            let params2 = [scriptParameters.subsidiary];
+            let resultSet2 = query.runSuiteQL({ query: sql2, params: params2 });
+            let results2 = resultSet2.asMappedResults();
+            log.debug('CUENTA-DE-CUSTODIA Ingreso', results2);
+            if (results2.length > 0) {
+                let binNumber = getBinNumberCustodia(scriptParameters.location);
+                log.error("newRecord binNumber", binNumber);
+                let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
+                newAdjust.setValue({ fieldId: 'customform', value: 172 });
+                newAdjust.setValue({ fieldId: 'subsidiary', value: scriptParameters.subsidiary });
+                newAdjust.setValue({ fieldId: 'account', value: results2[0]['custrecord_ht_cuenta_de_custodia'] });
+                newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
+                newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
+                newAdjust.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: scriptParameters.salesorder });
 
-            newAdjust.selectNewLine({ sublistId: 'inventory' });
-            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: scriptParameters.item });
-            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: scriptParameters.location });
-            newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: 1 });
+                newAdjust.selectNewLine({ sublistId: 'inventory' });
+                newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'item', value: scriptParameters.item });
+                newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'location', value: scriptParameters.location });
+                newAdjust.setCurrentSublistValue({ sublistId: 'inventory', fieldId: 'adjustqtyby', value: 1 });
 
-            let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
-            newDetail.selectNewLine({ sublistId: 'inventoryassignment' });
+                let newDetail = newAdjust.getCurrentSublistSubrecord({ sublistId: 'inventory', fieldId: 'inventorydetail' });
+                newDetail.selectNewLine({ sublistId: 'inventoryassignment' });
 
-            newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'receiptinventorynumber', value: scriptParameters.inventoryNumber });
-            newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: binNumber });
-            newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1 });
+                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'receiptinventorynumber', value: scriptParameters.inventoryNumber });
+                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: binNumber });
+                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'status', value: 1 });
+                newDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1 });
+                newDetail.commitLine({ sublistId: 'inventoryassignment' });
+                //newDetail.removeLine({ sublistId: 'inventoryassignment', line: 1 });
+                newAdjust.commitLine({ sublistId: 'inventory' });
 
-            newDetail.commitLine({ sublistId: 'inventoryassignment' });
-            //newDetail.removeLine({ sublistId: 'inventoryassignment', line: 1 });
-            newAdjust.commitLine({ sublistId: 'inventory' });
-
-            let newRecord = newAdjust.save({ enableSourcing: false, ignoreMandatoryFields: true });
-            log.error("newRecord createInventoryAdjustmentIngresoCustodia", newRecord);
-            return newRecord;
+                let newRecord = newAdjust.save({ enableSourcing: false, ignoreMandatoryFields: true });
+                log.error("newRecord createInventoryAdjustmentIngresoCustodia", newRecord);
+                return newRecord;
+            }
         }
 
         const getBinNumberCustodia = (location) => {
@@ -418,6 +459,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
                     serial = comercial[i].seriales[0].serial;
                 }
             }
+            log.error('Serial', serial);
             return getSerialNumber(serial)
         }
 
@@ -428,11 +470,12 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
                 id: serial,
                 columns: ['inventorynumber']
             });
+            log.error('serialSearch', serialSearch)
             return serialSearch.inventorynumber;
         }
 
         const createInventoryAdjustmentSalidaConAlquiler = (scriptParameters) => {
-            // Inicio - dfernandez - 25/08/2024
+            //& <I>> dfernandez - 13/05/2024
             let activaCheckPorSalidaRein = true;
             let sql = 'SELECT expenseaccount FROM item WHERE id = ?';
             let params = [scriptParameters.comercial[0].id];
@@ -440,13 +483,13 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
             log.debug('results', results[0].expenseaccount);
             // Fin - dfernandez - 25/08/2024
             let sql2 = 'SELECT custrecord_ht_cuenta_activo_fijo_transit FROM subsidiary WHERE id = ?';
-            let params2 = [ECUADOR_SUBSIDIARY];
+            let params2 = [scriptParameters.subsidiary];
             let resultSet2 = query.runSuiteQL({ query: sql2, params: params2 });
             let results2 = resultSet2.asMappedResults();
             log.debug('CUENTA-ACTIVO-FIJO-TRANSITO', results2);
             if (results2.length > 0) {
                 let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-                newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
+                newAdjust.setValue({ fieldId: 'subsidiary', value: scriptParameters.subsidiary });
                 newAdjust.setValue({ fieldId: 'account', value: results[0].expenseaccount });
                 //newAdjust.setValue({ fieldId: 'account', value: results2[0]['custrecord_ht_cuenta_activo_fijo_transit'] });
                 newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
@@ -503,16 +546,20 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
         const createChaser = (scriptParameters) => {
             try {
                 log.debug('scriptParameters', scriptParameters);
+                let vid = '';
+
                 if (verificarParametroCandado(scriptParameters.workorder)) {
                     log.debug('verificarParametroCandado', "Entry");
-                    updateWorkOrder(scriptParameters.datosTecnicos, scriptParameters.workorder, scriptParameters.assemblyFlow);
+                    updateWorkOrder(scriptParameters.datosTecnicos, scriptParameters.workorder, scriptParameters.assemblyFlow, scriptParameters.location, vid);
                 } else {
                     log.debug('getChaserId', "Entry");
                     let chaserId = getChaserId(scriptParameters);
                     log.debug('chaserId', chaserId)
                     let objRecordCreate;
+
                     if (chaserId) {
                         objRecordCreate = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaserId, isDynamic: true });
+                        vid = objRecordCreate.getValue('custrecord_ht_mc_vid');
                     } else {
                         objRecordCreate = record.create({ type: 'customrecord_ht_record_mantchaser', isDynamic: true });
                     }
@@ -551,9 +598,18 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
                         if (!searchResult.length) continue;
                         setFieldsByType(objRecordCreate, type, searchResult[0], scriptParameters);
                     }
-                    objRecordCreate.setValue("custrecord_ht_mc_estadolodispositivo", DISPOSITIVO_INSTALADO);
+
+                    let instalado = '';
+                    if (scriptParameters.subsidiary == _constant.Constants.ECUADOR_SUBSIDIARY) {
+                        instalado = _constant.Status.INSTALADO;
+                    } else if (scriptParameters.subsidiary == _constant.Constants.PERU_SUBSIDIARY) {
+                        instalado = _constant.StatusPE.INSTALADO;
+                    }
+                    objRecordCreate.setValue("custrecord_ht_mc_estadolodispositivo", instalado);
+                    objRecordCreate.setValue("custrecord_ht_mc_enlace", '');
+                    //objRecordCreate.setValue('custrecord_ht_ds_carga_flujo', true);
                     let recordId = objRecordCreate.save({ enableSourcing: false, ignoreMandatoryFields: false });
-                    let workOrder = updateWorkOrder(recordId, scriptParameters.workorder, scriptParameters.assemblyFlow);
+                    updateWorkOrder(recordId, scriptParameters.workorder, scriptParameters.assemblyFlow, scriptParameters.location, vid);
                     log.error("recordId", recordId);
                 }
             } catch (error) {
@@ -561,8 +617,9 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
             }
         }
 
-        const updateWorkOrder = (chaserId, workOrderId, assemblyFlow) => {
-            log.debug('updateWorkOrderEntry', `${chaserId} - ${workOrderId}`);
+
+        const updateWorkOrder = (chaserId, workOrderId, assemblyFlow, paramLocation, vid) => {
+            log.debug('updateWorkOrderEntry', `${chaserId} - ${workOrderId} - ${paramLocation}`);
             let workOrderRecord = record.load({ type: "customrecord_ht_record_ordentrabajo", id: workOrderId, isDynamic: true });
             workOrderRecord.setValue('custrecord_ht_ot_serieproductoasignacion', chaserId);
             if (assemblyFlow == "alquiler") {
@@ -572,9 +629,12 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
             } else if (assemblyFlow == "garantia") {
                 workOrderRecord.setValue('custrecord_flujo_de_garantia', true);
             }
+            workOrderRecord.setValue('custrecord_ht_ot_location', paramLocation);
+            workOrderRecord.setValue('custrecord_ht_ot_vid', vid);
             let id = workOrderRecord.save({ ignoreMandatoryFields: true, enableSourcing: false });
             log.error("updateWorkOrder", id);
         }
+
 
         const setFieldsByType = (objRecordCreate, type, result, scriptParameters) => {
             var columns = result.columns;
@@ -602,7 +662,6 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_ip', value: result.getValue(columns[5]), ignoreFieldChange: true });
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_apn', value: result.getValue(columns[6]), ignoreFieldChange: true });
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_operadora', value: result.getValue(columns[4]), ignoreFieldChange: true });
-
             } else if (type == "3") {
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_codigoactivacion', value: result.getValue(columns[2]), ignoreFieldChange: true });
                 objRecordCreate.setValue({ fieldId: 'custrecord_ht_mc_codigorespuesta', value: result.getValue(columns[3]), ignoreFieldChange: true });
@@ -700,15 +759,13 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
         }
 
         const verificarParametroCandado = (workOrderId) => {
-            const COD_PRO_ITEM_COMERCIAL_DE_PRODUCCION = "PRO";
-            const COD_SI = "S";
             let itemVenta = search.lookupFields({ type: "customrecord_ht_record_ordentrabajo", id: workOrderId, columns: ["custrecord_ht_ot_item"] }).custrecord_ht_ot_item;
             let itemVentaId = itemVenta.length ? itemVenta[0].value : "";
             if (!itemVentaId) return true;
             let parametrizacionProducto = parametrizacionJson(itemVentaId);
-            let esCandado = parametrizacionProducto[COD_PRO_ITEM_COMERCIAL_DE_PRODUCCION];
+            let esCandado = parametrizacionProducto[_constant.Codigo_parametro.COD_PRO_ITEM_COMERCIAL_DE_PRODUCCION];
             log.error("esCandado", esCandado);
-            return esCandado !== undefined && esCandado.valor == COD_SI;
+            return esCandado !== undefined && esCandado.valor == _constant.Codigo_Valor.COD_SI;
         }
 
         const parametrizacionJson = (items) => {
@@ -754,7 +811,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
             return parametrizacionResult;
         }
 
-        const createJournalEntrySalidaConAlquiler = (item, adjustid, location) => {
+        const createJournalEntrySalidaConAlquiler = (scriptParameters, adjustid) => {
             let sql1 = 'SELECT foreigntotal as amount, custbody_ht_af_ejecucion_relacionada FROM transaction WHERE id = ?';
             let sql2 = 'SELECT it.assetaccount as inventoryaccount, af.custrecord_assettypeassetacc as fixedassetaccount FROM item it ' +
                 'INNER JOIN customrecord_ncfar_assettype af ON it.custitem_ht_ar_tipoactivo = af.id ' +
@@ -763,8 +820,8 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
             let journalid = 0
             try {
                 let params1 = [adjustid]
-                let params2 = [item]
-                let params3 = [ECUADOR_SUBSIDIARY];
+                let params2 = [scriptParameters.item]
+                let params3 = [scriptParameters.subsidiary];
                 let resultSet1 = query.runSuiteQL({ query: sql1, params: params1 });
                 let resultSet2 = query.runSuiteQL({ query: sql2, params: params2 });
                 let resultSet3 = query.runSuiteQL({ query: sql3, params: params3 });
@@ -778,7 +835,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
                     let objRecord = record.create({ type: record.Type.JOURNAL_ENTRY, isDynamic: true });
                     objRecord.setValue({ fieldId: 'trandate', value: new Date() });
                     objRecord.setValue({ fieldId: 'memo', value: 'Asiento de Diario por alquiler en tránsito' });
-                    objRecord.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
+                    objRecord.setValue({ fieldId: 'subsidiary', value: scriptParameters.subsidiary });
                     objRecord.setValue({ fieldId: 'custbody_ht_af_ejecucion_relacionada', value: results1[0]['custbody_ht_af_ejecucion_relacionada'] });
 
                     objRecord.selectNewLine({ sublistId: 'line' });
@@ -788,7 +845,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'memo', value: 'Asiento de Diario por alquiler en tránsito' });
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'department', value: '', ignoreFieldChange: false });
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'class', value: '', ignoreFieldChange: false });
-                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: location, ignoreFieldChange: false });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: scriptParameters.location, ignoreFieldChange: false });
                     objRecord.commitLine({ sublistId: 'line' });
 
                     objRecord.selectNewLine({ sublistId: 'line' });
@@ -798,7 +855,7 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'memo', value: 'Asiento de Diario por alquiler en tránsito' });
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'department', value: '', ignoreFieldChange: false });
                     objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'class', value: '', ignoreFieldChange: false });
-                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: location, ignoreFieldChange: false });
+                    objRecord.setCurrentSublistValue({ sublistId: 'line', fieldId: 'location', value: scriptParameters.location, ignoreFieldChange: false });
                     objRecord.commitLine({ sublistId: 'line' });
 
                     journalid = objRecord.save({ ignoreMandatoryFields: false });
@@ -812,11 +869,15 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
         }
 
         const getParameter = (item, parametro) => {
-            let sql = "SELECT custrecord_ht_pp_parametrizacion_valor as valor FROM customrecord_ht_pp_main_param_prod " +
-                "WHERE custrecord_ht_pp_aplicacion = 'T' AND custrecord_ht_pp_parametrizacionid = ? AND custrecord_ht_pp_parametrizacion_rela = ?";
+            let sql = "SELECT va.custrecord_ht_pp_codigo as valor, va.id as idinterno  FROM customrecord_ht_pp_main_param_prod pp " +
+                "INNER JOIN customrecord_ht_cr_parametrizacion_produ pr ON pp.custrecord_ht_pp_parametrizacion_rela = pr.id " +
+                "INNER JOIN customrecord_ht_cr_pp_valores va ON  pp.custrecord_ht_pp_parametrizacion_valor = va.id " +
+                "WHERE pp.custrecord_ht_pp_aplicacion = 'T' AND pp.custrecord_ht_pp_parametrizacionid = ? AND pr.custrecord_ht_pp_code = ?";
             let resultSet = query.runSuiteQL({ query: sql, params: [item, parametro] });
             let results = resultSet.asMappedResults();
             let valor = results.length > 0 ? results[0]['valor'] : 0;
+            //let idinterno = results.length > 0 ? results[0]['idinterno'] : 0;
+            log.debug('valor === ', `${valor}`)
             return valor;
         }
 
@@ -830,6 +891,44 @@ define(['N/record', 'N/log', 'N/runtime', 'N/search', 'N/query'],
             } else {
                 return 0;
             }
+        }
+
+        const getCustodiaData = (name, dispositivo, cliente) => {
+            let objData = {};
+            var custodiaSearchObj = search.create({
+                type: "customrecord_ht_record_custodia",
+                filters:
+                    [
+                        ["name", "is", name],
+                        "AND",
+                        ["custrecord_ht_ct_nombredispositivo", "anyof", dispositivo],
+                        "AND",
+                        ["custrecord_ht_ct_cliente", "anyof", cliente],
+                        "AND",
+                        ["isinactive", "is", "F"]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "custrecord_ht_ct_nombredispositivo", label: "HT CT Nombre del dispositivo" }),
+                        search.createColumn({ name: "custrecord_ht_ct_ubicacion", label: "HT CT Ubicación" }),
+                        search.createColumn({ name: "custrecord_ht_ct_deposito", label: "HT CT Deposito" })
+                    ]
+            });
+            var searchResultCount = custodiaSearchObj.runPaged().count;
+            log.debug("custodiaSearchObj result count", searchResultCount);
+            if (searchResultCount > 0) {
+                custodiaSearchObj.run().each(function (result) {
+                    objData.searchResultCount = searchResultCount;
+                    objData.location = result.getValue('custrecord_ht_ct_ubicacion');
+                    objData.deposito = result.getValue('custrecord_ht_ct_deposito');
+                });
+            } else {
+                objData.searchResultCount = 0;
+            }
+
+            log.debug('objData-Custodia', objData)
+
+            return objData;
         }
 
 

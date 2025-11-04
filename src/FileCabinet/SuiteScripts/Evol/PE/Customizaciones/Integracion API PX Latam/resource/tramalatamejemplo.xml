@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Ordenes>
+    <Orden>
+        <NumeroOrden>123</NumeroOrden>
+        <UsuarioIngreso>VMEZA</UsuarioIngreso>
+        <OperacionOrden>001</OperacionOrden>
+        <NombreEjecutiva>PIERINA GOMEZ</NombreEjecutiva>
+        <Ciudad>Guayaquil</Ciudad>
+        <Sucursal>Guayaquil</Sucursal>
+        <EstadoCartera>ACTIVO</EstadoCartera>
+        <FechaInicioCobertura>2022-09-01</FechaInicioCobertura>
+        <FechaFinCobertura>2024-09-01</FechaFinCobertura>
+        <Vehiculo>
+            <Placa>GOG4820</Placa>
+            <IdMarca>000</IdMarca>
+            <DescMarca>NO DEFINIDO</DescMarca>
+            <IdModelo>000</IdModelo>
+            <DescModelo>NO DEFINIDO</DescModelo>
+            <CodigoVehiculo>2021031119</CodigoVehiculo>
+            <Chasis>202103111901</Chasis>
+            <Motor>202103111902</Motor>
+            <Color>AMARILLO</Color>
+            <Anio>2021</Anio>
+            <Tipo>AUTO</Tipo>
+        </Vehiculo>
+        <Dispositivo>
+            <Vid>2021031119</Vid>
+            <IdProducto>00</IdProducto>
+            <DescProducto>PRODUCTO PRUEBA INTEGRACION</DescProducto>
+            <CodMarcaDispositivo>000</CodMarcaDispositivo>
+            <MarcaDispositivo>MAR DISPOSITIVO PRUEBA</MarcaDispositivo>
+            <CodModeloDispositivo>000</CodModeloDispositivo>
+            <ModeloDispositivo>MOD DISPOSITIVO PRUEBA</ModeloDispositivo>
+            <Sn>2021031119</Sn>
+            <Imei>2021031119</Imei>
+            <NumeroCamaras>0</NumeroCamaras>
+            <DireccionMac>20:21:03:11:19</DireccionMac>
+            <Icc>2021031119</Icc>
+            <NumeroCelular>0998679101</NumeroCelular>
+            <Operadora>TIGO</Operadora>
+            <EstadoSim>ACT</EstadoSim>
+            <ServiciosInstalados>
+                <Servicio>
+                    <CodServicio>001</CodServicio>
+                    <DescripcionServicio>SERVICIO1</DescripcionServicio>
+                    <FechaInicioServicio>2022-09-01</FechaInicioServicio>
+                    <FechaFinServicio>2024-09-01</FechaFinServicio>
+                    <EstadoServicio>ACTIVO</EstadoServicio>
+                </Servicio>
+                <Servicio>
+                    <CodServicio>002</CodServicio>
+                    <DescripcionServicio>SERVICIO2</DescripcionServicio>
+                    <FechaInicioServicio>2022-09-21</FechaInicioServicio>
+                    <FechaFinServicio>2023-09-21</FechaFinServicio>
+                    <EstadoServicio>ACTIVO</EstadoServicio>
+                </Servicio>
+            </ServiciosInstalados>
+            <OperacionDispositivo>C</OperacionDispositivo>
+            <VidAnterior>2021031118</VidAnterior>
+        </Dispositivo>
+        <Propietario>
+            <IdentificadorPropietario>2021031119</IdentificadorPropietario>
+            <NombrePropietario>NOMBRE PROPIETARIO</NombrePropietario>
+            <ApellidosPropietario>APELLIDOS PROPIETARIO</ApellidosPropietario>
+            <DireccionPropietario>DIRECCION PROPIETARIO</DireccionPropietario>
+            <ConvencionalPropietario>042270813</ConvencionalPropietario>
+            <CelularPropietario>0998679101</CelularPropietario>
+            <EmailPropietario>PROPIETARIO@INTEGRACION.ORG</EmailPropietario>
+        </Propietario>
+        <Monitor>
+            <IdentificadorMonitorea>2021031120</IdentificadorMonitorea>
+            <NombreMonitorea>NOMBRE MONITOR</NombreMonitorea>
+            <ApellidosMonitorea>APELLIDOS MONITOR</ApellidosMonitorea>
+            <DireccionMonitorea>DIRECCION MONITOR</DireccionMonitorea>
+            <ConvencionalMonitorea>042270813</ConvencionalMonitorea>
+            <CelularMonitorea>0998679101</CelularMonitorea>
+            <EmailMonitorea>MONITOR@INTEGRACION.ORG</EmailMonitorea>
+        </Monitor>
+        <Concesionario>
+            <IdentificadorConcesionario>2021031121001</IdentificadorConcesionario>
+            <RazonSocialConcesionario>RAZON SOCIAL</RazonSocialConcesionario>
+            <DireccionConcesionario>DIRECCION</DireccionConcesionario>
+            <ConvencionalConcesionario>042270813</ConvencionalConcesionario>
+            <CelularConcesionario>0998679101</CelularConcesionario>
+            <EmailConcesionario>CON@INTEGRACION.ORG</EmailConcesionario>
+        </Concesionario>
+        <Financiera>
+            <IdentificadorFinanciera>2021031122001</IdentificadorFinanciera>
+            <RazonSocialFinanciera>RAZON SOCIAL</RazonSocialFinanciera>
+            <DireccionFinanciera>DIRECCION</DireccionFinanciera>
+            <ConvencionalFinanciera>042270813</ConvencionalFinanciera>
+            <CelularFinanciera>0998679101</CelularFinanciera>
+            <EmailFinanciera>FINANCIERA@INTEGRACION.ORG</EmailFinanciera>
+        </Financiera>
+        <Aseguradora>
+            <IdentificadorAseguradora>2021031123001</IdentificadorAseguradora>
+            <RazonSocialAseguradora>RAZON SOCIAL</RazonSocialAseguradora>
+            <DireccionAseguradora>DIRECCION</DireccionAseguradora>
+            <ConvencionalAseguradora>042270813</ConvencionalAseguradora>
+            <CelularAseguradora>0998679101</CelularAseguradora>
+            <EmailAseguradora>SEGURO@INTEGRACION.ORG</EmailAseguradora>
+        </Aseguradora>
+        <Convenio>
+            <IdentificadorConvenio>2021031124001</IdentificadorConvenio>
+            <RazonSocialConvenio>RAZON SOCIAL</RazonSocialConvenio>
+            <DireccionConvenio>DIRECCION</DireccionConvenio>
+            <ConvencionalConvenio>042270813</ConvencionalConvenio>
+            <CelularConvenio>0998679101</CelularConvenio>
+            <EmailConvenio>CONVENIO@INTEGRACION.ORG</EmailConvenio>
+        </Convenio>
+    </Orden>
+</Ordenes>

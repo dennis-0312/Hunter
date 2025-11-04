@@ -2,8 +2,8 @@
  *@NApiVersion 2.1
  *@NScriptType UserEventScript
  */
-define(['N/log', 'N/record', 'N/search','N/ui/serverWidget'], (log, record, search, serverWidget) => {
-    
+define(['N/log', 'N/record', 'N/search', 'N/ui/serverWidget'], (log, record, search, serverWidget) => {
+
     const beforeLoad = (scriptContext) => {
 
         if (scriptContext.type === scriptContext.UserEventType.EDIT || scriptContext.type === scriptContext.UserEventType.CREATE) {
@@ -16,24 +16,13 @@ define(['N/log', 'N/record', 'N/search','N/ui/serverWidget'], (log, record, sear
                 /* var idPayment = getIdPayment(objRecord.id);
                 var nroCuotasDefault = idPayment.cuota;
                 var cuentasDefault = idPayment.cuenta; */
-                log.debug('context form',scriptContext.form);
+                log.debug('context form', scriptContext.form);
                 let form = scriptContext.form;
                 const objRecord = scriptContext.newRecord;
                 let idSimCard = objRecord.getValue('custrecord_ht_ds_simcard');
-                log.debug('idSimCard',idSimCard);
+                log.debug('idSimCard', idSimCard);
                 let item = getInventoryItem(idSimCard);
-                log.debug('item',item);
-                /* let field = form.addField({
-                    id: 'custpage_textfield',
-                    type: serverWidget.FieldType.TEXT,
-                    label: 'Nro de Cuotas'
-                });
-                field.defaultValue = nroCuotasDefault;
-                //field.isMandatory = true;
-                field.layoutType = serverWidget.FieldLayoutType.NORMAL;
-                field.updateBreakType({
-                    breakType: serverWidget.FieldBreakType.STARTCOL
-                }); */
+                log.debug('item', item);
 
                 let select = form.addField({
                     id: 'custpage_selectfield',
@@ -44,8 +33,8 @@ define(['N/log', 'N/record', 'N/search','N/ui/serverWidget'], (log, record, sear
                     field: select,
                     nextfield: 'custrecord_ht_ds_serie'
                 });
-                if(item){
-                    log.debug('item',item.length);
+                if (item) {
+                    log.debug('item', item.length);
                     for (let i = 0; i < item.length; i++) {
                         select.addSelectOption({
                             value: item[i].toString(),
@@ -56,7 +45,7 @@ define(['N/log', 'N/record', 'N/search','N/ui/serverWidget'], (log, record, sear
                     //select.isMandatory = true;
 
                     var serie = objRecord.getValue('custpage_selectfield');
-                    objRecord.setValue('custrecord_ht_ds_serietexto',serie);
+                    objRecord.setValue('custrecord_ht_ds_serietexto', serie);
                 }
             } catch (error) {
                 log.error('Error', error);
@@ -65,40 +54,40 @@ define(['N/log', 'N/record', 'N/search','N/ui/serverWidget'], (log, record, sear
     }
     const beforeSubmit = (scriptContext) => {
         try {
-           
+
             const objRecord = scriptContext.newRecord;
             var serie = objRecord.getValue('custpage_selectfield');
 
-            log.debug('serie',serie);
-            objRecord.setValue('custrecord_ht_ds_serietexto',serie);
+            log.debug('serie', serie);
+            objRecord.setValue('custrecord_ht_ds_serietexto', serie);
             objRecord.save();
-/*  
-            if(idPayment){
-                log.debug('entra idPayment');
-                var jeRec = record.load({
-                    type: 'customrecord_ht_cuentas_nrocuotas',
-                    isDynamic: true,
-                    id: idPayment.id,
-                });
-                jeRec.setValue('custrecord_ht_cc_cuenta',nuevoValorCuentas);
-                jeRec.setValue('custrecord_ht_cc_cuota', nuevoValorNroCuotas);
-                jeRec.save();
-            }else{
-                log.debug('no entra idPayment');
-                var jeRec = record.create({
-                    type: 'customrecord_ht_cuentas_nrocuotas',
-                    isDynamic: true
-                });
-                jeRec.setValue('custrecord_ht_cc_paymentmethod',objRecord.id);
-                jeRec.setValue('custrecord_ht_cc_cuenta',nuevoValorCuentas);
-                jeRec.setValue('custrecord_ht_cc_cuota', nuevoValorNroCuotas);
-                jeRec.save();
-            }
-            objRecord.removeLine({
-                sublistId: 'visuals',
-                line: pos,
-                ignoreRecalc: true
-            }); */
+            /*  
+                        if(idPayment){
+                            log.debug('entra idPayment');
+                            var jeRec = record.load({
+                                type: 'customrecord_ht_cuentas_nrocuotas',
+                                isDynamic: true,
+                                id: idPayment.id,
+                            });
+                            jeRec.setValue('custrecord_ht_cc_cuenta',nuevoValorCuentas);
+                            jeRec.setValue('custrecord_ht_cc_cuota', nuevoValorNroCuotas);
+                            jeRec.save();
+                        }else{
+                            log.debug('no entra idPayment');
+                            var jeRec = record.create({
+                                type: 'customrecord_ht_cuentas_nrocuotas',
+                                isDynamic: true
+                            });
+                            jeRec.setValue('custrecord_ht_cc_paymentmethod',objRecord.id);
+                            jeRec.setValue('custrecord_ht_cc_cuenta',nuevoValorCuentas);
+                            jeRec.setValue('custrecord_ht_cc_cuota', nuevoValorNroCuotas);
+                            jeRec.save();
+                        }
+                        objRecord.removeLine({
+                            sublistId: 'visuals',
+                            line: pos,
+                            ignoreRecalc: true
+                        }); */
         } catch (error) {
             log.error('Error beforeSubmit', error);
         }
@@ -254,49 +243,49 @@ define(['N/log', 'N/record', 'N/search','N/ui/serverWidget'], (log, record, sear
     function getInventoryItem(idSimCard) {
         try {
             var arrCustomerId = new Array();
-            if(idSimCard){
-            var busqueda = search.create({
-                type: "inventorynumber",
-                filters:
-                [
-                   ["item.internalid","anyof", idSimCard], 
-                   "AND", 
-                   ["isonhand","is","T"]
-                ],
-                columns:
-                [
-                   search.createColumn({
-                      name: "inventorynumber",
-                      sort: search.Sort.ASC,
-                      label: "Number"
-                   }),
-                   search.createColumn({name: "item", label: "Item"}),
-                   search.createColumn({name: "memo", label: "Memo"}),
-                   search.createColumn({name: "location", label: "Location"}),
-                   search.createColumn({name: "quantityonhand", label: "On Hand"}),
-                   search.createColumn({name: "quantityavailable", label: "Available"}),
-                   search.createColumn({name: "quantityonorder", label: "On Order"}),
-                   search.createColumn({name: "isonhand", label: "Is On Hand"}),
-                   search.createColumn({name: "quantityintransit", label: "In Transit"}),
-                   search.createColumn({name: "datecreated", label: "Date Created"})
-                ]
-             });
-             var pageData = busqueda.runPaged({
-                pageSize: 1000
-            });
-
-            pageData.pageRanges.forEach(function (pageRange) {
-                page = pageData.fetch({
-                    index: pageRange.index
+            if (idSimCard) {
+                var busqueda = search.create({
+                    type: "inventorynumber",
+                    filters:
+                        [
+                            ["item.internalid", "anyof", idSimCard],
+                            "AND",
+                            ["isonhand", "is", "T"]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({
+                                name: "inventorynumber",
+                                sort: search.Sort.ASC,
+                                label: "Number"
+                            }),
+                            search.createColumn({ name: "item", label: "Item" }),
+                            search.createColumn({ name: "memo", label: "Memo" }),
+                            search.createColumn({ name: "location", label: "Location" }),
+                            search.createColumn({ name: "quantityonhand", label: "On Hand" }),
+                            search.createColumn({ name: "quantityavailable", label: "Available" }),
+                            search.createColumn({ name: "quantityonorder", label: "On Order" }),
+                            search.createColumn({ name: "isonhand", label: "Is On Hand" }),
+                            search.createColumn({ name: "quantityintransit", label: "In Transit" }),
+                            search.createColumn({ name: "datecreated", label: "Date Created" })
+                        ]
                 });
-                page.data.forEach(function (result) {
-                    var columns = result.columns;
-                    var arrCustomer = new Array();
-                    //0. Internal id match
-                    if (result.getValue(columns[0]) != null)
-                        arrCustomer[0] = result.getValue(columns[0]);
-                    else
-                        arrCustomer[0] = '';
+                var pageData = busqueda.runPaged({
+                    pageSize: 1000
+                });
+
+                pageData.pageRanges.forEach(function (pageRange) {
+                    page = pageData.fetch({
+                        index: pageRange.index
+                    });
+                    page.data.forEach(function (result) {
+                        var columns = result.columns;
+                        var arrCustomer = new Array();
+                        //0. Internal id match
+                        if (result.getValue(columns[0]) != null)
+                            arrCustomer[0] = result.getValue(columns[0]);
+                        else
+                            arrCustomer[0] = '';
                         arrCustomerId.push(arrCustomer);
                     });
                 });

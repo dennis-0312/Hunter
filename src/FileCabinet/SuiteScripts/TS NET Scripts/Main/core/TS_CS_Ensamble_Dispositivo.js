@@ -37,26 +37,9 @@ define([
         }
     }
 
-    const ensambleAlquiler = (item, location, workorder, salesorder, customer) => {
-        /*try {
-          console.log({ item, location, workorder, salesorder, customer });
-          var host = url.resolveDomain({
-            hostType: url.HostType.APPLICATION,
-            accountId: runtime.accountId
-          });
-          var newUrl = 'https://' + host + '/app/site/hosting/scriptlet.nl?script=980&deploy=1&' +
-            'item=' + item +
-            '&location=' + location +
-            '&workorder=' + workorder +
-            '&salesorder=' + salesorder +
-            '&customer=' + customer;
-          console.log('host', host);
-          window.open(newUrl);
-        } catch (err) {
-          console.log(err);
-        }*/
+    const ensambleAlquiler = (item, location, workorder, salesorder, customer, subsidiary) => {
         try {
-            let params = { item, location, workorder, salesorder, customer };
+            let params = { item, location, workorder, salesorder, customer, subsidiary };
             let host = getHostDomain();
             let suiteletUrl = getSuiteletUrl(RENT_ASSEMBLY_BUILD_SCRIPT_ID, RENT_ASSEMBLY_BUILD_DEPLOYMENT_ID);
             let fullUrl = addParametersToUrl(`https://${host}${suiteletUrl}`, params);
@@ -66,28 +49,9 @@ define([
         }
     }
 
-    const ensambleCustodia = (item, relateditem, location, workorder, salesorder, customer) => {
-        /*try {
-          console.log(item, relateditem, location, workorder, salesorder, customer);
-          var host = url.resolveDomain({
-            hostType: url.HostType.APPLICATION,
-            accountId: runtime.accountId
-          });
-          var newUrl = 'https://' + host + '/app/site/hosting/scriptlet.nl?script=1147&deploy=1&' +
-            'item=' + item +
-            '&relateditem=' + relateditem +
-            '&location=' + location +
-            '&workorder=' + workorder +
-            '&salesorder=' + salesorder +
-            '&customer=' + customer;
-          console.log('host', host);
-          window.open(newUrl);
-        } catch (err) {
-          console.log(err);
-        }*/
-
+    const ensambleCustodia = (item, relateditem, location, workorder, salesorder, customer, subsidiary) => {
         try {
-            let params = { item, relateditem, location, workorder, salesorder, customer };
+            let params = { item, relateditem, location, workorder, salesorder, customer, subsidiary };
             let host = getHostDomain();
             let suiteletUrl = getSuiteletUrl(CUSTODY_ASSEMBLY_BUILD_SCRIPT_ID, CUSTODY_ASSEMBLY_BUILD_DEPLOYMENT_ID);
             let fullUrl = addParametersToUrl(`https://${host}${suiteletUrl}`, params);
@@ -97,9 +61,9 @@ define([
         }
     }
 
-    const ensambleGarantia = (item, location, workorder, salesorder, customer) => {
+    const ensambleGarantia = (item, location, workorder, salesorder, customer, subsidiary) => {
         try {
-            let params = { item, location, workorder, salesorder, customer };
+            let params = { item, location, workorder, salesorder, customer, subsidiary };
             let host = getHostDomain();
             let suiteletUrl = getSuiteletUrl(WARRANT_ASSEMBLY_BUILD_SCRIPT_ID, WARRANT_ASSEMBLY_BUILD_DEPLOYMENT_ID);
             let fullUrl = addParametersToUrl(`https://${host}${suiteletUrl}`, params);

@@ -39,7 +39,7 @@ define(['N/record',
         const ID_FOLDER = 1149;          // SB:463,  PR:767  SuiteScripts > TS NET Scripts > TS Importación Depósitos > EVOL File Log Massive Guides
         const ID_FOLDER_2 = 7616;       // SB:7616, PR:768  SuiteScripts > TS NET Scripts > TS Importación Depósitos > EVOL File Array Massive Deposits
 
-
+        
         function execute(context) {
             try {
 

@@ -118,15 +118,17 @@ define(['N/search', 'N/record', 'N/runtime', 'N/task'], function (search, record
                                         }
                                     }
                                     log.debug('Montos previos', total_expense_ret + ' -> ' + rate_detraccion + ' -> ' + tipo_cambio_fc)
-                                    const amount_ret_exp = Math.round(total_expense_ret * rate_detraccion * 100) / 100 * (-1);
+                                    const amount_ret_exp = total_expense_ret * rate_detraccion * 100 / 100 * (-1);
                                     const amount_line_ret_expense = getResiduoRetencion(amount_ret_exp, tipo_cambio_fc);
+                                    log.error("amount_line_ret_expense", amount_line_ret_expense);
                                     log.debug('Montos despues', amount_ret_exp + ' -> ' + amount_line_ret_expense);
                                     log.debug('Montos Cálculo', `${Math.abs(amount_line_ret_expense.toFixed(2))} - ${Math.abs(amount_line_ret_expense)} = ${Math.abs(amount_line_ret_expense.toFixed(2)) - Math.abs(amount_line_ret_expense)}`);
                                     const dif_redondeo = Math.abs(amount_line_ret_expense.toFixed(2)) - Math.abs(amount_line_ret_expense);
-                                    log.debug('roundTwoDecimal', roundTwoDecimal(amount_line_ret_expense) + ' -> ' + UNDEF_PE + ' -> ' + recordLoad.getSublistValue({ sublistId: GASTO, fieldId: 'department', line: 0 }) + ' -> ' + recordLoad.getSublistValue({ sublistId: GASTO, fieldId: 'class', line: 0 }))
+                                    log.debug('roundTwoDecimal', /*roundTwoDecimal(*/amount_line_ret_expense/*)*/ + ' -> ' + UNDEF_PE + ' -> ' + recordLoad.getSublistValue({ sublistId: GASTO, fieldId: 'department', line: 0 }) + ' -> ' + recordLoad.getSublistValue({ sublistId: GASTO, fieldId: 'class', line: 0 }))
+                                    
                                     if (amount_line_ret_expense != 0 && !flag) {
                                         recordLoad.setSublistValue({ sublistId: GASTO, fieldId: 'account', line: details_expense, value: account });
-                                        recordLoad.setSublistValue({ sublistId: GASTO, fieldId: 'amount', line: details_expense, value: roundTwoDecimal(amount_line_ret_expense) });
+                                        recordLoad.setSublistValue({ sublistId: GASTO, fieldId: 'amount', line: details_expense, value: /*roundTwoDecimal(*/amount_line_ret_expense/*)*/ });
                                         recordLoad.setSublistValue({ sublistId: GASTO, fieldId: 'taxcode', line: details_expense, value: UNDEF_PE });
                                         recordLoad.setSublistValue({ sublistId: GASTO, fieldId: 'department', line: details_expense, value: recordLoad.getSublistValue({ sublistId: GASTO, fieldId: 'department', line: 0 }) });
                                         recordLoad.setSublistValue({ sublistId: GASTO, fieldId: 'class', line: details_expense, value: recordLoad.getSublistValue({ sublistId: GASTO, fieldId: 'class', line: 0 }) });
@@ -182,8 +184,7 @@ define(['N/search', 'N/record', 'N/runtime', 'N/task'], function (search, record
                                     const amount_ret_item = total_item_ret * rate_detraccion * (-1);
                                     log.error("cálculo0", `${total_item_ret} * ${rate_detraccion * (-1)} = ${amount_ret_item}`);
                                     const amount_line_ret_item = getResiduoRetencion(amount_ret_item, tipo_cambio_fc);
-                                    //log.error("amount_line_ret_expense", amount_line_ret_item);
-                                    log.debug('flaaaaaaag', flag)
+                                    log.error("amount_line_ret_item", amount_line_ret_item);
                                     if (amount_line_ret_item != 0 && !flag) {
                                         recordLoad.setSublistValue({ sublistId: ITEM, fieldId: 'item', line: details_item, value: itemDis });
                                         recordLoad.setSublistValue({ sublistId: ITEM, fieldId: 'quantity', line: details_item, value: recordLoad.getSublistValue({ sublistId: ITEM, fieldId: 'quantity', line: 0 }) });
@@ -199,15 +200,6 @@ define(['N/search', 'N/record', 'N/runtime', 'N/task'], function (search, record
                                 recordLoad.save({ ignoreMandatoryFields: true, enableSourcing: false });
                             }
                         }
-
-                        /*var reportType = objRecord.getValue('custbody_pe_report_type');
-                        if (reportType == TIPO_REPORTTE_PAGO_DUA) {
-                            var numeroEr = objRecord.getValue('custbody_pe_number_er');
-                            var status = recordLoad.getText('status');
-                            if (!numeroEr) return;
-                            actualizarDUARelacionadaOrdenPagoYCheque(numeroEr, recordId, status)
-                        }*/
-
                     }
                 }
             }

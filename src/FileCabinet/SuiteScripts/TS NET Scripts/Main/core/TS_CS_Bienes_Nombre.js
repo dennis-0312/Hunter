@@ -16,6 +16,8 @@ define([
     let placaOld = "";
     let motorOld = "";
     let chasisOld = "";
+    const SUBSIDIARY_EC = 2;
+    const SUBSIDIARY_PE = 3;
 
     const pageInit = (context) => {
         let currentRecord = context.currentRecord;
@@ -42,14 +44,19 @@ define([
                     const nro_puertas = objRecord.getText("custrecord_ht_bien_numeropuertas");
                     const bien_motor = objRecord.getText("custrecord_ht_bien_motor");
                     const bien_chasis = objRecord.getText("custrecord_ht_bien_chasis");
-                    let patron_placa_vehiculo = /^[A-Z]{3}-[0-9]{4}$/;
+                    let subsidiary = objRecord.getValue('custrecord_bn_subsidiaria');
+                    let patron_placa_vehiculo = subsidiary == SUBSIDIARY_EC ? /^[A-Z]{3}-[0-9]{4}$/ : subsidiary == SUBSIDIARY_PE ? /^[A-Z0-9]{3}-[0-9]{3}$/ : false;
+                    if (!patron_placa_vehiculo) {
+                        alert('Subsidiaria no configurada.');
+                        return false;
+                    }
                     let patron_placa_moto = /^[A-Z]{2}[0-9]{3}[A-Z]{1}$/;
                     let patron_motor_chasis = /^[0-9A-Z]{0,30}$/;
-                    let patron_puertas = /^[3-5]{1}$/;
+                    let patron_puertas = subsidiary == SUBSIDIARY_EC ? /^[3-5]{1}$/ : /^[0-5]{1}$/;
                     if (tipo_terrestre == _constant.Constants.VEHICULO) {
                         if (bien_placa != "S/P") {
                             if (bien_placa.match(patron_placa_vehiculo) == null) {
-                                alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-0123), o sin placa (S/P) si la desconoce.");
+                                alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-012) de acuerdo al país, o sin placa (S/P) si la desconoce.");
                                 return false;
                             } else {
                                 let objValidpl = getPlaca(bien_placa)
@@ -204,15 +211,20 @@ define([
                     const nro_puertas = objRecord.getText("custrecord_ht_bien_numeropuertas");
                     const bien_motor = objRecord.getText("custrecord_ht_bien_motor");
                     const bien_chasis = objRecord.getText("custrecord_ht_bien_chasis");
-                    var patron_placa_vehiculo = /^[A-Z]{3}-[0-9]{4}$/;
+                    let subsidiary = objRecord.getValue('custrecord_bn_subsidiaria');
+                    let patron_placa_vehiculo = subsidiary == SUBSIDIARY_EC ? /^[A-Z]{3}-[0-9]{4}$/ : subsidiary == SUBSIDIARY_PE ? /^[A-Z0-9]{3}-[0-9]{3}$/ : false;
+                    if (!patron_placa_vehiculo) {
+                        alert('Subsidiaria no configurada.');
+                        return false;
+                    }
                     var patron_placa_moto = /^[A-Z]{2}[0-9]{3}[A-Z]{1}$/;
                     var patron_motor_chasis = /^[0-9A-Z]{0,30}$/;
-                    var patron_puertas = /^[3-5]{1}$/;
+                    var patron_puertas = subsidiary == SUBSIDIARY_EC ? /^[3-5]{1}$/ : /^[0-5]{1}$/;
                     var flag = true;
                     if (tipo_terrestre == _constant.Constants.VEHICULO) {
                         if (bien_placa != "S/P") {
                             if (bien_placa.match(patron_placa_vehiculo) == null) {
-                                alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-0123), o sin placa (S/P) si la desconoce.");
+                                alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-012) de acuerdo al país, o sin placa (S/P) si la desconoce.");
                                 return false;
                             } else {
                                 let objValidpl = getPlaca(bien_placa)
@@ -401,15 +413,19 @@ define([
             if (tipoBien == _constant.Constants.TERRESTRE) {
                 if (typeMode == _constant.Constants.CREATE || typeMode == _constant.Constants.COPY) {
                     if (typeTransaction === "customrecord_ht_record_bienes") {
-                        var tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
+                        let tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
                         let isGenerico = objRecord.getValue("custrecord_ht_bien_generico");
+                        let subsidiary = objRecord.getValue('custrecord_bn_subsidiaria');
                         if (sublistFieldName === "custrecord_ht_bien_placa") {
                             const bien_placa = objRecord.getText(sublistFieldName);
                             if (bien_placa != "S/P") {
                                 if (tipo_terrestre == _constant.Constants.VEHICULO) {
-                                    var patron_placa = /^[A-Z]{3}-[0-9]{4}$/;
+                                    let patron_placa = subsidiary == SUBSIDIARY_EC ? /^[A-Z]{3}-[0-9]{4}$/ : subsidiary == SUBSIDIARY_PE ? /^[A-Z0-9]{3}-[0-9]{3}$/ : false;
+                                    if (!patron_placa) {
+                                        alert('Subsidiaria no configurada.');
+                                    }
                                     if (bien_placa.match(patron_placa) == null) {
-                                        alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-0123), o sin placa (S/P) si la desconoce.");
+                                        alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-012) de acuerdo al país, o sin placa (S/P) si la desconoce.");
                                     } else {
                                         let objValidpl = getPlaca(bien_placa)
                                         console.log(objValidpl);
@@ -432,7 +448,7 @@ define([
                             }
                         } else if (sublistFieldName === "custrecord_ht_bien_numeropuertas") {
                             const nro_puertas = objRecord.getText(sublistFieldName);
-                            var patron_puertas = /^[3-5]{1}$/;
+                            var patron_puertas = subsidiary == SUBSIDIARY_EC ? /^[3-5]{1}$/ : /^[0-5]{1}$/;
                             if (tipo_terrestre == _constant.Constants.VEHICULO) {
                                 if (nro_puertas.match(patron_puertas) == null) {
                                     alert("El valor a ingresar para el Num. de Puertas es entre 3 y 5.");
@@ -520,18 +536,23 @@ define([
                     }
                 } else if (typeMode == _constant.Constants.EDIT) {
                     if (typeTransaction === "customrecord_ht_record_bienes") {
-                        var flag = true;
+                        let flag = true;
                         //var Bienes = getBien(objRecord.id, flag);
                         //console.log('Bienes', Bienes);
-                        var tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
+                        let tipo_terrestre = objRecord.getValue("custrecord_ht_bien_tipoterrestre");
                         let isGenerico = objRecord.getValue("custrecord_ht_bien_generico");
+                        let subsidiary = objRecord.getValue('custrecord_bn_subsidiaria');
                         if (sublistFieldName === "custrecord_ht_bien_placa") {
+                            let subsidiary = objRecord.getValue('custrecord_bn_subsidiaria');
                             const bien_placa = objRecord.getText(sublistFieldName);
                             if (bien_placa != "S/P") {
                                 if (tipo_terrestre == _constant.Constants.VEHICULO) {
-                                    let patron_placa = /^[A-Z]{3}-[0-9]{4}$/;
+                                    let patron_placa = subsidiary == SUBSIDIARY_EC ? /^[A-Z]{3}-[0-9]{4}$/ : subsidiary == SUBSIDIARY_PE ? /^[A-Z0-9]{3}-[0-9]{3}$/ : false;
+                                    if (!patron_placa) {
+                                        alert('Subsidiaria no configurada.');
+                                    }
                                     if (bien_placa.match(patron_placa) == null) {
-                                        alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-0123), o sin placa (S/P) si la desconoce.");
+                                        alert("Debe de ingresar una placa válida por ejemplo (ABC-1234) o (ABC-012) de acuerdo al país, o sin placa (S/P) si la desconoce.");
                                     } else {
                                         let objValidpl = getPlaca(bien_placa)
                                         console.log(objValidpl);
@@ -562,7 +583,7 @@ define([
                             }
                         } else if (sublistFieldName === "custrecord_ht_bien_numeropuertas") {
                             const nro_puertas = objRecord.getText(sublistFieldName);
-                            var patron_puertas = /^[3-5]{1}$/;
+                            var patron_puertas = subsidiary == SUBSIDIARY_EC ? /^[3-5]{1}$/ : /^[0-5]{1}$/;
                             if (tipo_terrestre == 1) {
                                 if (nro_puertas.match(patron_puertas) == null) {
                                     alert("El valor a ingresar para el Num. de Puertas es entre 3 y 5.");
@@ -658,7 +679,6 @@ define([
                     }
                 }
             }
-
 
 
             // if (tipoBien == _constant.Constants.PRODUCCION) {

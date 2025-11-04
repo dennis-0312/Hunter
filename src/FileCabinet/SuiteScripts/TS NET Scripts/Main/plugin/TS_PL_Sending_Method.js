@@ -121,7 +121,7 @@ define(['N/https', 'N/record', 'N/search'],
                     scriptId: "customscript_ts_ui_upload_file_sftp",
                     deploymentId: "customdeploy_ts_ui_upload_file_sftp",
                     method: https.Method.GET,
-                    external: true,
+                    //external: true,
                     urlParams: {
                         fileId: fileId
                     }

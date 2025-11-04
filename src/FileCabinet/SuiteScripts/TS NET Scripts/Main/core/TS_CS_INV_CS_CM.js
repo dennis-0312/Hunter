@@ -37,45 +37,48 @@ define(['N/runtime', 'N/search', 'N/ui/dialog'], function (runtime, search, dial
         var typeTransaction = currentRecord.type;
         var oldRecord = context.oldRecord;
         if (typeTransaction == VENDOR_BILL || typeTransaction == BILL_CREDIT) {
-            if (typeMode == 'create' || typeMode == 'copy') {
-                let customer = currentRecord.getValue({ fieldId: 'entity' });
-                let pe_number = currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
-                let doc_fiscal = currentRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
-                console.log('customer', customer);
-                console.log('pe_number', pe_number);
-                let existe = buscarFacCompra(customer, pe_number, doc_fiscal);
-                console.log('Usuario', userObj.id);
-                console.log(existe)
-                if (existe) {
-                    // if (existe || userObj.id == 4 || userObj.id == 13) {
-                    dialog.alert({ title: 'Alerta', message: 'Ya existe una Transacción de Compra con el mismo Proveedor y Numero Preimpreso.' });
-                    return false;
-                }
-
-                if (currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' }).length != 9 && doc_fiscal != 10 && userObj.id != 4) {
-                    dialog.alert({ title: 'Alerta', message: 'El número preimpreso debe tener 9 dígitos.' });
-                    return false;
-                }
-            } else if (typeMode == 'edit') {
-                var customer = currentRecord.getValue({ fieldId: 'entity' });
-                var pe_number = currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
-                let doc_fiscal = currentRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
-                console.log('customer', customer);
-                if (customer != customer_old || pe_number != pe_number_old) {
+            let tipoDocumentoFiscal = currentRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+            if (tipoDocumentoFiscal != '10') {
+                if (typeMode == 'create' || typeMode == 'copy') {
+                    let customer = currentRecord.getValue({ fieldId: 'entity' });
+                    let pe_number = currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
+                    let doc_fiscal = currentRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                    console.log('customer', customer);
+                    console.log('pe_number', pe_number);
                     let existe = buscarFacCompra(customer, pe_number, doc_fiscal);
+                    console.log('Usuario', userObj.id);
+                    console.log(existe)
                     if (existe) {
+                        // if (existe || userObj.id == 4 || userObj.id == 13) {
                         dialog.alert({ title: 'Alerta', message: 'Ya existe una Transacción de Compra con el mismo Proveedor y Numero Preimpreso.' });
                         return false;
                     }
-                }
 
-                if (currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' }).length != 9 && userObj.id != 4) {
-                    dialog.alert({ title: 'Alerta', message: 'El número preimpreso debe tener 9 dígitos.' });
-                    return false;
+                    if (currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' }).length != 9 && doc_fiscal != 10 && userObj.id != 4) {
+                        dialog.alert({ title: 'Alerta', message: 'El número preimpreso debe tener 9 dígitos.' });
+                        return false;
+                    }
+                } else if (typeMode == 'edit') {
+                    var customer = currentRecord.getValue({ fieldId: 'entity' });
+                    var pe_number = currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
+                    let doc_fiscal = currentRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                    console.log('customer', customer);
+                    if (customer != customer_old || pe_number != pe_number_old) {
+                        let existe = buscarFacCompra(customer, pe_number, doc_fiscal);
+                        if (existe) {
+                            dialog.alert({ title: 'Alerta', message: 'Ya existe una Transacción de Compra con el mismo Proveedor y Numero Preimpreso.' });
+                            return false;
+                        }
+                    }
+
+                    if (currentRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' }).length != 9 && userObj.id != 4) {
+                        dialog.alert({ title: 'Alerta', message: 'El número preimpreso debe tener 9 dígitos.' });
+                        return false;
+                    }
                 }
             }
         }
-        if (userObj.id == 4) {
+        if (userObj.id == 4 || userObj.id == 36477) {
             console.log('Usuario', userObj.id)
             return true
         } else {

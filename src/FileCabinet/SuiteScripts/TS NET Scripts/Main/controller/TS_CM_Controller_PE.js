@@ -1315,26 +1315,26 @@ define([
                     return true;
                 });
 
-                record.submitFields({
-                    type: _constant.customRecord.CUSTODIA,
-                    id: registroCustodia,
-                    values: {
-                        'isinactive': true
-                        // 'custrecord_ht_ct_estado': _constant.Status.INSTALADO,
-                        // 'custrecord_ht_ct_vehiculo': objParams.bien
-                    },
-                    options: { enableSourcing: false, ignoreMandatoryFields: true }
-                });
-
-                // let deleteRecordPromise = record.delete.promise({
+                // record.submitFields({
                 //     type: _constant.customRecord.CUSTODIA,
-                //     id: registroCustodia
+                //     id: registroCustodia,
+                //     values: {
+                //         'isinactive': true
+                //         // 'custrecord_ht_ct_estado': _constant.Status.INSTALADO,
+                //         // 'custrecord_ht_ct_vehiculo': objParams.bien
+                //     },
+                //     options: { enableSourcing: false, ignoreMandatoryFields: true }
                 // });
-                // deleteRecordPromise.then(() => {
-                //     log.debug('Success', 'Custodia Record successfully deleted');
-                // }, (error) => {
-                //     log.error('Ocurrió un error al elimianr el registro de custodia', error);
-                // });
+
+                let deleteRecordPromise = record.delete.promise({
+                    type: _constant.customRecord.CUSTODIA,
+                    id: registroCustodia
+                });
+                deleteRecordPromise.then(() => {
+                    log.debug('Success', 'Custodia Record successfully deleted');
+                }, (error) => {
+                    log.error('Ocurrió un error al elimianr el registro de custodia', error);
+                });
             }
             // return registroCustodia;
         }

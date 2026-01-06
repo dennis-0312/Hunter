@@ -6,15 +6,17 @@ define([
     'N/record',
     'N/search',
     'N/query',
+    'N/runtime',
     '../constant/TS_CM_Constant',
-    '../../Impulso Plataformas/Controller/TS_ScriptPlataformas_controller'
+    '../../Impulso Plataformas/Controller/TS_ScriptPlataformas_controller',
+    'SuiteScripts/IntegracionesHunter/HU_TS_ScriptPlataformas_controller'
 ],
     /**
      * @param{log} log
      * @param{record} record
      * @param{search} search
      */
-    (log, record, search, query, _constant, _platformController) => {
+    (log, record, search, query, runtime, _constant, _platformController, _platformControllerLatam) => {
         //! FUNCTIONS ====================================================================================================================================================
         const createServiceOrder = (requestHeader, requestDetail) => {
             let objRecord = record.create({ type: record.Type.SALES_ORDER, isDynamic: true });
@@ -86,6 +88,45 @@ define([
             return objRecord.save({ enableSourcing: true, ignoreMandatoryFields: true });
         }
 
+        const wrapPxResponse = (rawResponse, payload) => {
+            //cambio JMON 14/12/2025 mejora - normaliza la respuesta PX para evitar objetos vacíos
+            let status = false;
+            let mensaje = '';
+            let respuesta = rawResponse;
+            let detalle = payload || null;
+            let raw = rawResponse;
+            try {
+                if (typeof rawResponse === 'string') {
+                    try {
+                        const parsed = JSON.parse(rawResponse);
+                        // Si viene como objeto {status,mensaje,detalle}
+                        if (parsed && typeof parsed === 'object') {
+                            respuesta = parsed;
+                            if (parsed.status !== undefined) status = parsed.status === true || parsed.status === 'true';
+                            if (parsed.mensaje) mensaje = parsed.mensaje;
+                            if (parsed.detalle) detalle = parsed.detalle;
+                        }
+                    } catch (e) {
+                        // string simple: usa tal cual
+                        status = rawResponse === '1';
+                        mensaje = rawResponse === '1' ? '' : rawResponse;
+                    }
+                } else if (typeof rawResponse === 'object' && rawResponse !== null) {
+                    if (rawResponse.status !== undefined) {
+                        status = rawResponse.status === true || rawResponse.status === 'true';
+                        mensaje = rawResponse.mensaje || '';
+                        respuesta = rawResponse.respuesta !== undefined ? rawResponse.respuesta : rawResponse;
+                        detalle = rawResponse.detalle || detalle;
+                    }
+                } else if (rawResponse === 1) {
+                    status = true;
+                }
+            } catch (e) {
+                mensaje = e.message;
+            }
+            return { status, mensaje, respuesta, detalle, raw };
+        };
+
         const parametros = (parametro, id, type = null, adp = null, bien = null, cliente = null) => {
             log.error('Controller - parametro, id, type = null, adp = null, bien = null, cliente = null', `${parametro}, ${id}, ${type} = null, ${adp} = null, ${bien} = null, ${cliente} = null`);
             log.error('Controller - objId', id);
@@ -96,22 +137,58 @@ define([
                 case _constant.Codigo_parametro.COD_GPG_GENERA_PARAMETRIZACION_EN_GEOSYS:
                     switch (parseInt(type)) {
                         case _constant.Codigo_Valor.COD_VALOR_001_INST_DISPOSITIVO:
-                            response = _platformController.envioPXInstalacionDispositivo(id); // id Orden de Trabajo
+                            log.debug('PX-LATAM', 'Instalacion dispositivo');
+                            log.debug('IMPULSO-PX-START', { ot: id, tipo: type, accion: '001' }); //cambio JMON 14/12/2025
+                            response = _platformControllerLatam.envioPXInstalacionDispositivoPeru(id, runtime.getCurrentUser().subsidiary, _constant.Constants.URLPX); // id Orden de Trabajo
+                            response = wrapPxResponse(response, { ot: id, tipo: type });
+                            log.debug('ResponsePX', response);
+                            log.debug('IMPULSO-PX-DATA', { detalle: response.detalle, respuesta: response.respuesta, raw: response.raw }); //cambio JMON 14/12/2025
+                            log.debug('IMPULSO-PX-END', response); //cambio JMON 14/12/2025
                             break;
                         case _constant.Codigo_Valor.COD_VALOR_010_CAMBIO_DE_PROPIETARIO:
-                            log.debug('COD_VALOR_010_CAMBIO_DE_PROPIETARIO', 'Entré a cambiar propietario PX');
-                            response = _platformController.envioPXCambioPropietario(id); // id Orden de Trabajo
+                            log.debug('PX-LATAM', 'Cambio de propietario');
+                            log.debug('IMPULSO-PX-START', { ot: id, tipo: type, accion: '010' }); //cambio JMON 14/12/2025
+                            response = _platformControllerLatam.envioPXCambioPropietario(id, runtime.getCurrentUser().subsidiary, _constant.Constants.URLPX); // id Orden de Trabajo
+                            response = wrapPxResponse(response, { ot: id, tipo: type });
                             log.debug('ResponsePX', response);
+                            log.debug('IMPULSO-PX-DATA', { detalle: response.detalle, respuesta: response.respuesta, raw: response.raw }); //cambio JMON 14/12/2025
+                            log.debug('IMPULSO-PX-END', response); //cambio JMON 14/12/2025
                             break;
                         case _constant.Codigo_Valor.COD_VALOR_002_DESINSTALACION_DE_DISP:
-                            log.debug('VALOR_002_DESINSTALACION_DE_DISP_PX', 'Entré a Desinstalacion PX');
-                            response = _platformController.envioPXDesinstalacionDispositivo(id); // id Orden de Trabajo
+                            log.debug('PX-LATAM', 'Desinstalacion dispositivo');
+                            log.debug('IMPULSO-PX-START', { ot: id, tipo: type, accion: '002' }); //cambio JMON 14/12/2025
+                            response = _platformControllerLatam.envioPXDesinstalacionDispositivo(id, runtime.getCurrentUser().subsidiary, _constant.Constants.URLPX); // id Orden de Trabajo
+                            response = wrapPxResponse(response, { ot: id, tipo: type });
                             log.debug('ResponsePX', response);
+                            log.debug('IMPULSO-PX-DATA', { detalle: response.detalle, respuesta: response.respuesta, raw: response.raw }); //cambio JMON 14/12/2025
+                            log.debug('IMPULSO-PX-END', response); //cambio JMON 14/12/2025
+                            break;
+                        case _constant.Codigo_Valor.COD_VALOR_004_RENOVACION_DE_DISP:
+                            log.debug('PX-LATAM', 'Renovacion dispositivo');
+                            log.debug('IMPULSO-PX-START', { ot: id, tipo: type, accion: '004' }); //cambio JMON 14/12/2025
+                            response = _platformControllerLatam.envioPXRenovacionDispositivo(id, runtime.getCurrentUser().subsidiary, _constant.Constants.URLPX, bien); // id Orden de Trabajo
+                            response = wrapPxResponse(response, { ot: id, tipo: type });
+                            log.debug('ResponsePX', response);
+                            log.debug('IMPULSO-PX-DATA', { detalle: response.detalle, respuesta: response.respuesta, raw: response.raw }); //cambio JMON 14/12/2025
+                            log.debug('IMPULSO-PX-END', response); //cambio JMON 14/12/2025
                             break;
                         case _constant.Codigo_Valor.COD_VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO:
-                            log.debug('COD_VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO', 'Entré a Chequeo Dispositivo PX');
-                            response = _platformController.envioPXMantenimientoChequeoDispositivo(id); // id Orden de Trabajo
+                            log.debug('PX-LATAM', 'Mantenimiento/Chequeo Dispositivo PX');
+                            log.debug('IMPULSO-PX-START', { ot: id, tipo: type, accion: '006' }); //cambio JMON 14/12/2025
+                            response = _platformControllerLatam.envioPXMantenimientoChequeoDispositivo(id, runtime.getCurrentUser().subsidiary, _constant.Constants.URLPX); // id Orden de Trabajo
+                            response = wrapPxResponse(response, { ot: id, tipo: type });
                             log.debug('ResponsePX', response);
+                            log.debug('IMPULSO-PX-DATA', { detalle: response.detalle, respuesta: response.respuesta, raw: response.raw }); //cambio JMON 14/12/2025
+                            log.debug('IMPULSO-PX-END', response); //cambio JMON 14/12/2025
+                            break;
+                        case _constant.Codigo_Valor.COD_VALOR_007_CHEQUEO_DE_COMPONENTES:
+                            log.debug('PX-LATAM', 'Chequeo de Componentes PX');
+                            log.debug('IMPULSO-PX-START', { ot: id, tipo: type, accion: '007' }); //cambio JMON 14/12/2025
+                            response = _platformControllerLatam.envioPXChequeoComponentes(id, runtime.getCurrentUser().subsidiary, _constant.Constants.URLPX); // id Orden de Trabajo
+                            response = wrapPxResponse(response, { ot: id, tipo: type });
+                            log.debug('ResponsePX', response);
+                            log.debug('IMPULSO-PX-DATA', { detalle: response.detalle, respuesta: response.respuesta, raw: response.raw }); //cambio JMON 14/12/2025
+                            log.debug('IMPULSO-PX-END', response); //cambio JMON 14/12/2025
                             break;
                         default:
                             log.debug('accionEstadoOT');
@@ -162,7 +239,7 @@ define([
                         let tag = getParameter(id.item, _constant.Codigo_parametro.COD_TAG_TIPO_AGRUPACION_PRODUCTO);
                         let alq = getParameter(id.item, _constant.Codigo_parametro.COD_ALQ_PRODUCTO_DE_ALQUILER);
                         let dsr = getParameter(id.item, _constant.Codigo_parametro.COD_DSR_DEFINICION_DE_SERVICIOS);
-                        let nio = getParameter(id.item, _constant.Codigo_parametro.PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA);
+                        let nio = getParameter(id.item, _constant.Codigo_parametro.COD_PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA);
                         let ccd = getParameter(id.item, _constant.Codigo_parametro.COD_CCD_CONTROL_DE_CUSTODIAS_DE_DISPOSITIVOS);
                         let pgr = getParameter(id.item, _constant.Codigo_parametro.COD_PGR_PRODUCTO_DE_GARANTÍA);
 
@@ -190,23 +267,24 @@ define([
                             for (let index = 0; index < relatedItemsArr.length; index++) {
                                 let currentItem = relatedItemsArr[index];
                                 let objRecord = record.create({ type: _constant.customRecord.ORDEN_TRABAJO });
+                                objRecord.setValue({ fieldId: 'customform', value: _constant.Form.PE_ORDEN_TRABAJO_AUTOSAFE });
                                 objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_servicio', value: id.serviceOrder });
                                 objRecord.setValue({ fieldId: 'custrecord_ht_ot_cliente_id', value: id.customer });
                                 objRecord.setValue({ fieldId: 'custrecord_ht_ot_vehiculo', value: id.vehiculo });
                                 objRecord.setValue({ fieldId: 'custrecord_ht_ot_itemrelacionado', value: currentItem });
                                 objRecord.setValue({ fieldId: 'custrecord_ht_ot_item', value: id.item });
                                 objRecord.setValue({ fieldId: 'custrecord_ht_ot_orden_serivicio_txt', value: id.ordenServicio });
-                                if (fam != 0)
-                                    objRecord.setValue({ fieldId: 'custrecord_ht_ot_producto', value: fam });
-                                if (ttr != 0)
-                                    objRecord.setValue({ fieldId: 'custrecord_ht_ot_tipo_trabajo', value: ttr });
-                                if (tag != 0)
-                                    objRecord.setValue({ fieldId: 'custrecordht_ot_tipo_agrupacion', value: tag });
-                                if (alq != 0 && alq == _constant.Codigo_Valor.COD_SI)
+                                if (fam.codigo != 0)
+                                    objRecord.setValue({ fieldId: 'custrecord_ht_ot_producto', value: fam.idinterno });
+                                if (ttr.codigo != 0)
+                                    objRecord.setValue({ fieldId: 'custrecord_ht_ot_tipo_trabajo', value: ttr.idinterno });
+                                if (tag.codigo != 0)
+                                    objRecord.setValue({ fieldId: 'custrecordht_ot_tipo_agrupacion', value: tag.idinterno });
+                                if (alq.codigo != 0 && alq.codigo == _constant.Codigo_Valor.COD_SI)
                                     objRecord.setValue({ fieldId: 'custrecord_flujo_de_alquiler', value: true });
-                                if (nio != 0 && nio == _constant.Valor.VALOR_X_USO_CONVENIOS)
+                                if (nio.codigo != 0 && nio.codigo == _constant.Valor.VALOR_X_USO_CONVENIOS)
                                     objRecord.setValue({ fieldId: 'custrecord_flujo_de_convenio', value: true });
-                                if (dsr != 0 && dsr == _constant.Codigo_Valor.COD_SI) {
+                                if (dsr.codigo != 0 && dsr.codigo == _constant.Codigo_Valor.COD_SI) {
                                     let sql = 'SELECT custitem_ht_it_servicios as servicios FROM item WHERE id = ?';
                                     let aditionalService = query.runSuiteQL({ query: sql, params: [id.item] }).asMappedResults();
                                     log.debug('ENTRY-aditionalService', aditionalService)
@@ -214,9 +292,9 @@ define([
                                     let arreglo = cadena.split(",").map(num => parseInt(num.trim(), 10));
                                     objRecord.setValue({ fieldId: 'custrecord_ht_ot_servicios_commands', value: arreglo });
                                 }
-                                if (ccd != 0 && ccd == _constant.Codigo_Valor.COD_VALOR_002_ENTREGA_CUSTODIAS)
+                                if (ccd.codigo != 0 && ccd.codigo == _constant.Codigo_Valor.COD_VALOR_002_ENTREGA_CUSTODIAS)
                                     objRecord.setValue({ fieldId: 'custrecord_flujo_de_custodia', value: true });
-                                if (pgr != 0 && pgr == _constant.Codigo_Valor.COD_SI)
+                                if (pgr.codigo != 0 && pgr.codigo == _constant.Codigo_Valor.COD_SI)
                                     objRecord.setValue({ fieldId: 'custrecord_flujo_de_garantia', value: true });
 
                                 workOrder = objRecord.save({ enableSourcing: true, ignoreMandatoryFields: true });
@@ -737,6 +815,8 @@ define([
             let result = query.runSuiteQL({ query: sql, params: [scriptParameters.subsidiary] }).asMappedResults();
             let sqlGetCuentaCustodia = 'SELECT custrecord_ht_cuenta_de_custodia FROM subsidiary WHERE id = ?';
             let resultGetCuentaCustodia = query.runSuiteQL({ query: sqlGetCuentaCustodia, params: [scriptParameters.subsidiary] }).asMappedResults();
+            let sqlGetCuentaGarantia = 'SELECT custrecord_ht_cuenta_de_garantia FROM subsidiary WHERE id = ?';
+            let resultGetCuentaGarantia = query.runSuiteQL({ query: sqlGetCuentaGarantia, params: [scriptParameters.subsidiary] }).asMappedResults();
 
             //^Alquiler
             if (tipoFlujo == 0) {
@@ -796,7 +876,7 @@ define([
             //^Garantía
             if (tipoFlujo == 3) {
                 binNumber = scriptParameters.deposito;
-                account = 559;
+                account = resultGetCuentaGarantia[0].custrecord_ht_cuenta_de_garantia;;
                 unitCost = 0;
                 item = scriptParameters.dispositivo;
                 flujo = 'custbody_ai_por_garantia';

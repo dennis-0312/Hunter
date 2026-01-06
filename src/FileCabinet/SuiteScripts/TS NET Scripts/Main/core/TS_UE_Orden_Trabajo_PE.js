@@ -30,11 +30,12 @@ define([
     'N/ui/message',
     'N/query',
     'N/file',
+    'N/task',
     '../controller/TS_CM_Controller_PE',
     '../constant/TS_CM_Constant',
     '../error/TS_CM_ErrorMessages',
 ],
-    (transaction, config, log, search, record, serverWidget, https, error, format, email, runtime, message, query, file, _controller, _constant, _errorMessage) => {
+    (transaction, config, log, search, record, serverWidget, https, error, format, email, runtime, message, query, file, task, _controller, _constant, _errorMessage) => {
 
         const beforeLoad = (context) => {
             // DETECTAR PARÁMETROS DEL ENSAMBLE ALQUILER
@@ -395,6 +396,7 @@ define([
                 let senderId = runtime.getCurrentUser();
                 senderId = senderId.id;
                 let timeFormat = runtime.getCurrentUser().getPreference({ name: 'timeformat' });
+                log.debug('FLOW-PE', `afterSubmit start | ot=${context.newRecord.id} | type=${context.type}`);
                 let objRecord = context.newRecord;
                 let accionEstadoOT = 'Sin estado';
                 let id = context.newRecord.id;
@@ -419,6 +421,9 @@ define([
                 let entregaCustodia = 0;
                 let estadoInts;
                 let esEntregaCustodia = 0;
+                let yaFinalizadoPX = objRecord.getValue('custrecord_ht_ot_pxadminfinalizacion');
+                let desinstalacionPxYaProgramada = false;
+                let mantenimientoPxYaProgramada = false;
 
                 // Logs para verificar ubicación
                 log.debug('UBICACION-DEBUG-VALOR', `ubicacionOT: ${ubicacionOT}`);
@@ -515,7 +520,14 @@ define([
                             entradaCustodia = 0, adpDesinstalacion = 0, esGarantia = 0, plataformasPX = 0, plataformasTele = 0, adp, device, parametrosRespo = 0, ttrid = 0,
                             TTR_name = '', familia = "", idCoberturaItem = 0, returEjerepo = true, arrayItemOT = new Array(), arrayID = new Array(), arrayTA = new Array(), objParams = new Array(),
                             esConvenio = 0, responsepx, responsetm, esItemProduccion = false, objUserAssetCommand = new Object(), objAssetCommand = new Object(),
-                            arrayCommands = new Array(), arrayCommand = new Array(), uniqueCommands = new Array(), saveRecord = false, familia_code = '';
+                            arrayCommands = new Array(), arrayCommand = new Array(), uniqueCommands = new Array(), saveRecord = false, familia_code = '',
+                            esUpgrade = _constant.Valor.NO, familiaUpgrade = 0, familiaOrigenFAO = "";
+
+                        // cambio JMON 14/12/2025: ADP para impulso PX tomado directamente del item de la OT
+                        let adpFromOT = _controller.getParameter(idItemOT, _constant.Codigo_parametro.COD_ADP_ACCION_DEL_PRODUCTO);
+                        let adpPX = adpFromOT ? (adpFromOT.idinterno || adpFromOT.codigo || 0) : 0;
+                        adpDesinstalacion = adpPX;
+                        log.debug('cambio JMON 14/12/2025 - ADP_OT', { idItemOT: idItemOT, adpPX: adpPX });
 
                         // AGREGAR LOG DE INICIALIZACIÓN DE VARIABLES
                         log.debug('VARIABLES-INICIALIZACION', {
@@ -527,8 +539,82 @@ define([
                             timestamp: new Date().toISOString()
                         });
 
+                        // cambio jmon 17/12/2025 - Detectar upgrade por parametrizacion del item de OT
+                        let parametrosUpgrade = _controller.parametrizacion(idItemOT) || [];
+                        if (parametrosUpgrade.length) {
+                            for (let j = 0; j < parametrosUpgrade.length; j++) {
+                                if (parametrosUpgrade[j][0] == _constant.Parameter.CPR_CONVERSION_DE_PRODUCTO_UPGRADE && parametrosUpgrade[j][1] == _constant.Valor.SI) {
+                                    esUpgrade = _constant.Valor.SI;
+                                }
+                                if (parametrosUpgrade[j][0] == _constant.Parameter.FAM_FAMILIA_DE_PRODUCTOS) {
+                                    familiaUpgrade = parametrosUpgrade[j][1];
+                                }
+                                if (parametrosUpgrade[j][0] == _constant.Parameter.FAO_FAMILIA_ORIGEN) {
+                                    familiaOrigenFAO = parametrosUpgrade[j][3];
+                                }
+                            }
+                        }
+
+                        // cambio jmon 17/12/2025 - Aplicar upgrade de cobertura cuando la OT se chequea
+                        if (esUpgrade == _constant.Valor.SI) {
+                            let itemsInventario = idItemOT;
+                            let busquedaCoberturaUpgrade = [];
+                            if (bien && familiaOrigenFAO) {
+                                busquedaCoberturaUpgrade = getInstalacionesforUpgrade(familiaOrigenFAO, bien) || [];
+                            }
+                            log.debug('UPGRADE-OT', {
+                                bien: bien,
+                                familiaOrigenFAO: familiaOrigenFAO,
+                                familiaUpgrade: familiaUpgrade,
+                                itemsInventario: itemsInventario,
+                                resultados: busquedaCoberturaUpgrade ? busquedaCoberturaUpgrade.length : 0
+                            });
+                            if (busquedaCoberturaUpgrade && busquedaCoberturaUpgrade.length) {
+                                if (!familiaUpgrade || !itemsInventario) {
+                                    log.error('UPGRADE-OT-SKIP', 'Faltan datos de familia o item para ejecutar el upgrade.');
+                                } else {
+                                    for (let i = 0; i < busquedaCoberturaUpgrade.length; i++) {
+                                        const coberturaId = busquedaCoberturaUpgrade[i].id;
+                                        record.submitFields({
+                                            type: "customrecord_ht_co_cobertura",
+                                            id: coberturaId,
+                                            values: {
+                                                custrecord_ht_co_familia_prod: familiaUpgrade,
+                                                custrecord_ht_co_producto: itemsInventario,
+                                                custrecord_ht_co_producto_convertido: true,
+                                                custrecord_ht_co_subsidiaria: subsidiary,  // Se mueve al momento del chequeo de OT
+                                            },
+                                            options: {
+                                                enableSourcing: false,
+                                                ignoreMandatoryFields: true,
+                                            },
+                                        });
+
+                                        let objRecordUpgrade = record.create({
+                                            type: "customrecord_ht_ct_cobertura_transaction",
+                                            isDynamic: true,
+                                        });
+                                        objRecordUpgrade.setValue({
+                                            fieldId: "custrecord_ht_ct_transacciones",
+                                            value: coberturaId,
+                                        });
+                                        objRecordUpgrade.setValue({
+                                            fieldId: "custrecord_ht_ct_orden_servicio",
+                                            value: idSalesorder,
+                                        });
+                                        objRecordUpgrade.setValue({
+                                            fieldId: "custrecord_ht_ct_concepto",
+                                            value: 9,
+                                        });
+                                        objRecordUpgrade.save();
+                                    }
+                                }
+                            }
+                        }
+
                         log.debug('...............othersIntalls....................', othersIntalls);
                         if (othersIntalls == true) {
+                            log.debug('FLOW-PE', `branch=others_installs | ot=${id}`);
                             //Edwin agrego  FULFILLMENT
                             try {
                                 let servicios = objRecord.getText('custrecord_ht_ot_servicios_commands')
@@ -650,6 +736,10 @@ define([
                                 //!FULFILLMENT ======================================================================================================================================================
                                 if (ejecutarFulFillment == 1) {
                                     try {
+                                        if (!idDispositivo) {
+                                            //cambio JMON 14/12/2025 - permitir continuar aun sin serie
+                                            log.error('FULFILLMENT-NO-DISPOSITIVO', `No se encontró idDispositivo para el OT ${id}, se continúa sin bloquear`);
+                                        }
                                         let ubicacion = objRecord.getValue('custrecord_ht_ot_ordenfabricacion') ? _controller.getLocationToAssembly(objRecord.getValue('custrecord_ht_ot_ordenfabricacion')) : 0;
                                         log.debug('LogtLocationToAssembly other install', ubicacion);
                                         if (ubicacion == 0) {
@@ -661,7 +751,12 @@ define([
                                             log.debug('LogtLocationToAssembly1', ubicacion);
                                         }
 
-                                        let newFulfill = record.transform({ fromType: record.Type.SALES_ORDER, fromId: idSalesorder, toType: record.Type.ITEM_FULFILLMENT, isDynamic: true });
+                                        let newFulfill = record.transform({
+                                            fromType: record.Type.SALES_ORDER,
+                                            fromId: idSalesorder,
+                                            toType: record.Type.ITEM_FULFILLMENT,
+                                            isDynamic: true
+                                        });
                                         newFulfill.setValue({ fieldId: 'customform', value: _constant.Form.PE_DESPACHO });
                                         newFulfill.setValue({ fieldId: 'trandate', value: fechaChequeo });
                                         let numLines = newFulfill.getLineCount({ sublistId: 'item' });
@@ -684,9 +779,9 @@ define([
 
                                                 if (ubicacion.binnumber) {
                                                     let objSubRecord = newFulfill.getCurrentSublistSubrecord({ sublistId: 'item', fieldId: 'inventorydetail' });
-                                                    objSubRecord.selectLine({ sublistId: 'inventoryassignment', line: 0 })
+                                                    objSubRecord.selectNewLine({ sublistId: 'inventoryassignment' });
                                                     objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: ubicacion.binnumber });
-                                                    objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'inventorystatus', value: 1 });
+                                                    //objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'inventorystatus', value: 1 });
                                                     objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1 });
                                                     objSubRecord.commitLine({ sublistId: 'inventoryassignment' });
                                                 }
@@ -702,7 +797,28 @@ define([
                             } catch (error) {
                                 log.error('Error-Process-Accesory', error);
                             }
+                            // cambio JMON 15/12/2025: agendar impulso PX también para others_installs
+                            const pxAdminFinOthers = objRecord.getValue('custrecord_ht_ot_pxadminfinalizacion');
+                            if (!pxAdminFinOthers) {
+                                try {
+                                    log.debug('IMPULSO-PX-START-OTHERS', { ot: id, adp: adpPX }); //cambio JMON 15/12/2025
+                                    const pxTaskId = task.create({
+                                        taskType: task.TaskType.SCHEDULED_SCRIPT,
+                                        scriptId: 'customscript_ht_pe_impulso_plat_px',
+                                        deploymentId: 'customdeploy_ht_pe_impulso_plat_px',
+                                        params: { custscript_ht_pe_impulso_otid: id }
+                                    }).submit();
+                                    log.debug('IMPULSO-PX-END-OTHERS', { status: true, mensaje: 'Tarea programada', ot: id, taskId: pxTaskId }); //cambio JMON 15/12/2025
+                                } catch (e) {
+                                    log.error('IMPULSO-PX-TASK-ERROR-OTHERS', e); //cambio JMON 15/12/2025
+                                }
+                            } else {
+                                log.debug('IMPULSO-PX-SKIP-OTHERS', { ot: id, motivo: 'pxadminfinalizacion=true' }); //cambio JMON 15/12/2025
+                            }
+
+                            // flujo principal instalación
                         } else {
+                            log.debug('FLOW-PE', `branch=instalacion_main | ot=${id}`);
                             let parametrosRespo_2 = _controller.parametrizacion(idItemOT);
                             let parametrizacionProducto = _controller.parametrizacionJson(idItemOT);
                             let recordTaller = search.lookupFields({
@@ -813,6 +929,48 @@ define([
                                     }
                                     // if (parametrosRespo_2[j][0] == _constant.Parameter.PHV_PRODUCTO_HABILITADO_PARA_LA_VENTA && parametrosRespo_2[j][1] == _constant.Valor.VALOR_X_USO_CONVENIOS)
                                     //     esConvenio == 2
+                                }
+                            }
+
+                            // Impulso PX para desinstalacion: solo requiere chequeo y no haber finalizado PX
+                            if (adp == _constant.Valor.VALOR_002_DESINSTALACION_DE_DISP && statusOri == _constant.Status.CHEQUEADO) {
+                                if (!yaFinalizadoPX) {
+                                    try {
+                                        log.debug('IMPULSO-PX-DESINSTALACION-START', { ot: id, adp });
+                                        task.create({
+                                            taskType: task.TaskType.SCHEDULED_SCRIPT,
+                                            scriptId: 'customscript_ht_pe_impulso_plat_px',
+                                            deploymentId: 'customdeploy_ht_pe_impulso_plat_px',
+                                            params: { custscript_ht_pe_impulso_otid: id }
+                                        }).submit();
+                                        log.debug('IMPULSO-PX-DESINSTALACION-END', { status: true, mensaje: 'Tarea programada', ot: id });
+                                        desinstalacionPxYaProgramada = true;
+                                    } catch (e) {
+                                        log.error('IMPULSO-PX-DESINSTALACION-ERROR', e);
+                                    }
+                                } else {
+                                    log.debug('IMPULSO-PX-DESINSTALACION-SKIP', { ot: id, motivo: 'pxadminfinalizacion=true' });
+                                }
+                            }
+
+                            // Impulso PX para mantenimiento/chequeo: solo requiere chequeo y no haber finalizado PX
+                            if (adp == _constant.Valor.VALOR_006_MANTENIMIENTO_CHEQUEO_DE_DISPOSITIVO && statusOri == _constant.Status.CHEQUEADO) {
+                                if (!yaFinalizadoPX) {
+                                    try {
+                                        log.debug('IMPULSO-PX-MANT-START', { ot: id, adp });
+                                        task.create({
+                                            taskType: task.TaskType.SCHEDULED_SCRIPT,
+                                            scriptId: 'customscript_ht_pe_impulso_plat_px',
+                                            deploymentId: 'customdeploy_ht_pe_impulso_plat_px',
+                                            params: { custscript_ht_pe_impulso_otid: id }
+                                        }).submit();
+                                        log.debug('IMPULSO-PX-MANT-END', { status: true, mensaje: 'Tarea programada', ot: id });
+                                        mantenimientoPxYaProgramada = true;
+                                    } catch (e) {
+                                        log.error('IMPULSO-PX-MANT-ERROR', e);
+                                    }
+                                } else {
+                                    log.debug('IMPULSO-PX-MANT-SKIP', { ot: id, motivo: 'pxadminfinalizacion=true' });
                                 }
                             }
 
@@ -1038,12 +1196,26 @@ define([
                                             });
                                         }
 
-                                        if (plataformasPX == _constant.Valor.SI && impulsarUnaVezPX) {
-                                            log.debug('id', id);
-                                            log.debug('adp', adp);
-                                            returEjerepo = _controller.parametros(_constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS, id, adp);
-                                            log.debug('RESPONSEPX', returEjerepo);
-                                            responsepx = returEjerepo;
+                                        if (plataformasPX == _constant.Valor.SI && impulsarUnaVezPX && !desinstalacionPxYaProgramada && !mantenimientoPxYaProgramada) {
+                                            if (yaFinalizadoPX) {
+                                                log.debug('IMPULSO-PX-SKIP', { ot: id, motivo: 'pxadminfinalizacion=true' }); //cambio JMON 14/12/2025
+                                            } else {
+                                                log.debug('FLOW-PE', `impulso_px | ot=${id} | adp=${adp}`);
+                                                log.debug('IMPULSO-PX-START', { ot: id, adp: adpPX }); //cambio JMON 14/12/2025
+                                                // Programar SS para impulso PX (customscript_ht_pe_impulso_plat_px)
+                                                try {
+                                                    task.create({
+                                                        taskType: task.TaskType.SCHEDULED_SCRIPT,
+                                                        scriptId: 'customscript_ht_pe_impulso_plat_px',
+                                                        deploymentId: 'customdeploy_ht_pe_impulso_plat_px',
+                                                        params: { custscript_ht_pe_impulso_otid: id }
+                                                    }).submit();
+                                                    log.debug('IMPULSO-PX-END', { status: true, mensaje: 'Tarea programada', ot: id });
+                                                } catch (e) {
+                                                    log.error('IMPULSO-PX-TASK-ERROR', e);
+                                                }
+                                                responsepx = { status: true, mensaje: 'Impulso PX encolado a SS' };
+                                            }
                                             impulsarUnaVezPX = false;
                                         } else {
                                             impulsaPX = 0;
@@ -1581,6 +1753,17 @@ define([
                                     try {
                                         //!FULFILLMENT ======================================================================================================================================================
                                         log.debug('fulfillment', 'Nueva lógica Fulfillment');
+                                        log.debug('FULFILLMENT-START', {
+                                            ot: id,
+                                            salesorder: idSalesOrder,
+                                            itemRelacionado: idItemRelacionadoOT,
+                                            serieAsignada: idDispositivo,
+                                            ubicacionObj: ubicacion
+                                        });
+                                        if (!idDispositivo) {
+                                            //cambio JMON 14/12/2025 - permitir continuar aun cuando la serie esté en blanco
+                                            log.error('FULFILLMENT-NO-DISPOSITIVO', `No se encontró idDispositivo para el OT ${id}, se continúa sin bloquear`);
+                                        }
                                         let ubicacion = objRecord.getValue('custrecord_ht_ot_ordenfabricacion') ? _controller.getLocationToAssembly(objRecord.getValue('custrecord_ht_ot_ordenfabricacion')) : 0;
                                         log.debug('LogtLocationToAssembly2', ubicacion);
                                         if (ubicacion == 0) {
@@ -1605,6 +1788,9 @@ define([
                                             custrecord_ot_serie_acc = objRecord.getValue('custrecord_ot_serie_acc');
                                         }
 
+                                        let lineReceived = false;
+                                        //cambio JMON 14/12/2025 - ubicación genérica (usa propiedad location cuando existe)
+                                        let locationValue = (ubicacion && typeof ubicacion === 'object' && 'location' in ubicacion) ? ubicacion.location : ubicacion;
                                         for (let i = 0; i < Number(numLines); i++) {
                                             //log.debug('fulfillment', 'Nueva lógica Fulfillment 3');
                                             newFulfill.selectLine({ sublistId: 'item', line: i })
@@ -1615,26 +1801,40 @@ define([
                                                     idItemRelacionadoOT: idItemRelacionadoOT,
                                                     idDispositivo: idDispositivo
                                                 })
+                                                // newFulfill.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: ubicacion.location }); //cambio JMON 14/12/2025 - antiguo, se deja comentado
                                                 newFulfill.setCurrentSublistValue({ sublistId: 'item', fieldId: 'itemreceive', value: true });
-                                                newFulfill.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: ubicacion.location });
+                                                //cambio JMON 14/12/2025 - alineado a genérico: usar locationValue
+                                                newFulfill.setCurrentSublistValue({ sublistId: 'item', fieldId: 'location', value: locationValue });
+                                                //cambio JMON 14/12/2025 - si se requiere, setear subsidiaria en la línea (similar genérico)
+                                                // newFulfill.setCurrentSublistValue({ sublistId: 'item', fieldId: 'subsidiary', value: subsidiary });
                                                 newFulfill.setCurrentSublistValue({ sublistId: 'item', fieldId: 'quantity', value: 1 });
                                                 newFulfill.setCurrentSublistValue({ sublistId: 'item', fieldId: 'item', value: idItemRelacionadoOT });
 
                                                 let objSubRecord = newFulfill.getCurrentSublistSubrecord({ sublistId: 'item', fieldId: 'inventorydetail' });
-                                                objSubRecord.selectLine({ sublistId: 'inventoryassignment', line: 0 })
+                                                objSubRecord.selectNewLine({ sublistId: 'inventoryassignment' });
                                                 objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: idDispositivo });
+                                                if (ubicacion.binnumber) {
+                                                    objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: ubicacion.binnumber });
+                                                }
                                                 log.debug('fulfillment ubicacion', ubicacion);
                                                 log.debug('fulfillment convenio', convenio);
-                                                objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'inventorystatus', value: 1 });
+                                                //objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'inventorystatus', value: 1 });
                                                 objSubRecord.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1 });
                                                 objSubRecord.commitLine({ sublistId: 'inventoryassignment' });
                                             }
                                             newFulfill.commitLine({ sublistId: 'item' });
                                         }
-                                        let fulfillment = newFulfill.save({ enableSourcing: false, ignoreMandatoryFields: true });
-                                        log.debug('fulfillment', fulfillment);
+                                        if (lineReceived) {
+                                            let fulfillment = newFulfill.save({ enableSourcing: false, ignoreMandatoryFields: true });
+                                            log.debug('fulfillment', fulfillment);
+                                            log.debug('FULFILLMENT-END', { ot: id, salesorder: idSalesOrder, fulfillment });
+                                        } else {
+                                            log.error('FULFILLMENT-SIN-LINEA', `No se encontró línea a recibir para OT ${id}`);
+                                            ejecutarFulFillment = 0;
+                                        }
                                     } catch (error) {
                                         log.error('Error-Fulfill', error);
+                                        log.error('FULFILLMENT-END', { ot: id, salesorder: idSalesOrder, error: error.message });
                                     }
                                     log.debug('entregaCustodia == _constant.Valor.SI', `${entregaCustodia} == ${_constant.Valor.SI}`)
                                     if (entregaCustodia == _constant.Valor.SI) {
@@ -2292,8 +2492,20 @@ define([
                                             }
                                             objParams.dispositivo = dispo
                                             log.debug('objParamsGarantía', objParams);
-                                            let ajusteInv = _controller.createInventoryAdjustmentIngreso(objParams, 0, 3);
-                                            log.debug('ajusteInv', ajusteInv);
+                                            try {
+                                                let ajusteInv = _controller.createInventoryAdjustmentIngreso(objParams, 0, _constant.Constants.FLUJO_GARANTIA);
+                                                log.debug('ajusteInv', ajusteInv);
+                                                try {
+                                                    let objRecordCreateAjusteRelacionados = record.create({ type: 'customrecord_ht_ajuste_relacionados', isDynamic: true });
+                                                    objRecordCreateAjusteRelacionados.setValue({ fieldId: 'custrecord_ts_ajuste_rela_orden_trabajo', value: id, ignoreFieldChange: true });
+                                                    objRecordCreateAjusteRelacionados.setValue({ fieldId: 'custrecord_ts_ajuste_rela_transacci_gene', value: ajusteInv, ignoreFieldChange: true });
+                                                    objRecordCreateAjusteRelacionados.setValue({ fieldId: 'custrecord_ht_tipo_mov', value: 1, ignoreFieldChange: true });
+                                                    objRecordCreateAjusteRelacionados.setValue({ fieldId: 'custrecord_ts_ajuste_rela_fecha', value: new Date(), ignoreFieldChange: true });
+                                                    objRecordCreateAjusteRelacionados.save();
+                                                } catch (error) { }
+                                            } catch (error) {
+                                                log.error('createInventoryAdjustmentIngreso', error);
+                                            }
                                         } catch (error) {
                                             log.error('Error2', error);
                                         }
@@ -2419,7 +2631,7 @@ define([
                                         start: cobertura.coberturaInicial,
                                         plazo: cantidad,
                                         end: cobertura.coberturaFinal,
-                                        estado: estadoInts,
+                                        estado: _constant.Status.ACTIVO,
                                         concepto: instalacion_activacion,
                                         producto: objRecord.getValue('custrecord_ts_item_venta_garantia'),
                                         serieproducto: objRecord.getValue('custrecord_ht_ot_serieproductoasignacion'),
@@ -2894,7 +3106,12 @@ define([
                                         log.debug('LogtLocationToAssembly3', ubicacion);
                                     }
 
-                                    let newFulfill = record.transform({ fromType: record.Type.SALES_ORDER, fromId: idSalesorder, toType: record.Type.ITEM_FULFILLMENT, isDynamic: true });
+                                    let newFulfill = record.transform({
+                                        fromType: record.Type.SALES_ORDER,
+                                        fromId: idSalesorder,
+                                        toType: record.Type.ITEM_FULFILLMENT,
+                                        isDynamic: true
+                                    });
                                     newFulfill.setValue({ fieldId: 'customform', value: _constant.Form.PE_DESPACHO });
                                     let numLines = newFulfill.getLineCount({ sublistId: 'item' });
 
@@ -2911,15 +3128,15 @@ define([
                                             // DETALLE DE INVENTARIO SIMPLIFICADO
                                             try {
                                                 let serieTexto = objRecord.getText('custrecord_ht_ot_serieproductoasignacion') ||
-                                                    // objRecord.getValue('custrecord_ht_ot_dispositivo') ||
-                                                    // objRecord.getValue('custrecord_ht_ot_imei') ||
-                                                    // objRecord.getValue('custrecord_ht_articulodisp') ||
                                                     objRecord.getText('custrecord_ht_ot_boxserie')
-
 
                                                 // Buscar el ID interno del número de serie usando el texto de la serie
                                                 let inventoryNumberId = null;
                                                 if (serieTexto) {
+                                                    log.debug('objinventorynumber', {
+                                                        serieTexto: serieTexto,
+                                                        idItemRelacionadoOT: idItemRelacionadoOT
+                                                    })
                                                     let invNumSearch = search.create({
                                                         type: 'inventorynumber',
                                                         filters: [
@@ -2936,12 +3153,42 @@ define([
                                                 }
 
                                                 if (inventoryNumberId) {
+                                                    log.debug('inventoryNumberIdr', {
+                                                        serieTexto: serieTexto,
+                                                        idItemRelacionadoOT: idItemRelacionadoOT,
+                                                        inventoryNumberId: inventoryNumberId,
+                                                        binnumber: ubicacion.binnumber
+                                                    })
                                                     let inventoryDetail = newFulfill.getCurrentSublistSubrecord({ sublistId: 'item', fieldId: 'inventorydetail' });
+
+                                                    // Limpiar líneas existentes en el detalle de inventario
+                                                    // if (inventoryDetail) {
+                                                    //     let lineCount = inventoryDetail.getLineCount({ sublistId: 'inventoryassignment' });
+
+                                                    //     // Eliminar todas las líneas existentes
+                                                    //     for (let j = lineCount - 1; j >= 0; j--) {
+                                                    //         inventoryDetail.selectLine({
+                                                    //             sublistId: 'inventoryassignment',
+                                                    //             line: j
+                                                    //         });
+                                                    //         inventoryDetail.removeLine({ sublistId: 'inventoryassignment' });
+                                                    //     }
+                                                    // }
+
                                                     inventoryDetail.selectNewLine({ sublistId: 'inventoryassignment' });
                                                     inventoryDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'issueinventorynumber', value: inventoryNumberId });
+                                                    inventoryDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: ubicacion.binnumber });
+                                                    //inventoryDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'inventorystatus', value: 1 });
                                                     inventoryDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1 });
                                                     inventoryDetail.commitLine({ sublistId: 'inventoryassignment' });
                                                     log.audit('ACTIVADOS-FULFILLMENT-INVENTORY', `Serie: ${serieTexto}, ID: ${inventoryNumberId}`);
+
+
+                                                    // inventoryDetail.selectLine({ sublistId: 'inventoryassignment', line: 0 })
+                                                    // inventoryDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'binnumber', value: ubicacion.binnumber });
+                                                    // inventoryDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'inventorystatus', value: 1 });
+                                                    // inventoryDetail.setCurrentSublistValue({ sublistId: 'inventoryassignment', fieldId: 'quantity', value: 1 });
+                                                    // inventoryDetail.commitLine({ sublistId: 'inventoryassignment' });
                                                 } else {
                                                     log.audit('ACTIVADOS-FULFILLMENT-NO-INVENTORY', `Serie no encontrada: ${serieTexto}`);
                                                 }
@@ -3882,26 +4129,25 @@ define([
         }
 
         const createEnsambleGarantiaButton = (form, objRecord) => {
-            let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
-            itemName = itemName.toLowerCase();
+            let checkFlujoGarantia = objRecord.getValue('custrecord_flujo_de_garantia')
             let itemVenta = objRecord.getValue('custrecord_ts_item_venta_garantia') || "";
             let status = objRecord.getValue('custrecord_ht_ot_estado')
-            if (!itemVenta || status != _constant.Status.PROCESANDO) return;
+            if (checkFlujoGarantia == false || status != _constant.Status.PROCESANDO) return
             let salesorder = objRecord.getValue('custrecord_ht_ot_orden_servicio');
             let workorder = objRecord.id;
             let customer = objRecord.getValue('custrecord_ht_ot_cliente_id');
             let item = objRecord.getValue('custrecord_ht_ot_item');
             let subsidiary = objRecord.getValue('custrecord_ht_ot_subsidiary');
+            let location = objRecord.getValue('custrecord_ht_ot_location');
             if (salesorder && !location) {
                 locationSearch = search.lookupFields({ type: 'salesorder', id: salesorder, columns: ['location'] });
                 location = locationSearch.location[0].value;
             }
-            const ensambleGarantia = `ensambleGarantia('${itemVenta}', '${location}', '${workorder}', '${salesorder}', '${customer}',  '${subsidiary})`;
+            const ensambleGarantia = `ensambleGarantia('${itemVenta}', '${location}', '${workorder}', '${salesorder}', '${customer}',  '${subsidiary}')`;
             form.addButton({ id: 'custpage_btngarantia', label: 'Ensamble Garantía', functionName: ensambleGarantia });
         }
 
         const createEnsambleCustodiaButton = (form, objRecord) => {
-            let itemName = objRecord.getText('custrecord_ht_ot_item') || "";
             let checkFlujoCustodia = objRecord.getValue('custrecord_flujo_de_custodia')
             let status = objRecord.getValue('custrecord_ht_ot_estado')
             if (checkFlujoCustodia == false || status != _constant.Status.PROCESANDO) return
@@ -4145,6 +4391,24 @@ define([
                 return cierre;
             } else {
                 return false;
+            }
+        }
+
+        // cambio jmon 17/12/2025 - Consulta de instalaciones para upgrade desde OT
+        const getInstalacionesforUpgrade = (paramCode, bien) => {
+            log.debug('Track-getInstalacionesforUpgrade-OT', `${paramCode}, ${bien}`);
+            try {
+                let sql = `
+                SELECT co.id as id FROM customrecord_ht_co_cobertura co
+                INNER JOIN customrecord_ht_cr_pp_valores pa ON co.custrecord_ht_co_familia_prod = pa.id
+                WHERE pa.custrecord_ht_pp_codigo = ? AND co.custrecord_ht_co_bien = ?
+                `;
+                let resultSet = query.runSuiteQL({ query: sql, params: [paramCode, bien] });
+                let results = resultSet.asMappedResults();
+                return results.length > 0 ? results : [];
+            } catch (error) {
+                log.error('Error-getInstalacionesforUpgrade-OT', error);
+                return [];
             }
         }
 

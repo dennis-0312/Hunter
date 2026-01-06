@@ -84,6 +84,9 @@ define(['N/log',
     let doctype = 0;
     let prefix = '';
 
+    var idItemDev = ''; // JCH 25/04/2025 ITEM DEVOL
+    var descVentaItemDev = ''; // JCH 25/04/2025 ITEM DEVOL
+
     const configEnviroment = () => {
         let variables = new Object();
         let companyInfo = config.load({ type: config.Type.COMPANY_INFORMATION });
@@ -117,7 +120,19 @@ define(['N/log',
         FORM_COMPROBANTE_RETENCION = varEnviroment.form_comprobante_retencion;
         //**============================================================================================================ */
         let userObj = runtime.getCurrentUser();
-
+        if (eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY || eventType === context.UserEventType.EDIT) {
+            const objRecord = context.newRecord;
+            if (objRecord.type == FACTURA_INTERNA) {
+                let referenceOrdenservicioId = objRecord.getValue('custbody_ec_created_from_fac_int');
+                log.debug('referenceOrdenservicioId', referenceOrdenservicioId);
+                // let location = objRecord.getValue({ fieldId: 'location' });
+                // let docFiscal = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                // log.error('docFiscal', docFiscal);
+                // let idSerie = getSerie(FIN_Factura_Interna, location).serieid;
+                // log.error('idSerie', idSerie);
+                // objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: idSerie, ignoreFieldChange: true });
+            }
+        }
         if ((eventType === context.UserEventType.CREATE || eventType === context.UserEventType.COPY) /*|| eventType === context.UserEventType.EDIT && userObj.id != 4*/) {
             const objRecord = context.newRecord;
             try {
@@ -193,7 +208,7 @@ define(['N/log',
                     let idSerie = getSerie(DOCUMENT_TYPE_GUIA_REMISION, location).serieid;
                     objRecord.setValue({ fieldId: 'custbody_ts_ec_serie_cxc', value: idSerie, ignoreFieldChange: true });
                 } else if (objRecord.type == FACTURA_INTERNA) {
-                    // let referenceOrdenservicioId = objRecord.getValue('createdfrom');
+
                     // let location = objRecord.getValue({ fieldId: 'location' });
                     // let docFiscal = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
                     // log.error('docFiscal', docFiscal);
@@ -237,6 +252,65 @@ define(['N/log',
         }
     }
 
+    // JCH 25/04/2025
+    // OBTIENE ITEM DE DEVOLUCION NC
+    function getItemDevolucion(itemVenta) {
+        try {
+
+            var busquedaItemDev = search.create({
+                type: "item",
+                filters:
+                    [
+                        ["type", "anyof", "Service"],
+                        "AND",
+                        ["custitem_ec_item_agrupado", "noneof", "@NONE@"],
+                        "AND",
+                        ["custitem_ht_accion_contable", "anyof", "2"],
+                        "AND",
+                        ["custitem_ec_item_agrupado.internalid", "anyof", itemVenta],
+                        "AND",
+                        ["isinactive", "is", "F"]
+                    ],
+                columns:
+                    [
+                        search.createColumn({ name: "internalid", label: "ID interno" }),
+                        search.createColumn({ name: "itemid", label: "Nombre con item" }),
+                        search.createColumn({ name: "displayname", label: "Nombre para mostrar" }),
+                        search.createColumn({ name: "salesdescription", label: "Descripción para la venta" }),
+                        search.createColumn({ name: "custitem_ec_item_agrupado", label: "ITEM AGRUPADO" }),
+                        search.createColumn({
+                            name: "displayname",
+                            join: "CUSTITEM_EC_ITEM_AGRUPADO",
+                            label: "ITEM AGRUPADO NOMBRE"
+                        }),
+                        search.createColumn({
+                            name: "internalid",
+                            join: "CUSTITEM_EC_ITEM_AGRUPADO",
+                            label: "ITEM AGRUPADO ID INTERNO"
+                        })
+                    ]
+            });
+
+
+            var myResultSetItemDev = busquedaItemDev.run().getRange({ start: 0, end: 1000 });
+            var CountItemDev = busquedaItemDev.runPaged().count;
+            log.debug('CountItemDev.........', CountItemDev);
+
+            if (CountItemDev == 1) {
+
+                idItemDev = myResultSetItemDev[0].getValue(busquedaItemDev.columns[0]);
+                descVentaItemDev = myResultSetItemDev[0].getValue(busquedaItemDev.columns[3]);
+
+            }
+
+
+
+        } catch (e) {
+            logError('Error-getItemDevolucion', e);
+        }
+    }
+
+
     const beforeSubmit = (context) => {
         const eventType = context.type;
         let documentref = '';
@@ -266,11 +340,61 @@ define(['N/log',
             } else if (objRecord.type == CREDIT_MEMO) {
                 //& <I> - dfernandez - 08/11/2024
                 let getForm = objRecord.getValue({ fieldId: 'customform' });
+                let subsidiary2 = objRecord.getValue({ fieldId: 'subsidiary' }); // JCH 25/04/2025
+                let memo2 = objRecord.getValue({ fieldId: 'memo' }); // JCH 25/04/2025
+                let memoda = 'Facturación Debito automatico'; // JCH 25/04/2025
+
                 if (FORM_NOTA_CREDITO == getForm) {
                     try {
                         objRecord.setValue({ fieldId: 'custbody_psg_ei_template', value: EC_FEL_TEMPLATE, ignoreFieldChange: true });
                         objRecord.setValue({ fieldId: 'custbody_psg_ei_status', value: For_Generation_Status, ignoreFieldChange: true });
                         objRecord.setValue({ fieldId: 'custbody_psg_ei_sending_method', value: EC_FEL_SENDING_METHOD, ignoreFieldChange: true });
+
+                        // JCH 25/04/2025
+                        if (subsidiary2 == 2) {
+
+                            var itemCount = objRecord.getLineCount({ sublistId: 'item' });
+                            for (var i = 0; i < itemCount; i++) {
+
+                                var item_venta = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'item', line: i });
+                                var quantity = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'quantity', line: i });
+                                var rate = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'rate', line: i });
+                                var amount = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'amount', line: i });
+                                var location = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'location', line: i });
+                                var taxcode = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'taxcode', line: i });
+                                var tax1amt = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'tax1amt', line: i });
+                                var clase = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'class', line: i });
+                                var department = objRecord.getSublistValue({ sublistId: 'item', fieldId: 'department', line: i });
+
+                                // OBTENER ITEM DE DEVOLUCION
+                                getItemDevolucion(item_venta);
+                                log.debug('idItemDev', idItemDev);
+                                log.debug('descVentaItemDev', descVentaItemDev);
+                                log.debug('idItemDev.length', idItemDev.length);
+
+                                if (idItemDev.length > 0) {
+
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'item', line: i, value: idItemDev });
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'description', line: i, value: descVentaItemDev });
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'custcol_ht_so_item_agrupado', line: i, value: item_venta });
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'quantity', line: i, value: quantity });
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'rate', line: i, value: rate });
+                                    // factura de debito automatico no tienen este campo
+                                    if (memo2.indexOf(memoda) !== -1) {
+                                        objRecord.setSublistValue({ sublistId: 'item', fieldId: 'rate', line: i, value: amount });
+                                    }
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'amount', line: i, value: amount });
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'location', line: i, value: location });
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'taxcode', line: i, value: taxcode });
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'class', line: i, value: clase });
+                                    objRecord.setSublistValue({ sublistId: 'item', fieldId: 'department', line: i, value: department });
+
+                                }
+                            }
+                        }
+
+
+
                     } catch (error) {
                         log.error('Error-beforeSubmit-Intro', error);
                     }
@@ -304,14 +428,19 @@ define(['N/log',
                 if (tipoDocumentoFiscal != DOCUMENT_TYPE_LIQUIDACION_COMPRA) {
                     var pe_number = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
                     let doc_fiscal = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+
+                    let doc_serie = objRecord.getValue({ fieldId: 'custbody_ts_ec_serie_doc_cxp' }); // HU EC JCH 25/03/2025
+                    let subsidiary = objRecord.getValue({ fieldId: 'subsidiary' }); // HU EC JCH 25/03/2025
                     //log.error('customer', customer);
-                    var existe = buscarFacCompra(customer, pe_number, doc_fiscal);
+
+                    // HU EC JCH 25/03/2025 doc_serie, subsidiary
+                    var existe = buscarFacCompra(customer, pe_number, doc_fiscal, doc_serie, subsidiary);
                     //log.debug('existe', existe);
                     if (existe) {
                         log.debug('DEBUG', 'Entré a existe por lo tando no se crea registro');
                         var myCustomError = err.create({
                             name: 'ERROR_NUMERO_DOCUMENTO',
-                            message: 'Ya existe una Transacción de Compra con el mismo PROVEEDOR y NUMERO PREIMPRESO',
+                            message: 'Ya existe una Transacción de Compra con el mismo PROVEEDOR y NUMERO DE DOCUMENTO',
                             notifyOff: false
                         });
                         log.error('Error: ' + myCustomError.name, myCustomError.message);
@@ -348,19 +477,27 @@ define(['N/log',
                 var customer_new = objRecord.getValue({ fieldId: 'entity' });
                 var pe_number_new = objRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
                 let doc_fiscal_new = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                let doc_serie_new = objRecord.getValue({ fieldId: 'custbody_ts_ec_serie_doc_cxp' }); // HU EC JCH 25/03/2025
+                let subsidiary_new = objRecord.getValue({ fieldId: 'subsidiary' }); // HU EC JCH 25/03/2025
+
                 log.error('customer_new', customer_new);
                 log.error('pe_number_new', pe_number_new);
                 var customer_old = oldRecord.getValue({ fieldId: 'entity' });
                 var pe_number_old = oldRecord.getValue({ fieldId: 'custbody_ts_ec_numero_preimpreso' });
-                let doc_fiscal_old = objRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' });
+                let doc_fiscal_old = oldRecord.getValue({ fieldId: 'custbodyts_ec_tipo_documento_fiscal' }); // HU EC JCH 25/03/2025 oldRecord
+                let doc_serie_old = oldRecord.getValue({ fieldId: 'custbody_ts_ec_serie_doc_cxp' }); // HU EC JCH 25/03/2025
+                let subsidiary_old = oldRecord.getValue({ fieldId: 'subsidiary' }); // HU EC JCH 25/03/2025
+
                 log.error('customer_old', customer_old);
                 log.error('pe_number_old', pe_number_old);
-                if (customer_new != customer_old || pe_number_new != pe_number_old || doc_fiscal_new != doc_fiscal_old) {
-                    var existe_new = buscarFacCompra(customer_new, pe_number_new, doc_fiscal_new);
+                // HU EC JCH 25/03/2025
+                if (customer_new != customer_old || pe_number_new != pe_number_old || doc_fiscal_new != doc_fiscal_old || doc_serie_new != doc_serie_old) {
+                    // HU EC JCH 25/03/2025
+                    var existe_new = buscarFacCompra(customer_new, pe_number_new, doc_fiscal_new, doc_serie_new, subsidiary_new);
                     if (existe_new) {
                         var myCustomError = err.create({
                             name: 'ERROR_NUMERO_DOCUMENTO',
-                            message: 'Ya existe una Transacción de Compra con el mismo PROVEEDOR y NUMERO PREIMPRESO',
+                            message: 'Ya existe una Transacción de Compra con el mismo PROVEEDOR y NUMERO DE DOCUMENTO',
                             notifyOff: false
                         });
                         log.error('Error: ' + myCustomError.name, myCustomError.message);
@@ -992,6 +1129,93 @@ define(['N/log',
                 }
             }
         }
+
+        // ! Mauro F Ramos
+        // ! *-*-*-*-*-*-* Nota de credito
+        if ((eventType === context.UserEventType.CREATE || eventType === context.UserEventType.EDIT) && context.newRecord.type == CREDIT_MEMO) {
+            try {
+                // ? *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+                // ? *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+                log.debug("Creada NC y Actualización de campos");
+                let factura_ventaid = objRecord.getValue({ fieldId: 'createdfrom' });
+                //06/06/2025 ACTUALIZA CAMPOS DE REVERSO DE FACTURA
+                if (!factura_ventaid) {
+                    return;
+                }
+                let monto_ncr = 0;
+                let monto_fac = 0;
+                let estado_operativo = false;
+
+                let fecha_ncr = objRecord.getValue({ fieldId: 'trandate' });
+
+                var objFactura = search.lookupFields({
+                    type: search.Type.INVOICE,
+                    id: factura_ventaid,
+                    columns: ['amount']
+                });
+
+                monto_fac = objFactura.amount
+
+                var transactionSearchObj = search.create({
+                    type: "transaction",
+                    settings: [{ "name": "consolidationtype", "value": "ACCTTYPE" }],
+                    filters:
+                        [
+                            ["mainline", "is", "T"],
+                            "AND",
+                            ["customform", "anyof", "132"],
+                            "AND",
+                            ["createdfrom.internalid", "anyof", `${factura_ventaid}`],
+                            "AND",
+                            ["subsidiary", "anyof", "2"]
+                        ],
+                    columns:
+                        [
+                            search.createColumn({
+                                name: "amount",
+                                summary: "SUM",
+                                label: "Importe"
+                            }),
+                        ]
+                });
+                var searchResultCount = transactionSearchObj.runPaged().count;
+                log.debug("transactionSearchObj result count", searchResultCount);
+                transactionSearchObj.run().each(function (result) {
+                    monto_ncr = result.getValue({ name: 'amount', summary: 'SUM' });
+                    return true;
+                });
+
+                monto_ncr = Math.abs(monto_ncr)
+                monto_fac = Math.abs(monto_fac)
+
+                if (monto_ncr == monto_fac) {
+                    estado_operativo = "2";
+                }
+
+                if (monto_ncr < monto_fac) {
+                    estado_operativo = "3";
+                }
+
+                if (estado_operativo) {
+                    // Actualizar campos de anulacion de factura
+                    record.submitFields({
+                        type: record.Type.INVOICE,
+                        id: factura_ventaid,
+                        values: {
+                            custbody_estado_operativo: estado_operativo,
+                            custbody_fecha_hora_anulacion: new Date(),
+                            custbody_usuario_anulacion: runtime.getCurrentUser().id
+                        }
+                    });
+                }
+                // ? *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+                // ? *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+            } catch (error) {
+                log.debug("Error: proceso anulación:", error.stack)
+            }
+        }
+
+
     }
 
     const setDocumentValuesWithholdingVoucherField = (objRecord) => {
@@ -1537,7 +1761,7 @@ define(['N/log',
                     'AND',
                     ['custrecord_ts_ec_localidad_serie', 'anyof', location],
                     "AND",
-                    ["isinactive","is","F"]
+                    ["isinactive", "is", "F"]
                 ],
                 columns: [
                     { name: 'internalid', sort: search.Sort.ASC },
@@ -1583,7 +1807,7 @@ define(['N/log',
                     'AND',
                     ['custrecord_ts_ec_localidad_serie', 'anyof', location],
                     "AND",
-                    ["isinactive","is","F"]
+                    ["isinactive", "is", "F"]
                 ],
                 columns: [
                     { name: 'internalid', sort: search.Sort.ASC },
@@ -2006,7 +2230,8 @@ define(['N/log',
         }
     }
 
-    const buscarFacCompra = (idCustomer, preimpreso, docFiscal) => {
+    // HU EC JCH 25/03/2025 custbody_ts_ec_serie_doc_cxp, subsidiary 
+    const buscarFacCompra = (idCustomer, preimpreso, docFiscal, serie, subsidiary) => {
         var vendorbillSearchObj = search.create({
             type: "transaction",
             filters:
@@ -2015,11 +2240,15 @@ define(['N/log',
                     "AND",
                     ["name", "anyof", idCustomer],
                     "AND",
+                    ["custbody_ts_ec_serie_doc_cxp", "is", serie],
+                    "AND",
                     ["custbody_ts_ec_numero_preimpreso", "is", preimpreso],
                     "AND",
                     ["mainline", "is", "T"],
                     "AND",
-                    ["custbodyts_ec_tipo_documento_fiscal", "anyof", docFiscal]
+                    ["custbodyts_ec_tipo_documento_fiscal", "anyof", docFiscal],
+                    "AND",
+                    ["subsidiary", "anyof", subsidiary]
                 ],
             columns:
                 [

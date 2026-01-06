@@ -95,7 +95,39 @@ define(['N/log',
          * @param {string} scriptContext.type - Trigger type; use values from the context.UserEventType enum
          * @since 2015.2
          */
-        const beforeSubmit = (scriptContext) => { }
+        const beforeSubmit = (scriptContext) => {
+            try {
+                log.debug('beforeSubmit.scriptContext.type', scriptContext.type);
+
+                if (scriptContext.type === scriptContext.UserEventType.DELETE) {
+                    let registroEliminado = scriptContext.newRecord;
+                    log.debug('Registro eliminado', 'ID: ' + registroEliminado.id);
+
+                    let bienCobe = registroEliminado.getValue('custrecord_ht_co_bien') || 0;
+                    let subsidiaria = runtime.getCurrentUser().subsidiary;
+                    if (subsidiaria != 2) return
+
+                    log.debug('Registro eliminado - Bien', bienCobe);
+
+                    // Usamos el módulo record para crear el log
+                    let objRecord = record.create({ type: 'customrecord_log_proceso_general', isDynamic: true });
+                    objRecord.setValue({ fieldId: 'custrecordlog_proceso_general_proceso', value: 'EnvioCobertura' });
+                    objRecord.setValue({
+                        fieldId: 'custrecord_log_proceso_general_traza',
+                        value: {
+                            'origen': 'DELETE',
+                            'bienCobe': bienCobe
+                        }
+                    });
+                    objRecord.setValue({ fieldId: 'custrecordid_registro_proc_general', value: registroEliminado.id || 0 });
+                    objRecord.setValue({ fieldId: 'custrecord_producto_lpc', value: 'F' });
+                    objRecord.save();
+                }
+            } catch (error) {
+                log.error('Error en beforeSubmit', error);
+            }
+        };
+
 
         /**
          * Defines the function definition that is executed after record is submitted.
@@ -134,22 +166,33 @@ define(['N/log',
                         log.debug('aplica-cobertura-tm', `${aplica} - ${objRecord.id}`);
                         if (aplica > 0) {
                             log.debug('request', trama);
-                            if (trama.asset.length > 0) {
-                                let responsetmRenovacionActivacion = JSON.parse(tmRenovacionActivacion(trama));
-                                responsetmRenovacionActivacion.results[0].body = JSON.parse(responsetmRenovacionActivacion.results[0].body);
-                                log.debug('response', responsetmRenovacionActivacion);
-                                let requestFile = saveJson(trama, `request${objRecord.id}`, folderRequest);
-                                let responseFile = saveJson(responsetmRenovacionActivacion, `response${objRecord.id}`, folderResponse);
-                                let objData = {
-                                    cobertura: objRecord.id,
-                                    requestFile: requestFile,
-                                    responseFile: responseFile,
-                                    code: responsetmRenovacionActivacion.results[0].code,
-                                    impulso: _constant.accionImpulso.TM_VERIFICACION_COBERTURA,
-                                    plataforma: PLATAFORMA_TELEMATICS
+                            // if (trama.asset.length > 0) {            // Antes
+                            if (trama && trama?.asset?.length > 0) {     // Despues Doas - 03/06/2025 
+
+                                try {
+                                    let responsetmRenovacionActivacion = JSON.parse(tmRenovacionActivacion(trama));
+
+                                    log.debug("responsetmRenovacionActivacion", responsetmRenovacionActivacion)
+
+                                    responsetmRenovacionActivacion.results[0].body = JSON.parse(responsetmRenovacionActivacion?.results[0]?.body);
+                                    log.debug('response', responsetmRenovacionActivacion);
+                                    let requestFile = saveJson(trama, `request${objRecord.id}`, folderRequest);
+                                    let responseFile = saveJson(responsetmRenovacionActivacion, `response${objRecord.id}`, folderResponse);
+                                    let objData = {
+                                        cobertura: objRecord.id,
+                                        requestFile: requestFile,
+                                        responseFile: responseFile,
+                                        code: responsetmRenovacionActivacion.results[0].code,
+                                        impulso: _constant.accionImpulso.TM_VERIFICACION_COBERTURA,
+                                        plataforma: PLATAFORMA_TELEMATICS
+                                    }
+                                    log.debug('objData', objData)
+                                    createRecordTraza(objData);
+                                } catch (error) {
+                                    log.debug("error", { error: error.message, stack: error.stack });
                                 }
-                                log.debug('objData', objData)
-                                createRecordTraza(objData);
+
+
                             } else {
                                 log.debug("El objeto está vacío.");
                             }
@@ -220,7 +263,9 @@ define(['N/log',
                 }
 
                 updateData.custrecord_ht_co_impulso_plataforma = '';
-                if (accionImpulso == _constant.accionImpulso.TM_RENOVACION_ACTIVACION) { updateData.custrecord_ht_co_estado_cobertura = _constant.Status.ACTIVO }
+                if (accionImpulso == _constant.accionImpulso.TM_RENOVACION_ACTIVACION) {
+                    updateData.custrecord_ht_co_estado_cobertura = _constant.Status.ACTIVO
+                }
                 record.submitFields({
                     type: 'customrecord_ht_co_cobertura',
                     id: objRecord.id,
@@ -281,6 +326,7 @@ define(['N/log',
             let IDTelematics = dataBien.IDTelematics
             let name = dataBien.name
             let placa = dataBien.placa
+            let estadovehiculo = dataBien.estado
 
             let dataDatoTecnico = getDataDatoTecnico(datoTecnico);
             //log.debug('dataDatoTecnico', dataDatoTecnico)
@@ -299,6 +345,9 @@ define(['N/log',
 
             if (accionImpulso == _constant.accionImpulso.PX_MODIFICACION_DATOS_DISPOSITIVOS) {
                 let EstadoSim = 'A'
+
+                let fechafinalante = fechaFinal;
+
                 fechaInicial = formatDate(fechaInicial);
                 fechaFinal = formatDate(fechaFinal);
                 let { year, month, day } = obtenerValoresFechaHoy();
@@ -334,7 +383,11 @@ define(['N/log',
                 }
 
                 if (IDTelematics) {
-                    fechaFinal = formatDateUTC5Timezone(fechaFinal);
+
+                    log.debug("---fechaFinal----", fechafinalante)
+
+
+                    fechaFinal = formatDateUTC5Timezone(fechafinalante);
                     trama.name = placa;
                     trama.product_expire_date = fechaFinal
                     trama.active = estadoCobertura == 1 ? true : false
@@ -342,6 +395,8 @@ define(['N/log',
             }
 
             if (accionImpulso == _constant.accionImpulso.TM_RENOVACION_ACTIVACION) {
+
+
                 fechaFinal = formatDateUTC5Timezone(fechaFinal);
                 if (IDTelematics) {
                     trama.asset = IDTelematics;
@@ -372,18 +427,28 @@ define(['N/log',
                         search.createColumn({ name: "custrecord_ht_bien_id_telematic", label: "ID Telematics" }),
                         search.createColumn({ name: "name", label: "Name" }),
                         search.createColumn({ name: "custrecord_ht_bien_placa", label: "Placa" }),
+                        search.createColumn({ name: "custrecord_ht_bien_marca", label: "MarcaID" }),
+                        search.createColumn({ name: "custrecord_ht_bien_modelo", label: "ModeloID" }),
+                        search.createColumn({ name: "custrecord_ht_bn_estadobien", label: "Estado" }),
                     ]
             });
             let searchResultCount = objSearch.runPaged().count;
             //log.debug("customrecord_ht_record_bienesSearchObj result count", searchResultCount);
             objSearch.run().each((result) => {
-                objData.IdMarca = result.getValue({ name: "custrecord_ht_marca_codigo", join: "CUSTRECORD_HT_BIEN_MARCA", label: "Codigo" })
+                //objData.IdMarca = result.getValue({ name: "custrecord_ht_marca_codigo", join: "CUSTRECORD_HT_BIEN_MARCA", label: "Codigo" })
+                //GALVAR 17-02-2025
+
+                objData.IdMarca = result.getValue({ name: "custrecord_ht_bien_marca", label: "Codigo" })
                 objData.DescMarca = result.getValue({ name: "custrecord_ht_marca_descripcion", join: "CUSTRECORD_HT_BIEN_MARCA", label: "Descripcion" })
-                objData.IdModelo = result.getValue({ name: "custrecord_ht_mod_codigo", join: "CUSTRECORD_HT_BIEN_MODELO", label: "Codigo" })
+                //objData.IdModelo = result.getValue({ name: "custrecord_ht_mod_codigo", join: "CUSTRECORD_HT_BIEN_MODELO", label: "Codigo" })
+                //GALVAR 17-02-2025
+                objData.IdModelo = result.getValue({ name: "custrecord_ht_bien_modelo", label: "Codigo" })
                 objData.DescModelo = result.getValue({ name: "custrecord_ht_mod_descripcion", join: "CUSTRECORD_HT_BIEN_MODELO", label: "Descripcion" })
                 objData.IDTelematics = result.getValue({ name: "custrecord_ht_bien_id_telematic", label: "ID Telematics" })
                 objData.name = result.getValue({ name: "name", label: "Name" })
                 objData.placa = result.getValue({ name: "custrecord_ht_bien_placa", label: "Placa" })
+                //GALVAR
+                objData.estado = result.getValue({ name: "custrecord_ht_bn_estadobien" }) ? result.getText({ name: "custrecord_ht_bn_estadobien" }) : ""
             });
             return objData;
         }
@@ -409,6 +474,10 @@ define(['N/log',
                         search.createColumn({ name: "custrecord_ht_mc_macaddress", label: "DireccionMac" }),
                         search.createColumn({ name: "custrecord_ht_mc_icc", label: "Icc" }),
                         search.createColumn({ name: "custrecord_ht_mc_nocelularsim", label: "NumeroCelular" }),
+
+                        search.createColumn({ name: "custrecord_ht_mc_unidad", label: "CodMarca" }),
+                        search.createColumn({ name: "custrecord_ht_mc_modelo", label: "CodModelo" }),
+
                         search.createColumn({ name: "custrecord_ht_cs_operadora_descrip", join: "CUSTRECORD_HT_MC_OPERADORA", label: "Operadora" })
                     ]
             });
@@ -416,9 +485,13 @@ define(['N/log',
             //log.debug("customrecord_ht_record_mantchaserSearchObj result count", searchResultCount);
             objSearch.run().each((result) => {
                 objData.Vid = result.getValue({ name: "custrecord_ht_mc_vid", label: "Vid" })
-                objData.CodMarcaDispositivo = result.getValue({ name: "custrecord_ht_dd_tipodispositivo_codigo", join: "CUSTRECORD_HT_MC_UNIDAD", label: "CodMarcaDispositivo" })
+                //objData.CodMarcaDispositivo = result.getValue({ name: "custrecord_ht_dd_tipodispositivo_codigo", join: "CUSTRECORD_HT_MC_UNIDAD", label: "CodMarcaDispositivo" })
+                //GALVAR 17-02-2025
+                objData.CodMarcaDispositivo = result.getValue({ name: "custrecord_ht_mc_unidad", label: "Codigo" })
                 objData.MarcaDispositivo = result.getValue({ name: "custrecord_ht_dd_tipodispositivo_descrip", join: "CUSTRECORD_HT_MC_UNIDAD", label: "MarcaDispositivo" })
-                objData.CodModeloDispositivo = result.getValue({ name: "custrecord_ht_dd_modelodispositivo_codig", join: "CUSTRECORD_HT_MC_MODELO", label: "CodModeloDispositivo" })
+                //objData.CodModeloDispositivo = result.getValue({ name: "custrecord_ht_dd_modelodispositivo_codig", join: "CUSTRECORD_HT_MC_MODELO", label: "CodModeloDispositivo" })
+                //GALVAR 17-02-2025
+                objData.CodModeloDispositivo = result.getValue({ name: "custrecord_ht_mc_modelo", label: "CodModeloDispositivo" })
                 objData.ModeloDispositivo = result.getValue({ name: "custrecord_ht_dd_modelodispositivo_descr", join: "CUSTRECORD_HT_MC_MODELO", label: "ModeloDispositivo" })
                 objData.Sn = result.getValue({ name: "custrecord_ht_mc_sn", label: "Sn" })
                 objData.Imei = result.getValue({ name: "custrecord_ht_mc_imei", label: "Imei" })
@@ -441,12 +514,17 @@ define(['N/log',
         }
 
         const formatDateUTC5Timezone = (fecha) => {
+
+            log.debug("fecha", fecha)
+
             const partes = fecha.split("/");
+
             const dia = partes[0];
             const mes = partes[1];
             const año = partes[2];
             let offsetString = `-05:00`;
             const fechaFormateada = `${año}-${mes}-${dia}T05:00:00${offsetString}`;
+            log.debug("fechaFormateada---", fechaFormateada)
             return fechaFormateada;
         }
 
@@ -464,17 +542,28 @@ define(['N/log',
         }
 
         const tmRenovacionActivacion = (trama) => {
-            let myRestletHeaders = new Array();
-            myRestletHeaders['Accept'] = '*/*';
-            myRestletHeaders['Content-Type'] = 'application/json';
-            let myRestletResponse = https.requestRestlet({
-                body: JSON.stringify(trama),
-                scriptId: 'customscript_ts_rs_tm_renovacion_activa',
-                deploymentId: 'customdeploy_ts_rs_tm_renovacion_activa',
-                headers: myRestletHeaders,
-            });
-            let response = myRestletResponse.body;
-            return response;
+
+            try {
+                log.debug("trama--", trama)
+
+                let myRestletHeaders = new Array();
+                myRestletHeaders['Accept'] = '*/*';
+                myRestletHeaders['Content-Type'] = 'application/json';
+                let myRestletResponse = https.requestRestlet({
+                    body: JSON.stringify(trama),
+                    scriptId: 'customscript_ts_rs_tm_renovacion_activa',
+                    deploymentId: 'customdeploy_ts_rs_tm_renovacion_activa',
+                    headers: myRestletHeaders,
+                });
+                let response = myRestletResponse.body;
+                return response;
+
+            } catch (error) {
+
+                log.debug("error", { error: error.message, stack: error.stack })
+
+            }
+
         }
 
         const saveJson = (contents, nombre, folder) => {
@@ -521,38 +610,8 @@ define(['N/log',
 
         return {
             beforeLoad,
-            // beforeSubmit,
+            beforeSubmit,
             afterSubmit
         }
 
     });
-
-
-// if (objRecord.getValue('custrecord_ht_co_estado_cobertura') == _constant.Status.SUSPENDIDO && objRecord.getValue('custrecord_ht_co_estado_conciliacion') == _constant.Status.ENVIADO_A_CORTE) {}
-
-// let idchaser = objRecord.getValue('custrecord_ht_co_numeroserieproducto');
-// let idbien = objRecord.getValue('custrecord_ht_co_bien');
-// let parametrosResponse = _controller.parametrizacion(objRecord.getValue('custrecord_ht_co_producto'));
-// if (parametrosResponse.length != 0) {
-//     for (let j = 0; j < parametrosResponse.length; j++) {
-//         if (parametrosResponse[j][0] == _constant.Parameter.GPG_GENERA_PARAMETRIZACION_EN_GEOSYS)
-//             envioCortePX = parametrosResponse[j][1];
-
-//         if (parametrosResponse[j][0] == _constant.Parameter.GPT_GENERA_PARAMETRIZACION_EN_TELEMATICS)
-//             envioCorteTM = parametrosResponse[j][1];
-//     }
-// }
-
-//     log.debug('CortePX', 'Enviado a Corte PX: ' + envioCortePX);
-//     log.debug('CorteTM', 'Enviado a Corte TM: ' + envioCorteTM);
-//     log.debug('Datos', 'Datos de corte: ' + idchaser + ' - ' + idbien + ' - ' + 'COR');
-
-
-// if (envioCortePX == _constant.Valor.SI) {
-//     const envioPXActualizacionEstado (dispositivoId, vehiculoId, estadoSim);
-
-//     if (envioCorteTM == _constant.Valor.SI) {
-//         const envioPXActualizacionEstado(dispositivoId, vehiculoId, estadoSim);
-//     }
-
-// }

@@ -54,7 +54,6 @@ define(['N/record',
                     }
                     createChaser(scriptParameters);
                 } else if (scriptParameters.assemblyFlow == 'custodia') {
-
                     let objCustodia = getCustodiaData(scriptParameters.inventoryNumber, scriptParameters.deviceItem, scriptParameters.customer);
                     if (objCustodia.searchResultCount > 0) {
                         let outputInventoryAdjustmentId = createInventoryAdjustmentSalidaCustodia(scriptParameters, objCustodia);
@@ -66,8 +65,6 @@ define(['N/record',
                     } else {
                         log.error('No se encontró ningún registro de custodia para: ', serie + '-' + dispositivo + '-' + cliente)
                     }
-
-
                 } else if (scriptParameters.assemblyFlow == 'garantia') {
                     let outputInventoryAdjustmentId = createInventoryAdjustmentSalidaGarantia(scriptParameters);
                     createHTAjusteRelacionado(scriptParameters.workorder, outputInventoryAdjustmentId);
@@ -139,13 +136,14 @@ define(['N/record',
 
         const createInventoryAdjustmentSalidaGarantia = (scriptParameters) => {
             let sql = 'SELECT custrecord_ht_cuenta_de_garantia as cuentagarantia FROM subsidiary WHERE id = ?';
-            let params = [ECUADOR_SUBSIDIARY];
+            let params = [scriptParameters.subsidiary];
             let resultSet = query.runSuiteQL({ query: sql, params: params });
             let results = resultSet.asMappedResults();
             log.debug('CUENTA-DE-GARANTIA', results);
             if (results.length > 0) {
                 let newAdjust = record.create({ type: record.Type.INVENTORY_ADJUSTMENT, isDynamic: true });
-                newAdjust.setValue({ fieldId: 'subsidiary', value: ECUADOR_SUBSIDIARY });
+                newAdjust.setValue({ fieldId: 'customform', value: 172 });
+                newAdjust.setValue({ fieldId: 'subsidiary', value: scriptParameters.subsidiary });
                 newAdjust.setValue({ fieldId: 'account', value: results[0]['cuentagarantia'] });
                 newAdjust.setValue({ fieldId: 'adjlocation', value: scriptParameters.location });
                 newAdjust.setValue({ fieldId: 'customer', value: scriptParameters.customer });
@@ -560,8 +558,10 @@ define(['N/record',
                     if (chaserId) {
                         objRecordCreate = record.load({ type: 'customrecord_ht_record_mantchaser', id: chaserId, isDynamic: true });
                         vid = objRecordCreate.getValue('custrecord_ht_mc_vid');
+                        log.debug('objRecordCreate', 'objRecordLoad')
                     } else {
                         objRecordCreate = record.create({ type: 'customrecord_ht_record_mantchaser', isDynamic: true });
+                        log.debug('objRecordCreate', 'objRecordCreate')
                     }
 
                     if (scriptParameters.assemblyFlow == 'custodia') {
@@ -576,7 +576,11 @@ define(['N/record',
                             if (searchResult.length) {
                                 setFieldsByType(objRecordCreate, type, searchResult[0], scriptParameters);
                                 if (!vid)
-                                    vid = searchResult[0].getValue(searchResult[0].columns[13])
+                                    try {
+                                        vid = searchResult[0].getValue(searchResult[0].columns[13])
+                                    } catch (error) {
+                                        log.error('error-VID', 'No tiene VID, puede ser locjack ' + error.message)
+                                    }
                             }
                         }
                     } else if (scriptParameters.assemblyFlow == 'alquiler') {
@@ -590,7 +594,11 @@ define(['N/record',
                             if (!searchResult.length) continue;
                             setFieldsByType(objRecordCreate, type, searchResult[0], scriptParameters);
                             if (!vid)
-                                vid = searchResult[0].getValue(searchResult[0].columns[13])
+                                try {
+                                    vid = searchResult[0].getValue(searchResult[0].columns[13])
+                                } catch (error) {
+                                    log.error('error-VID-alquiler', 'No tiene VID, puede ser locjack ' + error.message)
+                                }
                         }
                     }
 
@@ -603,7 +611,11 @@ define(['N/record',
                         if (!searchResult.length) continue;
                         setFieldsByType(objRecordCreate, type, searchResult[0], scriptParameters);
                         if (!vid)
+                        try {
                             vid = searchResult[0].getValue(searchResult[0].columns[13])
+                        } catch (error) {
+                            log.error('error-VID-alquiler', 'No tiene VID, puede ser locjack ' + error.message)
+                        }
                     }
 
                     let instalado = '';
@@ -644,6 +656,10 @@ define(['N/record',
 
 
         const setFieldsByType = (objRecordCreate, type, result, scriptParameters) => {
+            log.debug('objRecordCreate', objRecordCreate)
+            log.debug('type', type)
+            log.debug('result', result)
+            log.debug('scriptParameters', scriptParameters)
             var columns = result.columns;
 
             if (type == "1") {

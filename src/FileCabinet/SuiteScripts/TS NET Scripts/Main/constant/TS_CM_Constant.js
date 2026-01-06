@@ -29,6 +29,7 @@ define([], () => {
         COMPONENTE_DISPOSITIVO_ID: 1,
         CONVENIO: 14,
         FLUJO_CUSTODIA: 2,
+        FLUJO_GARANTIA: 3,
         CREATE: 'create',
         EDIT: 'edit',
         COPY: 'copy',
@@ -59,6 +60,8 @@ define([], () => {
             PXADMIN: 'PXADMIN',
             TELEMATICS: 'TELEMATICS'
         },
+        // URL para llamadas a la API PX (centralizado para ambos controladores)
+        URLPX: 'https://tyr.24hm.net/API_PX/WSPX.asmx',
         CATEGORIA_NO_PERMITIDA: {
             '2': [12, 13] // Subsidiaria 2 no permite categorías 12,13
         }
@@ -179,7 +182,8 @@ define([], () => {
     let Valor = {
         VALOR_001_CHEQUEO_H_LOJACK: 354, //001 - CHEQUEO H. LOJACK
         VALOR_001_GENERA_CUSTODIAS: 335, //001 - GENERA CUSTODIAS
-        VALOR_001_INST_DISPOSITIVO: 317, //001 - INST. DISPOSITIVO
+        VALOR_001_INST_DISPOSITIVO: 317, //001 - INST. DISPOSITIVO CARSEG
+        //VALOR_001_INST_DISPOSITIVO: 4349, //001 - INST. DISPOSITIVO AUTOSAFE
         VALOR_001_RENOVACION_NORMAL: 366, //001 - RENOVACION NORMAL
         VALOR_002_DESINSTALACION_DE_DISP: 318, //002 - DESINSTALACION DE DISP.
         VALOR_002_ENTREGA_CUSTODIAS: 336, //002 - ENTREGA CUSTODIAS

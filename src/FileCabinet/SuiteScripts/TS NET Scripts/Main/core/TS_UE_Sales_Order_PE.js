@@ -15,6 +15,7 @@ define([
     "N/email",
     "N/query",
     "N/error",
+    "N/task",
     "../controller/TS_CM_Controller_PE",
     "../constant/TS_CM_Constant",
     "../error/TS_CM_ErrorMessages",
@@ -32,6 +33,7 @@ define([
     email,
     query,
     err,
+    task,
     _controller,
     _constant,
     _errorMessage,
@@ -474,7 +476,7 @@ define([
                                 idWorkOrder = workOrder;
                             }
                             if (parametrosRespo[j][0] == _constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO && parametrosRespo[j][1] == _constant.Valor.SI && !isGenerico) {
-                                workOrder = _controller.parametros(_constant.Parameter.VOT_VARIAS_ORDENES_DE_TRABAJO, json);
+                                workOrder = _controller.parametros(_constant.Codigo_parametro.COD_VOT_VARIAS_ORDENES_DE_TRABAJO, json);
                                 idWorkOrder = workOrder;
                             }
                             if (parametrosRespo[j][0] == _constant.Parameter.TCH_TIPO_CHEQUEO_OT)
@@ -697,59 +699,19 @@ define([
                             }
                         }
 
+                        //cambio jmon 17/12/2025 - proceso de upgrade en OS deshabilitado
+
                         log.debug("esUpgrade", esUpgrade);
                         let items_inventario = null;
                         for (let i = 0; i < numLines; i++) {
                             items_inventario = objRecord.getSublistValue({ sublistId: "item", fieldId: "item", line: i, });
                             log.debug("items_inventario", items_inventario);
                         }
+                        // cambio jmon 17/12/2025 - upgrade se ejecuta en chequeo de OT
                         if (esUpgrade == _constant.Valor.SI) {
-                            if (bien != "") {
-                                busqueda_cobertura = getInstalacionesforUpgrade(familiaOrigenFAO, bien);
-                            }
-                            log.debug("busqueda_cobertura-TRACK", busqueda_cobertura);
-                            if (busqueda_cobertura.length != 0) {
-                                for (let i = 0; i < busqueda_cobertura.length; i++) {
-                                    let rec = record.submitFields({
-                                        type: "customrecord_ht_co_cobertura",
-                                        id: busqueda_cobertura[i].id,
-                                        values: {
-                                            custrecord_ht_co_familia_prod: fam,
-                                            custrecord_ht_co_producto: items_inventario,
-                                            custrecord_ht_co_producto_convertido: true,
-                                            custrecord_ht_co_subsidiaria: subsidiaryOS,  // Doas 22/04/2025
-                                        },
-                                        options: {
-                                            enableSourcing: false,
-                                            ignoreMandatoryFields: true,
-                                        },
-                                    });
-                                    log.debug("esUpgrade-rec", rec);
-
-                                    log.debug("objParameters", "Ingresar Historial");
-                                    log.debug("objParameters", busqueda_cobertura[i][1]);
-                                    let coberturaId = busqueda_cobertura[i][1];
-                                    let objRecord = record.create({
-                                        type: "customrecord_ht_ct_cobertura_transaction",
-                                        isDynamic: true,
-                                    });
-                                    objRecord.setValue({
-                                        fieldId: "custrecord_ht_ct_transacciones",
-                                        value: coberturaId,
-                                    });
-                                    objRecord.setValue({
-                                        fieldId: "custrecord_ht_ct_orden_servicio",
-                                        value: idRecord,
-                                    });
-                                    //objRecord.setValue({ fieldId: 'custrecord_ht_ct_orden_trabajo', value: objParameters.ordentrabajoId });
-                                    objRecord.setValue({
-                                        fieldId: "custrecord_ht_ct_concepto",
-                                        value: 9,
-                                    });
-                                    objRecord.save();
-                                }
-                            }
+                            log.debug("Upgrade-OS", "El proceso de upgrade ahora se ejecuta al chequear la OT (TS_UE_Orden_Trabajo_PE).");
                         }
+
                     }
 
                     //TODO: Revisar: parámetro ccd nunca ingresa porque está igualando al valor y aquí no debería generar custodia
@@ -1657,6 +1619,7 @@ define([
                                             item: item,
                                             tiempo: 0,
                                             unidad: unidad,
+                                            familia: familia //cambio jmon 19/12/2025: conservar familia para impulso PX
                                         };
                                     }
                                     resultados[familia].tiempo += parseInt(tiempo);
@@ -1829,6 +1792,25 @@ define([
                                                     };
                                                     log.debug("impulsaTM", plataformas);
                                                     log.debug("impulsaPX", impulsaPX);
+                                                    //cambio jmon 19/12/2025: agendar impulso PX de renovaciГіn vГ­a SS
+                                                    if (impulsaPX === true) {
+                                                        try {
+                                                            const famPx = results[i].familia || null;
+                                                            const taskId = task.create({
+                                                                taskType: task.TaskType.SCHEDULED_SCRIPT,
+                                                                scriptId: 'customscript_ht_pe_impulso_plat_px',
+                                                                deploymentId: 'customdeploy_ht_pe_impulso_plat_px',
+                                                                params: {
+                                                                    custscript_ht_pe_impulso_soid: idRecord,
+                                                                    custscript_ht_pe_impulso_fam: famPx,
+                                                                    custscript_ht_pe_impulso_subs: subsidiaryOS
+                                                                }
+                                                            }).submit();
+                                                            log.debug('IMPULSO-PX-RENOVACION-SCHED', { so: idRecord, famPx, taskId });
+                                                        } catch (e) {
+                                                            log.error('IMPULSO-PX-RENOVACION-SCHED-ERROR', e);
+                                                        }
+                                                    }
                                                     if ((plataformas == true || impulsaPX == true) && t_PPS == true) {
                                                         log.debug("Entry", "If");
                                                         let objValues = new Object();

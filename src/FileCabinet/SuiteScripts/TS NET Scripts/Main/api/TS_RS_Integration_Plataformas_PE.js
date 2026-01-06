@@ -84,7 +84,7 @@ define([
                             objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
                             scriptContext.start = objRecord.getValue('custrecord_ht_co_coberturainicial');
                             scriptContext.end = objRecord.getValue('custrecord_ht_co_coberturafinal');
-                            objRecord.setValue({ fieldId: 'custrecord_ht_co_impulso_plataforma', value: PX_MODIFICACION_DATOS_DISPOSITIVOS });
+                            //objRecord.setValue({ fieldId: 'custrecord_ht_co_impulso_plataforma', value: PX_MODIFICACION_DATOS_DISPOSITIVOS });
                         } else {
                             objRecord.setValue({ fieldId: 'custrecord_ht_co_estado_cobertura', value: scriptContext.estadoCobertura });
                             objRecord.setValue({ fieldId: 'custrecord_ht_co_coberturainicial', value: new Date(scriptContext.start) });

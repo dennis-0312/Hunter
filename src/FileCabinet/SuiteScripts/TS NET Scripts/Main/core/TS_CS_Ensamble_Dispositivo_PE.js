@@ -15,8 +15,8 @@ define([
     const RENT_ASSEMBLY_BUILD_SCRIPT_ID = "customscript_ts_ui_assembly_build_21_pe";
     const CUSTODY_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_custody_assem_buil_pe";
     const CUSTODY_ASSEMBLY_BUILD_SCRIPT_ID = "customscript_ts_ui_custody_assem_buil_pe";
-    const WARRANT_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_warrant_assem_buil_21";
-    const WARRANT_ASSEMBLY_BUILD_SCRIPT_ID = "customscript_ts_ui_warrant_assem_buil_21";
+    const WARRANT_ASSEMBLY_BUILD_DEPLOYMENT_ID = "customdeploy_ts_ui_warrant_assem_buil_pe";
+    const WARRANT_ASSEMBLY_BUILD_SCRIPT_ID = "customscript_ts_ui_warrant_assem_buil_pe";
     const IMPRESION_CERTIFICADO_SCRIPT_ID = "customscript_ts_ui_ec_impresion_certi";
     const IMPRESION_CERTIFICADO_DEPLOYMENT_ID = "customdeploy_ts_ui_ec_impresion_certi"
     const estadoChequeado = 2;
@@ -63,6 +63,7 @@ define([
 
     const ensambleGarantia = (item, location, workorder, salesorder, customer, subsidiary) => {
         try {
+            console.log('Hello Garantía');
             let params = { item, location, workorder, salesorder, customer, subsidiary };
             let host = getHostDomain();
             let suiteletUrl = getSuiteletUrl(WARRANT_ASSEMBLY_BUILD_SCRIPT_ID, WARRANT_ASSEMBLY_BUILD_DEPLOYMENT_ID);
@@ -156,6 +157,23 @@ define([
         }
     }
 
+    // NUEVO: dispara impulso directo PX sin validaciones agregando el parámetro al URL
+    const impulsoDirectoPX = (workOrderId) => {
+        try {
+            const currentUrl = window.location.href;
+            const hasQuery = currentUrl.indexOf('?') !== -1;
+            const cleanUrl = currentUrl.replace(/([&?])custpage_direct_px=T(&)?/, (_m, sep, tail) => {
+                if (sep === '?' && tail) return '?' + tail;
+                if (sep === '&' && tail) return '&' + tail;
+                return '';
+            });
+            const separator = hasQuery ? '&' : '?';
+            window.location.href = `${cleanUrl}${separator}custpage_direct_px=T`;
+        } catch (error) {
+            dialog.alert({ title: 'Impulso Directo PX', message: `No se pudo iniciar el impulso directo: ${error.message}` });
+        }
+    }
+
     const printCertificado = (workOrder, type) => {
         try {
             let params = { workOrder, type };
@@ -175,6 +193,7 @@ define([
         ensambleCustodia,
         ensambleGarantia,
         chequearOrden,
+        impulsoDirectoPX,
         printCertificado
     };
 });

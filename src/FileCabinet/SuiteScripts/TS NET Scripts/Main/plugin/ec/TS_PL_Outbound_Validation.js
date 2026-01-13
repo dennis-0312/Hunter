@@ -22,8 +22,8 @@ define(['N/file', 'N/record', 'N/runtime', 'N/search', 'N/log', 'N/error', 'N/qu
         var userId = '';
         const SUBSIDIARIA = 2;
         const FORM_LIQUIDACION = 154; //SB:128 - PR:154
-        const AMBIENTE_SIPECOM = '1'; //SB:1 - PR:2
-        const AMBIENTE_SIPECOM_VENTAS = '1'; //SB:1 - PR:2
+        const AMBIENTE_SIPECOM = '2'; //SB:1 - PR:2
+        const AMBIENTE_SIPECOM_VENTAS = '2'; //SB:1 - PR:2
         var employeeId = runtime.getCurrentUser().id;
         function validate(pluginContext) {
             log.debug({

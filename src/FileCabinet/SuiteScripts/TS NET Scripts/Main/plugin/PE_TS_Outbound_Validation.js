@@ -1984,7 +1984,6 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                                                 }
                                             ]
                                             //FIN jEchevarria 31/05/2024
-
                                         }
                                     ],
                                     "Delivery": [
@@ -3041,9 +3040,11 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
             var anticipotaxtotal = 0;
             var anticipototal = 0;
             var anticiposubtotal = 0;
+            var correo = searchResult[0].getValue({ name: "email", join: "customer", label: "30 Email" });
             var custbody_pe_ei_forma_pago = searchResult[0].getText({ name: "custbody_pe_ei_forma_pago", label: "formaPagoDetr" });
             var anticipo = searchResult[0].getValue({ name: "custbody_pefacturarelacionadaalanticip" });
             var anticiposerie = searchResult[0].getText({ name: "custbody_pe_serie", join: "custbody_pefacturarelacionadaalanticip" }) + '-' + searchResult[0].getValue({ name: "custbody_pe_number", join: "custbody_pefacturarelacionadaalanticip" });
+
             if (anticipo) {
                 var facturaanticipo = search.create({
                     type: "transaction",
@@ -3085,6 +3086,18 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
 
             var NewLocation = searchResult[0].getText({ name: "location" });
             var newTerms = searchResult[0].getText({ name: "terms" });
+
+            //& =============================
+            var correosArray = getEmails(CustomerInternal, correo)
+            var correos = '';
+            for (var i = 0; i < correosArray.length; i++) {
+                if (i > 0) {
+                    correos += ',';
+                }
+                correos += correosArray[i];
+            }
+
+            //& =============================
 
             var searchLoadCustomer = search.create({
                 type: "customer",
@@ -3132,6 +3145,7 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
             var departamentosub = "12";
             var city = "";
             var address1 = "";
+
             if (searchResultCustomer.length > 0) {
                 zipCustomer = searchResultCustomer[0].getValue({ name: "custrecord_pe_cod_ubigeo", join: "Address", label: "PE Cod Ubigeo" });
                 distrito = searchResultCustomer[0].getValue({ name: "custrecord_pe_distrito", join: "Address", label: "distrito" });
@@ -3403,7 +3417,7 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                     ],
                     "InvoicedQuantity": [
                         {
-                            "_": parseFloat(detail.det[i].cantidadItems)  >= 0.5 && parseFloat(detail.det[i].cantidadItems) < 1 ? "1" : detail.det[i].cantidadItems,
+                            "_": detail.det[i].cantidadItems,
                             "unitCode": detail.det[i].unidad,
                             "unitCodeListID": "UN/ECE rec 20",
                             "unitCodeListAgencyName": "United Nations Economic Commission for Europe"
@@ -4170,7 +4184,7 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                                     {
                                         "ElectronicMail": [
                                             {
-                                                "_": "correo@efact.pe"
+                                                "_": correos
                                             }
                                         ]
                                     }
@@ -4583,7 +4597,7 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                                     {
                                         "ElectronicMail": [
                                             {
-                                                "_": "correo@efact.pe"
+                                                "_": correos
                                             }
                                         ]
                                     }
@@ -6269,14 +6283,14 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                         search.createColumn({ name: "entity" }),
 
                         //Inicio jechevarrie 20/06/2024
-                        search.createColumn({ name: "custbody_pe_direccion_entrega_prede" }),
+                        //search.createColumn({ name: "custbody_pe_direccion_entrega_prede" }),
                         search.createColumn({ name: "salesrep" }),
                         search.createColumn({ name: "createdfrom", join: "createdFrom" }),
                         search.createColumn({ name: "type", join: "createdFrom" }),
-                        search.createColumn({ name: "custbody_sj_motiv_devolucion" }),
-                        search.createColumn({ name: "custbody_pe_fecha_venci_ref", label: "fechaVencRef" }), //<I> rhuaccha: 2024-08-26
-                        search.createColumn({ name: "custbody_pe_condicion_ref", label: "condicionRef" }), //<I> rhuaccha: 2024-08-26
-                        search.createColumn({ name: "custbody_pe_forma_pago_ref", label: "formaPagoRef" }), //<I> rhuaccha: 2024-08-26
+                        //search.createColumn({ name: "custbody_sj_motiv_devolucion" }),
+                        //search.createColumn({ name: "custbody_pe_fecha_venci_ref", label: "fechaVencRef" }), //<I> rhuaccha: 2024-08-26
+                        //search.createColumn({ name: "custbody_pe_condicion_ref", label: "condicionRef" }), //<I> rhuaccha: 2024-08-26
+                        //search.createColumn({ name: "custbody_pe_forma_pago_ref", label: "formaPagoRef" }), //<I> rhuaccha: 2024-08-26
 
 
                         // search.createColumn({ name: "custbody_pe_ei_forma_pago", label: "condPagoADI" }),
@@ -6360,16 +6374,16 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
             fechaInicial.setDate(fechaInicial.getDate() + 1);
             var nuevaFecha = fechaInicial.toISOString().split('T')[0]; // fechaInicial.toLocaleDateString();
             //<I> rhuaccha: 2024-08-26
-            var tmpDate = searchResult[0].getValue({ name: "custbody_pe_fecha_venci_ref" });
-            var newDate = '';
-            if (tmpDate) {
-                var dateArr = tmpDate.split("/");
-                var initDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
-                initDate.setDate(initDate.getDate());
-                newDate = initDate.toISOString().split('T')[0];
-            }
-            var condicionRef = searchResult[0].getText({ name: "custbody_pe_condicion_ref" });
-            var formaPagoRef = searchResult[0].getText({ name: "custbody_pe_forma_pago_ref" });
+            //var tmpDate = searchResult[0].getValue({ name: "custbody_pe_fecha_venci_ref" });
+            // var newDate = '';
+            // if (tmpDate) {
+            //     var dateArr = tmpDate.split("/");
+            //     var initDate = new Date(dateArr[2], dateArr[1] - 1, dateArr[0]);
+            //     initDate.setDate(initDate.getDate());
+            //     newDate = initDate.toISOString().split('T')[0];
+            // }
+            //var condicionRef = searchResult[0].getText({ name: "custbody_pe_condicion_ref" });
+            //var formaPagoRef = searchResult[0].getText({ name: "custbody_pe_forma_pago_ref" });
             //<F> rhuaccha: 2024-08-26
             var CustomerInternal = searchResult[0].getValue({ name: "entity" });
             var searchLoadCustomer = search.create({
@@ -6809,11 +6823,11 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
 
 
             //Inicio Cambio Jechevarria 20-06-2024
-            var direccionEntrega = searchResult[0].getValue({ name: "custbody_pe_direccion_entrega_prede" });
-            if (direccionEntrega) {
-                //le quitamos el salto de linea 
-                direccionEntrega = direccionEntrega.replace(/\n/g, ' ');
-            }
+            // var direccionEntrega = searchResult[0].getValue({ name: "custbody_pe_direccion_entrega_prede" });
+            // if (direccionEntrega) {
+            //     //le quitamos el salto de linea 
+            //     direccionEntrega = direccionEntrega.replace(/\n/g, ' ');
+            // }
             var salesrep = searchResult[0].getText({ name: "salesrep" });
             var createdfromType = searchResult[0].getValue({ name: "type", join: "createdFrom" });
 
@@ -6890,7 +6904,7 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
 
             //Fin Cambio Jechevarria 14-08-2024
 
-            var custbody_sj_motiv_devolucion = searchResult[0].getText({ name: "custbody_sj_motiv_devolucion" });
+            //var custbody_sj_motiv_devolucion = searchResult[0].getText({ name: "custbody_sj_motiv_devolucion" });
 
 
 
@@ -6930,41 +6944,41 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                             {
                                 "_": monto,
                                 "languageLocaleID": "1000"
-                            },
-                            {
-                                "_": newDate, // nuevaFecha,
-                                "languageID": "C"
+                            }
+                            // {
+                            //     "_": newDate, // nuevaFecha,
+                            //     "languageID": "C"
 
-                            },
+                            // },
                             //<I> rhuaccha: 2024-09-13
-                            {
-                                "_": condicionRef, // formaPagoRef,
-                                "languageID": "E"
-                            },
+                            // {
+                            //     "_": condicionRef, // formaPagoRef,
+                            //     "languageID": "E"
+                            // },
                             //<F> rhuaccha: 2024-09-13
-                            {
-                                "_": custbody_sj_motiv_devolucion,
-                                "languageID": "G"
-                            },
-                            //Inicio Jechevarria 20-06-2024
-                            {
-                                "_": direccionEntrega,
-                                "languageID": "I"
-                            },
-                            {
-                                "_": salesrep,
-                                "languageID": "H"
-                            },
+                            // {
+                            //     "_": custbody_sj_motiv_devolucion,
+                            //     "languageID": "G"
+                            // },
+                            // //Inicio Jechevarria 20-06-2024
+                            // {
+                            //     "_": direccionEntrega,
+                            //     "languageID": "I"
+                            // },
+                            // {
+                            //     "_": salesrep,
+                            //     "languageID": "H"
+                            // },
                             //<I> rhuaccha: 2024-08-26
-                            {
-                                "_": '001',
-                                "languageID": "P"
-                            },
+                            // {
+                            //     "_": '001',
+                            //     "languageID": "P"
+                            // },
                             //<F> rhuaccha: 2024-08-26
                             //Fin Jechevarria 20-06-2024
-                            {
-                                "_": "OBSERVACIONES GENERALES"
-                            }
+                            // {
+                            //     "_": "OBSERVACIONES GENERALES"
+                            // }
                         ],
                         "DocumentCurrencyCode": [
                             {
@@ -7293,28 +7307,39 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                 ]
             }
 
-            //<I> rhuaccha: 2024-08-26
-            if (formaPagoRef === 'Credito') {
-                var noteArray = Monnetjson.CreditNote[0].Note;
-                var newObject = {
-                    "_": "001",
-                    "languageID": "Q"
-                };
-
-                var index = -1;
-                for (var i = 0; i < noteArray.length; i++) {
-                    if (noteArray[i]._ === "OBSERVACIONES GENERALES") {
-                        index = i;
-                        break;
-                    }
-                }
-
-                if (index !== -1) {
-                    noteArray.splice(index, 0, newObject);
-                } else {
-                    noteArray.push(newObject);
-                }
+            //--<I> JChaveza 2025-10-24
+            if (salesrep || salesrep != '') {
+                Monnetjson.CreditNote[0].Note.push({
+                    "_": salesrep,
+                    "languageID": "H"
+                });
             }
+            Monnetjson.CreditNote[0].Note.push({ "_": '001', "languageID": "P" });
+            Monnetjson.CreditNote[0].Note.push({ "_": "OBSERVACIONES GENERALES" });
+            //--<F> JChaveza 2025-10-24
+
+            //<I> rhuaccha: 2024-08-26
+            // if (formaPagoRef === 'Credito') {
+            //     var noteArray = Monnetjson.CreditNote[0].Note;
+            //     var newObject = {
+            //         "_": "001",
+            //         "languageID": "Q"
+            //     };
+
+            //     var index = -1;
+            //     for (var i = 0; i < noteArray.length; i++) {
+            //         if (noteArray[i]._ === "OBSERVACIONES GENERALES") {
+            //             index = i;
+            //             break;
+            //         }
+            //     }
+
+            //     if (index !== -1) {
+            //         noteArray.splice(index, 0, newObject);
+            //     } else {
+            //         noteArray.push(newObject);
+            //     }
+            // }
             //<I> rhuaccha: 2024-09-03: validate empty fields
             Monnetjson.CreditNote[0].Note = Monnetjson.CreditNote[0].Note.filter(function (note) {
                 var tagArr = ['C', 'G', 'P']
@@ -7438,17 +7463,12 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                 });
                 var item_display = getCodigo.itemid;
 
+
                 //logStatus(documentid, item_display);
                 var is_discount_line = openRecord.getSublistValue({ sublistId: 'item', fieldId: 'custcol_pe_is_discount_line', line: i });
                 var description = openRecord.getSublistValue({ sublistId: 'item', fieldId: 'description', line: i });
                 var quantity = openRecord.getSublistValue({ sublistId: 'item', fieldId: 'quantity', line: i });
                 //cambio Jechevarria 19/06/2024
-                //&<I> - dfernandez - 21/05/2025
-                // quantity = parseFloat(quantity);
-                // if (quantity >= 0.5 && quantity <= 2) {
-                //quantity = 0.2;
-                // }
-                //&<F> - dfernandez - 21/05/2025
                 var grossamt = openRecord.getSublistValue({ sublistId: 'item', fieldId: 'grossamt', line: i });
 
                 var unit = getUnit(item);
@@ -7990,7 +8010,7 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
             try {
                 var logStatus = record.create({ type: 'customrecord_pe_ei_document_status' });
                 logStatus.setValue('custrecord_pe_ei_document', internalid);
-                logStatus.setValue('custrecord_pe_ei_document_status', docstatus);
+                logStatus.setValue('custrecord_pe_ei_document_status_2', docstatus);
                 logStatus.save();
             } catch (error) {
 
@@ -8498,6 +8518,28 @@ define(['N/config', 'N/email', 'N/encode', 'N/file', 'N/format', 'N/https', 'N/r
                 // Si tiene 3 decimales o menos, devolverlo tal cual
                 return numero.toFixed(2); // Para mostrarlo con 2 decimales
             }
+        }
+
+        function getEmails(customerId, correo) {
+            if (!customerId) return [];
+            var emails = [];
+            if (correo) {
+                emails.push(correo);
+            }
+            var searchResult = search.create({
+                type: "customrecord_ht_record_correoelectronico",
+                filters: [["custrecord_ht_ce_enlace", "anyof",customerId]],
+                columns: ["custrecord_ht_email_email"]
+            }).run().getRange(0, 1000);
+
+            //var searchResultCount = searchResult.runPaged().count;
+            if (searchResult.length > 0) {
+                for (var i = 0; i < searchResult.length; i++) {
+                    emails.push(searchResult[i].getValue("custrecord_ht_email_email"));
+                }
+            };
+
+            return emails;
         }
 
 
